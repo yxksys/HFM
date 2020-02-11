@@ -20,5 +20,8 @@ namespace HFM.Components
 {
     class ErrorData
     {
+        private int _errID;
+
+        public int ErrID { get => _errID; set => _errID = value; }
     }
 }
