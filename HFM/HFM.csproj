@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,13 +47,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\BuildMessage.cs" />
+    <Compile Include="Components\Calibration.cs" />
+    <Compile Include="Components\Channel.cs" />
+    <Compile Include="Components\ChannelParameter.cs" />
     <Compile Include="Components\CommPort.cs" />
+    <Compile Include="Components\DbHelperAccess.cs" />
     <Compile Include="Components\DbHelperSQL.cs" />
+    <Compile Include="Components\EfficiencyParameter.cs" />
+    <Compile Include="Components\ErrorData.cs" />
     <Compile Include="Components\ExplainMessage.cs" />
+    <Compile Include="Components\FactoryParameter.cs" />
     <Compile Include="Components\HexCon.cs" />
-    <Compile Include="Components\ReceiveData.cs" />
-    <Compile Include="Components\SendData.cs" />
+    <Compile Include="Components\MeasureData.cs" />
+    <Compile Include="Components\Message.cs" />
+    <Compile Include="Components\Nuclide.cs" />
+    <Compile Include="Components\PlatForm.cs" />
+    <Compile Include="Components\ProbeParameter.cs" />
+    <Compile Include="Components\SystemParameter.cs" />
     <Compile Include="Components\Tools.cs" />
+    <Compile Include="Components\User.cs" />
     <Compile Include="FrmWelcome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +74,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmWelcome.resx">
+      <DependentUpon>FrmWelcome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -81,8 +97,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

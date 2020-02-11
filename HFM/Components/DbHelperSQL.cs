@@ -1,3 +1,15 @@
+/**
+ * ________________________________________________________________________________ 
+ *
+ *  描述：
+ *  作者：
+ *  版本：
+ *  创建时间：
+ *  类名：
+ *  
+ *  Copyright (C) 2020 TIT All rights reserved.
+ *_________________________________________________________________________________
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -5,7 +17,6 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Collections;
-//该源码首发自www.51aspx.com(５１ａｓpｘ．ｃｏｍ)
 
 namespace HFM.Components
 {
@@ -16,7 +27,7 @@ namespace HFM.Components
     public abstract class DbHelperSQL
     {
         //数据库连接字符串(web.config来配置)，可以动态更改connectionString支持多数据库.		
-        public static string connectionString = ConfigurationSettings.AppSettings["ConnectionString_Access"];
+        public static string connectionString = ConfigurationSettings.AppSettings["connectionStringAcccess"];
 
         public DbHelperSQL()
         {
