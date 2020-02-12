@@ -18,27 +18,127 @@ using System.Threading.Tasks;
 
 namespace HFM.Components
 {
-    class Message
+    abstract class Message
     {
         #region 生成下发下位机的Alpha和Beta自检报文
-        public byte[] BuildMessage(int checkType)
+        /// <summary>
+        /// 生成下发下位机的Alpha和Beta自检报文
+        /// 报文格式：Alpha自检：0x5A,0x00,0x0B,0x03,0xEB,0x00,0x01,0x00,0x03
+        ///           Beta自检： 0x5A,0x00,0x0B,0x03,0xEB,0x00,0x00,0x00,0x03
+        /// </summary>
+        /// <param name="checkType">自检类型，0：Alpha1：Beta</param>
+        /// <returns>自检报文数组</returns>
+        public static byte[] BuildMessage(int checkType)
         {
-            return null;
+            byte[] messageData = new byte[62];
+            switch (checkType)
+            {
+                case 0://Alpha自检
+                    messageData[0] = 0x5A;
+                    messageData[1] = 0x00;
+                    messageData[2] = 0x0B;
+                    messageData[3] = 0x03;
+                    messageData[4] = 0xEB;
+                    messageData[5] = 0x00;
+                    messageData[6] = 0x01;
+                    messageData[7] = 0x00;
+                    messageData[8] = 0x03;
+                    break;
+                case 1://Beat自检
+                    messageData[0] = 0x5A;
+                    messageData[1] = 0x00;
+                    messageData[2] = 0x0B;
+                    messageData[3] = 0x03;
+                    messageData[4] = 0xEB;
+                    messageData[5] = 0x00;
+                    messageData[6] = 0x00;
+                    messageData[7] = 0x00;
+                    messageData[8] = 0x03;
+                    break; 
+            }
+
+            return messageData;
         }
         #endregion
 
         #region 生成下发下位机的自检报文
-        public byte[] BuildMessage(int pulsNumber,int pulsHV,int pulsWidth,int ctrlSignal)
+        /// <summary>
+        /// 生成下发下位机的自检报文
+        /// 报文格式：0x5A,0x00,0x0B,脉冲数（2字节）,脉冲高低电平（1字节）,控制信号（1字节）,脉冲宽度（2字节）
+        /// </summary>
+        /// <param name="pulsNumber">脉冲数</param>
+        /// <param name="pulsHV">脉冲高低电平</param>
+        /// <param name="pulsWidth">脉冲宽度</param>
+        /// <param name="ctrlSignal">控制信号</param>
+        /// <returns>自检报文数组</returns>
+        public static byte[] BuildMessage(int pulsNumber,int pulsHV,int ctrlSignal,int pulsWidth)
         {
-            return null;
+            byte[] messageData = new byte[62];
+            messageData[0] = 0x5A;
+            messageData[1] = 0x00;
+            messageData[2] = 0x0B;
+            //脉冲数
+            messageData[3] = Convert.ToByte(pulsNumber / 256);
+            messageData[4] = Convert.ToByte(pulsNumber % 256);
+            //脉冲高低电平
+            messageData[5] = Convert.ToByte(pulsHV);
+            //控制信号
+            messageData[6] = Convert.ToByte(ctrlSignal);
+            //脉冲宽度
+            messageData[7] = Convert.ToByte(pulsWidth / 256);
+            messageData[8] = Convert.ToByte(pulsWidth % 256);
+            return messageData;
         }
         #endregion
 
         #region 生成下发下位机的写道盒参数报文（P写参数命令码）
-        public byte[] BuildMessage(ChannelParameter channelParameter)
+        /// <summary>
+        /// 生成下发下位机的写道盒参数报文（P写参数命令码）
+        /// 报文格式:'P',通道（1~7），Alpha阈值（1字节），Beta阈值（1字节），高压（2字节），AD因子（2字节），
+        /// DA因子（2字节），高压因子（2字节），工作时间（2字节），高压倍数（2字节）...'P'（索引61）
+        /// 特别注意：通道ID1-7，但是一个数据包最多封装4个通道，因此7个通道需封装成两个报文数据包分别进行下发。
+        ///           第1次，封装通道1-4并下发，第二次，封装通道5-7并下发
+        /// </summary>
+        /// <param name="channelParameter">道盒对象</param>
+        /// <returns>道盒参数（P写参数命令码）报文数组</returns>
+        public static byte[] BuildMessage(IList<ChannelParameter> channelParameterS)
         {
-            //我的提交
-            return null;
+            byte[] messageData = new byte[62];
+            int j = 1;
+            //报文头，1字节
+            messageData[0] =Convert.ToByte('p');
+            //循环生成4个通道的报文，每个通道15个字节
+            for(int i=0; i<4; i++)
+            {               
+                //通道ID，1字节
+                messageData[j] = Convert.ToByte(channelParameterS[i].Channel.ChannelID);
+                //Alpha阈值，1字节
+                messageData[j + 1] = Convert.ToByte(channelParameterS[i].AlphaThreshold/10);
+                //Beta阈值，1字节
+                messageData[j + 2] = Convert.ToByte(channelParameterS[i].BetaThreshold/10);
+                //高压值，2字节
+                messageData[j + 3] = Convert.ToByte(channelParameterS[i].PresetHV/256);
+                messageData[j + 4] = Convert.ToByte(channelParameterS[i].PresetHV%256);
+                //AD因子，2字节
+                messageData[j + 5] = Convert.ToByte(channelParameterS[i].ADCFactor/256);
+                messageData[j + 6] = Convert.ToByte(channelParameterS[i].ADCFactor % 256);
+                //DA因子，2字节
+                messageData[j + 7] = Convert.ToByte(channelParameterS[i].DACFactor / 256);
+                messageData[j + 8] = Convert.ToByte(channelParameterS[i].DACFactor % 256);
+                //高压因子，2字节
+                messageData[j + 9] = Convert.ToByte(channelParameterS[i].HVFactor / 256);
+                messageData[j + 10] = Convert.ToByte(channelParameterS[i].HVFactor % 256);
+                //工作时间，2字节
+                messageData[j + 11] = Convert.ToByte(channelParameterS[i].WorkTime / 256);
+                messageData[j + 12] = Convert.ToByte(channelParameterS[i].WorkTime % 256);
+                //高压倍数，2字节
+                messageData[j + 13] = Convert.ToByte(channelParameterS[i].HVRatio / 256);
+                messageData[j + 14] = Convert.ToByte(channelParameterS[i].HVRatio % 256);
+                j = j + 15;
+            }
+            //报文结束标志，1字节
+            messageData[61] = Convert.ToByte('p');
+            return messageData;
         }
         #endregion     
 

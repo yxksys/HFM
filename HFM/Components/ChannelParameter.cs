@@ -72,6 +72,23 @@ namespace HFM.Components
         /// 所属通道
         /// </summary>
         internal Channel Channel { get => _channel; set => _channel = value; }
-        #endregion            
+        #endregion
+
+        #region 构造函数
+        public ChannelParameter()
+        { }
+        public ChannelParameter(int channelID,float alphaThreshold,float betaThreshold,float presetHV,float aDCFactor,float dACFactor,float hVFactor,float workTime,float hVRatio)
+        {
+            this._channel = (new Channel()).GetChannel(channelID);
+            this._alphaThreshold = alphaThreshold;
+            this._betaThreshold = betaThreshold;
+            this._presetHV = presetHV;
+            this._aDCFactor = aDCFactor;
+            this._dACFactor = dACFactor;
+            this._hVFactor = hVFactor;
+            this._workTime = workTime;
+            this._hVRatio = hVRatio;
+        }
+        #endregion
     }
 }
