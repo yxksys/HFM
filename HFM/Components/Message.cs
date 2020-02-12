@@ -1,11 +1,11 @@
 ﻿/**
  * ________________________________________________________________________________ 
  *
- *  描述：
+ *  描述：生成报文，发送报文，接受报文，解析报文
  *  作者：
  *  版本：
  *  创建时间：
- *  类名：
+ *  类名：报文类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -18,21 +18,114 @@ using System.Threading.Tasks;
 
 namespace HFM.Components
 {
-    class Message
+    public class Message
     {
-        #region 生成下发下位机的Alpha和Beta自检报文
-        public byte[] BuildMessage(int checkType)
+        #region 报文公共字段属性
+        //发送的数据报文
+        byte[] MySendMessageData = new byte[62];
+        #endregion
+
+        #region 生成下发下位机的读参数指令P和C  2020年2月12日 10:34:01
+        /// <summary>
+        /// 生成发下位机的读参数指令P和C
+        /// </summary>
+        /// <param name="read">read:C/P大写</param>
+        /// <returns>返回相应报文</returns>
+        public byte[] BuildMessage(char read)
         {
-            return null;
+            
+            switch (read)
+            {
+                case 'C':
+                    MySendMessageData[0] = Convert.ToByte('C');
+                    MySendMessageData[61] =?????;
+                    break;
+                case 'P':
+                    MySendMessageData[0] = Convert.ToByte('P');
+                    break;
+                default:
+                    break;
+            }
+            return MySendMessageData;
         }
         #endregion
 
-        #region 生成下发下位机的自检报文
-        public byte[] BuildMessage(int pulsNumber,int pulsHV,int pulsWidth,int ctrlSignal)
+        #region 生成下发下位机的Alpha和Beta自检报文 2020年2月12日 10:34:26
+        /// <summary>
+        /// 生成下发下位机的Alpha和Beta自检报文
+        /// </summary>
+        /// <param name="checkType">1:Alpha通讯协议,2:beta通讯协议</param>
+        /// <returns>返回选择的报文协议</returns>
+        public byte[] BuildMessage(int checkType)
         {
-            return null;
+            int i = 0;
+            //初始化报文
+            for (i = 0; i < 62; i++)
+            {
+                MySendMessageData[i] = 0;
+            }
+            switch (checkType)
+            {
+                case 1:
+                    i = 0;
+                    MySendMessageData[i++] = 0x5A;
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x0B;
+                    MySendMessageData[i++] = 0x03;
+                    MySendMessageData[i++] = 0xE8;
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x01;//01是alpha,00是beta
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x03;
+                    break;
+                case 0:
+                    i = 0;
+                    MySendMessageData[i++] = 0x5A;
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x0B;
+                    MySendMessageData[i++] = 0x03;
+                    MySendMessageData[i++] = 0xE8;
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x00;//01是alpha,00是beta
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x03;
+                    break;
+                default:
+
+                    break;
+            }
+            return MySendMessageData;
         }
         #endregion
+
+        #region 生成下发下位机的自检报文 2020年2月12日 10:34:57 
+        /// <summary>
+        /// 生成下发下位机的自检报文
+        /// </summary>
+        /// <param name="pulsNumber">脉冲数</param>
+        /// <param name="pulsHV">脉冲高低压电平</param>
+        /// <param name="pulsWidth">控制信号</param>
+        /// <param name="ctrlSignal">脉冲宽度</param>
+        /// <returns>返回自检报文</returns>
+        public byte[] BuildMessage(int pulsNumber,int pulsHV,int pulsWidth,int ctrlSignal)
+        {
+            int i = 0;
+            MySendMessageData[i++] = 0x5A;
+            MySendMessageData[i++] = 0x00;
+            MySendMessageData[i++] = 0x0B;
+            //脉冲数
+            MySendMessageData[i++] = Convert.ToByte(pulsNumber/256);
+            MySendMessageData[i++] = Convert.ToByte(pulsNumber%256);
+            //脉冲高低压电平
+            MySendMessageData[i++] = Convert.ToByte(pulsHV);
+            //控制信号
+            MySendMessageData[i++] = Convert.ToByte(pulsWidth);
+            //脉冲宽度
+            MySendMessageData[i++] = Convert.ToByte(ctrlSignal/256);
+            MySendMessageData[i++] = Convert.ToByte(ctrlSignal%256);
+            return MySendMessageData;
+        }
+        #endregion 
 
         #region 生成下发下位机的写道盒参数报文（P写参数命令码）
         public byte[] BuildMessage(ChannelParameter channelParameter)
