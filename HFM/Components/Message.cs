@@ -1,11 +1,11 @@
 ﻿/**
  * ________________________________________________________________________________ 
  *
- *  描述：
+ *  描述：生成报文，发送报文，接受报文，解析报文
  *  作者：
  *  版本：
  *  创建时间：
- *  类名：
+ *  类名：报文类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -18,11 +18,39 @@ using System.Threading.Tasks;
 
 namespace HFM.Components
 {
-    class Message
+    public class Message
     {
-        //自检报文
-        byte[] _checkBuildMessage = new byte[62];
-        #region 生成下发下位机的Alpha和Beta自检报文
+        #region 报文公共字段属性
+        //发送的数据报文
+        byte[] MySendMessageData = new byte[62];
+        #endregion
+
+        #region 生成下发下位机的读参数指令P和C  2020年2月12日 10:34:01
+        /// <summary>
+        /// 生成发下位机的读参数指令P和C
+        /// </summary>
+        /// <param name="read">read:C/P大写</param>
+        /// <returns>返回相应报文</returns>
+        public byte[] BuildMessage(char read)
+        {
+            
+            switch (read)
+            {
+                case 'C':
+                    MySendMessageData[0] = Convert.ToByte('C');
+                    MySendMessageData[61] =?????;
+                    break;
+                case 'P':
+                    MySendMessageData[0] = Convert.ToByte('P');
+                    break;
+                default:
+                    break;
+            }
+            return MySendMessageData;
+        }
+        #endregion
+
+        #region 生成下发下位机的Alpha和Beta自检报文 2020年2月12日 10:34:26
         /// <summary>
         /// 生成下发下位机的Alpha和Beta自检报文
         /// </summary>
@@ -34,43 +62,43 @@ namespace HFM.Components
             //初始化报文
             for (i = 0; i < 62; i++)
             {
-                _checkBuildMessage[i] = 0;
+                MySendMessageData[i] = 0;
             }
             switch (checkType)
             {
                 case 1:
                     i = 0;
-                    _checkBuildMessage[i++] = 0x5A;
-                    _checkBuildMessage[i++] = 0x00;
-                    _checkBuildMessage[i++] = 0x0B;
-                    _checkBuildMessage[i++] = 0x03;
-                    _checkBuildMessage[i++] = 0xE8;
-                    _checkBuildMessage[i++] = 0x00;
-                    _checkBuildMessage[i++] = 0x01;//01是alpha,00是beta
-                    _checkBuildMessage[i++] = 0x00;
-                    _checkBuildMessage[i++] = 0x03;
+                    MySendMessageData[i++] = 0x5A;
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x0B;
+                    MySendMessageData[i++] = 0x03;
+                    MySendMessageData[i++] = 0xE8;
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x01;//01是alpha,00是beta
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x03;
                     break;
                 case 0:
                     i = 0;
-                    _checkBuildMessage[i++] = 0x5A;
-                    _checkBuildMessage[i++] = 0x00;
-                    _checkBuildMessage[i++] = 0x0B;
-                    _checkBuildMessage[i++] = 0x03;
-                    _checkBuildMessage[i++] = 0xE8;
-                    _checkBuildMessage[i++] = 0x00;
-                    _checkBuildMessage[i++] = 0x00;//01是alpha,00是beta
-                    _checkBuildMessage[i++] = 0x00;
-                    _checkBuildMessage[i++] = 0x03;
+                    MySendMessageData[i++] = 0x5A;
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x0B;
+                    MySendMessageData[i++] = 0x03;
+                    MySendMessageData[i++] = 0xE8;
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x00;//01是alpha,00是beta
+                    MySendMessageData[i++] = 0x00;
+                    MySendMessageData[i++] = 0x03;
                     break;
                 default:
 
                     break;
             }
-            return _checkBuildMessage;
+            return MySendMessageData;
         }
         #endregion
 
-        #region 生成下发下位机的自检报文
+        #region 生成下发下位机的自检报文 2020年2月12日 10:34:57 
         /// <summary>
         /// 生成下发下位机的自检报文
         /// </summary>
@@ -82,22 +110,22 @@ namespace HFM.Components
         public byte[] BuildMessage(int pulsNumber,int pulsHV,int pulsWidth,int ctrlSignal)
         {
             int i = 0;
-            _checkBuildMessage[i++] = 0x5A;
-            _checkBuildMessage[i++] = 0x00;
-            _checkBuildMessage[i++] = 0x0B;
+            MySendMessageData[i++] = 0x5A;
+            MySendMessageData[i++] = 0x00;
+            MySendMessageData[i++] = 0x0B;
             //脉冲数
-            _checkBuildMessage[i++] = Convert.ToByte(pulsNumber/256);
-            _checkBuildMessage[i++] = Convert.ToByte(pulsNumber%256);
+            MySendMessageData[i++] = Convert.ToByte(pulsNumber/256);
+            MySendMessageData[i++] = Convert.ToByte(pulsNumber%256);
             //脉冲高低压电平
-            _checkBuildMessage[i++] = Convert.ToByte(pulsHV);
+            MySendMessageData[i++] = Convert.ToByte(pulsHV);
             //控制信号
-            _checkBuildMessage[i++] = Convert.ToByte(pulsWidth);
+            MySendMessageData[i++] = Convert.ToByte(pulsWidth);
             //脉冲宽度
-            _checkBuildMessage[i++] = Convert.ToByte(ctrlSignal/256);
-            _checkBuildMessage[i++] = Convert.ToByte(ctrlSignal%256);
-            return _checkBuildMessage;
+            MySendMessageData[i++] = Convert.ToByte(ctrlSignal/256);
+            MySendMessageData[i++] = Convert.ToByte(ctrlSignal%256);
+            return MySendMessageData;
         }
-        #endregion
+        #endregion 
 
         #region 生成下发下位机的写道盒参数报文（P写参数命令码）
         public byte[] BuildMessage(ChannelParameter channelParameter)
