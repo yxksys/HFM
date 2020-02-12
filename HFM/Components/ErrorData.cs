@@ -5,7 +5,7 @@
  *  作者：
  *  版本：
  *  创建时间：
- *  类名：
+ *  类名：故障数据类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -20,7 +20,7 @@ namespace HFM.Components
 {
     public class ErrorData
     {
-
+        #region 属性
         private int _errID;//故障ID
         private DateTime _errTime;//故障时间
         private string _record;//备注
@@ -41,6 +41,7 @@ namespace HFM.Components
         /// 是否英文
         /// </summary>
         public bool IsEnglish { get => _isEnglish; set => _isEnglish = value; }
+        #endregion
 
         /// <summary>
         /// 查询所有故障数据

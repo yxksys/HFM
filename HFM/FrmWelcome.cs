@@ -37,10 +37,7 @@ namespace HFM
             //实例化相关对象
             Calibration calibration = new Calibration();
             CommPort commPort = new CommPort();
-            commPort.PortNum = 1;
-            commPort.BaudRate = 115200;
-            commPort.Parity = 0;
-            commPort.StopBits = 0;
+            
             //打开串口
             if (commPort.Opened == false)
             {
