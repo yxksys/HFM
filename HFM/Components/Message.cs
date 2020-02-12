@@ -20,17 +20,82 @@ namespace HFM.Components
 {
     class Message
     {
+        //自检报文
+        byte[] _checkBuildMessage = new byte[62];
         #region 生成下发下位机的Alpha和Beta自检报文
+        /// <summary>
+        /// 生成下发下位机的Alpha和Beta自检报文
+        /// </summary>
+        /// <param name="checkType">1:Alpha通讯协议,2:beta通讯协议</param>
+        /// <returns>返回选择的报文协议</returns>
         public byte[] BuildMessage(int checkType)
         {
-            return null;
+            int i = 0;
+            //初始化报文
+            for (i = 0; i < 62; i++)
+            {
+                _checkBuildMessage[i] = 0;
+            }
+            switch (checkType)
+            {
+                case 1:
+                    i = 0;
+                    _checkBuildMessage[i++] = 0x5A;
+                    _checkBuildMessage[i++] = 0x00;
+                    _checkBuildMessage[i++] = 0x0B;
+                    _checkBuildMessage[i++] = 0x03;
+                    _checkBuildMessage[i++] = 0xE8;
+                    _checkBuildMessage[i++] = 0x00;
+                    _checkBuildMessage[i++] = 0x01;//01是alpha,00是beta
+                    _checkBuildMessage[i++] = 0x00;
+                    _checkBuildMessage[i++] = 0x03;
+                    break;
+                case 0:
+                    i = 0;
+                    _checkBuildMessage[i++] = 0x5A;
+                    _checkBuildMessage[i++] = 0x00;
+                    _checkBuildMessage[i++] = 0x0B;
+                    _checkBuildMessage[i++] = 0x03;
+                    _checkBuildMessage[i++] = 0xE8;
+                    _checkBuildMessage[i++] = 0x00;
+                    _checkBuildMessage[i++] = 0x00;//01是alpha,00是beta
+                    _checkBuildMessage[i++] = 0x00;
+                    _checkBuildMessage[i++] = 0x03;
+                    break;
+                default:
+
+                    break;
+            }
+            return _checkBuildMessage;
         }
         #endregion
 
         #region 生成下发下位机的自检报文
+        /// <summary>
+        /// 生成下发下位机的自检报文
+        /// </summary>
+        /// <param name="pulsNumber">脉冲数</param>
+        /// <param name="pulsHV">脉冲高低压电平</param>
+        /// <param name="pulsWidth">控制信号</param>
+        /// <param name="ctrlSignal">脉冲宽度</param>
+        /// <returns>返回自检报文</returns>
         public byte[] BuildMessage(int pulsNumber,int pulsHV,int pulsWidth,int ctrlSignal)
         {
-            return null;
+            int i = 0;
+            _checkBuildMessage[i++] = 0x5A;
+            _checkBuildMessage[i++] = 0x00;
+            _checkBuildMessage[i++] = 0x0B;
+            //脉冲数
+            _checkBuildMessage[i++] = Convert.ToByte(pulsNumber/256);
+            _checkBuildMessage[i++] = Convert.ToByte(pulsNumber%256);
+            //脉冲高低压电平
+            _checkBuildMessage[i++] = Convert.ToByte(pulsHV);
+            //控制信号
+            _checkBuildMessage[i++] = Convert.ToByte(pulsWidth);
+            //脉冲宽度
+            _checkBuildMessage[i++] = Convert.ToByte(ctrlSignal/256);
+            _checkBuildMessage[i++] = Convert.ToByte(ctrlSignal%256);
+            return _checkBuildMessage;
         }
         #endregion
 
