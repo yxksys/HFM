@@ -20,9 +20,9 @@ namespace HFM
 
         private void BtnTestRorW_Click(object sender, EventArgs e)
         {
-            string str = String.Format("{0:X4}", 12);
+            
             byte[] by = new byte[62];
-
+            
             by = HFM.Components.Message.BuildMessage(0);
             by = HFM.Components.Message.BuildMessage(300, 20, 30, 40);
             IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
