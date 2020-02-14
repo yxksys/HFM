@@ -2,10 +2,10 @@
  * ________________________________________________________________________________ 
  *
  *  描述：
- *  作者：
+ *  作者：邢家宁
  *  版本：
  *  创建时间：
- *  类名：
+ *  类名：道盒类 ChannelParameter
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -32,6 +32,7 @@ namespace HFM.Components
         private float _hVRatio;
         private float _workTime;
 
+        
         /// <summary>
         /// 道盒ID
         /// </summary>
@@ -72,6 +73,56 @@ namespace HFM.Components
         /// 所属通道
         /// </summary>
         internal Channel Channel { get => _channel; set => _channel = value; }
-        #endregion            
+        #endregion
+        #region 构造函数
+        public ChannelParameter()
+        { }
+        /// <summary>
+        /// 参数构造
+        /// </summary>
+        /// <param name="_checkingID"></param>
+        /// <param name="_channel"></param>
+        /// <param name="_alphaThreshold"></param>
+        /// <param name="_betaThreshold"></param>
+        /// <param name="_presetHV"></param>
+        /// <param name="_aDCFactor"></param>
+        /// <param name="_dACFactor"></param>
+        /// <param name="_hVFactor"></param>
+        /// <param name="_hVRatio"></param>
+        /// <param name="_workTime"></param>
+        public ChannelParameter(int _checkingID, Channel _channel, float _alphaThreshold, float _betaThreshold, float _presetHV, float _aDCFactor, float _dACFactor, float _hVFactor, float _hVRatio, float _workTime)
+        {
+            this._checkingID = _checkingID;
+            this._channel = _channel;
+            this._alphaThreshold = _alphaThreshold;
+            this._betaThreshold = _betaThreshold;
+            this._presetHV = _presetHV;
+            this._aDCFactor = _aDCFactor;
+            this._dACFactor = _dACFactor;
+            this._hVFactor = _hVFactor;
+            this._hVRatio = _hVRatio;
+            this._workTime = _workTime;
+        }
+        #endregion
+        #region 方法
+        /// <summary>
+        /// 获得全部道盒参数
+        /// </summary>
+        /// <returns></returns>
+        public IList<ChannelParameter> GetParameter()
+        {
+            return null;
+        }
+        /// <summary>
+        /// 根据参数对象channelParameter的通道ID，设置道盒参数
+        /// </summary>
+        /// <param name="channelParameter"></param>
+        /// <returns></returns>
+        public bool SetParameter(ChannelParameter channelParameter)
+        {
+            return true;
+        }
+
+        #endregion
     }
 }
