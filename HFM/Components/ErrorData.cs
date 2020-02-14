@@ -20,7 +20,7 @@ namespace HFM.Components
 {
     public class ErrorData
     {
-        #region 属性
+        #region 字段属性
         private int _errID;//故障ID
         private DateTime _errTime;//故障时间
         private string _record;//备注
@@ -43,6 +43,7 @@ namespace HFM.Components
         public bool IsEnglish { get => _isEnglish; set => _isEnglish = value; }
         #endregion
 
+        #region 查询所有故障数据
         /// <summary>
         /// 查询所有故障数据
         /// </summary>
@@ -51,6 +52,9 @@ namespace HFM.Components
         {
             return null;
         }
+        #endregion
+
+        #region 按照语言查询故障数据
         /// <summary>
         /// 按照语言查询故障数据
         /// </summary>
@@ -58,19 +62,23 @@ namespace HFM.Components
         /// <returns>故障数据列表</returns>
         public IList<ErrorData> GetData(bool isEnglish)
         {
-            
+
             return null;
         }
+        #endregion
 
+        #region 添加故障数据
         /// <summary>
         /// 添加故障数据
         /// </summary>
         /// <param name="errorData"></param>
-        /// <returns>是否成功</returns>
+        /// <returns>成功失败</returns>
         public bool AddData(ErrorData errorData)
         {
             return true;
         }
-           
+        #endregion
+
+
     }
 }
