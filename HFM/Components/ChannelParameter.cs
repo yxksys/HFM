@@ -1,11 +1,11 @@
-/**
+ï»¿/**
  * ________________________________________________________________________________ 
  *
- *  ÃèÊö£º
- *  ×÷Õß£º
- *  °æ±¾£º
- *  ´´½¨Ê±¼ä£º
- *  ÀàÃû£º
+ *  æè¿°ï¼š
+ *  ä½œè€…ï¼š
+ *  ç‰ˆæœ¬ï¼š
+ *  åˆ›å»ºæ—¶é—´ï¼š
+ *  ç±»åï¼š
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -20,7 +20,7 @@ namespace HFM.Components
 {
     class ChannelParameter
     {
-        #region ÊôĞÔ
+        #region å±æ€§
         private int _checkingID;
         private Channel _channel;
         private float _alphaThreshold;
@@ -33,62 +33,45 @@ namespace HFM.Components
         private float _workTime;
 
         /// <summary>
-        /// µÀºĞID
+        /// é“ç›’ID
         /// </summary>
         public int CheckingID { get => _checkingID; set => _checkingID = value; }
         /// <summary>
-        /// AlphaãĞÖµ
+        /// Alphaé˜ˆå€¼
         /// </summary>
         public float AlphaThreshold { get => _alphaThreshold; set => _alphaThreshold = value; }
         /// <summary>
-        /// BetaãĞÖµ
+        /// Betaé˜ˆå€¼
         /// </summary>
         public float BetaThreshold { get => _betaThreshold; set => _betaThreshold = value; }
         /// <summary>
-        /// ¸ßÑ¹Öµ
+        /// é«˜å‹å€¼
         /// </summary>
         public float PresetHV { get => _presetHV; set => _presetHV = value; }
         /// <summary>
-        /// ADÒò×Ó
+        /// ADå› å­
         /// </summary>
         public float ADCFactor { get => _aDCFactor; set => _aDCFactor = value; }
         /// <summary>
-        /// DAÒò×Ó
+        /// DAå› å­
         /// </summary>
         public float DACFactor { get => _dACFactor; set => _dACFactor = value; }
         /// <summary>
-        /// ¸ßÑ¹Òò×Ó
+        /// é«˜å‹å› å­
         /// </summary>
         public float HVFactor { get => _hVFactor; set => _hVFactor = value; }
         /// <summary>
-        /// ¸ßÑ¹±¶Êı
+        /// é«˜å‹å€æ•°
         /// </summary>
         public float HVRatio { get => _hVRatio; set => _hVRatio = value; }
         /// <summary>
-        /// ¹¤×÷Ê±¼ä
+        /// å·¥ä½œæ—¶é—´
         /// </summary>
         public float WorkTime { get => _workTime; set => _workTime = value; }
         /// <summary>
-        /// ËùÊôÍ¨µÀ
+        /// æ‰€å±é€šé“
         /// </summary>
         internal Channel Channel { get => _channel; set => _channel = value; }
-        #endregion
-
-        #region ¹¹Ôìº¯Êı
-        public ChannelParameter()
-        { }
-        public ChannelParameter(int channelID, float alphaThreshold, float betaThreshold, float presetHV, float aDCFactor, float dACFactor, float hVFactor, float workTime, float hVRatio)
-        {
-            this._channel = (new Channel()).GetChannel(channelID);
-            this._alphaThreshold = alphaThreshold;
-            this._betaThreshold = betaThreshold;
-            this._presetHV = presetHV;
-            this._aDCFactor = aDCFactor;
-            this._dACFactor = dACFactor;
-            this._hVFactor = hVFactor;
-            this._workTime = workTime;
-            this._hVRatio = hVRatio;
-        }
-        #endregion
+        #endregion            
     }
 }
