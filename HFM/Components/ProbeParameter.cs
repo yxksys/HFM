@@ -36,26 +36,16 @@ namespace HFM.Components
                                                          "ChannelID = @ChannelID,HBackground = @HBackground,LBackground = @LBackground," +
                                                          "Alarm_1 = @Alarm_1,Alarm_2 = @Alarm_2,Efficiency = @Efficiency WHERE PreferenceID = @PreferenceID";
 
-        #region 构造函数
-        /// <summary>
-        /// 参数构造
-        /// </summary>
-        public ProbeParameter()
-        { }
-        public ProbeParameter(int _preferenceID, string _probeType,string _nuclideType,Channel _probeChannel,float _hBackground,float _lBackground,float _alarm_1,float _alarm_2, float _efficiency)
-        {
-            this._preferenceID = _preferenceID;
-            this._probeType = _probeType;
-            this._nuclideType = _nuclideType;
-            this._probeChannel = _probeChannel;
-            this._hBackground = _hBackground;
-            this._lBackground = _lBackground;
-            this._alarm_1 = _alarm_1;
-            this._alarm_2 = _alarm_2;
-            this._efficiency = _efficiency;
-        }
-        #endregion
+        string k = "UPDATE HFM_Preference a,HFM_DIC_Channel b SET a.ProbeType = @ProbeType," +
+            "       a.NuclideType = @NuclideType,a.HBackground = @HBackground,a.LBackground = @LBackground," +
+                   "a.Alarm_1 = @Alarm_1,a.Alarm_2 = @Alarm_2,a.Efficiency = @Efficiency," +
+            "       b.ProbeArea = @ProbeChannel.ProbeArea," +
+                   "b.Status = @ProbeChannel.Status,b.IsEnable = @ProbeChannel.IsEnable " +
+            "       WHERE a.PreferenceID = @PreferenceID AND b.PreferenceID = @ProbeChannel.PreferenceID";
+
+
         #region 属性
+
         private int _preferenceID;//探测参数编号
         private string _probeType;//探测器类型
         private string _nuclideType;//核素类型可选值α、β、C
@@ -65,6 +55,7 @@ namespace HFM.Components
         private float _alarm_1;//一级警报
         private float _alarm_2;//二级警报
         private float _efficiency;//当前选择探测效率
+
         /// <summary>
         /// 探测参数编号
         /// </summary>
@@ -189,7 +180,7 @@ namespace HFM.Components
                 + ",HBackground = " + probeParameter.HBackground + ",LBackground = " + probeParameter.LBackground + ",Alarm_1 = " + probeParameter.Alarm_1 + ",Alarm_2 = " + probeParameter.Alarm_2
                 + ",Efficiency = " + probeParameter.Efficiency + "WHERE PreferenceID = " + probeParameter.PreferenceID;
 
-            return;
+
         }
 
 
