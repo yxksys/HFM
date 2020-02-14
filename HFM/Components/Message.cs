@@ -38,7 +38,7 @@ namespace HFM.Components
                     messageData[1] = 0x00;
                     messageData[2] = 0x0B;
                     messageData[3] = 0x03;
-                    messageData[4] = 0xEB;
+                    messageData[4] = 0xE8;
                     messageData[5] = 0x00;
                     messageData[6] = 0x01;
                     messageData[7] = 0x00;
@@ -49,7 +49,7 @@ namespace HFM.Components
                     messageData[1] = 0x00;
                     messageData[2] = 0x0B;
                     messageData[3] = 0x03;
-                    messageData[4] = 0xEB;
+                    messageData[4] = 0xE8;
                     messageData[5] = 0x00;
                     messageData[6] = 0x00;
                     messageData[7] = 0x00;
