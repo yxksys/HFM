@@ -31,11 +31,7 @@ namespace HFM.Components
         /// <summary>
         /// 通道ID
         /// </summary>
-        public int ChannelID
-        {
-            get => _channelID;
-            set => _channelID = value;
-        }
+        public int ChannelID { get => _channelID; set => _channelID = value; }
         /// <summary>
         /// 通道名称
         /// </summary>
@@ -61,6 +57,15 @@ namespace HFM.Components
         #region 构造函数
         public Channel()
         { }
+        /// <summary>
+        /// 构造函数（有参)
+        /// </summary>
+        /// <param name="channelID">通道ID</param>
+        /// <param name="channelName">通道名称</param>
+        /// <param name="channelName_English">通道英文名称</param>
+        /// <param name="probeArea">测量面积</param>
+        /// <param name="status">状态</param>
+        /// <param name="isEnabled">通道是否启用</param>
         public Channel(int channelID, string channelName, string channelName_English, float probeArea, string status, bool isEnabled)
         {
             this._channelID = channelID;
@@ -71,6 +76,31 @@ namespace HFM.Components
             this._isEnabled = isEnabled;
         }
         #endregion
+
+        #region 获得全部通道列表
+        /// <summary>
+        /// 获得全部通道列表
+        /// </summary>
+        /// <returns>全部通道列表</returns>
+        public IList<Channel> GetChannel()
+        {
+            return null;
+        }
+        #endregion
+
+        #region 根据启用状态查询通道列表
+        /// <summary>
+        /// 根据启用状态查询通道列表
+        /// </summary>
+        /// <param name="isEnabled">是否英文</param>
+        /// <returns></returns>
+        public IList<Channel> GetChannel(bool isEnabled)
+        {
+            return null;
+        }
+        #endregion
+
+        #region 根据通道ID查询通道信息
         /// <summary>
         /// 根据通道ID查询通道信息
         /// </summary>
@@ -81,6 +111,44 @@ namespace HFM.Components
             //添加根据ID查询通道信息代码
             return this;
         }
+        #endregion
 
+        #region 根据通道名称查询通道信息
+        /// <summary>
+        /// 根据通道名称查询通道信息
+        /// </summary>
+        /// <param name="channelName">通道名称</param>
+        /// <returns></returns>
+        public Channel GetChannel(string channelName)
+        {
+            return null;
+        }
+        #endregion
+
+        #region 对某一类型通道的启用状态进行设置
+        /// <summary>
+        /// 对某一类型通道的启用状态进行设置
+        /// </summary>
+        /// <param name="channelType">channelType值可选0：手部（包含左手心、左手背、右手心、右手背）1：脚部（包含左脚、右脚）2：衣物</param>
+        /// <param name="isEnabled">true开启英文</param>
+        /// <returns>设置成功/失败</returns>
+        public bool SetEnabledByType(int channelType, bool isEnabled)
+        {
+            return false;
+        }
+        #endregion
+
+        #region 根据通道ID设置该通道的启用状态
+        /// <summary>
+        /// 根据通道ID设置该通道的启用状态
+        /// </summary>
+        /// <param name="channelID">通道ID</param>
+        /// <param name="isEnabled">true开启英文</param>
+        /// <returns></returns>
+        public bool SetEnabledByID(int channelID, bool isEnabled)
+        {
+            return true;
+        }
+        #endregion
     }
 }

@@ -5,7 +5,7 @@
  *  作者：
  *  版本：
  *  创建时间：
- *  类名：
+ *  类名：平台类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -20,5 +20,15 @@ namespace HFM.Components
 {
     class PlatForm
     {
+        #region 启动监测
+        /// <summary>
+        /// 启动监测
+        /// </summary>
+        public void Run()
+        {
+
+        }
+        #endregion
+        
     }
 }
