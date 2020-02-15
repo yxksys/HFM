@@ -99,7 +99,7 @@ namespace HFM.Components
         public IList<ProbeParameter> GetParameter()
         {
             IList<ProbeParameter> ICalibrationS = new List<ProbeParameter>();
-            //从数据库中查询全部刻度操作记录并赋值给ICalibrationS
+            //从数据库中查询全部探测类型数据并赋值给ICalibrationS
             OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_PROBEPARAMETER);
             while (reader.Read())//读查询结果
             {
