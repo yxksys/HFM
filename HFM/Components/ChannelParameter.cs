@@ -90,10 +90,10 @@ namespace HFM.Components
         /// <param name="_hVFactor"></param>
         /// <param name="_hVRatio"></param>
         /// <param name="_workTime"></param>
-        public ChannelParameter(int _checkingID, Channel _channel, float _alphaThreshold, float _betaThreshold, float _presetHV, float _aDCFactor, float _dACFactor, float _hVFactor, float _hVRatio, float _workTime)
+        public ChannelParameter(int _checkingID, float _alphaThreshold, float _betaThreshold, float _presetHV, float _aDCFactor, float _dACFactor, float _hVFactor, float _hVRatio, float _workTime)
         {
             this._checkingID = _checkingID;
-            this._channel = _channel;
+            this._channel = (new Channel()).GetChannel(_checkingID);
             this._alphaThreshold = _alphaThreshold;
             this._betaThreshold = _betaThreshold;
             this._presetHV = _presetHV;
