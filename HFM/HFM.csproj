@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\BuildMessage.cs" />
     <Compile Include="Components\Calibration.cs" />
     <Compile Include="Components\Channel.cs" />
     <Compile Include="Components\ChannelParameter.cs" />
@@ -55,7 +54,6 @@
     <Compile Include="Components\DbHelperSQL.cs" />
     <Compile Include="Components\EfficiencyParameter.cs" />
     <Compile Include="Components\ErrorData.cs" />
-    <Compile Include="Components\ExplainMessage.cs" />
     <Compile Include="Components\FactoryParameter.cs" />
     <Compile Include="Components\HexCon.cs" />
     <Compile Include="Components\MeasureData.cs" />

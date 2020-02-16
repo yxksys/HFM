@@ -72,6 +72,16 @@ namespace HFM.Components
         }
         #endregion
         /// <summary>
+        /// 获得全部通道列表
+        /// </summary>
+        /// <returns>通道列表</returns>
+        public IList<Channel> GetChannel()
+        {
+
+            return null;
+        }
+
+        /// <summary>
         /// 根据通道ID查询通道信息
         /// </summary>
         /// <param name="channelID">通道ID</param>
