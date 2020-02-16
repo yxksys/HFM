@@ -5,7 +5,7 @@
  *  作者：
  *  版本：
  *  创建时间：
- *  类名：
+ *  类名：监测数据类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -20,7 +20,7 @@ namespace HFM.Components
 {
     class MeasureData
     {
-        #region 属性
+        #region 字段属性
         private int _measureID;//ID
         private DateTime _measureDate;//测量时间
         private string _measureStatus="";//测量状态
@@ -86,6 +86,16 @@ namespace HFM.Components
         #region 构造函数
         public MeasureData()
         { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="channelID">通道ID</param>
+        /// <param name="measureDate">测量时间</param>
+        /// <param name="alpha">Alpha计数值</param>
+        /// <param name="beta">Beta计数值</param>
+        /// <param name="analogV">模拟电压值</param>
+        /// <param name="digitalV">数字电压值</param>
+        /// <param name="hV">高压值</param>
         public MeasureData(int channelID,DateTime measureDate,float alpha,float beta,float analogV,float digitalV,float hV)
         {
             this._channel = (new Channel()).GetChannel(channelID);
@@ -95,6 +105,41 @@ namespace HFM.Components
             this._analogV = analogV;
             this._digitalV = digitalV;
             this._hV = hV;
+        }
+        #endregion
+
+        #region 查询所有监测数据
+        /// <summary>
+        /// 查询所有监测数据
+        /// </summary>
+        /// <returns>监测数据</returns>
+        public IList<MeasureData> GetData()
+        {
+            return null;
+        }
+        #endregion
+
+        #region 按照语言查询监测数据
+        /// <summary>
+        /// 按照语言查询监测数据
+        /// </summary>
+        /// <param name="isEnglish"></param>
+        /// <returns></returns>
+        public IList<MeasureData> GetData(bool isEnglish)
+        {
+            return null;
+        }
+        #endregion
+
+        #region 添加监测数据
+        /// <summary>
+        /// 添加监测数据。
+        /// </summary>
+        /// <param name="measureData"></param>
+        /// <returns></returns>
+        public bool AddData(MeasureData measureData)
+        {
+            return false;
         }
         #endregion
     }
