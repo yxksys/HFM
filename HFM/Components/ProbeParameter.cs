@@ -21,6 +21,7 @@ namespace HFM.Components
 {
     class ProbeParameter
     {
+        #region 常量
         private const string SQL_SELECT_PROBEPARAMETER = "SELECT PreferenceID,ProbeType,NuclideType,a.ChannelID," +
                                                          "HBackground,LBackground,Alarm_1,Alarm_2,Efficiency," +
                                                          "ChannelName,ChannelName_English,ProbeArea,Status,IsEnabled " +
@@ -36,13 +37,7 @@ namespace HFM.Components
                                                          "ChannelID = @ChannelID,HBackground = @HBackground,LBackground = @LBackground," +
                                                          "Alarm_1 = @Alarm_1,Alarm_2 = @Alarm_2,Efficiency = @Efficiency WHERE PreferenceID = @PreferenceID";
 
-        string k = "UPDATE HFM_Preference a,HFM_DIC_Channel b SET a.ProbeType = @ProbeType," +
-            "       a.NuclideType = @NuclideType,a.HBackground = @HBackground,a.LBackground = @LBackground," +
-                   "a.Alarm_1 = @Alarm_1,a.Alarm_2 = @Alarm_2,a.Efficiency = @Efficiency," +
-            "       b.ProbeArea = @ProbeChannel.ProbeArea," +
-                   "b.Status = @ProbeChannel.Status,b.IsEnable = @ProbeChannel.IsEnable " +
-            "       WHERE a.PreferenceID = @PreferenceID AND b.PreferenceID = @ProbeChannel.PreferenceID";
-
+        #endregion
 
         #region 属性
 
@@ -93,7 +88,10 @@ namespace HFM.Components
         /// </summary>
         internal Channel ProbeChannel { get => _probeChannel; set => _probeChannel = value; }
         #endregion
+
         #region 方法
+
+        #region 获得数据
         /// <summary>
         /// 获得所有探测参数
         /// </summary>
@@ -101,7 +99,7 @@ namespace HFM.Components
         public IList<ProbeParameter> GetParameter()
         {
             IList<ProbeParameter> ICalibrationS = new List<ProbeParameter>();
-            //从数据库中查询全部刻度操作记录并赋值给ICalibrationS
+            //从数据库中查询全部探测类型数据并赋值给ICalibrationS
             OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_PROBEPARAMETER);
             while (reader.Read())//读查询结果
             {
@@ -163,8 +161,11 @@ namespace HFM.Components
             }
             return ICalibrationS;
         }
+        #endregion
+
+        #region 更新数据
         /// <summary>
-        /// //根据参数对象probeParameter的核素类型NuclideType和探测通道ProbeChannel
+        /// 根据参数对象probeParameter的核素类型NuclideType和探测通道ProbeChannel
         /// 更新其HBackground、LBackground、Alarm_1、Alarm_2、Efficiency参数。
         /// 注意：当更新了本表中的Efficiency参数时，
         /// 同时应通过调用EfficiencyParameter对象SetParameter(EfficiencyParameter efficiencyParameter)
@@ -174,17 +175,36 @@ namespace HFM.Components
         /// <returns></returns>
         public bool SetParameter(ProbeParameter probeParameter)
         {
-            //xxx.open打开数据库
-
-            string sqlUpdate = "UPDATE HFM_Preference SET PrebeType = " + probeParameter.ProbeType + ",NuclideType = " + probeParameter.NuclideType + ",ChannelID = " + probeParameter.ProbeChannel.ChannelID
-                + ",HBackground = " + probeParameter.HBackground + ",LBackground = " + probeParameter.LBackground + ",Alarm_1 = " + probeParameter.Alarm_1 + ",Alarm_2 = " + probeParameter.Alarm_2
-                + ",Efficiency = " + probeParameter.Efficiency + "WHERE PreferenceID = " + probeParameter.PreferenceID;
-
-
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@ProbeType",OleDbType.VarChar,255),
+                new OleDbParameter("@NuclideType",OleDbType.VarChar,255),
+                new OleDbParameter("@ChannelID",OleDbType.Integer,4),
+                new OleDbParameter("@HBackground",OleDbType.VarChar,255),
+                new OleDbParameter("@LBackground",OleDbType.VarChar,255),
+                new OleDbParameter("@Alarm_1",OleDbType.VarChar,255),
+                new OleDbParameter("@Alarm_2",OleDbType.VarChar,255),
+                new OleDbParameter("@Efficiency",OleDbType.VarChar,255)
+            };
+            parms[0].Value = probeParameter.ProbeType.ToString();
+            parms[1].Value = probeParameter.NuclideType.ToString();
+            parms[2].Value = probeParameter.ProbeChannel.ChannelID;
+            parms[3].Value = probeParameter.HBackground.ToString();
+            parms[4].Value = probeParameter.LBackground.ToString();
+            parms[5].Value = probeParameter.Alarm_1.ToString();
+            parms[6].Value = probeParameter.Alarm_2.ToString();
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_PROBEPARAMETER, parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-
-
-
+        #endregion
+        
         #endregion
     }
 }
