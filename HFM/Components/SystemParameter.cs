@@ -128,10 +128,10 @@ namespace HFM.Components
             return systemParameter;
         }
         /// <summary>
-        /// 更新数据库中工厂设置
+        /// 更新数据库中系统设置
         /// </summary>
-        /// <param name="systemParameter"></param>
-        /// <returns></returns>
+        /// <param name="systemParameter">系统设置对象</param>
+        /// <returns>是否成功</returns>
         public bool SetParameter(SystemParameter systemParameter)
         {
             //构造查询参数
