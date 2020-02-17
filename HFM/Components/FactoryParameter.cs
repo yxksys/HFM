@@ -2,9 +2,9 @@
  * ________________________________________________________________________________ 
  *
  *  描述：
- *  作者：邢家宁
+ *  作者：邢家宁 杨旭锴
  *  版本：
- *  创建时间：2020/2/14
+ *  创建时间：2020/2/14 修改：2020年2月17日 09:40:34
  *  类名：工厂参数类  FactoryParmeter
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
@@ -15,11 +15,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 
 namespace HFM.Components
 {
     class FactoryParameter
     {
+        #region 数据库查询语句
+        /// <summary>
+        /// 查询字段：仪器编号、软件名称、IP地址、通信端口、是否自动连接、探测类型、平滑因子、手部是否双探测器
+        /// </summary>
+        private const string SQL_SELECT_MAINPREFERENCE = "SELECT   InstrumentNum, SoftName, IPAddress, PortNumber," +
+                                                        " IsConnectedAuto, MeasureType, SmoothingFactor, IsDoubleProbe " +
+                                                        "FROM HFM_MainPreference";
+        /// <summary>
+        /// 更新字段：仪器编号、软件名称、IP地址、通信端口、是否自动连接、探测类型、平滑因子、手部是否双探测器
+        /// </summary>
+        private const string SQL_UPDATE_MAINPREFERENCE = "UPDATE HFM_MainPreference " +
+                                                        "SET  InstrumentNum=@InstrumentNum, SoftName=@SoftName," +
+                                                        " IPAddress=@IPAddress, PortNumber=@PortNumber, IsConnectedAuto=@IsConnectedAuto," +
+                                                        " MeasureType='@MeasureType', SmoothingFactor=@SmoothingFactor, IsDoubleProbe=@IsDoubleProbe";
+        #endregion
+
         #region 属性
         private string _instrumentNum;//仪器编号
         private string _softName;//软件名称
@@ -30,15 +47,38 @@ namespace HFM.Components
         private float _smoothingFactor;//平滑因子
         private bool _isDoubleProbe;//手部是否双探测器
 
-        
 
+        /// <summary>
+        /// 仪器编号
+        /// </summary>
         public string InstrumentNum { get => _instrumentNum; set => _instrumentNum = value; }
+        /// <summary>
+        /// 软件名称
+        /// </summary>
         public string SoftName { get => _softName; set => _softName = value; }
+        /// <summary>
+        /// IP地址
+        /// </summary>
         public string IpAddress { get => _ipAddress; set => _ipAddress = value; }
+        /// <summary>
+        /// 通信端口
+        /// </summary>
         public string PortNumber { get => _portNumber; set => _portNumber = value; }
+        /// <summary>
+        /// 是否自动连接
+        /// </summary>
         public bool IsConnectedAuto { get => _isConnectedAuto; set => _isConnectedAuto = value; }
+        /// <summary>
+        /// 探测类型
+        /// </summary>
         public string MeasureType { get => _measureType; set => _measureType = value; }
+        /// <summary>
+        /// 平滑因子
+        /// </summary>
         public float SmoothingFactor { get => _smoothingFactor; set => _smoothingFactor = value; }
+        /// <summary>
+        /// 手部是否双探测器
+        /// </summary>
         public bool IsDoubleProbe { get => _isDoubleProbe; set => _isDoubleProbe = value; }
 
         #endregion
@@ -48,43 +88,85 @@ namespace HFM.Components
         /// <summary>
         /// 参数构造
         /// </summary>
-        /// <param name="_instrumentNum"></param>
-        /// <param name="_softName"></param>
-        /// <param name="_ipAddress"></param>
-        /// <param name="_portNumber"></param>
-        /// <param name="_isConnectedAuto"></param>
-        /// <param name="_measureType"></param>
-        /// <param name="_smoothingFactor"></param>
-        /// <param name="_isDoubleProbe"></param>
-        public FactoryParameter(string _instrumentNum, string _softName, string _ipAddress, string _portNumber, bool _isConnectedAuto, string _measureType, float _smoothingFactor, bool _isDoubleProbe)
+        /// <param name="instrumentNum">仪器编号</param>
+        /// <param name="softName">软件名称</param>
+        /// <param name="ipAddress">IP地址</param>
+        /// <param name="portNumber">通信端口</param>
+        /// <param name="isConnectedAuto">是否自动连接：bool值</param>
+        /// <param name="measureType">探测类型</param>
+        /// <param name="smoothingFactor">平滑因子</param>
+        /// <param name="isDoubleProbe">手部是否双探测器：bool值</param>
+        public FactoryParameter(string instrumentNum, string softName, string ipAddress, string portNumber, bool isConnectedAuto, string measureType, float smoothingFactor, bool isDoubleProbe)
         {
-            this._instrumentNum = _instrumentNum;
-            this._softName = _softName;
-            this._ipAddress = _ipAddress;
-            this._portNumber = _portNumber;
-            this._isConnectedAuto = _isConnectedAuto;
-            this._measureType = _measureType;
-            this._smoothingFactor = _smoothingFactor;
-            this._isDoubleProbe = _isDoubleProbe;
+            this._instrumentNum = instrumentNum;
+            this._softName = softName;
+            this._ipAddress = ipAddress;
+            this._portNumber = portNumber;
+            this._isConnectedAuto = isConnectedAuto;
+            this._measureType = measureType;
+            this._smoothingFactor = smoothingFactor;
+            this._isDoubleProbe = isDoubleProbe;
         }
         #endregion
         #region 方法
         /// <summary>
-        /// 从数据库中查询当前工厂参数并返回工厂参数对象
+        /// 从数据库中查询当前工厂参数
         /// </summary>
-        /// <returns></returns>
+        /// <returns>返回工厂参数对象</returns>
         public FactoryParameter GetParameter()
         {
-            return null;
+            //查询表部分字段信息
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE);
+            FactoryParameter factoryParameter = new FactoryParameter();
+            while (reader.Read())
+            {
+                factoryParameter.InstrumentNum = Convert.ToString(reader["InstrumentNum"].ToString());
+                factoryParameter.SoftName = Convert.ToString(reader["SoftName"].ToString());
+                factoryParameter.IpAddress = Convert.ToString(reader["IPAddress"].ToString());
+                factoryParameter.PortNumber = Convert.ToString(reader["PortNumber"].ToString());
+                factoryParameter.IsConnectedAuto = Convert.ToBoolean(reader["IsConnectedAuto"].ToString());
+                factoryParameter.MeasureType = Convert.ToString(reader["MeasureType"].ToString());
+                factoryParameter.SmoothingFactor = Convert.ToSingle(reader["SmoothingFactor"].ToString() == "" ? "0" : reader["SmoothingFactor"].ToString());
+                factoryParameter.IsDoubleProbe = Convert.ToBoolean(reader["IsDoubleProbe"].ToString());
+            }
+            return factoryParameter;
         }
         /// <summary>
         /// 更新数据库中工厂设置
         /// </summary>
         /// <param name="factoryParameter"></param>
-        /// <returns></returns>
+        /// <returns>true更新成功；false更新失败</returns>
         public bool SetParameter(FactoryParameter factoryParameter)
         {
-            return true;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("InstrumentNum",OleDbType.VarChar,255),
+                new OleDbParameter("SoftName",OleDbType.VarChar,255),
+                new OleDbParameter("IPAddress",OleDbType.VarChar,255),
+                new OleDbParameter("PortNumber",OleDbType.VarChar,255),
+                new OleDbParameter("IsConnectedAuto",OleDbType.Boolean),
+                new OleDbParameter("MeasureType",OleDbType.VarChar,255),
+                new OleDbParameter("SmoothingFactor",OleDbType.VarChar,255),
+                new OleDbParameter("IsDoubleProbe",OleDbType.Boolean)
+            };
+            parms[0].Value = factoryParameter.InstrumentNum.ToString();
+            parms[1].Value = factoryParameter.SoftName.ToString();
+            parms[2].Value = factoryParameter.IpAddress.ToString();
+            parms[3].Value = factoryParameter.PortNumber.ToString();
+            parms[4].Value = factoryParameter.IsConnectedAuto;
+            parms[5].Value = factoryParameter.MeasureType.ToString();
+            parms[6].Value = factoryParameter.SmoothingFactor.ToString();
+            parms[7].Value = factoryParameter.IsDoubleProbe;
+            //执行更新语句
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE,parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion

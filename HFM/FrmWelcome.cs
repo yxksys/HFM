@@ -29,20 +29,38 @@ namespace HFM
             //if (calibration.AddData(new Calibration(DateTime.Now, 2, 3, 4, 5, 6, 7)) == true)
             //{
             //    MessageBox.Show("添加成功");
-            //}
+            //}    
 
-            ////测试通道类查询
-            Channel channel = new Channel();
-            //channel.GetChannel(1);
+            ////测试通道类查询    
+            //Channel channel = new Channel();    
+            //channel.GetChannel(1);    
             //channel.GetChannel("左手心");
             //channel.SetEnabledByType(0, false);
-            if(channel.SetEnabledByType(0, false) == true)
+            //if (channel.SetEnabledByType(0, false) == true)
+            //{
+            //    MessageBox.Show("更新成功");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("更新失败");
+            //}
+            //测试工厂参数类查询
+            //FactoryParameter factory = new FactoryParameter();    
+            //factory.GetParameter();
+            //if(factory.SetParameter(new FactoryParameter("1","2","3","4",true,"6",7,true)) == true)
+            //{
+            //    MessageBox.Show("更新成功");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("更新失败");
+            //}
+            //测试系统参数查询
+            Components.SystemParameter system = new Components.SystemParameter();
+            system.GetParameter();
+            if(system.SetParameter(new Components.SystemParameter("1", 1, 1, 1, 1, 1, 1, false)) == true)
             {
                 MessageBox.Show("更新成功");
-            }
-            else
-            {
-                MessageBox.Show("更新失败");
             }
         }
 
