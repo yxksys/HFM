@@ -22,21 +22,19 @@ namespace HFM.Components
     class ProbeParameter
     {
         #region 常量
-        private const string SQL_SELECT_PROBEPARAMETER = "SELECT PreferenceID,ProbeType,NuclideType,a.ChannelID," +
-                                                         "HBackground,LBackground,Alarm_1,Alarm_2,Efficiency," +
-                                                         "ChannelName,ChannelName_English,ProbeArea,Status,IsEnabled " +
-                                                         "FROM HFM_Preference a" +
-                                                         "INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID";
+        private const string SQL_SELECT_PROBEPARAMETER = "SELECT PreferenceID,ProbeType,NuclideType,a.ChannelID,HBackground,LBackground," +
+                                                         "Alarm_1,Alarm_2,Efficiency,ChannelName,ChannelName_English,ProbeArea,Status," +
+                                                         "IsEnabled FROM HFM_Preference a INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID";
         private const string SQL_SELECT_PROBEPARAMETER_BY_NUCLIDETYPE = "SELECT PreferenceID,ProbeType,NuclideType,a.ChannelID," +
                                                          "HBackground,LBackground,Alarm_1,Alarm_2,Efficiency," +
                                                          "ChannelName,ChannelName_English,ProbeArea,Status,IsEnabled " +
-                                                         "FROM HFM_Preference a" +
-                                                         "INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID" +
+                                                         "FROM HFM_Preference a " +
+                                                         "INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID " +
                                                          "WHERE NuclideType = @NuclideType";
         private const string SQL_UPDATE_PROBEPARAMETER = "UPDATE HFM_Preference SET ProbeType = @ProbeType,NuclideType = @NuclideType," +
                                                          "ChannelID = @ChannelID,HBackground = @HBackground,LBackground = @LBackground," +
-                                                         "Alarm_1 = @Alarm_1,Alarm_2 = @Alarm_2,Efficiency = @Efficiency WHERE PreferenceID = @PreferenceID";
-
+                                                         "Alarm_1 = @Alarm_1,Alarm_2 = @Alarm_2,Efficiency = @Efficiency WHERE" +
+                                                         " NuclideType = @NuclideType AND ChannelID=@ChannelID";
         #endregion
 
         #region 属性
@@ -89,6 +87,38 @@ namespace HFM.Components
         internal Channel ProbeChannel { get => _probeChannel; set => _probeChannel = value; }
         #endregion
 
+        #region 构造函数
+        public ProbeParameter()
+        { }
+        /// <summary>
+        /// 参数构造
+        /// </summary>
+        /// <param name="_preferenceID"></param>
+        /// <param name="_probeType"></param>
+        /// <param name="_nuclideType"></param>
+        /// <param name="_probeChannel"></param>
+        /// <param name="_hBackground"></param>
+        /// <param name="_lBackground"></param>
+        /// <param name="_alarm_1"></param>
+        /// <param name="_alarm_2"></param>
+        /// <param name="_efficiency"></param>
+        public ProbeParameter(int _preferenceID, string _probeType, string _nuclideType,
+                              Channel _probeChannel, float _hBackground, float _lBackground,
+                              float _alarm_1, float _alarm_2, float _efficiency)
+        {
+            this._preferenceID = _preferenceID;
+            this._probeType = _probeType;
+            this._nuclideType = _nuclideType;
+            this._probeChannel = _probeChannel;
+            this._hBackground = _hBackground;
+            this._lBackground = _lBackground;
+            this._alarm_1 = _alarm_1;
+            this._alarm_2 = _alarm_2;
+            this._efficiency = _efficiency;
+        }
+
+        #endregion
+
         #region 方法
 
         #region 获得数据
@@ -104,9 +134,10 @@ namespace HFM.Components
             while (reader.Read())//读查询结果
             {
                 //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                Channel channel = new Channel(reader.GetInt32(0), reader["ChannelName"].ToString(), reader["ChannelName_English"].ToString(),
-                                              Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString()),
-                                              reader["Status"].ToString(), reader.GetBoolean(12));
+                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                               Convert.ToString(reader["ChannelName_English"]), Convert.ToSingle(reader["ProbeArea"]),
+                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+
                 //根据读出的查询结构构造ProbeParameter对象
                 ProbeParameter probeParameter = new ProbeParameter();
                 probeParameter.PreferenceID = Convert.ToInt32(reader["Preference"].ToString());
@@ -142,9 +173,10 @@ namespace HFM.Components
             while (reader.Read())//读查询结果
             {
                 //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                Channel channel = new Channel(reader.GetInt32(0), reader["ChannelName"].ToString(), reader["ChannelName_English"].ToString(),
-                                              Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString()),
-                                              reader["Status"].ToString(), reader.GetBoolean(12));
+                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                               Convert.ToString(reader["ChannelName_English"]), Convert.ToSingle(reader["ProbeArea"]),
+                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+
                 //根据读出的查询结构构造ProbeParameter对象
                 ProbeParameter probeParameter = new ProbeParameter();
                 probeParameter.PreferenceID = Convert.ToInt32(reader["Preference"].ToString());
@@ -194,6 +226,7 @@ namespace HFM.Components
             parms[4].Value = probeParameter.LBackground.ToString();
             parms[5].Value = probeParameter.Alarm_1.ToString();
             parms[6].Value = probeParameter.Alarm_2.ToString();
+            parms[7].Value = probeParameter.Efficiency.ToString();
             if (DbHelperAccess.ExecuteSql(SQL_UPDATE_PROBEPARAMETER, parms) != 0)
             {
                 return true;
