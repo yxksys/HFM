@@ -25,10 +25,24 @@ namespace HFM
             //不带参数查询测试
             IList<Calibration> Icalibrations = calibration.GetData();
             //带参数查询测试
-            Icalibrations = calibration.GetData(2);
-            if(calibration.AddData(new Calibration(DateTime.Now,2,3,4,5,6,7))==true)
+            //Icalibrations = calibration.GetData(1);
+            //if (calibration.AddData(new Calibration(DateTime.Now, 2, 3, 4, 5, 6, 7)) == true)
+            //{
+            //    MessageBox.Show("添加成功");
+            //}
+
+            ////测试通道类查询
+            Channel channel = new Channel();
+            //channel.GetChannel(1);
+            //channel.GetChannel("左手心");
+            //channel.SetEnabledByType(0, false);
+            if(channel.SetEnabledByType(0, false) == true)
             {
-                MessageBox.Show("添加成功");
+                MessageBox.Show("更新成功");
+            }
+            else
+            {
+                MessageBox.Show("更新失败");
             }
         }
 
