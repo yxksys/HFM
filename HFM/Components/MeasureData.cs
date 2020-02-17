@@ -15,11 +15,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 
 namespace HFM.Components
 {
     class MeasureData
     {
+        private const string SQL_SELECT_MEASUREDATA = "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish" +
+                                                     "FROM HFM_MeasureData";
+        private const string SQL_SELECT_MEASUREDATA_BY_ISENGLISH= "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish" +
+                                                     "FROM HFM_MeasureData WHRER IsEnglish=@IsEnglish";
+        private const string SQL_INSERT_MEASUREDATA = "INSERT INTO HFM_MeasureData(MeasureDate,MeasureStatus,DetailedInfo,IsEnglish)" +
+                                                     "VALUES(@MeasureDate,@MeasureStatus,@DetailedInfo,@IsEnglish)";
+
         #region 字段属性
         private int _measureID;//ID
         private DateTime _measureDate;//测量时间
@@ -115,7 +123,22 @@ namespace HFM.Components
         /// <returns>监测数据</returns>
         public IList<MeasureData> GetData()
         {
-            return null;
+            IList<MeasureData> IMeasureDateS = new List<MeasureData>();
+            //从数据库中查询全部的监测数据记录并赋值给IMeasureDataS
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA);
+            while (reader.Read())//读查询结果
+            {
+                //构造MearsureDate对象
+                MeasureData measuredata = new MeasureData();
+                measuredata.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
+                measuredata.MeasureDate=Convert .ToDateTime (reader["MeasureDate"].ToString());
+                measuredata.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
+                measuredata.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
+                measuredata.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                //从reader读出并将构造的查询结果添加到List中
+                IMeasureDateS.Add(measuredata);
+            }
+            return IMeasureDateS;
         }
         #endregion
 
@@ -127,7 +150,28 @@ namespace HFM.Components
         /// <returns></returns>
         public IList<MeasureData> GetData(bool isEnglish)
         {
-            return null;
+            IList<MeasureData> IMeasureDateS = new List<MeasureData>();
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+                {
+                    new OleDbParameter("@isEnglish",OleDbType.Boolean,2)
+                };
+            parms[0].Value = isEnglish;
+            //根据语言从数据库中查询全部的监测数据记录并赋值给IMeasureDataS
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_ISENGLISH,parms);
+            while (reader.Read())//读查询结果
+            {
+                //根据查询结果构造MearsureDate对象
+                MeasureData measureData = new MeasureData();
+                measureData.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
+                measureData.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
+                measureData.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
+                measureData.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
+                measureData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                //从reader读出并将构造的对象添加到List中
+                IMeasureDateS.Add(measureData);
+            }
+            return IMeasureDateS;
         }
         #endregion
 
@@ -139,7 +183,26 @@ namespace HFM.Components
         /// <returns></returns>
         public bool AddData(MeasureData measureData)
         {
-            return false;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+                {
+                    new OleDbParameter ("@MeasureDate",OleDbType.Date ,8),
+                    new OleDbParameter ("@MeasureStatus",OleDbType.VarChar,50),
+                    new OleDbParameter ("@DetailedInfo",OleDbType.LongVarChar),
+                    new OleDbParameter ("@IsEnglish",OleDbType.Boolean ,2)
+                };
+            parms[0].Value = measureData.MeasureDate;
+            parms[1].Value = measureData.InfraredStatus;
+            parms[2].Value = measureData.DetailedInfo;
+            parms[3].Value = measureData.IsEnglish;
+            if (DbHelperAccess.ExecuteSql(SQL_INSERT_MEASUREDATA, parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
     }
