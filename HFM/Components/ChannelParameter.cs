@@ -15,24 +15,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 
 namespace HFM.Components
 {
     class ChannelParameter
     {
-        #region 属性
-        private int _checkingID;
-        private Channel _channel;
-        private float _alphaThreshold;
-        private float _betaThreshold;
-        private float _presetHV;
-        private float _aDCFactor;
-        private float _dACFactor;
-        private float _hVFactor;
-        private float _hVRatio;
-        private float _workTime;
+        #region 常量
+        private const string SQL_SELECT_CHANNELPARAMETER = "SELECT CheckingID,AlphaThreshold,BetaThreshold,PresetHV,ADCFactor," +
+                                                           "DACFactor,HVFactor,HVRatio,WorkTime,a.ChannelID,ChannelName,ChannelName_English," +
+                                                           "ProbeArea,Status,IsEnabled FROM HFM_ChannelParameter a INNER JOIN" +
+                                                           " HFM_DIC_Channel b ON a.ChannelID = b.ChannelID";
+        private const string SQL_UPDATE_CHANNELPARAMETER_BY_CHANNELID = "UPDATE HFM_ChannelParameter SET AlphaThreshold = @AlphaThreshold," +
+                                                           "BetaThreshold = @BetaThreshold,PresetHV = @PresetHV,ADCFactor = @ADCFactor," +
+                                                           "DACFactor = @DACFactor,HVFactor = @HVFactor,HVRatio = @HVRatio,WorkTime = @WorkTime " +
+                                                           "WHERE ChannelID = @ChannelID";
+        #endregion
 
-        
+        #region 属性
+        private int _checkingID;// 道盒ID
+        private Channel _channel;// 所属通道
+        private float _alphaThreshold;// Alpha阈值
+        private float _betaThreshold;// Beta阈值
+        private float _presetHV;// 高压值
+        private float _aDCFactor;// AD因子
+        private float _dACFactor;// DA因子
+        private float _hVFactor;// 高压因子
+        private float _hVRatio;// 高压倍数
+        private float _workTime;// 工作时间
+
+
         /// <summary>
         /// 道盒ID
         /// </summary>
@@ -74,6 +86,7 @@ namespace HFM.Components
         /// </summary>
         internal Channel Channel { get => _channel; set => _channel = value; }
         #endregion
+
         #region 构造函数
         public ChannelParameter()
         { }
@@ -104,6 +117,7 @@ namespace HFM.Components
             this._workTime = _workTime;
         }
         #endregion
+
         #region 方法
         /// <summary>
         /// 获得全部道盒参数
@@ -111,7 +125,42 @@ namespace HFM.Components
         /// <returns></returns>
         public IList<ChannelParameter> GetParameter()
         {
-            return null;
+            IList<ChannelParameter> ICalibrationS = new List<ChannelParameter>();
+            //从数据库中查询道盒数据并赋值给ICalibrationS
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNELPARAMETER);
+            while (reader.Read())//读查询结果
+            {
+                //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                float probeArea;
+                if (ProbeArea == "")
+                {
+                    probeArea = 0.0f;
+                }
+                else
+                {
+                    probeArea = float.Parse(ProbeArea);
+                }
+                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+                //根据读出的查询结构构造ChannelParameter对象
+                ChannelParameter channelParameter = new ChannelParameter();
+                channelParameter.CheckingID = Convert.ToInt32(reader["CheckingID"]);
+                channelParameter.AlphaThreshold = Convert.ToSingle(reader["AlphaThreshold"]);
+                channelParameter.BetaThreshold = Convert.ToSingle(reader["BetaThreshold"]);
+                channelParameter.PresetHV = Convert.ToSingle(reader["PresetHV"]);
+                channelParameter.ADCFactor = Convert.ToSingle(reader["ADCFactor"]);
+                channelParameter.DACFactor = Convert.ToSingle(reader["DACFactor"]);
+                channelParameter.HVFactor = Convert.ToSingle(reader["HVFactor"]);
+                channelParameter.HVRatio = Convert.ToSingle(reader["HVRatio"]);
+                channelParameter.WorkTime = Convert.ToSingle(reader["HVRatio"]);
+                channelParameter.Channel = channel;
+                ICalibrationS.Add(channelParameter);
+            }
+            return ICalibrationS;
+
         }
         /// <summary>
         /// 根据参数对象channelParameter的通道ID，设置道盒参数
@@ -120,7 +169,37 @@ namespace HFM.Components
         /// <returns></returns>
         public bool SetParameter(ChannelParameter channelParameter)
         {
-            return true;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@AlphaThreshold",OleDbType.VarChar,255),
+                new OleDbParameter("@BetaThreshold",OleDbType.VarChar,255),
+                new OleDbParameter("@PresetHV",OleDbType.VarChar,255),
+                new OleDbParameter("@ADCFactor",OleDbType.VarChar,255),
+                new OleDbParameter("@DACFactor",OleDbType.VarChar,255),
+                new OleDbParameter("@HVFactor",OleDbType.VarChar,255),
+                new OleDbParameter("@HVRatio",OleDbType.VarChar,255),
+                new OleDbParameter("@WorkTime",OleDbType.VarChar,255),
+                new OleDbParameter("@ChannelID",OleDbType.Integer,4)
+            };
+            parms[0].Value = channelParameter.AlphaThreshold.ToString();
+            parms[1].Value = channelParameter.BetaThreshold.ToString();
+            parms[2].Value = channelParameter.PresetHV.ToString();
+            parms[3].Value = channelParameter.ADCFactor.ToString();
+            parms[4].Value = channelParameter.DACFactor.ToString();
+            parms[5].Value = channelParameter.HVFactor.ToString();
+            parms[6].Value = channelParameter.HVRatio.ToString();
+            parms[7].Value = channelParameter.WorkTime.ToString();
+            parms[8].Value = channelParameter.Channel.ChannelID;
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNELPARAMETER_BY_CHANNELID, parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         #endregion

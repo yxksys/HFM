@@ -134,13 +134,24 @@ namespace HFM.Components
             while (reader.Read())//读查询结果
             {
                 //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                float probeArea;
+                if (ProbeArea == "")
+                {
+                    probeArea = 0.0f;
+                }
+                else
+                {
+                    probeArea = float.Parse(ProbeArea);
+                }
                 Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
-                                               Convert.ToString(reader["ChannelName_English"]), Convert.ToSingle(reader["ProbeArea"]),
+                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
                                                Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
 
                 //根据读出的查询结构构造ProbeParameter对象
                 ProbeParameter probeParameter = new ProbeParameter();
-                probeParameter.PreferenceID = Convert.ToInt32(reader["Preference"].ToString());
+                probeParameter.PreferenceID = Convert.ToInt32(reader["PreferenceID"].ToString());
                 probeParameter.ProbeType = Convert.ToString(reader["ProbeType"].ToString());
                 probeParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
                 probeParameter.ProbeChannel = channel;
@@ -173,13 +184,24 @@ namespace HFM.Components
             while (reader.Read())//读查询结果
             {
                 //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                float probeArea;
+                if (ProbeArea == "")
+                {
+                    probeArea = 0.0f;
+                }
+                else
+                {
+                    probeArea = float.Parse(ProbeArea);
+                }
                 Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
-                                               Convert.ToString(reader["ChannelName_English"]), Convert.ToSingle(reader["ProbeArea"]),
+                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
                                                Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
 
                 //根据读出的查询结构构造ProbeParameter对象
                 ProbeParameter probeParameter = new ProbeParameter();
-                probeParameter.PreferenceID = Convert.ToInt32(reader["Preference"].ToString());
+                probeParameter.PreferenceID = Convert.ToInt32(reader["PreferenceID"].ToString());
                 probeParameter.ProbeType = Convert.ToString(reader["ProbeType"].ToString());
                 probeParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
                 probeParameter.ProbeChannel = channel;
