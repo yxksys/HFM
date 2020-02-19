@@ -2,9 +2,9 @@
  * ________________________________________________________________________________ 
  *
  *  描述：
- *  作者：
+ *  作者：杨旭锴
  *  版本：
- *  创建时间：
+ *  创建时间：2020年2月16日 16:58:28
  *  类名：通道类Channel
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
@@ -15,11 +15,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 
 namespace HFM.Components
 { 
     class Channel
     {
+        #region 数据库查询语言
+        //按通道ChannelID查询
+        private const string SQL_SELECT_CHANNEL_BY_CHANNELID = "SELECT ChannelID, ChannelName, ChannelName_English," +
+                                                                " ProbeArea, Status, IsEnabled " +
+                                                                "FROM HFM_DIC_Channel " +
+                                                                "WHERE ChannelID = @ChannelID";
+        //按通道名称ChannelName查询
+        private const string SQL_SELECT_CHANNEL_BY_CHANNELNAME = "SELECT ChannelID, ChannelName, ChannelName_English," +
+                                                                " ProbeArea, Status, IsEnabled " +
+                                                                "FROM HFM_DIC_Channel " +
+                                                                "WHERE ChannelName = @ChannelName";
+        //按通道ChannelID更新通道开启状态IsEnabled
+        private const string SQL_UPDATE_CHANNEL_BY_CHANNELID = "UPDATE  HFM_DIC_Channel " +
+                                                               "SET IsEnabled = @IsEnabled " +
+                                                               "WHERE (ChannelID = @ChannelID)";
+        #endregion
+
         #region 属性
         private int _channelID;
         private string _channelName;
@@ -74,6 +92,7 @@ namespace HFM.Components
             this._probeArea = probeArea;
             this._status = status;
             this._isEnabled = isEnabled;
+
         }
         #endregion
 
@@ -108,8 +127,26 @@ namespace HFM.Components
         /// <returns>通道ID对应的通道信息</returns>
         public Channel GetChannel(int channelID)
         {
-            //添加根据ID查询通道信息代码
-            return this;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@ChannelID",OleDbType.Integer,4)
+            };
+            parms[0].Value = channelID;
+            //根据通道ID查询通道信息
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELID, parms);
+            Channel channel = new Channel();
+            while (reader.Read())
+            {
+                channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
+                channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
+                channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
+                channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
+                channel.Status = Convert.ToString(reader["Status"].ToString());
+                channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+            }
+            
+            return channel;
         }
         #endregion
 
@@ -121,7 +158,26 @@ namespace HFM.Components
         /// <returns></returns>
         public Channel GetChannel(string channelName)
         {
-            return null;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@ChannelName",OleDbType.VarChar,10)
+            };
+            parms[0].Value = channelName;
+            //根据通道ID查询通道信息
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELNAME, parms);
+            Channel channel = new Channel();
+            while (reader.Read())
+            {
+                channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
+                channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
+                channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
+                channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
+                channel.Status = Convert.ToString(reader["Status"].ToString());
+                channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+            }
+
+            return channel;
         }
         #endregion
 
@@ -130,11 +186,85 @@ namespace HFM.Components
         /// 对某一类型通道的启用状态进行设置
         /// </summary>
         /// <param name="channelType">channelType值可选0：手部（包含左手心、左手背、右手心、右手背）1：脚部（包含左脚、右脚）2：衣物</param>
-        /// <param name="isEnabled">true开启英文</param>
+        /// <param name="isEnabled">0:通道不启用，1：通道启用</param>
         /// <returns>设置成功/失败</returns>
-        public bool SetEnabledByType(int channelType, bool isEnabled)
+        public bool SetEnabledByType(int channelType,bool isEnabled)
         {
-            return false;
+            Channel channel = new Channel();
+            channel.IsEnabled = isEnabled;
+            channel.ChannelID = 0;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@IsEnabled",OleDbType.Boolean),
+                new OleDbParameter("@ChannelID",OleDbType.Integer,4)
+                
+            };
+            parms[0].Value = channel.IsEnabled;
+            parms[1].Value = channel.ChannelID;
+            bool isSuccess = false;//是否成功
+            int success = 0;//返回记录数
+            switch (channelType)
+            {
+                case 0://手部（包含左手心、左手背、右手心、右手背）
+
+                    
+                    for(int i = 1; i < 5; i++)
+                    {
+                        channel.ChannelID = i;
+                        
+                        parms[1].Value = channel.ChannelID;//给通道ChannelID赋值
+                        if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
+                        {
+                            success++;
+                        }
+                    }
+                    if(success==4)
+                    {
+                        return isSuccess = true;
+                    }
+                    else
+                    {
+                        return isSuccess = false;
+                    }
+                    
+                case 1://脚部（包含左脚、右脚）
+                    success = 0;
+                    for (int i = 5; i < 7; i++)
+                    {
+                        channel.ChannelID = i;
+                        parms[1].Value = channel.ChannelID;//给通道ChannelID赋值
+                        if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
+                        {
+                            success++;
+                        }
+                    }
+                    if (success == 2)
+                    {
+                        return isSuccess = true;
+                    }
+                    else
+                    {
+                        return isSuccess = false;
+                    }
+                case 2://衣物
+
+                    channel.ChannelID = 7;
+                    parms[1].Value = channel.ChannelID;//给通道ChannelID赋值
+                    if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
+                    {
+                        return isSuccess = true;
+                    }
+                    else
+                    {
+                        return isSuccess = false;
+                    }
+                default:
+                    break;
+            }
+            return isSuccess;
+
+
         }
         #endregion
 
@@ -143,11 +273,31 @@ namespace HFM.Components
         /// 根据通道ID设置该通道的启用状态
         /// </summary>
         /// <param name="channelID">通道ID</param>
-        /// <param name="isEnabled">true开启英文</param>
+        /// <param name="isEnabled">0:通道不启用，1：通道启用</param>
         /// <returns></returns>
-        public bool SetEnabledByID(int channelID, bool isEnabled)
+        public bool SetEnabledByID(int channelID,bool isEnabled)
         {
-            return true;
+            Channel channel = new Channel();
+            channel.IsEnabled = isEnabled;
+            channel.ChannelID = channelID;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@IsEnabled",OleDbType.Boolean),
+                new OleDbParameter("@ChannelID",OleDbType.Integer)
+
+            };
+            parms[0].Value = channel.IsEnabled;
+            parms[1].Value = channel.ChannelID;
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
         #endregion
     }
