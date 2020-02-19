@@ -263,30 +263,96 @@ namespace HFM.Components
 			}       
 		}
 
-        //#region 获取数据库中当前端口设置
-        ///// <summary>
-        ///// 获取数据库中当前端口设置
-        ///// </summary>
-        ///// <param name</param>
-        ///// <returns>数据库中当前端口设置</returns>
-        //public SqlDataReader GetCommPortSet()
-        //{
-        //    Database db = new Database();
-        //    SqlDataReader dr;
-        //    try
-        //    {
-        //        db.RunProc("Get_CommPort_Set", out dr);
-        //        return dr;
-        //    }
-        //    catch (Exception ex)
-        //    {
-                
-        //        throw new Exception("获取原有通讯参数错误！请重新操作", ex);
-        //    }
+        #region 获取配置文件中当前端口设置
+        /// <summary>
+        /// 获取配置文件中当前端口设置
+        /// </summary>
+        /// <param></param>
+        /// <returns>当前端口设置</returns>
+        public CommPort GetCommPortSet()
+        {
+            string portNum = "COM1";
+            string parity ="无";
+            string stopBits = "1";
+            string portSetString = System.Configuration.ConfigurationManager.AppSettings["commportSet"].ToString();
+            string[] portSetArray=portSetString.Split(';');
+            HexCon hexCon = new HexCon();
+            for(int i=0;i<portSetArray.Length;i++)
+            {
+                if(portSetArray[i].Length!=0)
+                {                   
+                    switch (portSetArray[i].Split('=')[0].ToString())
+                    {
+                        case "PortNum":
+                            portNum = portSetArray[i].Split('=')[1].ToString();
+                            break;
+                        case "BaudRate":
+                            this.BaudRate=Convert.ToInt32(portSetArray[i].Split('=')[1]);
+                            break;
+                        case "DataBits":
+                            this.ByteSize = hexCon.StringToByte("0" + portSetArray[i].Split('=')[1].ToString())[0];
+                            break;
+                        case "Parity":
+                            parity= portSetArray[i].Split('=')[1].ToString();
+                            break;
+                        case "StopBits":
+                            stopBits= portSetArray[i].Split('=')[1].ToString();
+                            break;
+                    } 
+                    
+                    switch (portNum.ToUpper())
+                    {
+                        case "COM1":
+                            this.PortNum = 1;
+                            break;
+                        case "COM2":
+                            this.PortNum = 2;
+                            break;
+                        case "COM3":
+                            this.PortNum = 3;
+                            break;
+                        case "COM4":
+                            this.PortNum = 4;
+                            break;
+                    }
+                    switch (parity)
+                    {
+                        case "无":
+                            this.Parity = 0;
+                            break;
+                        case "奇":
+                            this.Parity = 1;
+                            break;
+                        case "偶":
+                            this.Parity = 2;
+                            break;
+                        case "标志":
+                            this.Parity = 3;
+                            break;
+                        case "空格":
+                            this.Parity = 4;
+                            break;
 
-        //}
+                    }
+                    switch (stopBits)
+                    {
+                        case "1":
+                            this.StopBits = 0;
+                            break;
+                        case "1.5":
+                            this.StopBits = 1;
+                            break;
+                        case "2":
+                            this.StopBits = 2;
+                            break;
+                    }
+                }
+            }
+            this.ReadTimeout = 100;
+            return this;
+        }
 
-        //#endregion
+        #endregion
 
         //#region 更新通讯参数
         ///// <summary>
@@ -302,13 +368,13 @@ namespace HFM.Components
         //{
         //    Database data = new Database();
         //    SqlParameter[] prams = {
-								//	   data.MakeInParam("@Prot_Code", SqlDbType.VarChar ,10,PortCode),
-								//	   data.MakeInParam("@Baud_Rate",SqlDbType.Int ,4,BaudRate),
-								//	   data.MakeInParam("@Data_Bit",SqlDbType.Int,4,DataBit),
-								//	   data.MakeInParam("@Parity_Bit",SqlDbType.VarChar,10,ParityBit),
-								//	   data.MakeInParam("@Stop_Bit",SqlDbType.Int,4,StopBit),									  
-									   						   						
-								//   };
+        //	   data.MakeInParam("@Prot_Code", SqlDbType.VarChar ,10,PortCode),
+        //	   data.MakeInParam("@Baud_Rate",SqlDbType.Int ,4,BaudRate),
+        //	   data.MakeInParam("@Data_Bit",SqlDbType.Int,4,DataBit),
+        //	   data.MakeInParam("@Parity_Bit",SqlDbType.VarChar,10,ParityBit),
+        //	   data.MakeInParam("@Stop_Bit",SqlDbType.Int,4,StopBit),									  
+
+        //   };
         //    try
         //    {
         //        data.RunProc("Update_CommPort_Set", prams);
@@ -323,5 +389,5 @@ namespace HFM.Components
         //}
         //#endregion 
 
-	}
+    }
 }

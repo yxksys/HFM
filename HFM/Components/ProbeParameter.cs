@@ -35,7 +35,7 @@ namespace HFM.Components
                                                          "WHERE NuclideType = @NuclideType";
         private const string SQL_UPDATE_PROBEPARAMETER = "UPDATE HFM_Preference SET ProbeType = @ProbeType,NuclideType = @NuclideType," +
                                                          "ChannelID = @ChannelID,HBackground = @HBackground,LBackground = @LBackground," +
-                                                         "Alarm_1 = @Alarm_1,Alarm_2 = @Alarm_2,Efficiency = @Efficiency WHERE PreferenceID = @PreferenceID";
+                                                         "Alarm_1 = @Alarm_1,Alarm_2 = @Alarm_2,Efficiency = @Efficiency WHERE NuclideType = @NuclideType AND ChannelID=@ChannelID";
 
         #endregion
 
@@ -194,6 +194,7 @@ namespace HFM.Components
             parms[4].Value = probeParameter.LBackground.ToString();
             parms[5].Value = probeParameter.Alarm_1.ToString();
             parms[6].Value = probeParameter.Alarm_2.ToString();
+            parms[7].Value = probeParameter.Efficiency.ToString();
             if (DbHelperAccess.ExecuteSql(SQL_UPDATE_PROBEPARAMETER, parms) != 0)
             {
                 return true;

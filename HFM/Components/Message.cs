@@ -169,7 +169,7 @@ namespace HFM.Components
         /// <typeparam name="T">返回对象泛型列表，P参数命令码：ChannelParameter对象列表； C测量值命令码：MeasureData对象列表</typeparam>
         /// <param name="message">下位机上传的报文信息</param>
         /// <returns>解析后的报文对象列表</returns>
-        public IList<T> ExplainMessage<T>(string message)
+        public static IList<T> ExplainMessage<T>(string message)
         {
             //初始化返回P命令码道盒参数对象列表
             IList<ChannelParameter> channelParameterS = new List<ChannelParameter>();
@@ -302,7 +302,7 @@ namespace HFM.Components
         /// <param name="commport">传输报文端口</param>
         /// <returns>true  发送成功
         ///          false 发送失败  </returns>
-        public bool SendMessage(byte[] BuffMessage, CommPort commport)
+        public static bool SendMessage(byte[] BuffMessage, CommPort commport)
             {
                 //串口已打开
 
@@ -341,15 +341,15 @@ namespace HFM.Components
         /// <param name="commport"> 已打开的接收报文信息的串口</param>
         /// <returns>PosID  接收成功：返回收到的采集信息
         ///                 接收失败：返回""  </returns>
-        public string ReceiveMessage(CommPort commport)
+        public static string ReceiveMessage(CommPort commport)
         {
             //串口已打开
 
             int NumBytes;
             HexCon hexcon = new HexCon();
 
-            NumBytes = 54;
-            byte[] RecBuf = new byte[54];
+            NumBytes = 200;
+            byte[] RecBuf = new byte[200];
             //获得当前系统时间
             System.DateTime Start_Time = new System.DateTime();
             Start_Time = System.DateTime.Now;
@@ -373,7 +373,7 @@ namespace HFM.Components
                     }
                     catch
                     {
-                        return "";
+                        return "";                        
                     }
 
                 }

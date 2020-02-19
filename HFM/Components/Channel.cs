@@ -17,7 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace HFM.Components
-{
+{ 
     class Channel
     {
         #region 属性
@@ -100,17 +100,7 @@ namespace HFM.Components
         }
         #endregion
 
-        #region 根据通道ID查询通道信息
-        /// <summary>
-        /// 获得全部通道列表
-        /// </summary>
-        /// <returns>通道列表</returns>
-        public IList<Channel> GetChannel()
-        {
-
-            return null;
-        }
-
+        #region 根据通道ID查询通道信息   
         /// <summary>
         /// 根据通道ID查询通道信息
         /// </summary>
