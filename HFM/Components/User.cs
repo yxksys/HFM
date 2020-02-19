@@ -15,11 +15,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 
 namespace HFM.Components
 {
     class User
     {
+        private const string SQL_SELECT_USER_BY_LOGIN = "SELECT UserID FROM HFM_UserInfo WHERE PassWord=@PassWord";
+        private const string SQL_UPDATA_USER = "UPDATA HFM_UserInfo SET passWord=@passWord WHERE userID=@userID";
+        private const string SQL_SELECT_USER = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo";
+        private const string SQL_SELECT_USER_BY_USERID = "SELECT UserID,UserName,PassWord,Role"+
+                                                       "FROM HFM_UserInfo WHERE UserID=@UserID";
         #region 字段属性
         private int _userId;
         private string _userName;
@@ -63,7 +69,21 @@ namespace HFM.Components
         /// <returns></returns>
         public User Login(string passWord)
         {
-            return null;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@PassWord",OleDbType.VarChar,255)
+            };
+            parms[0].Value = passWord;
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_USER_BY_LOGIN, parms);
+            //构造User对象
+            User user = new User();
+            user.UserId = Convert.ToInt32(reader["UserID"].ToString());
+            user.UserName = Convert.ToString(reader["UserName"].ToString());
+            user.PassWord = Convert.ToString(reader["PassWord"].ToString());
+            user.Role = Convert.ToInt32(reader["Role"].ToString());
+            //从reader读出的查询对象添加到List中
+            return user;
         }
         #endregion
 
@@ -77,18 +97,47 @@ namespace HFM.Components
         ///          或失败   </returns>
         public bool ChangePassWord(int userID, string passWord)
         {
-            return false;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@userID",OleDbType.Integer),
+                new OleDbParameter("@PassWord",OleDbType.VarChar,255)
+            };
+            parms[0].Value = userID;
+            parms[1].Value = passWord;
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATA_USER,parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
 
-        #region 根据用户ID修改密码
+        #region 从数据库中获得所有用户
         /// <summary>
         /// 从数据库中获得所有用户
         /// </summary>
         /// <returns></returns>
         public IList<User> GetUser()
         {
-            return null;
+            IList<User> IUserS = new List<User>();
+            //从数据库中查询全部刻度操作记录并赋值给IUserS
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_USER);
+            while (reader.Read()) //读查询结果
+            {
+                //构造User对象
+                User user = new User();
+                user.UserId = Convert.ToInt32(reader["UserID"].ToString());
+                user.UserName = Convert.ToString(reader["UserName"].ToString());
+                user.PassWord = Convert.ToString(reader["PassWord"].ToString());
+                user.Role = Convert.ToInt32(reader["Role"].ToString());
+                //从reader读出的查询对象添加到List中
+                IUserS.Add(user);
+            }
+            return IUserS;
         }
         #endregion
 
@@ -99,8 +148,23 @@ namespace HFM.Components
         /// <param name="userID">用户Id</param>
         /// <returns></returns>
         public User GetUser(int userID)
-        {
-            return null;
+        {    
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                    new OleDbParameter("@userID",OleDbType.Boolean,2)
+            };
+            parms[0].Value = userID;
+            //从数据库中查询全部刻度操作记录并赋值给IUserS
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_USER_BY_USERID,parms );
+            //构造User对象
+            User user = new User();
+            user.UserId = Convert.ToInt32(reader["UserID"].ToString());
+            user.UserName = Convert.ToString(reader["UserName"].ToString());
+            user.PassWord = Convert.ToString(reader["PassWord"].ToString());
+            user.Role = Convert.ToInt32(reader["Role"].ToString());
+            //从reader读出的查询对象添加到List中
+            return user ;
         }
         #endregion
     }
