@@ -64,6 +64,12 @@
     <Compile Include="Components\SystemParameter.cs" />
     <Compile Include="Components\Tools.cs" />
     <Compile Include="Components\User.cs" />
+    <Compile Include="FrmTestHardware.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTestHardware.Designer.cs">
+      <DependentUpon>FrmTestHardware.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmWelcome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmTestHardware.resx">
+      <DependentUpon>FrmTestHardware.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmWelcome.resx">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </EmbeddedResource>
