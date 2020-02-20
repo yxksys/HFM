@@ -70,10 +70,19 @@
     <Compile Include="FrmWelcome.Designer.cs">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="HFM_Preference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HFM_Preference.Designer.cs">
+      <DependentUpon>HFM_Preference.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmWelcome.resx">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HFM_Preference.resx">
+      <DependentUpon>HFM_Preference.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,6 +110,78 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Audio\1.wav" />
+    <Content Include="Audio\10.wav" />
+    <Content Include="Audio\2.wav" />
+    <Content Include="Audio\20.wav" />
+    <Content Include="Audio\21.wav" />
+    <Content Include="Audio\22.wav" />
+    <Content Include="Audio\23.wav" />
+    <Content Include="Audio\24.wav" />
+    <Content Include="Audio\25.wav" />
+    <Content Include="Audio\26.wav" />
+    <Content Include="Audio\27.wav" />
+    <Content Include="Audio\28.wav" />
+    <Content Include="Audio\29.wav" />
+    <Content Include="Audio\3.wav" />
+    <Content Include="Audio\4.wav" />
+    <Content Include="Audio\5.wav" />
+    <Content Include="Audio\6.wav" />
+    <Content Include="Audio\7.wav" />
+    <Content Include="Audio\8.wav" />
+    <Content Include="Audio\9.wav" />
+    <Content Include="Audio\dida1.wav" />
+    <Content Include="Audio\dida2.wav" />
+    <Content Include="Audio\E仪器正常.wav" />
+    <Content Include="Audio\E仪器自检.wav" />
+    <Content Include="Audio\E右手移动.wav" />
+    <Content Include="Audio\E右手红外到位.wav" />
+    <Content Include="Audio\E左手移动.wav" />
+    <Content Include="Audio\E左手红外到位.wav" />
+    <Content Include="Audio\E开始测量.wav" />
+    <Content Include="Audio\E故障.wav" />
+    <Content Include="Audio\E本底异常.wav" />
+    <Content Include="Audio\E本底测量.wav" />
+    <Content Include="Audio\E没有污染.wav" />
+    <Content Include="Audio\E自检故障.wav" />
+    <Content Include="Audio\E衣物探头到位.wav" />
+    <Content Include="Audio\E衣物探头污染.wav" />
+    <Content Include="Audio\E被测人员污染.wav" />
+    <Content Include="Audio\仪器正常.wav" />
+    <Content Include="Audio\仪器自检.wav" />
+    <Content Include="Audio\右手移动.wav" />
+    <Content Include="Audio\右手红外到位.wav" />
+    <Content Include="Audio\左手移动.wav" />
+    <Content Include="Audio\左手红外到位.wav" />
+    <Content Include="Audio\开始测量.wav" />
+    <Content Include="Audio\故障.wav" />
+    <Content Include="Audio\新建文本文档.txt" />
+    <Content Include="Audio\本底异常.wav" />
+    <Content Include="Audio\本底测量.wav" />
+    <Content Include="Audio\没有污染.wav" />
+    <Content Include="Audio\自检故障.wav" />
+    <Content Include="Audio\衣物探头到位.wav" />
+    <Content Include="Audio\衣物探头污染.wav" />
+    <Content Include="Audio\衣物没有污染.wav" />
+    <Content Include="Audio\被测人员污染.wav" />
+    <Content Include="Images\app.ico" />
+    <Content Include="Images\longin.png" />
+    <Content Include="Images\point1.png" />
+    <Content Include="Images\point11.png" />
+    <Content Include="Images\point12.png" />
+    <Content Include="Images\point13.png" />
+    <Content Include="Images\point14.png" />
+    <Content Include="Images\point15.png" />
+    <Content Include="Images\point16.png" />
+    <Content Include="Images\point2.png" />
+    <Content Include="Images\point3.png" />
+    <Content Include="Images\point4.png" />
+    <Content Include="Images\point5.png" />
+    <Content Include="Images\point6.png" />
+    <Content Include="Images\welcome.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
