@@ -1,11 +1,12 @@
 /**
  * ________________________________________________________________________________ 
  *
- *  描述：
- *  作者：
- *  版本：
- *  创建时间：
- *  类名：
+ *  描述：封装了对串口的操作，包括获得串口配置、打开端口、关闭端口、读、写
+ *  作者：杨慧炯
+ *  版本：V1.0
+ *  创建时间：2020-02-11
+ *  类名：CommPort
+ *  更新记录：02-19增加了读取从配置文件读取串口配置方法
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -32,10 +33,10 @@ namespace HFM.Components
 		public byte ByteSize; 
 		public byte Parity; // 0-4=no,odd,even,mark,space  
 		public byte StopBits; // 0,1,2 = 1, 1.5, 2  
-		public int ReadTimeout; 
-       
-		//comm port win32 file handle 
-		public int hComm = -1; 
+		public int ReadTimeout;
+        #region 引用并调用windows系统文件句柄及api
+        //comm port win32 file handle 
+        public int hComm = -1; 
 		public bool hCommRead = false; 
        
 		public bool Opened = false; 
@@ -48,7 +49,7 @@ namespace HFM.Components
 		private const int INVALID_HANDLE_value = -1; 
        
 		[StructLayout(LayoutKind.Sequential)] 
-			private struct DCB  
+		private struct DCB  
 		{ 
 			//taken from c struct in platform sdk  
 			public int DCBlength;           // sizeof(DCB)  
@@ -82,7 +83,7 @@ namespace HFM.Components
 		} 
 
 		[StructLayout(LayoutKind.Sequential)] 
-			private struct COMMTIMEOUTS  
+		private struct COMMTIMEOUTS  
 		{   
 			public int ReadIntervalTimeout;  
 			public int ReadTotalTimeoutMultiplier;  
@@ -92,7 +93,7 @@ namespace HFM.Components
 		}     
 
 		[StructLayout(LayoutKind.Sequential)]    
-			private struct OVERLAPPED  
+		private struct OVERLAPPED  
 		{  
 			public int  Internal;  
 			public int  InternalHigh;  
@@ -155,9 +156,14 @@ namespace HFM.Components
 		[DllImport("kernel32")] 
 		private static extern bool CloseHandle( 
 			int hObject   // handle to object 
-			); 
-       
-		public void Open()  
+			);
+        #endregion
+
+        #region 打开串口
+        /// <summary>
+        /// 打开串口操作
+        /// </summary>
+        public void Open()  
 		{ 
 			if(Opened)
 				return;
@@ -208,9 +214,14 @@ namespace HFM.Components
 				Opened = true; 
 			}
          
-		} 
-   
-		public void Close()  
+		}
+        #endregion
+
+        #region 关闭串口
+        /// <summary>
+        /// 关闭串口操作
+        /// </summary>
+        public void Close()  
 		{ 
 			if(!Opened)
 				return;
@@ -224,9 +235,16 @@ namespace HFM.Components
 						throw(new ApplicationException("Comm Port Can Not Be Closed")); 
 				}
 			}
-		} 
-       
-		public byte[] Read(int NumBytes)  
+		}
+        #endregion
+
+        #region 读串口
+        /// <summary>
+        /// 读串口操作
+        /// </summary>
+        /// <param name="NumBytes">读取的数据长度</param>
+        /// <returns>从串口获得的字节型数据数组</returns>
+        public byte[] Read(int NumBytes)  
 		{ 
 			byte[] BufBytes; 
 			byte[] OutBytes; 
@@ -245,11 +263,15 @@ namespace HFM.Components
 				throw(new ApplicationException("Comm Port Not Open")); 
 			} 
 			return OutBytes; 
-		} 
-       
+		}
+        #endregion
 
-       
-		public void Write(byte[] WriteBytes)  
+        #region 写串口
+        /// <summary>
+        /// 写串口操作
+        /// </summary>
+        /// <param name="WriteBytes">向串口发送的字节型数据数组</param>
+        public void Write(byte[] WriteBytes)  
 		{ 
 			if (hComm!=INVALID_HANDLE_value)  
 			{ 
@@ -262,6 +284,7 @@ namespace HFM.Components
 				throw(new ApplicationException("Comm Port Not Open")); 
 			}       
 		}
+        #endregion
 
         #region 获取配置文件中当前端口设置
         /// <summary>
@@ -354,40 +377,7 @@ namespace HFM.Components
 
         #endregion
 
-        //#region 更新通讯参数
-        ///// <summary>
-        ///// 更新通讯参数
-        ///// </summary>
-        ///// <param name=" PortCode"></param>
-        ///// <param name=" BaudRate"></param>
-        ///// <param name=" DataBit"></param>
-        ///// <param name=" ParityBit"></param>
-        ///// <param name=" StopBit"></param>
-        ///// <returns></returns>
-        //public int UpdateCommPortSet(string PortCode, int BaudRate, int DataBit, string ParityBit, int StopBit)
-        //{
-        //    Database data = new Database();
-        //    SqlParameter[] prams = {
-        //	   data.MakeInParam("@Prot_Code", SqlDbType.VarChar ,10,PortCode),
-        //	   data.MakeInParam("@Baud_Rate",SqlDbType.Int ,4,BaudRate),
-        //	   data.MakeInParam("@Data_Bit",SqlDbType.Int,4,DataBit),
-        //	   data.MakeInParam("@Parity_Bit",SqlDbType.VarChar,10,ParityBit),
-        //	   data.MakeInParam("@Stop_Bit",SqlDbType.Int,4,StopBit),									  
-
-        //   };
-        //    try
-        //    {
-        //        data.RunProc("Update_CommPort_Set", prams);
-        //        return 0;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Error.Log(ex.ToString());
-        //        throw new Exception("更新通讯参数出错，请重新设置！", ex);
-        //        //return -1;
-        //    }
-        //}
-        //#endregion 
+        
 
     }
 }
