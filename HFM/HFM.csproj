@@ -61,6 +61,12 @@
     <Compile Include="Components\Nuclide.cs" />
     <Compile Include="Components\PlatForm.cs" />
     <Compile Include="Components\ProbeParameter.cs" />
+    <Compile Include="Supervise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supervise.Designer.cs">
+      <DependentUpon>Supervise.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\SystemParameter.cs" />
     <Compile Include="Components\Tools.cs" />
     <Compile Include="Components\User.cs" />
@@ -84,6 +90,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Supervise.resx">
+      <DependentUpon>Supervise.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
