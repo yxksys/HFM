@@ -115,6 +115,7 @@ namespace HFM.Components
         /// <returns></returns>
         public IList<Channel> GetChannel(bool isEnabled)
         {
+
             return null;
         }
         #endregion
