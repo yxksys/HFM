@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HFM
+namespace HFM.Components
 {
-    public partial class FrmSupervise : Form
+    public partial class Supervise : Form
     {
-        public FrmSupervise()
+        public Supervise()
         {
             InitializeComponent();
+        }
+
+        private void Supervise_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
