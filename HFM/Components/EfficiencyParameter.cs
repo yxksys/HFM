@@ -21,19 +21,25 @@ namespace HFM.Components
 {
     class EfficiencyParameter
     {
-
-        private const string SQL_SELECT_EFFICIENCYPARAMETER = "SELECT EfficiencyParamID,Efficiency,a.ChannelID,NuclideType," +
-                                                              "NuclideName,ChannelName,ChannelName_English,ProbeArea,Status," +
-                                                              "IsEnabled FROM HFM_EfficiencyParameter a " +
-                                                              "INNER JOIN HFM_DIC_Channel b ON a.ChannelID = b.ChannelID";
-        private const string SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME = "SELECT EfficiencyParamID,a.ChannelID,Efficiency," +
-                                                              "NuclideType,NuclideName,ChannelName,ChannelName_English,ProbeArea,Status," +
-                                                              "IsEnabled FROM HFM_EfficiencyParameter a,HFM_DIC_Channel b WHERE NuclideName = @NuclideName" +
-                                                              "AND NuclideType = @NuclideType AND a.ChannelID = b.ChannelID";
+        #region 常量
+        private const string SQL_SELECT_EFFICIENCYPARAMETER ="SELECT EfficiencyParamID,Efficiency,a.ChannelID,NuclideType," +
+                                                             "NuclideName,ChannelName,ChannelName_English,ProbeArea,Status," +
+                                                             "IsEnabled FROM HFM_EfficiencyParameter a " +
+                                                             "INNER JOIN HFM_DIC_Channel b ON a.ChannelID = b.ChannelID";
+        private const string SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME = "SELECT EfficiencyParamID,a.ChannelID," +
+                                                              "Efficiency,NuclideType,NuclideName,ChannelName,ChannelName_English," +
+                                                              "ProbeArea,Status,IsEnabled FROM HFM_EfficiencyParameter a, " +
+                                                              "HFM_DIC_Channel b WHERE NuclideType = @NuclideType AND " +
+                                                              "NuclideName = @NuclideName AND a.ChannelID = b.ChannelID";
         private const string SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_CHANNEL_AND_NUCLIDENAME = "SELECT EfficiencyParamID,a.ChannelID,Efficiency, NuclideType," +
                                                               "NuclideName,ChannelName,ChannelName_English,ProbeArea,Status,IsEnabled FROM HFM_EfficiencyParameter" +
-                                                              " a,HFM_DIC_Channel b WHERE NuclideName = @NuclideName AND NuclideType = @NuclideType AND " +
-                                                              "a.ChannelID = b.ChannelID AND a.ChannelID = @ChannelID";
+                                                              " a,HFM_DIC_Channel b WHERE NuclideType = @NuclideType AND NuclideName = @NuclideName " +
+                                                              " AND a.ChannelID = @ChannelID AND a.ChannelID = b.ChannelID";
+        private const string SQL_UPDATE_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME_AND_CHANNELID = "UPDATE HFM_EfficiencyParameter" +
+                                                              " SET Efficiency = @Efficiency WHERE NuclideType = @NuclideType AND " +
+                                                              "NuclideName = @NuclideName AND ChannelID = @ChannelID";
+
+        #endregion
 
         #region 属性
         private int _efficiencyParamID;//核素参数编号
@@ -63,10 +69,29 @@ namespace HFM.Components
         internal Channel Channel { get => _channel; set => _channel = value; }
 
         #endregion
+
         #region 构造函数
         public EfficiencyParameter()
         { }
+        /// <summary>
+        /// 参数构造
+        /// </summary>
+        /// <param name="_efficiencyParamID"></param>
+        /// <param name="_channel"></param>
+        /// <param name="_nuclideType"></param>
+        /// <param name="_nuclideNama"></param>
+        /// <param name="_efficiency"></param>
+        public EfficiencyParameter(int _efficiencyParamID, Channel _channel, string _nuclideType,
+                                   string _nuclideNama, float _efficiency)
+        {
+            this._efficiencyParamID = _efficiencyParamID;
+            this._channel = _channel;
+            this._nuclideType = _nuclideType;
+            this._nuclideName = _nuclideNama;
+            this._efficiency = _efficiency;
+        }
         #endregion
+
         #region 方法
         /// <summary>
         /// 获得所有效率参数
@@ -80,9 +105,21 @@ namespace HFM.Components
             while(reader.Read())//读查询结果
             {
                 //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                Channel channel = new Channel(reader.GetInt32(0), reader["ChannelName"].ToString(), reader["ChannelName_English"].ToString(),
-                                              Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString()),
-                                              reader["Status"].ToString(), reader.GetBoolean(12));
+                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                float probeArea;
+                if (ProbeArea == "")
+                {
+                    probeArea = 0.0f;
+                }
+                else
+                {
+                    probeArea = float.Parse(ProbeArea);
+                }
+                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+
                 //根据读出的查询结构构造EfficiencyParameter对象
                 EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
                 efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
@@ -111,14 +148,25 @@ namespace HFM.Components
             };
             parms[0].Value = nuclideType;
             parms[1].Value = nuclideName;
-            //从数据库中查询全部核素效率并赋值给ICalibrationS
+            //从数据库中查询全部探测效率并赋值给ICalibrationS
             OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME, parms);
             while (reader.Read())//读查询结果
             {
                 //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                Channel channel = new Channel(reader.GetInt32(0), reader["ChannelName"].ToString(), reader["ChannelName_English"].ToString(),
-                                              Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString()),
-                                              reader["Status"].ToString(), reader.GetBoolean(12));
+                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                float probeArea;
+                if (ProbeArea == "")
+                {
+                    probeArea = 0.0f;
+                }
+                else
+                {
+                    probeArea = float.Parse(ProbeArea);
+                }
+                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
                 //根据读出的查询结构构造EffciencyParameter对象
                 EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
                 efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
@@ -138,26 +186,38 @@ namespace HFM.Components
         /// <param name="channelID"></param>
         /// <param name="nuclideName"></param>
         /// <returns></returns>
-        public EfficiencyParameter GetParameter(string nuclideType, int channelID, string nuclideName)
+        public EfficiencyParameter GetParameter(string nuclideType,string nuclideName ,int channelID)
         {
             EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
             OleDbParameter[] parms = new OleDbParameter[]
             {
                 new OleDbParameter("@NuclideType",OleDbType.VarChar,255),
-                new OleDbParameter("@ChannelID",OleDbType.Integer,4),
-                new OleDbParameter("@NuclideName",OleDbType.VarChar,255)
+                new OleDbParameter("@NuclideName",OleDbType.VarChar,255),
+                new OleDbParameter("@ChannelID",OleDbType.Integer,4)
             };
             parms[0].Value = nuclideType;
-            parms[1].Value = channelID;
-            parms[2].Value = nuclideName;
-            //从数据库中查询全部核素效率并赋值给ICalibrationS
+            parms[1].Value = nuclideName;
+            parms[2].Value = channelID;
+            //从数据库中查询全部探测效率并赋值给ICalibrationS
             OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_CHANNEL_AND_NUCLIDENAME, parms);
             while (reader.Read())//读查询结果
             {
                 //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                Channel channel = new Channel(reader.GetInt32(0), reader["ChannelName"].ToString(), reader["ChannelName_English"].ToString(),
-                                              Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString()),
-                                              reader["Status"].ToString(), reader.GetBoolean(12));
+
+                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                float probeArea;
+                if (ProbeArea == "")
+                {
+                    probeArea = 0.0f;
+                }
+                else
+                {
+                    probeArea = float.Parse(ProbeArea);
+                }
+                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
                 //根据读出的查询结构构造EffciencyParameter对象
                 efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
                 efficiencyParameter.Channel = channel;
@@ -174,7 +234,27 @@ namespace HFM.Components
         /// <returns></returns>
         public bool SetParameter(EfficiencyParameter efficiencyParameter)
         {
-            return true;
+
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@Efficiency",OleDbType.VarChar,255),
+                new OleDbParameter("@NuclideType",OleDbType.VarChar,255),
+                new OleDbParameter("@NuclideName",OleDbType.VarChar,255),
+                new OleDbParameter("@ChannelID",OleDbType.Integer,4)
+            };
+            parms[0].Value = efficiencyParameter.Efficiency.ToString();
+            parms[1].Value = efficiencyParameter.NuclideType.ToString();
+            parms[2].Value = efficiencyParameter.NuclideName.ToString();
+            parms[3].Value = efficiencyParameter.Channel.ChannelID;
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME_AND_CHANNELID, parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion
