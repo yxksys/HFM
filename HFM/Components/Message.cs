@@ -232,11 +232,11 @@ namespace HFM.Components
                             //按照报文格式，分别取出本通道测量数值，从当前报文第一个数据索引开始，连续读取15个字节数据进行解析
                             int channelID = Convert.ToInt32(message.ElementAt<char>(channelHeadIndex).ToString());//通道ID一个字节
 
-                            float alpha = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 1).ToString())*256*256*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 2).ToString())*256*256
-                                          +Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 3).ToString())*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 4).ToString());//Alpha计数值四个字节
+                            float alpha = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 1).ToString())+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 2).ToString())*256
+                                          +Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 3).ToString())*256*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 4).ToString()) * 256 * 256 * 256;//Alpha计数值四个字节
 
-                            float beta = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 5).ToString())*256*256*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 6).ToString())*256*256 
-                                         +Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 7).ToString())*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 8).ToString());//Beta计数值四个字节
+                            float beta = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 5).ToString())+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 6).ToString())*256
+                                         +Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 7).ToString())*256*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 8).ToString()) * 256 * 256 * 256;//Beta计数值四个字节
 
                             float analogV = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 9).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 10).ToString());//模拟电压值两个字节
 
