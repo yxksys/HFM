@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clothes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clothes.Designer.cs">
+      <DependentUpon>Clothes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Calibration.cs" />
     <Compile Include="Components\Channel.cs" />
     <Compile Include="Components\ChannelParameter.cs" />
@@ -78,12 +84,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Supervise.cs">
+    <Compile Include="ProbeParameter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supervise.Designer.cs">
-      <DependentUpon>Supervise.cs</DependentUpon>
+    <Compile Include="ProbeParameter.Designer.cs">
+      <DependentUpon>ProbeParameter.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Clothes.resx">
+      <DependentUpon>Clothes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmWelcome.resx">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,8 +108,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Supervise.resx">
-      <DependentUpon>Supervise.cs</DependentUpon>
+    <EmbeddedResource Include="ProbeParameter.resx">
+      <DependentUpon>ProbeParameter.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
