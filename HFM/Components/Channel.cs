@@ -6,7 +6,7 @@
  *  版本：
  *  创建时间：2020年2月16日 16:58:28
  *  类名：通道类Channel
- *  
+ *  修改:2020年2月24日 10:59:58
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -22,6 +22,15 @@ namespace HFM.Components
     class Channel
     {
         #region 数据库查询语言
+        //获得全部通道列表
+        private const string SQL_SELECT_CHANNEL = "SELECT ChannelID, ChannelName, ChannelName_English," +
+                                                                " ProbeArea, Status, IsEnabled " +
+                                                                "FROM HFM_DIC_Channel ";
+        //根据启用状态查询通道列表
+        private const string SQL_SELECT_CHANNEL_BY_ISENABLED = "SELECT ChannelID, ChannelName, ChannelName_English," +
+                                                                " ProbeArea, Status, IsEnabled " +
+                                                                "FROM HFM_DIC_Channel " +
+                                                                "WHERE IsEnabled = @IsEnabled";
         //按通道ChannelID查询
         private const string SQL_SELECT_CHANNEL_BY_CHANNELID = "SELECT ChannelID, ChannelName, ChannelName_English," +
                                                                 " ProbeArea, Status, IsEnabled " +
@@ -70,6 +79,7 @@ namespace HFM.Components
         /// 通道是否启用
         /// </summary>
         public bool IsEnabled { get => _isEnabled; set => _isEnabled = value; }
+
         #endregion
 
         #region 构造函数
@@ -103,7 +113,22 @@ namespace HFM.Components
         /// <returns>全部通道列表</returns>
         public IList<Channel> GetChannel()
         {
-            return null;
+            //实例化列表
+            IList<Channel> Ichannels = new List<Channel>();
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL);
+            
+            while (reader.Read())
+            {
+                Channel channel = new Channel();
+                channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
+                channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
+                channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
+                channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
+                channel.Status = Convert.ToString(reader["Status"].ToString());
+                channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                Ichannels.Add(channel);
+            }
+            return Ichannels;
         }
         #endregion
 
@@ -111,11 +136,34 @@ namespace HFM.Components
         /// <summary>
         /// 根据启用状态查询通道列表
         /// </summary>
-        /// <param name="isEnabled">是否英文</param>
+        /// <param name="isEnabled">false:通道不启用查询，true：通道启用查询</param>
         /// <returns></returns>
         public IList<Channel> GetChannel(bool isEnabled)
         {
-            return null;
+            //实例化列表
+            IList<Channel> Ichannels = new List<Channel>();
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@IsEnabled",OleDbType.Boolean)
+            };
+            parms[0].Value = isEnabled;
+            //查询语句
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_ISENABLED, parms);
+            //读取数据赋值列表
+            while (reader.Read())
+            {
+                Channel channel = new Channel();
+                channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
+                channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
+                channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
+                channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
+                channel.Status = Convert.ToString(reader["Status"].ToString());
+                channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                Ichannels.Add(channel);
+            }
+            return Ichannels;
+
         }
         #endregion
 
@@ -186,7 +234,7 @@ namespace HFM.Components
         /// 对某一类型通道的启用状态进行设置
         /// </summary>
         /// <param name="channelType">channelType值可选0：手部（包含左手心、左手背、右手心、右手背）1：脚部（包含左脚、右脚）2：衣物</param>
-        /// <param name="isEnabled">0:通道不启用，1：通道启用</param>
+        /// <param name="isEnabled">false:通道不启用，true：通道启用</param>
         /// <returns>设置成功/失败</returns>
         public bool SetEnabledByType(int channelType,bool isEnabled)
         {
@@ -273,7 +321,7 @@ namespace HFM.Components
         /// 根据通道ID设置该通道的启用状态
         /// </summary>
         /// <param name="channelID">通道ID</param>
-        /// <param name="isEnabled">0:通道不启用，1：通道启用</param>
+        /// <param name="isEnabled">false:通道不启用，true：通道启用</param>
         /// <returns></returns>
         public bool SetEnabledByID(int channelID,bool isEnabled)
         {
