@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HFM
+namespace HFM.Components
 {
     static class Program
     {
@@ -16,7 +16,10 @@ namespace HFM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmWelcome());
+            //Application.Run(new FrmWelcome());
+            FrmPreference frmPreference = new FrmPreference();
+            frmPreference.Show();
+            Application.Run();
         }
     }
 }
