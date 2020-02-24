@@ -1,6 +1,6 @@
 ﻿namespace HFM
 {
-    partial class FrmSupervise
+    partial class FrmProbeParameter
     {
         /// <summary>
         /// Required designer variable.
@@ -603,7 +603,7 @@
             this.LblRight.Text = "右手不到位";
             this.LblRight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // FrmSupervise
+            // FrmProbeParameter
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
@@ -657,7 +657,7 @@
             this.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmSupervise";
+            this.Name = "FrmProbeParameter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).EndInit();

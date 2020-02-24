@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HFM
 {
-    public partial class FrmProbeParameter : Form
+    public partial class FrmModifyPasssword : Form
     {
-        public FrmProbeParameter()
+        public FrmModifyPasssword()
         {
             InitializeComponent();
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HFM
 {
-    public partial class FrmProbeParameter : Form
+    public partial class FrmHistory : Form
     {
-        public FrmProbeParameter()
+        public FrmHistory()
         {
             InitializeComponent();
         }

@@ -70,17 +70,47 @@
     <Compile Include="Components\SystemParameter.cs" />
     <Compile Include="Components\Tools.cs" />
     <Compile Include="Components\User.cs" />
+    <Compile Include="EnterPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnterPassword.Designer.cs">
+      <DependentUpon>EnterPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmWelcome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmWelcome.Designer.cs">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
     <Compile Include="HFM_Preference.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HFM_Preference.Designer.cs">
       <DependentUpon>HFM_Preference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeyIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyIn.Designer.cs">
+      <DependentUpon>KeyIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyPasssword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyPasssword.Designer.cs">
+      <DependentUpon>ModifyPasssword.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,11 +123,26 @@
     <EmbeddedResource Include="Clothes.resx">
       <DependentUpon>Clothes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EnterPassword.resx">
+      <DependentUpon>EnterPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmWelcome.resx">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HFM_Preference.resx">
       <DependentUpon>HFM_Preference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History.resx">
+      <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyIn.resx">
+      <DependentUpon>KeyIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyPasssword.resx">
+      <DependentUpon>ModifyPasssword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
