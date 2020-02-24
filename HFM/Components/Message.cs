@@ -122,7 +122,7 @@ namespace HFM.Components
             byte[] messageData = new byte[62];
             int j = 1;
             //报文头，1字节
-            messageData[0] =Convert.ToByte('p');
+            messageData[0] =Convert.ToByte('P');
             //循环生成4个通道的报文，每个通道15个字节
             for(int i=0; i<4; i++)
             {               
@@ -153,7 +153,7 @@ namespace HFM.Components
                 j = j + 15;
             }
             //报文结束标志，1字节
-            messageData[61] = Convert.ToByte('p');
+            messageData[61] = Convert.ToByte('P');
             return messageData;
         }
         #endregion     

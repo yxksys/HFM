@@ -110,7 +110,22 @@ namespace HFM
                 {
                     commPort.Open();
                     byte[] messageData = new byte[62];
-                    messageData = HFM.Components.Message.BuildMessage(0);
+                    messageData[0] = Convert.ToByte('P');
+                    while (true)
+                    {
+                        if (HFM.Components.Message.SendMessage(messageData, commPort) == true)
+                        {
+
+
+                            System.Threading.Thread.Sleep(100);
+                            byte[] receiveBuffMessage = new byte[200];
+                            string message = HFM.Components.Message.ReceiveMessage(commPort);
+
+                        }
+                    }
+                    
+
+                    //messageData=HFM.Components.Message.BuildMessage(0);
 
                     if(HFM.Components.Message.SendMessage(messageData,commPort)==true)
 {

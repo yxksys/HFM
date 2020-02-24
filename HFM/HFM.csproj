@@ -64,6 +64,12 @@
     <Compile Include="Components\SystemParameter.cs" />
     <Compile Include="Components\Tools.cs" />
     <Compile Include="Components\User.cs" />
+    <Compile Include="FrmMeasure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeasure.Designer.cs">
+      <DependentUpon>FrmMeasure.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmWelcome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmMeasure.resx">
+      <DependentUpon>FrmMeasure.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmWelcome.resx">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </EmbeddedResource>
