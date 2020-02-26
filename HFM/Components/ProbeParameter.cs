@@ -5,7 +5,7 @@
  *  作者：邢家宁
  *  版本：
  *  创建时间：2020/2/13
- *  类名：探测器类型警报及效率类
+ *  类名：探测参数类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -214,6 +214,16 @@ namespace HFM.Components
                 ICalibrationS.Add(probeParameter);
             }
             return ICalibrationS;
+        }
+        /// <summary>
+        /// 根据通道ID和核素类型查询探测参数
+        /// </summary>
+        /// <param name="channelID">通道ID</param>
+        /// <param name="_nuclideType">核素类型</param>
+        /// <returns>探测参数</returns>
+        public ProbeParameter GetParameter(int channelID, string _nuclideType)
+        {
+            return null;
         }
         #endregion
 

@@ -42,7 +42,7 @@ namespace HFM.Components
         private int _bkgUpdate;//强制本底次数
         private int _clothOfflineTime;//衣物离线自检时间
         private bool _isEnglish;//当前是否英文版本
-
+        private int _measuredCount;//已经完成检查次数
 
         /// <summary>
         /// 测量单位
@@ -76,6 +76,10 @@ namespace HFM.Components
         /// 当前是否英文版本
         /// </summary>
         public bool IsEnglish { get => _isEnglish; set => _isEnglish = value; }
+        /// <summary>
+        /// 已经完成检测人数
+        /// </summary>       
+        public int MeasuredCount { get => _measuredCount; set => _measuredCount = value; }
 
         #endregion
 
@@ -164,7 +168,24 @@ namespace HFM.Components
                 return false;
             }
         }
-
+        /// <summary>
+        /// 更新检查次数
+        /// 每次检测完成后检查次数+1
+        /// </summary>
+        /// <returns></returns>
+        public void UpdateMeasuredCount()
+        {
+            
+        }
+        /// <summary>
+        /// 已经完成检查次数清零
+        /// 每次本底测量后需清零
+        /// </summary>
+        /// <returns></returns>
+        public void ClearMeasuredCount()
+        {
+            
+        }
         #endregion
     }
 }

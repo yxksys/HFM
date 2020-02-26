@@ -1,11 +1,13 @@
 ﻿/**
  * ________________________________________________________________________________ 
  *
- *  描述：
- *  作者：
- *  版本：
- *  创建时间：
- *  类名：
+ *  描述：完成上位机与下位机报文传输与解析
+ *  作者：杨慧炯
+ *  版本：V1.0
+ *  创建时间：2020-02-11
+ *  类名：Message
+ *  更新记录：02-14修正了Alpha和Beta自检报文中两个错误报文数据；
+ *            02-21修正了解析报文中Alpha和Beta计数值四个字节信息的解析方式
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -120,7 +122,7 @@ namespace HFM.Components
             byte[] messageData = new byte[62];
             int j = 1;
             //报文头，1字节
-            messageData[0] =Convert.ToByte('p');
+            messageData[0] =Convert.ToByte('P');
             //循环生成4个通道的报文，每个通道15个字节
             for(int i=0; i<4; i++)
             {               
@@ -151,7 +153,7 @@ namespace HFM.Components
                 j = j + 15;
             }
             //报文结束标志，1字节
-            messageData[61] = Convert.ToByte('p');
+            messageData[61] = Convert.ToByte('P');
             return messageData;
         }
         #endregion     
@@ -169,7 +171,7 @@ namespace HFM.Components
         /// <typeparam name="T">返回对象泛型列表，P参数命令码：ChannelParameter对象列表； C测量值命令码：MeasureData对象列表</typeparam>
         /// <param name="message">下位机上传的报文信息</param>
         /// <returns>解析后的报文对象列表</returns>
-        public IList<T> ExplainMessage<T>(string message)
+        public static IList<T> ExplainMessage<T>(byte[]  message)
         {
             //初始化返回P命令码道盒参数对象列表
             IList<ChannelParameter> channelParameterS = new List<ChannelParameter>();
@@ -188,7 +190,8 @@ namespace HFM.Components
                 //定义指向通道第一个数据的索引值，为报文头之后下一个数据
                 int channelHeadIndex = packageIndex + 1;
                 //解析报文头
-                switch (message.ElementAt<char>(packageIndex))
+                
+                switch (Convert.ToChar(message[packageIndex]))
                 {
                     case 'p':  //'p'上传参数
                         //设置当前报文类型
@@ -202,16 +205,22 @@ namespace HFM.Components
                                 break;
                             }
                             //按照报文格式，分别取出本通道相关道盒参数值，从当前报文第一个数据索引开始，连续读取15个字节数据进行解析
-                            int channelID = Convert.ToInt32(message.ElementAt<char>(channelHeadIndex).ToString());//通道ID一个字节
-                            float alphaThreshold = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 1).ToString())*10;//Alpha值一个字节
-                            float betaThreshold = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 2).ToString())*10;//Beta值一个字节
-                            float presetHV = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 3).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 4).ToString());//高压值两个字节
-                            float aDCFactor = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 5).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 6).ToString());//AD因子两个字节
-                            float dACFactor = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 7).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 8).ToString());//DA因子两个字节
-                            float hVFactor = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 9).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 10).ToString());//高压值两个字节
-                            float workTime = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 11).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 12).ToString());//工作时间两个字节
-                            float hVRatio = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 13).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 14).ToString());//高压值两个字节
-                                                                                                                                                                                                            //按照解析的道盒参数构造道盒参数对象                                                                               
+                            int channelID = Convert.ToInt32(message[channelHeadIndex]);//通道ID一个字节
+                            float alphaThreshold = Convert.ToSingle(message[channelHeadIndex + 1])*10;//Alpha值一个字节,数值放大10倍
+                            float betaThreshold = Convert.ToSingle(message[channelHeadIndex + 2])*10;//Beta值一个字节,数值放大10倍
+                            float presetHV = Convert.ToSingle(message[channelHeadIndex + 3]) * 256;
+                            presetHV += Convert.ToSingle(message[channelHeadIndex + 4]);//高压值两个字节
+                            float aDCFactor = Convert.ToSingle(message[channelHeadIndex + 5]) * 256;
+                            aDCFactor += Convert.ToSingle(message[channelHeadIndex + 6]);//AD因子两个字节
+                            float dACFactor = Convert.ToSingle(message[channelHeadIndex + 7]) * 256;
+                                dACFactor +=Convert.ToSingle(message[channelHeadIndex + 8]);//DA因子两个字节
+                            float hVFactor = Convert.ToSingle(message[channelHeadIndex + 9]) * 256;
+                            hVFactor += Convert.ToSingle(message[channelHeadIndex + 10]);//高压值两个字节
+                            float workTime = Convert.ToSingle(message[channelHeadIndex + 11]) * 256;
+                            workTime += Convert.ToSingle(message[channelHeadIndex + 12]);//工作时间两个字节
+                            float hVRatio = Convert.ToSingle(message[channelHeadIndex + 13]) * 256;
+                            hVRatio += Convert.ToSingle(message[channelHeadIndex + 14]);//高压值两个字节
+                            //按照解析的道盒参数构造道盒参数对象                                                                               
                             ChannelParameter channelParameter = new ChannelParameter(channelID, alphaThreshold, betaThreshold, presetHV, aDCFactor, dACFactor, hVFactor, workTime, hVRatio);
                             //将构造的道盒参数对象添加到列表中
                             channelParameterS.Add(channelParameter);
@@ -230,19 +239,26 @@ namespace HFM.Components
                                 break;
                             }
                             //按照报文格式，分别取出本通道测量数值，从当前报文第一个数据索引开始，连续读取15个字节数据进行解析
-                            int channelID = Convert.ToInt32(message.ElementAt<char>(channelHeadIndex).ToString());//通道ID一个字节
+                            int channelID = Convert.ToInt32(message[channelHeadIndex]);//通道ID一个字节
 
-                            float alpha = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 1).ToString())*256*256*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 2).ToString())*256*256
-                                          +Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 3).ToString())*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 4).ToString());//Alpha计数值四个字节
+                            float alpha = Convert.ToSingle(message[channelHeadIndex + 1]);
+                            alpha += Convert.ToSingle(message[channelHeadIndex + 2]) * 256;
+                            alpha += Convert.ToSingle(message[channelHeadIndex + 3]) * 256 * 256;
+                            alpha += Convert.ToSingle(message[channelHeadIndex + 4]) * 256 * 256 * 256;//Alpha计数值四个字节,由低位向高位
 
-                            float beta = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 5).ToString())*256*256*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 6).ToString())*256*256 
-                                         +Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 7).ToString())*256+ Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 8).ToString());//Beta计数值四个字节
+                            float beta = Convert.ToSingle(message[channelHeadIndex + 5]);
+                            beta += Convert.ToSingle(message[channelHeadIndex + 6]) * 256;
+                            beta += Convert.ToSingle(message[channelHeadIndex + 7]) * 256 * 256;
+                            beta += Convert.ToSingle(message[channelHeadIndex + 8]) * 256 * 256 * 256;//Beta计数值四个字节,由低位向高位
 
-                            float analogV = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 9).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 10).ToString());//模拟电压值两个字节
+                            float analogV = Convert.ToSingle(message[channelHeadIndex + 9]) * 256;
+                            analogV += Convert.ToSingle(message[channelHeadIndex + 10]);//模拟电压值两个字节
 
-                            float digitalV = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 11).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 12).ToString());//数字电压值两个字节
+                            float digitalV = Convert.ToSingle(message[channelHeadIndex + 11]) * 256;
+                            digitalV += Convert.ToSingle(message[channelHeadIndex + 12]);//数字电压值两个字节
 
-                            float hV = Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 13).ToString()) * 256 + Convert.ToSingle(message.ElementAt<char>(channelHeadIndex + 14).ToString());//高压值两个字节                            
+                            float hV = Convert.ToSingle(message[channelHeadIndex + 13]) * 256;
+                            hV += Convert.ToSingle(message[channelHeadIndex + 14]);//高压值两个字节                            
                             
                             //按照解析的测量数据构造测量数据对象
                             //其它参数给默认值
@@ -253,7 +269,7 @@ namespace HFM.Components
                             channelHeadIndex = channelHeadIndex + 15;
                         }
                         //报文最后一个字节为红外状态                       
-                        int infraredStatus = Convert.ToInt32(message.ElementAt<char>(channelHeadIndex).ToString());
+                        int infraredStatus = Convert.ToInt32(message[channelHeadIndex]);
                         //infraredStatus报文格式：衣物探头状态数据位（1bit）、右手状态数据位（1bit）、左手状态数据位（1bit）
                         //数据的值 0：手部到位/衣物探头未拿起 1：手部不到位/衣物探头拿起
                         if (packageIndex == 0) //第一个数据包1-4通道为手部探头
@@ -264,7 +280,7 @@ namespace HFM.Components
                                 measureDataS[0].InfraredStatus = 1;
                                 measureDataS[1].InfraredStatus = 1;
                             }
-                            //右手到位
+                            ////右手到位
                             if (infraredStatus == 0 || infraredStatus == 1 || infraredStatus == 4 || infraredStatus == 5)
                             {
                                 measureDataS[2].InfraredStatus = 1;
@@ -302,7 +318,7 @@ namespace HFM.Components
         /// <param name="commport">传输报文端口</param>
         /// <returns>true  发送成功
         ///          false 发送失败  </returns>
-        public bool SendMessage(byte[] BuffMessage, CommPort commport)
+        public static bool SendMessage(byte[] BuffMessage, CommPort commport)
             {
                 //串口已打开
 
@@ -340,16 +356,16 @@ namespace HFM.Components
         /// </summary>
         /// <param name="commport"> 已打开的接收报文信息的串口</param>
         /// <returns>PosID  接收成功：返回收到的采集信息
-        ///                 接收失败：返回""  </returns>
-        public string ReceiveMessage(CommPort commport)
+        ///                 接收失败：返回null  </returns>
+        public static byte[] ReceiveMessage(CommPort commport)
         {
             //串口已打开
 
             int NumBytes;
             HexCon hexcon = new HexCon();
 
-            NumBytes = 54;
-            byte[] RecBuf = new byte[54];
+            NumBytes = 200;
+            byte[] RecBuf = new byte[200];
             //获得当前系统时间
             System.DateTime Start_Time = new System.DateTime();
             Start_Time = System.DateTime.Now;
@@ -360,20 +376,19 @@ namespace HFM.Components
                 //传输时间大于20秒则传输失败
                 TimeSpan Space_Time = Now_Time.Subtract(Start_Time);
                 if (Space_Time.Seconds > 20)
-                    return "";
+                    return null;
                 else
                 {
                     //读串口数据到RecBuf
                     try
                     {
                         //接收下位机上传的采集数据报文，将其从byte型转换为string类型(十六进制)并返回
-                        RecBuf = commport.Read(NumBytes);
-                        string RecMessage = hexcon.ByteToString(RecBuf);
-                        return RecMessage;
+                        RecBuf = commport.Read(NumBytes);                        
+                        return RecBuf;
                     }
                     catch
                     {
-                        return "";
+                        return null;                        
                     }
 
                 }
