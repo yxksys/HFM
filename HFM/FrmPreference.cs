@@ -22,7 +22,7 @@ namespace HFM.Components
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
             oleDbDataAdapter.Fill(thisDataSet, "HFM_Preference");
             DataTable dt = thisDataSet.Tables["HFM_Preference"];
-            this.dataGridView1.DataSource = dt;
+            this.DgvAlphaSet.DataSource = dt;
             oleDbConnection.Close();
 
         }

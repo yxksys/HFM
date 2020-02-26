@@ -28,192 +28,206 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Tab1 = new System.Windows.Forms.TabControl();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.GrpFacilityData = new System.Windows.Forms.GroupBox();
+            this.RdoIsConnectedAuto = new System.Windows.Forms.RadioButton();
+            this.CmbUnclideType = new System.Windows.Forms.ComboBox();
+            this.LblUnclideType = new System.Windows.Forms.Label();
+            this.TxtPortNumber = new System.Windows.Forms.TextBox();
+            this.LblPortNumber = new System.Windows.Forms.Label();
+            this.TxtIPAddressFour = new System.Windows.Forms.TextBox();
+            this.TxtIPAddressThree = new System.Windows.Forms.TextBox();
+            this.TxtIPAddressTwo = new System.Windows.Forms.TextBox();
+            this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
+            this.TxtSoftName = new System.Windows.Forms.TextBox();
+            this.LblSoftName = new System.Windows.Forms.Label();
+            this.TxtInstrumentNum = new System.Windows.Forms.TextBox();
+            this.LblInstrumentNum = new System.Windows.Forms.Label();
+            this.TxtSmoothingFactor = new System.Windows.Forms.TextBox();
+            this.LblIPAddress = new System.Windows.Forms.Label();
+            this.LblSmoothingFactor = new System.Windows.Forms.Label();
+            this.BtnPreferenceNo = new System.Windows.Forms.Button();
+            this.BtnPreferenceOk = new System.Windows.Forms.Button();
+            this.GrpPreferenceArea = new System.Windows.Forms.GroupBox();
+            this.TxtRightFootProbeArea = new System.Windows.Forms.TextBox();
+            this.TxtRightOutProbeArea = new System.Windows.Forms.TextBox();
+            this.TxtLeftOutProbeArea = new System.Windows.Forms.TextBox();
+            this.TxtCloseProbeArea = new System.Windows.Forms.TextBox();
+            this.TxtLeftFootProbeArea = new System.Windows.Forms.TextBox();
+            this.TxtRightInProbeArea = new System.Windows.Forms.TextBox();
+            this.TxtLeftInProbeArea = new System.Windows.Forms.TextBox();
+            this.LblRightFootProbeArea = new System.Windows.Forms.Label();
+            this.LblRightOutProbeArea = new System.Windows.Forms.Label();
+            this.LblLeftOutProbeArea = new System.Windows.Forms.Label();
+            this.LblClothesProbeArea = new System.Windows.Forms.Label();
+            this.LblLeftFootProbeArea = new System.Windows.Forms.Label();
+            this.LblRightInProbeArea = new System.Windows.Forms.Label();
+            this.LblLeftInProbeArea = new System.Windows.Forms.Label();
+            this.GrpPreferenceData = new System.Windows.Forms.GroupBox();
+            this.TxtBKGUpdate = new System.Windows.Forms.TextBox();
+            this.TxtAlarmTime = new System.Windows.Forms.TextBox();
+            this.TxtMeasuringTime = new System.Windows.Forms.TextBox();
+            this.TxtSmoothingTime = new System.Windows.Forms.TextBox();
+            this.TxtSelfCheckTime = new System.Windows.Forms.TextBox();
+            this.CmbMeasurementUnit = new System.Windows.Forms.ComboBox();
+            this.LblBKGUpdate = new System.Windows.Forms.Label();
+            this.LblAlarmTime = new System.Windows.Forms.Label();
+            this.LblMeasurementUnit = new System.Windows.Forms.Label();
+            this.LblMeasuringTime = new System.Windows.Forms.Label();
+            this.LblSmoothingTime = new System.Windows.Forms.Label();
+            this.LblSelfCheckTime = new System.Windows.Forms.Label();
             this.α参数 = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.BtnAlphaNo = new System.Windows.Forms.Button();
+            this.BtnAlphaOk = new System.Windows.Forms.Button();
+            this.GrpAlphaNuclideChoose = new System.Windows.Forms.GroupBox();
+            this.RdoAlphaDefine2 = new System.Windows.Forms.RadioButton();
+            this.RdoAlpha241 = new System.Windows.Forms.RadioButton();
+            this.RdoAlphaDefine1 = new System.Windows.Forms.RadioButton();
+            this.RdoAlpha238 = new System.Windows.Forms.RadioButton();
+            this.RdoAlpha239 = new System.Windows.Forms.RadioButton();
+            this.RdoAlpha235 = new System.Windows.Forms.RadioButton();
+            this.GrpAlphaData = new System.Windows.Forms.GroupBox();
+            this.DgvAlphaSet = new System.Windows.Forms.DataGridView();
+            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.β参数 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
+            this.BtnBetaNo = new System.Windows.Forms.Button();
+            this.BtnBetaOk = new System.Windows.Forms.Button();
+            this.GrpBetaNuclideChoose = new System.Windows.Forms.GroupBox();
+            this.RdoBetaDefine2 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta192 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta90 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta36 = new System.Windows.Forms.RadioButton();
+            this.RdoBetaDefine1 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta137 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta60 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta32 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta204 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta131 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta58 = new System.Windows.Forms.RadioButton();
+            this.RdoBeta14 = new System.Windows.Forms.RadioButton();
+            this.GrpBetaData = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TxtBetaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.衣物探头 = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.BtnClothesNo = new System.Windows.Forms.Button();
+            this.BtnClothesOk = new System.Windows.Forms.Button();
+            this.GrpClothesNuclideChoose = new System.Windows.Forms.GroupBox();
+            this.RdoClothesBetaDefine1 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta192 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta90 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta36 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta137 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta60 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta32 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta204 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta131 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta58 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesBeta14 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesAlphaDefine1 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesAlpha241 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesAlpha238 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesAlpha239 = new System.Windows.Forms.RadioButton();
+            this.RdoClothesAlpha235 = new System.Windows.Forms.RadioButton();
+            this.LblClothesBetaOrClothes = new System.Windows.Forms.Label();
+            this.LblClothesAlpha = new System.Windows.Forms.Label();
+            this.GrpClothesData = new System.Windows.Forms.GroupBox();
+            this.TxtClothOfflineTime = new System.Windows.Forms.TextBox();
+            this.LblClothOfflineTime = new System.Windows.Forms.Label();
+            this.TxtClothesEfficiency = new System.Windows.Forms.TextBox();
+            this.TxtClothesAlarm_2 = new System.Windows.Forms.TextBox();
+            this.TxtClothesAlarm_1 = new System.Windows.Forms.TextBox();
+            this.TxtClothesLBackground = new System.Windows.Forms.TextBox();
+            this.TxtClothesHBackground = new System.Windows.Forms.TextBox();
+            this.LblClothesEfficiency = new System.Windows.Forms.Label();
+            this.LblClothesAlarm_2 = new System.Windows.Forms.Label();
+            this.LblClothesAlarm_1 = new System.Windows.Forms.Label();
+            this.LblClothesLBackground = new System.Windows.Forms.Label();
+            this.LblClothesHBackground = new System.Windows.Forms.Label();
             this.工厂参数 = new System.Windows.Forms.TabPage();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.BtnMainPreferenceWrite = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceRead = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
+            this.GrpMainPresence = new System.Windows.Forms.GroupBox();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.TxtMainPreferenceChanneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceAlphaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceBetaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferencePresetHV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceADCFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceDACFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceHVFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceWorkTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceHVRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.设备配置 = new System.Windows.Forms.TabPage();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
-            this.radioButton17 = new System.Windows.Forms.RadioButton();
-            this.radioButton18 = new System.Windows.Forms.RadioButton();
-            this.radioButton19 = new System.Windows.Forms.RadioButton();
-            this.radioButton20 = new System.Windows.Forms.RadioButton();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
-            this.radioButton22 = new System.Windows.Forms.RadioButton();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
-            this.radioButton24 = new System.Windows.Forms.RadioButton();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.radioButton25 = new System.Windows.Forms.RadioButton();
-            this.radioButton26 = new System.Windows.Forms.RadioButton();
-            this.radioButton27 = new System.Windows.Forms.RadioButton();
-            this.radioButton28 = new System.Windows.Forms.RadioButton();
-            this.radioButton29 = new System.Windows.Forms.RadioButton();
-            this.radioButton30 = new System.Windows.Forms.RadioButton();
-            this.radioButton31 = new System.Windows.Forms.RadioButton();
-            this.Tab1.SuspendLayout();
+            this.BtnFacilityNo = new System.Windows.Forms.Button();
+            this.BtnFacilityOk = new System.Windows.Forms.Button();
+            this.RdoClothes = new System.Windows.Forms.RadioButton();
+            this.RdoFoot = new System.Windows.Forms.RadioButton();
+            this.RdoDoubleHand = new System.Windows.Forms.RadioButton();
+            this.RdoSingleHand = new System.Windows.Forms.RadioButton();
+            this.RdoHand = new System.Windows.Forms.RadioButton();
+            this.LblFacility = new System.Windows.Forms.Label();
+            this.GrpHand = new System.Windows.Forms.GroupBox();
+            this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.GrpFacilityData.SuspendLayout();
+            this.GrpPreferenceArea.SuspendLayout();
+            this.GrpPreferenceData.SuspendLayout();
             this.α参数.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.GrpAlphaNuclideChoose.SuspendLayout();
+            this.GrpAlphaData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvAlphaSet)).BeginInit();
             this.β参数.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.GrpBetaNuclideChoose.SuspendLayout();
+            this.GrpBetaData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.衣物探头.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox8.SuspendLayout();
+            this.GrpClothesNuclideChoose.SuspendLayout();
+            this.GrpClothesData.SuspendLayout();
             this.工厂参数.SuspendLayout();
-            this.groupBox10.SuspendLayout();
+            this.GrpMainPresence.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.设备配置.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.GrpHand.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Tab1
+            // TabPresence
             // 
-            this.Tab1.Controls.Add(this.系统参数);
-            this.Tab1.Controls.Add(this.α参数);
-            this.Tab1.Controls.Add(this.β参数);
-            this.Tab1.Controls.Add(this.衣物探头);
-            this.Tab1.Controls.Add(this.工厂参数);
-            this.Tab1.Controls.Add(this.设备配置);
-            this.Tab1.Font = new System.Drawing.Font("宋体", 12F);
-            this.Tab1.Location = new System.Drawing.Point(0, 0);
-            this.Tab1.Name = "Tab1";
-            this.Tab1.SelectedIndex = 0;
-            this.Tab1.Size = new System.Drawing.Size(784, 483);
-            this.Tab1.TabIndex = 0;
+            this.TabPresence.Controls.Add(this.系统参数);
+            this.TabPresence.Controls.Add(this.α参数);
+            this.TabPresence.Controls.Add(this.β参数);
+            this.TabPresence.Controls.Add(this.衣物探头);
+            this.TabPresence.Controls.Add(this.工厂参数);
+            this.TabPresence.Controls.Add(this.设备配置);
+            this.TabPresence.Font = new System.Drawing.Font("宋体", 12F);
+            this.TabPresence.Location = new System.Drawing.Point(0, 0);
+            this.TabPresence.Name = "TabPresence";
+            this.TabPresence.SelectedIndex = 0;
+            this.TabPresence.Size = new System.Drawing.Size(784, 483);
+            this.TabPresence.TabIndex = 0;
             // 
             // 系统参数
             // 
-            this.系统参数.Controls.Add(this.groupBox3);
-            this.系统参数.Controls.Add(this.button2);
-            this.系统参数.Controls.Add(this.button1);
-            this.系统参数.Controls.Add(this.groupBox2);
-            this.系统参数.Controls.Add(this.groupBox1);
+            this.系统参数.Controls.Add(this.GrpFacilityData);
+            this.系统参数.Controls.Add(this.BtnPreferenceNo);
+            this.系统参数.Controls.Add(this.BtnPreferenceOk);
+            this.系统参数.Controls.Add(this.GrpPreferenceArea);
+            this.系统参数.Controls.Add(this.GrpPreferenceData);
             this.系统参数.Location = new System.Drawing.Point(4, 30);
             this.系统参数.Name = "系统参数";
             this.系统参数.Padding = new System.Windows.Forms.Padding(3);
@@ -222,493 +236,513 @@
             this.系统参数.Text = "系统参数";
             this.系统参数.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.comboBox2);
-            this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.textBox20);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.textBox19);
-            this.groupBox3.Controls.Add(this.textBox18);
-            this.groupBox3.Controls.Add(this.textBox17);
-            this.groupBox3.Controls.Add(this.textBox16);
-            this.groupBox3.Controls.Add(this.textBox15);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.textBox14);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.textBox13);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(9, 336);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(757, 105);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "工厂参数";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton2.Location = new System.Drawing.Point(520, 65);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(110, 24);
-            this.radioButton2.TabIndex = 16;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "自动连接";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.ItemHeight = 20;
-            this.comboBox2.Location = new System.Drawing.Point(691, 64);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(60, 26);
-            this.comboBox2.TabIndex = 15;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label19.Location = new System.Drawing.Point(635, 66);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(49, 20);
-            this.label19.TabIndex = 14;
-            this.label19.Text = "类型";
-            // 
-            // textBox20
-            // 
-            this.textBox20.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox20.Location = new System.Drawing.Point(436, 65);
-            this.textBox20.Multiline = true;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(60, 25);
-            this.textBox20.TabIndex = 12;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("宋体", 12F);
-            this.label18.Location = new System.Drawing.Point(380, 67);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(49, 20);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "端口";
-            // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(323, 66);
-            this.textBox19.Multiline = true;
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(50, 25);
-            this.textBox19.TabIndex = 10;
-            // 
-            // textBox18
-            // 
-            this.textBox18.Location = new System.Drawing.Point(255, 66);
-            this.textBox18.Multiline = true;
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(50, 25);
-            this.textBox18.TabIndex = 9;
-            // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(187, 66);
-            this.textBox17.Multiline = true;
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(50, 25);
-            this.textBox17.TabIndex = 8;
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(122, 66);
-            this.textBox16.Multiline = true;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(50, 25);
-            this.textBox16.TabIndex = 7;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(540, 34);
-            this.textBox15.Multiline = true;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(180, 25);
-            this.textBox15.TabIndex = 6;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label17.Location = new System.Drawing.Point(445, 36);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(89, 20);
-            this.label17.TabIndex = 5;
-            this.label17.Text = "仪器名称";
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(326, 34);
-            this.textBox14.Multiline = true;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 25);
-            this.textBox14.TabIndex = 4;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label16.Location = new System.Drawing.Point(274, 36);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(49, 20);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "编号";
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(122, 34);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(120, 25);
-            this.textBox13.TabIndex = 2;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label15.Location = new System.Drawing.Point(32, 69);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 20);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "IP地址";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.Location = new System.Drawing.Point(26, 35);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 20);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "平滑因子";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(603, 284);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 52);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "取消";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(459, 284);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 52);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "确认";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox12);
-            this.groupBox2.Controls.Add(this.textBox11);
-            this.groupBox2.Controls.Add(this.textBox10);
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(367, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(396, 260);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "探测器面积/cm²";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(302, 159);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(80, 25);
-            this.textBox12.TabIndex = 12;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(302, 108);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(80, 25);
-            this.textBox11.TabIndex = 11;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(302, 55);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(80, 25);
-            this.textBox10.TabIndex = 10;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(136, 207);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(80, 25);
-            this.textBox9.TabIndex = 9;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(136, 159);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(80, 25);
-            this.textBox8.TabIndex = 8;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(137, 105);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(80, 25);
-            this.textBox7.TabIndex = 7;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(137, 55);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(80, 25);
-            this.textBox6.TabIndex = 6;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(227, 159);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 20);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "右  脚";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(227, 110);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 20);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "右手背";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(227, 57);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 20);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "左手背";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(62, 209);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 20);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "衣  物";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(61, 159);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 20);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "左  脚";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(62, 110);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 20);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "右手心";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(62, 57);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 20);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "左手心";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(15, 15);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(331, 260);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "系统参数";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(175, 209);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 25);
-            this.textBox5.TabIndex = 11;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(175, 176);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 25);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("宋体", 10F);
-            this.textBox3.Location = new System.Drawing.Point(175, 110);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 25);
-            this.textBox3.TabIndex = 9;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("宋体", 10F);
-            this.textBox2.Location = new System.Drawing.Point(175, 79);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 25);
-            this.textBox2.TabIndex = 8;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("宋体", 10F);
-            this.textBox1.Location = new System.Drawing.Point(175, 46);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 25);
-            this.textBox1.TabIndex = 7;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ItemHeight = 23;
-            this.comboBox1.Location = new System.Drawing.Point(175, 141);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 29);
-            this.comboBox1.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(51, 210);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 24);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "强制本底(次)";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(51, 179);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 24);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "警报时间(s)";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(51, 146);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 24);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "测量单位";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(51, 114);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 24);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "测量时间(s)";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(51, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "平滑时间(s)";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(51, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "自检时间(s)";
+            // GrpFacilityData
+            // 
+            this.GrpFacilityData.Controls.Add(this.RdoIsConnectedAuto);
+            this.GrpFacilityData.Controls.Add(this.CmbUnclideType);
+            this.GrpFacilityData.Controls.Add(this.LblUnclideType);
+            this.GrpFacilityData.Controls.Add(this.TxtPortNumber);
+            this.GrpFacilityData.Controls.Add(this.LblPortNumber);
+            this.GrpFacilityData.Controls.Add(this.TxtIPAddressFour);
+            this.GrpFacilityData.Controls.Add(this.TxtIPAddressThree);
+            this.GrpFacilityData.Controls.Add(this.TxtIPAddressTwo);
+            this.GrpFacilityData.Controls.Add(this.TxtIPAddressOne);
+            this.GrpFacilityData.Controls.Add(this.TxtSoftName);
+            this.GrpFacilityData.Controls.Add(this.LblSoftName);
+            this.GrpFacilityData.Controls.Add(this.TxtInstrumentNum);
+            this.GrpFacilityData.Controls.Add(this.LblInstrumentNum);
+            this.GrpFacilityData.Controls.Add(this.TxtSmoothingFactor);
+            this.GrpFacilityData.Controls.Add(this.LblIPAddress);
+            this.GrpFacilityData.Controls.Add(this.LblSmoothingFactor);
+            this.GrpFacilityData.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GrpFacilityData.Location = new System.Drawing.Point(9, 336);
+            this.GrpFacilityData.Name = "GrpFacilityData";
+            this.GrpFacilityData.Size = new System.Drawing.Size(757, 105);
+            this.GrpFacilityData.TabIndex = 4;
+            this.GrpFacilityData.TabStop = false;
+            this.GrpFacilityData.Text = "工厂参数";
+            // 
+            // RdoIsConnectedAuto
+            // 
+            this.RdoIsConnectedAuto.AutoSize = true;
+            this.RdoIsConnectedAuto.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoIsConnectedAuto.Location = new System.Drawing.Point(520, 65);
+            this.RdoIsConnectedAuto.Name = "RdoIsConnectedAuto";
+            this.RdoIsConnectedAuto.Size = new System.Drawing.Size(110, 24);
+            this.RdoIsConnectedAuto.TabIndex = 16;
+            this.RdoIsConnectedAuto.TabStop = true;
+            this.RdoIsConnectedAuto.Text = "自动连接";
+            this.RdoIsConnectedAuto.UseVisualStyleBackColor = true;
+            // 
+            // CmbUnclideType
+            // 
+            this.CmbUnclideType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CmbUnclideType.Font = new System.Drawing.Font("宋体", 10F);
+            this.CmbUnclideType.FormattingEnabled = true;
+            this.CmbUnclideType.ItemHeight = 20;
+            this.CmbUnclideType.Location = new System.Drawing.Point(691, 64);
+            this.CmbUnclideType.Name = "CmbUnclideType";
+            this.CmbUnclideType.Size = new System.Drawing.Size(60, 26);
+            this.CmbUnclideType.TabIndex = 15;
+            // 
+            // LblUnclideType
+            // 
+            this.LblUnclideType.AutoSize = true;
+            this.LblUnclideType.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblUnclideType.Location = new System.Drawing.Point(635, 66);
+            this.LblUnclideType.Name = "LblUnclideType";
+            this.LblUnclideType.Size = new System.Drawing.Size(49, 20);
+            this.LblUnclideType.TabIndex = 14;
+            this.LblUnclideType.Text = "类型";
+            // 
+            // TxtPortNumber
+            // 
+            this.TxtPortNumber.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtPortNumber.Location = new System.Drawing.Point(436, 65);
+            this.TxtPortNumber.Multiline = true;
+            this.TxtPortNumber.Name = "TxtPortNumber";
+            this.TxtPortNumber.Size = new System.Drawing.Size(60, 25);
+            this.TxtPortNumber.TabIndex = 12;
+            // 
+            // LblPortNumber
+            // 
+            this.LblPortNumber.AutoSize = true;
+            this.LblPortNumber.Font = new System.Drawing.Font("宋体", 12F);
+            this.LblPortNumber.Location = new System.Drawing.Point(380, 67);
+            this.LblPortNumber.Name = "LblPortNumber";
+            this.LblPortNumber.Size = new System.Drawing.Size(49, 20);
+            this.LblPortNumber.TabIndex = 11;
+            this.LblPortNumber.Text = "端口";
+            // 
+            // TxtIPAddressFour
+            // 
+            this.TxtIPAddressFour.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtIPAddressFour.Location = new System.Drawing.Point(323, 66);
+            this.TxtIPAddressFour.Multiline = true;
+            this.TxtIPAddressFour.Name = "TxtIPAddressFour";
+            this.TxtIPAddressFour.Size = new System.Drawing.Size(50, 25);
+            this.TxtIPAddressFour.TabIndex = 10;
+            // 
+            // TxtIPAddressThree
+            // 
+            this.TxtIPAddressThree.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtIPAddressThree.Location = new System.Drawing.Point(255, 66);
+            this.TxtIPAddressThree.Multiline = true;
+            this.TxtIPAddressThree.Name = "TxtIPAddressThree";
+            this.TxtIPAddressThree.Size = new System.Drawing.Size(50, 25);
+            this.TxtIPAddressThree.TabIndex = 9;
+            // 
+            // TxtIPAddressTwo
+            // 
+            this.TxtIPAddressTwo.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtIPAddressTwo.Location = new System.Drawing.Point(187, 66);
+            this.TxtIPAddressTwo.Multiline = true;
+            this.TxtIPAddressTwo.Name = "TxtIPAddressTwo";
+            this.TxtIPAddressTwo.Size = new System.Drawing.Size(50, 25);
+            this.TxtIPAddressTwo.TabIndex = 8;
+            // 
+            // TxtIPAddressOne
+            // 
+            this.TxtIPAddressOne.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtIPAddressOne.Location = new System.Drawing.Point(122, 66);
+            this.TxtIPAddressOne.Multiline = true;
+            this.TxtIPAddressOne.Name = "TxtIPAddressOne";
+            this.TxtIPAddressOne.Size = new System.Drawing.Size(50, 25);
+            this.TxtIPAddressOne.TabIndex = 7;
+            // 
+            // TxtSoftName
+            // 
+            this.TxtSoftName.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtSoftName.Location = new System.Drawing.Point(540, 34);
+            this.TxtSoftName.Multiline = true;
+            this.TxtSoftName.Name = "TxtSoftName";
+            this.TxtSoftName.Size = new System.Drawing.Size(180, 25);
+            this.TxtSoftName.TabIndex = 6;
+            // 
+            // LblSoftName
+            // 
+            this.LblSoftName.AutoSize = true;
+            this.LblSoftName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblSoftName.Location = new System.Drawing.Point(445, 36);
+            this.LblSoftName.Name = "LblSoftName";
+            this.LblSoftName.Size = new System.Drawing.Size(89, 20);
+            this.LblSoftName.TabIndex = 5;
+            this.LblSoftName.Text = "仪器名称";
+            // 
+            // TxtInstrumentNum
+            // 
+            this.TxtInstrumentNum.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtInstrumentNum.Location = new System.Drawing.Point(326, 34);
+            this.TxtInstrumentNum.Multiline = true;
+            this.TxtInstrumentNum.Name = "TxtInstrumentNum";
+            this.TxtInstrumentNum.Size = new System.Drawing.Size(100, 25);
+            this.TxtInstrumentNum.TabIndex = 4;
+            // 
+            // LblInstrumentNum
+            // 
+            this.LblInstrumentNum.AutoSize = true;
+            this.LblInstrumentNum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblInstrumentNum.Location = new System.Drawing.Point(274, 36);
+            this.LblInstrumentNum.Name = "LblInstrumentNum";
+            this.LblInstrumentNum.Size = new System.Drawing.Size(49, 20);
+            this.LblInstrumentNum.TabIndex = 3;
+            this.LblInstrumentNum.Text = "编号";
+            // 
+            // TxtSmoothingFactor
+            // 
+            this.TxtSmoothingFactor.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtSmoothingFactor.Location = new System.Drawing.Point(122, 34);
+            this.TxtSmoothingFactor.Multiline = true;
+            this.TxtSmoothingFactor.Name = "TxtSmoothingFactor";
+            this.TxtSmoothingFactor.Size = new System.Drawing.Size(120, 25);
+            this.TxtSmoothingFactor.TabIndex = 2;
+            // 
+            // LblIPAddress
+            // 
+            this.LblIPAddress.AutoSize = true;
+            this.LblIPAddress.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblIPAddress.Location = new System.Drawing.Point(32, 69);
+            this.LblIPAddress.Name = "LblIPAddress";
+            this.LblIPAddress.Size = new System.Drawing.Size(69, 20);
+            this.LblIPAddress.TabIndex = 1;
+            this.LblIPAddress.Text = "IP地址";
+            this.LblIPAddress.Click += new System.EventHandler(this.label15_Click);
+            // 
+            // LblSmoothingFactor
+            // 
+            this.LblSmoothingFactor.AutoSize = true;
+            this.LblSmoothingFactor.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblSmoothingFactor.Location = new System.Drawing.Point(26, 35);
+            this.LblSmoothingFactor.Name = "LblSmoothingFactor";
+            this.LblSmoothingFactor.Size = new System.Drawing.Size(89, 20);
+            this.LblSmoothingFactor.TabIndex = 0;
+            this.LblSmoothingFactor.Text = "平滑因子";
+            // 
+            // BtnPreferenceNo
+            // 
+            this.BtnPreferenceNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.BtnPreferenceNo.Location = new System.Drawing.Point(603, 284);
+            this.BtnPreferenceNo.Name = "BtnPreferenceNo";
+            this.BtnPreferenceNo.Size = new System.Drawing.Size(128, 52);
+            this.BtnPreferenceNo.TabIndex = 3;
+            this.BtnPreferenceNo.Text = "取消";
+            this.BtnPreferenceNo.UseVisualStyleBackColor = true;
+            // 
+            // BtnPreferenceOk
+            // 
+            this.BtnPreferenceOk.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.BtnPreferenceOk.Location = new System.Drawing.Point(459, 284);
+            this.BtnPreferenceOk.Name = "BtnPreferenceOk";
+            this.BtnPreferenceOk.Size = new System.Drawing.Size(128, 52);
+            this.BtnPreferenceOk.TabIndex = 2;
+            this.BtnPreferenceOk.Text = "确认";
+            this.BtnPreferenceOk.UseVisualStyleBackColor = true;
+            // 
+            // GrpPreferenceArea
+            // 
+            this.GrpPreferenceArea.Controls.Add(this.TxtRightFootProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.TxtRightOutProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.TxtLeftOutProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.TxtCloseProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.TxtLeftFootProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.TxtRightInProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.TxtLeftInProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.LblRightFootProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.LblRightOutProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.LblLeftOutProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.LblClothesProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.LblLeftFootProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.LblRightInProbeArea);
+            this.GrpPreferenceArea.Controls.Add(this.LblLeftInProbeArea);
+            this.GrpPreferenceArea.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GrpPreferenceArea.Location = new System.Drawing.Point(367, 15);
+            this.GrpPreferenceArea.Name = "GrpPreferenceArea";
+            this.GrpPreferenceArea.Size = new System.Drawing.Size(396, 260);
+            this.GrpPreferenceArea.TabIndex = 1;
+            this.GrpPreferenceArea.TabStop = false;
+            this.GrpPreferenceArea.Text = "探测器面积/cm²";
+            // 
+            // TxtRightFootProbeArea
+            // 
+            this.TxtRightFootProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtRightFootProbeArea.Location = new System.Drawing.Point(302, 159);
+            this.TxtRightFootProbeArea.Multiline = true;
+            this.TxtRightFootProbeArea.Name = "TxtRightFootProbeArea";
+            this.TxtRightFootProbeArea.Size = new System.Drawing.Size(80, 25);
+            this.TxtRightFootProbeArea.TabIndex = 12;
+            // 
+            // TxtRightOutProbeArea
+            // 
+            this.TxtRightOutProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtRightOutProbeArea.Location = new System.Drawing.Point(302, 108);
+            this.TxtRightOutProbeArea.Multiline = true;
+            this.TxtRightOutProbeArea.Name = "TxtRightOutProbeArea";
+            this.TxtRightOutProbeArea.Size = new System.Drawing.Size(80, 25);
+            this.TxtRightOutProbeArea.TabIndex = 11;
+            // 
+            // TxtLeftOutProbeArea
+            // 
+            this.TxtLeftOutProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtLeftOutProbeArea.Location = new System.Drawing.Point(302, 55);
+            this.TxtLeftOutProbeArea.Multiline = true;
+            this.TxtLeftOutProbeArea.Name = "TxtLeftOutProbeArea";
+            this.TxtLeftOutProbeArea.Size = new System.Drawing.Size(80, 25);
+            this.TxtLeftOutProbeArea.TabIndex = 10;
+            // 
+            // TxtCloseProbeArea
+            // 
+            this.TxtCloseProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtCloseProbeArea.Location = new System.Drawing.Point(136, 207);
+            this.TxtCloseProbeArea.Multiline = true;
+            this.TxtCloseProbeArea.Name = "TxtCloseProbeArea";
+            this.TxtCloseProbeArea.Size = new System.Drawing.Size(80, 25);
+            this.TxtCloseProbeArea.TabIndex = 9;
+            // 
+            // TxtLeftFootProbeArea
+            // 
+            this.TxtLeftFootProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtLeftFootProbeArea.Location = new System.Drawing.Point(136, 159);
+            this.TxtLeftFootProbeArea.Multiline = true;
+            this.TxtLeftFootProbeArea.Name = "TxtLeftFootProbeArea";
+            this.TxtLeftFootProbeArea.Size = new System.Drawing.Size(80, 25);
+            this.TxtLeftFootProbeArea.TabIndex = 8;
+            // 
+            // TxtRightInProbeArea
+            // 
+            this.TxtRightInProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtRightInProbeArea.Location = new System.Drawing.Point(137, 105);
+            this.TxtRightInProbeArea.Multiline = true;
+            this.TxtRightInProbeArea.Name = "TxtRightInProbeArea";
+            this.TxtRightInProbeArea.Size = new System.Drawing.Size(80, 25);
+            this.TxtRightInProbeArea.TabIndex = 7;
+            // 
+            // TxtLeftInProbeArea
+            // 
+            this.TxtLeftInProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtLeftInProbeArea.Location = new System.Drawing.Point(137, 55);
+            this.TxtLeftInProbeArea.Multiline = true;
+            this.TxtLeftInProbeArea.Name = "TxtLeftInProbeArea";
+            this.TxtLeftInProbeArea.Size = new System.Drawing.Size(80, 25);
+            this.TxtLeftInProbeArea.TabIndex = 6;
+            // 
+            // LblRightFootProbeArea
+            // 
+            this.LblRightFootProbeArea.AutoSize = true;
+            this.LblRightFootProbeArea.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblRightFootProbeArea.Location = new System.Drawing.Point(227, 159);
+            this.LblRightFootProbeArea.Name = "LblRightFootProbeArea";
+            this.LblRightFootProbeArea.Size = new System.Drawing.Size(69, 20);
+            this.LblRightFootProbeArea.TabIndex = 5;
+            this.LblRightFootProbeArea.Text = "右  脚";
+            // 
+            // LblRightOutProbeArea
+            // 
+            this.LblRightOutProbeArea.AutoSize = true;
+            this.LblRightOutProbeArea.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblRightOutProbeArea.Location = new System.Drawing.Point(227, 110);
+            this.LblRightOutProbeArea.Name = "LblRightOutProbeArea";
+            this.LblRightOutProbeArea.Size = new System.Drawing.Size(69, 20);
+            this.LblRightOutProbeArea.TabIndex = 5;
+            this.LblRightOutProbeArea.Text = "右手背";
+            // 
+            // LblLeftOutProbeArea
+            // 
+            this.LblLeftOutProbeArea.AutoSize = true;
+            this.LblLeftOutProbeArea.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblLeftOutProbeArea.Location = new System.Drawing.Point(227, 57);
+            this.LblLeftOutProbeArea.Name = "LblLeftOutProbeArea";
+            this.LblLeftOutProbeArea.Size = new System.Drawing.Size(69, 20);
+            this.LblLeftOutProbeArea.TabIndex = 4;
+            this.LblLeftOutProbeArea.Text = "左手背";
+            // 
+            // LblClothesProbeArea
+            // 
+            this.LblClothesProbeArea.AutoSize = true;
+            this.LblClothesProbeArea.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblClothesProbeArea.Location = new System.Drawing.Point(62, 209);
+            this.LblClothesProbeArea.Name = "LblClothesProbeArea";
+            this.LblClothesProbeArea.Size = new System.Drawing.Size(69, 20);
+            this.LblClothesProbeArea.TabIndex = 3;
+            this.LblClothesProbeArea.Text = "衣  物";
+            // 
+            // LblLeftFootProbeArea
+            // 
+            this.LblLeftFootProbeArea.AutoSize = true;
+            this.LblLeftFootProbeArea.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblLeftFootProbeArea.Location = new System.Drawing.Point(61, 159);
+            this.LblLeftFootProbeArea.Name = "LblLeftFootProbeArea";
+            this.LblLeftFootProbeArea.Size = new System.Drawing.Size(69, 20);
+            this.LblLeftFootProbeArea.TabIndex = 2;
+            this.LblLeftFootProbeArea.Text = "左  脚";
+            // 
+            // LblRightInProbeArea
+            // 
+            this.LblRightInProbeArea.AutoSize = true;
+            this.LblRightInProbeArea.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblRightInProbeArea.Location = new System.Drawing.Point(62, 110);
+            this.LblRightInProbeArea.Name = "LblRightInProbeArea";
+            this.LblRightInProbeArea.Size = new System.Drawing.Size(69, 20);
+            this.LblRightInProbeArea.TabIndex = 1;
+            this.LblRightInProbeArea.Text = "右手心";
+            // 
+            // LblLeftInProbeArea
+            // 
+            this.LblLeftInProbeArea.AutoSize = true;
+            this.LblLeftInProbeArea.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblLeftInProbeArea.Location = new System.Drawing.Point(62, 57);
+            this.LblLeftInProbeArea.Name = "LblLeftInProbeArea";
+            this.LblLeftInProbeArea.Size = new System.Drawing.Size(69, 20);
+            this.LblLeftInProbeArea.TabIndex = 0;
+            this.LblLeftInProbeArea.Text = "左手心";
+            // 
+            // GrpPreferenceData
+            // 
+            this.GrpPreferenceData.Controls.Add(this.TxtBKGUpdate);
+            this.GrpPreferenceData.Controls.Add(this.TxtAlarmTime);
+            this.GrpPreferenceData.Controls.Add(this.TxtMeasuringTime);
+            this.GrpPreferenceData.Controls.Add(this.TxtSmoothingTime);
+            this.GrpPreferenceData.Controls.Add(this.TxtSelfCheckTime);
+            this.GrpPreferenceData.Controls.Add(this.CmbMeasurementUnit);
+            this.GrpPreferenceData.Controls.Add(this.LblBKGUpdate);
+            this.GrpPreferenceData.Controls.Add(this.LblAlarmTime);
+            this.GrpPreferenceData.Controls.Add(this.LblMeasurementUnit);
+            this.GrpPreferenceData.Controls.Add(this.LblMeasuringTime);
+            this.GrpPreferenceData.Controls.Add(this.LblSmoothingTime);
+            this.GrpPreferenceData.Controls.Add(this.LblSelfCheckTime);
+            this.GrpPreferenceData.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GrpPreferenceData.Location = new System.Drawing.Point(15, 15);
+            this.GrpPreferenceData.Name = "GrpPreferenceData";
+            this.GrpPreferenceData.Size = new System.Drawing.Size(331, 260);
+            this.GrpPreferenceData.TabIndex = 0;
+            this.GrpPreferenceData.TabStop = false;
+            this.GrpPreferenceData.Text = "系统参数";
+            this.GrpPreferenceData.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // TxtBKGUpdate
+            // 
+            this.TxtBKGUpdate.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtBKGUpdate.Location = new System.Drawing.Point(175, 209);
+            this.TxtBKGUpdate.Multiline = true;
+            this.TxtBKGUpdate.Name = "TxtBKGUpdate";
+            this.TxtBKGUpdate.Size = new System.Drawing.Size(100, 25);
+            this.TxtBKGUpdate.TabIndex = 11;
+            // 
+            // TxtAlarmTime
+            // 
+            this.TxtAlarmTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtAlarmTime.Location = new System.Drawing.Point(175, 176);
+            this.TxtAlarmTime.Multiline = true;
+            this.TxtAlarmTime.Name = "TxtAlarmTime";
+            this.TxtAlarmTime.Size = new System.Drawing.Size(100, 25);
+            this.TxtAlarmTime.TabIndex = 10;
+            this.TxtAlarmTime.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // TxtMeasuringTime
+            // 
+            this.TxtMeasuringTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtMeasuringTime.Location = new System.Drawing.Point(175, 110);
+            this.TxtMeasuringTime.Multiline = true;
+            this.TxtMeasuringTime.Name = "TxtMeasuringTime";
+            this.TxtMeasuringTime.Size = new System.Drawing.Size(100, 25);
+            this.TxtMeasuringTime.TabIndex = 9;
+            // 
+            // TxtSmoothingTime
+            // 
+            this.TxtSmoothingTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtSmoothingTime.Location = new System.Drawing.Point(175, 79);
+            this.TxtSmoothingTime.Multiline = true;
+            this.TxtSmoothingTime.Name = "TxtSmoothingTime";
+            this.TxtSmoothingTime.Size = new System.Drawing.Size(100, 25);
+            this.TxtSmoothingTime.TabIndex = 8;
+            // 
+            // TxtSelfCheckTime
+            // 
+            this.TxtSelfCheckTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtSelfCheckTime.Location = new System.Drawing.Point(175, 46);
+            this.TxtSelfCheckTime.Multiline = true;
+            this.TxtSelfCheckTime.Name = "TxtSelfCheckTime";
+            this.TxtSelfCheckTime.Size = new System.Drawing.Size(100, 25);
+            this.TxtSelfCheckTime.TabIndex = 7;
+            // 
+            // CmbMeasurementUnit
+            // 
+            this.CmbMeasurementUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CmbMeasurementUnit.DropDownHeight = 95;
+            this.CmbMeasurementUnit.Font = new System.Drawing.Font("宋体", 10F);
+            this.CmbMeasurementUnit.FormattingEnabled = true;
+            this.CmbMeasurementUnit.IntegralHeight = false;
+            this.CmbMeasurementUnit.ItemHeight = 15;
+            this.CmbMeasurementUnit.Location = new System.Drawing.Point(175, 141);
+            this.CmbMeasurementUnit.Name = "CmbMeasurementUnit";
+            this.CmbMeasurementUnit.Size = new System.Drawing.Size(121, 21);
+            this.CmbMeasurementUnit.TabIndex = 6;
+            // 
+            // LblBKGUpdate
+            // 
+            this.LblBKGUpdate.AutoSize = true;
+            this.LblBKGUpdate.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBKGUpdate.Location = new System.Drawing.Point(51, 210);
+            this.LblBKGUpdate.Name = "LblBKGUpdate";
+            this.LblBKGUpdate.Size = new System.Drawing.Size(122, 24);
+            this.LblBKGUpdate.TabIndex = 5;
+            this.LblBKGUpdate.Text = "强制本底(次)";
+            // 
+            // LblAlarmTime
+            // 
+            this.LblAlarmTime.AutoSize = true;
+            this.LblAlarmTime.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblAlarmTime.Location = new System.Drawing.Point(51, 179);
+            this.LblAlarmTime.Name = "LblAlarmTime";
+            this.LblAlarmTime.Size = new System.Drawing.Size(110, 24);
+            this.LblAlarmTime.TabIndex = 4;
+            this.LblAlarmTime.Text = "警报时间(s)";
+            // 
+            // LblMeasurementUnit
+            // 
+            this.LblMeasurementUnit.AutoSize = true;
+            this.LblMeasurementUnit.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblMeasurementUnit.Location = new System.Drawing.Point(51, 146);
+            this.LblMeasurementUnit.Name = "LblMeasurementUnit";
+            this.LblMeasurementUnit.Size = new System.Drawing.Size(90, 24);
+            this.LblMeasurementUnit.TabIndex = 3;
+            this.LblMeasurementUnit.Text = "测量单位";
+            // 
+            // LblMeasuringTime
+            // 
+            this.LblMeasuringTime.AutoSize = true;
+            this.LblMeasuringTime.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblMeasuringTime.Location = new System.Drawing.Point(51, 114);
+            this.LblMeasuringTime.Name = "LblMeasuringTime";
+            this.LblMeasuringTime.Size = new System.Drawing.Size(110, 24);
+            this.LblMeasuringTime.TabIndex = 2;
+            this.LblMeasuringTime.Text = "测量时间(s)";
+            // 
+            // LblSmoothingTime
+            // 
+            this.LblSmoothingTime.AutoSize = true;
+            this.LblSmoothingTime.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSmoothingTime.Location = new System.Drawing.Point(51, 82);
+            this.LblSmoothingTime.Name = "LblSmoothingTime";
+            this.LblSmoothingTime.Size = new System.Drawing.Size(110, 24);
+            this.LblSmoothingTime.TabIndex = 1;
+            this.LblSmoothingTime.Text = "平滑时间(s)";
+            // 
+            // LblSelfCheckTime
+            // 
+            this.LblSelfCheckTime.AutoSize = true;
+            this.LblSelfCheckTime.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSelfCheckTime.Location = new System.Drawing.Point(51, 49);
+            this.LblSelfCheckTime.Name = "LblSelfCheckTime";
+            this.LblSelfCheckTime.Size = new System.Drawing.Size(110, 24);
+            this.LblSelfCheckTime.TabIndex = 0;
+            this.LblSelfCheckTime.Text = "自检时间(s)";
             // 
             // α参数
             // 
-            this.α参数.Controls.Add(this.button4);
-            this.α参数.Controls.Add(this.button3);
-            this.α参数.Controls.Add(this.groupBox5);
-            this.α参数.Controls.Add(this.groupBox4);
+            this.α参数.Controls.Add(this.BtnAlphaNo);
+            this.α参数.Controls.Add(this.BtnAlphaOk);
+            this.α参数.Controls.Add(this.GrpAlphaNuclideChoose);
+            this.α参数.Controls.Add(this.GrpAlphaData);
             this.α参数.Font = new System.Drawing.Font("宋体", 15F);
             this.α参数.Location = new System.Drawing.Point(4, 30);
             this.α参数.Name = "α参数";
@@ -718,242 +752,199 @@
             this.α参数.Text = "α参数";
             this.α参数.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // BtnAlphaNo
             // 
-            this.button4.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button4.Location = new System.Drawing.Point(618, 341);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(128, 52);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "取消";
-            this.button4.UseVisualStyleBackColor = true;
+            this.BtnAlphaNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnAlphaNo.Location = new System.Drawing.Point(618, 341);
+            this.BtnAlphaNo.Name = "BtnAlphaNo";
+            this.BtnAlphaNo.Size = new System.Drawing.Size(128, 52);
+            this.BtnAlphaNo.TabIndex = 3;
+            this.BtnAlphaNo.Text = "取消";
+            this.BtnAlphaNo.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // BtnAlphaOk
             // 
-            this.button3.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(478, 341);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(128, 52);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "确定";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BtnAlphaOk.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnAlphaOk.Location = new System.Drawing.Point(478, 341);
+            this.BtnAlphaOk.Name = "BtnAlphaOk";
+            this.BtnAlphaOk.Size = new System.Drawing.Size(128, 52);
+            this.BtnAlphaOk.TabIndex = 2;
+            this.BtnAlphaOk.Text = "确定";
+            this.BtnAlphaOk.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // GrpAlphaNuclideChoose
             // 
-            this.groupBox5.Controls.Add(this.radioButton28);
-            this.groupBox5.Controls.Add(this.radioButton27);
-            this.groupBox5.Controls.Add(this.radioButton26);
-            this.groupBox5.Controls.Add(this.radioButton25);
-            this.groupBox5.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.groupBox5.Location = new System.Drawing.Point(14, 294);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(401, 137);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "α核素选择";
+            this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlphaDefine2);
+            this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha241);
+            this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlphaDefine1);
+            this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha238);
+            this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha239);
+            this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha235);
+            this.GrpAlphaNuclideChoose.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.GrpAlphaNuclideChoose.Location = new System.Drawing.Point(14, 294);
+            this.GrpAlphaNuclideChoose.Name = "GrpAlphaNuclideChoose";
+            this.GrpAlphaNuclideChoose.Size = new System.Drawing.Size(401, 137);
+            this.GrpAlphaNuclideChoose.TabIndex = 1;
+            this.GrpAlphaNuclideChoose.TabStop = false;
+            this.GrpAlphaNuclideChoose.Text = "α核素选择";
             // 
-            // groupBox4
+            // RdoAlphaDefine2
             // 
-            this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Controls.Add(this.label30);
-            this.groupBox4.Controls.Add(this.label29);
-            this.groupBox4.Controls.Add(this.label28);
-            this.groupBox4.Controls.Add(this.label27);
-            this.groupBox4.Controls.Add(this.label35);
-            this.groupBox4.Controls.Add(this.label34);
-            this.groupBox4.Controls.Add(this.label33);
-            this.groupBox4.Controls.Add(this.label32);
-            this.groupBox4.Controls.Add(this.label31);
-            this.groupBox4.Controls.Add(this.label26);
-            this.groupBox4.Controls.Add(this.label25);
-            this.groupBox4.Controls.Add(this.label24);
-            this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.label22);
-            this.groupBox4.Controls.Add(this.label21);
-            this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox4.Location = new System.Drawing.Point(8, 13);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(756, 273);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "α参数";
+            this.RdoAlphaDefine2.AutoSize = true;
+            this.RdoAlphaDefine2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoAlphaDefine2.Location = new System.Drawing.Point(270, 75);
+            this.RdoAlphaDefine2.Name = "RdoAlphaDefine2";
+            this.RdoAlphaDefine2.Size = new System.Drawing.Size(120, 24);
+            this.RdoAlphaDefine2.TabIndex = 30;
+            this.RdoAlphaDefine2.TabStop = true;
+            this.RdoAlphaDefine2.Text = "α自定义2";
+            this.RdoAlphaDefine2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // RdoAlpha241
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(114, 62);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(642, 205);
-            this.dataGridView1.TabIndex = 11;
+            this.RdoAlpha241.AutoSize = true;
+            this.RdoAlpha241.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoAlpha241.Location = new System.Drawing.Point(154, 75);
+            this.RdoAlpha241.Name = "RdoAlpha241";
+            this.RdoAlpha241.Size = new System.Drawing.Size(90, 24);
+            this.RdoAlpha241.TabIndex = 29;
+            this.RdoAlpha241.TabStop = true;
+            this.RdoAlpha241.Text = "Am-241";
+            this.RdoAlpha241.UseVisualStyleBackColor = true;
             // 
-            // label30
+            // RdoAlphaDefine1
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(642, 35);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(90, 24);
-            this.label30.TabIndex = 10;
-            this.label30.Text = "探测效率";
+            this.RdoAlphaDefine1.AutoSize = true;
+            this.RdoAlphaDefine1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoAlphaDefine1.Location = new System.Drawing.Point(270, 35);
+            this.RdoAlphaDefine1.Name = "RdoAlphaDefine1";
+            this.RdoAlphaDefine1.Size = new System.Drawing.Size(120, 24);
+            this.RdoAlphaDefine1.TabIndex = 28;
+            this.RdoAlphaDefine1.TabStop = true;
+            this.RdoAlphaDefine1.Text = "α自定义1";
+            this.RdoAlphaDefine1.UseVisualStyleBackColor = true;
             // 
-            // label29
+            // RdoAlpha238
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(507, 35);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(90, 24);
-            this.label29.TabIndex = 10;
-            this.label29.Text = "高阶警报";
+            this.RdoAlpha238.AutoSize = true;
+            this.RdoAlpha238.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoAlpha238.Location = new System.Drawing.Point(28, 75);
+            this.RdoAlpha238.Name = "RdoAlpha238";
+            this.RdoAlpha238.Size = new System.Drawing.Size(90, 24);
+            this.RdoAlpha238.TabIndex = 27;
+            this.RdoAlpha238.TabStop = true;
+            this.RdoAlpha238.Text = "Pu-238";
+            this.RdoAlpha238.UseVisualStyleBackColor = true;
             // 
-            // label28
+            // RdoAlpha239
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(374, 35);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(90, 24);
-            this.label28.TabIndex = 10;
-            this.label28.Text = "污染警报";
+            this.RdoAlpha239.AutoSize = true;
+            this.RdoAlpha239.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoAlpha239.Location = new System.Drawing.Point(154, 35);
+            this.RdoAlpha239.Name = "RdoAlpha239";
+            this.RdoAlpha239.Size = new System.Drawing.Size(90, 24);
+            this.RdoAlpha239.TabIndex = 26;
+            this.RdoAlpha239.TabStop = true;
+            this.RdoAlpha239.Text = "Pu-239";
+            this.RdoAlpha239.UseVisualStyleBackColor = true;
             // 
-            // label27
+            // RdoAlpha235
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(238, 35);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(90, 24);
-            this.label27.TabIndex = 10;
-            this.label27.Text = "本底下限";
+            this.RdoAlpha235.AutoSize = true;
+            this.RdoAlpha235.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoAlpha235.Location = new System.Drawing.Point(28, 35);
+            this.RdoAlpha235.Name = "RdoAlpha235";
+            this.RdoAlpha235.Size = new System.Drawing.Size(80, 24);
+            this.RdoAlpha235.TabIndex = 25;
+            this.RdoAlpha235.TabStop = true;
+            this.RdoAlpha235.Text = "U-235";
+            this.RdoAlpha235.UseVisualStyleBackColor = true;
             // 
-            // label35
+            // GrpAlphaData
             // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(728, 34);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(35, 23);
-            this.label35.TabIndex = 10;
-            this.label35.Text = "(%)";
+            this.GrpAlphaData.Controls.Add(this.DgvAlphaSet);
+            this.GrpAlphaData.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GrpAlphaData.Location = new System.Drawing.Point(8, 13);
+            this.GrpAlphaData.Name = "GrpAlphaData";
+            this.GrpAlphaData.Size = new System.Drawing.Size(756, 273);
+            this.GrpAlphaData.TabIndex = 0;
+            this.GrpAlphaData.TabStop = false;
+            this.GrpAlphaData.Text = "α参数";
             // 
-            // label34
+            // DgvAlphaSet
             // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(592, 33);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(47, 23);
-            this.label34.TabIndex = 10;
-            this.label34.Text = "(cps)";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TxtAlphaChannelName,
+            this.TxtAlphaHBackground,
+            this.TxtAplhaLBackground,
+            this.TxtAlphaAlarm_1,
+            this.TxtAlphaAlarm_2,
+            this.TxtAlphaEfficiency});
+            this.DgvAlphaSet.Location = new System.Drawing.Point(18, 28);
+            this.DgvAlphaSet.Name = "DgvAlphaSet";
+            this.DgvAlphaSet.RowHeadersVisible = false;
+            this.DgvAlphaSet.RowHeadersWidth = 20;
+            this.DgvAlphaSet.RowTemplate.Height = 27;
+            this.DgvAlphaSet.Size = new System.Drawing.Size(722, 232);
+            this.DgvAlphaSet.TabIndex = 11;
             // 
-            // label33
+            // TxtAlphaChannelName
             // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(459, 34);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(47, 23);
-            this.label33.TabIndex = 10;
-            this.label33.Text = "(cps)";
+            this.TxtAlphaChannelName.DataPropertyName = "ChannelName";
+            this.TxtAlphaChannelName.HeaderText = "通道名称";
+            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
+            this.TxtAlphaChannelName.Width = 120;
             // 
-            // label32
+            // TxtAlphaHBackground
             // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(324, 34);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(47, 23);
-            this.label32.TabIndex = 10;
-            this.label32.Text = "(cps)";
+            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
+            this.TxtAlphaHBackground.HeaderText = "本底上限(cps)";
+            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
+            this.TxtAlphaHBackground.Width = 120;
             // 
-            // label31
+            // TxtAplhaLBackground
             // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(191, 33);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(47, 23);
-            this.label31.TabIndex = 10;
-            this.label31.Text = "(cps)";
+            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
+            this.TxtAplhaLBackground.HeaderText = "本底下限(cps)";
+            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
+            this.TxtAplhaLBackground.Width = 120;
             // 
-            // label26
+            // TxtAlphaAlarm_1
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(110, 35);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(90, 24);
-            this.label26.TabIndex = 10;
-            this.label26.Text = "本底上限";
+            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
+            this.TxtAlphaAlarm_1.HeaderText = "污染警报(cps)";
+            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
+            this.TxtAlphaAlarm_1.Width = 120;
             // 
-            // label25
+            // TxtAlphaAlarm_2
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(30, 240);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(69, 20);
-            this.label25.TabIndex = 9;
-            this.label25.Text = "右  脚";
+            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
+            this.TxtAlphaAlarm_2.HeaderText = "高阶警报(cps)";
+            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
+            this.TxtAlphaAlarm_2.Width = 120;
             // 
-            // label24
+            // TxtAlphaEfficiency
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.Location = new System.Drawing.Point(30, 205);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(69, 20);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "左  脚";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(30, 172);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(69, 20);
-            this.label23.TabIndex = 7;
-            this.label23.Text = "右手背";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.Location = new System.Drawing.Point(30, 139);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(69, 20);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "右手心";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(30, 103);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(69, 20);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "左手背";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(30, 67);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(69, 20);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "左手心";
+            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
+            this.TxtAlphaEfficiency.HeaderText = "探测效率(%)";
+            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
+            this.TxtAlphaEfficiency.Width = 120;
             // 
             // β参数
             // 
-            this.β参数.Controls.Add(this.button6);
-            this.β参数.Controls.Add(this.button5);
-            this.β参数.Controls.Add(this.groupBox7);
-            this.β参数.Controls.Add(this.groupBox6);
+            this.β参数.Controls.Add(this.BtnBetaNo);
+            this.β参数.Controls.Add(this.BtnBetaOk);
+            this.β参数.Controls.Add(this.GrpBetaNuclideChoose);
+            this.β参数.Controls.Add(this.GrpBetaData);
             this.β参数.Location = new System.Drawing.Point(4, 30);
             this.β参数.Name = "β参数";
             this.β参数.Size = new System.Drawing.Size(776, 449);
@@ -961,232 +952,277 @@
             this.β参数.Text = "β参数";
             this.β参数.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // BtnBetaNo
             // 
-            this.button6.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button6.Location = new System.Drawing.Point(624, 348);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(128, 52);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "取消";
-            this.button6.UseVisualStyleBackColor = true;
+            this.BtnBetaNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnBetaNo.Location = new System.Drawing.Point(624, 348);
+            this.BtnBetaNo.Name = "BtnBetaNo";
+            this.BtnBetaNo.Size = new System.Drawing.Size(128, 52);
+            this.BtnBetaNo.TabIndex = 2;
+            this.BtnBetaNo.Text = "取消";
+            this.BtnBetaNo.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // BtnBetaOk
             // 
-            this.button5.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button5.Location = new System.Drawing.Point(490, 348);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(128, 52);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "确定";
-            this.button5.UseVisualStyleBackColor = true;
+            this.BtnBetaOk.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnBetaOk.Location = new System.Drawing.Point(490, 348);
+            this.BtnBetaOk.Name = "BtnBetaOk";
+            this.BtnBetaOk.Size = new System.Drawing.Size(128, 52);
+            this.BtnBetaOk.TabIndex = 2;
+            this.BtnBetaOk.Text = "确定";
+            this.BtnBetaOk.UseVisualStyleBackColor = true;
             // 
-            // groupBox7
+            // GrpBetaNuclideChoose
             // 
-            this.groupBox7.Controls.Add(this.radioButton31);
-            this.groupBox7.Controls.Add(this.radioButton30);
-            this.groupBox7.Controls.Add(this.radioButton29);
-            this.groupBox7.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox7.Location = new System.Drawing.Point(10, 287);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(441, 159);
-            this.groupBox7.TabIndex = 1;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "β/γ核素选择";
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBetaDefine2);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta192);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta90);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta36);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBetaDefine1);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta137);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta60);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta32);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta204);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta131);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta58);
+            this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta14);
+            this.GrpBetaNuclideChoose.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GrpBetaNuclideChoose.Location = new System.Drawing.Point(10, 287);
+            this.GrpBetaNuclideChoose.Name = "GrpBetaNuclideChoose";
+            this.GrpBetaNuclideChoose.Size = new System.Drawing.Size(441, 159);
+            this.GrpBetaNuclideChoose.TabIndex = 1;
+            this.GrpBetaNuclideChoose.TabStop = false;
+            this.GrpBetaNuclideChoose.Text = "β/γ核素选择";
             // 
-            // groupBox6
+            // RdoBetaDefine2
             // 
-            this.groupBox6.Controls.Add(this.dataGridView3);
-            this.groupBox6.Controls.Add(this.label42);
-            this.groupBox6.Controls.Add(this.label43);
-            this.groupBox6.Controls.Add(this.label44);
-            this.groupBox6.Controls.Add(this.label45);
-            this.groupBox6.Controls.Add(this.label46);
-            this.groupBox6.Controls.Add(this.label47);
-            this.groupBox6.Controls.Add(this.label48);
-            this.groupBox6.Controls.Add(this.label49);
-            this.groupBox6.Controls.Add(this.label50);
-            this.groupBox6.Controls.Add(this.label51);
-            this.groupBox6.Controls.Add(this.label36);
-            this.groupBox6.Controls.Add(this.label37);
-            this.groupBox6.Controls.Add(this.label38);
-            this.groupBox6.Controls.Add(this.label39);
-            this.groupBox6.Controls.Add(this.label40);
-            this.groupBox6.Controls.Add(this.label41);
-            this.groupBox6.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.groupBox6.Location = new System.Drawing.Point(9, 12);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(760, 275);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "β参数";
+            this.RdoBetaDefine2.AutoSize = true;
+            this.RdoBetaDefine2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBetaDefine2.Location = new System.Drawing.Point(318, 95);
+            this.RdoBetaDefine2.Name = "RdoBetaDefine2";
+            this.RdoBetaDefine2.Size = new System.Drawing.Size(120, 24);
+            this.RdoBetaDefine2.TabIndex = 36;
+            this.RdoBetaDefine2.TabStop = true;
+            this.RdoBetaDefine2.Text = "β自定义2";
+            this.RdoBetaDefine2.UseVisualStyleBackColor = true;
             // 
-            // label42
+            // RdoBeta192
             // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(641, 32);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(90, 24);
-            this.label42.TabIndex = 16;
-            this.label42.Text = "探测效率";
+            this.RdoBeta192.AutoSize = true;
+            this.RdoBeta192.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta192.Location = new System.Drawing.Point(214, 95);
+            this.RdoBeta192.Name = "RdoBeta192";
+            this.RdoBeta192.Size = new System.Drawing.Size(90, 24);
+            this.RdoBeta192.TabIndex = 35;
+            this.RdoBeta192.TabStop = true;
+            this.RdoBeta192.Text = "Ir-192";
+            this.RdoBeta192.UseVisualStyleBackColor = true;
             // 
-            // label43
+            // RdoBeta90
             // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(506, 32);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(90, 24);
-            this.label43.TabIndex = 17;
-            this.label43.Text = "高阶警报";
+            this.RdoBeta90.AutoSize = true;
+            this.RdoBeta90.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta90.Location = new System.Drawing.Point(115, 95);
+            this.RdoBeta90.Name = "RdoBeta90";
+            this.RdoBeta90.Size = new System.Drawing.Size(80, 24);
+            this.RdoBeta90.TabIndex = 34;
+            this.RdoBeta90.TabStop = true;
+            this.RdoBeta90.Text = "Sr-90";
+            this.RdoBeta90.UseVisualStyleBackColor = true;
             // 
-            // label44
+            // RdoBeta36
             // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(373, 32);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(90, 24);
-            this.label44.TabIndex = 18;
-            this.label44.Text = "污染警报";
+            this.RdoBeta36.AutoSize = true;
+            this.RdoBeta36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta36.Location = new System.Drawing.Point(24, 95);
+            this.RdoBeta36.Name = "RdoBeta36";
+            this.RdoBeta36.Size = new System.Drawing.Size(80, 24);
+            this.RdoBeta36.TabIndex = 33;
+            this.RdoBeta36.TabStop = true;
+            this.RdoBeta36.Text = "Cl-36";
+            this.RdoBeta36.UseVisualStyleBackColor = true;
             // 
-            // label45
+            // RdoBetaDefine1
             // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(237, 32);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(90, 24);
-            this.label45.TabIndex = 19;
-            this.label45.Text = "本底下限";
+            this.RdoBetaDefine1.AutoSize = true;
+            this.RdoBetaDefine1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBetaDefine1.Location = new System.Drawing.Point(318, 65);
+            this.RdoBetaDefine1.Name = "RdoBetaDefine1";
+            this.RdoBetaDefine1.Size = new System.Drawing.Size(120, 24);
+            this.RdoBetaDefine1.TabIndex = 32;
+            this.RdoBetaDefine1.TabStop = true;
+            this.RdoBetaDefine1.Text = "β自定义1";
+            this.RdoBetaDefine1.UseVisualStyleBackColor = true;
             // 
-            // label46
+            // RdoBeta137
             // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(727, 31);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(35, 23);
-            this.label46.TabIndex = 20;
-            this.label46.Text = "(%)";
+            this.RdoBeta137.AutoSize = true;
+            this.RdoBeta137.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta137.Location = new System.Drawing.Point(214, 65);
+            this.RdoBeta137.Name = "RdoBeta137";
+            this.RdoBeta137.Size = new System.Drawing.Size(90, 24);
+            this.RdoBeta137.TabIndex = 31;
+            this.RdoBeta137.TabStop = true;
+            this.RdoBeta137.Text = "Cs-137";
+            this.RdoBeta137.UseVisualStyleBackColor = true;
             // 
-            // label47
+            // RdoBeta60
             // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(591, 30);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(47, 23);
-            this.label47.TabIndex = 21;
-            this.label47.Text = "(cps)";
+            this.RdoBeta60.AutoSize = true;
+            this.RdoBeta60.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta60.Location = new System.Drawing.Point(115, 65);
+            this.RdoBeta60.Name = "RdoBeta60";
+            this.RdoBeta60.Size = new System.Drawing.Size(80, 24);
+            this.RdoBeta60.TabIndex = 30;
+            this.RdoBeta60.TabStop = true;
+            this.RdoBeta60.Text = "Co-60";
+            this.RdoBeta60.UseVisualStyleBackColor = true;
             // 
-            // label48
+            // RdoBeta32
             // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(458, 31);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(47, 23);
-            this.label48.TabIndex = 22;
-            this.label48.Text = "(cps)";
+            this.RdoBeta32.AutoSize = true;
+            this.RdoBeta32.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta32.Location = new System.Drawing.Point(24, 65);
+            this.RdoBeta32.Name = "RdoBeta32";
+            this.RdoBeta32.Size = new System.Drawing.Size(70, 24);
+            this.RdoBeta32.TabIndex = 29;
+            this.RdoBeta32.TabStop = true;
+            this.RdoBeta32.Text = "P-32";
+            this.RdoBeta32.UseVisualStyleBackColor = true;
             // 
-            // label49
+            // RdoBeta204
             // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(323, 31);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(47, 23);
-            this.label49.TabIndex = 23;
-            this.label49.Text = "(cps)";
+            this.RdoBeta204.AutoSize = true;
+            this.RdoBeta204.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta204.Location = new System.Drawing.Point(318, 35);
+            this.RdoBeta204.Name = "RdoBeta204";
+            this.RdoBeta204.Size = new System.Drawing.Size(90, 24);
+            this.RdoBeta204.TabIndex = 28;
+            this.RdoBeta204.TabStop = true;
+            this.RdoBeta204.Text = "Tl-204";
+            this.RdoBeta204.UseVisualStyleBackColor = true;
             // 
-            // label50
+            // RdoBeta131
             // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Calibri Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(190, 30);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(47, 23);
-            this.label50.TabIndex = 24;
-            this.label50.Text = "(cps)";
+            this.RdoBeta131.AutoSize = true;
+            this.RdoBeta131.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta131.Location = new System.Drawing.Point(214, 35);
+            this.RdoBeta131.Name = "RdoBeta131";
+            this.RdoBeta131.Size = new System.Drawing.Size(80, 24);
+            this.RdoBeta131.TabIndex = 27;
+            this.RdoBeta131.TabStop = true;
+            this.RdoBeta131.Text = "l-131";
+            this.RdoBeta131.UseVisualStyleBackColor = true;
             // 
-            // label51
+            // RdoBeta58
             // 
-            this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(109, 32);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(90, 24);
-            this.label51.TabIndex = 25;
-            this.label51.Text = "本底上限";
+            this.RdoBeta58.AutoSize = true;
+            this.RdoBeta58.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta58.Location = new System.Drawing.Point(115, 35);
+            this.RdoBeta58.Name = "RdoBeta58";
+            this.RdoBeta58.Size = new System.Drawing.Size(80, 24);
+            this.RdoBeta58.TabIndex = 26;
+            this.RdoBeta58.TabStop = true;
+            this.RdoBeta58.Text = "Co-58";
+            this.RdoBeta58.UseVisualStyleBackColor = true;
             // 
-            // label36
+            // RdoBeta14
             // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label36.Location = new System.Drawing.Point(21, 233);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(69, 20);
-            this.label36.TabIndex = 15;
-            this.label36.Text = "右  脚";
+            this.RdoBeta14.AutoSize = true;
+            this.RdoBeta14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoBeta14.Location = new System.Drawing.Point(24, 35);
+            this.RdoBeta14.Name = "RdoBeta14";
+            this.RdoBeta14.Size = new System.Drawing.Size(70, 24);
+            this.RdoBeta14.TabIndex = 25;
+            this.RdoBeta14.TabStop = true;
+            this.RdoBeta14.Text = "C-14";
+            this.RdoBeta14.UseVisualStyleBackColor = true;
             // 
-            // label37
+            // GrpBetaData
             // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label37.Location = new System.Drawing.Point(21, 198);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(69, 20);
-            this.label37.TabIndex = 14;
-            this.label37.Text = "左  脚";
+            this.GrpBetaData.Controls.Add(this.dataGridView1);
+            this.GrpBetaData.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.GrpBetaData.Location = new System.Drawing.Point(9, 12);
+            this.GrpBetaData.Name = "GrpBetaData";
+            this.GrpBetaData.Size = new System.Drawing.Size(760, 275);
+            this.GrpBetaData.TabIndex = 0;
+            this.GrpBetaData.TabStop = false;
+            this.GrpBetaData.Text = "β参数";
             // 
-            // label38
+            // dataGridView1
             // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label38.Location = new System.Drawing.Point(21, 165);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(69, 20);
-            this.label38.TabIndex = 13;
-            this.label38.Text = "右手背";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TxtBetaChannelName,
+            this.TxtBetaHBackground,
+            this.TxtBetaLBackground,
+            this.TxtBetaAlarm_1,
+            this.TxtBetaAlarm_2,
+            this.TxtBetaEfficiency});
+            this.dataGridView1.Location = new System.Drawing.Point(19, 21);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 20;
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(722, 232);
+            this.dataGridView1.TabIndex = 12;
             // 
-            // label39
+            // TxtBetaChannelName
             // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label39.Location = new System.Drawing.Point(21, 132);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(69, 20);
-            this.label39.TabIndex = 12;
-            this.label39.Text = "右手心";
+            this.TxtBetaChannelName.DataPropertyName = "ChannelName";
+            this.TxtBetaChannelName.HeaderText = "通道名称";
+            this.TxtBetaChannelName.Name = "TxtBetaChannelName";
+            this.TxtBetaChannelName.Width = 120;
             // 
-            // label40
+            // TxtBetaHBackground
             // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label40.Location = new System.Drawing.Point(21, 96);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(69, 20);
-            this.label40.TabIndex = 11;
-            this.label40.Text = "左手背";
+            this.TxtBetaHBackground.DataPropertyName = "HBackground";
+            this.TxtBetaHBackground.HeaderText = "本底上限(cps)";
+            this.TxtBetaHBackground.Name = "TxtBetaHBackground";
+            this.TxtBetaHBackground.Width = 120;
             // 
-            // label41
+            // TxtBetaLBackground
             // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label41.Location = new System.Drawing.Point(21, 60);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(69, 20);
-            this.label41.TabIndex = 10;
-            this.label41.Text = "左手心";
+            this.TxtBetaLBackground.DataPropertyName = "LBackground";
+            this.TxtBetaLBackground.HeaderText = "本底下限(cps)";
+            this.TxtBetaLBackground.Name = "TxtBetaLBackground";
+            this.TxtBetaLBackground.Width = 120;
+            // 
+            // TxtBetaAlarm_1
+            // 
+            this.TxtBetaAlarm_1.DataPropertyName = "Alarm_1";
+            this.TxtBetaAlarm_1.HeaderText = "污染警报(cps)";
+            this.TxtBetaAlarm_1.Name = "TxtBetaAlarm_1";
+            this.TxtBetaAlarm_1.Width = 120;
+            // 
+            // TxtBetaAlarm_2
+            // 
+            this.TxtBetaAlarm_2.DataPropertyName = "Alarm_2";
+            this.TxtBetaAlarm_2.HeaderText = "高阶警报(cps)";
+            this.TxtBetaAlarm_2.Name = "TxtBetaAlarm_2";
+            this.TxtBetaAlarm_2.Width = 120;
+            // 
+            // TxtBetaEfficiency
+            // 
+            this.TxtBetaEfficiency.DataPropertyName = "Efficiency";
+            this.TxtBetaEfficiency.HeaderText = "探测效率(%)";
+            this.TxtBetaEfficiency.Name = "TxtBetaEfficiency";
+            this.TxtBetaEfficiency.Width = 120;
             // 
             // 衣物探头
             // 
-            this.衣物探头.Controls.Add(this.button8);
-            this.衣物探头.Controls.Add(this.button7);
-            this.衣物探头.Controls.Add(this.groupBox9);
-            this.衣物探头.Controls.Add(this.groupBox8);
+            this.衣物探头.Controls.Add(this.BtnClothesNo);
+            this.衣物探头.Controls.Add(this.BtnClothesOk);
+            this.衣物探头.Controls.Add(this.GrpClothesNuclideChoose);
+            this.衣物探头.Controls.Add(this.GrpClothesData);
             this.衣物探头.Location = new System.Drawing.Point(4, 30);
             this.衣物探头.Name = "衣物探头";
             this.衣物探头.Size = new System.Drawing.Size(776, 449);
@@ -1194,73 +1230,409 @@
             this.衣物探头.Text = "衣物探头";
             this.衣物探头.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // BtnClothesNo
             // 
-            this.button8.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button8.Location = new System.Drawing.Point(211, 392);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(128, 52);
-            this.button8.TabIndex = 4;
-            this.button8.Text = "取消";
-            this.button8.UseVisualStyleBackColor = true;
+            this.BtnClothesNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnClothesNo.Location = new System.Drawing.Point(211, 382);
+            this.BtnClothesNo.Name = "BtnClothesNo";
+            this.BtnClothesNo.Size = new System.Drawing.Size(128, 52);
+            this.BtnClothesNo.TabIndex = 4;
+            this.BtnClothesNo.Text = "取消";
+            this.BtnClothesNo.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // BtnClothesOk
             // 
-            this.button7.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button7.Location = new System.Drawing.Point(53, 392);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(128, 52);
-            this.button7.TabIndex = 3;
-            this.button7.Text = "确定";
-            this.button7.UseVisualStyleBackColor = true;
+            this.BtnClothesOk.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnClothesOk.Location = new System.Drawing.Point(53, 382);
+            this.BtnClothesOk.Name = "BtnClothesOk";
+            this.BtnClothesOk.Size = new System.Drawing.Size(128, 52);
+            this.BtnClothesOk.TabIndex = 3;
+            this.BtnClothesOk.Text = "确定";
+            this.BtnClothesOk.UseVisualStyleBackColor = true;
             // 
-            // groupBox9
+            // GrpClothesNuclideChoose
             // 
-            this.groupBox9.Controls.Add(this.radioButton24);
-            this.groupBox9.Controls.Add(this.radioButton23);
-            this.groupBox9.Controls.Add(this.radioButton22);
-            this.groupBox9.Controls.Add(this.label53);
-            this.groupBox9.Controls.Add(this.label52);
-            this.groupBox9.Controls.Add(this.radioButton20);
-            this.groupBox9.Controls.Add(this.radioButton21);
-            this.groupBox9.Controls.Add(this.radioButton19);
-            this.groupBox9.Controls.Add(this.radioButton18);
-            this.groupBox9.Controls.Add(this.radioButton17);
-            this.groupBox9.Controls.Add(this.radioButton16);
-            this.groupBox9.Controls.Add(this.radioButton15);
-            this.groupBox9.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox9.Location = new System.Drawing.Point(392, 15);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(380, 427);
-            this.groupBox9.TabIndex = 1;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "核素选择";
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBetaDefine1);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta192);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta90);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta36);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta137);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta60);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta32);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta204);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta131);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta58);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta14);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesAlphaDefine1);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesAlpha241);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesAlpha238);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesAlpha239);
+            this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesAlpha235);
+            this.GrpClothesNuclideChoose.Controls.Add(this.LblClothesBetaOrClothes);
+            this.GrpClothesNuclideChoose.Controls.Add(this.LblClothesAlpha);
+            this.GrpClothesNuclideChoose.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GrpClothesNuclideChoose.Location = new System.Drawing.Point(392, 15);
+            this.GrpClothesNuclideChoose.Name = "GrpClothesNuclideChoose";
+            this.GrpClothesNuclideChoose.Size = new System.Drawing.Size(380, 427);
+            this.GrpClothesNuclideChoose.TabIndex = 1;
+            this.GrpClothesNuclideChoose.TabStop = false;
+            this.GrpClothesNuclideChoose.Text = "核素选择";
             // 
-            // groupBox8
+            // RdoClothesBetaDefine1
             // 
-            this.groupBox8.Controls.Add(this.radioButton14);
-            this.groupBox8.Controls.Add(this.radioButton13);
-            this.groupBox8.Controls.Add(this.radioButton12);
-            this.groupBox8.Controls.Add(this.radioButton11);
-            this.groupBox8.Controls.Add(this.radioButton10);
-            this.groupBox8.Controls.Add(this.radioButton9);
-            this.groupBox8.Controls.Add(this.radioButton8);
-            this.groupBox8.Controls.Add(this.radioButton7);
-            this.groupBox8.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox8.Location = new System.Drawing.Point(31, 29);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(349, 357);
-            this.groupBox8.TabIndex = 0;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "衣物探头";
+            this.RdoClothesBetaDefine1.AutoSize = true;
+            this.RdoClothesBetaDefine1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBetaDefine1.Location = new System.Drawing.Point(141, 344);
+            this.RdoClothesBetaDefine1.Name = "RdoClothesBetaDefine1";
+            this.RdoClothesBetaDefine1.Size = new System.Drawing.Size(120, 24);
+            this.RdoClothesBetaDefine1.TabIndex = 49;
+            this.RdoClothesBetaDefine1.TabStop = true;
+            this.RdoClothesBetaDefine1.Text = "β自定义1";
+            this.RdoClothesBetaDefine1.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta192
+            // 
+            this.RdoClothesBeta192.AutoSize = true;
+            this.RdoClothesBeta192.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta192.Location = new System.Drawing.Point(256, 298);
+            this.RdoClothesBeta192.Name = "RdoClothesBeta192";
+            this.RdoClothesBeta192.Size = new System.Drawing.Size(90, 24);
+            this.RdoClothesBeta192.TabIndex = 48;
+            this.RdoClothesBeta192.TabStop = true;
+            this.RdoClothesBeta192.Text = "Ir-192";
+            this.RdoClothesBeta192.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta90
+            // 
+            this.RdoClothesBeta90.AutoSize = true;
+            this.RdoClothesBeta90.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta90.Location = new System.Drawing.Point(256, 252);
+            this.RdoClothesBeta90.Name = "RdoClothesBeta90";
+            this.RdoClothesBeta90.Size = new System.Drawing.Size(80, 24);
+            this.RdoClothesBeta90.TabIndex = 47;
+            this.RdoClothesBeta90.TabStop = true;
+            this.RdoClothesBeta90.Text = "Sr-90";
+            this.RdoClothesBeta90.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta36
+            // 
+            this.RdoClothesBeta36.AutoSize = true;
+            this.RdoClothesBeta36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta36.Location = new System.Drawing.Point(256, 207);
+            this.RdoClothesBeta36.Name = "RdoClothesBeta36";
+            this.RdoClothesBeta36.Size = new System.Drawing.Size(80, 24);
+            this.RdoClothesBeta36.TabIndex = 46;
+            this.RdoClothesBeta36.TabStop = true;
+            this.RdoClothesBeta36.Text = "Cl-36";
+            this.RdoClothesBeta36.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta137
+            // 
+            this.RdoClothesBeta137.AutoSize = true;
+            this.RdoClothesBeta137.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta137.Location = new System.Drawing.Point(141, 298);
+            this.RdoClothesBeta137.Name = "RdoClothesBeta137";
+            this.RdoClothesBeta137.Size = new System.Drawing.Size(90, 24);
+            this.RdoClothesBeta137.TabIndex = 45;
+            this.RdoClothesBeta137.TabStop = true;
+            this.RdoClothesBeta137.Text = "Cs-137";
+            this.RdoClothesBeta137.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta60
+            // 
+            this.RdoClothesBeta60.AutoSize = true;
+            this.RdoClothesBeta60.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta60.Location = new System.Drawing.Point(141, 252);
+            this.RdoClothesBeta60.Name = "RdoClothesBeta60";
+            this.RdoClothesBeta60.Size = new System.Drawing.Size(80, 24);
+            this.RdoClothesBeta60.TabIndex = 44;
+            this.RdoClothesBeta60.TabStop = true;
+            this.RdoClothesBeta60.Text = "Co-60";
+            this.RdoClothesBeta60.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta32
+            // 
+            this.RdoClothesBeta32.AutoSize = true;
+            this.RdoClothesBeta32.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta32.Location = new System.Drawing.Point(141, 207);
+            this.RdoClothesBeta32.Name = "RdoClothesBeta32";
+            this.RdoClothesBeta32.Size = new System.Drawing.Size(70, 24);
+            this.RdoClothesBeta32.TabIndex = 43;
+            this.RdoClothesBeta32.TabStop = true;
+            this.RdoClothesBeta32.Text = "P-32";
+            this.RdoClothesBeta32.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta204
+            // 
+            this.RdoClothesBeta204.AutoSize = true;
+            this.RdoClothesBeta204.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta204.Location = new System.Drawing.Point(43, 344);
+            this.RdoClothesBeta204.Name = "RdoClothesBeta204";
+            this.RdoClothesBeta204.Size = new System.Drawing.Size(90, 24);
+            this.RdoClothesBeta204.TabIndex = 42;
+            this.RdoClothesBeta204.TabStop = true;
+            this.RdoClothesBeta204.Text = "Tl-204";
+            this.RdoClothesBeta204.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta131
+            // 
+            this.RdoClothesBeta131.AutoSize = true;
+            this.RdoClothesBeta131.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta131.Location = new System.Drawing.Point(43, 298);
+            this.RdoClothesBeta131.Name = "RdoClothesBeta131";
+            this.RdoClothesBeta131.Size = new System.Drawing.Size(80, 24);
+            this.RdoClothesBeta131.TabIndex = 41;
+            this.RdoClothesBeta131.TabStop = true;
+            this.RdoClothesBeta131.Text = "l-131";
+            this.RdoClothesBeta131.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta58
+            // 
+            this.RdoClothesBeta58.AutoSize = true;
+            this.RdoClothesBeta58.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta58.Location = new System.Drawing.Point(43, 252);
+            this.RdoClothesBeta58.Name = "RdoClothesBeta58";
+            this.RdoClothesBeta58.Size = new System.Drawing.Size(80, 24);
+            this.RdoClothesBeta58.TabIndex = 40;
+            this.RdoClothesBeta58.TabStop = true;
+            this.RdoClothesBeta58.Text = "Co-58";
+            this.RdoClothesBeta58.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesBeta14
+            // 
+            this.RdoClothesBeta14.AutoSize = true;
+            this.RdoClothesBeta14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesBeta14.Location = new System.Drawing.Point(43, 201);
+            this.RdoClothesBeta14.Name = "RdoClothesBeta14";
+            this.RdoClothesBeta14.Size = new System.Drawing.Size(70, 24);
+            this.RdoClothesBeta14.TabIndex = 39;
+            this.RdoClothesBeta14.TabStop = true;
+            this.RdoClothesBeta14.Text = "C-14";
+            this.RdoClothesBeta14.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesAlphaDefine1
+            // 
+            this.RdoClothesAlphaDefine1.AutoSize = true;
+            this.RdoClothesAlphaDefine1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesAlphaDefine1.Location = new System.Drawing.Point(139, 124);
+            this.RdoClothesAlphaDefine1.Name = "RdoClothesAlphaDefine1";
+            this.RdoClothesAlphaDefine1.Size = new System.Drawing.Size(120, 24);
+            this.RdoClothesAlphaDefine1.TabIndex = 38;
+            this.RdoClothesAlphaDefine1.TabStop = true;
+            this.RdoClothesAlphaDefine1.Text = "α自定义1";
+            this.RdoClothesAlphaDefine1.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesAlpha241
+            // 
+            this.RdoClothesAlpha241.AutoSize = true;
+            this.RdoClothesAlpha241.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesAlpha241.Location = new System.Drawing.Point(43, 124);
+            this.RdoClothesAlpha241.Name = "RdoClothesAlpha241";
+            this.RdoClothesAlpha241.Size = new System.Drawing.Size(90, 24);
+            this.RdoClothesAlpha241.TabIndex = 37;
+            this.RdoClothesAlpha241.TabStop = true;
+            this.RdoClothesAlpha241.Text = "Am-241";
+            this.RdoClothesAlpha241.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesAlpha238
+            // 
+            this.RdoClothesAlpha238.AutoSize = true;
+            this.RdoClothesAlpha238.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesAlpha238.Location = new System.Drawing.Point(141, 79);
+            this.RdoClothesAlpha238.Name = "RdoClothesAlpha238";
+            this.RdoClothesAlpha238.Size = new System.Drawing.Size(90, 24);
+            this.RdoClothesAlpha238.TabIndex = 36;
+            this.RdoClothesAlpha238.TabStop = true;
+            this.RdoClothesAlpha238.Text = "Pu-238";
+            this.RdoClothesAlpha238.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesAlpha239
+            // 
+            this.RdoClothesAlpha239.AutoSize = true;
+            this.RdoClothesAlpha239.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesAlpha239.Location = new System.Drawing.Point(256, 79);
+            this.RdoClothesAlpha239.Name = "RdoClothesAlpha239";
+            this.RdoClothesAlpha239.Size = new System.Drawing.Size(90, 24);
+            this.RdoClothesAlpha239.TabIndex = 35;
+            this.RdoClothesAlpha239.TabStop = true;
+            this.RdoClothesAlpha239.Text = "Pu-239";
+            this.RdoClothesAlpha239.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothesAlpha235
+            // 
+            this.RdoClothesAlpha235.AutoSize = true;
+            this.RdoClothesAlpha235.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothesAlpha235.Location = new System.Drawing.Point(43, 79);
+            this.RdoClothesAlpha235.Name = "RdoClothesAlpha235";
+            this.RdoClothesAlpha235.Size = new System.Drawing.Size(80, 24);
+            this.RdoClothesAlpha235.TabIndex = 34;
+            this.RdoClothesAlpha235.TabStop = true;
+            this.RdoClothesAlpha235.Text = "U-235";
+            this.RdoClothesAlpha235.UseVisualStyleBackColor = true;
+            // 
+            // LblClothesBetaOrClothes
+            // 
+            this.LblClothesBetaOrClothes.AutoSize = true;
+            this.LblClothesBetaOrClothes.Font = new System.Drawing.Font("宋体", 12F);
+            this.LblClothesBetaOrClothes.Location = new System.Drawing.Point(15, 163);
+            this.LblClothesBetaOrClothes.Name = "LblClothesBetaOrClothes";
+            this.LblClothesBetaOrClothes.Size = new System.Drawing.Size(99, 20);
+            this.LblClothesBetaOrClothes.TabIndex = 30;
+            this.LblClothesBetaOrClothes.Text = "β/γ核素";
+            // 
+            // LblClothesAlpha
+            // 
+            this.LblClothesAlpha.AutoSize = true;
+            this.LblClothesAlpha.Font = new System.Drawing.Font("宋体", 12F);
+            this.LblClothesAlpha.Location = new System.Drawing.Point(15, 42);
+            this.LblClothesAlpha.Name = "LblClothesAlpha";
+            this.LblClothesAlpha.Size = new System.Drawing.Size(69, 20);
+            this.LblClothesAlpha.TabIndex = 30;
+            this.LblClothesAlpha.Text = "α核素";
+            // 
+            // GrpClothesData
+            // 
+            this.GrpClothesData.Controls.Add(this.TxtClothOfflineTime);
+            this.GrpClothesData.Controls.Add(this.LblClothOfflineTime);
+            this.GrpClothesData.Controls.Add(this.TxtClothesEfficiency);
+            this.GrpClothesData.Controls.Add(this.TxtClothesAlarm_2);
+            this.GrpClothesData.Controls.Add(this.TxtClothesAlarm_1);
+            this.GrpClothesData.Controls.Add(this.TxtClothesLBackground);
+            this.GrpClothesData.Controls.Add(this.TxtClothesHBackground);
+            this.GrpClothesData.Controls.Add(this.LblClothesEfficiency);
+            this.GrpClothesData.Controls.Add(this.LblClothesAlarm_2);
+            this.GrpClothesData.Controls.Add(this.LblClothesAlarm_1);
+            this.GrpClothesData.Controls.Add(this.LblClothesLBackground);
+            this.GrpClothesData.Controls.Add(this.LblClothesHBackground);
+            this.GrpClothesData.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GrpClothesData.Location = new System.Drawing.Point(31, 29);
+            this.GrpClothesData.Name = "GrpClothesData";
+            this.GrpClothesData.Size = new System.Drawing.Size(349, 332);
+            this.GrpClothesData.TabIndex = 0;
+            this.GrpClothesData.TabStop = false;
+            this.GrpClothesData.Text = "衣物探头";
+            // 
+            // TxtClothOfflineTime
+            // 
+            this.TxtClothOfflineTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothOfflineTime.Location = new System.Drawing.Point(200, 297);
+            this.TxtClothOfflineTime.Multiline = true;
+            this.TxtClothOfflineTime.Name = "TxtClothOfflineTime";
+            this.TxtClothOfflineTime.Size = new System.Drawing.Size(100, 25);
+            this.TxtClothOfflineTime.TabIndex = 23;
+            // 
+            // LblClothOfflineTime
+            // 
+            this.LblClothOfflineTime.AutoSize = true;
+            this.LblClothOfflineTime.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblClothOfflineTime.Location = new System.Drawing.Point(62, 298);
+            this.LblClothOfflineTime.Name = "LblClothOfflineTime";
+            this.LblClothOfflineTime.Size = new System.Drawing.Size(110, 24);
+            this.LblClothOfflineTime.TabIndex = 22;
+            this.LblClothOfflineTime.Text = "离线自检(s)";
+            // 
+            // TxtClothesEfficiency
+            // 
+            this.TxtClothesEfficiency.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesEfficiency.Location = new System.Drawing.Point(200, 245);
+            this.TxtClothesEfficiency.Multiline = true;
+            this.TxtClothesEfficiency.Name = "TxtClothesEfficiency";
+            this.TxtClothesEfficiency.Size = new System.Drawing.Size(100, 25);
+            this.TxtClothesEfficiency.TabIndex = 21;
+            // 
+            // TxtClothesAlarm_2
+            // 
+            this.TxtClothesAlarm_2.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesAlarm_2.Location = new System.Drawing.Point(200, 192);
+            this.TxtClothesAlarm_2.Multiline = true;
+            this.TxtClothesAlarm_2.Name = "TxtClothesAlarm_2";
+            this.TxtClothesAlarm_2.Size = new System.Drawing.Size(100, 25);
+            this.TxtClothesAlarm_2.TabIndex = 20;
+            // 
+            // TxtClothesAlarm_1
+            // 
+            this.TxtClothesAlarm_1.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesAlarm_1.Location = new System.Drawing.Point(200, 143);
+            this.TxtClothesAlarm_1.Multiline = true;
+            this.TxtClothesAlarm_1.Name = "TxtClothesAlarm_1";
+            this.TxtClothesAlarm_1.Size = new System.Drawing.Size(100, 25);
+            this.TxtClothesAlarm_1.TabIndex = 19;
+            // 
+            // TxtClothesLBackground
+            // 
+            this.TxtClothesLBackground.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesLBackground.Location = new System.Drawing.Point(200, 92);
+            this.TxtClothesLBackground.Multiline = true;
+            this.TxtClothesLBackground.Name = "TxtClothesLBackground";
+            this.TxtClothesLBackground.Size = new System.Drawing.Size(100, 25);
+            this.TxtClothesLBackground.TabIndex = 18;
+            // 
+            // TxtClothesHBackground
+            // 
+            this.TxtClothesHBackground.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesHBackground.Location = new System.Drawing.Point(200, 39);
+            this.TxtClothesHBackground.Multiline = true;
+            this.TxtClothesHBackground.Name = "TxtClothesHBackground";
+            this.TxtClothesHBackground.Size = new System.Drawing.Size(100, 25);
+            this.TxtClothesHBackground.TabIndex = 17;
+            // 
+            // LblClothesEfficiency
+            // 
+            this.LblClothesEfficiency.AutoSize = true;
+            this.LblClothesEfficiency.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblClothesEfficiency.Location = new System.Drawing.Point(62, 246);
+            this.LblClothesEfficiency.Name = "LblClothesEfficiency";
+            this.LblClothesEfficiency.Size = new System.Drawing.Size(116, 24);
+            this.LblClothesEfficiency.TabIndex = 16;
+            this.LblClothesEfficiency.Text = "参测效率(%)";
+            // 
+            // LblClothesAlarm_2
+            // 
+            this.LblClothesAlarm_2.AutoSize = true;
+            this.LblClothesAlarm_2.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblClothesAlarm_2.Location = new System.Drawing.Point(62, 195);
+            this.LblClothesAlarm_2.Name = "LblClothesAlarm_2";
+            this.LblClothesAlarm_2.Size = new System.Drawing.Size(129, 24);
+            this.LblClothesAlarm_2.TabIndex = 15;
+            this.LblClothesAlarm_2.Text = "高阶警报(cps)";
+            // 
+            // LblClothesAlarm_1
+            // 
+            this.LblClothesAlarm_1.AutoSize = true;
+            this.LblClothesAlarm_1.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblClothesAlarm_1.Location = new System.Drawing.Point(62, 144);
+            this.LblClothesAlarm_1.Name = "LblClothesAlarm_1";
+            this.LblClothesAlarm_1.Size = new System.Drawing.Size(129, 24);
+            this.LblClothesAlarm_1.TabIndex = 14;
+            this.LblClothesAlarm_1.Text = "污染警报(cps)";
+            // 
+            // LblClothesLBackground
+            // 
+            this.LblClothesLBackground.AutoSize = true;
+            this.LblClothesLBackground.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblClothesLBackground.Location = new System.Drawing.Point(62, 95);
+            this.LblClothesLBackground.Name = "LblClothesLBackground";
+            this.LblClothesLBackground.Size = new System.Drawing.Size(129, 24);
+            this.LblClothesLBackground.TabIndex = 13;
+            this.LblClothesLBackground.Text = "本底下限(cps)";
+            // 
+            // LblClothesHBackground
+            // 
+            this.LblClothesHBackground.AutoSize = true;
+            this.LblClothesHBackground.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblClothesHBackground.Location = new System.Drawing.Point(62, 42);
+            this.LblClothesHBackground.Name = "LblClothesHBackground";
+            this.LblClothesHBackground.Size = new System.Drawing.Size(129, 24);
+            this.LblClothesHBackground.TabIndex = 12;
+            this.LblClothesHBackground.Text = "本底上限(cps)";
             // 
             // 工厂参数
             // 
-            this.工厂参数.Controls.Add(this.button12);
-            this.工厂参数.Controls.Add(this.button11);
-            this.工厂参数.Controls.Add(this.button10);
-            this.工厂参数.Controls.Add(this.button9);
-            this.工厂参数.Controls.Add(this.groupBox10);
+            this.工厂参数.Controls.Add(this.BtnMainPreferenceWrite);
+            this.工厂参数.Controls.Add(this.BtnMainPreferenceRead);
+            this.工厂参数.Controls.Add(this.BtnMainPreferenceSet);
+            this.工厂参数.Controls.Add(this.BtnMainPreferenceRetuen);
+            this.工厂参数.Controls.Add(this.GrpMainPresence);
             this.工厂参数.Location = new System.Drawing.Point(4, 30);
             this.工厂参数.Name = "工厂参数";
             this.工厂参数.Size = new System.Drawing.Size(776, 449);
@@ -1268,62 +1640,158 @@
             this.工厂参数.Text = "道盒参数";
             this.工厂参数.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // BtnMainPreferenceWrite
             // 
-            this.button12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.button12.Location = new System.Drawing.Point(642, 389);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(100, 40);
-            this.button12.TabIndex = 4;
-            this.button12.Text = "写参数";
-            this.button12.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceWrite.Font = new System.Drawing.Font("宋体", 12F);
+            this.BtnMainPreferenceWrite.Location = new System.Drawing.Point(642, 389);
+            this.BtnMainPreferenceWrite.Name = "BtnMainPreferenceWrite";
+            this.BtnMainPreferenceWrite.Size = new System.Drawing.Size(100, 40);
+            this.BtnMainPreferenceWrite.TabIndex = 4;
+            this.BtnMainPreferenceWrite.Text = "写参数";
+            this.BtnMainPreferenceWrite.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // BtnMainPreferenceRead
             // 
-            this.button11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.button11.Location = new System.Drawing.Point(536, 389);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(100, 40);
-            this.button11.TabIndex = 4;
-            this.button11.Text = "读参数";
-            this.button11.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceRead.Font = new System.Drawing.Font("宋体", 12F);
+            this.BtnMainPreferenceRead.Location = new System.Drawing.Point(536, 389);
+            this.BtnMainPreferenceRead.Name = "BtnMainPreferenceRead";
+            this.BtnMainPreferenceRead.Size = new System.Drawing.Size(100, 40);
+            this.BtnMainPreferenceRead.TabIndex = 4;
+            this.BtnMainPreferenceRead.Text = "读参数";
+            this.BtnMainPreferenceRead.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // BtnMainPreferenceSet
             // 
-            this.button10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.button10.Location = new System.Drawing.Point(383, 389);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(147, 40);
-            this.button10.TabIndex = 4;
-            this.button10.Text = "设置默认";
-            this.button10.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceSet.Font = new System.Drawing.Font("宋体", 12F);
+            this.BtnMainPreferenceSet.Location = new System.Drawing.Point(383, 389);
+            this.BtnMainPreferenceSet.Name = "BtnMainPreferenceSet";
+            this.BtnMainPreferenceSet.Size = new System.Drawing.Size(147, 40);
+            this.BtnMainPreferenceSet.TabIndex = 4;
+            this.BtnMainPreferenceSet.Text = "设置默认";
+            this.BtnMainPreferenceSet.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // BtnMainPreferenceRetuen
             // 
-            this.button9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.button9.Location = new System.Drawing.Point(234, 389);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(143, 40);
-            this.button9.TabIndex = 4;
-            this.button9.Text = "恢复默认";
-            this.button9.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceRetuen.Font = new System.Drawing.Font("宋体", 12F);
+            this.BtnMainPreferenceRetuen.Location = new System.Drawing.Point(234, 389);
+            this.BtnMainPreferenceRetuen.Name = "BtnMainPreferenceRetuen";
+            this.BtnMainPreferenceRetuen.Size = new System.Drawing.Size(143, 40);
+            this.BtnMainPreferenceRetuen.TabIndex = 4;
+            this.BtnMainPreferenceRetuen.Text = "恢复默认";
+            this.BtnMainPreferenceRetuen.UseVisualStyleBackColor = true;
             // 
-            // groupBox10
+            // GrpMainPresence
             // 
-            this.groupBox10.Controls.Add(this.dataGridView2);
-            this.groupBox10.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox10.Location = new System.Drawing.Point(22, 22);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(734, 351);
-            this.groupBox10.TabIndex = 0;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "道盒参数";
+            this.GrpMainPresence.Controls.Add(this.dataGridView4);
+            this.GrpMainPresence.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.GrpMainPresence.Location = new System.Drawing.Point(22, 22);
+            this.GrpMainPresence.Name = "GrpMainPresence";
+            this.GrpMainPresence.Size = new System.Drawing.Size(734, 351);
+            this.GrpMainPresence.TabIndex = 0;
+            this.GrpMainPresence.TabStop = false;
+            this.GrpMainPresence.Text = "道盒参数";
+            // 
+            // dataGridView4
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TxtMainPreferenceChanneName,
+            this.TxtMainPreferenceAlphaThreshold,
+            this.TxtMainPreferenceBetaThreshold,
+            this.TxtMainPreferencePresetHV,
+            this.TxtMainPreferenceADCFactor,
+            this.TxtMainPreferenceDACFactor,
+            this.TxtMainPreferenceHVFactor,
+            this.TxtMainPreferenceWorkTime,
+            this.TxtMainPreferenceHVRatio});
+            this.dataGridView4.Location = new System.Drawing.Point(6, 45);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.RowHeadersVisible = false;
+            this.dataGridView4.RowHeadersWidth = 20;
+            this.dataGridView4.RowTemplate.Height = 27;
+            this.dataGridView4.Size = new System.Drawing.Size(722, 232);
+            this.dataGridView4.TabIndex = 12;
+            // 
+            // TxtMainPreferenceChanneName
+            // 
+            this.TxtMainPreferenceChanneName.DataPropertyName = "ChanneName";
+            this.TxtMainPreferenceChanneName.HeaderText = "通道名称";
+            this.TxtMainPreferenceChanneName.Name = "TxtMainPreferenceChanneName";
+            this.TxtMainPreferenceChanneName.Width = 90;
+            // 
+            // TxtMainPreferenceAlphaThreshold
+            // 
+            this.TxtMainPreferenceAlphaThreshold.DataPropertyName = "AlphaThreshold";
+            this.TxtMainPreferenceAlphaThreshold.HeaderText = "α阈值";
+            this.TxtMainPreferenceAlphaThreshold.Name = "TxtMainPreferenceAlphaThreshold";
+            this.TxtMainPreferenceAlphaThreshold.Width = 90;
+            // 
+            // TxtMainPreferenceBetaThreshold
+            // 
+            this.TxtMainPreferenceBetaThreshold.DataPropertyName = "BetaThreshold";
+            this.TxtMainPreferenceBetaThreshold.HeaderText = "β阈值";
+            this.TxtMainPreferenceBetaThreshold.Name = "TxtMainPreferenceBetaThreshold";
+            this.TxtMainPreferenceBetaThreshold.Width = 90;
+            // 
+            // TxtMainPreferencePresetHV
+            // 
+            this.TxtMainPreferencePresetHV.DataPropertyName = "PresetHV";
+            this.TxtMainPreferencePresetHV.HeaderText = "预置高压";
+            this.TxtMainPreferencePresetHV.Name = "TxtMainPreferencePresetHV";
+            this.TxtMainPreferencePresetHV.Width = 90;
+            // 
+            // TxtMainPreferenceADCFactor
+            // 
+            this.TxtMainPreferenceADCFactor.DataPropertyName = "ADCFactor";
+            this.TxtMainPreferenceADCFactor.HeaderText = "ADC因子";
+            this.TxtMainPreferenceADCFactor.Name = "TxtMainPreferenceADCFactor";
+            this.TxtMainPreferenceADCFactor.Width = 90;
+            // 
+            // TxtMainPreferenceDACFactor
+            // 
+            this.TxtMainPreferenceDACFactor.DataPropertyName = "DACFactor";
+            this.TxtMainPreferenceDACFactor.HeaderText = "DAC因子";
+            this.TxtMainPreferenceDACFactor.Name = "TxtMainPreferenceDACFactor";
+            this.TxtMainPreferenceDACFactor.Width = 90;
+            // 
+            // TxtMainPreferenceHVFactor
+            // 
+            this.TxtMainPreferenceHVFactor.DataPropertyName = "HVFactor";
+            this.TxtMainPreferenceHVFactor.HeaderText = "高压因子";
+            this.TxtMainPreferenceHVFactor.Name = "TxtMainPreferenceHVFactor";
+            this.TxtMainPreferenceHVFactor.Width = 90;
+            // 
+            // TxtMainPreferenceWorkTime
+            // 
+            this.TxtMainPreferenceWorkTime.DataPropertyName = "WorkTime";
+            this.TxtMainPreferenceWorkTime.HeaderText = "工作时间";
+            this.TxtMainPreferenceWorkTime.Name = "TxtMainPreferenceWorkTime";
+            this.TxtMainPreferenceWorkTime.Width = 90;
+            // 
+            // TxtMainPreferenceHVRatio
+            // 
+            this.TxtMainPreferenceHVRatio.DataPropertyName = "HVRatio";
+            this.TxtMainPreferenceHVRatio.HeaderText = "高压倍数";
+            this.TxtMainPreferenceHVRatio.Name = "TxtMainPreferenceHVRatio";
+            this.TxtMainPreferenceHVRatio.Width = 90;
             // 
             // 设备配置
             // 
-            this.设备配置.Controls.Add(this.button14);
-            this.设备配置.Controls.Add(this.button13);
-            this.设备配置.Controls.Add(this.groupBox11);
+            this.设备配置.Controls.Add(this.GrpHand);
+            this.设备配置.Controls.Add(this.LblFacility);
+            this.设备配置.Controls.Add(this.RdoClothes);
+            this.设备配置.Controls.Add(this.BtnFacilityNo);
+            this.设备配置.Controls.Add(this.RdoFoot);
+            this.设备配置.Controls.Add(this.BtnFacilityOk);
+            this.设备配置.Controls.Add(this.RdoHand);
             this.设备配置.Location = new System.Drawing.Point(4, 30);
             this.设备配置.Name = "设备配置";
             this.设备配置.Size = new System.Drawing.Size(776, 449);
@@ -1331,439 +1799,105 @@
             this.设备配置.Text = "设备配置";
             this.设备配置.UseVisualStyleBackColor = true;
             // 
-            // button14
-            // 
-            this.button14.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button14.Location = new System.Drawing.Point(597, 358);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(128, 52);
-            this.button14.TabIndex = 5;
-            this.button14.Text = "取消";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button13.Location = new System.Drawing.Point(441, 358);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(128, 52);
-            this.button13.TabIndex = 4;
-            this.button13.Text = "确定";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.radioButton4);
-            this.groupBox11.Controls.Add(this.radioButton3);
-            this.groupBox11.Controls.Add(this.radioButton6);
-            this.groupBox11.Controls.Add(this.radioButton5);
-            this.groupBox11.Controls.Add(this.radioButton1);
-            this.groupBox11.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox11.Location = new System.Drawing.Point(31, 22);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(327, 320);
-            this.groupBox11.TabIndex = 0;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "设备配置";
-            this.groupBox11.Enter += new System.EventHandler(this.groupBox11_Enter);
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton4.Location = new System.Drawing.Point(68, 225);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(110, 24);
-            this.radioButton4.TabIndex = 15;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "衣物探头";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton3.Location = new System.Drawing.Point(68, 159);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(70, 24);
-            this.radioButton3.TabIndex = 15;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "脚部";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton6.Location = new System.Drawing.Point(99, 116);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(110, 24);
-            this.radioButton6.TabIndex = 15;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "双探测器";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton5.Location = new System.Drawing.Point(99, 89);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(110, 24);
-            this.radioButton5.TabIndex = 15;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "单探测器";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton1.Location = new System.Drawing.Point(68, 50);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 24);
-            this.radioButton1.TabIndex = 15;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "手部";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(39, 35);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 27;
-            this.dataGridView2.Size = new System.Drawing.Size(658, 284);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton7.Location = new System.Drawing.Point(22, 44);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(110, 24);
-            this.radioButton7.TabIndex = 16;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "单探测器";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton8.Location = new System.Drawing.Point(154, 44);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(110, 24);
-            this.radioButton8.TabIndex = 17;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "单探测器";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton9.Location = new System.Drawing.Point(22, 94);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(110, 24);
-            this.radioButton9.TabIndex = 18;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "单探测器";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            // 
-            // radioButton10
-            // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton10.Location = new System.Drawing.Point(154, 94);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(110, 24);
-            this.radioButton10.TabIndex = 19;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "单探测器";
-            this.radioButton10.UseVisualStyleBackColor = true;
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton11.Location = new System.Drawing.Point(22, 140);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(110, 24);
-            this.radioButton11.TabIndex = 20;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "单探测器";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton12.Location = new System.Drawing.Point(154, 140);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(110, 24);
-            this.radioButton12.TabIndex = 21;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "单探测器";
-            this.radioButton12.UseVisualStyleBackColor = true;
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton13.Location = new System.Drawing.Point(22, 193);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(110, 24);
-            this.radioButton13.TabIndex = 22;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "单探测器";
-            this.radioButton13.UseVisualStyleBackColor = true;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton14.Location = new System.Drawing.Point(154, 193);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(110, 24);
-            this.radioButton14.TabIndex = 23;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "单探测器";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            // 
-            // radioButton15
-            // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton15.Location = new System.Drawing.Point(34, 97);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(110, 24);
-            this.radioButton15.TabIndex = 24;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "单探测器";
-            this.radioButton15.UseVisualStyleBackColor = true;
-            // 
-            // radioButton16
-            // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton16.Location = new System.Drawing.Point(188, 97);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(110, 24);
-            this.radioButton16.TabIndex = 25;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "单探测器";
-            this.radioButton16.UseVisualStyleBackColor = true;
-            // 
-            // radioButton17
-            // 
-            this.radioButton17.AutoSize = true;
-            this.radioButton17.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton17.Location = new System.Drawing.Point(34, 154);
-            this.radioButton17.Name = "radioButton17";
-            this.radioButton17.Size = new System.Drawing.Size(110, 24);
-            this.radioButton17.TabIndex = 26;
-            this.radioButton17.TabStop = true;
-            this.radioButton17.Text = "单探测器";
-            this.radioButton17.UseVisualStyleBackColor = true;
-            // 
-            // radioButton18
-            // 
-            this.radioButton18.AutoSize = true;
-            this.radioButton18.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton18.Location = new System.Drawing.Point(188, 154);
-            this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(110, 24);
-            this.radioButton18.TabIndex = 27;
-            this.radioButton18.TabStop = true;
-            this.radioButton18.Text = "单探测器";
-            this.radioButton18.UseVisualStyleBackColor = true;
-            // 
-            // radioButton19
-            // 
-            this.radioButton19.AutoSize = true;
-            this.radioButton19.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton19.Location = new System.Drawing.Point(34, 207);
-            this.radioButton19.Name = "radioButton19";
-            this.radioButton19.Size = new System.Drawing.Size(110, 24);
-            this.radioButton19.TabIndex = 28;
-            this.radioButton19.TabStop = true;
-            this.radioButton19.Text = "单探测器";
-            this.radioButton19.UseVisualStyleBackColor = true;
-            // 
-            // radioButton20
-            // 
-            this.radioButton20.AutoSize = true;
-            this.radioButton20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton20.Location = new System.Drawing.Point(188, 207);
-            this.radioButton20.Name = "radioButton20";
-            this.radioButton20.Size = new System.Drawing.Size(110, 24);
-            this.radioButton20.TabIndex = 29;
-            this.radioButton20.TabStop = true;
-            this.radioButton20.Text = "单探测器";
-            this.radioButton20.UseVisualStyleBackColor = true;
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("宋体", 12F);
-            this.label52.Location = new System.Drawing.Point(15, 42);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(69, 20);
-            this.label52.TabIndex = 30;
-            this.label52.Text = "α核素";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("宋体", 12F);
-            this.label53.Location = new System.Drawing.Point(6, 247);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(99, 20);
-            this.label53.TabIndex = 30;
-            this.label53.Text = "α/β核素";
-            // 
-            // radioButton21
-            // 
-            this.radioButton21.AutoSize = true;
-            this.radioButton21.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton21.Location = new System.Drawing.Point(34, 286);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(110, 24);
-            this.radioButton21.TabIndex = 28;
-            this.radioButton21.TabStop = true;
-            this.radioButton21.Text = "单探测器";
-            this.radioButton21.UseVisualStyleBackColor = true;
-            // 
-            // radioButton22
-            // 
-            this.radioButton22.AutoSize = true;
-            this.radioButton22.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton22.Location = new System.Drawing.Point(188, 286);
-            this.radioButton22.Name = "radioButton22";
-            this.radioButton22.Size = new System.Drawing.Size(110, 24);
-            this.radioButton22.TabIndex = 31;
-            this.radioButton22.TabStop = true;
-            this.radioButton22.Text = "单探测器";
-            this.radioButton22.UseVisualStyleBackColor = true;
-            // 
-            // radioButton23
-            // 
-            this.radioButton23.AutoSize = true;
-            this.radioButton23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton23.Location = new System.Drawing.Point(34, 328);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(110, 24);
-            this.radioButton23.TabIndex = 32;
-            this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "单探测器";
-            this.radioButton23.UseVisualStyleBackColor = true;
-            // 
-            // radioButton24
-            // 
-            this.radioButton24.AutoSize = true;
-            this.radioButton24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton24.Location = new System.Drawing.Point(188, 328);
-            this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(110, 24);
-            this.radioButton24.TabIndex = 33;
-            this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "单探测器";
-            this.radioButton24.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(113, 64);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowTemplate.Height = 27;
-            this.dataGridView3.Size = new System.Drawing.Size(642, 205);
-            this.dataGridView3.TabIndex = 26;
-            // 
-            // radioButton25
-            // 
-            this.radioButton25.AutoSize = true;
-            this.radioButton25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton25.Location = new System.Drawing.Point(28, 35);
-            this.radioButton25.Name = "radioButton25";
-            this.radioButton25.Size = new System.Drawing.Size(110, 24);
-            this.radioButton25.TabIndex = 25;
-            this.radioButton25.TabStop = true;
-            this.radioButton25.Text = "单探测器";
-            this.radioButton25.UseVisualStyleBackColor = true;
-            // 
-            // radioButton26
-            // 
-            this.radioButton26.AutoSize = true;
-            this.radioButton26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton26.Location = new System.Drawing.Point(154, 35);
-            this.radioButton26.Name = "radioButton26";
-            this.radioButton26.Size = new System.Drawing.Size(110, 24);
-            this.radioButton26.TabIndex = 26;
-            this.radioButton26.TabStop = true;
-            this.radioButton26.Text = "单探测器";
-            this.radioButton26.UseVisualStyleBackColor = true;
-            // 
-            // radioButton27
-            // 
-            this.radioButton27.AutoSize = true;
-            this.radioButton27.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton27.Location = new System.Drawing.Point(28, 75);
-            this.radioButton27.Name = "radioButton27";
-            this.radioButton27.Size = new System.Drawing.Size(110, 24);
-            this.radioButton27.TabIndex = 27;
-            this.radioButton27.TabStop = true;
-            this.radioButton27.Text = "单探测器";
-            this.radioButton27.UseVisualStyleBackColor = true;
-            // 
-            // radioButton28
-            // 
-            this.radioButton28.AutoSize = true;
-            this.radioButton28.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton28.Location = new System.Drawing.Point(285, 35);
-            this.radioButton28.Name = "radioButton28";
-            this.radioButton28.Size = new System.Drawing.Size(110, 24);
-            this.radioButton28.TabIndex = 28;
-            this.radioButton28.TabStop = true;
-            this.radioButton28.Text = "单探测器";
-            this.radioButton28.UseVisualStyleBackColor = true;
-            // 
-            // radioButton29
-            // 
-            this.radioButton29.AutoSize = true;
-            this.radioButton29.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton29.Location = new System.Drawing.Point(24, 35);
-            this.radioButton29.Name = "radioButton29";
-            this.radioButton29.Size = new System.Drawing.Size(110, 24);
-            this.radioButton29.TabIndex = 25;
-            this.radioButton29.TabStop = true;
-            this.radioButton29.Text = "单探测器";
-            this.radioButton29.UseVisualStyleBackColor = true;
-            // 
-            // radioButton30
-            // 
-            this.radioButton30.AutoSize = true;
-            this.radioButton30.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton30.Location = new System.Drawing.Point(165, 35);
-            this.radioButton30.Name = "radioButton30";
-            this.radioButton30.Size = new System.Drawing.Size(110, 24);
-            this.radioButton30.TabIndex = 26;
-            this.radioButton30.TabStop = true;
-            this.radioButton30.Text = "单探测器";
-            this.radioButton30.UseVisualStyleBackColor = true;
-            // 
-            // radioButton31
-            // 
-            this.radioButton31.AutoSize = true;
-            this.radioButton31.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton31.Location = new System.Drawing.Point(302, 35);
-            this.radioButton31.Name = "radioButton31";
-            this.radioButton31.Size = new System.Drawing.Size(110, 24);
-            this.radioButton31.TabIndex = 27;
-            this.radioButton31.TabStop = true;
-            this.radioButton31.Text = "单探测器";
-            this.radioButton31.UseVisualStyleBackColor = true;
+            // BtnFacilityNo
+            // 
+            this.BtnFacilityNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnFacilityNo.Location = new System.Drawing.Point(597, 358);
+            this.BtnFacilityNo.Name = "BtnFacilityNo";
+            this.BtnFacilityNo.Size = new System.Drawing.Size(128, 52);
+            this.BtnFacilityNo.TabIndex = 5;
+            this.BtnFacilityNo.Text = "取消";
+            this.BtnFacilityNo.UseVisualStyleBackColor = true;
+            // 
+            // BtnFacilityOk
+            // 
+            this.BtnFacilityOk.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnFacilityOk.Location = new System.Drawing.Point(441, 358);
+            this.BtnFacilityOk.Name = "BtnFacilityOk";
+            this.BtnFacilityOk.Size = new System.Drawing.Size(128, 52);
+            this.BtnFacilityOk.TabIndex = 4;
+            this.BtnFacilityOk.Text = "确定";
+            this.BtnFacilityOk.UseVisualStyleBackColor = true;
+            // 
+            // RdoClothes
+            // 
+            this.RdoClothes.AutoSize = true;
+            this.RdoClothes.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothes.Location = new System.Drawing.Point(114, 308);
+            this.RdoClothes.Name = "RdoClothes";
+            this.RdoClothes.Size = new System.Drawing.Size(110, 24);
+            this.RdoClothes.TabIndex = 15;
+            this.RdoClothes.TabStop = true;
+            this.RdoClothes.Text = "衣物探头";
+            this.RdoClothes.UseVisualStyleBackColor = true;
+            // 
+            // RdoFoot
+            // 
+            this.RdoFoot.AutoSize = true;
+            this.RdoFoot.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoFoot.Location = new System.Drawing.Point(114, 225);
+            this.RdoFoot.Name = "RdoFoot";
+            this.RdoFoot.Size = new System.Drawing.Size(70, 24);
+            this.RdoFoot.TabIndex = 15;
+            this.RdoFoot.TabStop = true;
+            this.RdoFoot.Text = "脚部";
+            this.RdoFoot.UseVisualStyleBackColor = true;
+            // 
+            // RdoDoubleHand
+            // 
+            this.RdoDoubleHand.AutoSize = true;
+            this.RdoDoubleHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoDoubleHand.Location = new System.Drawing.Point(33, 59);
+            this.RdoDoubleHand.Name = "RdoDoubleHand";
+            this.RdoDoubleHand.Size = new System.Drawing.Size(110, 24);
+            this.RdoDoubleHand.TabIndex = 15;
+            this.RdoDoubleHand.TabStop = true;
+            this.RdoDoubleHand.Text = "双探测器";
+            this.RdoDoubleHand.UseVisualStyleBackColor = true;
+            // 
+            // RdoSingleHand
+            // 
+            this.RdoSingleHand.AutoSize = true;
+            this.RdoSingleHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoSingleHand.Location = new System.Drawing.Point(33, 29);
+            this.RdoSingleHand.Name = "RdoSingleHand";
+            this.RdoSingleHand.Size = new System.Drawing.Size(110, 24);
+            this.RdoSingleHand.TabIndex = 15;
+            this.RdoSingleHand.TabStop = true;
+            this.RdoSingleHand.Text = "单探测器";
+            this.RdoSingleHand.UseVisualStyleBackColor = true;
+            // 
+            // RdoHand
+            // 
+            this.RdoHand.AutoSize = true;
+            this.RdoHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoHand.Location = new System.Drawing.Point(114, 79);
+            this.RdoHand.Name = "RdoHand";
+            this.RdoHand.Size = new System.Drawing.Size(70, 24);
+            this.RdoHand.TabIndex = 15;
+            this.RdoHand.TabStop = true;
+            this.RdoHand.Text = "手部";
+            this.RdoHand.UseVisualStyleBackColor = true;
+            // 
+            // LblFacility
+            // 
+            this.LblFacility.AutoSize = true;
+            this.LblFacility.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblFacility.Location = new System.Drawing.Point(49, 37);
+            this.LblFacility.Name = "LblFacility";
+            this.LblFacility.Size = new System.Drawing.Size(116, 25);
+            this.LblFacility.TabIndex = 16;
+            this.LblFacility.Text = "设备配置";
+            // 
+            // GrpHand
+            // 
+            this.GrpHand.Controls.Add(this.RdoSingleHand);
+            this.GrpHand.Controls.Add(this.RdoDoubleHand);
+            this.GrpHand.Location = new System.Drawing.Point(132, 109);
+            this.GrpHand.Name = "GrpHand";
+            this.GrpHand.Size = new System.Drawing.Size(179, 96);
+            this.GrpHand.TabIndex = 17;
+            this.GrpHand.TabStop = false;
             // 
             // FrmPreference
             // 
@@ -1771,186 +1905,197 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(790, 507);
-            this.Controls.Add(this.Tab1);
+            this.Controls.Add(this.TabPresence);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmPreference";
             this.Text = "HFM_Preference";
-            this.Tab1.ResumeLayout(false);
+            this.TabPresence.ResumeLayout(false);
             this.系统参数.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.GrpFacilityData.ResumeLayout(false);
+            this.GrpFacilityData.PerformLayout();
+            this.GrpPreferenceArea.ResumeLayout(false);
+            this.GrpPreferenceArea.PerformLayout();
+            this.GrpPreferenceData.ResumeLayout(false);
+            this.GrpPreferenceData.PerformLayout();
             this.α参数.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.GrpAlphaNuclideChoose.ResumeLayout(false);
+            this.GrpAlphaNuclideChoose.PerformLayout();
+            this.GrpAlphaData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvAlphaSet)).EndInit();
             this.β参数.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.GrpBetaNuclideChoose.ResumeLayout(false);
+            this.GrpBetaNuclideChoose.PerformLayout();
+            this.GrpBetaData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.衣物探头.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            this.GrpClothesNuclideChoose.ResumeLayout(false);
+            this.GrpClothesNuclideChoose.PerformLayout();
+            this.GrpClothesData.ResumeLayout(false);
+            this.GrpClothesData.PerformLayout();
             this.工厂参数.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
+            this.GrpMainPresence.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.设备配置.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.设备配置.PerformLayout();
+            this.GrpHand.ResumeLayout(false);
+            this.GrpHand.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.TabControl Tab1;
+        public System.Windows.Forms.TabControl TabPresence;
         private System.Windows.Forms.TabPage 系统参数;
         private System.Windows.Forms.TabPage α参数;
         private System.Windows.Forms.TabPage β参数;
         private System.Windows.Forms.TabPage 衣物探头;
         private System.Windows.Forms.TabPage 工厂参数;
         private System.Windows.Forms.TabPage 设备配置;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.GroupBox GrpPreferenceArea;
+        private System.Windows.Forms.GroupBox GrpPreferenceData;
+        private System.Windows.Forms.GroupBox GrpFacilityData;
+        private System.Windows.Forms.Button BtnPreferenceNo;
+        private System.Windows.Forms.Button BtnPreferenceOk;
+        private System.Windows.Forms.Label LblBKGUpdate;
+        private System.Windows.Forms.Label LblAlarmTime;
+        private System.Windows.Forms.Label LblMeasurementUnit;
+        private System.Windows.Forms.Label LblMeasuringTime;
+        private System.Windows.Forms.Label LblSmoothingTime;
+        private System.Windows.Forms.Label LblSelfCheckTime;
+        private System.Windows.Forms.TextBox TxtBKGUpdate;
+        private System.Windows.Forms.TextBox TxtAlarmTime;
+        private System.Windows.Forms.TextBox TxtMeasuringTime;
+        private System.Windows.Forms.TextBox TxtSmoothingTime;
+        private System.Windows.Forms.TextBox TxtSelfCheckTime;
+        private System.Windows.Forms.ComboBox CmbMeasurementUnit;
+        private System.Windows.Forms.Label LblRightFootProbeArea;
+        private System.Windows.Forms.Label LblRightOutProbeArea;
+        private System.Windows.Forms.Label LblLeftOutProbeArea;
+        private System.Windows.Forms.Label LblClothesProbeArea;
+        private System.Windows.Forms.Label LblLeftFootProbeArea;
+        private System.Windows.Forms.Label LblRightInProbeArea;
+        private System.Windows.Forms.Label LblLeftInProbeArea;
+        private System.Windows.Forms.TextBox TxtLeftFootProbeArea;
+        private System.Windows.Forms.TextBox TxtRightInProbeArea;
+        private System.Windows.Forms.TextBox TxtLeftInProbeArea;
+        private System.Windows.Forms.TextBox TxtRightFootProbeArea;
+        private System.Windows.Forms.TextBox TxtRightOutProbeArea;
+        private System.Windows.Forms.TextBox TxtLeftOutProbeArea;
+        private System.Windows.Forms.TextBox TxtCloseProbeArea;
+        private System.Windows.Forms.Label LblIPAddress;
+        private System.Windows.Forms.Label LblSmoothingFactor;
+        private System.Windows.Forms.TextBox TxtSmoothingFactor;
+        private System.Windows.Forms.TextBox TxtIPAddressThree;
+        private System.Windows.Forms.TextBox TxtIPAddressTwo;
+        private System.Windows.Forms.TextBox TxtIPAddressOne;
+        private System.Windows.Forms.TextBox TxtSoftName;
+        private System.Windows.Forms.Label LblSoftName;
+        private System.Windows.Forms.TextBox TxtInstrumentNum;
+        private System.Windows.Forms.Label LblInstrumentNum;
+        private System.Windows.Forms.TextBox TxtIPAddressFour;
+        private System.Windows.Forms.ComboBox CmbUnclideType;
+        private System.Windows.Forms.Label LblUnclideType;
+        private System.Windows.Forms.TextBox TxtPortNumber;
+        private System.Windows.Forms.Label LblPortNumber;
+        private System.Windows.Forms.GroupBox GrpAlphaData;
+        private System.Windows.Forms.GroupBox GrpAlphaNuclideChoose;
+        private System.Windows.Forms.Button BtnAlphaNo;
+        private System.Windows.Forms.Button BtnAlphaOk;
+        private System.Windows.Forms.GroupBox GrpBetaNuclideChoose;
+        private System.Windows.Forms.GroupBox GrpBetaData;
+        private System.Windows.Forms.Button BtnBetaNo;
+        private System.Windows.Forms.Button BtnBetaOk;
+        private System.Windows.Forms.Button BtnClothesNo;
+        private System.Windows.Forms.Button BtnClothesOk;
+        private System.Windows.Forms.GroupBox GrpClothesNuclideChoose;
+        private System.Windows.Forms.GroupBox GrpClothesData;
+        private System.Windows.Forms.GroupBox GrpMainPresence;
+        private System.Windows.Forms.Button BtnMainPreferenceWrite;
+        private System.Windows.Forms.Button BtnMainPreferenceRead;
+        private System.Windows.Forms.Button BtnMainPreferenceSet;
+        private System.Windows.Forms.Button BtnMainPreferenceRetuen;
+        private System.Windows.Forms.RadioButton RdoIsConnectedAuto;
+        private System.Windows.Forms.RadioButton RdoHand;
+        private System.Windows.Forms.RadioButton RdoClothes;
+        private System.Windows.Forms.RadioButton RdoFoot;
+        private System.Windows.Forms.RadioButton RdoDoubleHand;
+        private System.Windows.Forms.RadioButton RdoSingleHand;
+        private System.Windows.Forms.Button BtnFacilityNo;
+        private System.Windows.Forms.Button BtnFacilityOk;
+        private System.Windows.Forms.DataGridView DgvAlphaSet;
+        private System.Windows.Forms.Label LblClothesBetaOrClothes;
+        private System.Windows.Forms.Label LblClothesAlpha;
+        private System.Windows.Forms.RadioButton RdoAlphaDefine1;
+        private System.Windows.Forms.RadioButton RdoAlpha238;
+        private System.Windows.Forms.RadioButton RdoAlpha239;
+        private System.Windows.Forms.RadioButton RdoAlpha235;
+        private System.Windows.Forms.RadioButton RdoBeta131;
+        private System.Windows.Forms.RadioButton RdoBeta58;
+        private System.Windows.Forms.RadioButton RdoBeta14;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.RadioButton RdoAlphaDefine2;
+        private System.Windows.Forms.RadioButton RdoAlpha241;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.RadioButton radioButton20;
-        private System.Windows.Forms.RadioButton radioButton19;
-        private System.Windows.Forms.RadioButton radioButton18;
-        private System.Windows.Forms.RadioButton radioButton17;
-        private System.Windows.Forms.RadioButton radioButton16;
-        private System.Windows.Forms.RadioButton radioButton15;
-        private System.Windows.Forms.RadioButton radioButton14;
-        private System.Windows.Forms.RadioButton radioButton13;
-        private System.Windows.Forms.RadioButton radioButton12;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton24;
-        private System.Windows.Forms.RadioButton radioButton23;
-        private System.Windows.Forms.RadioButton radioButton22;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.RadioButton radioButton21;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.RadioButton radioButton28;
-        private System.Windows.Forms.RadioButton radioButton27;
-        private System.Windows.Forms.RadioButton radioButton26;
-        private System.Windows.Forms.RadioButton radioButton25;
-        private System.Windows.Forms.RadioButton radioButton31;
-        private System.Windows.Forms.RadioButton radioButton30;
-        private System.Windows.Forms.RadioButton radioButton29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaHBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaLBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
+        private System.Windows.Forms.RadioButton RdoBeta204;
+        private System.Windows.Forms.RadioButton RdoBetaDefine2;
+        private System.Windows.Forms.RadioButton RdoBeta192;
+        private System.Windows.Forms.RadioButton RdoBeta90;
+        private System.Windows.Forms.RadioButton RdoBeta36;
+        private System.Windows.Forms.RadioButton RdoBetaDefine1;
+        private System.Windows.Forms.RadioButton RdoBeta137;
+        private System.Windows.Forms.RadioButton RdoBeta60;
+        private System.Windows.Forms.RadioButton RdoBeta32;
+        private System.Windows.Forms.RadioButton RdoClothesAlphaDefine1;
+        private System.Windows.Forms.RadioButton RdoClothesAlpha241;
+        private System.Windows.Forms.RadioButton RdoClothesAlpha238;
+        private System.Windows.Forms.RadioButton RdoClothesAlpha239;
+        private System.Windows.Forms.RadioButton RdoClothesAlpha235;
+        private System.Windows.Forms.RadioButton RdoClothesBetaDefine1;
+        private System.Windows.Forms.RadioButton RdoClothesBeta192;
+        private System.Windows.Forms.RadioButton RdoClothesBeta90;
+        private System.Windows.Forms.RadioButton RdoClothesBeta36;
+        private System.Windows.Forms.RadioButton RdoClothesBeta137;
+        private System.Windows.Forms.RadioButton RdoClothesBeta60;
+        private System.Windows.Forms.RadioButton RdoClothesBeta32;
+        private System.Windows.Forms.RadioButton RdoClothesBeta204;
+        private System.Windows.Forms.RadioButton RdoClothesBeta131;
+        private System.Windows.Forms.RadioButton RdoClothesBeta58;
+        private System.Windows.Forms.RadioButton RdoClothesBeta14;
+        private System.Windows.Forms.TextBox TxtClothesEfficiency;
+        private System.Windows.Forms.TextBox TxtClothesAlarm_2;
+        private System.Windows.Forms.TextBox TxtClothesAlarm_1;
+        private System.Windows.Forms.TextBox TxtClothesLBackground;
+        private System.Windows.Forms.TextBox TxtClothesHBackground;
+        private System.Windows.Forms.Label LblClothesEfficiency;
+        private System.Windows.Forms.Label LblClothesAlarm_2;
+        private System.Windows.Forms.Label LblClothesAlarm_1;
+        private System.Windows.Forms.Label LblClothesLBackground;
+        private System.Windows.Forms.Label LblClothesHBackground;
+        private System.Windows.Forms.TextBox TxtClothOfflineTime;
+        private System.Windows.Forms.Label LblClothOfflineTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceChanneName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceAlphaThreshold;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceBetaThreshold;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferencePresetHV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceADCFactor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceDACFactor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVFactor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceWorkTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVRatio;
+        private System.Windows.Forms.Label LblFacility;
+        private System.Windows.Forms.GroupBox GrpHand;
     }
 }
