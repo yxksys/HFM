@@ -99,6 +99,9 @@ namespace HFM
 
         private void BtnCommport_Click(object sender, EventArgs e)
         {
+            byte[] messageData = new byte[62];
+            messageData[0] = Convert.ToByte('P');         
+
             //实例化相关对象
             Calibration calibration = new Calibration();
             CommPort commPort = new CommPort();
@@ -109,8 +112,7 @@ namespace HFM
                 try
                 {
                     commPort.Open();
-                    byte[] messageData = new byte[62];
-                    messageData[0] = Convert.ToByte('P');
+                   
                     while (true)
                     {
                         if (HFM.Components.Message.SendMessage(messageData, commPort) == true)
@@ -119,17 +121,17 @@ namespace HFM
 
                             System.Threading.Thread.Sleep(100);
                             byte[] receiveBuffMessage = new byte[200];
-                            string message = HFM.Components.Message.ReceiveMessage(commPort);
+                            receiveBuffMessage = HFM.Components.Message.ReceiveMessage(commPort);
 
                         }
                     }
                     
 
-                    //messageData=HFM.Components.Message.BuildMessage(0);
+                    messageData=HFM.Components.Message.BuildMessage(0);
 
                     if(HFM.Components.Message.SendMessage(messageData,commPort)==true)
 {
-                        string messageStr = HFM.Components.Message.ReceiveMessage(commPort);
+                        byte[] messageStr = HFM.Components.Message.ReceiveMessage(commPort);
                     }
                     
                     commPort.Close();
