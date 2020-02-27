@@ -33,6 +33,7 @@ namespace HFM.Components
                                                         " SmoothingTime=@SmoothingTime, MeasuringTime=@MeasuringTime, AlarmTime=@AlarmTime," +
                                                         " BKGUpdate='@BKGUpdate', ClothOfflineTime=@ClothOfflineTime, IsEnglish=@IsEnglish";
         #endregion
+
         #region 属性
         private string _measurementUnit;//测量单位
         private int _selfCheckTime;//自检时间

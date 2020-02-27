@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using System.Data.OleDb;
 
 namespace HFM.Components
-{
+{ 
     class Channel
     {
         #region 数据库查询语言
@@ -167,7 +167,7 @@ namespace HFM.Components
         }
         #endregion
 
-        #region 根据通道ID查询通道信息
+        #region 根据通道ID查询通道信息   
         /// <summary>
         /// 根据通道ID查询通道信息
         /// </summary>

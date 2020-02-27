@@ -76,11 +76,23 @@
     <Compile Include="FrmTestHardware.Designer.cs">
       <DependentUpon>FrmTestHardware.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMeasure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeasure.Designer.cs">
+      <DependentUpon>FrmMeasure.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmWelcome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmWelcome.Designer.cs">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HFM_Preference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HFM_Preference.Designer.cs">
+      <DependentUpon>HFM_Preference.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,8 +102,14 @@
     <EmbeddedResource Include="FrmTestHardware.resx">
       <DependentUpon>FrmTestHardware.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeasure.resx">
+      <DependentUpon>FrmMeasure.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmWelcome.resx">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HFM_Preference.resx">
+      <DependentUpon>HFM_Preference.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
