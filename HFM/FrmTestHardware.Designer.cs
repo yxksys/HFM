@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.GrpWork = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblBetacnt = new System.Windows.Forms.Label();
             this.LblBetacps = new System.Windows.Forms.Label();
             this.LblAlphacnt = new System.Windows.Forms.Label();
@@ -72,19 +79,13 @@
             this.TxtCheckCount = new System.Windows.Forms.TextBox();
             this.LblSelfcount = new System.Windows.Forms.Label();
             this.LblTimeWork = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
             this.GrpWork.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.GrpFrisker.SuspendLayout();
             this.GrpSensorstate.SuspendLayout();
             this.GrpDetectorSelfTest.SuspendLayout();
             this.GrpSelfTestParameter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // GrpWork
@@ -112,6 +113,67 @@
             this.GrpWork.Size = new System.Drawing.Size(728, 269);
             this.GrpWork.TabIndex = 33;
             this.GrpWork.TabStop = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LHP,
+            this.LHB,
+            this.RHP,
+            this.RHB,
+            this.LF,
+            this.RF});
+            this.dataGridView1.Location = new System.Drawing.Point(130, 52);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(491, 210);
+            this.dataGridView1.TabIndex = 17;
+            // 
+            // LHP
+            // 
+            this.LHP.HeaderText = "LHP";
+            this.LHP.Name = "LHP";
+            this.LHP.ReadOnly = true;
+            this.LHP.Width = 82;
+            // 
+            // LHB
+            // 
+            this.LHB.HeaderText = "LHB";
+            this.LHB.Name = "LHB";
+            this.LHB.ReadOnly = true;
+            this.LHB.Width = 82;
+            // 
+            // RHP
+            // 
+            this.RHP.HeaderText = "RHP";
+            this.RHP.Name = "RHP";
+            this.RHP.ReadOnly = true;
+            this.RHP.Width = 82;
+            // 
+            // RHB
+            // 
+            this.RHB.HeaderText = "RHB";
+            this.RHB.Name = "RHB";
+            this.RHB.ReadOnly = true;
+            this.RHB.Width = 82;
+            // 
+            // LF
+            // 
+            this.LF.HeaderText = "LF";
+            this.LF.Name = "LF";
+            this.LF.ReadOnly = true;
+            this.LF.Width = 80;
+            // 
+            // RF
+            // 
+            this.RF.HeaderText = "RF";
+            this.RF.Name = "RF";
+            this.RF.ReadOnly = true;
+            this.RF.Width = 80;
             // 
             // LblBetacnt
             // 
@@ -531,67 +593,6 @@
             this.LblTimeWork.TabIndex = 38;
             this.LblTimeWork.Text = "测量剩余时间";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ColumnHeadersVisible = false;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.LHP,
-            this.LHB,
-            this.RHP,
-            this.RHB,
-            this.LF,
-            this.RF});
-            this.dataGridView1.Location = new System.Drawing.Point(130, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(491, 210);
-            this.dataGridView1.TabIndex = 17;
-            // 
-            // LHP
-            // 
-            this.LHP.HeaderText = "LHP";
-            this.LHP.Name = "LHP";
-            this.LHP.ReadOnly = true;
-            this.LHP.Width = 82;
-            // 
-            // LHB
-            // 
-            this.LHB.HeaderText = "LHB";
-            this.LHB.Name = "LHB";
-            this.LHB.ReadOnly = true;
-            this.LHB.Width = 82;
-            // 
-            // RHP
-            // 
-            this.RHP.HeaderText = "RHP";
-            this.RHP.Name = "RHP";
-            this.RHP.ReadOnly = true;
-            this.RHP.Width = 82;
-            // 
-            // RHB
-            // 
-            this.RHB.HeaderText = "RHB";
-            this.RHB.Name = "RHB";
-            this.RHB.ReadOnly = true;
-            this.RHB.Width = 82;
-            // 
-            // LF
-            // 
-            this.LF.HeaderText = "LF";
-            this.LF.Name = "LF";
-            this.LF.ReadOnly = true;
-            this.LF.Width = 80;
-            // 
-            // RF
-            // 
-            this.RF.HeaderText = "RF";
-            this.RF.Name = "RF";
-            this.RF.ReadOnly = true;
-            this.RF.Width = 80;
-            // 
             // FrmTestHardware
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -610,6 +611,7 @@
             this.Text = "硬件检测";
             this.GrpWork.ResumeLayout(false);
             this.GrpWork.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.GrpFrisker.ResumeLayout(false);
             this.GrpFrisker.PerformLayout();
             this.GrpSensorstate.ResumeLayout(false);
@@ -617,7 +619,6 @@
             this.GrpDetectorSelfTest.ResumeLayout(false);
             this.GrpSelfTestParameter.ResumeLayout(false);
             this.GrpSelfTestParameter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -676,5 +677,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RHB;
         private System.Windows.Forms.DataGridViewTextBoxColumn LF;
         private System.Windows.Forms.DataGridViewTextBoxColumn RF;
+        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
     }
 }
