@@ -49,12 +49,12 @@ namespace HFM
         private void FrmMeasure_Load(object sender, EventArgs e)
         {           
             //线程支持异步取消
-            bkWorkerReceiveData.WorkerSupportsCancellation = true;
-            //从配置文件获得当前串口配置
+            bkWorkerReceiveData.WorkerSupportsCancellation = true;            
             if(commPort.Opened==true)
             {
                 commPort.Close();
             }
+            //从配置文件获得当前串口配置
             commPort.GetCommPortSet();
             //打开串口
             try
@@ -162,20 +162,33 @@ namespace HFM
                 if (platformState == PlatformState.SelfTest)
                 {
                     //获得系统自检时间,并计算下发时间参数：自检时间/2-2一并下发
-                    //
-                    //
+                    Components.SystemParameter systemParameter = new Components.SystemParameter();
+                    systemParameter.GetParameter();
+                    int checkTime = systemParameter.SelfCheckTime / 2;
+                    byte[] messageDate = null;
                     switch (factoryParameter.MeasureType)
                     {
-                        //生成Alpha自检指令报文，包含参数：自检时间/2-2
+                        //生成Alpha自检指令报文，包含参数：自检时间/2-2                           
                         //生成Beta自检指令报文，包含参数：自检时间/2-2
                         case "α":
                             //下发Alpha自检指令
+                            messageDate=Components.Message.BuildMessage(0, checkTime);
                             //如果不成功则：
-                            //{ 
-                            //错误计数器errorNumber+1，
-                            //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
-                            //错误计数器errorNumber未超过3次，延时delayTime(200)毫秒后continue继续下发
-                            //}                          
+                            if(Components.Message.SendMessage(messageDate,commPort)!=true)
+                            {
+                                //错误计数器errorNumber+1
+                                errorNumber++;
+                                //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                                if (errorNumber>5)
+                                {
+                                    worker.ReportProgress(1, null);
+                                }
+                                else
+                                {
+                                    System.Threading.Thread.Sleep(delayTime);
+                                    continue;
+                                }
+                            }                                                                                
                             break;
                         case "β":
                             //下发Beta自检指令
@@ -204,8 +217,7 @@ namespace HFM
                     Thread.Sleep(100);
                     //读取串口回传数据并赋值给receiveBuffMessage
                     byte[] receiveBuffMessage = new byte[200];
-                    //
-                    //
+                    receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
                     //延时
                     Thread.Sleep(1000);
                     //触发向主线程返回下位机上传数据事件
@@ -215,7 +227,7 @@ namespace HFM
             }
         }
 
-        //后台线程读取串口数据后的ReportProgress事件响应
+        //异步线程读取串口数据后的ReportProgress事件响应
         private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             int messageBufferLength = 62; //最短报文长度
@@ -249,9 +261,8 @@ namespace HFM
                 }
                 return;
             }
-            //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中
-            //
-            //            
+            //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
+            measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
             //如果当前运行状态为“运行准备”
             if (platformState==PlatformState.ReadyToRun)
             {
@@ -377,7 +388,7 @@ namespace HFM
                         Components.SystemParameter systemParameter = new Components.SystemParameter();
                         systemParameter.ClearMeasuredCount();
                         // 运行状态标志设置为“等待测量”
-                        platformState = PlatformState.ReadyToRun;
+                        platformState = PlatformState.ReadyToMeasure;
                         //启动本底测量计时(因为在等待测量过程中也要进行本底测量和计算) 
                         stateTimeStart = System.DateTime.Now;                        
                         for (int i = 0; i < channelS.Count; i++)
@@ -399,7 +410,7 @@ namespace HFM
                 }
             }
             //运行状态为等待测量
-            if(platformState==PlatformState.ReadyToRun)
+            if(platformState==PlatformState.ReadyToMeasure)
             {
                 //所有手部红外到位标志，默认全部到位
                 bool isHandInfraredStatus = true;

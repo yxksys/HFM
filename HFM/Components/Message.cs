@@ -61,6 +61,45 @@ namespace HFM.Components
 
             return messageData;
         }
+
+        /// <summary>
+        ///  /// 生成下发下位机的Alpha和Beta自检报文
+        /// 报文格式：Alpha自检：0x5A,checkTime/256，checkTime%256,0x03,0xEB,0x00,0x01,0x00,0x03
+        ///           Beta自检： 0x5A,checkTime/256，checkTime%256,0x03,0xEB,0x00,0x00,0x00,0x03
+        /// </summary>
+        /// <param name="checkType">自检类型，0：Alpha1：Beta</param>
+        /// <param name="checkTime">自检报文数组</param>
+        /// <returns></returns>
+        public static byte[] BuildMessage(int checkType,int checkTime)
+        {
+            byte[] messageData = new byte[62];
+            switch (checkType)
+            {
+                case 0://Alpha自检
+                    messageData[0] = 0x5A;
+                    messageData[1] = Convert.ToByte(checkTime/256);
+                    messageData[2] = Convert.ToByte (checkTime%256);
+                    messageData[3] = 0x03;
+                    messageData[4] = 0xE8;
+                    messageData[5] = 0x00;
+                    messageData[6] = 0x01;
+                    messageData[7] = 0x00;
+                    messageData[8] = 0x03;
+                    break;
+                case 1://Beat自检
+                    messageData[0] = 0x5A;
+                    messageData[1] = Convert.ToByte(checkTime / 256);
+                    messageData[2] = Convert.ToByte(checkTime % 256);
+                    messageData[3] = 0x03;
+                    messageData[4] = 0xE8;
+                    messageData[5] = 0x00;
+                    messageData[6] = 0x00;
+                    messageData[7] = 0x00;
+                    messageData[8] = 0x03;
+                    break;
+            }
+            return messageData;
+        }
         #endregion
 
         #region 生成下发下位机的自检报文
