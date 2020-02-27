@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
@@ -115,7 +115,7 @@
             this.RdoBeta58 = new System.Windows.Forms.RadioButton();
             this.RdoBeta14 = new System.Windows.Forms.RadioButton();
             this.GrpBetaData = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DgvBetaSet = new System.Windows.Forms.DataGridView();
             this.TxtBetaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtBetaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtBetaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,7 +163,7 @@
             this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
             this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
             this.GrpMainPresence = new System.Windows.Forms.GroupBox();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.DgvMainPreferenceSet = new System.Windows.Forms.DataGridView();
             this.TxtMainPreferenceChanneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceAlphaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceBetaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -174,15 +174,15 @@
             this.TxtMainPreferenceWorkTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceHVRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.设备配置 = new System.Windows.Forms.TabPage();
-            this.BtnFacilityNo = new System.Windows.Forms.Button();
-            this.BtnFacilityOk = new System.Windows.Forms.Button();
-            this.RdoClothes = new System.Windows.Forms.RadioButton();
-            this.RdoFoot = new System.Windows.Forms.RadioButton();
-            this.RdoDoubleHand = new System.Windows.Forms.RadioButton();
-            this.RdoSingleHand = new System.Windows.Forms.RadioButton();
-            this.RdoHand = new System.Windows.Forms.RadioButton();
-            this.LblFacility = new System.Windows.Forms.Label();
             this.GrpHand = new System.Windows.Forms.GroupBox();
+            this.RdoSingleHand = new System.Windows.Forms.RadioButton();
+            this.RdoDoubleHand = new System.Windows.Forms.RadioButton();
+            this.LblFacility = new System.Windows.Forms.Label();
+            this.RdoClothes = new System.Windows.Forms.RadioButton();
+            this.BtnFacilityNo = new System.Windows.Forms.Button();
+            this.RdoFoot = new System.Windows.Forms.RadioButton();
+            this.BtnFacilityOk = new System.Windows.Forms.Button();
+            this.RdoHand = new System.Windows.Forms.RadioButton();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpFacilityData.SuspendLayout();
@@ -195,13 +195,13 @@
             this.β参数.SuspendLayout();
             this.GrpBetaNuclideChoose.SuspendLayout();
             this.GrpBetaData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvBetaSet)).BeginInit();
             this.衣物探头.SuspendLayout();
             this.GrpClothesNuclideChoose.SuspendLayout();
             this.GrpClothesData.SuspendLayout();
             this.工厂参数.SuspendLayout();
             this.GrpMainPresence.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvMainPreferenceSet)).BeginInit();
             this.设备配置.SuspendLayout();
             this.GrpHand.SuspendLayout();
             this.SuspendLayout();
@@ -873,14 +873,14 @@
             // 
             // DgvAlphaSet
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -1140,7 +1140,7 @@
             // 
             // GrpBetaData
             // 
-            this.GrpBetaData.Controls.Add(this.dataGridView1);
+            this.GrpBetaData.Controls.Add(this.DgvBetaSet);
             this.GrpBetaData.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
             this.GrpBetaData.Location = new System.Drawing.Point(9, 12);
             this.GrpBetaData.Name = "GrpBetaData";
@@ -1149,31 +1149,31 @@
             this.GrpBetaData.TabStop = false;
             this.GrpBetaData.Text = "β参数";
             // 
-            // dataGridView1
+            // DgvBetaSet
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
             this.TxtBetaHBackground,
             this.TxtBetaLBackground,
             this.TxtBetaAlarm_1,
             this.TxtBetaAlarm_2,
             this.TxtBetaEfficiency});
-            this.dataGridView1.Location = new System.Drawing.Point(19, 21);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 20;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(722, 232);
-            this.dataGridView1.TabIndex = 12;
+            this.DgvBetaSet.Location = new System.Drawing.Point(19, 21);
+            this.DgvBetaSet.Name = "DgvBetaSet";
+            this.DgvBetaSet.RowHeadersVisible = false;
+            this.DgvBetaSet.RowHeadersWidth = 20;
+            this.DgvBetaSet.RowTemplate.Height = 27;
+            this.DgvBetaSet.Size = new System.Drawing.Size(722, 232);
+            this.DgvBetaSet.TabIndex = 12;
             // 
             // TxtBetaChannelName
             // 
@@ -1682,7 +1682,7 @@
             // 
             // GrpMainPresence
             // 
-            this.GrpMainPresence.Controls.Add(this.dataGridView4);
+            this.GrpMainPresence.Controls.Add(this.DgvMainPreferenceSet);
             this.GrpMainPresence.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.GrpMainPresence.Location = new System.Drawing.Point(22, 22);
             this.GrpMainPresence.Name = "GrpMainPresence";
@@ -1691,18 +1691,18 @@
             this.GrpMainPresence.TabStop = false;
             this.GrpMainPresence.Text = "道盒参数";
             // 
-            // dataGridView4
+            // DgvMainPreferenceSet
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
             this.TxtMainPreferenceAlphaThreshold,
             this.TxtMainPreferenceBetaThreshold,
@@ -1712,13 +1712,13 @@
             this.TxtMainPreferenceHVFactor,
             this.TxtMainPreferenceWorkTime,
             this.TxtMainPreferenceHVRatio});
-            this.dataGridView4.Location = new System.Drawing.Point(6, 45);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.RowHeadersVisible = false;
-            this.dataGridView4.RowHeadersWidth = 20;
-            this.dataGridView4.RowTemplate.Height = 27;
-            this.dataGridView4.Size = new System.Drawing.Size(722, 232);
-            this.dataGridView4.TabIndex = 12;
+            this.DgvMainPreferenceSet.Location = new System.Drawing.Point(6, 45);
+            this.DgvMainPreferenceSet.Name = "DgvMainPreferenceSet";
+            this.DgvMainPreferenceSet.RowHeadersVisible = false;
+            this.DgvMainPreferenceSet.RowHeadersWidth = 20;
+            this.DgvMainPreferenceSet.RowTemplate.Height = 27;
+            this.DgvMainPreferenceSet.Size = new System.Drawing.Size(722, 232);
+            this.DgvMainPreferenceSet.TabIndex = 12;
             // 
             // TxtMainPreferenceChanneName
             // 
@@ -1799,61 +1799,15 @@
             this.设备配置.Text = "设备配置";
             this.设备配置.UseVisualStyleBackColor = true;
             // 
-            // BtnFacilityNo
+            // GrpHand
             // 
-            this.BtnFacilityNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnFacilityNo.Location = new System.Drawing.Point(597, 358);
-            this.BtnFacilityNo.Name = "BtnFacilityNo";
-            this.BtnFacilityNo.Size = new System.Drawing.Size(128, 52);
-            this.BtnFacilityNo.TabIndex = 5;
-            this.BtnFacilityNo.Text = "取消";
-            this.BtnFacilityNo.UseVisualStyleBackColor = true;
-            // 
-            // BtnFacilityOk
-            // 
-            this.BtnFacilityOk.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnFacilityOk.Location = new System.Drawing.Point(441, 358);
-            this.BtnFacilityOk.Name = "BtnFacilityOk";
-            this.BtnFacilityOk.Size = new System.Drawing.Size(128, 52);
-            this.BtnFacilityOk.TabIndex = 4;
-            this.BtnFacilityOk.Text = "确定";
-            this.BtnFacilityOk.UseVisualStyleBackColor = true;
-            // 
-            // RdoClothes
-            // 
-            this.RdoClothes.AutoSize = true;
-            this.RdoClothes.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoClothes.Location = new System.Drawing.Point(114, 308);
-            this.RdoClothes.Name = "RdoClothes";
-            this.RdoClothes.Size = new System.Drawing.Size(110, 24);
-            this.RdoClothes.TabIndex = 15;
-            this.RdoClothes.TabStop = true;
-            this.RdoClothes.Text = "衣物探头";
-            this.RdoClothes.UseVisualStyleBackColor = true;
-            // 
-            // RdoFoot
-            // 
-            this.RdoFoot.AutoSize = true;
-            this.RdoFoot.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoFoot.Location = new System.Drawing.Point(114, 225);
-            this.RdoFoot.Name = "RdoFoot";
-            this.RdoFoot.Size = new System.Drawing.Size(70, 24);
-            this.RdoFoot.TabIndex = 15;
-            this.RdoFoot.TabStop = true;
-            this.RdoFoot.Text = "脚部";
-            this.RdoFoot.UseVisualStyleBackColor = true;
-            // 
-            // RdoDoubleHand
-            // 
-            this.RdoDoubleHand.AutoSize = true;
-            this.RdoDoubleHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoDoubleHand.Location = new System.Drawing.Point(33, 59);
-            this.RdoDoubleHand.Name = "RdoDoubleHand";
-            this.RdoDoubleHand.Size = new System.Drawing.Size(110, 24);
-            this.RdoDoubleHand.TabIndex = 15;
-            this.RdoDoubleHand.TabStop = true;
-            this.RdoDoubleHand.Text = "双探测器";
-            this.RdoDoubleHand.UseVisualStyleBackColor = true;
+            this.GrpHand.Controls.Add(this.RdoSingleHand);
+            this.GrpHand.Controls.Add(this.RdoDoubleHand);
+            this.GrpHand.Location = new System.Drawing.Point(132, 109);
+            this.GrpHand.Name = "GrpHand";
+            this.GrpHand.Size = new System.Drawing.Size(179, 96);
+            this.GrpHand.TabIndex = 17;
+            this.GrpHand.TabStop = false;
             // 
             // RdoSingleHand
             // 
@@ -1867,17 +1821,17 @@
             this.RdoSingleHand.Text = "单探测器";
             this.RdoSingleHand.UseVisualStyleBackColor = true;
             // 
-            // RdoHand
+            // RdoDoubleHand
             // 
-            this.RdoHand.AutoSize = true;
-            this.RdoHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoHand.Location = new System.Drawing.Point(114, 79);
-            this.RdoHand.Name = "RdoHand";
-            this.RdoHand.Size = new System.Drawing.Size(70, 24);
-            this.RdoHand.TabIndex = 15;
-            this.RdoHand.TabStop = true;
-            this.RdoHand.Text = "手部";
-            this.RdoHand.UseVisualStyleBackColor = true;
+            this.RdoDoubleHand.AutoSize = true;
+            this.RdoDoubleHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoDoubleHand.Location = new System.Drawing.Point(33, 59);
+            this.RdoDoubleHand.Name = "RdoDoubleHand";
+            this.RdoDoubleHand.Size = new System.Drawing.Size(110, 24);
+            this.RdoDoubleHand.TabIndex = 15;
+            this.RdoDoubleHand.TabStop = true;
+            this.RdoDoubleHand.Text = "双探测器";
+            this.RdoDoubleHand.UseVisualStyleBackColor = true;
             // 
             // LblFacility
             // 
@@ -1889,15 +1843,61 @@
             this.LblFacility.TabIndex = 16;
             this.LblFacility.Text = "设备配置";
             // 
-            // GrpHand
+            // RdoClothes
             // 
-            this.GrpHand.Controls.Add(this.RdoSingleHand);
-            this.GrpHand.Controls.Add(this.RdoDoubleHand);
-            this.GrpHand.Location = new System.Drawing.Point(132, 109);
-            this.GrpHand.Name = "GrpHand";
-            this.GrpHand.Size = new System.Drawing.Size(179, 96);
-            this.GrpHand.TabIndex = 17;
-            this.GrpHand.TabStop = false;
+            this.RdoClothes.AutoSize = true;
+            this.RdoClothes.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoClothes.Location = new System.Drawing.Point(114, 308);
+            this.RdoClothes.Name = "RdoClothes";
+            this.RdoClothes.Size = new System.Drawing.Size(110, 24);
+            this.RdoClothes.TabIndex = 15;
+            this.RdoClothes.TabStop = true;
+            this.RdoClothes.Text = "衣物探头";
+            this.RdoClothes.UseVisualStyleBackColor = true;
+            // 
+            // BtnFacilityNo
+            // 
+            this.BtnFacilityNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnFacilityNo.Location = new System.Drawing.Point(597, 358);
+            this.BtnFacilityNo.Name = "BtnFacilityNo";
+            this.BtnFacilityNo.Size = new System.Drawing.Size(128, 52);
+            this.BtnFacilityNo.TabIndex = 5;
+            this.BtnFacilityNo.Text = "取消";
+            this.BtnFacilityNo.UseVisualStyleBackColor = true;
+            // 
+            // RdoFoot
+            // 
+            this.RdoFoot.AutoSize = true;
+            this.RdoFoot.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoFoot.Location = new System.Drawing.Point(114, 225);
+            this.RdoFoot.Name = "RdoFoot";
+            this.RdoFoot.Size = new System.Drawing.Size(70, 24);
+            this.RdoFoot.TabIndex = 15;
+            this.RdoFoot.TabStop = true;
+            this.RdoFoot.Text = "脚部";
+            this.RdoFoot.UseVisualStyleBackColor = true;
+            // 
+            // BtnFacilityOk
+            // 
+            this.BtnFacilityOk.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnFacilityOk.Location = new System.Drawing.Point(441, 358);
+            this.BtnFacilityOk.Name = "BtnFacilityOk";
+            this.BtnFacilityOk.Size = new System.Drawing.Size(128, 52);
+            this.BtnFacilityOk.TabIndex = 4;
+            this.BtnFacilityOk.Text = "确定";
+            this.BtnFacilityOk.UseVisualStyleBackColor = true;
+            // 
+            // RdoHand
+            // 
+            this.RdoHand.AutoSize = true;
+            this.RdoHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RdoHand.Location = new System.Drawing.Point(114, 79);
+            this.RdoHand.Name = "RdoHand";
+            this.RdoHand.Size = new System.Drawing.Size(70, 24);
+            this.RdoHand.TabIndex = 15;
+            this.RdoHand.TabStop = true;
+            this.RdoHand.Text = "手部";
+            this.RdoHand.UseVisualStyleBackColor = true;
             // 
             // FrmPreference
             // 
@@ -1926,7 +1926,7 @@
             this.GrpBetaNuclideChoose.ResumeLayout(false);
             this.GrpBetaNuclideChoose.PerformLayout();
             this.GrpBetaData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvBetaSet)).EndInit();
             this.衣物探头.ResumeLayout(false);
             this.GrpClothesNuclideChoose.ResumeLayout(false);
             this.GrpClothesNuclideChoose.PerformLayout();
@@ -1934,7 +1934,7 @@
             this.GrpClothesData.PerformLayout();
             this.工厂参数.ResumeLayout(false);
             this.GrpMainPresence.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvMainPreferenceSet)).EndInit();
             this.设备配置.ResumeLayout(false);
             this.设备配置.PerformLayout();
             this.GrpHand.ResumeLayout(false);
@@ -2033,7 +2033,7 @@
         private System.Windows.Forms.RadioButton RdoBeta131;
         private System.Windows.Forms.RadioButton RdoBeta58;
         private System.Windows.Forms.RadioButton RdoBeta14;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView DgvMainPreferenceSet;
         private System.Windows.Forms.RadioButton RdoAlphaDefine2;
         private System.Windows.Forms.RadioButton RdoAlpha241;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
@@ -2042,7 +2042,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DgvBetaSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaChannelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaHBackground;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaLBackground;
