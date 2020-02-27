@@ -59,6 +59,7 @@
             this.LblResult = new System.Windows.Forms.Label();
             this.LblMeasuringTime = new System.Windows.Forms.Label();
             this.LblChannelSelection = new System.Windows.Forms.Label();
+            this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
             this.TabCalibration.SuspendLayout();
             this.TabpageCalibration.SuspendLayout();
             this.GrpCalibration.SuspendLayout();
@@ -413,5 +414,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
         private System.Windows.Forms.DataGridViewTextBoxColumn HV;
+        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
     }
 }
