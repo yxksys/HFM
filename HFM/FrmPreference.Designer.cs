@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
@@ -81,6 +81,14 @@
             this.LblSmoothingTime = new System.Windows.Forms.Label();
             this.LblSelfCheckTime = new System.Windows.Forms.Label();
             this.α参数 = new System.Windows.Forms.TabPage();
+            this.LblAlpha = new System.Windows.Forms.Label();
+            this.DgvAlphaSet = new System.Windows.Forms.DataGridView();
+            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnAlphaNo = new System.Windows.Forms.Button();
             this.BtnAlphaOk = new System.Windows.Forms.Button();
             this.GrpAlphaNuclideChoose = new System.Windows.Forms.GroupBox();
@@ -90,14 +98,15 @@
             this.RdoAlpha238 = new System.Windows.Forms.RadioButton();
             this.RdoAlpha239 = new System.Windows.Forms.RadioButton();
             this.RdoAlpha235 = new System.Windows.Forms.RadioButton();
-            this.DgvAlphaSet = new System.Windows.Forms.DataGridView();
-            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.β参数 = new System.Windows.Forms.TabPage();
+            this.LblBeta = new System.Windows.Forms.Label();
+            this.DgvBetaSet = new System.Windows.Forms.DataGridView();
+            this.TxtBetaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnBetaNo = new System.Windows.Forms.Button();
             this.BtnBetaOk = new System.Windows.Forms.Button();
             this.GrpBetaNuclideChoose = new System.Windows.Forms.GroupBox();
@@ -149,10 +158,7 @@
             this.LblClothesLBackground = new System.Windows.Forms.Label();
             this.LblClothesHBackground = new System.Windows.Forms.Label();
             this.工厂参数 = new System.Windows.Forms.TabPage();
-            this.BtnMainPreferenceWrite = new System.Windows.Forms.Button();
-            this.BtnMainPreferenceRead = new System.Windows.Forms.Button();
-            this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
-            this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.DgvMainPreferenceSet = new System.Windows.Forms.DataGridView();
             this.TxtMainPreferenceChanneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceAlphaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,6 +169,10 @@
             this.TxtMainPreferenceHVFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceWorkTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceHVRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnMainPreferenceWrite = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceRead = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
             this.设备配置 = new System.Windows.Forms.TabPage();
             this.GrpHand = new System.Windows.Forms.GroupBox();
             this.RdoSingleHand = new System.Windows.Forms.RadioButton();
@@ -173,25 +183,16 @@
             this.RdoFoot = new System.Windows.Forms.RadioButton();
             this.BtnFacilityOk = new System.Windows.Forms.Button();
             this.RdoHand = new System.Windows.Forms.RadioButton();
-            this.DgvBetaSet = new System.Windows.Forms.DataGridView();
-            this.TxtBetaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LblBeta = new System.Windows.Forms.Label();
-            this.LblAlpha = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpFacilityData.SuspendLayout();
             this.GrpPreferenceArea.SuspendLayout();
             this.GrpPreferenceData.SuspendLayout();
             this.α参数.SuspendLayout();
-            this.GrpAlphaNuclideChoose.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvAlphaSet)).BeginInit();
+            this.GrpAlphaNuclideChoose.SuspendLayout();
             this.β参数.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvBetaSet)).BeginInit();
             this.GrpBetaNuclideChoose.SuspendLayout();
             this.衣物探头.SuspendLayout();
             this.GrpClothesNuclideChoose.SuspendLayout();
@@ -200,7 +201,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgvMainPreferenceSet)).BeginInit();
             this.设备配置.SuspendLayout();
             this.GrpHand.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvBetaSet)).BeginInit();
             this.SuspendLayout();
             // 
             // TabPresence
@@ -773,7 +773,7 @@
             this.α参数.Controls.Add(this.BtnAlphaNo);
             this.α参数.Controls.Add(this.BtnAlphaOk);
             this.α参数.Controls.Add(this.GrpAlphaNuclideChoose);
-            this.α参数.Font = new System.Drawing.Font("宋体", 15F);
+            this.α参数.Font = new System.Drawing.Font("宋体", 12F);
             this.α参数.Location = new System.Drawing.Point(4, 30);
             this.α参数.Margin = new System.Windows.Forms.Padding(2);
             this.α参数.Name = "α参数";
@@ -782,6 +782,85 @@
             this.α参数.TabIndex = 1;
             this.α参数.Text = "α参数";
             this.α参数.UseVisualStyleBackColor = true;
+            // 
+            // LblAlpha
+            // 
+            this.LblAlpha.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.LblAlpha.Location = new System.Drawing.Point(19, 13);
+            this.LblAlpha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblAlpha.Name = "LblAlpha";
+            this.LblAlpha.Size = new System.Drawing.Size(98, 21);
+            this.LblAlpha.TabIndex = 14;
+            this.LblAlpha.Text = "α参数";
+            // 
+            // DgvAlphaSet
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TxtAlphaChannelName,
+            this.TxtAlphaHBackground,
+            this.TxtAplhaLBackground,
+            this.TxtAlphaAlarm_1,
+            this.TxtAlphaAlarm_2,
+            this.TxtAlphaEfficiency});
+            this.DgvAlphaSet.Location = new System.Drawing.Point(28, 36);
+            this.DgvAlphaSet.Margin = new System.Windows.Forms.Padding(2);
+            this.DgvAlphaSet.Name = "DgvAlphaSet";
+            this.DgvAlphaSet.RowHeadersVisible = false;
+            this.DgvAlphaSet.RowHeadersWidth = 20;
+            this.DgvAlphaSet.RowTemplate.Height = 27;
+            this.DgvAlphaSet.Size = new System.Drawing.Size(722, 258);
+            this.DgvAlphaSet.TabIndex = 11;
+            // 
+            // TxtAlphaChannelName
+            // 
+            this.TxtAlphaChannelName.DataPropertyName = "ChannelName";
+            this.TxtAlphaChannelName.HeaderText = "通道名称";
+            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
+            this.TxtAlphaChannelName.Width = 120;
+            // 
+            // TxtAlphaHBackground
+            // 
+            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
+            this.TxtAlphaHBackground.HeaderText = "本底上限(cps)";
+            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
+            this.TxtAlphaHBackground.Width = 120;
+            // 
+            // TxtAplhaLBackground
+            // 
+            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
+            this.TxtAplhaLBackground.HeaderText = "本底下限(cps)";
+            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
+            this.TxtAplhaLBackground.Width = 120;
+            // 
+            // TxtAlphaAlarm_1
+            // 
+            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
+            this.TxtAlphaAlarm_1.HeaderText = "污染警报(cps)";
+            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
+            this.TxtAlphaAlarm_1.Width = 120;
+            // 
+            // TxtAlphaAlarm_2
+            // 
+            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
+            this.TxtAlphaAlarm_2.HeaderText = "高阶警报(cps)";
+            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
+            this.TxtAlphaAlarm_2.Width = 120;
+            // 
+            // TxtAlphaEfficiency
+            // 
+            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
+            this.TxtAlphaEfficiency.HeaderText = "探测效率(%)";
+            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
+            this.TxtAlphaEfficiency.Width = 120;
             // 
             // BtnAlphaNo
             // 
@@ -901,75 +980,6 @@
             this.RdoAlpha235.Text = "U-235";
             this.RdoAlpha235.UseVisualStyleBackColor = true;
             // 
-            // DgvAlphaSet
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TxtAlphaChannelName,
-            this.TxtAlphaHBackground,
-            this.TxtAplhaLBackground,
-            this.TxtAlphaAlarm_1,
-            this.TxtAlphaAlarm_2,
-            this.TxtAlphaEfficiency});
-            this.DgvAlphaSet.Location = new System.Drawing.Point(28, 36);
-            this.DgvAlphaSet.Margin = new System.Windows.Forms.Padding(2);
-            this.DgvAlphaSet.Name = "DgvAlphaSet";
-            this.DgvAlphaSet.RowHeadersVisible = false;
-            this.DgvAlphaSet.RowHeadersWidth = 20;
-            this.DgvAlphaSet.RowTemplate.Height = 27;
-            this.DgvAlphaSet.Size = new System.Drawing.Size(722, 258);
-            this.DgvAlphaSet.TabIndex = 11;
-            // 
-            // TxtAlphaChannelName
-            // 
-            this.TxtAlphaChannelName.DataPropertyName = "ChannelName";
-            this.TxtAlphaChannelName.HeaderText = "通道名称";
-            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
-            this.TxtAlphaChannelName.Width = 120;
-            // 
-            // TxtAlphaHBackground
-            // 
-            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
-            this.TxtAlphaHBackground.HeaderText = "本底上限(cps)";
-            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
-            this.TxtAlphaHBackground.Width = 120;
-            // 
-            // TxtAplhaLBackground
-            // 
-            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
-            this.TxtAplhaLBackground.HeaderText = "本底下限(cps)";
-            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
-            this.TxtAplhaLBackground.Width = 120;
-            // 
-            // TxtAlphaAlarm_1
-            // 
-            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
-            this.TxtAlphaAlarm_1.HeaderText = "污染警报(cps)";
-            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
-            this.TxtAlphaAlarm_1.Width = 120;
-            // 
-            // TxtAlphaAlarm_2
-            // 
-            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
-            this.TxtAlphaAlarm_2.HeaderText = "高阶警报(cps)";
-            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
-            this.TxtAlphaAlarm_2.Width = 120;
-            // 
-            // TxtAlphaEfficiency
-            // 
-            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
-            this.TxtAlphaEfficiency.HeaderText = "探测效率(%)";
-            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
-            this.TxtAlphaEfficiency.Width = 120;
-            // 
             // β参数
             // 
             this.β参数.Controls.Add(this.LblBeta);
@@ -977,6 +987,7 @@
             this.β参数.Controls.Add(this.BtnBetaNo);
             this.β参数.Controls.Add(this.BtnBetaOk);
             this.β参数.Controls.Add(this.GrpBetaNuclideChoose);
+            this.β参数.Font = new System.Drawing.Font("宋体", 12F);
             this.β参数.Location = new System.Drawing.Point(4, 30);
             this.β参数.Margin = new System.Windows.Forms.Padding(2);
             this.β参数.Name = "β参数";
@@ -984,6 +995,85 @@
             this.β参数.TabIndex = 2;
             this.β参数.Text = "β参数";
             this.β参数.UseVisualStyleBackColor = true;
+            // 
+            // LblBeta
+            // 
+            this.LblBeta.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.LblBeta.Location = new System.Drawing.Point(19, 13);
+            this.LblBeta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblBeta.Name = "LblBeta";
+            this.LblBeta.Size = new System.Drawing.Size(98, 21);
+            this.LblBeta.TabIndex = 13;
+            this.LblBeta.Text = "β参数";
+            // 
+            // DgvBetaSet
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TxtBetaChannelName,
+            this.TxtBetaHBackground,
+            this.TxtBetaLBackground,
+            this.TxtBetaAlarm_1,
+            this.TxtBetaAlarm_2,
+            this.TxtBetaEfficiency});
+            this.DgvBetaSet.Location = new System.Drawing.Point(28, 36);
+            this.DgvBetaSet.Margin = new System.Windows.Forms.Padding(2);
+            this.DgvBetaSet.Name = "DgvBetaSet";
+            this.DgvBetaSet.RowHeadersVisible = false;
+            this.DgvBetaSet.RowHeadersWidth = 20;
+            this.DgvBetaSet.RowTemplate.Height = 27;
+            this.DgvBetaSet.Size = new System.Drawing.Size(722, 258);
+            this.DgvBetaSet.TabIndex = 12;
+            // 
+            // TxtBetaChannelName
+            // 
+            this.TxtBetaChannelName.DataPropertyName = "ChannelName";
+            this.TxtBetaChannelName.HeaderText = "通道名称";
+            this.TxtBetaChannelName.Name = "TxtBetaChannelName";
+            this.TxtBetaChannelName.Width = 120;
+            // 
+            // TxtBetaHBackground
+            // 
+            this.TxtBetaHBackground.DataPropertyName = "HBackground";
+            this.TxtBetaHBackground.HeaderText = "本底上限(cps)";
+            this.TxtBetaHBackground.Name = "TxtBetaHBackground";
+            this.TxtBetaHBackground.Width = 120;
+            // 
+            // TxtBetaLBackground
+            // 
+            this.TxtBetaLBackground.DataPropertyName = "LBackground";
+            this.TxtBetaLBackground.HeaderText = "本底下限(cps)";
+            this.TxtBetaLBackground.Name = "TxtBetaLBackground";
+            this.TxtBetaLBackground.Width = 120;
+            // 
+            // TxtBetaAlarm_1
+            // 
+            this.TxtBetaAlarm_1.DataPropertyName = "Alarm_1";
+            this.TxtBetaAlarm_1.HeaderText = "污染警报(cps)";
+            this.TxtBetaAlarm_1.Name = "TxtBetaAlarm_1";
+            this.TxtBetaAlarm_1.Width = 120;
+            // 
+            // TxtBetaAlarm_2
+            // 
+            this.TxtBetaAlarm_2.DataPropertyName = "Alarm_2";
+            this.TxtBetaAlarm_2.HeaderText = "高阶警报(cps)";
+            this.TxtBetaAlarm_2.Name = "TxtBetaAlarm_2";
+            this.TxtBetaAlarm_2.Width = 120;
+            // 
+            // TxtBetaEfficiency
+            // 
+            this.TxtBetaEfficiency.DataPropertyName = "Efficiency";
+            this.TxtBetaEfficiency.HeaderText = "探测效率(%)";
+            this.TxtBetaEfficiency.Name = "TxtBetaEfficiency";
+            this.TxtBetaEfficiency.Width = 120;
             // 
             // BtnBetaNo
             // 
@@ -1641,6 +1731,7 @@
             this.工厂参数.Controls.Add(this.BtnMainPreferenceRead);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceSet);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceRetuen);
+            this.工厂参数.Font = new System.Drawing.Font("宋体", 12F);
             this.工厂参数.Location = new System.Drawing.Point(4, 30);
             this.工厂参数.Margin = new System.Windows.Forms.Padding(2);
             this.工厂参数.Name = "工厂参数";
@@ -1649,49 +1740,15 @@
             this.工厂参数.Text = "道盒参数";
             this.工厂参数.UseVisualStyleBackColor = true;
             // 
-            // BtnMainPreferenceWrite
+            // label1
             // 
-            this.BtnMainPreferenceWrite.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMainPreferenceWrite.Location = new System.Drawing.Point(543, 386);
-            this.BtnMainPreferenceWrite.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMainPreferenceWrite.Name = "BtnMainPreferenceWrite";
-            this.BtnMainPreferenceWrite.Size = new System.Drawing.Size(110, 42);
-            this.BtnMainPreferenceWrite.TabIndex = 4;
-            this.BtnMainPreferenceWrite.Text = "写参数";
-            this.BtnMainPreferenceWrite.UseVisualStyleBackColor = true;
-            // 
-            // BtnMainPreferenceRead
-            // 
-            this.BtnMainPreferenceRead.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMainPreferenceRead.Location = new System.Drawing.Point(415, 386);
-            this.BtnMainPreferenceRead.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMainPreferenceRead.Name = "BtnMainPreferenceRead";
-            this.BtnMainPreferenceRead.Size = new System.Drawing.Size(110, 42);
-            this.BtnMainPreferenceRead.TabIndex = 4;
-            this.BtnMainPreferenceRead.Text = "读参数";
-            this.BtnMainPreferenceRead.UseVisualStyleBackColor = true;
-            // 
-            // BtnMainPreferenceSet
-            // 
-            this.BtnMainPreferenceSet.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMainPreferenceSet.Location = new System.Drawing.Point(288, 386);
-            this.BtnMainPreferenceSet.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMainPreferenceSet.Name = "BtnMainPreferenceSet";
-            this.BtnMainPreferenceSet.Size = new System.Drawing.Size(110, 42);
-            this.BtnMainPreferenceSet.TabIndex = 4;
-            this.BtnMainPreferenceSet.Text = "设置默认";
-            this.BtnMainPreferenceSet.UseVisualStyleBackColor = true;
-            // 
-            // BtnMainPreferenceRetuen
-            // 
-            this.BtnMainPreferenceRetuen.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMainPreferenceRetuen.Location = new System.Drawing.Point(160, 386);
-            this.BtnMainPreferenceRetuen.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMainPreferenceRetuen.Name = "BtnMainPreferenceRetuen";
-            this.BtnMainPreferenceRetuen.Size = new System.Drawing.Size(110, 42);
-            this.BtnMainPreferenceRetuen.TabIndex = 4;
-            this.BtnMainPreferenceRetuen.Text = "恢复默认";
-            this.BtnMainPreferenceRetuen.UseVisualStyleBackColor = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 21);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "道盒参数";
             // 
             // DgvMainPreferenceSet
             // 
@@ -1785,6 +1842,50 @@
             this.TxtMainPreferenceHVRatio.Name = "TxtMainPreferenceHVRatio";
             this.TxtMainPreferenceHVRatio.Width = 82;
             // 
+            // BtnMainPreferenceWrite
+            // 
+            this.BtnMainPreferenceWrite.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMainPreferenceWrite.Location = new System.Drawing.Point(543, 386);
+            this.BtnMainPreferenceWrite.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMainPreferenceWrite.Name = "BtnMainPreferenceWrite";
+            this.BtnMainPreferenceWrite.Size = new System.Drawing.Size(110, 42);
+            this.BtnMainPreferenceWrite.TabIndex = 4;
+            this.BtnMainPreferenceWrite.Text = "写参数";
+            this.BtnMainPreferenceWrite.UseVisualStyleBackColor = true;
+            // 
+            // BtnMainPreferenceRead
+            // 
+            this.BtnMainPreferenceRead.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMainPreferenceRead.Location = new System.Drawing.Point(415, 386);
+            this.BtnMainPreferenceRead.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMainPreferenceRead.Name = "BtnMainPreferenceRead";
+            this.BtnMainPreferenceRead.Size = new System.Drawing.Size(110, 42);
+            this.BtnMainPreferenceRead.TabIndex = 4;
+            this.BtnMainPreferenceRead.Text = "读参数";
+            this.BtnMainPreferenceRead.UseVisualStyleBackColor = true;
+            // 
+            // BtnMainPreferenceSet
+            // 
+            this.BtnMainPreferenceSet.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMainPreferenceSet.Location = new System.Drawing.Point(288, 386);
+            this.BtnMainPreferenceSet.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMainPreferenceSet.Name = "BtnMainPreferenceSet";
+            this.BtnMainPreferenceSet.Size = new System.Drawing.Size(110, 42);
+            this.BtnMainPreferenceSet.TabIndex = 4;
+            this.BtnMainPreferenceSet.Text = "设置默认";
+            this.BtnMainPreferenceSet.UseVisualStyleBackColor = true;
+            // 
+            // BtnMainPreferenceRetuen
+            // 
+            this.BtnMainPreferenceRetuen.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMainPreferenceRetuen.Location = new System.Drawing.Point(160, 386);
+            this.BtnMainPreferenceRetuen.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMainPreferenceRetuen.Name = "BtnMainPreferenceRetuen";
+            this.BtnMainPreferenceRetuen.Size = new System.Drawing.Size(110, 42);
+            this.BtnMainPreferenceRetuen.TabIndex = 4;
+            this.BtnMainPreferenceRetuen.Text = "恢复默认";
+            this.BtnMainPreferenceRetuen.UseVisualStyleBackColor = true;
+            // 
             // 设备配置
             // 
             this.设备配置.Controls.Add(this.GrpHand);
@@ -1794,6 +1895,7 @@
             this.设备配置.Controls.Add(this.RdoFoot);
             this.设备配置.Controls.Add(this.BtnFacilityOk);
             this.设备配置.Controls.Add(this.RdoHand);
+            this.设备配置.Font = new System.Drawing.Font("宋体", 12F);
             this.设备配置.Location = new System.Drawing.Point(4, 30);
             this.设备配置.Margin = new System.Windows.Forms.Padding(2);
             this.设备配置.Name = "设备配置";
@@ -1912,105 +2014,6 @@
             this.RdoHand.Text = "手部";
             this.RdoHand.UseVisualStyleBackColor = true;
             // 
-            // DgvBetaSet
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TxtBetaChannelName,
-            this.TxtBetaHBackground,
-            this.TxtBetaLBackground,
-            this.TxtBetaAlarm_1,
-            this.TxtBetaAlarm_2,
-            this.TxtBetaEfficiency});
-            this.DgvBetaSet.Location = new System.Drawing.Point(28, 36);
-            this.DgvBetaSet.Margin = new System.Windows.Forms.Padding(2);
-            this.DgvBetaSet.Name = "DgvBetaSet";
-            this.DgvBetaSet.RowHeadersVisible = false;
-            this.DgvBetaSet.RowHeadersWidth = 20;
-            this.DgvBetaSet.RowTemplate.Height = 27;
-            this.DgvBetaSet.Size = new System.Drawing.Size(722, 258);
-            this.DgvBetaSet.TabIndex = 12;
-            // 
-            // TxtBetaEfficiency
-            // 
-            this.TxtBetaEfficiency.DataPropertyName = "Efficiency";
-            this.TxtBetaEfficiency.HeaderText = "探测效率(%)";
-            this.TxtBetaEfficiency.Name = "TxtBetaEfficiency";
-            this.TxtBetaEfficiency.Width = 120;
-            // 
-            // TxtBetaAlarm_2
-            // 
-            this.TxtBetaAlarm_2.DataPropertyName = "Alarm_2";
-            this.TxtBetaAlarm_2.HeaderText = "高阶警报(cps)";
-            this.TxtBetaAlarm_2.Name = "TxtBetaAlarm_2";
-            this.TxtBetaAlarm_2.Width = 120;
-            // 
-            // TxtBetaAlarm_1
-            // 
-            this.TxtBetaAlarm_1.DataPropertyName = "Alarm_1";
-            this.TxtBetaAlarm_1.HeaderText = "污染警报(cps)";
-            this.TxtBetaAlarm_1.Name = "TxtBetaAlarm_1";
-            this.TxtBetaAlarm_1.Width = 120;
-            // 
-            // TxtBetaLBackground
-            // 
-            this.TxtBetaLBackground.DataPropertyName = "LBackground";
-            this.TxtBetaLBackground.HeaderText = "本底下限(cps)";
-            this.TxtBetaLBackground.Name = "TxtBetaLBackground";
-            this.TxtBetaLBackground.Width = 120;
-            // 
-            // TxtBetaHBackground
-            // 
-            this.TxtBetaHBackground.DataPropertyName = "HBackground";
-            this.TxtBetaHBackground.HeaderText = "本底上限(cps)";
-            this.TxtBetaHBackground.Name = "TxtBetaHBackground";
-            this.TxtBetaHBackground.Width = 120;
-            // 
-            // TxtBetaChannelName
-            // 
-            this.TxtBetaChannelName.DataPropertyName = "ChannelName";
-            this.TxtBetaChannelName.HeaderText = "通道名称";
-            this.TxtBetaChannelName.Name = "TxtBetaChannelName";
-            this.TxtBetaChannelName.Width = 120;
-            // 
-            // LblBeta
-            // 
-            this.LblBeta.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.LblBeta.Location = new System.Drawing.Point(19, 13);
-            this.LblBeta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblBeta.Name = "LblBeta";
-            this.LblBeta.Size = new System.Drawing.Size(98, 21);
-            this.LblBeta.TabIndex = 13;
-            this.LblBeta.Text = "β参数";
-            // 
-            // LblAlpha
-            // 
-            this.LblAlpha.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.LblAlpha.Location = new System.Drawing.Point(19, 13);
-            this.LblAlpha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LblAlpha.Name = "LblAlpha";
-            this.LblAlpha.Size = new System.Drawing.Size(98, 21);
-            this.LblAlpha.TabIndex = 14;
-            this.LblAlpha.Text = "α参数";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(12, 13);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 21);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "道盒参数";
-            // 
             // FrmPreference
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2031,10 +2034,11 @@
             this.GrpPreferenceData.ResumeLayout(false);
             this.GrpPreferenceData.PerformLayout();
             this.α参数.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvAlphaSet)).EndInit();
             this.GrpAlphaNuclideChoose.ResumeLayout(false);
             this.GrpAlphaNuclideChoose.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvAlphaSet)).EndInit();
             this.β参数.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvBetaSet)).EndInit();
             this.GrpBetaNuclideChoose.ResumeLayout(false);
             this.GrpBetaNuclideChoose.PerformLayout();
             this.衣物探头.ResumeLayout(false);
@@ -2048,7 +2052,6 @@
             this.设备配置.PerformLayout();
             this.GrpHand.ResumeLayout(false);
             this.GrpHand.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvBetaSet)).EndInit();
             this.ResumeLayout(false);
 
         }
