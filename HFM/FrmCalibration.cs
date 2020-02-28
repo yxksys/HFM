@@ -17,12 +17,18 @@ namespace HFM
 {
     public partial class FrmCalibration : Form
     {
+        /// <summary>
+        /// 实例化串口
+        /// </summary>
+        CommPort commPort = new CommPort();
+
+
         public FrmCalibration()
         {
             InitializeComponent();
             
         }
-        CommPort commPort = new CommPort();
+        
         private void FrmCalibration_Load(object sender, EventArgs e)
         {
             //线程支持异步取消

@@ -6,6 +6,7 @@
  *  版本：
  *  创建时间：2020年2月17日 09:41:19
  *  类名：系统参数类  SystemParameter
+ *  更新：更新UpdateMeasuredCount方法和ClearMeasuredCount方法，2020年2月28日 11:54:23
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -16,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.OleDb;
+using System.Windows.Forms;
 
 namespace HFM.Components
 {
@@ -26,12 +28,21 @@ namespace HFM.Components
         /// 查询字段:测量单位、自检时间、平滑时间、报警时间、强制本底次数、衣物离线自检时间、当前是否英文版本
         /// </summary>
         private const string SQL_SELECT_MAINPREFERENCE = "SELECT MeasurementUnit, SelfCheckTime, SmoothingTime," +
-                                                        " MeasuringTime, AlarmTime, BKGUpdate, ClothOfflineTime, IsEnglish " +
+                                                        " MeasuringTime, AlarmTime, BKGUpdate, ClothOfflineTime, IsEnglish ,MeasuredCount" +
                                                         " FROM HFM_MainPreference";
+        /// <summary>
+        /// 更新字段:测量单位、自检时间、平滑时间、报警时间、强制本底次数、衣物离线自检时间、当前是否英文版本
+        /// </summary>
         private const string SQL_UPDATE_MAINPREFERENCE = "UPDATE HFM_MainPreference " +
                                                         "SET  MeasurementUnit=@MeasurementUnit, SelfCheckTime=@SelfCheckTime," +
                                                         " SmoothingTime=@SmoothingTime, MeasuringTime=@MeasuringTime, AlarmTime=@AlarmTime," +
                                                         " BKGUpdate='@BKGUpdate', ClothOfflineTime=@ClothOfflineTime, IsEnglish=@IsEnglish";
+
+        /// <summary>
+        /// 更新字段:已经完成检查次数
+        /// </summary>
+        private const string SQL_UPDATE_MAINPREFERENCE_BY_MEASUREDCOUNT = "UPDATE HFM_MainPreference SET MeasuredCount=@MeasuredCount";
+        
         #endregion
 
         #region 属性
@@ -117,7 +128,9 @@ namespace HFM.Components
         /// <returns>返回系统参数对象</returns>
         public SystemParameter GetParameter()
         {
+            //从数据库中查询
             OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE);
+            //实例化系统参数对象
             SystemParameter systemParameter = new SystemParameter();
             while (reader.Read())
             {
@@ -129,6 +142,7 @@ namespace HFM.Components
                 systemParameter.BkgUpdate = Convert.ToInt32(reader["BKGUpdate"].ToString() == "" ? "0" : reader["BKGUpdate"].ToString());
                 systemParameter.ClothOfflineTime = Convert.ToInt32(reader["ClothOfflineTime"].ToString() == "" ? "0" : reader["ClothOfflineTime"].ToString());
                 systemParameter.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                systemParameter.MeasuredCount = Convert.ToInt32(reader["MeasuredCount"].ToString() == "" ? "0" : reader["MeasuredCount"].ToString());
             }
             return systemParameter;
         }
@@ -176,7 +190,31 @@ namespace HFM.Components
         /// <returns></returns>
         public void UpdateMeasuredCount()
         {
-            
+            //从数据库中查询检查次数
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE);
+            //实例化系统参数对象
+            SystemParameter systemParameter = new SystemParameter();
+            while (reader.Read())
+            {
+                systemParameter.MeasuredCount = Convert.ToInt32(reader["MeasuredCount"].ToString() == "" ? "0" : reader["MeasuredCount"].ToString());
+            }
+            //次数
+            int count = 0;
+            //已有次数加1
+            count = systemParameter.MeasuredCount + 1;
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("MeasuredCount",OleDbType.VarChar,255),
+                
+            };
+            parms[0].Value = count.ToString();
+            //更新检查次数到数据库
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE_BY_MEASUREDCOUNT, parms) == 0)
+            {
+                MessageBox.Show("更新检查次数错误");
+            }
+
         }
         /// <summary>
         /// 已经完成检查次数清零
@@ -185,6 +223,33 @@ namespace HFM.Components
         /// <returns></returns>
         public void ClearMeasuredCount()
         {
+            //从数据库中查询检查次数
+            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE);
+            //实例化系统参数对象
+            SystemParameter systemParameter = new SystemParameter();
+            while (reader.Read())
+            {
+                systemParameter.MeasuredCount = Convert.ToInt32(reader["MeasuredCount"].ToString() == "" ? "0" : reader["MeasuredCount"].ToString());
+            }
+            //判断检查次数不为0则执行
+            if (systemParameter.MeasuredCount != 0)
+            {
+                //次数
+                int count = 0;
+            
+                //构造查询参数
+                OleDbParameter[] parms = new OleDbParameter[]
+                {
+                    new OleDbParameter("MeasuredCount",OleDbType.VarChar,255),
+
+                };
+                parms[0].Value = count.ToString();
+                //更新检查次数到数据库
+                if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE_BY_MEASUREDCOUNT, parms) == 0)
+                {
+                    MessageBox.Show("更新检查次数错误");
+                }
+            }
             
         }
         #endregion

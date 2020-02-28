@@ -89,12 +89,12 @@ namespace HFM
             //    MessageBox.Show("更新失败");
             //}
             //测试系统参数查询
-            Components.SystemParameter system = new Components.SystemParameter();
-            system.GetParameter();
-            if(system.SetParameter(new Components.SystemParameter("1", 1, 1, 1, 1, 1, 1, false)) == true)
-            {
-                MessageBox.Show("更新成功");
-            }
+            //Components.SystemParameter system = new Components.SystemParameter();
+            //system.GetParameter();
+            //if(system.SetParameter(new Components.SystemParameter("1", 1, 1, 1, 1, 1, 1, false)) == true)
+            //{
+            //    MessageBox.Show("更新成功");
+            //}
         }
 
         private void BtnCommport_Click(object sender, EventArgs e)
