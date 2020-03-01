@@ -43,6 +43,8 @@ namespace HFM
                 MessageBox.Show("端口打开错误！请检查通讯是否正常。");
                 return;
             }
+            //开启异步线程
+            bkWorkerReceiveData.RunWorkerAsync();
         }
     }
 }
