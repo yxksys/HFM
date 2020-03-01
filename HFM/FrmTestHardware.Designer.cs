@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.GrpWork = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +81,7 @@
             this.LblSelfcount = new System.Windows.Forms.Label();
             this.LblTimeWork = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.GrpWork.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.GrpFrisker.SuspendLayout();
@@ -593,6 +595,10 @@
             this.LblTimeWork.TabIndex = 38;
             this.LblTimeWork.Text = "测量剩余时间";
             // 
+            // bkWorkerReceiveData
+            // 
+            this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
+            // 
             // FrmTestHardware
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -609,6 +615,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmTestHardware";
             this.Text = "硬件检测";
+            this.Load += new System.EventHandler(this.FrmTestHardware_Load);
             this.GrpWork.ResumeLayout(false);
             this.GrpWork.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -678,5 +685,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LF;
         private System.Windows.Forms.DataGridViewTextBoxColumn RF;
         private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
+        private System.Windows.Forms.Timer timer1;
     }
 }

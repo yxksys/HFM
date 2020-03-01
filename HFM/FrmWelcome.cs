@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
+using Message = HFM.Components.Message;
 
 namespace HFM
 {
@@ -20,43 +21,60 @@ namespace HFM
 
         private void BtnTestRorW_Click(object sender, EventArgs e)
         {
-            byte[] mess = new byte[4];
-            mess[0] =Convert.ToByte( 'p');
-            mess[1] = 48;
-            mess[2] = 49;
-            mess[3] = 125;
-            string head = Convert.ToChar(mess[0]).ToString();
-            MessageBox.Show("hello word!...");
-            int x = mess[1];
-            int y = mess[2];
-            int z = mess[3];
-            MessageBox.Show("123");
-            MessageBox.Show("456");
-            Channel channel = new Channel();
-            //SystemParameter systemParameter = new SystemParameter();
-            string str = "112";
-            x = 1110;
-            int ii = Convert.ToInt32(str);
-            HexCon hexcon = new HexCon();
-            str = hexcon.ByteToString(new byte[] { 48 });
-            byte[] oo = new byte[1];
-            oo = hexcon.StringToByte(str);
-            ii = Convert.ToInt32(oo[0]);
-            ProbeParameter probeParameter = new ProbeParameter();
-            ProbeParameter text = new ProbeParameter();
-            probeParameter.ProbeType = "闪烁体";
-            probeParameter.NuclideType = "α";
-            probeParameter.ProbeChannel = new Channel(2, "", "", 20, "", false);
-            probeParameter.HBackground = 61;
-            probeParameter.LBackground = 21;
-            probeParameter.Efficiency = 91;
-            probeParameter.Alarm_1 = 60;
-            probeParameter.Alarm_2 = 87;
-            bool rows=text.SetParameter(probeParameter);
-            //测试CalibrationGetData方法
-            Calibration calibration = new Calibration();
-            //不带参数查询测试
-            IList<Calibration> Icalibrations = calibration.GetData();
+            List<MeasureData> measure = new List<MeasureData>();
+            MeasureData one = new MeasureData(1, DateTime.Now, 1001, 1007, 24, 24, 500);
+            MeasureData two = new MeasureData(2, DateTime.Now, 1002, 1006, 24, 24, 500);
+            MeasureData three = new MeasureData(3, DateTime.Now, 1003, 1005, 24, 24, 500);
+            MeasureData four = new MeasureData(4, DateTime.Now, 1004, 1004, 24, 24, 500);
+            MeasureData five = new MeasureData(5, DateTime.Now, 1005, 1003, 24, 24, 500);
+            MeasureData six = new MeasureData(6, DateTime.Now, 1006, 1002, 24, 24, 500);
+            MeasureData seven = new MeasureData(7, DateTime.Now, 1007, 1001, 24, 24, 500);
+            measure.Add(one);
+            measure.Add(two);
+            measure.Add(three);
+            measure.Add(four);
+            measure.Add(five);
+            measure.Add(six);
+            measure.Add(seven);
+            this.dataGridView1.DataSource = measure;
+            //byte[] mess = new byte[4];
+            //mess[0] =Convert.ToByte( 'p');
+            //mess[1] = 48;
+            //mess[2] = 49;
+            //mess[3] = 125;
+            //string head = Convert.ToChar(mess[0]).ToString();
+            //MessageBox.Show("hello word!...");
+            //int x = mess[1];
+            //int y = mess[2];
+            //int z = mess[3];
+            //MessageBox.Show("123");
+            //MessageBox.Show("456");
+            //Channel channel = new Channel();
+            ////SystemParameter systemParameter = new SystemParameter();
+            //string str = "112";
+            //x = 1110;
+            //int ii = Convert.ToInt32(str);
+            //HexCon hexcon = new HexCon();
+            //str = hexcon.ByteToString(new byte[] { 48 });
+            //byte[] oo = new byte[1];
+            //oo = hexcon.StringToByte(str);
+            //ii = Convert.ToInt32(oo[0]);
+            //ProbeParameter probeParameter = new ProbeParameter();
+            //ProbeParameter text = new ProbeParameter();
+            //probeParameter.ProbeType = "闪烁体";
+            //probeParameter.NuclideType = "α";
+            //probeParameter.ProbeChannel = new Channel(2, "", "", 20, "", false);
+            //probeParameter.HBackground = 61;
+            //probeParameter.LBackground = 21;
+            //probeParameter.Efficiency = 91;
+            //probeParameter.Alarm_1 = 60;
+            //probeParameter.Alarm_2 = 87;
+            //bool rows=text.SetParameter(probeParameter);
+            ////测试CalibrationGetData方法
+            //Calibration calibration = new Calibration();
+            ////不带参数查询测试
+            //IList<Calibration> Icalibrations = calibration.GetData();
+
             //带参数查询测试
             //Icalibrations = calibration.GetData(1);
             //if (calibration.AddData(new Calibration(DateTime.Now, 2, 3, 4, 5, 6, 7)) == true)
@@ -66,30 +84,12 @@ namespace HFM
 
             ////测试通道类查询    
             //Channel channel = new Channel();    
-            //channel.GetChannel(1);    
-            //channel.GetChannel("左手心");
-            //channel.SetEnabledByType(0, false);
-            //if (channel.SetEnabledByType(0, false) == true)
-            //{
-            //    MessageBox.Show("更新成功");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("更新失败");
-            //}
-            //测试工厂参数类查询
-            //FactoryParameter factory = new FactoryParameter();    
-            //factory.GetParameter();
-            //if(factory.SetParameter(new FactoryParameter("1","2","3","4",true,"6",7,true)) == true)
-            //{
-            //    MessageBox.Show("更新成功");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("更新失败");
-            //}
+
             //测试系统参数查询
-            //Components.SystemParameter system = new Components.SystemParameter();
+            Components.SystemParameter system = new Components.SystemParameter();
+            //测试检测完成后检查次数+1
+            //system.UpdateMeasuredCount();
+            system.ClearMeasuredCount();
             //system.GetParameter();
             //if(system.SetParameter(new Components.SystemParameter("1", 1, 1, 1, 1, 1, 1, false)) == true)
             //{
