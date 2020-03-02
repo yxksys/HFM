@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.GrpWork = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DgvWork = new System.Windows.Forms.DataGridView();
             this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,9 +80,8 @@
             this.LblSelfcount = new System.Windows.Forms.Label();
             this.LblTimeWork = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.GrpWork.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvWork)).BeginInit();
             this.GrpFrisker.SuspendLayout();
             this.GrpSensorstate.SuspendLayout();
             this.GrpDetectorSelfTest.SuspendLayout();
@@ -92,7 +90,7 @@
             // 
             // GrpWork
             // 
-            this.GrpWork.Controls.Add(this.dataGridView1);
+            this.GrpWork.Controls.Add(this.DgvWork);
             this.GrpWork.Controls.Add(this.LblBetacnt);
             this.GrpWork.Controls.Add(this.LblBetacps);
             this.GrpWork.Controls.Add(this.LblAlphacnt);
@@ -116,24 +114,25 @@
             this.GrpWork.TabIndex = 33;
             this.GrpWork.TabStop = false;
             // 
-            // dataGridView1
+            // DgvWork
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ColumnHeadersVisible = false;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DgvWork.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DgvWork.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvWork.ColumnHeadersVisible = false;
+            this.DgvWork.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LHP,
             this.LHB,
             this.RHP,
             this.RHB,
             this.LF,
             this.RF});
-            this.dataGridView1.Location = new System.Drawing.Point(130, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(491, 210);
-            this.dataGridView1.TabIndex = 17;
+            this.DgvWork.Location = new System.Drawing.Point(130, 52);
+            this.DgvWork.Name = "DgvWork";
+            this.DgvWork.RowHeadersVisible = false;
+            this.DgvWork.RowTemplate.Height = 35;
+            this.DgvWork.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.DgvWork.Size = new System.Drawing.Size(491, 210);
+            this.DgvWork.TabIndex = 17;
             // 
             // LHP
             // 
@@ -397,7 +396,7 @@
             this.LblFriskerState.Name = "LblFriskerState";
             this.LblFriskerState.Size = new System.Drawing.Size(41, 20);
             this.LblFriskerState.TabIndex = 22;
-            this.LblFriskerState.Text = "左手";
+            this.LblFriskerState.Text = "衣物";
             // 
             // TxtRHandState
             // 
@@ -454,6 +453,7 @@
             this.BtnBetaCheck.TabIndex = 1;
             this.BtnBetaCheck.Text = "β自检";
             this.BtnBetaCheck.UseVisualStyleBackColor = true;
+            this.BtnBetaCheck.Click += new System.EventHandler(this.BtnBetaCheck_Click);
             // 
             // BtnAlphaCheck
             // 
@@ -463,6 +463,7 @@
             this.BtnAlphaCheck.TabIndex = 0;
             this.BtnAlphaCheck.Text = "α自检";
             this.BtnAlphaCheck.UseVisualStyleBackColor = true;
+            this.BtnAlphaCheck.Click += new System.EventHandler(this.BtnAlphaCheck_Click);
             // 
             // GrpSelfTestParameter
             // 
@@ -501,6 +502,7 @@
             this.BtnSelfCheck.TabIndex = 2;
             this.BtnSelfCheck.Text = "自检";
             this.BtnSelfCheck.UseVisualStyleBackColor = true;
+            this.BtnSelfCheck.Click += new System.EventHandler(this.BtnSelfCheck_Click);
             // 
             // TxtPWidth
             // 
@@ -588,7 +590,7 @@
             this.LblTimeWork.AutoSize = true;
             this.LblTimeWork.Font = new System.Drawing.Font("Arial Narrow", 42F, System.Drawing.FontStyle.Bold);
             this.LblTimeWork.ForeColor = System.Drawing.Color.Lime;
-            this.LblTimeWork.Location = new System.Drawing.Point(215, 440);
+            this.LblTimeWork.Location = new System.Drawing.Point(158, 440);
             this.LblTimeWork.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTimeWork.Name = "LblTimeWork";
             this.LblTimeWork.Size = new System.Drawing.Size(370, 66);
@@ -598,6 +600,7 @@
             // bkWorkerReceiveData
             // 
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
+            this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
             // 
             // FrmTestHardware
             // 
@@ -618,7 +621,7 @@
             this.Load += new System.EventHandler(this.FrmTestHardware_Load);
             this.GrpWork.ResumeLayout(false);
             this.GrpWork.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvWork)).EndInit();
             this.GrpFrisker.ResumeLayout(false);
             this.GrpFrisker.PerformLayout();
             this.GrpSensorstate.ResumeLayout(false);
@@ -677,7 +680,7 @@
         private System.Windows.Forms.Label LblControl;
         private System.Windows.Forms.Label Lblμs;
         private System.Windows.Forms.Label LblTimeWork;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DgvWork;
         private System.Windows.Forms.DataGridViewTextBoxColumn LHP;
         private System.Windows.Forms.DataGridViewTextBoxColumn LHB;
         private System.Windows.Forms.DataGridViewTextBoxColumn RHP;
@@ -685,6 +688,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LF;
         private System.Windows.Forms.DataGridViewTextBoxColumn RF;
         private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
-        private System.Windows.Forms.Timer timer1;
     }
 }

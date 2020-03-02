@@ -14,21 +14,56 @@ namespace HFM
 {
     public partial class FrmWelcome : Form
     {
+        enum HardwarePlatformState
+        {
+            /// <summary>
+            /// 默认状态
+            /// </summary>
+            Default = 0,
+            /// <summary>
+            /// Alpha自检
+            /// </summary>
+            AlphaCheck = 1,
+            /// <summary>
+            /// Beta自检
+            /// </summary>
+            BetaCheck = 2,
+            /// <summary>
+            /// 自检
+            /// </summary>
+            SelfTest = 3
+        }
+        //运行状态标志
+        HardwarePlatformState platformState;
         public FrmWelcome()
         {
             InitializeComponent();
+
         }
 
+        string[] _hv = new string[6];
+        //alpha计数
+        string[] _alphacps = new string[6];
+        //alpha总计数
+        string[] _alphacnt = new string[6];
+        //Beta计数
+        string[] _betacps = new string[6];
+        //Beta总计数
+        string[] _betacnt = new string[6];
+        //通道状态
+        string[] _strat = new string[6];
+        //衣物计数
+        string frisker = "";
         private void BtnTestRorW_Click(object sender, EventArgs e)
         {
             List<MeasureData> measure = new List<MeasureData>();
             MeasureData one = new MeasureData(1, DateTime.Now, 1001, 1007, 24, 24, 500);
             MeasureData two = new MeasureData(2, DateTime.Now, 1002, 1006, 24, 24, 500);
-            MeasureData three = new MeasureData(3, DateTime.Now, 1003, 1005, 24, 24, 500);
+            MeasureData three = new MeasureData(3, DateTime.Now, 0, 0, 24, 24, 0);
             MeasureData four = new MeasureData(4, DateTime.Now, 1004, 1004, 24, 24, 500);
-            MeasureData five = new MeasureData(5, DateTime.Now, 1005, 1003, 24, 24, 500);
-            MeasureData six = new MeasureData(6, DateTime.Now, 1006, 1002, 24, 24, 500);
-            MeasureData seven = new MeasureData(7, DateTime.Now, 1007, 1001, 24, 24, 500);
+            MeasureData five = new MeasureData(5, DateTime.Now, 1005, 0, 24, 24, 500);
+            MeasureData six = new MeasureData(6, DateTime.Now, 0, 0, 24, 24, 500);
+            MeasureData seven = new MeasureData(7, DateTime.Now, 100, 220, 24, 24, 500);
             measure.Add(one);
             measure.Add(two);
             measure.Add(three);
@@ -36,7 +71,76 @@ namespace HFM
             measure.Add(five);
             measure.Add(six);
             measure.Add(seven);
-            this.dataGridView1.DataSource = measure;
+            //运行状态标志
+            
+
+           
+            //float[] _hv=new float[6];
+            //float[] _alpha=new float[6];
+            //float[] _alphacnt = new float[6];
+            //float[] _betacnt = new float[6];
+            //float[] _beta = new float[6];
+            //定义dgv高压
+            
+            //临时变量
+            int i = 0;
+            //从列表中取出数据
+            platformState = HardwarePlatformState.BetaCheck;
+            foreach (var item in measure)
+            {
+                //通过运行状态判断衣物探头是alpha还是beta，默认alpha通道计数
+                if (i == 6)
+                {
+                    if (platformState == HardwarePlatformState.AlphaCheck)
+                    {
+                        frisker = Convert.ToString(item.Alpha);
+                    }
+                    else if (platformState == HardwarePlatformState.BetaCheck)
+                    {
+                        frisker = Convert.ToString(item.Beta);
+                    }
+                    else
+                    {
+                        frisker = Convert.ToString(item.Alpha);
+                    }
+               
+                    break;
+                }
+                _hv[i]=Convert.ToString(item.HV);
+                _alphacps[i] = Convert.ToString(item.Alpha);
+                _betacps[i] = Convert.ToString(item.Beta);
+                i++;
+            }
+            //赋值alpha和Beta总计数并且判断赋值通道状态
+            for (i = 0; i < 6; i++)
+            {
+                //alpha总计数
+                _alphacnt[i] = Convert.ToString(Convert.ToInt32(_alphacnt[i]) + Convert .ToInt32(_alphacps[i]));
+                //beta总计数
+                _betacnt[i] = Convert.ToString(Convert.ToInt32( _betacnt[i]) + Convert.ToInt32(_betacps[i]));
+                //判断通道状态
+                if (Convert.ToInt32(_hv[i]) == 0 && (Convert.ToInt32(_alphacnt[i]) == 0 || Convert.ToInt32(_betacnt[i]) == 0 ))
+                {
+                    _strat[i] = "通讯故障";
+                }
+                else if (Convert.ToInt32(_alphacnt[i]) == 0 && Convert.ToInt32(_betacnt[i]) == 0)
+                {
+                    _strat[i] = "探头故障";
+                }
+                else
+                {
+                    _strat[i] = "正常工作";
+                }
+            }
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Insert(0,_hv);
+            dataGridView1.Rows.Insert(1,_alphacps);
+            dataGridView1.Rows.Insert(2,_alphacnt);
+            dataGridView1.Rows.Insert(3,_betacps);
+            dataGridView1.Rows.Insert(4,_betacnt);
+            dataGridView1.Rows.Insert(5,_strat);
+            textBox1.Text = frisker;
             //byte[] mess = new byte[4];
             //mess[0] =Convert.ToByte( 'p');
             //mess[1] = 48;
@@ -86,10 +190,10 @@ namespace HFM
             //Channel channel = new Channel();    
 
             //测试系统参数查询
-            Components.SystemParameter system = new Components.SystemParameter();
+            //Components.SystemParameter system = new Components.SystemParameter();
             //测试检测完成后检查次数+1
             //system.UpdateMeasuredCount();
-            system.ClearMeasuredCount();
+            //system.ClearMeasuredCount();
             //system.GetParameter();
             //if(system.SetParameter(new Components.SystemParameter("1", 1, 1, 1, 1, 1, 1, false)) == true)
             //{
