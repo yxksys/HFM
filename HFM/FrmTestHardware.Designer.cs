@@ -482,7 +482,7 @@
             this.GrpSelfTestParameter.Size = new System.Drawing.Size(527, 70);
             this.GrpSelfTestParameter.TabIndex = 37;
             this.GrpSelfTestParameter.TabStop = false;
-            this.GrpSelfTestParameter.Text = "自检测试";
+            this.GrpSelfTestParameter.Text = "自检参数";
             // 
             // Lblμs
             // 

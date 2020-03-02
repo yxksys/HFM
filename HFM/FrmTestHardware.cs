@@ -74,6 +74,10 @@ namespace HFM
         /// </summary>
         private int sqltime = (new HFM.Components.SystemParameter().GetParameter().MeasuringTime);
         /// <summary>
+        /// 系统数据库中读取是否开启英文
+        /// </summary>
+        private bool isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
+        /// <summary>
         /// 异步线程初始化化时间,ReportProgress百分比数值
         /// </summary>
         private int bkworkTime = 0;
@@ -100,7 +104,47 @@ namespace HFM
         #region 初始化窗体
         private void FrmTestHardware_Load(object sender, EventArgs e)
         {
+            #region 中英文转换
+            if (isEnglish==true)
+            {
+                this.Text = "Hardware Checking";//硬件检测
+                LblLHP.Text = "LHP";//左手心
+                LblLHB.Text = "LHB";//左手背
+                LblRHP.Text = "RHP";//右手心
+                LblRHB.Text = "RHB";//右手背
+                LblLF.Text = "LF";//左脚
+                LblRF.Text = "RF";//右脚
+                LblHighVoltage.Text = "High Voltage";//探头高压
+                Lblαcountrate.Text = "αcount rate";//α计数率
+                LblαTotalcnt.Text = "αTotal cnt";//α总计数
+                Lblβcountrate.Text = "βcount rate";//β计数率
+                LblβTotalcnt.Text = "βTotal cnt";//β总计数
+                LblStatus.Text = "Status";//工作状态
+                LblV.Text = "V";
+                LblAlphacps.Text = "cps";
+                LblAlphacnt.Text = "cnt";
+                LblBetacps.Text = "cps";
+                LblBetacnt.Text = "cnt";
+                GrpFrisker.Text = "Frisker";//衣物探头
+                LblFriskercount.Text = "Count rate";//计数
+                GrpSensorstate.Text = "Sensor state";//红外状态
+                LblFriskerState.Text = "Frisker";//衣物
+                LblRHandState.Text = "RHand";//右手
+                LblLHandState.Text = "LHand";//左手
+                GrpDetectorSelfTest.Text = "Detector Self-Test";//探头自检
+                BtnAlphaCheck.Text = "α";//α自检
+                BtnBetaCheck.Text = "β";//β自检
+                GrpSelfTestParameter.Text = "Self-Test Parameter";//自检参数
+                BtnSelfCheck.Text = "Run";//自检
+                CmbControl.Text = "L";
+                CmbPulse.Text = "L";
+                LblControl.Text = "Control";//控制
+                LblPWidth.Text = "P Width";//脉宽
+                LblPulse.Text = "Pulse";//脉冲
+                LblSelfcount.Text = "Count rate";//计数
+            }
 
+                #endregion
             //初始化运行状态为默认状态
             platformState = HardwarePlatformState.Default;
             //初始化测量时间为系统参数时间
@@ -120,8 +164,16 @@ namespace HFM
             }
             catch
             {
-                MessageBox.Show("端口打开错误！请检查通讯是否正常。");
-                //return;
+                if (isEnglish == true)
+                {
+                    MessageBox.Show("Port open error! Please check whether the communication is normal.");
+                    //return;
+                }
+                else
+                {
+                    MessageBox.Show("端口打开错误！请检查通讯是否正常。");
+                    //return;
+                }
             }
             #endregion
 
@@ -404,8 +456,17 @@ namespace HFM
                     //数据接收出现错误次数超限
                     if (errNumber >= 2)
                     {
-                        MessageBox.Show("通讯错误！请检查通讯是否正常。");
-                        return;
+                        if (isEnglish == true)
+                        {
+                            MessageBox.Show("Communication error! Please check whether the communication is normal.");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("通讯错误！请检查通讯是否正常。");
+                            return;
+                        }
+                        
                     }
                     else
                     {
@@ -472,15 +533,36 @@ namespace HFM
                 //判断通道状态
                 if (Convert.ToInt32(_hv[i]) == 0 && (Convert.ToInt32(_alphacnt[i]) == 0 || Convert.ToInt32(_betacnt[i]) == 0))
                 {
-                    _strat[i] = "通讯故障";
+                    if (isEnglish == true)
+                    {
+                        _strat[i] = "COM fault";
+                    }
+                    else
+                    {
+                        _strat[i] = "通讯故障";
+                    }
                 }
                 else if (Convert.ToInt32(_alphacnt[i]) == 0 && Convert.ToInt32(_betacnt[i]) == 0)
                 {
-                    _strat[i] = "探头故障";
+                    if (isEnglish == true)
+                    {
+                        _strat[i] = "Probe fault";
+                    }
+                    else
+                    {
+                        _strat[i] = "探头故障";
+                    }
                 }
                 else
                 {
-                    _strat[i] = "正常工作";
+                    if (isEnglish == true)
+                    {
+                        _strat[i] = "OK";
+                    }
+                    else
+                    {
+                        _strat[i] = "正常工作";
+                    }
                 }
             }
 
@@ -494,7 +576,14 @@ namespace HFM
             TxtFriskercount.Text = frisker;
 
             int time = this.measuringTime - e.ProgressPercentage;
-            LblTimeWork.Text = "测量剩余时间 " + time + "秒";
+            if (isEnglish == true)
+            {
+                LblTimeWork.Text = "Countdown " + time + " s";
+            }
+            else
+            {
+                LblTimeWork.Text = "测量剩余时间 " + time + " 秒";
+            }
             //判断右手红外状态界面显示颜色
             if (_infraredStatus[0] == 1 && _infraredStatus[1] == 1)
             {
