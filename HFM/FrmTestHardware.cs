@@ -6,8 +6,9 @@
  *  版本：
  *  创建时间：2020年2月17日 09:41:19
  *  类名：硬件检测窗体
+ *  完成：2020年3月2日 18:25:27
  *  更新：更新2020年3月1日 20:59:07
- *  
+ *  测试：
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -181,7 +182,7 @@ namespace HFM
             
             while (true)
             {
-                #region MyRegion
+                #region Alpha、beta、自检下发指令
                 //请求进程中断读取数据
                 if (bkworker.CancellationPending)
                 {
@@ -297,13 +298,16 @@ namespace HFM
                 Thread.Sleep(500);
 
                 #endregion
-                ////向下位机下发“C”指令码
+
+                #region 向下位机下发“C”指令码读取数据
+                //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
                 buffMessage[0] = Convert.ToByte('C');
+                //判断串口是否打开，打开则用传输数据，否则用模拟数据
                 if (commPort.Opened == true)
                 {
                     if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)    //正式
-                        //if (HFM.Components.Message.SendMessage(buffMessage, commPort) != true)      //测试使用
+                                                                                              //if (HFM.Components.Message.SendMessage(buffMessage, commPort) != true)      //测试使用
                     {
                         //延时
                         Thread.Sleep(100);
@@ -326,8 +330,8 @@ namespace HFM
                         //触发向主线程返回下位机上传数据事件
                         bkworker.ReportProgress(bkworkTime, receiveBuffMessage);
                     }
-                }
-                
+                } 
+                #endregion
             }
         }
         #endregion
@@ -374,9 +378,7 @@ namespace HFM
             Array.Clear(_alphacnt,0,6);
         }
         #endregion
-
         
-            
         #region 异步线程读取串口数据后的ReportProgress事件响应
         //异步线程读取串口数据后的ReportProgress事件响应
         private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -385,12 +387,10 @@ namespace HFM
             int errNumber = 0; //报文接收出现错误计数器
             byte[] receiveBufferMessage; //存储接收报文信息缓冲区
             IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象            
-            //DateTime stateTimeStart = DateTime.Now; //系统当前运行状态的开始计时变量
-            bool isFirstBackGround = true; //进入等待测量状态后的本底测量计时标志
-            string pollutionRecord = null; //记录测量污染详细数据
-            //对事件参数类中的数据对象序列化为byte[]
+            //判断串口是否打开，打开则用传输数据，否则用模拟数据
             if (commPort.Opened == true)
             {
+                //对事件参数类中的数据对象序列化为byte[]
                 using (MemoryStream ms = new MemoryStream())
                 {
                     IFormatter iFormatter = new BinaryFormatter();
