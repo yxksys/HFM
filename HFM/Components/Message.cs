@@ -232,7 +232,7 @@ namespace HFM.Components
                 
                 switch (Convert.ToChar(message[packageIndex]))
                 {
-                    case 'p':  //'p'上传参数
+                    case 'P':  //'P'上传参数
                         //设置当前报文类型
                         messageType = 0;
                         //解析当前数据包四个通道数据报文
@@ -267,7 +267,7 @@ namespace HFM.Components
                             channelHeadIndex = channelHeadIndex + 15;
                         }
                         break;
-                    case 'c': //'c'上传测量值
+                    case 'C': //'C'上传测量值
                         messageType = 1;
                         //解析当前数据包四个通道数据报文
                         for (int j = 0; j < 4; j++)
@@ -298,10 +298,20 @@ namespace HFM.Components
 
                             float hV = Convert.ToSingle(message[channelHeadIndex + 13]) * 256;
                             hV += Convert.ToSingle(message[channelHeadIndex + 14]);//高压值两个字节                            
-                            
+
                             //按照解析的测量数据构造测量数据对象
                             //其它参数给默认值
-                            MeasureData measureData = new MeasureData(channelID,DateTime.Now,alpha,beta,analogV,digitalV,hV);
+                            Channel channel = new Channel();
+                            //channel.GetChannel(channelID);
+                            channel.ChannelID = channelID;
+                            MeasureData measureData = new MeasureData();
+                            measureData.Channel = channel;
+                            measureData.Alpha = alpha;
+                            measureData.Beta = beta;
+                            measureData.AnalogV = analogV;
+                            measureData.DigitalV = digitalV;
+                            measureData.HV = hV;
+                            //(channelID,DateTime.Now,alpha,beta,analogV,digitalV,hV);
                             //将构造的道盒参数对象添加到列表中
                             measureDataS.Add(measureData);
                             //更新报文指针
@@ -314,13 +324,13 @@ namespace HFM.Components
                         if (packageIndex == 0) //第一个数据包1-4通道为手部探头
                         {
                             //左手到位
-                            if (infraredStatus == 0 || infraredStatus == 2 || infraredStatus == 4 || infraredStatus == 6)
+                            if ((infraredStatus & 1)==0)
                             {
                                 measureDataS[0].InfraredStatus = 1;
                                 measureDataS[1].InfraredStatus = 1;
                             }
                             ////右手到位
-                            if (infraredStatus == 0 || infraredStatus == 1 || infraredStatus == 4 || infraredStatus == 5)
+                            if ((infraredStatus & 2)==0)
                             {
                                 measureDataS[2].InfraredStatus = 1;
                                 measureDataS[3].InfraredStatus = 1;
@@ -329,7 +339,7 @@ namespace HFM.Components
                         else//第二个数据包为5-7为脚步探头和衣物探头
                         {
                             //衣物探头拿起
-                            if (infraredStatus == 4 || infraredStatus == 5 || infraredStatus == 6 || infraredStatus == 7)
+                            if ((infraredStatus & 4)==1)
                             {
                                 measureDataS[6].InfraredStatus = 1;
                             }

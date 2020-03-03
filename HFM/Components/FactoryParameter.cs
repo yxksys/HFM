@@ -115,19 +115,23 @@ namespace HFM.Components
         /// <returns>返回工厂参数对象</returns>
         public FactoryParameter GetParameter()
         {
-            //查询表部分字段信息
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE);
             FactoryParameter factoryParameter = new FactoryParameter();
-            while (reader.Read())
+            //查询表部分字段信息
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE))
             {
-                factoryParameter.InstrumentNum = Convert.ToString(reader["InstrumentNum"].ToString());
-                factoryParameter.SoftName = Convert.ToString(reader["SoftName"].ToString());
-                factoryParameter.IpAddress = Convert.ToString(reader["IPAddress"].ToString());
-                factoryParameter.PortNumber = Convert.ToString(reader["PortNumber"].ToString());
-                factoryParameter.IsConnectedAuto = Convert.ToBoolean(reader["IsConnectedAuto"].ToString());
-                factoryParameter.MeasureType = Convert.ToString(reader["MeasureType"].ToString());
-                factoryParameter.SmoothingFactor = Convert.ToSingle(reader["SmoothingFactor"].ToString() == "" ? "0" : reader["SmoothingFactor"].ToString());
-                factoryParameter.IsDoubleProbe = Convert.ToBoolean(reader["IsDoubleProbe"].ToString());
+                while (reader.Read())
+                {
+                    factoryParameter.InstrumentNum = Convert.ToString(reader["InstrumentNum"].ToString());
+                    factoryParameter.SoftName = Convert.ToString(reader["SoftName"].ToString());
+                    factoryParameter.IpAddress = Convert.ToString(reader["IPAddress"].ToString());
+                    factoryParameter.PortNumber = Convert.ToString(reader["PortNumber"].ToString());
+                    factoryParameter.IsConnectedAuto = Convert.ToBoolean(reader["IsConnectedAuto"].ToString());
+                    factoryParameter.MeasureType = Convert.ToString(reader["MeasureType"].ToString());
+                    factoryParameter.SmoothingFactor = Convert.ToSingle(reader["SmoothingFactor"].ToString() == "" ? "0" : reader["SmoothingFactor"].ToString());
+                    factoryParameter.IsDoubleProbe = Convert.ToBoolean(reader["IsDoubleProbe"].ToString());
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return factoryParameter;
         }

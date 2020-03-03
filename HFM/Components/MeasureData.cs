@@ -125,18 +125,22 @@ namespace HFM.Components
         {
             IList<MeasureData> IMeasureDateS = new List<MeasureData>();
             //从数据库中查询全部的监测数据记录并赋值给IMeasureDataS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA);
-            while (reader.Read())//读查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA))
             {
-                //构造MearsureDate对象
-                MeasureData measuredata = new MeasureData();
-                measuredata.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
-                measuredata.MeasureDate=Convert .ToDateTime (reader["MeasureDate"].ToString());
-                measuredata.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
-                measuredata.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
-                measuredata.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
-                //从reader读出并将构造的查询结果添加到List中
-                IMeasureDateS.Add(measuredata);
+                while (reader.Read())//读查询结果
+                {
+                    //构造MearsureDate对象
+                    MeasureData measuredata = new MeasureData();
+                    measuredata.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
+                    measuredata.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
+                    measuredata.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
+                    measuredata.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
+                    measuredata.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());                    
+                    //从reader读出并将构造的查询结果添加到List中
+                    IMeasureDateS.Add(measuredata);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return IMeasureDateS;
         }
@@ -158,18 +162,22 @@ namespace HFM.Components
                 };
             parms[0].Value = isEnglish;
             //根据语言从数据库中查询全部的监测数据记录并赋值给IMeasureDataS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_ISENGLISH,parms);
-            while (reader.Read())//读查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_ISENGLISH, parms))
             {
-                //根据查询结果构造MearsureDate对象
-                MeasureData measureData = new MeasureData();
-                measureData.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
-                measureData.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
-                measureData.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
-                measureData.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
-                measureData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
-                //从reader读出并将构造的对象添加到List中
-                IMeasureDateS.Add(measureData);
+                while (reader.Read())//读查询结果
+                {
+                    //根据查询结果构造MearsureDate对象
+                    MeasureData measureData = new MeasureData();
+                    measureData.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
+                    measureData.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
+                    measureData.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
+                    measureData.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
+                    measureData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    //从reader读出并将构造的对象添加到List中
+                    IMeasureDateS.Add(measureData);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return IMeasureDateS;
         }

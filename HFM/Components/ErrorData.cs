@@ -58,17 +58,21 @@ namespace HFM.Components
         {
             IList<ErrorData> IErrorDateS = new List<ErrorData>();
             //从数据库中查询所有故障数据并赋值给IErrorDataS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA);
-            while (reader.Read())//读取查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA))
             {
-            //构造ErrorData对象
-            ErrorData errorData = new ErrorData();
-            errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
-            errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
-            errorData.Record = Convert.ToString(reader["Record"].ToString());
-            errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
-            //将reader读出并构造的查询结果添加到List中
-            IErrorDateS.Add(errorData);
+                while (reader.Read())//读取查询结果
+                {
+                    //构造ErrorData对象
+                    ErrorData errorData = new ErrorData();
+                    errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
+                    errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
+                    errorData.Record = Convert.ToString(reader["Record"].ToString());
+                    errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    //将reader读出并构造的查询结果添加到List中
+                    IErrorDateS.Add(errorData);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return IErrorDateS;
         }
@@ -90,17 +94,21 @@ namespace HFM.Components
             };
             parms[0].Value = isEnglish;
             //从数据库中查询所有故障数据并赋值给IErrorDataS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_ISENGLISH, parms );
-            while (reader.Read())//读取查询结果
-            {            
-                //构造ErrorData对象
-                ErrorData errorData = new ErrorData();
-                errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
-                errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
-                errorData.Record = Convert.ToString(reader["Record"].ToString());
-                errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
-                //将reader读出并构造的查询结果添加到List中
-                IErrorDateS.Add(errorData);
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_ISENGLISH, parms))
+            {
+                while (reader.Read())//读取查询结果
+                {
+                    //构造ErrorData对象
+                    ErrorData errorData = new ErrorData();
+                    errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
+                    errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
+                    errorData.Record = Convert.ToString(reader["Record"].ToString());
+                    errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    //将reader读出并构造的查询结果添加到List中
+                    IErrorDateS.Add(errorData);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return IErrorDateS;
         }
