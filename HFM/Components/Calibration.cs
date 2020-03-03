@@ -133,25 +133,29 @@ namespace HFM.Components
         {
             IList<Calibration> ICalibrationS = new List<Calibration>();
             //从数据库中查询全部刻度操作记录并赋值给ICalibrationS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CALIBRATION);
-            while(reader.Read())//读查询结果
-            {    
-                //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                Channel channel = new Channel(reader.GetInt32(0),reader["ChannelName"].ToString(),reader["ChannelName_English"].ToString(),
-                                              Convert.ToSingle(reader["ProbeArea"].ToString()==""?"0": reader["ProbeArea"].ToString()),reader["Status"].ToString(),reader.GetBoolean(12));
-                //根据读出的查询结构构造Calibration对象
-                Calibration calibraion = new Calibration();                              
-                calibraion.CalibrationID = Convert.ToInt32(reader["CalibrationID"].ToString());                               
-                calibraion.CalibrationTime = Convert.ToDateTime(reader["CalibrationTime"].ToString());
-                calibraion.Channel = channel;
-                calibraion.HighVoltage =Convert.ToSingle(reader["HighVoltage"].ToString());
-                calibraion.Threshold = Convert.ToSingle(reader["Threshold"].ToString());
-                calibraion.Efficiency =Convert.ToSingle(reader["Efficiency"].ToString());
-                calibraion.MDA = Convert.ToSingle(reader["MDA"].ToString());
-                calibraion.AlphaBetaPercent = Convert.ToSingle(reader["AlphaBetaPercent"].ToString());
-                //从reader读出并构造的查询结果对象添加到List中
-                ICalibrationS.Add(calibraion);
-            }            
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CALIBRATION))
+            {
+                while (reader.Read())//读查询结果
+                {
+                    //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                    Channel channel = new Channel(reader.GetInt32(0), reader["ChannelName"].ToString(), reader["ChannelName_English"].ToString(),
+                                                  Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString()), reader["Status"].ToString(), reader.GetBoolean(12));
+                    //根据读出的查询结构构造Calibration对象
+                    Calibration calibraion = new Calibration();
+                    calibraion.CalibrationID = Convert.ToInt32(reader["CalibrationID"].ToString());
+                    calibraion.CalibrationTime = Convert.ToDateTime(reader["CalibrationTime"].ToString());
+                    calibraion.Channel = channel;
+                    calibraion.HighVoltage = Convert.ToSingle(reader["HighVoltage"].ToString());
+                    calibraion.Threshold = Convert.ToSingle(reader["Threshold"].ToString());
+                    calibraion.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
+                    calibraion.MDA = Convert.ToSingle(reader["MDA"].ToString());
+                    calibraion.AlphaBetaPercent = Convert.ToSingle(reader["AlphaBetaPercent"].ToString());
+                    //从reader读出并构造的查询结果对象添加到List中
+                    ICalibrationS.Add(calibraion);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
+            }
             return ICalibrationS;
         }
         /// <summary>
@@ -169,24 +173,28 @@ namespace HFM.Components
             };
             parms[0].Value = channelID;
             //从数据库中查询全部刻度操作记录并赋值给ICalibrationS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CALIBRATION_BY_CHANNELID,parms);
-            while (reader.Read())//读查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CALIBRATION_BY_CHANNELID, parms))
             {
-                //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                Channel channel = new Channel(reader.GetInt32(0), reader["ChannelName"].ToString(), reader["ChannelName_English"].ToString(),
-                                              Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString()), reader["Status"].ToString(), reader.GetBoolean(12));
-                //根据读出的查询结构构造Calibration对象
-                Calibration calibraion = new Calibration();
-                calibraion.CalibrationID = Convert.ToInt32(reader["CalibrationID"].ToString());
-                calibraion.CalibrationTime = Convert.ToDateTime(reader["CalibrationTime"].ToString());
-                calibraion.Channel = channel;
-                calibraion.HighVoltage = Convert.ToSingle(reader["HighVoltage"].ToString());
-                calibraion.Threshold = Convert.ToSingle(reader["Threshold"].ToString());
-                calibraion.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
-                calibraion.MDA = Convert.ToSingle(reader["MDA"].ToString());
-                calibraion.AlphaBetaPercent = Convert.ToSingle(reader["AlphaBetaPercent"].ToString());
-                //从reader读出并构造的查询结果对象添加到List中
-                ICalibrationS.Add(calibraion);
+                while (reader.Read())//读查询结果
+                {
+                    //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                    Channel channel = new Channel(reader.GetInt32(0), reader["ChannelName"].ToString(), reader["ChannelName_English"].ToString(),
+                                                  Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString()), reader["Status"].ToString(), reader.GetBoolean(12));
+                    //根据读出的查询结构构造Calibration对象
+                    Calibration calibraion = new Calibration();
+                    calibraion.CalibrationID = Convert.ToInt32(reader["CalibrationID"].ToString());
+                    calibraion.CalibrationTime = Convert.ToDateTime(reader["CalibrationTime"].ToString());
+                    calibraion.Channel = channel;
+                    calibraion.HighVoltage = Convert.ToSingle(reader["HighVoltage"].ToString());
+                    calibraion.Threshold = Convert.ToSingle(reader["Threshold"].ToString());
+                    calibraion.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
+                    calibraion.MDA = Convert.ToSingle(reader["MDA"].ToString());
+                    calibraion.AlphaBetaPercent = Convert.ToSingle(reader["AlphaBetaPercent"].ToString());
+                    //从reader读出并构造的查询结果对象添加到List中
+                    ICalibrationS.Add(calibraion);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return ICalibrationS;
         }
