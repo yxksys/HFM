@@ -42,7 +42,7 @@
             this.LblSFR = new System.Windows.Forms.Label();
             this.BtnCalibrate = new System.Windows.Forms.Button();
             this.BtnSet = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CmbNuclideSelect = new System.Windows.Forms.ComboBox();
             this.Txtβ = new System.Windows.Forms.TextBox();
             this.Txtα = new System.Windows.Forms.TextBox();
             this.Lblβ = new System.Windows.Forms.Label();
@@ -75,7 +75,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(775, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(792, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -84,7 +84,7 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(767, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(784, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             this.TabpageCalibration.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@
             this.GrpCalibration.Controls.Add(this.LblSFR);
             this.GrpCalibration.Controls.Add(this.BtnCalibrate);
             this.GrpCalibration.Controls.Add(this.BtnSet);
-            this.GrpCalibration.Controls.Add(this.comboBox1);
+            this.GrpCalibration.Controls.Add(this.CmbNuclideSelect);
             this.GrpCalibration.Controls.Add(this.Txtβ);
             this.GrpCalibration.Controls.Add(this.Txtα);
             this.GrpCalibration.Controls.Add(this.Lblβ);
@@ -211,15 +211,15 @@
             this.BtnSet.Text = "设置";
             this.BtnSet.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // CmbNuclideSelect
             // 
-            this.comboBox1.DropDownWidth = 74;
-            this.comboBox1.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(408, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(93, 28);
-            this.comboBox1.TabIndex = 16;
+            this.CmbNuclideSelect.DropDownWidth = 74;
+            this.CmbNuclideSelect.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.CmbNuclideSelect.FormattingEnabled = true;
+            this.CmbNuclideSelect.Location = new System.Drawing.Point(408, 67);
+            this.CmbNuclideSelect.Name = "CmbNuclideSelect";
+            this.CmbNuclideSelect.Size = new System.Drawing.Size(93, 28);
+            this.CmbNuclideSelect.TabIndex = 16;
             // 
             // Txtβ
             // 
@@ -366,7 +366,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(792, 722);
+            this.ClientSize = new System.Drawing.Size(809, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
@@ -402,7 +402,7 @@
         private System.Windows.Forms.Label LblSFR;
         private System.Windows.Forms.Button BtnCalibrate;
         private System.Windows.Forms.Button BtnSet;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CmbNuclideSelect;
         public System.Windows.Forms.TextBox Txtβ;
         public System.Windows.Forms.TextBox Txtα;
         private System.Windows.Forms.Label Lblβ;
