@@ -49,7 +49,7 @@
             this.Lblα = new System.Windows.Forms.Label();
             this.LblNuclide = new System.Windows.Forms.Label();
             this.LblThreshold = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtCount = new System.Windows.Forms.TextBox();
             this.TxtHV = new System.Windows.Forms.TextBox();
             this.LblCount = new System.Windows.Forms.Label();
             this.LblHV = new System.Windows.Forms.Label();
@@ -75,7 +75,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(792, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(809, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -84,7 +84,7 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(784, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(801, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             this.TabpageCalibration.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             this.GrpCalibration.Controls.Add(this.Lblα);
             this.GrpCalibration.Controls.Add(this.LblNuclide);
             this.GrpCalibration.Controls.Add(this.LblThreshold);
-            this.GrpCalibration.Controls.Add(this.textBox1);
+            this.GrpCalibration.Controls.Add(this.TxtCount);
             this.GrpCalibration.Controls.Add(this.TxtHV);
             this.GrpCalibration.Controls.Add(this.LblCount);
             this.GrpCalibration.Controls.Add(this.LblHV);
@@ -273,14 +273,14 @@
             this.LblThreshold.Text = "阈值(mV)";
             this.LblThreshold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // TxtCount
             // 
-            this.textBox1.Location = new System.Drawing.Point(256, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(54, 26);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtCount.Location = new System.Drawing.Point(256, 69);
+            this.TxtCount.Name = "TxtCount";
+            this.TxtCount.Size = new System.Drawing.Size(54, 26);
+            this.TxtCount.TabIndex = 9;
+            this.TxtCount.Text = "1";
+            this.TxtCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtHV
             // 
@@ -333,6 +333,7 @@
             this.CmbChannelSelection.Name = "CmbChannelSelection";
             this.CmbChannelSelection.Size = new System.Drawing.Size(74, 24);
             this.CmbChannelSelection.TabIndex = 3;
+            this.CmbChannelSelection.SelectionChangeCommitted += new System.EventHandler(this.CmbChannelSelection_SelectionChangeCommitted);
             // 
             // LblResult
             // 
@@ -366,7 +367,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(809, 722);
+            this.ClientSize = new System.Drawing.Size(826, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
@@ -394,7 +395,7 @@
         private System.Windows.Forms.TextBox TxtResult;
         private System.Windows.Forms.Label LblHV;
         private System.Windows.Forms.Label LblThreshold;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox TxtCount;
         public System.Windows.Forms.TextBox TxtHV;
         private System.Windows.Forms.Label LblCount;
         private System.Windows.Forms.DataGridView DgvInformation;
