@@ -16,10 +16,10 @@ namespace HFM.Components
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmWelcome());
-            FrmPreference frmPreference = new FrmPreference();
-            frmPreference.Show();
-            Application.Run();
+            Application.Run(new FrmWelcome());
+            //FrmPreference frmPreference = new FrmPreference();
+            //frmPreference.Show();
+            //Application.Run();
         }
     }
 }
