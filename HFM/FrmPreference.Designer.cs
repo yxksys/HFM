@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
@@ -183,6 +183,7 @@
             this.RdoFoot = new System.Windows.Forms.RadioButton();
             this.BtnFacilityOk = new System.Windows.Forms.Button();
             this.RdoHand = new System.Windows.Forms.RadioButton();
+            this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpFacilityData.SuspendLayout();
@@ -218,6 +219,7 @@
             this.TabPresence.SelectedIndex = 0;
             this.TabPresence.Size = new System.Drawing.Size(784, 483);
             this.TabPresence.TabIndex = 0;
+            this.TabPresence.SelectedIndexChanged += new System.EventHandler(this.TabPresence_SelectedIndexChanged);
             // 
             // 系统参数
             // 
@@ -641,59 +643,65 @@
             // 
             // TxtBKGUpdate
             // 
-            this.TxtBKGUpdate.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtBKGUpdate.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtBKGUpdate.Location = new System.Drawing.Point(139, 199);
             this.TxtBKGUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.TxtBKGUpdate.Multiline = true;
             this.TxtBKGUpdate.Name = "TxtBKGUpdate";
             this.TxtBKGUpdate.Size = new System.Drawing.Size(104, 26);
             this.TxtBKGUpdate.TabIndex = 11;
+            this.TxtBKGUpdate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtAlarmTime
             // 
-            this.TxtAlarmTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtAlarmTime.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtAlarmTime.Location = new System.Drawing.Point(139, 165);
             this.TxtAlarmTime.Margin = new System.Windows.Forms.Padding(2);
             this.TxtAlarmTime.Multiline = true;
             this.TxtAlarmTime.Name = "TxtAlarmTime";
             this.TxtAlarmTime.Size = new System.Drawing.Size(104, 26);
             this.TxtAlarmTime.TabIndex = 10;
+            this.TxtAlarmTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtMeasuringTime
             // 
-            this.TxtMeasuringTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtMeasuringTime.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtMeasuringTime.Location = new System.Drawing.Point(139, 100);
             this.TxtMeasuringTime.Margin = new System.Windows.Forms.Padding(2);
             this.TxtMeasuringTime.Multiline = true;
             this.TxtMeasuringTime.Name = "TxtMeasuringTime";
             this.TxtMeasuringTime.Size = new System.Drawing.Size(104, 26);
             this.TxtMeasuringTime.TabIndex = 9;
+            this.TxtMeasuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtSmoothingTime
             // 
-            this.TxtSmoothingTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtSmoothingTime.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtSmoothingTime.Location = new System.Drawing.Point(139, 69);
             this.TxtSmoothingTime.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSmoothingTime.Multiline = true;
             this.TxtSmoothingTime.Name = "TxtSmoothingTime";
             this.TxtSmoothingTime.Size = new System.Drawing.Size(104, 26);
             this.TxtSmoothingTime.TabIndex = 8;
+            this.TxtSmoothingTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtSelfCheckTime
             // 
-            this.TxtSelfCheckTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtSelfCheckTime.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtSelfCheckTime.Location = new System.Drawing.Point(139, 34);
             this.TxtSelfCheckTime.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSelfCheckTime.Multiline = true;
             this.TxtSelfCheckTime.Name = "TxtSelfCheckTime";
             this.TxtSelfCheckTime.Size = new System.Drawing.Size(104, 26);
             this.TxtSelfCheckTime.TabIndex = 7;
+            this.TxtSelfCheckTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // CmbMeasurementUnit
             // 
+            this.CmbMeasurementUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbMeasurementUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.CmbMeasurementUnit.DropDownHeight = 95;
-            this.CmbMeasurementUnit.Font = new System.Drawing.Font("宋体", 10F);
+            this.CmbMeasurementUnit.Font = new System.Drawing.Font("宋体", 12F);
             this.CmbMeasurementUnit.FormattingEnabled = true;
             this.CmbMeasurementUnit.IntegralHeight = false;
             this.CmbMeasurementUnit.ItemHeight = 20;
@@ -792,14 +800,14 @@
             // 
             // DgvAlphaSet
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -1005,14 +1013,14 @@
             // 
             // DgvBetaSet
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -1749,13 +1757,13 @@
             // 
             // DgvMainPreferenceSet
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -2022,6 +2030,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmPreference";
             this.Text = "HFM_Preference";
+            this.Load += new System.EventHandler(this.FrmPreference_Load);
             this.TabPresence.ResumeLayout(false);
             this.系统参数.ResumeLayout(false);
             this.GrpFacilityData.ResumeLayout(false);
@@ -2207,5 +2216,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_Preference;
     }
 }
