@@ -59,10 +59,20 @@ namespace HFM
         /// 获取所有“效率参数”
         /// </summary>
         List<EfficiencyParameter> efficiencyList = new EfficiencyParameter().GetParameter().ToList();
+
         /// <summary>
-        /// 
+        /// 通道中文名称数组
         /// </summary>
-        /// 
+        private string[] channelName = new string[7];
+        /// <summary>
+        /// 通道英文名称数组
+        /// </summary>
+        private string[] channelNameEnglish=new string[7];
+
+        /// <summary>
+        /// 通用循环变量初始为0
+        /// </summary>
+        private int numForaech = 0;
         #endregion
 
         #region 初始化加载
@@ -82,12 +92,14 @@ namespace HFM
             
             
             //根据系统语言填充通道下拉列表
-            if (isEnglish == true)
+            if (isEnglish==true)
             {
                 //英文通道名称
                 foreach (var listChannel in channelList)
                 {
                     CmbChannelSelection.Items.Add(listChannel.ChannelName_English);
+                    channelName[numForaech] = listChannel.ChannelName_English;
+                    numForaech++;
                 }
             }
             else
@@ -96,31 +108,69 @@ namespace HFM
                 foreach (var listChannel in channelList)
                 {
                     CmbChannelSelection.Items.Add(listChannel.ChannelName);
+                    channelNameEnglish[numForaech] = listChannel.ChannelName;
+                    numForaech++;
                 }
             }
             #endregion
 
             #region 获得全部核数添加到下拉列表
-            //根据所有“效率参数”去除重复核数
-            var listEfficiency = efficiencyList.GroupBy(r => r.NuclideName).ToArray();
-            //向核数下拉列表添加核数
+
+            var listEfficiency = efficiencyList.Where(eff =>
+                eff.Channel.ChannelName_English.ToString() == CmbChannelSelection.Text ||
+                eff.Channel.ChannelName.ToString() == CmbChannelSelection.Text).ToList();
             foreach (var item in listEfficiency)
             {
-                CmbNuclideSelect.Items.Add(item.Key);
+                CmbNuclideSelect.Items.Add(item.NuclideName);
             }
             #endregion
 
         }
         #endregion
-
+        
         /// <summary>
         /// 通道下拉列表选择后（触发事件）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CmbChannelSelection_SelectionChangeCommitted(object sender, EventArgs e)
+        private void CmbChannelSelection_SelectedValueChanged(object sender, EventArgs e)
         {
-            //if(CmbChannelSelection.Created.ToString())
+            //如果选择衣物探头后，高压和阈值变为不可用状态
+            if (CmbChannelSelection.Text == channelNameEnglish[6] || CmbChannelSelection.Text == channelName[6])
+            {
+                TxtHV.Enabled = false;
+                Txtα.Enabled = false;
+                Txtβ.Enabled = false;
+            }
+            else
+            {
+                TxtHV.Enabled = true;
+                Txtα.Enabled = true;
+                Txtβ.Enabled = true;
+            }
+        }
+
+        private void CmbNuclideSelect_DropDown(object sender, EventArgs e)
+        {
+            if (CmbChannelSelection.Text == "")
+            {
+                CmbNuclideSelect.Items.Clear();
+                MessageBox.Show("请先进行通道选择！在选取核素！");
+            }
+            if (CmbNuclideSelect.Items.Count == 0)
+            {
+                var listEfficiency = efficiencyList.Where(eff =>
+                    eff.Channel.ChannelName_English.ToString() == CmbChannelSelection.Text ||
+                    eff.Channel.ChannelName.ToString() == CmbChannelSelection.Text).ToList();
+                foreach (var item in listEfficiency)
+                {
+                    CmbNuclideSelect.Items.Add(item.NuclideName);
+                }
+            }
+            
+        }
+
+        private void CmbNuclideSelect_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
