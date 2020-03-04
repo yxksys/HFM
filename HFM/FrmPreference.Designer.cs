@@ -416,7 +416,6 @@
             this.LblIPAddress.Size = new System.Drawing.Size(60, 21);
             this.LblIPAddress.TabIndex = 1;
             this.LblIPAddress.Text = "IP地址";
-            this.LblIPAddress.Click += new System.EventHandler(this.label15_Click);
             // 
             // LblSmoothingFactor
             // 
@@ -639,7 +638,6 @@
             this.GrpPreferenceData.TabIndex = 0;
             this.GrpPreferenceData.TabStop = false;
             this.GrpPreferenceData.Text = "系统参数";
-            this.GrpPreferenceData.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // TxtBKGUpdate
             // 
@@ -660,7 +658,6 @@
             this.TxtAlarmTime.Name = "TxtAlarmTime";
             this.TxtAlarmTime.Size = new System.Drawing.Size(104, 26);
             this.TxtAlarmTime.TabIndex = 10;
-            this.TxtAlarmTime.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // TxtMeasuringTime
             // 
