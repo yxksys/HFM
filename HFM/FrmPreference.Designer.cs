@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
-            this.RdoIsConnectedAuto = new System.Windows.Forms.RadioButton();
             this.CmbUnclideType = new System.Windows.Forms.ComboBox();
             this.LblUnclideType = new System.Windows.Forms.Label();
             this.TxtPortNumber = new System.Windows.Forms.TextBox();
@@ -184,6 +183,7 @@
             this.BtnFacilityOk = new System.Windows.Forms.Button();
             this.RdoHand = new System.Windows.Forms.RadioButton();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.ChkIsConnectedAuto = new System.Windows.Forms.CheckBox();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpFacilityData.SuspendLayout();
@@ -239,7 +239,7 @@
             // 
             // GrpFacilityData
             // 
-            this.GrpFacilityData.Controls.Add(this.RdoIsConnectedAuto);
+            this.GrpFacilityData.Controls.Add(this.ChkIsConnectedAuto);
             this.GrpFacilityData.Controls.Add(this.CmbUnclideType);
             this.GrpFacilityData.Controls.Add(this.LblUnclideType);
             this.GrpFacilityData.Controls.Add(this.TxtPortNumber);
@@ -265,22 +265,10 @@
             this.GrpFacilityData.TabStop = false;
             this.GrpFacilityData.Text = "工厂参数";
             // 
-            // RdoIsConnectedAuto
-            // 
-            this.RdoIsConnectedAuto.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoIsConnectedAuto.Location = new System.Drawing.Point(475, 70);
-            this.RdoIsConnectedAuto.Margin = new System.Windows.Forms.Padding(2);
-            this.RdoIsConnectedAuto.Name = "RdoIsConnectedAuto";
-            this.RdoIsConnectedAuto.Size = new System.Drawing.Size(90, 24);
-            this.RdoIsConnectedAuto.TabIndex = 16;
-            this.RdoIsConnectedAuto.TabStop = true;
-            this.RdoIsConnectedAuto.Text = "自动连接";
-            this.RdoIsConnectedAuto.UseVisualStyleBackColor = true;
-            // 
             // CmbUnclideType
             // 
             this.CmbUnclideType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.CmbUnclideType.Font = new System.Drawing.Font("宋体", 10F);
+            this.CmbUnclideType.Font = new System.Drawing.Font("宋体", 12F);
             this.CmbUnclideType.FormattingEnabled = true;
             this.CmbUnclideType.ItemHeight = 20;
             this.CmbUnclideType.Location = new System.Drawing.Point(656, 69);
@@ -301,13 +289,14 @@
             // 
             // TxtPortNumber
             // 
-            this.TxtPortNumber.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtPortNumber.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtPortNumber.Location = new System.Drawing.Point(391, 71);
             this.TxtPortNumber.Margin = new System.Windows.Forms.Padding(2);
             this.TxtPortNumber.Multiline = true;
             this.TxtPortNumber.Name = "TxtPortNumber";
             this.TxtPortNumber.Size = new System.Drawing.Size(46, 26);
             this.TxtPortNumber.TabIndex = 12;
+            this.TxtPortNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblPortNumber
             // 
@@ -321,53 +310,58 @@
             // 
             // TxtIPAddressFour
             // 
-            this.TxtIPAddressFour.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtIPAddressFour.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtIPAddressFour.Location = new System.Drawing.Point(243, 71);
             this.TxtIPAddressFour.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIPAddressFour.Multiline = true;
             this.TxtIPAddressFour.Name = "TxtIPAddressFour";
             this.TxtIPAddressFour.Size = new System.Drawing.Size(46, 26);
             this.TxtIPAddressFour.TabIndex = 10;
+            this.TxtIPAddressFour.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtIPAddressThree
             // 
-            this.TxtIPAddressThree.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtIPAddressThree.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtIPAddressThree.Location = new System.Drawing.Point(192, 71);
             this.TxtIPAddressThree.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIPAddressThree.Multiline = true;
             this.TxtIPAddressThree.Name = "TxtIPAddressThree";
             this.TxtIPAddressThree.Size = new System.Drawing.Size(46, 26);
             this.TxtIPAddressThree.TabIndex = 9;
+            this.TxtIPAddressThree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtIPAddressTwo
             // 
-            this.TxtIPAddressTwo.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtIPAddressTwo.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtIPAddressTwo.Location = new System.Drawing.Point(142, 71);
             this.TxtIPAddressTwo.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIPAddressTwo.Multiline = true;
             this.TxtIPAddressTwo.Name = "TxtIPAddressTwo";
             this.TxtIPAddressTwo.Size = new System.Drawing.Size(46, 26);
             this.TxtIPAddressTwo.TabIndex = 8;
+            this.TxtIPAddressTwo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtIPAddressOne
             // 
-            this.TxtIPAddressOne.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtIPAddressOne.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtIPAddressOne.Location = new System.Drawing.Point(92, 71);
             this.TxtIPAddressOne.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIPAddressOne.Multiline = true;
             this.TxtIPAddressOne.Name = "TxtIPAddressOne";
             this.TxtIPAddressOne.Size = new System.Drawing.Size(46, 26);
             this.TxtIPAddressOne.TabIndex = 7;
+            this.TxtIPAddressOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtSoftName
             // 
-            this.TxtSoftName.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtSoftName.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtSoftName.Location = new System.Drawing.Point(485, 34);
             this.TxtSoftName.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSoftName.Multiline = true;
             this.TxtSoftName.Name = "TxtSoftName";
             this.TxtSoftName.Size = new System.Drawing.Size(218, 26);
             this.TxtSoftName.TabIndex = 6;
+            this.TxtSoftName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblSoftName
             // 
@@ -381,13 +375,14 @@
             // 
             // TxtInstrumentNum
             // 
-            this.TxtInstrumentNum.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtInstrumentNum.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtInstrumentNum.Location = new System.Drawing.Point(276, 34);
             this.TxtInstrumentNum.Margin = new System.Windows.Forms.Padding(2);
             this.TxtInstrumentNum.Multiline = true;
             this.TxtInstrumentNum.Name = "TxtInstrumentNum";
             this.TxtInstrumentNum.Size = new System.Drawing.Size(104, 26);
             this.TxtInstrumentNum.TabIndex = 4;
+            this.TxtInstrumentNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblInstrumentNum
             // 
@@ -401,13 +396,14 @@
             // 
             // TxtSmoothingFactor
             // 
-            this.TxtSmoothingFactor.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtSmoothingFactor.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtSmoothingFactor.Location = new System.Drawing.Point(92, 34);
             this.TxtSmoothingFactor.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSmoothingFactor.Multiline = true;
             this.TxtSmoothingFactor.Name = "TxtSmoothingFactor";
             this.TxtSmoothingFactor.Size = new System.Drawing.Size(104, 26);
             this.TxtSmoothingFactor.TabIndex = 2;
+            this.TxtSmoothingFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblIPAddress
             // 
@@ -479,73 +475,80 @@
             // 
             // TxtRightFootProbeArea
             // 
-            this.TxtRightFootProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtRightFootProbeArea.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtRightFootProbeArea.Location = new System.Drawing.Point(291, 134);
             this.TxtRightFootProbeArea.Margin = new System.Windows.Forms.Padding(2);
             this.TxtRightFootProbeArea.Multiline = true;
             this.TxtRightFootProbeArea.Name = "TxtRightFootProbeArea";
             this.TxtRightFootProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtRightFootProbeArea.TabIndex = 12;
+            this.TxtRightFootProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtRightOutProbeArea
             // 
-            this.TxtRightOutProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtRightOutProbeArea.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtRightOutProbeArea.Location = new System.Drawing.Point(291, 93);
             this.TxtRightOutProbeArea.Margin = new System.Windows.Forms.Padding(2);
             this.TxtRightOutProbeArea.Multiline = true;
             this.TxtRightOutProbeArea.Name = "TxtRightOutProbeArea";
             this.TxtRightOutProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtRightOutProbeArea.TabIndex = 11;
+            this.TxtRightOutProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtLeftOutProbeArea
             // 
-            this.TxtLeftOutProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtLeftOutProbeArea.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtLeftOutProbeArea.Location = new System.Drawing.Point(291, 52);
             this.TxtLeftOutProbeArea.Margin = new System.Windows.Forms.Padding(2);
             this.TxtLeftOutProbeArea.Multiline = true;
             this.TxtLeftOutProbeArea.Name = "TxtLeftOutProbeArea";
             this.TxtLeftOutProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtLeftOutProbeArea.TabIndex = 10;
+            this.TxtLeftOutProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtCloseProbeArea
             // 
-            this.TxtCloseProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtCloseProbeArea.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtCloseProbeArea.Location = new System.Drawing.Point(102, 175);
             this.TxtCloseProbeArea.Margin = new System.Windows.Forms.Padding(2);
             this.TxtCloseProbeArea.Multiline = true;
             this.TxtCloseProbeArea.Name = "TxtCloseProbeArea";
             this.TxtCloseProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtCloseProbeArea.TabIndex = 9;
+            this.TxtCloseProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtLeftFootProbeArea
             // 
-            this.TxtLeftFootProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtLeftFootProbeArea.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtLeftFootProbeArea.Location = new System.Drawing.Point(103, 133);
             this.TxtLeftFootProbeArea.Margin = new System.Windows.Forms.Padding(2);
             this.TxtLeftFootProbeArea.Multiline = true;
             this.TxtLeftFootProbeArea.Name = "TxtLeftFootProbeArea";
             this.TxtLeftFootProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtLeftFootProbeArea.TabIndex = 8;
+            this.TxtLeftFootProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtRightInProbeArea
             // 
-            this.TxtRightInProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtRightInProbeArea.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtRightInProbeArea.Location = new System.Drawing.Point(103, 94);
             this.TxtRightInProbeArea.Margin = new System.Windows.Forms.Padding(2);
             this.TxtRightInProbeArea.Multiline = true;
             this.TxtRightInProbeArea.Name = "TxtRightInProbeArea";
             this.TxtRightInProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtRightInProbeArea.TabIndex = 7;
+            this.TxtRightInProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtLeftInProbeArea
             // 
-            this.TxtLeftInProbeArea.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtLeftInProbeArea.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtLeftInProbeArea.Location = new System.Drawing.Point(103, 52);
             this.TxtLeftInProbeArea.Margin = new System.Windows.Forms.Padding(2);
             this.TxtLeftInProbeArea.Multiline = true;
             this.TxtLeftInProbeArea.Name = "TxtLeftInProbeArea";
             this.TxtLeftInProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtLeftInProbeArea.TabIndex = 6;
+            this.TxtLeftInProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblRightFootProbeArea
             // 
@@ -800,14 +803,15 @@
             // 
             // DgvAlphaSet
             // 
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            this.DgvAlphaSet.AllowUserToAddRows = false;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -930,7 +934,7 @@
             this.RdoAlpha241.Size = new System.Drawing.Size(74, 20);
             this.RdoAlpha241.TabIndex = 29;
             this.RdoAlpha241.TabStop = true;
-            this.RdoAlpha241.Text = "Am-241";
+            this.RdoAlpha241.Text = "Am_241";
             this.RdoAlpha241.UseVisualStyleBackColor = true;
             // 
             // RdoAlphaDefine1
@@ -956,7 +960,7 @@
             this.RdoAlpha238.Size = new System.Drawing.Size(74, 20);
             this.RdoAlpha238.TabIndex = 27;
             this.RdoAlpha238.TabStop = true;
-            this.RdoAlpha238.Text = "Pu-238";
+            this.RdoAlpha238.Text = "Pu_238";
             this.RdoAlpha238.UseVisualStyleBackColor = true;
             // 
             // RdoAlpha239
@@ -969,7 +973,7 @@
             this.RdoAlpha239.Size = new System.Drawing.Size(74, 20);
             this.RdoAlpha239.TabIndex = 26;
             this.RdoAlpha239.TabStop = true;
-            this.RdoAlpha239.Text = "Pu-239";
+            this.RdoAlpha239.Text = "Pu_239";
             this.RdoAlpha239.UseVisualStyleBackColor = true;
             // 
             // RdoAlpha235
@@ -982,7 +986,7 @@
             this.RdoAlpha235.Size = new System.Drawing.Size(66, 20);
             this.RdoAlpha235.TabIndex = 25;
             this.RdoAlpha235.TabStop = true;
-            this.RdoAlpha235.Text = "U-235";
+            this.RdoAlpha235.Text = "U_235";
             this.RdoAlpha235.UseVisualStyleBackColor = true;
             // 
             // β参数
@@ -1013,14 +1017,14 @@
             // 
             // DgvBetaSet
             // 
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -1757,13 +1761,13 @@
             // 
             // DgvMainPreferenceSet
             // 
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -2019,6 +2023,16 @@
             this.RdoHand.Text = "手部";
             this.RdoHand.UseVisualStyleBackColor = true;
             // 
+            // ChkIsConnectedAuto
+            // 
+            this.ChkIsConnectedAuto.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ChkIsConnectedAuto.Location = new System.Drawing.Point(491, 71);
+            this.ChkIsConnectedAuto.Name = "ChkIsConnectedAuto";
+            this.ChkIsConnectedAuto.Size = new System.Drawing.Size(110, 25);
+            this.ChkIsConnectedAuto.TabIndex = 17;
+            this.ChkIsConnectedAuto.Text = "自动连接";
+            this.ChkIsConnectedAuto.UseVisualStyleBackColor = true;
+            // 
             // FrmPreference
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2131,7 +2145,6 @@
         private System.Windows.Forms.Button BtnMainPreferenceRead;
         private System.Windows.Forms.Button BtnMainPreferenceSet;
         private System.Windows.Forms.Button BtnMainPreferenceRetuen;
-        private System.Windows.Forms.RadioButton RdoIsConnectedAuto;
         private System.Windows.Forms.RadioButton RdoHand;
         private System.Windows.Forms.RadioButton RdoClothes;
         private System.Windows.Forms.RadioButton RdoFoot;
@@ -2217,5 +2230,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker_Preference;
+        private System.Windows.Forms.CheckBox ChkIsConnectedAuto;
     }
 }

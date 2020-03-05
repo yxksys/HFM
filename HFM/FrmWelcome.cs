@@ -63,16 +63,21 @@ namespace HFM
             //    MessageBox.Show("更新成功");
             //}
             //测试系统参数查询(新增)
-            ProbeParameter probeParameter = new ProbeParameter();
-            probeParameter=probeParameter.GetParameter(2,"α");
-            if (probeParameter != null)
-            {
-                MessageBox.Show("ok");
-            }
-            else
-            {
-                MessageBox.Show("no");
-            }
+            //ProbeParameter probeParameter = new ProbeParameter();
+            //probeParameter=probeParameter.GetParameter(2,"α");
+            //if (probeParameter != null)
+            //{
+            //    MessageBox.Show("ok");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("no");
+            //}
+            Nuclide nuclide = new Nuclide();
+            string a = nuclide.GetAlphaNuclideUser();
+            IList<EfficiencyParameter> p = new List<EfficiencyParameter>();
+            EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
+            p = efficiencyParameter.GetParameter("α", a);
         }
 
         private void BtnCommport_Click(object sender, EventArgs e)
