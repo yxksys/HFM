@@ -143,7 +143,6 @@ namespace HFM
                 LblPulse.Text = "Pulse";//脉冲
                 LblSelfcount.Text = "Count rate";//计数
             }
-
                 #endregion
             //初始化运行状态为默认状态
             platformState = HardwarePlatformState.Default;

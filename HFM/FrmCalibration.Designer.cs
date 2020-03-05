@@ -70,7 +70,7 @@
             // 
             this.TabCalibration.Controls.Add(this.TabpageCalibration);
             this.TabCalibration.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TabCalibration.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TabCalibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TabCalibration.ItemSize = new System.Drawing.Size(76, 25);
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
@@ -214,7 +214,7 @@
             // CmbNuclideSelect
             // 
             this.CmbNuclideSelect.DropDownWidth = 74;
-            this.CmbNuclideSelect.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.CmbNuclideSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.CmbNuclideSelect.FormattingEnabled = true;
             this.CmbNuclideSelect.Location = new System.Drawing.Point(408, 67);
             this.CmbNuclideSelect.Name = "CmbNuclideSelect";
@@ -327,11 +327,11 @@
             // CmbChannelSelection
             // 
             this.CmbChannelSelection.DropDownWidth = 74;
-            this.CmbChannelSelection.Font = new System.Drawing.Font("Arial Narrow", 9F);
+            this.CmbChannelSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.CmbChannelSelection.FormattingEnabled = true;
             this.CmbChannelSelection.Location = new System.Drawing.Point(118, 25);
             this.CmbChannelSelection.Name = "CmbChannelSelection";
-            this.CmbChannelSelection.Size = new System.Drawing.Size(74, 24);
+            this.CmbChannelSelection.Size = new System.Drawing.Size(74, 23);
             this.CmbChannelSelection.TabIndex = 3;
             this.CmbChannelSelection.SelectionChangeCommitted += new System.EventHandler(this.CmbChannelSelection_SelectionChangeCommitted);
             // 
