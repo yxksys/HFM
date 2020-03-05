@@ -30,19 +30,21 @@ namespace HFM.Components
 
         //运行参数设置
         //private ProbeParameter ProbeParameter = new ProbeParameter();//系统参数(各类型的本底上限等参数)
-        //private Nuclide Nuclide = new Nuclide();//核素选择(U_235等)
         
-        //private EfficiencyParameter EfficiencyParameter = new EfficiencyParameter();//探测效率(各类型的探测效率)
+        
+        
         //private ChannelParameter ChannelParameter = new ChannelParameter();//道盒信息(α阈值等)
         private SystemParameter system = new SystemParameter();//(自检时间、单位等)
         private FactoryParameter factoryParameter = new FactoryParameter();//仪器设备信息(IP地址、软件名称、是否双手探测器等)
         private ProbeParameter probeParameter = new ProbeParameter();//系统参数(各类型的本底上限等参数)
+        private Nuclide nuclide = new Nuclide();//核素选择(U_235等)
+        private EfficiencyParameter efficiencyParameter = new EfficiencyParameter();//探测效率(各类型的探测效率)
 
         //加载参数(初始化)
         private void FrmPreference_Load(object sender, EventArgs e)
         {
             GetProferenceData();
-            GetAlphaData();
+            //GetAlphaData();
             GetBetaData();
             GetClothesData();
             GetMainProferenceData();
@@ -72,7 +74,9 @@ namespace HFM.Components
         }
 
         #region 获得数据库数据
-        //获得系统页面参数
+        /// <summary>
+        /// 获得系统页面参数
+        /// </summary>
         private void GetProferenceData()
         {
             system = system.GetParameter();//获得自检时间、单位等参数
@@ -103,8 +107,9 @@ namespace HFM.Components
             TxtIPAddressFour.Text = k[3];
 
             TxtPortNumber.Text = factoryParameter.PortNumber;
-            RdoIsConnectedAuto.Checked = factoryParameter.IsConnectedAuto;
-            //CmbUnclideType.Text = factoryParameter    
+            ChkIsConnectedAuto.Checked = factoryParameter.IsConnectedAuto;
+            CmbUnclideType.Text = factoryParameter.MeasureType;
+            TxtPortNumber.Text = factoryParameter.PortNumber;  
             #endregion
 
             #region 探测面积
@@ -154,12 +159,74 @@ namespace HFM.Components
             }
             #endregion
 
-
         }
-        //获得α数据
+        /// <summary>
+        /// 获得α数据
+        /// </summary>
         private void GetAlphaData()
         {
-            
+            #region 核素选择
+            //获得当前核素选择
+            string nowNuclideName = nuclide.GetAlphaNuclideUser();//获得当前核素名称
+            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            efficiency = efficiencyParameter.GetParameter("α", nowNuclideName);//获得当前核素效率
+            IList<RadioButton> button = new List<RadioButton>();//核素选择数组
+            button.Add(RdoAlpha235);
+            button.Add(RdoAlpha239);
+            button.Add(RdoAlphaDefine1);
+            button.Add(RdoAlpha238);
+            button.Add(RdoAlpha241);
+            button.Add(RdoAlphaDefine2);
+            for (int i = 0; i < button.Count; i++)
+            {
+                if (nowNuclideName == button[i].Text)
+                {
+                    button[i].Checked = true;
+                    break;
+                }
+            }
+            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
+            //判断数据是否存入
+            for (int i = 0; i < efficiency.Count; i++)
+            {
+                if (!efficiencyParameter.SetParameter(efficiency[i]))
+                {
+                    MessageBox.Show("数据库存取失败");
+                    return;
+                }
+            }
+            #endregion
+
+            #region α参数
+            //清除所有行(因为每次切换页面都会增加相应的行)
+            for (int i = 0; i < DgvAlphaSet.Rows.Count; i++)
+            {
+                DgvAlphaSet.Rows.Remove(DgvAlphaSet.Rows[i]);
+                i--;
+            }
+            IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得α参数
+            probeParameters = probeParameter.GetParameter();
+            //选出启用的设备
+            for (int i = 0; i < probeParameters.Count; i++)
+            {
+                //设备启用且核素类型为α并除去衣物参数
+                if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "α" &&probeParameters[i].ProbeChannel.ChannelID != 7)
+                {
+                    int index = this.DgvAlphaSet.Rows.Add();
+                    DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    DgvAlphaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
+                    DgvAlphaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
+                    DgvAlphaSet.Rows[index].Cells[3].Value = probeParameters[i].Alarm_1;
+                    DgvAlphaSet.Rows[index].Cells[4].Value = probeParameters[i].Alarm_2;
+                    DgvAlphaSet.Rows[index].Cells[5].Value = probeParameters[i].Efficiency;
+                }
+                //设备未启用(暂时不显示)
+                else
+                {
+                }
+            }
+            #endregion
+
         }
         //获得β数据
         private void GetBetaData()
