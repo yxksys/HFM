@@ -220,6 +220,7 @@
             this.CmbNuclideSelect.Name = "CmbNuclideSelect";
             this.CmbNuclideSelect.Size = new System.Drawing.Size(93, 28);
             this.CmbNuclideSelect.TabIndex = 16;
+            this.CmbNuclideSelect.DropDown += new System.EventHandler(this.CmbNuclideSelect_DropDown);
             // 
             // Txtβ
             // 
@@ -333,7 +334,7 @@
             this.CmbChannelSelection.Name = "CmbChannelSelection";
             this.CmbChannelSelection.Size = new System.Drawing.Size(74, 23);
             this.CmbChannelSelection.TabIndex = 3;
-            this.CmbChannelSelection.SelectionChangeCommitted += new System.EventHandler(this.CmbChannelSelection_SelectionChangeCommitted);
+            this.CmbChannelSelection.SelectedValueChanged += new System.EventHandler(this.CmbChannelSelection_SelectedValueChanged);
             // 
             // LblResult
             // 
@@ -361,6 +362,11 @@
             this.LblChannelSelection.TabIndex = 0;
             this.LblChannelSelection.Text = "通道选择";
             this.LblChannelSelection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // bkWorkerReceiveData
+            // 
+            this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
+            this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
             // 
             // FrmCalibration
             // 

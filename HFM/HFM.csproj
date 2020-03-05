@@ -94,11 +94,11 @@
     <Compile Include="FrmWelcome.Designer.cs">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </Compile>
-    <Compile Include="HFM_Preference.cs">
+    <Compile Include="FrmPreference.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HFM_Preference.Designer.cs">
-      <DependentUpon>HFM_Preference.cs</DependentUpon>
+    <Compile Include="FrmPreference.Designer.cs">
+      <DependentUpon>FrmPreference.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,8 +117,8 @@
     <EmbeddedResource Include="FrmWelcome.resx">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HFM_Preference.resx">
-      <DependentUpon>HFM_Preference.cs</DependentUpon>
+    <EmbeddedResource Include="FrmPreference.resx">
+      <DependentUpon>FrmPreference.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

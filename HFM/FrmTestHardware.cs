@@ -207,10 +207,14 @@ namespace HFM
         /// </summary>
         private void TimeConutPort()
         {
+            //线程计时等于测量时间
             if (bkworkTime == measuringTime)
             {
+                //总计数清空
                 DgvArrayClear();
+                //异步初始化为0
                 bkworkTime = 0;
+
                 platformState = HardwarePlatformState.Default;
                 measuringTime = sqltime;
             }

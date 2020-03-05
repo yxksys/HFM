@@ -12,7 +12,9 @@
 */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using HFM.Components;
 
@@ -21,12 +23,12 @@ namespace HFM
     public partial class FrmCalibration : Form
     {
         #region 字段、方法、实例
+        CommPort commPort = new CommPort();
         /// <summary>
         /// 开启串口封装的方法
         /// </summary>
         private void OpenPort()
         {
-            CommPort commPort = new CommPort();
             //从配置文件获得当前串口配置
             if (commPort.Opened == true)
             {
@@ -60,9 +62,47 @@ namespace HFM
         /// </summary>
         List<EfficiencyParameter> efficiencyList = new EfficiencyParameter().GetParameter().ToList();
         /// <summary>
-        /// 
+        /// 通道中文名称数组
         /// </summary>
-        /// 
+        private string[] channelName = new string[7];
+        /// <summary>
+        /// 通道英文名称数组
+        /// </summary>
+        private string[] channelNameEnglish=new string[7];
+        /// <summary>
+        /// 通用循环变量初始为0
+        /// </summary>
+        private int numForaech = 0;
+        /// <summary>
+        /// 发送消息类型：
+        /// </summary>
+        enum MessageType
+        {
+            /// <summary>
+            /// C读取类型
+            /// </summary>
+            cRead,
+            /// <summary>
+            /// P写入类型
+            /// </summary>
+            pSet,
+            /// <summary>
+            /// P读取类型
+            /// </summary>
+            pRead,
+        }
+        /// <summary>
+        /// 当前发送消息的类型
+        /// </summary>
+        private MessageType messageType;
+        /// <summary>
+        /// 测量时间
+        /// </summary>
+        private int measuringTime;
+        /// <summary>
+        /// 异步线程初始化化时间,ReportProgress百分比数值
+        /// </summary>
+        private int bkworkTime = 0;
         #endregion
 
         #region 初始化加载
@@ -76,18 +116,19 @@ namespace HFM
         {
             //线程支持异步取消
             bkWorkerReceiveData.WorkerSupportsCancellation = true;
-            //开启异步线程
-            bkWorkerReceiveData.RunWorkerAsync();
+            
             #region 获得全部启用的通道添加到下拉列表中，更具系统中英文状态选择中英文
             
             
             //根据系统语言填充通道下拉列表
-            if (isEnglish == true)
+            if (isEnglish==true)
             {
                 //英文通道名称
                 foreach (var listChannel in channelList)
                 {
                     CmbChannelSelection.Items.Add(listChannel.ChannelName_English);
+                    channelName[numForaech] = listChannel.ChannelName_English;
+                    numForaech++;
                 }
             }
             else
@@ -96,31 +137,143 @@ namespace HFM
                 foreach (var listChannel in channelList)
                 {
                     CmbChannelSelection.Items.Add(listChannel.ChannelName);
+                    channelNameEnglish[numForaech] = listChannel.ChannelName;
+                    numForaech++;
                 }
             }
             #endregion
-
-            #region 获得全部核数添加到下拉列表
-            //根据所有“效率参数”去除重复核数
-            var listEfficiency = efficiencyList.GroupBy(r => r.NuclideName).ToArray();
-            //向核数下拉列表添加核数
-            foreach (var item in listEfficiency)
-            {
-                CmbNuclideSelect.Items.Add(item.Key);
-            }
-            #endregion
-
         }
         #endregion
-
+        
         /// <summary>
         /// 通道下拉列表选择后（触发事件）
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CmbChannelSelection_SelectionChangeCommitted(object sender, EventArgs e)
+        private void CmbChannelSelection_SelectedValueChanged(object sender, EventArgs e)
         {
-            //if(CmbChannelSelection.Created.ToString())
+            //如果选择衣物探头后，高压和阈值变为不可用状态
+            if (CmbChannelSelection.Text == channelNameEnglish[6] || CmbChannelSelection.Text == channelName[6])
+            {
+                TxtHV.Enabled = false;
+                Txtα.Enabled = false;
+                Txtβ.Enabled = false;
+            }
+            else
+            {
+                TxtHV.Enabled = true;
+                Txtα.Enabled = true;
+                Txtβ.Enabled = true;
+            }
+            //开启端口
+            OpenPort();
+            //开启异步线程
+            if (bkWorkerReceiveData.IsBusy!=true)
+            {
+                bkWorkerReceiveData.RunWorkerAsync();
+            }
         }
+
+        private void CmbNuclideSelect_DropDown(object sender, EventArgs e)
+        {
+            //核素列表清空
+            CmbNuclideSelect.Items.Clear();
+            //通道选择为空是提示
+            if (CmbChannelSelection.Text == "")
+            {
+                MessageBox.Show("请先进行通道选择！在选取核素！");
+            }
+            //根据选择的通道进行选择核素
+            if (CmbNuclideSelect.Items.Count == 0)
+            {
+
+                var listEfficiency = efficiencyList.Where(eff =>
+                    eff.Channel.ChannelName_English.ToString() == CmbChannelSelection.Text ||
+                    eff.Channel.ChannelName.ToString() == CmbChannelSelection.Text).ToList();
+                foreach (var item in listEfficiency)
+                {
+                    CmbNuclideSelect.Items.Add(item.NuclideName);
+                }
+            }
+
+        }
+
+        #region 异步线程
+        private void bkWorkerReceiveData_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            //如果没有取消异步线程
+            if (bkWorkerReceiveData.CancellationPending == false)
+            {
+                //在异步线程上执行串口读操作ReadDataFromSerialPort方法
+                BackgroundWorker bkWorker = sender as BackgroundWorker;
+                e.Result = ReadDataFromSerialPort(bkWorker, e);
+            }
+            e.Cancel = true;
+        }
+
+        private object ReadDataFromSerialPort(BackgroundWorker bkWorker, DoWorkEventArgs e)
+        {
+            int errorNumber = 0; //下发自检报文出现错误计数器
+            int delayTime = 200;//下发自检报文延时时间
+            byte[] receiveBuffMessage = new byte[200];//接受的报文
+            byte[] buffMessage = new byte[62];//报文长度
+            while (true)
+            {
+                //请求进程中断读取数据
+                if (bkWorker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return null;
+                }
+
+                switch (messageType)
+                {
+                    case MessageType.pRead:
+                        bkworkTime++;
+                        if (bkworkTime>1)
+                        {
+                            bkWorkerReceiveData.CancelAsync();
+                        }
+                        //向下位机下发“C”指令码
+                        buffMessage[0] = Convert.ToByte('P');
+                        if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)    //正式
+                        {
+                            //延时
+                            Thread.Sleep(100);
+                            receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
+                            //延时
+                            Thread.Sleep(1000);
+                            //触发向主线程返回下位机上传数据事件
+                            bkWorker.ReportProgress(bkworkTime, receiveBuffMessage);
+                        }
+                        break;
+                    case MessageType.pSet:
+
+                        break;
+                    case MessageType.cRead:
+                        //向下位机下发“C”指令码
+                        buffMessage[0] = Convert.ToByte('C');
+                        //判断串口是否打开，打开则用传输数据，否则用模拟数据
+
+                        if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)    //正式
+                                                                                                  //if (HFM.Components.Message.SendMessage(buffMessage, commPort) != true)      //测试使用
+                        {
+                            //延时
+                            Thread.Sleep(100);
+                            receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
+                            //延时
+                            Thread.Sleep(500);
+                            //触发向主线程返回下位机上传数据事件
+                            bkWorker.ReportProgress(bkworkTime, receiveBuffMessage);
+                        }
+
+                        break;
+                }
+            }
+        }
+
+        private void bkWorkerReceiveData_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+
+        } 
+        #endregion
     }
 }
