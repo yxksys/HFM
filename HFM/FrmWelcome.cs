@@ -133,14 +133,6 @@ namespace HFM
                 }
             }
 
-            dataGridView1.Rows.Clear();
-            dataGridView1.Rows.Insert(0,_hv);
-            dataGridView1.Rows.Insert(1,_alphacps);
-            dataGridView1.Rows.Insert(2,_alphacnt);
-            dataGridView1.Rows.Insert(3,_betacps);
-            dataGridView1.Rows.Insert(4,_betacnt);
-            dataGridView1.Rows.Insert(5,_strat);
-            textBox1.Text = frisker;
             //byte[] mess = new byte[4];
             //mess[0] =Convert.ToByte( 'p');
             //mess[1] = 48;
