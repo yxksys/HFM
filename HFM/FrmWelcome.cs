@@ -21,9 +21,9 @@ namespace HFM
         private void BtnTestRorW_Click(object sender, EventArgs e)
         {
             //测试CalibrationGetData方法
-            Calibration calibration = new Calibration();
+            //Calibration calibration = new Calibration();
             //不带参数查询测试
-            IList<Calibration> Icalibrations = calibration.GetData();
+            //IList<Calibration> Icalibrations = calibration.GetData();
             //带参数查询测试
             //Icalibrations = calibration.GetData(1);
             //if (calibration.AddData(new Calibration(DateTime.Now, 2, 3, 4, 5, 6, 7)) == true)
@@ -56,11 +56,22 @@ namespace HFM
             //    MessageBox.Show("更新失败");
             //}
             //测试系统参数查询
-            Components.SystemParameter system = new Components.SystemParameter();
-            system.GetParameter();
-            if(system.SetParameter(new Components.SystemParameter("1", 1, 1, 1, 1, 1, 1, false)) == true)
+            //Components.SystemParameter system = new Components.SystemParameter();
+            //system.GetParameter();
+            //if(system.SetParameter(new Components.SystemParameter("1", 1, 1, 1, 1, 1, 1, false)) == true)
+            //{
+            //    MessageBox.Show("更新成功");
+            //}
+            //测试系统参数查询(新增)
+            ProbeParameter probeParameter = new ProbeParameter();
+            probeParameter=probeParameter.GetParameter(2,"α");
+            if (probeParameter != null)
             {
-                MessageBox.Show("更新成功");
+                MessageBox.Show("ok");
+            }
+            else
+            {
+                MessageBox.Show("no");
             }
         }
 
