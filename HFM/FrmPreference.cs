@@ -44,7 +44,7 @@ namespace HFM.Components
         private void FrmPreference_Load(object sender, EventArgs e)
         {
             GetProferenceData();
-            //GetAlphaData();
+            GetAlphaData();
             GetBetaData();
             GetClothesData();
             GetMainProferenceData();
@@ -73,7 +73,7 @@ namespace HFM.Components
 
         }
 
-        #region 获得数据库数据
+        #region 获得数据库数据并显示出来
         /// <summary>
         /// 获得系统页面参数
         /// </summary>
@@ -137,13 +137,13 @@ namespace HFM.Components
                 if (probeParameters[i].ProbeChannel.IsEnabled)
                 {
                     //根据channelID来修改数据
-                    ((TextBox)a[probeParameters[i].PreferenceID - 1]).Text = probeParameters[i].ProbeChannel.ProbeArea.ToString();
+                    ((TextBox)a[probeParameters[i].ProbeChannel.ChannelID - 1]).Text = probeParameters[i].ProbeChannel.ProbeArea.ToString();
                 }
                 else
                 {
                     //根据channelID来修改数据
-                    ((TextBox)a[probeParameters[i].PreferenceID - 1]).Enabled = false;
-                    ((Label)label[probeParameters[i].PreferenceID - 1]).Enabled = false;
+                    ((TextBox)a[probeParameters[i].ProbeChannel.ChannelID - 1]).Enabled = false;
+                    ((Label)label[probeParameters[i].ProbeChannel.ChannelID - 1]).Enabled = false;
                 }
             }
             //未启用则数据修改只能对左手进行
@@ -165,9 +165,14 @@ namespace HFM.Components
         /// </summary>
         private void GetAlphaData()
         {
+
+            IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得α参数
+            probeParameters = probeParameter.GetParameter("α");
+
             #region 核素选择
+
             //获得当前核素选择
-            string nowNuclideName = nuclide.GetAlphaNuclideUser();//获得当前核素名称
+            string nowNuclideName = nuclide.GetAlphaNuclideUser();//获得当前α核素名称
             IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
             efficiency = efficiencyParameter.GetParameter("α", nowNuclideName);//获得当前核素效率
             IList<RadioButton> button = new List<RadioButton>();//核素选择数组
@@ -185,17 +190,22 @@ namespace HFM.Components
                     break;
                 }
             }
+
+            #endregion
+
             //把当前所选核素效率保存到ProbeParameter当前效率数据库中
-            //判断数据是否存入
             for (int i = 0; i < efficiency.Count; i++)
             {
-                if (!efficiencyParameter.SetParameter(efficiency[i]))
+                //根据channelID来匹配
+                for (int j = 0; j < probeParameters.Count; j++)
                 {
-                    MessageBox.Show("数据库存取失败");
-                    return;
+                    if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
+                    {
+                        probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
+                        probeParameter.SetParameter(probeParameters[j]);//保存到数据库
+                    }
                 }
             }
-            #endregion
 
             #region α参数
             //清除所有行(因为每次切换页面都会增加相应的行)
@@ -204,8 +214,7 @@ namespace HFM.Components
                 DgvAlphaSet.Rows.Remove(DgvAlphaSet.Rows[i]);
                 i--;
             }
-            IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得α参数
-            probeParameters = probeParameter.GetParameter();
+            
             //选出启用的设备
             for (int i = 0; i < probeParameters.Count; i++)
             {
@@ -231,11 +240,157 @@ namespace HFM.Components
         //获得β数据
         private void GetBetaData()
         {
+            IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得β参数
+            probeParameters = probeParameter.GetParameter("β");
 
+            #region 核素选择
+
+            //获得当前核素选择
+            string nowNuclideName = nuclide.GetBetaNuclideUser();//获得当前β核素名称
+            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            efficiency = efficiencyParameter.GetParameter("β", nowNuclideName);//获得当前核素效率
+            IList<RadioButton> button = new List<RadioButton>();//核素选择数组
+            button.Add(RdoBeta14);
+            button.Add(RdoBeta58);
+            button.Add(RdoBeta131);
+            button.Add(RdoBeta204);
+            button.Add(RdoBeta32);
+            button.Add(RdoBeta60);
+            button.Add(RdoBeta137);
+            button.Add(RdoBetaDefine1);
+            button.Add(RdoBeta36);
+            button.Add(RdoBeta90);
+            button.Add(RdoBeta192);
+            button.Add(RdoBetaDefine2);
+            for (int i = 0; i < button.Count; i++)
+            {
+                if (nowNuclideName == button[i].Text)
+                {
+                    button[i].Checked = true;
+                    break;
+                }
+            }
+
+            #endregion
+
+            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
+            for (int i = 0; i < efficiency.Count; i++)
+            {
+                //根据channelID来匹配
+                for (int j = 0; j < probeParameters.Count; j++)
+                {
+                    if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
+                    {
+                        probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
+                        probeParameter.SetParameter(probeParameters[j]);//保存到数据库
+                    }
+                }
+            }
+
+
+            #region β参数
+
+            //清除所有行(因为每次切换页面都会增加相应的行)
+            for (int i = 0; i < DgvBetaSet.Rows.Count; i++)
+            {
+                DgvBetaSet.Rows.Remove(DgvBetaSet.Rows[i]);
+                i--;
+            }
+
+            //选出启用的设备
+            for (int i = 0; i < probeParameters.Count; i++)
+            {
+                //设备启用且核素类型为α并除去衣物参数
+                if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "β" && probeParameters[i].ProbeChannel.ChannelID != 7)
+                {
+                    int index = this.DgvBetaSet.Rows.Add();
+                    DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    DgvBetaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
+                    DgvBetaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
+                    DgvBetaSet.Rows[index].Cells[3].Value = probeParameters[i].Alarm_1;
+                    DgvBetaSet.Rows[index].Cells[4].Value = probeParameters[i].Alarm_2;
+                    DgvBetaSet.Rows[index].Cells[5].Value = probeParameters[i].Efficiency;
+                }
+                //设备未启用(暂时不显示)
+                else
+                {
+                }
+
+                #endregion
+            
+            }
         }
         //获得衣物参数
         private void GetClothesData()
         {
+            IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得C参数
+            probeParameters = probeParameter.GetParameter();
+
+            #region 核素选择
+
+            string nowNuclideName = nuclide.GetClothesNuclideUser();//获得当前衣物核素名称
+            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            efficiency = efficiencyParameter.GetParameter("C", nowNuclideName);//获得当前核素效率
+            IList<RadioButton> button = new List<RadioButton>();//核素选择数组
+
+            #region 添加核素
+            //α核素
+            button.Add(RdoClothesAlpha235);
+            button.Add(RdoClothesAlpha238);
+            button.Add(RdoClothesAlpha239);
+            button.Add(RdoClothesAlpha241);
+            button.Add(RdoClothesAlphaDefine1);
+            //β核素
+            button.Add(RdoClothesBeta14);
+            button.Add(RdoClothesBeta32);
+            button.Add(RdoClothesBeta36);
+            button.Add(RdoClothesBeta58);
+            button.Add(RdoClothesBeta60);
+            button.Add(RdoClothesBeta90);
+            button.Add(RdoClothesBeta131);
+            button.Add(RdoClothesBeta137);
+            button.Add(RdoClothesBeta192);
+            button.Add(RdoClothesBeta204);
+            button.Add(RdoClothesBetaDefine1);
+            #endregion
+
+            for (int i = 0; i < button.Count; i++)
+            {
+                if (nowNuclideName == button[i].Text)
+                {
+                    button[i].Checked = true;
+                    break;
+                }
+            }
+
+            #endregion
+
+            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
+            for (int i = 0; i < efficiency.Count; i++)
+            {
+                //根据channelID来匹配
+                for (int j = 0; j < probeParameters.Count; j++)
+                {
+                    if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
+                    {
+                        probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
+                        probeParameter.SetParameter(probeParameters[j]);//保存到数据库
+                        probeParameter = probeParameters[j];
+                    }
+                }
+            }
+
+            #region 衣物探头
+
+            system = system.GetParameter();//获得衣物离线自检时间
+            TxtClothesHBackground.Text = probeParameter.HBackground.ToString();
+            TxtClothesLBackground.Text = probeParameter.LBackground.ToString();
+            TxtClothesAlarm_1.Text = probeParameter.Alarm_1.ToString();
+            TxtClothesAlarm_2.Text = probeParameter.Alarm_2.ToString();
+            TxtClothesEfficiency.Text = probeParameter.Efficiency.ToString();
+            TxtClothOfflineTime.Text = system.ClothOfflineTime.ToString();
+
+            #endregion
 
         }
         //获得道盒参数

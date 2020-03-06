@@ -78,6 +78,14 @@ namespace HFM
             IList<EfficiencyParameter> p = new List<EfficiencyParameter>();
             EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
             p = efficiencyParameter.GetParameter("α", a);
+            for (int i = 0; i < p.Count && p[i].NuclideType == "α"; i++)
+            {
+                if (!efficiencyParameter.SetParameter(p[i]))
+                {
+                    MessageBox.Show("数据库存取失败");
+                    return;
+                }
+            }
         }
 
         private void BtnCommport_Click(object sender, EventArgs e)
