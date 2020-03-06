@@ -75,7 +75,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(809, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(826, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -84,7 +84,7 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(801, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(818, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             this.TabpageCalibration.UseVisualStyleBackColor = true;
@@ -201,6 +201,7 @@
             this.BtnCalibrate.TabIndex = 18;
             this.BtnCalibrate.Text = "刻度";
             this.BtnCalibrate.UseVisualStyleBackColor = true;
+            this.BtnCalibrate.Click += new System.EventHandler(this.BtnCalibrate_Click);
             // 
             // BtnSet
             // 
@@ -210,6 +211,7 @@
             this.BtnSet.TabIndex = 17;
             this.BtnSet.Text = "设置";
             this.BtnSet.UseVisualStyleBackColor = true;
+            this.BtnSet.Click += new System.EventHandler(this.BtnSet_Click);
             // 
             // CmbNuclideSelect
             // 
@@ -324,6 +326,7 @@
             this.TxtMeasuringTime.TabIndex = 4;
             this.TxtMeasuringTime.Text = "5";
             this.TxtMeasuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtMeasuringTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMeasuringTime_KeyPress);
             // 
             // CmbChannelSelection
             // 
@@ -373,7 +376,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(826, 722);
+            this.ClientSize = new System.Drawing.Size(843, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";

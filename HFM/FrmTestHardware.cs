@@ -3,11 +3,11 @@
  *
  *  描述：硬件检测窗体
  *  作者：杨旭锴
- *  版本：
+ *  版本：Beta1.1-2020年3月5日
  *  创建时间：2020年2月17日 09:41:19
  *  类名：硬件检测窗体
  *  完成：2020年3月2日 18:25:27
- *  更新：更新2020年3月1日 20:59:07
+ *  更新：更新2020年3月1日 20:59:07 Beta1.1-2020年3月5日
  *  测试：
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -81,7 +81,7 @@ namespace HFM
         /// 异步线程初始化化时间,ReportProgress百分比数值
         /// </summary>
         private int bkworkTime = 0;
-        
+        #endregion
         public FrmTestHardware()
         {
             InitializeComponent();

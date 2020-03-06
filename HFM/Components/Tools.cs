@@ -1,12 +1,12 @@
 /**
  * ________________________________________________________________________________ 
  *
- *  描述：
- *  作者：
+ *  描述：通用工具类
+ *  作者：* 、杨旭锴
  *  版本：
  *  创建时间：
- *  类名：
- *  
+ *  类名：工具类
+ *  更新：2020年3月6日 新增方法，窗口错误提示消息,中英文提示框
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -14,6 +14,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.Windows.Forms;
 using HFM.Components;
 namespace HFM.Components
 {
@@ -99,6 +100,188 @@ namespace HFM.Components
 			
 			return DayOfWeekZh;
 		}
-		#endregion
-	}
+        #endregion
+
+        #region 窗口错误提示消息,中英文提示框
+        /// <summary>
+        /// 窗口错误提示消息
+        /// </summary>
+        /// <param name="num">1:端口打开错误！请检查通讯是否正常。
+        /// 2:通信故障
+        /// 3:通信故障,无法读取数据
+        /// 4:登录失败，无法进行操作！
+        /// 5:没有选择通道！
+        /// 6:高压或者阈值数据没有输入
+        /// 7:Alpha阈值范围-2000mV,α阈值输入有误
+        /// 8:Beta阈值范围-2000mV,β阈值输入有误
+        /// 9:请选择相应通道。
+        /// 10:请选择核素类型！
+        /// 11:请输入发射率！
+        /// 12：进行本底测量，确认远离放射源？
+        /// 13：请放入放射源！
+        /// 14：请输入数字！
+        /// </param>
+        public void PrompMessage(int num)
+        {
+            //从数据库中查看当前中英文状态
+            bool isEnglish=new Components.SystemParameter().GetParameter().IsEnglish;
+
+            switch (num)
+            {
+                case 1:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Port open error! Please check whether the communication is normal！", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"端口打开错误！请检查通讯是否正常。！", @"提示");
+                    }
+                    break;
+                case 2:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"COM Fault!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"通信故障！", @"提示");
+                    }
+                    break;
+                case 3:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"COM Fault!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"通信故障,无法读取数据!", @"提示");
+                    }
+                    break;
+                case 4:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Login Failed！", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"登录失败，无法进行操作！", @"提示");
+                    }
+                    break;
+                case 5:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"No Channel Selected！", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"没有选择通道！", @"提示");
+                    }
+                    break;
+                case 6:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"No High Voltage or threshold Inputed!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"高压或者阈值数据没有输入。", @"提示");
+                    }
+                    break;
+                case 7:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Alpha Threshold range 0-1000mV,Input Error!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"阈值范围-2000mV,α阈值输入有误", @"提示");
+                    }
+                    break;
+                case 8:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Beta Threshold range 0-1000mV,Input Error!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"阈值范围-2000mV,β阈值输入有误", @"提示");
+                    }
+                    break;
+                case 9:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Please select corresponding channel!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"请选择相应通道。", @"提示");
+                    }
+                    break;
+                case 10:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Please select nuclide!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"请选择核素类型！", @"提示");
+                    }
+                    break;
+                case 11:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Please enter the emissivity!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"请输入发射率！", @"提示");
+                    }
+                    break;
+                case 12:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Background measuring, confirm away from source?", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示");
+                    }
+                    break;
+                case 13:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Please insert the source!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"请放入放射源！", @"提示");
+                    }
+                    break;
+                case 14:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Please enter a number！", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"请输入数字！", @"提示");
+                    }
+                    break;
+                default:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Error", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"错误，请检查！", @"提示");
+                    }
+                    break;
+            }
+        }
+        #endregion
+
+
+    }
 }
