@@ -3,11 +3,11 @@
  *
  *  描述：硬件检测窗体
  *  作者：杨旭锴
- *  版本：
+ *  版本：Beta1.1-2020年3月5日
  *  创建时间：2020年2月17日 09:41:19
  *  类名：硬件检测窗体
  *  完成：2020年3月2日 18:25:27
- *  更新：更新2020年3月1日 20:59:07
+ *  更新：更新2020年3月1日 20:59:07 Beta1.1-2020年3月5日
  *  测试：
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -72,7 +72,7 @@ namespace HFM
         /// <summary>
         /// 系统数据库中读取的测量时间
         /// </summary>
-        private int sqltime = (new HFM.Components.SystemParameter().GetParameter().MeasuringTime);
+        private int sqltime = (new HFM.Components.SystemParameter().GetParameter().MeasuringTime)<=1?10: (new HFM.Components.SystemParameter().GetParameter().MeasuringTime);
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -81,16 +81,6 @@ namespace HFM
         /// 异步线程初始化化时间,ReportProgress百分比数值
         /// </summary>
         private int bkworkTime = 0;
-        #endregion
-
-        #region 模拟数据(串口不同的默认数据)
-        MeasureData one = new MeasureData(1, DateTime.Now, 0, 0, 0, 0, 0);
-        MeasureData two = new MeasureData(2, DateTime.Now, 0, 0, 0, 0, 0);
-        MeasureData three = new MeasureData(3, DateTime.Now, 0, 0, 0, 0, 0);
-        MeasureData four = new MeasureData(4, DateTime.Now, 0, 0, 0, 0, 0);
-        MeasureData five = new MeasureData(5, DateTime.Now, 0, 0, 0, 0, 0);
-        MeasureData six = new MeasureData(6, DateTime.Now, 0, 0, 0, 0, 0);
-        MeasureData seven = new MeasureData(7, DateTime.Now, 0, 0, 0, 0, 0);
         #endregion
         public FrmTestHardware()
         {
@@ -264,6 +254,7 @@ namespace HFM
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
                             if (errorNumber > 5)
                             {
+                                
                                 bkworker.ReportProgress(bkworkTime, null);
                             }
                             else
@@ -385,7 +376,7 @@ namespace HFM
                         //触发向主线程返回下位机上传数据事件
                         bkworker.ReportProgress(bkworkTime, receiveBuffMessage);
                     }
-                } 
+                }
                 #endregion
             }
         }
@@ -440,19 +431,16 @@ namespace HFM
         {
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
-            byte[] receiveBufferMessage; //存储接收报文信息缓冲区
+            byte[] receiveBufferMessage=null; //存储接收报文信息缓冲区
             IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象            
             //判断串口是否打开，打开则用传输数据，否则用模拟数据
             if (commPort.Opened == true)
             {
                 //对事件参数类中的数据对象序列化为byte[]
-                using (MemoryStream ms = new MemoryStream())
+                if (e.UserState is byte[])
                 {
-                    IFormatter iFormatter = new BinaryFormatter();
-                    iFormatter.Serialize(ms, e.UserState);
-                    receiveBufferMessage = ms.GetBuffer();
+                    receiveBufferMessage = (byte[])e.UserState;
                 }
-
                 //接收报文数据为空
                 if (receiveBufferMessage.Length < messageBufferLength)
                 {
@@ -482,20 +470,7 @@ namespace HFM
                 //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
                 measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
             }
-            else
-            {
-                #region 模拟数据添加
-                measureDataS.Add(one);
-                measureDataS.Add(two);
-                measureDataS.Add(three);
-                measureDataS.Add(four);
-                measureDataS.Add(five);
-                measureDataS.Add(six);
-                measureDataS.Add(seven);
-                #endregion
-            }
-
-
+            
             #region 从监测存储到的measureDataS数据中解析到界面数值
             //临时变量
             int i = 0;

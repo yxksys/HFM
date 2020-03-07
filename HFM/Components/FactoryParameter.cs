@@ -6,7 +6,7 @@
  *  版本：
  *  创建时间：2020/2/14 修改：2020年2月17日 09:40:34
  *  类名：工厂参数类  FactoryParmeter
- *  
+ *  更新：杨旭锴，2020年3月7日，新增字段“DeviceAddress”=“设备地址”，方法相应修改
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -26,15 +26,16 @@ namespace HFM.Components
         /// 查询字段：仪器编号、软件名称、IP地址、通信端口、是否自动连接、探测类型、平滑因子、手部是否双探测器
         /// </summary>
         private const string SQL_SELECT_MAINPREFERENCE = "SELECT   InstrumentNum, SoftName, IPAddress, PortNumber," +
-                                                        " IsConnectedAuto, MeasureType, SmoothingFactor, IsDoubleProbe " +
-                                                        "FROM HFM_MainPreference";
+                                                        " IsConnectedAuto, MeasureType, SmoothingFactor, IsDoubleProbe, DeviceAddress " +
+                                                        " FROM HFM_MainPreference";
         /// <summary>
         /// 更新字段：仪器编号、软件名称、IP地址、通信端口、是否自动连接、探测类型、平滑因子、手部是否双探测器
         /// </summary>
         private const string SQL_UPDATE_MAINPREFERENCE = "UPDATE HFM_MainPreference " +
                                                         "SET  InstrumentNum=@InstrumentNum, SoftName=@SoftName," +
                                                         " IPAddress=@IPAddress, PortNumber=@PortNumber, IsConnectedAuto=@IsConnectedAuto," +
-                                                        " MeasureType='@MeasureType', SmoothingFactor=@SmoothingFactor, IsDoubleProbe=@IsDoubleProbe";
+                                                        " MeasureType='@MeasureType', SmoothingFactor=@SmoothingFactor, IsDoubleProbe=@IsDoubleProbe" +
+                                                        "DeviceAddress=@DeviceAddress";
         #endregion
 
         #region 属性
@@ -46,6 +47,7 @@ namespace HFM.Components
         private string _measureType;//探测类型
         private float _smoothingFactor;//平滑因子
         private bool _isDoubleProbe;//手部是否双探测器
+        private string _deviceAddress;//设备地址
 
 
         /// <summary>
@@ -80,6 +82,14 @@ namespace HFM.Components
         /// 手部是否双探测器
         /// </summary>
         public bool IsDoubleProbe { get => _isDoubleProbe; set => _isDoubleProbe = value; }
+        /// <summary>
+        /// 设备地址
+        /// </summary>
+        public string DeviceAddress
+        {
+            get => _deviceAddress;
+            set => _deviceAddress = value;
+        }
 
         #endregion
         #region 构造函数
@@ -96,7 +106,8 @@ namespace HFM.Components
         /// <param name="measureType">探测类型</param>
         /// <param name="smoothingFactor">平滑因子</param>
         /// <param name="isDoubleProbe">手部是否双探测器：bool值</param>
-        public FactoryParameter(string instrumentNum, string softName, string ipAddress, string portNumber, bool isConnectedAuto, string measureType, float smoothingFactor, bool isDoubleProbe)
+        /// <param name="deviceAddress">设备地址</param>
+        public FactoryParameter(string instrumentNum, string softName, string ipAddress, string portNumber, bool isConnectedAuto, string measureType, float smoothingFactor, bool isDoubleProbe,string deviceAddress)
         {
             this._instrumentNum = instrumentNum;
             this._softName = softName;
@@ -106,6 +117,7 @@ namespace HFM.Components
             this._measureType = measureType;
             this._smoothingFactor = smoothingFactor;
             this._isDoubleProbe = isDoubleProbe;
+            this.DeviceAddress = deviceAddress;
         }
         #endregion
         #region 方法
@@ -129,6 +141,7 @@ namespace HFM.Components
                     factoryParameter.MeasureType = Convert.ToString(reader["MeasureType"].ToString());
                     factoryParameter.SmoothingFactor = Convert.ToSingle(reader["SmoothingFactor"].ToString() == "" ? "0" : reader["SmoothingFactor"].ToString());
                     factoryParameter.IsDoubleProbe = Convert.ToBoolean(reader["IsDoubleProbe"].ToString());
+                    factoryParameter.DeviceAddress = Convert.ToString(reader["DeviceAddress"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
@@ -152,7 +165,8 @@ namespace HFM.Components
                 new OleDbParameter("IsConnectedAuto",OleDbType.Boolean),
                 new OleDbParameter("MeasureType",OleDbType.VarChar,255),
                 new OleDbParameter("SmoothingFactor",OleDbType.VarChar,255),
-                new OleDbParameter("IsDoubleProbe",OleDbType.Boolean)
+                new OleDbParameter("IsDoubleProbe",OleDbType.Boolean),
+                new OleDbParameter("DeviceAddress",OleDbType.VarChar,255),
             };
             parms[0].Value = factoryParameter.InstrumentNum.ToString();
             parms[1].Value = factoryParameter.SoftName.ToString();
@@ -162,6 +176,7 @@ namespace HFM.Components
             parms[5].Value = factoryParameter.MeasureType.ToString();
             parms[6].Value = factoryParameter.SmoothingFactor.ToString();
             parms[7].Value = factoryParameter.IsDoubleProbe;
+            parms[8].Value = factoryParameter.DeviceAddress.ToString();
             //执行更新语句
             if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE,parms) != 0)
             {
