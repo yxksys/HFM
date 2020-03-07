@@ -1,4 +1,16 @@
-﻿using System;
+﻿/**
+ * ________________________________________________________________________________ 
+ *
+ *  描述：参数设置窗体
+ *  作者：邢家宁
+ *  版本：
+ *  创建时间：2020年2月25日
+ *  类名：参数设置
+ *  
+ *  Copyright (C) 2020 TIT All rights reserved.
+ *_________________________________________________________________________________
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,11 +41,7 @@ namespace HFM.Components
         }
 
         //运行参数设置
-        //private ProbeParameter ProbeParameter = new ProbeParameter();//系统参数(各类型的本底上限等参数)
-        
-        
-        
-        //private ChannelParameter ChannelParameter = new ChannelParameter();//道盒信息(α阈值等)
+        private ChannelParameter channelParameter = new ChannelParameter();//道盒信息(α阈值等)
         private SystemParameter system = new SystemParameter();//(自检时间、单位等)
         private FactoryParameter factoryParameter = new FactoryParameter();//仪器设备信息(IP地址、软件名称、是否双手探测器等)
         private ProbeParameter probeParameter = new ProbeParameter();//系统参数(各类型的本底上限等参数)
@@ -48,8 +56,13 @@ namespace HFM.Components
             GetBetaData();
             GetClothesData();
             GetMainProferenceData();
+            GetFacilityData();
         }
-        //页面切换
+        /// <summary>
+        /// 页面切换
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
         {
             //根据页面索引更新当前页面值
@@ -237,7 +250,9 @@ namespace HFM.Components
             #endregion
 
         }
-        //获得β数据
+        /// <summary>
+        /// 获得β数据
+        /// </summary>
         private void GetBetaData()
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得β参数
@@ -320,7 +335,9 @@ namespace HFM.Components
             
             }
         }
-        //获得衣物参数
+        /// <summary>
+        /// 获得衣物参数
+        /// </summary>
         private void GetClothesData()
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得C参数
@@ -393,15 +410,92 @@ namespace HFM.Components
             #endregion
 
         }
-        //获得道盒参数
+        /// <summary>
+        /// 获得道盒参数(数据库)
+        /// </summary>
         private void GetMainProferenceData()
         {
+            IList<ChannelParameter> channelParameters = new List<ChannelParameter>();//获得道盒参数
+            channelParameters = channelParameter.GetParameter();
+            //清除所有行(因为每次切换页面都会增加相应的行)
+            for (int i = 0; i < DgvMainPreferenceSet.Rows.Count; i++)
+            {
+                DgvMainPreferenceSet.Rows.Remove(DgvMainPreferenceSet.Rows[i]);
+                i--;
+            }
+            //选出启用的设备
+            for (int i = 0; i < channelParameters.Count; i++)
+            {
+                //设备启用设备
+                if (channelParameters[i].Channel.IsEnabled)
+                {
+                    int index = this.DgvMainPreferenceSet.Rows.Add();
+                    DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
+                    DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
+                    DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
+                    DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
+                    DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
+                    DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
+                    DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
+                    DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
+                    DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
+                }
+                //设备未启用(暂时不显示)
+                else
+                {
+                }
+            }
 
         }
         //获得仪器选择参数
         private void GetFacilityData()
         {
-
+            Channel channel = new Channel();
+            //判断是否启用手部
+            channel = channel.GetChannel(1);
+            if(channel.IsEnabled)
+            {
+                ChkHand.Checked = true;
+                //判断是否启用双探头
+                factoryParameter = factoryParameter.GetParameter();
+                //如果未启用则关闭手背设备,以手心为主
+                if (!factoryParameter.IsDoubleProbe)
+                {
+                    channel.SetEnabledByID(2, false);
+                    channel.SetEnabledByID(4, false);
+                    RdoSingleHand.Checked = true;
+                }
+                else
+                {
+                    RdoDoubleHand.Checked = true;
+                }
+            }
+            else
+            {
+                ChkHand.Checked = false;
+                RdoSingleHand.Checked = false;
+                RdoDoubleHand.Checked = false;
+            }
+            //判断是否启用脚步
+            channel = channel.GetChannel(5);
+            if (channel.IsEnabled)
+            {
+                ChkFoot.Checked = true;
+            }
+            else
+            {
+                ChkFoot.Checked = false;
+            }
+            //判断是否启用衣物探头
+            channel = channel.GetChannel(7);
+            if (channel.IsEnabled)
+            {
+                ChkClothes.Checked = true;
+            }
+            else
+            {
+                ChkClothes.Checked = false;
+            }
         }
         #endregion
 

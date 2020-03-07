@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
@@ -178,12 +178,12 @@
             this.RdoSingleHand = new System.Windows.Forms.RadioButton();
             this.RdoDoubleHand = new System.Windows.Forms.RadioButton();
             this.LblFacility = new System.Windows.Forms.Label();
-            this.RdoClothes = new System.Windows.Forms.RadioButton();
             this.BtnFacilityNo = new System.Windows.Forms.Button();
-            this.RdoFoot = new System.Windows.Forms.RadioButton();
             this.BtnFacilityOk = new System.Windows.Forms.Button();
-            this.RdoHand = new System.Windows.Forms.RadioButton();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.ChkHand = new System.Windows.Forms.CheckBox();
+            this.ChkFoot = new System.Windows.Forms.CheckBox();
+            this.ChkClothes = new System.Windows.Forms.CheckBox();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpFacilityData.SuspendLayout();
@@ -815,14 +815,14 @@
             // 
             this.DgvAlphaSet.AllowUserToAddRows = false;
             this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -1030,14 +1030,14 @@
             // 
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -1785,13 +1785,13 @@
             // DgvMainPreferenceSet
             // 
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -1921,13 +1921,13 @@
             // 
             // 设备配置
             // 
+            this.设备配置.Controls.Add(this.ChkClothes);
+            this.设备配置.Controls.Add(this.ChkFoot);
+            this.设备配置.Controls.Add(this.ChkHand);
             this.设备配置.Controls.Add(this.GrpHand);
             this.设备配置.Controls.Add(this.LblFacility);
-            this.设备配置.Controls.Add(this.RdoClothes);
             this.设备配置.Controls.Add(this.BtnFacilityNo);
-            this.设备配置.Controls.Add(this.RdoFoot);
             this.设备配置.Controls.Add(this.BtnFacilityOk);
-            this.设备配置.Controls.Add(this.RdoHand);
             this.设备配置.Font = new System.Drawing.Font("宋体", 12F);
             this.设备配置.Location = new System.Drawing.Point(4, 30);
             this.设备配置.Margin = new System.Windows.Forms.Padding(2);
@@ -1986,19 +1986,6 @@
             this.LblFacility.TabIndex = 16;
             this.LblFacility.Text = "设备配置";
             // 
-            // RdoClothes
-            // 
-            this.RdoClothes.AutoSize = true;
-            this.RdoClothes.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoClothes.Location = new System.Drawing.Point(86, 246);
-            this.RdoClothes.Margin = new System.Windows.Forms.Padding(2);
-            this.RdoClothes.Name = "RdoClothes";
-            this.RdoClothes.Size = new System.Drawing.Size(90, 20);
-            this.RdoClothes.TabIndex = 15;
-            this.RdoClothes.TabStop = true;
-            this.RdoClothes.Text = "衣物探头";
-            this.RdoClothes.UseVisualStyleBackColor = true;
-            // 
             // BtnFacilityNo
             // 
             this.BtnFacilityNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -2009,19 +1996,6 @@
             this.BtnFacilityNo.TabIndex = 5;
             this.BtnFacilityNo.Text = "取消";
             this.BtnFacilityNo.UseVisualStyleBackColor = true;
-            // 
-            // RdoFoot
-            // 
-            this.RdoFoot.AutoSize = true;
-            this.RdoFoot.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoFoot.Location = new System.Drawing.Point(86, 180);
-            this.RdoFoot.Margin = new System.Windows.Forms.Padding(2);
-            this.RdoFoot.Name = "RdoFoot";
-            this.RdoFoot.Size = new System.Drawing.Size(58, 20);
-            this.RdoFoot.TabIndex = 15;
-            this.RdoFoot.TabStop = true;
-            this.RdoFoot.Text = "脚部";
-            this.RdoFoot.UseVisualStyleBackColor = true;
             // 
             // BtnFacilityOk
             // 
@@ -2034,18 +2008,35 @@
             this.BtnFacilityOk.Text = "确定";
             this.BtnFacilityOk.UseVisualStyleBackColor = true;
             // 
-            // RdoHand
+            // ChkHand
             // 
-            this.RdoHand.AutoSize = true;
-            this.RdoHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoHand.Location = new System.Drawing.Point(86, 63);
-            this.RdoHand.Margin = new System.Windows.Forms.Padding(2);
-            this.RdoHand.Name = "RdoHand";
-            this.RdoHand.Size = new System.Drawing.Size(58, 20);
-            this.RdoHand.TabIndex = 15;
-            this.RdoHand.TabStop = true;
-            this.RdoHand.Text = "手部";
-            this.RdoHand.UseVisualStyleBackColor = true;
+            this.ChkHand.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkHand.Location = new System.Drawing.Point(86, 64);
+            this.ChkHand.Name = "ChkHand";
+            this.ChkHand.Size = new System.Drawing.Size(110, 25);
+            this.ChkHand.TabIndex = 18;
+            this.ChkHand.Text = "手部";
+            this.ChkHand.UseVisualStyleBackColor = true;
+            // 
+            // ChkFoot
+            // 
+            this.ChkFoot.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkFoot.Location = new System.Drawing.Point(86, 177);
+            this.ChkFoot.Name = "ChkFoot";
+            this.ChkFoot.Size = new System.Drawing.Size(110, 25);
+            this.ChkFoot.TabIndex = 19;
+            this.ChkFoot.Text = "脚步";
+            this.ChkFoot.UseVisualStyleBackColor = true;
+            // 
+            // ChkClothes
+            // 
+            this.ChkClothes.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkClothes.Location = new System.Drawing.Point(86, 246);
+            this.ChkClothes.Name = "ChkClothes";
+            this.ChkClothes.Size = new System.Drawing.Size(110, 25);
+            this.ChkClothes.TabIndex = 20;
+            this.ChkClothes.Text = "衣物探头";
+            this.ChkClothes.UseVisualStyleBackColor = true;
             // 
             // FrmPreference
             // 
@@ -2159,9 +2150,6 @@
         private System.Windows.Forms.Button BtnMainPreferenceRead;
         private System.Windows.Forms.Button BtnMainPreferenceSet;
         private System.Windows.Forms.Button BtnMainPreferenceRetuen;
-        private System.Windows.Forms.RadioButton RdoHand;
-        private System.Windows.Forms.RadioButton RdoClothes;
-        private System.Windows.Forms.RadioButton RdoFoot;
         private System.Windows.Forms.RadioButton RdoDoubleHand;
         private System.Windows.Forms.RadioButton RdoSingleHand;
         private System.Windows.Forms.Button BtnFacilityNo;
@@ -2245,5 +2233,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker_Preference;
         private System.Windows.Forms.CheckBox ChkIsConnectedAuto;
         private System.Windows.Forms.DataGridView DgvBetaSet;
+        private System.Windows.Forms.CheckBox ChkHand;
+        private System.Windows.Forms.CheckBox ChkFoot;
+        private System.Windows.Forms.CheckBox ChkClothes;
     }
 }
