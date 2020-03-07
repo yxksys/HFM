@@ -22,8 +22,10 @@ namespace HFM
         Components.SystemParameter systemParameter = new Components.SystemParameter();
         //监测时间
         int checkTime = 0;
-        //报警时间长度
-        int alarmTime = 0;
+        //系统报警时间长度设置
+        int alarmTimeSet = 0;
+        //系统报警时间计时
+        DateTime alarmTimeStart = DateTime.Now;
         //当前可使用的检测通道
         IList<Channel> channelS = new List<Channel>();
         //运行状态枚举类型
@@ -61,7 +63,7 @@ namespace HFM
         {
             systemParameter.GetParameter();
             checkTime = systemParameter.SelfCheckTime;
-            alarmTime = systemParameter.AlarmTime;
+            alarmTimeSet = systemParameter.AlarmTime;
             MeasureData[] measureDataS = new MeasureData[100];
             for (int i = 0; i < 100; i++)
             {
@@ -143,6 +145,7 @@ namespace HFM
             platformState = PlatformState.ReadyToRun;
             //启动异步线程,响应DoWork事件
             bkWorkerReceiveData.RunWorkerAsync();
+            bkWorkerReportStatus.RunWorkerAsync();
         }
         /// <summary>
         /// 异步线程DoWork事件响应
@@ -228,6 +231,8 @@ namespace HFM
                 //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
                 buffMessage[0] = Convert.ToByte('C');
+                //将当前监测状态打包到报文最后一个字节
+                buffMessage[61] = Convert.ToByte(deviceStatus);
                 if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)
                 {
                     //延时
@@ -240,7 +245,6 @@ namespace HFM
                     //触发向主线程返回下位机上传数据事件
                     worker.ReportProgress(1, receiveBuffMessage);
                 }
-
             }
         }
 
@@ -256,7 +260,11 @@ namespace HFM
             {
                 receiveBufferMessage = (byte[])e.UserState;
             }
-
+            //报警时间超过系统参数设置的报警时间长度，则监测状态恢复为正常状态
+            if ((DateTime.Now - alarmTimeStart).Seconds >= alarmTimeSet)
+            {
+                deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
+            }
             Channel channel = new Channel();
             int channelid = ix % 7 == 0 ? 7 : ix % 7;
             channel.GetChannel(ix);
@@ -345,7 +353,7 @@ namespace HFM
                 }
                 //自检时间到
                 if (stateTimeRemain <= 0)
-                {
+                {                    
                     string errRecord = BaseCheck();
                     if (errRecord == null)//自检通过
                     {
@@ -371,7 +379,7 @@ namespace HFM
                         //界面显示“仪器故障”同时进行语音提示
                         //
                         //启动故障报警计时
-
+                        alarmTimeStart = System.DateTime.Now;                       
                     }
                     return;
                 }
@@ -417,11 +425,13 @@ namespace HFM
                 }
                 //本底测量时间到
                 if (stateTimeRemain < 0)
-                {
+                {                    
                     string errRecord = BaseCheck();
                     //本底测量判断
                     if (errRecord == null)//本底测量通过
                     {
+                        //设备监测状态为正常
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //系统参数中，将上次本底测量后已测量人数清零
                         Components.SystemParameter systemParameter = new Components.SystemParameter();
                         systemParameter.ClearMeasuredCount();
@@ -440,10 +450,14 @@ namespace HFM
                     }
                     else//本底测量未通过
                     {
+                        //将设备监测状态设置为“故障”
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
                         //将故障信息errRecord写入数据库
                         //
                         //界面显示“本底测量未通过”同时进行语音提示
                         //
+                        //启动故障报警计时
+                        alarmTimeStart = System.DateTime.Now;
                     }
                     return;
                 }
@@ -501,11 +515,13 @@ namespace HFM
                 }
                 //本底测量时间到，进行本底判断
                 if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds <= 0)
-                {
+                {                    
                     string errRecord = BaseCheck();
                     //本底测量判断
                     if (errRecord == null)//本底检测通过
                     {
+                        //设备监测状态为正常
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //下次如果还进行本底计算，则需重新计时，所以置标志为True
                         isFirstBackGround = true;
                         //重新启动本底测量计时
@@ -521,10 +537,14 @@ namespace HFM
                     }
                     else//本底检测未通过
                     {
+                        //将设备监测状态设置为“故障”
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
                         //将故障信息errRecord写入数据库
                         //
                         //界面显示“本底测量出现故障”同时进行语音提示
                         //
+                        //启动故障报警计时
+                        alarmTimeStart = System.DateTime.Now;
                     }
                 }
             }
@@ -563,7 +583,7 @@ namespace HFM
                 }
                 //测量时间到
                 if (stateTimeRemain < 0)
-                {
+                {                    
                     Components.SystemParameter systemParameter = new Components.SystemParameter();
                     //计算每个通道的计数平均值,然后减去本底值
                     for (int i = 0; i < calculatedMeasureDataS.Count; i++)
@@ -603,8 +623,17 @@ namespace HFM
                     }
                     if (pollutionRecord == null)//说明本次测量无污染
                     {
+                        //设备监测状态为正常
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //语音和文字提示“无污染”
                         //
+                    }
+                    else
+                    {
+                        //将设备监测状态设置为“污染”
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated);                       
+                        //启动报警计时
+                        alarmTimeStart = System.DateTime.Now;
                     }
                     //将本次测量数据和污染描述字符串pollutionRecord保存到数据库
                     //
@@ -771,6 +800,22 @@ namespace HFM
             //dpm:最终测量计数平均值(dpm) = 12000 * 计算平均值(cps) /探测效率
             //nCi : 最终测量计数平均值(nCi) = 200 * 计算平均值(cps) /探测效率*0.027
             return 0;
+        }
+
+        private void bkWorkerReportStatus_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //如果没有取消异步线程
+            if (bkWorkerReportStatus.CancellationPending == false)
+            {
+                //在异步线程上执行串口读操作ReadDataFromSerialPort方法
+                BackgroundWorker bkWorkerReport = sender as BackgroundWorker;
+                ReadDataFromSerialPortReport(bkWorkerReport, e);
+            }
+            e.Cancel = true;
+        }
+        private void ReadDataFromSerialPortReport(BackgroundWorker worker, DoWorkEventArgs e)
+        {
+
         }
     }
 }

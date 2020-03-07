@@ -75,6 +75,7 @@
             this.LblLeftt = new System.Windows.Forms.Label();
             this.LblRight = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
+            this.bkWorkerReportStatus = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSN)).BeginInit();
@@ -610,6 +611,10 @@
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
             // 
+            // bkWorkerReportStatus
+            // 
+            this.bkWorkerReportStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReportStatus_DoWork);
+            // 
             // FrmMeasureMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -737,5 +742,6 @@
         private System.Windows.Forms.Label LblLeftt;
         private System.Windows.Forms.Label LblRight;
         private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
+        private System.ComponentModel.BackgroundWorker bkWorkerReportStatus;
     }
 }

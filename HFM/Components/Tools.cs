@@ -1,12 +1,12 @@
 /**
  * ________________________________________________________________________________ 
  *
- *  描述：
- *  作者：
- *  版本：
+ *  描述：通用工具类
+ *  作者：杨慧炯
+ *  版本：V1.0
  *  创建时间：
- *  类名：
- *  
+ *  类名：Tools
+ *  更新记录：2020-03-07增加了16位CRC校验方法
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -99,6 +99,36 @@ namespace HFM.Components
 			
 			return DayOfWeekZh;
 		}
-		#endregion
-	}
+        #endregion
+
+        #region CRC16校验
+        /// <summary>
+        /// 对输入参数data的前length个元素求CRC16检验值
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="length"></param>
+        /// <returns>输入参数data前length个元素的CRC16校验值</returns>
+        public static byte[] CRC16(byte[] data,int length)
+        {
+            int len = data.Length;
+            if (len > 0)
+            {
+                ushort crc = 0xFFFF;
+                for (int i = 0; i < len; i++)
+                {
+                    crc = (ushort)(crc ^ (data[i]));
+                    for (int j = 0; j < 8; j++)
+                    {
+                        crc = (crc & 1) != 0 ? (ushort)((crc >> 1) ^ 0xA001) : (ushort)(crc >> 1);
+                    }
+                }
+                byte hi = (byte)((crc & 0xFF00) >> 8);  //高位置
+                byte lo = (byte)(crc & 0x00FF);         //低位置
+
+                return new byte[] { hi, lo };
+            }
+            return new byte[] { 0, 0 };
+        }
+        #endregion
+    }
 }

@@ -6,9 +6,10 @@
  *  版本：V1.0
  *  创建时间：2020-02-11
  *  类名：Message
- *  更新记录：02-14修正了Alpha和Beta自检报文中两个错误报文数据；
- *            02-21修正了解析报文中Alpha和Beta计数值四个字节信息的解析方式
- *  
+ *  更新记录：2020-02-14修正了Alpha和Beta自检报文中两个错误报文数据；
+ *            2020-02-21修正了解析报文中Alpha和Beta计数值四个字节信息的解析方式
+ *            2020-03-07增加了生成“向管理机上报监测状态”报文方法
+ *                      增加了解析管理机下发报文方法（上报监测状态指令码和时间同步指令码）
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -21,7 +22,7 @@ using System.Threading.Tasks;
 namespace HFM.Components
 {
     abstract class Message
-    {
+    {        
         #region 生成下发下位机的Alpha和Beta自检报文
         /// <summary>
         /// 生成下发下位机的Alpha和Beta自检报文
@@ -195,7 +196,46 @@ namespace HFM.Components
             messageData[61] = Convert.ToByte('P');
             return messageData;
         }
-        #endregion     
+        #endregion
+
+        #region 生成上报管理机监测状态报文
+        /// <summary>
+        /// 生成上报管理机监测状态报文
+        /// 报文格式：监测仪地址（0~255）、功能码0x03、数据长度0x0A、
+        ///           年（2字节：0x1413表示2019年）、月日（2字节：0x0C0F表示12月15日）
+        ///           时分（2字节：0x1012表示16时18分）、妙微妙（2字节：0x3B00表示59秒）、
+        ///           监测仪状态（2字节：0x0001表示正常，0x0002表示故障，0x0004表示污染）、
+        ///           16位CRC校验（2字节：校验码高位-校验码低位）                
+        /// </summary>
+        /// <param name="deviceAddress"></param>
+        /// <param name="submitTime"></param>
+        /// <param name="deviceStatus"></param>
+        /// <returns></returns>
+        public static byte[] BuildMessage(int deviceAddress,DateTime submitTime,int deviceStatus)
+        {
+            byte[] messageData = new byte[16];
+            messageData[0] = Convert.ToByte(deviceAddress);
+            messageData[1] = 0x03;
+            messageData[2] = 0x0A;
+            messageData[3] = Convert.ToByte(submitTime.Year / 100);
+            messageData[4] = Convert.ToByte(submitTime.Year % 100);
+            messageData[5] = Convert.ToByte(submitTime.Month);
+            messageData[6] = Convert.ToByte(submitTime.Day);
+            messageData[7] = Convert.ToByte(submitTime.Hour);
+            messageData[8] = Convert.ToByte(submitTime.Minute);
+            messageData[9] = Convert.ToByte(submitTime.Second);
+            messageData[10] = Convert.ToByte(submitTime.Millisecond);
+            //监测状态，2字节
+            messageData[11] = 0x00;
+            messageData[12] = Convert.ToByte(deviceStatus);
+            //求CRC校验值
+            byte[] crc16 = new byte[2];
+            crc16=Tools.CRC16(messageData, messageData.Length - 1);
+            messageData[13] = crc16[0];
+            messageData[14] = crc16[1];
+            return messageData;
+        }
+        #endregion
 
         #region 解析从下位机读回的报文（P上传参数命令码和C上传测量值命令码）
         /// <summary>
@@ -358,7 +398,53 @@ namespace HFM.Components
             }        
         }
         #endregion
-        
+
+        #region 解析从管理机下发的报文（上报监测状态/时间同步）
+        /// <summary>
+        /// 解析从管理机下发的报文（上报监测状态/时间同步）
+        /// </summary>
+        /// <param name="message">管理机下发的报文信息</param>
+        /// <returns>解析后的报文数据：上报监测状态返回监测仪地址数组（长度为1），时间同步返回标准时间数组（长度为7：年月日时分秒毫秒）</returns>
+        public static int[] ExplainMessage(byte[] message)
+        {
+            int[] messageData=null;            
+            //报文长度不能小于8字节
+            if (message.Length<8)
+            {
+                return null;
+            }
+            //进行CRC校验
+            byte[] crc16 = new byte[2];
+            crc16 = Tools.CRC16(message, message.Length - 1);
+            //校验失败返回
+            if(message[message.Length-2]!=crc16[0] || message[message.Length-1]!=crc16[1])
+            {
+                return null;
+            }
+            //校验成功
+            switch(message[1])
+            {                
+                case 0x03://向管理机上报监测状态
+                    messageData = new int[1];
+                    messageData[0] = message[0];
+                    break;                   
+                case 0x10://完成时间同步
+                    if (message.Length >= 17)//报文长度满足要求
+                    {
+                        messageData = new int[7];
+                        messageData[0] = message[7] * 100 + message[8];//年
+                        for(int i=1;i<messageData.Length;i++)
+                        {
+                            //messageData[1]到messageData[6]分别存储：月、日、时、分、妙、毫秒
+                            messageData[i] = message[i + 8];
+                        }                        
+                    }
+                    break;
+            }
+            return messageData;
+        }
+        #endregion
+
         #region 发送报文信息
         /// <summary>
         ///  通过串口向下位机发送报文信息（串口已经打开）
