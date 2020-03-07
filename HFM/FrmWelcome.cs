@@ -56,83 +56,11 @@ namespace HFM
         string frisker = "";
         private void BtnTestRorW_Click(object sender, EventArgs e)
         {
-            List<MeasureData> measure = new List<MeasureData>();
-            MeasureData one = new MeasureData(1, DateTime.Now, 1001, 1007, 24, 24, 500);
-            MeasureData two = new MeasureData(2, DateTime.Now, 1002, 1006, 24, 24, 500);
-            MeasureData three = new MeasureData(3, DateTime.Now, 0, 0, 24, 24, 0);
-            MeasureData four = new MeasureData(4, DateTime.Now, 1004, 1004, 24, 24, 500);
-            MeasureData five = new MeasureData(5, DateTime.Now, 1005, 0, 24, 24, 500);
-            MeasureData six = new MeasureData(6, DateTime.Now, 0, 0, 24, 24, 500);
-            MeasureData seven = new MeasureData(7, DateTime.Now, 100, 220, 24, 24, 500);
-            measure.Add(one);
-            measure.Add(two);
-            measure.Add(three);
-            measure.Add(four);
-            measure.Add(five);
-            measure.Add(six);
-            measure.Add(seven);
-            //运行状态标志
-            
 
-           
-            //float[] _hv=new float[6];
-            //float[] _alpha=new float[6];
-            //float[] _alphacnt = new float[6];
-            //float[] _betacnt = new float[6];
-            //float[] _beta = new float[6];
-            //定义dgv高压
-            
-            //临时变量
-            int i = 0;
-            //从列表中取出数据
-            platformState = HardwarePlatformState.BetaCheck;
-            foreach (var item in measure)
-            {
-                //通过运行状态判断衣物探头是alpha还是beta，默认alpha通道计数
-                if (i == 6)
-                {
-                    if (platformState == HardwarePlatformState.AlphaCheck)
-                    {
-                        frisker = Convert.ToString(item.Alpha);
-                    }
-                    else if (platformState == HardwarePlatformState.BetaCheck)
-                    {
-                        frisker = Convert.ToString(item.Beta);
-                    }
-                    else
-                    {
-                        frisker = Convert.ToString(item.Alpha);
-                    }
-               
-                    break;
-                }
-                _hv[i]=Convert.ToString(item.HV);
-                _alphacps[i] = Convert.ToString(item.Alpha);
-                _betacps[i] = Convert.ToString(item.Beta);
-                i++;
-            }
-            //赋值alpha和Beta总计数并且判断赋值通道状态
-            for (i = 0; i < 6; i++)
-            {
-                //alpha总计数
-                _alphacnt[i] = Convert.ToString(Convert.ToInt32(_alphacnt[i]) + Convert .ToInt32(_alphacps[i]));
-                //beta总计数
-                _betacnt[i] = Convert.ToString(Convert.ToInt32( _betacnt[i]) + Convert.ToInt32(_betacps[i]));
-                //判断通道状态
-                if (Convert.ToInt32(_hv[i]) == 0 && (Convert.ToInt32(_alphacnt[i]) == 0 || Convert.ToInt32(_betacnt[i]) == 0 ))
-                {
-                    _strat[i] = "通讯故障";
-                }
-                else if (Convert.ToInt32(_alphacnt[i]) == 0 && Convert.ToInt32(_betacnt[i]) == 0)
-                {
-                    _strat[i] = "探头故障";
-                }
-                else
-                {
-                    _strat[i] = "正常工作";
-                }
-            }
-
+            FactoryParameter factoryParameter = new FactoryParameter();
+            factoryParameter.GetParameter();
+            factoryParameter=new FactoryParameter("1001", "HFM", "110.110.110.110", "100", false, "a", 100, true, "address");
+            factoryParameter.GetParameter();
             //byte[] mess = new byte[4];
             //mess[0] =Convert.ToByte( 'p');
             //mess[1] = 48;
