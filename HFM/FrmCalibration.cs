@@ -3,7 +3,7 @@
  *
  *  描述：刻度窗体
  *  作者：杨旭锴
- *  版本：Alpha v.0.0.3-2020年3月6日
+ *  版本：Alpha v.0.63-2020年3月7日;Alpha v.0.27-2020年3月6日
  *  创建时间：2020年2月25日 16:58:28
  *  类名：刻度窗体
  *  
@@ -77,6 +77,11 @@ namespace HFM
         /// 工具类实例-错误提示信息
         /// </summary>
         Tools tools =new Components.Tools();
+        /// <summary>
+        /// 需要写入的道盒参数数据对象
+        /// </summary>
+        ChannelParameter setChannelParameter = new ChannelParameter();
+
         #endregion
 
         #region 方法
@@ -192,10 +197,10 @@ namespace HFM
             //if (commPort.Opened==true)
             //{
             //开启异步线程
-            if (bkWorkerReceiveData.IsBusy != true)
-            {
+            //if (bkWorkerReceiveData.IsBusy != true)
+            //{
                 bkWorkerReceiveData.RunWorkerAsync();
-            }
+            //}
             //}
 
 
@@ -264,6 +269,7 @@ namespace HFM
 
                 switch (messageType)
                 {
+                    #region P读取指令下发并接收数据上传
                     case MessageType.pRead:
 
                         //向下位机下发“p”指令码
@@ -316,9 +322,39 @@ namespace HFM
                         }
 
                         break;
-                    case MessageType.pSet:
+                    #endregion
 
+                    #region P写入指令下发
+                    case MessageType.pSet:
+                        //实例化道盒列表
+                        IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>();
+                        //添加数据对象到列表
+                        setChannelParameters.Add(setChannelParameter);
+                        //生成报文
+                        buffMessage = Message.BuildMessage(setChannelParameters);
+                        //成功则关闭线程
+                        if (Components.Message.SendMessage(buffMessage,commPort)==true)
+                        {
+                            //写入成功,返回p指令读取当前高压以确认更改成功
+                            Thread.Sleep(300);
+                            messageType = MessageType.pRead;
+                        }
+                        //发送失败次数大于5次,提示错误并挂起线程
+                        else
+                        {
+                            errorNumber++;
+                            if (errorNumber > 5)
+                            {
+                                tools.PrompMessage(2);
+                                bkWorkerReceiveData.CancelAsync();
+                            }
+                            Thread.Sleep(200);
+                            
+                        }
                         break;
+                    #endregion
+
+                    #region C读取指令下发并接收数据上传
                     case MessageType.cRead:
                         //向下位机下发“C”指令码
                         buffMessage[0] = Convert.ToByte('C');
@@ -335,8 +371,8 @@ namespace HFM
                             //触发向主线程返回下位机上传数据事件
                             bkWorker.ReportProgress(bkworkTime, receiveBuffMessage);
                         }
-
-                        break;
+                        break; 
+                        #endregion
                 }
             }
         }
@@ -396,6 +432,7 @@ namespace HFM
                             Txtα.Text = itemParameter.AlphaThreshold.ToString();
                             Txtβ.Text = itemParameter.BetaThreshold.ToString();
 
+                            setChannelParameter = itemParameter;
                         }
                     }
                 }
@@ -421,17 +458,61 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnSet_Click(object sender, EventArgs e)
         {
-            //判断串口是否打开
-            if (commPort.Opened!=false)
+            #region 信息判断
+
+            if (CmbChannelSelection.Text == "")
             {
-                tools.PrompMessage(1);
+                tools.PrompMessage(9);
                 return;
             }
             //判断高压、alpha、Beta阈值是否为空
-            if (TxtHV.Text=="")
+            if (TxtHV.Text == "" || TxtHV.Text == null || Txtα.Text == "" || Txtα.Text == null || Txtβ.Text == "" || Txtβ.Text == null)
             {
-                
+                tools.PrompMessage(6);
+                return;
             }
+            //高压>1000提示
+            else if (Convert.ToInt32(TxtHV.Text) > 1000)
+            {
+                tools.PrompMessage(15);
+                return;
+            }
+            //alpha阈值大于2000提示
+            else if (Convert.ToInt32(Txtα.Text) > 2000)
+            {
+                tools.PrompMessage(7);
+                return;
+            }
+            //Beta阈值大于2000提示
+            else if (Convert.ToInt32(Txtβ.Text) > 2000)
+            {
+                tools.PrompMessage(7);
+                return;
+            } 
+            #endregion
+            //当前发送报文类型换成p写入
+            messageType = MessageType.pSet;
+            //当前的高压和阈值信息写入对象
+            setChannelParameter.PresetHV = (float) Convert.ToDouble(TxtHV.Text);
+            setChannelParameter.AlphaThreshold = (float)Convert.ToDouble(Txtα.Text);
+            setChannelParameter.BetaThreshold = (float)Convert.ToDouble(Txtβ.Text);
+            //判断串口是否打开
+            if (commPort.Opened == true)
+            {
+                //判断线程是否运行
+                if (bkWorkerReceiveData.IsBusy == false)
+                {
+                    bkWorkerReceiveData.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                //错误提示
+                tools.PrompMessage(2);
+                return;
+            }
+            
+            
         }
         #endregion
 
@@ -443,13 +524,45 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnCalibrate_Click(object sender, EventArgs e)
         {
+            #region 信息判断
+            //通道判断
+            if (CmbChannelSelection.Text == "")
+            {
+                tools.PrompMessage(9);
+                return;
+            }
+            //测量时间为0强制赋值为1,避免程序异常或进入死循环
+            if (TxtMeasuringTime.Text == "" || TxtMeasuringTime.Text == Convert.ToString(0))
+            {
+                TxtMeasuringTime.Text ="1";
+            }
+            //次数为0强制赋值为1,避免程序异常或进入死循环
+            if (TxtCount.Text == "" || TxtCount.Text == Convert.ToString(0))
+            {
+                TxtCount.Text = "1";
+            }
+            //核素通道是否选择
+            if (CmbNuclideSelect.Text == "")
+            {
+                tools.PrompMessage(10);
+                return;
+            }
 
+            if (TxtSFR.Text=="")
+            {
+               tools.PrompMessage(11);
+               return;
+            }
+            #endregion
         }
 
         #endregion
 
         #endregion
 
+
+        #region 文本框限制只能输入数字
+        //测量时间文本框
         private void TxtMeasuringTime_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsNumber(e.KeyChar))
@@ -457,7 +570,52 @@ namespace HFM
                 e.Handled = true;
                 tools.PrompMessage(14);
             }
-            
         }
+        //次数
+        private void TxtCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+                tools.PrompMessage(14);
+            }
+        }
+        //表面发射率
+        private void TxtSFR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+                tools.PrompMessage(14);
+            }
+        }
+        //高压
+        private void TxtHV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+                tools.PrompMessage(14);
+            }
+        }
+        //alpha阈值
+        private void Txtα_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+                tools.PrompMessage(14);
+            }
+        }
+        //Beta阈值
+        private void Txtβ_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+                tools.PrompMessage(14);
+            }
+        } 
+        #endregion
     }
 }

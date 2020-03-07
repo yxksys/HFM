@@ -75,7 +75,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(826, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(843, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -84,7 +84,7 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(818, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(835, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             this.TabpageCalibration.UseVisualStyleBackColor = true;
@@ -183,6 +183,7 @@
             this.TxtSFR.Size = new System.Drawing.Size(96, 26);
             this.TxtSFR.TabIndex = 20;
             this.TxtSFR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtSFR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSFR_KeyPress);
             // 
             // LblSFR
             // 
@@ -231,6 +232,7 @@
             this.Txtβ.Size = new System.Drawing.Size(42, 26);
             this.Txtβ.TabIndex = 15;
             this.Txtβ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Txtβ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtβ_KeyPress);
             // 
             // Txtα
             // 
@@ -239,6 +241,7 @@
             this.Txtα.Size = new System.Drawing.Size(42, 26);
             this.Txtα.TabIndex = 14;
             this.Txtα.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Txtα.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtα_KeyPress);
             // 
             // Lblβ
             // 
@@ -284,6 +287,7 @@
             this.TxtCount.TabIndex = 9;
             this.TxtCount.Text = "1";
             this.TxtCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCount_KeyPress);
             // 
             // TxtHV
             // 
@@ -292,6 +296,7 @@
             this.TxtHV.Size = new System.Drawing.Size(54, 26);
             this.TxtHV.TabIndex = 8;
             this.TxtHV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtHV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtHV_KeyPress);
             // 
             // LblCount
             // 
@@ -376,7 +381,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(843, 722);
+            this.ClientSize = new System.Drawing.Size(860, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";

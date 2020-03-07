@@ -167,8 +167,12 @@ namespace HFM
             }
             #endregion
 
-            //开启异步线程
-            bkWorkerReceiveData.RunWorkerAsync();
+            if (bkWorkerReceiveData.IsBusy==false)
+            {
+                //开启异步线程
+                bkWorkerReceiveData.RunWorkerAsync();
+            }
+            
         }
         #endregion
 

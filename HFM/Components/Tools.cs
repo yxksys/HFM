@@ -107,7 +107,7 @@ namespace HFM.Components
         /// 窗口错误提示消息
         /// </summary>
         /// <param name="num">1:端口打开错误！请检查通讯是否正常。
-        /// 2:通信故障
+        /// 2:通讯错误！请检查通讯是否正常。
         /// 3:通信故障,无法读取数据
         /// 4:登录失败，无法进行操作！
         /// 5:没有选择通道！
@@ -120,6 +120,7 @@ namespace HFM.Components
         /// 12：进行本底测量，确认远离放射源？
         /// 13：请放入放射源！
         /// 14：请输入数字！
+        /// 15:高压输入范围-1000V,高压输入有误！
         /// </param>
         public void PrompMessage(int num)
         {
@@ -141,11 +142,11 @@ namespace HFM.Components
                 case 2:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"COM Fault!", @"Message");
+                        MessageBox.Show(@"Communication error! Please check whether the communication is normal.", @"Message");
                     }
                     else
                     {
-                        MessageBox.Show(@"通信故障！", @"提示");
+                        MessageBox.Show(@"通讯错误！请检查通讯是否正常！", @"提示");
                     }
                     break;
                 case 3:
@@ -266,6 +267,16 @@ namespace HFM.Components
                     else
                     {
                         MessageBox.Show(@"请输入数字！", @"提示");
+                    }
+                    break;
+                case 15:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"HV range 0-1000V,Input Error!", @"Message");
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"高压输入范围-1000V,高压输入有误！", @"提示");
                     }
                     break;
                 default:
