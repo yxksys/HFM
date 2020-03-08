@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
 
-namespace HFM
+namespace HFM.Components
 {
     public partial class FrmWelcome : Form
     {

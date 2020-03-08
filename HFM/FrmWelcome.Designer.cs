@@ -1,4 +1,4 @@
-﻿namespace HFM
+﻿namespace HFM.Components
 {
     partial class FrmWelcome
     {

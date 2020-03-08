@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-namespace HFM.Components
+using HFM.Components;
+namespace HFM
 {
     static class Program
     {
