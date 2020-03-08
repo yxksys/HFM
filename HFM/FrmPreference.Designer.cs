@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
@@ -174,6 +174,9 @@
             this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
             this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
             this.设备配置 = new System.Windows.Forms.TabPage();
+            this.ChkClothes = new System.Windows.Forms.CheckBox();
+            this.ChkFoot = new System.Windows.Forms.CheckBox();
+            this.ChkHand = new System.Windows.Forms.CheckBox();
             this.GrpHand = new System.Windows.Forms.GroupBox();
             this.RdoSingleHand = new System.Windows.Forms.RadioButton();
             this.RdoDoubleHand = new System.Windows.Forms.RadioButton();
@@ -181,9 +184,6 @@
             this.BtnFacilityNo = new System.Windows.Forms.Button();
             this.BtnFacilityOk = new System.Windows.Forms.Button();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
-            this.ChkHand = new System.Windows.Forms.CheckBox();
-            this.ChkFoot = new System.Windows.Forms.CheckBox();
-            this.ChkClothes = new System.Windows.Forms.CheckBox();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpFacilityData.SuspendLayout();
@@ -445,6 +445,7 @@
             this.BtnPreferenceNo.TabIndex = 3;
             this.BtnPreferenceNo.Text = "取消";
             this.BtnPreferenceNo.UseVisualStyleBackColor = true;
+            this.BtnPreferenceNo.Click += new System.EventHandler(this.BtnPreferenceNo_Click);
             // 
             // BtnPreferenceOk
             // 
@@ -456,6 +457,7 @@
             this.BtnPreferenceOk.TabIndex = 2;
             this.BtnPreferenceOk.Text = "确认";
             this.BtnPreferenceOk.UseVisualStyleBackColor = true;
+            this.BtnPreferenceOk.Click += new System.EventHandler(this.BtnPreferenceOk_Click);
             // 
             // GrpPreferenceArea
             // 
@@ -815,14 +817,14 @@
             // 
             this.DgvAlphaSet.AllowUserToAddRows = false;
             this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -892,6 +894,7 @@
             this.BtnAlphaNo.TabIndex = 3;
             this.BtnAlphaNo.Text = "取消";
             this.BtnAlphaNo.UseVisualStyleBackColor = true;
+            this.BtnAlphaNo.Click += new System.EventHandler(this.BtnAlphaNo_Click);
             // 
             // BtnAlphaOk
             // 
@@ -903,6 +906,7 @@
             this.BtnAlphaOk.TabIndex = 2;
             this.BtnAlphaOk.Text = "确定";
             this.BtnAlphaOk.UseVisualStyleBackColor = true;
+            this.BtnAlphaOk.Click += new System.EventHandler(this.BtnAlphaOk_Click);
             // 
             // GrpAlphaNuclideChoose
             // 
@@ -1030,14 +1034,14 @@
             // 
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -1111,6 +1115,7 @@
             this.BtnBetaNo.TabIndex = 2;
             this.BtnBetaNo.Text = "取消";
             this.BtnBetaNo.UseVisualStyleBackColor = true;
+            this.BtnBetaNo.Click += new System.EventHandler(this.BtnBetaNo_Click);
             // 
             // BtnBetaOk
             // 
@@ -1122,6 +1127,7 @@
             this.BtnBetaOk.TabIndex = 2;
             this.BtnBetaOk.Text = "确定";
             this.BtnBetaOk.UseVisualStyleBackColor = true;
+            this.BtnBetaOk.Click += new System.EventHandler(this.BtnBetaOk_Click);
             // 
             // GrpBetaNuclideChoose
             // 
@@ -1327,6 +1333,7 @@
             this.BtnClothesNo.TabIndex = 4;
             this.BtnClothesNo.Text = "取消";
             this.BtnClothesNo.UseVisualStyleBackColor = true;
+            this.BtnClothesNo.Click += new System.EventHandler(this.BtnClothesNo_Click);
             // 
             // BtnClothesOk
             // 
@@ -1338,6 +1345,7 @@
             this.BtnClothesOk.TabIndex = 3;
             this.BtnClothesOk.Text = "确定";
             this.BtnClothesOk.UseVisualStyleBackColor = true;
+            this.BtnClothesOk.Click += new System.EventHandler(this.BtnClothesOk_Click);
             // 
             // GrpClothesNuclideChoose
             // 
@@ -1785,13 +1793,13 @@
             // DgvMainPreferenceSet
             // 
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle48;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -1885,6 +1893,7 @@
             this.BtnMainPreferenceWrite.TabIndex = 4;
             this.BtnMainPreferenceWrite.Text = "写参数";
             this.BtnMainPreferenceWrite.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceWrite.Click += new System.EventHandler(this.BtnMainPreferenceWrite_Click);
             // 
             // BtnMainPreferenceRead
             // 
@@ -1896,6 +1905,7 @@
             this.BtnMainPreferenceRead.TabIndex = 4;
             this.BtnMainPreferenceRead.Text = "读参数";
             this.BtnMainPreferenceRead.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceRead.Click += new System.EventHandler(this.BtnMainPreferenceRead_Click);
             // 
             // BtnMainPreferenceSet
             // 
@@ -1907,6 +1917,7 @@
             this.BtnMainPreferenceSet.TabIndex = 4;
             this.BtnMainPreferenceSet.Text = "设置默认";
             this.BtnMainPreferenceSet.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceSet.Click += new System.EventHandler(this.BtnMainPreferenceSet_Click);
             // 
             // BtnMainPreferenceRetuen
             // 
@@ -1918,6 +1929,7 @@
             this.BtnMainPreferenceRetuen.TabIndex = 4;
             this.BtnMainPreferenceRetuen.Text = "恢复默认";
             this.BtnMainPreferenceRetuen.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceRetuen.Click += new System.EventHandler(this.BtnMainPreferenceRetuen_Click);
             // 
             // 设备配置
             // 
@@ -1936,6 +1948,36 @@
             this.设备配置.TabIndex = 5;
             this.设备配置.Text = "设备配置";
             this.设备配置.UseVisualStyleBackColor = true;
+            // 
+            // ChkClothes
+            // 
+            this.ChkClothes.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkClothes.Location = new System.Drawing.Point(86, 246);
+            this.ChkClothes.Name = "ChkClothes";
+            this.ChkClothes.Size = new System.Drawing.Size(110, 25);
+            this.ChkClothes.TabIndex = 20;
+            this.ChkClothes.Text = "衣物探头";
+            this.ChkClothes.UseVisualStyleBackColor = true;
+            // 
+            // ChkFoot
+            // 
+            this.ChkFoot.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkFoot.Location = new System.Drawing.Point(86, 177);
+            this.ChkFoot.Name = "ChkFoot";
+            this.ChkFoot.Size = new System.Drawing.Size(110, 25);
+            this.ChkFoot.TabIndex = 19;
+            this.ChkFoot.Text = "脚步";
+            this.ChkFoot.UseVisualStyleBackColor = true;
+            // 
+            // ChkHand
+            // 
+            this.ChkHand.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkHand.Location = new System.Drawing.Point(86, 64);
+            this.ChkHand.Name = "ChkHand";
+            this.ChkHand.Size = new System.Drawing.Size(110, 25);
+            this.ChkHand.TabIndex = 18;
+            this.ChkHand.Text = "手部";
+            this.ChkHand.UseVisualStyleBackColor = true;
             // 
             // GrpHand
             // 
@@ -1996,6 +2038,7 @@
             this.BtnFacilityNo.TabIndex = 5;
             this.BtnFacilityNo.Text = "取消";
             this.BtnFacilityNo.UseVisualStyleBackColor = true;
+            this.BtnFacilityNo.Click += new System.EventHandler(this.BtnFacilityNo_Click);
             // 
             // BtnFacilityOk
             // 
@@ -2007,36 +2050,12 @@
             this.BtnFacilityOk.TabIndex = 4;
             this.BtnFacilityOk.Text = "确定";
             this.BtnFacilityOk.UseVisualStyleBackColor = true;
+            this.BtnFacilityOk.Click += new System.EventHandler(this.BtnFacilityOk_Click);
             // 
-            // ChkHand
+            // backgroundWorker_Preference
             // 
-            this.ChkHand.Font = new System.Drawing.Font("宋体", 12F);
-            this.ChkHand.Location = new System.Drawing.Point(86, 64);
-            this.ChkHand.Name = "ChkHand";
-            this.ChkHand.Size = new System.Drawing.Size(110, 25);
-            this.ChkHand.TabIndex = 18;
-            this.ChkHand.Text = "手部";
-            this.ChkHand.UseVisualStyleBackColor = true;
-            // 
-            // ChkFoot
-            // 
-            this.ChkFoot.Font = new System.Drawing.Font("宋体", 12F);
-            this.ChkFoot.Location = new System.Drawing.Point(86, 177);
-            this.ChkFoot.Name = "ChkFoot";
-            this.ChkFoot.Size = new System.Drawing.Size(110, 25);
-            this.ChkFoot.TabIndex = 19;
-            this.ChkFoot.Text = "脚步";
-            this.ChkFoot.UseVisualStyleBackColor = true;
-            // 
-            // ChkClothes
-            // 
-            this.ChkClothes.Font = new System.Drawing.Font("宋体", 12F);
-            this.ChkClothes.Location = new System.Drawing.Point(86, 246);
-            this.ChkClothes.Name = "ChkClothes";
-            this.ChkClothes.Size = new System.Drawing.Size(110, 25);
-            this.ChkClothes.TabIndex = 20;
-            this.ChkClothes.Text = "衣物探头";
-            this.ChkClothes.UseVisualStyleBackColor = true;
+            this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
+            this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
             // 
             // FrmPreference
             // 

@@ -47,10 +47,30 @@ namespace HFM.Components
         private ProbeParameter probeParameter = new ProbeParameter();//系统参数(各类型的本底上限等参数)
         private Nuclide nuclide = new Nuclide();//核素选择(U_235等)
         private EfficiencyParameter efficiencyParameter = new EfficiencyParameter();//探测效率(各类型的探测效率)
+        private CommPort commPort = new CommPort();//串口通讯
+        private IList<MeasureData> measureDataS = new List<MeasureData>();//解析报文
+        private int bkworkTime = 0;// 异步线程初始化化时间,ReportProgress百分比数值
+        private Tools tools = new Tools();//工具类
+        //通讯类型
+        enum MessageType
+        {
+            pSet,// P写入类型
+            pRead,// P读取类型
+        }
+        private MessageType messageType;
 
-        //加载参数(初始化)
+
+
+        /// <summary>
+        /// 加载参数(初始化)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmPreference_Load(object sender, EventArgs e)
         {
+            //线程支持异步取消
+            backgroundWorker_Preference.WorkerSupportsCancellation = true;
+
             GetProferenceData();
             GetAlphaData();
             GetBetaData();
@@ -497,9 +517,377 @@ namespace HFM.Components
                 ChkClothes.Checked = false;
             }
         }
+
+
+
         #endregion
 
+        #region 串口通信
+        /// <summary>
+        /// 异步线程DoWork事件响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backgroundWorker_Preference_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //如果没有取消异步线程
+            if (backgroundWorker_Preference.CancellationPending == false)
+            {
+                //在异步线程上执行串口读操作ReadDataFromSerialPort方法
+                BackgroundWorker bkWorker = sender as BackgroundWorker;
+                e.Result = ReadDataFromSerialPort(bkWorker, e);
+            }
+            e.Cancel = true;
+        }
 
+        /// <summary>
+        /// 通过串口读取下位机上传数据
+        /// </summary>
+        /// <param name="worker"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        private byte[] ReadDataFromSerialPort(BackgroundWorker worker, DoWorkEventArgs e)
+        {
+            int errorNumber = 0; //下发自检报文出现错误计数器
+            int delayTime = 200;//下发自检报文延时时间
+            byte[] receiveBuffMessage = new byte[200];//接受的报文
+            byte[] buffMessage = new byte[62];//报文长度
+            while (true)
+            {
+                //请求进程中断读取数据
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return null;
+                }
+
+                switch (messageType)
+                {
+                    #region P读取指令下发并接收数据上传
+                    case MessageType.pRead:
+                        //向下位机下发“P”指令码
+                        buffMessage[0] = Convert.ToByte('P');
+                        if (Components.Message.SendMessage(buffMessage, commPort) != true)
+                        {
+                            errorNumber++;
+                            //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                            if (errorNumber > 5)
+                            {
+
+                                MessageBox.Show("发送超时~", "提示");
+                                //bkWorkerReceiveData.CancelAsync();
+                                worker.ReportProgress(1, receiveBuffMessage);
+                                backgroundWorker_Preference.CancelAsync();
+                            }
+                            else
+                            {
+                                System.Threading.Thread.Sleep(delayTime);
+                            }
+                        }
+                        else if (Components.Message.SendMessage(buffMessage, commPort) == true)//正式
+                        {
+                            bkworkTime++;
+                            if (bkworkTime > 1)
+                            {
+                                backgroundWorker_Preference.CancelAsync();
+                                bkworkTime = 0;
+                                break;
+                            }
+                            //延时
+                            System.Threading.Thread.Sleep(100);
+                            receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
+                            //延时
+                            System.Threading.Thread.Sleep(1000);
+                            //触发向主线程返回下位机上传数据事件
+                            worker.ReportProgress(bkworkTime, receiveBuffMessage);
+                        }
+                        break;
+                    #endregion
+
+                    #region P写入指令下发
+                    case MessageType.pSet:
+                        //实例化道盒列表
+                        IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>();
+                        //添加数据对象到列表
+                        setChannelParameters.Add(channelParameter);
+                        //生成报文
+                        buffMessage = Message.BuildMessage(setChannelParameters);
+                        //成功则关闭线程
+                        if (Components.Message.SendMessage(buffMessage, commPort) == true)
+                        {
+                            //写入成功,返回p指令读取当前高压以确认更改成功
+                            System.Threading.Thread.Sleep(300);
+                            messageType = MessageType.pRead;
+                        }
+                        else
+                        {
+                            errorNumber++;
+                            if (errorNumber > 5)
+                            {
+                                tools.PrompMessage(2);//提示
+                                backgroundWorker_Preference.CancelAsync();
+                            }
+                            System.Threading.Thread.Sleep(200);
+                        }
+                        break;
+                    #endregion
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// 异步线程读取串口数据后的ReportProgress事件响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backgroundWorker_Preference_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            int messageBufferLength = 62; //最短报文长度
+            int errNumber = 0; //报文接收出现错误计数器
+            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
+            //IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                        
+            if (e.UserState is byte[])
+            {
+                receiveBufferMessage = (byte[])e.UserState;
+            }
+
+            //接收报文数据为空
+            if (receiveBufferMessage.Length < messageBufferLength)
+            {
+                //数据接收出现错误次数超限
+                if (errNumber >= 5)
+                {
+                    //界面提示“通讯错误”
+                    MessageBox.Show("通讯错误");
+                    return;
+
+                }
+                else
+                {
+                    errNumber++;
+                }
+                return;
+            }
+            //接收报文无误，进行报文解析，并将解析后的道盒数据存储到channelParameters中 
+            try
+            {
+                if (receiveBufferMessage[0] == Convert.ToByte('P'))
+                {
+                    //清除所有行(因为每次切换页面都会增加相应的行)
+                    for (int i = 0; i < DgvMainPreferenceSet.Rows.Count; i++)
+                    {
+                        DgvMainPreferenceSet.Rows.Remove(DgvMainPreferenceSet.Rows[i]);
+                        i--;
+                    }
+                    IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
+                    //解析报文
+                    channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
+                    foreach (var itemParameter in channelParameters)
+                    {
+                        //显示内容
+                        int index = this.DgvMainPreferenceSet.Rows.Add();
+                        DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
+                        DgvMainPreferenceSet.Rows[index].Cells[1].Value = itemParameter.AlphaThreshold;
+                        DgvMainPreferenceSet.Rows[index].Cells[2].Value = itemParameter.BetaThreshold;
+                        DgvMainPreferenceSet.Rows[index].Cells[3].Value = itemParameter.PresetHV;
+                        DgvMainPreferenceSet.Rows[index].Cells[4].Value = itemParameter.ADCFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[5].Value = itemParameter.DACFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[6].Value = itemParameter.HVFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[7].Value = itemParameter.WorkTime;
+                        DgvMainPreferenceSet.Rows[index].Cells[8].Value = itemParameter.HVRatio;
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("", "Message");
+                throw;
+            }
+        }
+
+    
+
+
+        /// <summary>
+        /// 开启串口封装的方法
+        /// </summary>
+        private void OpenPort()
+        {
+            //从配置文件获得当前串口配置
+            if (commPort.Opened == true)
+            {
+                commPort.Close();
+            }
+            commPort.GetCommPortSet();
+            //打开串口
+            try
+            {
+                commPort.Open();
+            }
+            catch
+            {
+                MessageBox.Show(@"端口打开错误！请检查通讯是否正常。");
+            }
+        }
+
+        #endregion
+
+        #region 按钮(确定、取消)
+
+        #region 系统参数页面
+        /// <summary>
+        /// 确定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPreferenceOk_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPreferenceNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region α参数界面
+        /// <summary>
+        /// 确定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAlphaOk_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAlphaNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        #endregion
+
+        #region β参数界面
+        /// <summary>
+        /// 确定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnBetaOk_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnBetaNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        #endregion
+
+        #region 衣物探头界面
+        /// <summary>
+        /// 确定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnClothesOk_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnClothesNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region 道盒参数界面
+        /// <summary>
+        /// 恢复默认
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMainPreferenceRetuen_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 设置默认
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMainPreferenceSet_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 读参数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 写参数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMainPreferenceWrite_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region 设备设置界面
+        /// <summary>
+        /// 确定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnFacilityOk_Click(object sender, EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnFacilityNo_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #endregion
 
 
     }
