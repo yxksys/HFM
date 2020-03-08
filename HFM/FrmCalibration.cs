@@ -78,9 +78,10 @@ namespace HFM
         /// </summary>
         Tools tools =new Components.Tools();
         /// <summary>
-        /// 需要写入的道盒参数数据对象
+        /// 当前通道道盒参数数据对象
         /// </summary>
         ChannelParameter setChannelParameter = new ChannelParameter();
+        Channel channel = new Channel();
 
         #endregion
 
@@ -194,6 +195,12 @@ namespace HFM
             messageType = MessageType.pRead;
             //开启端口
             OpenPort();
+
+            var lisChanneList = channelList.Where(n => n.ChannelName.ToString() == CmbChannelSelection.Text|| n.ChannelName_English.ToString() == CmbChannelSelection.Text).ToList();
+            foreach (var b in lisChanneList)
+            {
+                channel = b;
+            }
             //if (commPort.Opened==true)
             //{
             //开启异步线程
@@ -280,19 +287,19 @@ namespace HFM
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
                             if (errorNumber > 5)
                             {
-                                #region 模拟数据
+                                //#region 模拟数据
 
-                                receiveBuffMessage[0] = Convert.ToByte('P');
-                                receiveBuffMessage[1] = Convert.ToByte(1);
-                                receiveBuffMessage[16] = Convert.ToByte(2);
-                                receiveBuffMessage[31] = Convert.ToByte(3);
-                                receiveBuffMessage[46] = Convert.ToByte(4);
-                                receiveBuffMessage[63] = Convert.ToByte(5);
-                                receiveBuffMessage[78] = Convert.ToByte(6);
-                                receiveBuffMessage[93] = Convert.ToByte(7);
+                                //receiveBuffMessage[0] = Convert.ToByte('P');
+                                //receiveBuffMessage[1] = Convert.ToByte(1);
+                                //receiveBuffMessage[16] = Convert.ToByte(2);
+                                //receiveBuffMessage[31] = Convert.ToByte(3);
+                                //receiveBuffMessage[46] = Convert.ToByte(4);
+                                //receiveBuffMessage[63] = Convert.ToByte(5);
+                                //receiveBuffMessage[78] = Convert.ToByte(6);
+                                //receiveBuffMessage[93] = Convert.ToByte(7);
 
 
-                                #endregion
+                                //#endregion
                                 //MessageBox.Show("发送超时~", "提示");
                                 //bkWorkerReceiveData.CancelAsync();
                                 bkWorker.ReportProgress(1, receiveBuffMessage);
@@ -356,22 +363,68 @@ namespace HFM
 
                     #region C读取指令下发并接收数据上传
                     case MessageType.cRead:
+                        
                         //向下位机下发“C”指令码
                         buffMessage[0] = Convert.ToByte('C');
-                        //判断串口是否打开，打开则用传输数据，否则用模拟数据
-
                         if (Components.Message.SendMessage(buffMessage, commPort) == true)    //正式
-                                                                                              //if (HFM.Components.Message.SendMessage(buffMessage, commPort) != true)      //测试使用
                         {
+                            bkworkTime++;
+                            if (bkworkTime > (Convert.ToInt32(TxtMeasuringTime)*(Convert.ToInt32( TxtCount))))
+                            {
+                                bkWorkerReceiveData.CancelAsync();
+                                bkworkTime = 0;
+                                break;
+                            }
                             //延时
                             Thread.Sleep(100);
                             receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
                             //延时
-                            Thread.Sleep(500);
+                            Thread.Sleep(1000);
                             //触发向主线程返回下位机上传数据事件
                             bkWorker.ReportProgress(bkworkTime, receiveBuffMessage);
                         }
+                        else
+                        {
+                            bkworkTime++;
+                            if (bkworkTime > (Convert.ToInt32(TxtMeasuringTime.Text) * (Convert.ToInt32(TxtCount.Text)*2)))
+                            {
+                                bkWorkerReceiveData.CancelAsync();
+                                bkworkTime = 0;
+                                break;
+                            }
+
+                            //延时
+                            Thread.Sleep(100);
+                            receiveBuffMessage[0] = Convert.ToByte('C');
+                            receiveBuffMessage[1] = Convert.ToByte(1);
+                            receiveBuffMessage[16] = Convert.ToByte(2);
+                            receiveBuffMessage[31] = Convert.ToByte(3);
+                            receiveBuffMessage[46] = Convert.ToByte(4);
+                            receiveBuffMessage[63] = Convert.ToByte(5);
+                            receiveBuffMessage[78] = Convert.ToByte(6);
+                            receiveBuffMessage[93] = Convert.ToByte(7);
+                            //延时
+                            Thread.Sleep(1000);
+                            //触发向主线程返回下位机上传数据事件
+                            bkWorker.ReportProgress(bkworkTime, receiveBuffMessage);
+
+
+
+                            //errorNumber++;
+                            ////判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                            //if (errorNumber > 5)
+                            //{
+                            //    bkWorker.ReportProgress(1, receiveBuffMessage);
+                            //    bkWorkerReceiveData.CancelAsync();
+                            //}
+                            //else
+                            //{
+                            //    Thread.Sleep(delayTime);
+                            //}
+                        }
+
                         break; 
+
                         #endregion
                 }
             }
@@ -416,8 +469,8 @@ namespace HFM
 
             //    return;
             //}
-            try
-            {
+            //try
+            //{
                 if (receiveBufferMessage[0] == Convert.ToByte('P'))
                 {
                     IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
@@ -436,13 +489,61 @@ namespace HFM
                         }
                     }
                 }
+                else if (receiveBufferMessage[0]==Convert.ToByte('C'))
+                {
+                    IList<MeasureData> measureDatas=new List<MeasureData>();
+                    #region 刻度需要的字段
+                    float hv = 0;//高压
+                    float alphacps = 0;//alpha单次时间计数
+                    float betacps = 0;//beta单次时间计数
+                    float alphacnt = 0;//alpha总计数
+                    float betacnt = 0;//Beta总计数
+                    float alphaNB = 0;//alpha本地平均值
+                    float betaNB = 0;//Beta本地平均
+                    float alphaNR = 0;//alpha带源平均
+                    float betaNR = 0;//beite带源平均
+                    float eff = 0;//效率
+                    float mDER = 0;//探测下限
+                    float p = 0.05f;//为5%误报率所要求的标准差数
+                    float area = channel.ProbeArea;//探测面积
+                    string [] addInformation=new string[6];
+                    measureDatas = Message.ExplainMessage<MeasureData>(receiveBufferMessage);
+                    #endregion
 
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("", "Message");
-                throw;
-            }
+                    for (int i = 0; i < Convert.ToInt32(TxtMeasuringTime.Text); i++)
+                    {
+                        foreach (var item in measureDatas)
+                        {
+                            if (channel.ChannelID==item.Channel.ChannelID)
+                            {
+                                alphacps += item.Alpha;
+                                betacps += item.Beta;
+                                alphacnt = alphacnt+item.Alpha;
+                                betacnt = betacnt + item.Beta;
+                                hv = hv + item.HV;
+                            }
+                        }
+
+                        if (i==Convert.ToInt32(TxtMeasuringTime.Text))
+                        {
+                            addInformation[0] = "本地测量";
+                            addInformation[1] = CmbChannelSelection.Text;
+                            addInformation[2] = area.ToString();
+                            addInformation[3] = alphacps.ToString();
+                            addInformation[4] = betacps.ToString();
+                            addInformation[5] = (hv/Convert.ToInt32(TxtMeasuringTime.Text)).ToString();
+                        }
+
+                        DgvInformation.Rows.Add(addInformation);
+                    }
+                }
+            //}
+            //catch (Exception eerror)
+            //{
+            //    MessageBox.Show(eerror.Message);
+            //    bkWorkerReceiveData.CancelAsync();
+            //    return;
+            //}
         }
         #endregion
 
@@ -554,6 +655,19 @@ namespace HFM
                return;
             }
             #endregion
+
+            tools.PrompMessage(12);
+
+            messageType = MessageType.cRead;
+            if (bkWorkerReceiveData.IsBusy == false)
+            {
+                bkWorkerReceiveData.RunWorkerAsync();
+            }
+            else
+            {
+                bkWorkerReceiveData.CancelAsync();
+                bkWorkerReceiveData.RunWorkerAsync();
+            }
         }
 
         #endregion
