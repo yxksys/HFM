@@ -19,7 +19,7 @@ using System.Data.OleDb;
 
 namespace HFM.Components
 {
-    class ChannelParameter
+    internal class ChannelParameter
     {
         #region 常量
         private const string SQL_SELECT_CHANNELPARAMETER = "SELECT CheckingID,AlphaThreshold,BetaThreshold,PresetHV,ADCFactor," +
