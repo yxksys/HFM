@@ -32,6 +32,12 @@
             this.TabpageCalibration = new System.Windows.Forms.TabPage();
             this.GrpCalibration = new System.Windows.Forms.GroupBox();
             this.DgvInformation = new System.Windows.Forms.DataGridView();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Channel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alpha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Beta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtSFR = new System.Windows.Forms.TextBox();
             this.LblSFR = new System.Windows.Forms.Label();
             this.BtnCalibrate = new System.Windows.Forms.Button();
@@ -54,12 +60,7 @@
             this.LblMeasuringTime = new System.Windows.Forms.Label();
             this.LblChannelSelection = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Channel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alpha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Beta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lbl__ = new System.Windows.Forms.Label();
             this.TabCalibration.SuspendLayout();
             this.TabpageCalibration.SuspendLayout();
             this.GrpCalibration.SuspendLayout();
@@ -75,7 +76,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(843, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(860, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -84,13 +85,14 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(835, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(852, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             this.TabpageCalibration.UseVisualStyleBackColor = true;
             // 
             // GrpCalibration
             // 
+            this.GrpCalibration.Controls.Add(this.Lbl__);
             this.GrpCalibration.Controls.Add(this.DgvInformation);
             this.GrpCalibration.Controls.Add(this.TxtSFR);
             this.GrpCalibration.Controls.Add(this.LblSFR);
@@ -136,6 +138,45 @@
             this.DgvInformation.RowTemplate.Height = 23;
             this.DgvInformation.Size = new System.Drawing.Size(690, 673);
             this.DgvInformation.TabIndex = 21;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "状态";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 150;
+            // 
+            // Channel
+            // 
+            this.Channel.HeaderText = "通道";
+            this.Channel.Name = "Channel";
+            this.Channel.ReadOnly = true;
+            this.Channel.Width = 130;
+            // 
+            // Area
+            // 
+            this.Area.HeaderText = "面积(cm2)";
+            this.Area.Name = "Area";
+            this.Area.ReadOnly = true;
+            // 
+            // Alpha
+            // 
+            this.Alpha.HeaderText = "α计数";
+            this.Alpha.Name = "Alpha";
+            this.Alpha.ReadOnly = true;
+            // 
+            // Beta
+            // 
+            this.Beta.HeaderText = "β计数";
+            this.Beta.Name = "Beta";
+            this.Beta.ReadOnly = true;
+            // 
+            // HV
+            // 
+            this.HV.HeaderText = "高压（V）";
+            this.HV.Name = "HV";
+            this.HV.ReadOnly = true;
+            this.HV.Width = 110;
             // 
             // TxtSFR
             // 
@@ -337,51 +378,20 @@
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
             // 
-            // Status
+            // Lbl__
             // 
-            this.Status.HeaderText = "状态";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 150;
-            // 
-            // Channel
-            // 
-            this.Channel.HeaderText = "通道";
-            this.Channel.Name = "Channel";
-            this.Channel.ReadOnly = true;
-            this.Channel.Width = 130;
-            // 
-            // Area
-            // 
-            this.Area.HeaderText = "面积(cm2)";
-            this.Area.Name = "Area";
-            this.Area.ReadOnly = true;
-            // 
-            // Alpha
-            // 
-            this.Alpha.HeaderText = "α计数";
-            this.Alpha.Name = "Alpha";
-            this.Alpha.ReadOnly = true;
-            // 
-            // Beta
-            // 
-            this.Beta.HeaderText = "β计数";
-            this.Beta.Name = "Beta";
-            this.Beta.ReadOnly = true;
-            // 
-            // HV
-            // 
-            this.HV.HeaderText = "高压（V）";
-            this.HV.Name = "HV";
-            this.HV.ReadOnly = true;
-            this.HV.Width = 110;
+            this.Lbl__.AutoSize = true;
+            this.Lbl__.Location = new System.Drawing.Point(37, 143);
+            this.Lbl__.Name = "Lbl__";
+            this.Lbl__.Size = new System.Drawing.Size(0, 20);
+            this.Lbl__.TabIndex = 22;
             // 
             // FrmCalibration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(860, 722);
+            this.ClientSize = new System.Drawing.Size(877, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
@@ -430,5 +440,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
         private System.Windows.Forms.DataGridViewTextBoxColumn HV;
+        private System.Windows.Forms.Label Lbl__;
     }
 }

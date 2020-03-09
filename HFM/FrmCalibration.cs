@@ -55,9 +55,17 @@ namespace HFM
         /// </summary>
         private int measuringTime;
         /// <summary>
+        /// 测量次数
+        /// </summary>
+        private int measuringCount;
+        /// <summary>
         /// 异步线程初始化化时间,ReportProgress百分比数值
         /// </summary>
         private int bkworkTime = 0;
+        /// <summary>
+        /// 刻度测量状态:false=本地测量;true=带源测量;
+        /// </summary>
+        private bool sclaeState = false;
         #endregion
 
         #region 实例
@@ -204,10 +212,16 @@ namespace HFM
             //if (commPort.Opened==true)
             //{
             //开启异步线程
-            //if (bkWorkerReceiveData.IsBusy != true)
-            //{
+            if (bkWorkerReceiveData.IsBusy != true)
+            {
                 bkWorkerReceiveData.RunWorkerAsync();
-            //}
+            }
+            else
+            {
+                bkWorkerReceiveData.CancelAsync();
+                Thread.Sleep(100);
+                bkWorkerReceiveData.RunWorkerAsync();
+            }
             //}
 
 
@@ -385,18 +399,16 @@ namespace HFM
                         }
                         else
                         {
+                            
                             bkworkTime++;
-                            if (bkworkTime > (Convert.ToInt32(TxtMeasuringTime.Text) * (Convert.ToInt32(TxtCount.Text)*2)))
-                            {
-                                bkWorkerReceiveData.CancelAsync();
-                                bkworkTime = 0;
-                                break;
-                            }
-
+                            
                             //延时
-                            Thread.Sleep(100);
+                            Thread.Sleep(500);
                             receiveBuffMessage[0] = Convert.ToByte('C');
                             receiveBuffMessage[1] = Convert.ToByte(1);
+                            receiveBuffMessage[2] = Convert.ToByte(1);
+                            receiveBuffMessage[6] = Convert.ToByte(2);
+                            receiveBuffMessage[15] = Convert.ToByte(100);
                             receiveBuffMessage[16] = Convert.ToByte(2);
                             receiveBuffMessage[31] = Convert.ToByte(3);
                             receiveBuffMessage[46] = Convert.ToByte(4);
@@ -404,7 +416,7 @@ namespace HFM
                             receiveBuffMessage[78] = Convert.ToByte(6);
                             receiveBuffMessage[93] = Convert.ToByte(7);
                             //延时
-                            Thread.Sleep(1000);
+                            Thread.Sleep(500);
                             //触发向主线程返回下位机上传数据事件
                             bkWorker.ReportProgress(bkworkTime, receiveBuffMessage);
 
@@ -469,81 +481,116 @@ namespace HFM
 
             //    return;
             //}
-            //try
-            //{
-                if (receiveBufferMessage[0] == Convert.ToByte('P'))
-                {
-                    IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
-                    //解析报文
-                    channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
-                    numForaech = 0;//
-                    foreach (var itemParameter in channelParameters)
-                    {
-                        if (CmbChannelSelection.Text==itemParameter.Channel.ChannelName_English||CmbChannelSelection.Text==itemParameter.Channel.ChannelName)
-                        {
-                            TxtHV.Text = itemParameter.PresetHV.ToString();
-                            Txtα.Text = itemParameter.AlphaThreshold.ToString();
-                            Txtβ.Text = itemParameter.BetaThreshold.ToString();
 
-                            setChannelParameter = itemParameter;
-                        }
+
+            if (receiveBufferMessage[0] == Convert.ToByte('P'))
+            {
+                IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
+
+                channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);//解析报文
+                numForaech = 0;//
+                foreach (var itemParameter in channelParameters)
+                {
+                    if (CmbChannelSelection.Text == itemParameter.Channel.ChannelName_English || CmbChannelSelection.Text == itemParameter.Channel.ChannelName)
+                    {
+                        TxtHV.Text = itemParameter.PresetHV.ToString();
+                        Txtα.Text = itemParameter.AlphaThreshold.ToString();
+                        Txtβ.Text = itemParameter.BetaThreshold.ToString();
+
+                        setChannelParameter = itemParameter;
                     }
                 }
-                else if (receiveBufferMessage[0]==Convert.ToByte('C'))
+            }
+
+            if (receiveBufferMessage[0] == Convert.ToByte('C'))
+            {
+                if (bkworkTime == 1)
                 {
-                    IList<MeasureData> measureDatas=new List<MeasureData>();
-                    #region 刻度需要的字段
-                    float hv = 0;//高压
-                    float alphacps = 0;//alpha单次时间计数
-                    float betacps = 0;//beta单次时间计数
-                    float alphacnt = 0;//alpha总计数
-                    float betacnt = 0;//Beta总计数
-                    float alphaNB = 0;//alpha本地平均值
-                    float betaNB = 0;//Beta本地平均
-                    float alphaNR = 0;//alpha带源平均
-                    float betaNR = 0;//beite带源平均
-                    float eff = 0;//效率
-                    float mDER = 0;//探测下限
-                    float p = 0.05f;//为5%误报率所要求的标准差数
-                    float area = channel.ProbeArea;//探测面积
-                    string [] addInformation=new string[6];
-                    measureDatas = Message.ExplainMessage<MeasureData>(receiveBufferMessage);
-                    #endregion
-
-                    for (int i = 0; i < Convert.ToInt32(TxtMeasuringTime.Text); i++)
+                    bkWorkerReceiveData.CancelAsync();
+                    if (MessageBox.Show(@"Background measuring, confirm away from source?", @"Message") == DialogResult.OK)
                     {
-                        foreach (var item in measureDatas)
-                        {
-                            if (channel.ChannelID==item.Channel.ChannelID)
-                            {
-                                alphacps += item.Alpha;
-                                betacps += item.Beta;
-                                alphacnt = alphacnt+item.Alpha;
-                                betacnt = betacnt + item.Beta;
-                                hv = hv + item.HV;
-                            }
-                        }
-
-                        if (i==Convert.ToInt32(TxtMeasuringTime.Text))
-                        {
-                            addInformation[0] = "本地测量";
-                            addInformation[1] = CmbChannelSelection.Text;
-                            addInformation[2] = area.ToString();
-                            addInformation[3] = alphacps.ToString();
-                            addInformation[4] = betacps.ToString();
-                            addInformation[5] = (hv/Convert.ToInt32(TxtMeasuringTime.Text)).ToString();
-                        }
-
-                        DgvInformation.Rows.Add(addInformation);
+                        bkWorkerReceiveData.RunWorkerAsync();
                     }
                 }
-            //}
-            //catch (Exception eerror)
-            //{
-            //    MessageBox.Show(eerror.Message);
-            //    bkWorkerReceiveData.CancelAsync();
-            //    return;
-            //}
+
+                if (bkworkTime == (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount.Text)))
+                {
+                    sclaeState = true;//刻度运行状态带源测量
+                    bkWorkerReceiveData.CancelAsync();
+                    Thread.Sleep(200);
+                    if (MessageBox.Show(@"Please insert the source!", @"Message") == DialogResult.OK)
+                    {
+                        bkWorkerReceiveData.RunWorkerAsync();
+                        return;
+                    }
+                }
+                IList<MeasureData> measureDatas = new List<MeasureData>();
+                #region 刻度需要的字段
+                float hv = 0;//高压
+                float alphacps = 0;//alpha单次时间计数
+                float betacps = 0;//beta单次时间计数
+                float alphacnt = 0;//alpha总计数
+                float betacnt = 0;//Beta总计数
+                float alphaNB = 0;//alpha本地平均值
+                float betaNB = 0;//Beta本地平均
+                float alphaNR = 0;//alpha带源平均
+                float betaNR = 0;//beite带源平均
+                float eff = 0;//效率
+                float mDER = 0;//探测下限
+                float p = 0.05f;//为5%误报率所要求的标准差数
+                float area = channel.ProbeArea;//探测面积
+                string[] addInformation = new string[6];
+                measureDatas = Message.ExplainMessage<MeasureData>(receiveBufferMessage);
+                #endregion
+
+                foreach (var item in measureDatas)
+                {
+                    if (channel.ChannelID == item.Channel.ChannelID)
+                    {
+
+                        alphacps += item.Alpha;
+                        betacps += item.Beta;
+                        alphacnt = alphacnt + item.Alpha;
+                        betacnt = betacnt + item.Beta;
+                        hv = hv + item.HV;
+
+                    }
+                }
+
+                for (int i = 0; i < measuringTime; i++)
+                {
+                    if (sclaeState == false)
+                    {
+                        addInformation[0] = "本底测量";
+                        addInformation[1] = CmbChannelSelection.Text;
+                        addInformation[2] = area.ToString();
+                        addInformation[3] = alphacps.ToString();
+                        addInformation[4] = betacps.ToString();
+                        addInformation[5] = (hv / Convert.ToInt32(TxtMeasuringTime.Text)).ToString();
+                    }
+                    else
+                    {
+                        addInformation[0] = "带源";
+                        addInformation[1] = CmbChannelSelection.Text;
+                        addInformation[2] = area.ToString();
+                        addInformation[3] = alphacps.ToString();
+                        addInformation[4] = betacps.ToString();
+                        addInformation[5] = (hv / Convert.ToInt32(TxtMeasuringTime.Text)).ToString();
+                    }
+                }
+                
+                Lbl__.Text = ((measuringTime * measuringCount * 2) - bkworkTime).ToString();
+                if (((measuringTime * measuringCount * 2) - bkworkTime)==0)
+                {
+                    bkWorkerReceiveData.CancelAsync();
+                    MessageBox.Show("Over");
+
+                }
+                if ((bkworkTime%measuringTime)==0)
+                {
+                    DgvInformation.Rows.Add(addInformation);
+                }
+            }
         }
         #endregion
 
@@ -656,16 +703,18 @@ namespace HFM
             }
             #endregion
 
-            tools.PrompMessage(12);
-
+            sclaeState = false;//刻度状态本地测量
+            measuringTime = Convert.ToInt32(TxtMeasuringTime.Text);//测量时间
+            measuringCount = Convert.ToInt16(TxtCount.Text);//测量次数
             messageType = MessageType.cRead;
-            if (bkWorkerReceiveData.IsBusy == false)
+            if (bkWorkerReceiveData.IsBusy == true)
             {
+                bkWorkerReceiveData.CancelAsync();
                 bkWorkerReceiveData.RunWorkerAsync();
             }
             else
             {
-                bkWorkerReceiveData.CancelAsync();
+
                 bkWorkerReceiveData.RunWorkerAsync();
             }
         }
