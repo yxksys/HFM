@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace HFM.Components
 {
-    internal abstract class Message
+    abstract class Message
     {
         #region 生成下发下位机的Alpha和Beta自检报文
         /// <summary>

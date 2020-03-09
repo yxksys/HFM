@@ -33,7 +33,7 @@ namespace HFM
     {
         #region 基本变量、实例
         //实例化串口
-        private CommPort commPort = new CommPort();
+        CommPort commPort = new CommPort();
         /// <summary>
         /// 存储各个通道最终计算检测值的List
         /// </summary>
@@ -45,7 +45,7 @@ namespace HFM
         /// <summary>
         /// 运行状态枚举
         /// </summary>
-        private enum HardwarePlatformState
+        enum HardwarePlatformState
         {
             /// <summary>
             /// 默认状态
@@ -391,31 +391,31 @@ namespace HFM
         /// <summary>
         /// 定义dgv高压
         /// </summary>
-        private string[] _hv = new string[6];
+        string[] _hv = new string[6];
         /// <summary>
         /// alpha计数
         /// </summary>
-        private string[] _alphacps = new string[6];
+        string[] _alphacps = new string[6];
         /// <summary>
         /// alpha总计数
         /// </summary>
-        private string[] _alphacnt = new string[6];
+        string[] _alphacnt = new string[6];
         /// <summary>
         /// Beta计数
         /// </summary>
-        private string[] _betacps = new string[6];
+        string[] _betacps = new string[6];
         /// <summary>
         /// Beta总计数
         /// </summary>
-        private string[] _betacnt = new string[6];
+        string[] _betacnt = new string[6];
         /// <summary>
         /// 通道状态
         /// </summary>
-        private string[] _strat = new string[6];
+        string[] _strat = new string[6];
         /// <summary>
         /// 衣物计数
         /// </summary>
-        private string frisker = "";
+        string frisker = "";
         /// <summary>
         /// 红外状态
         /// </summary>
