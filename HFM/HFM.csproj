@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clothes.cs">
+    <Compile Include="FrmClothes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Clothes.Designer.cs">
-      <DependentUpon>Clothes.cs</DependentUpon>
+    <Compile Include="FrmClothes.Designer.cs">
+      <DependentUpon>FrmClothes.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Calibration.cs" />
     <Compile Include="Components\Channel.cs" />
@@ -70,13 +70,13 @@
     <Compile Include="Components\SystemParameter.cs" />
     <Compile Include="Components\Tools.cs" />
     <Compile Include="Components\User.cs" />
-	    <Compile Include="EnterPassword.cs">
+    <Compile Include="FrmEnterPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EnterPassword.Designer.cs">
-      <DependentUpon>EnterPassword.cs</DependentUpon>
+    <Compile Include="FrmEnterPassword.Designer.cs">
+      <DependentUpon>FrmEnterPassword.cs</DependentUpon>
     </Compile>
-	    <Compile Include="FrmCalibration.cs">
+    <Compile Include="FrmCalibration.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmCalibration.Designer.cs">
@@ -94,49 +94,48 @@
     <Compile Include="FrmWelcome.Designer.cs">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </Compile>
-	    <Compile Include="Help.cs">
+    <Compile Include="FrmHelp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Help.Designer.cs">
-      <DependentUpon>Help.cs</DependentUpon>
+    <Compile Include="FrmHelp.Designer.cs">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
     </Compile>
-	    <Compile Include="FrmPreference.cs">
-
+    <Compile Include="FrmPreference.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPreference.Designer.cs">
       <DependentUpon>FrmPreference.cs</DependentUpon>
     </Compile>
-    <Compile Include="History.cs">
+    <Compile Include="FrmHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="History.Designer.cs">
-      <DependentUpon>History.cs</DependentUpon>
+    <Compile Include="FrmHistory.Designer.cs">
+      <DependentUpon>FrmHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="KeyIn.cs">
+    <Compile Include="FrmKeyIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KeyIn.Designer.cs">
-      <DependentUpon>KeyIn.cs</DependentUpon>
+    <Compile Include="FrmKeyIn.Designer.cs">
+      <DependentUpon>FrmKeyIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModifyPasssword.cs">
+    <Compile Include="FrmModifyPasssword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModifyPasssword.Designer.cs">
-      <DependentUpon>ModifyPasssword.cs</DependentUpon>
+    <Compile Include="FrmModifyPasssword.Designer.cs">
+      <DependentUpon>FrmModifyPasssword.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-        <EmbeddedResource Include="EnterPassword.resx">
-      <DependentUpon>EnterPassword.cs</DependentUpon>
+    <EmbeddedResource Include="FrmEnterPassword.resx">
+      <DependentUpon>FrmEnterPassword.cs</DependentUpon>
     </EmbeddedResource>
-	    <Compile Include="FrmMeasure.cs">
+    <Compile Include="FrmMeasure.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMeasure.Designer.cs">
       <DependentUpon>FrmMeasure.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Clothes.resx">
-      <DependentUpon>Clothes.cs</DependentUpon>
+    <EmbeddedResource Include="FrmClothes.resx">
+      <DependentUpon>FrmClothes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCalibration.resx">
       <DependentUpon>FrmCalibration.cs</DependentUpon>
@@ -147,23 +146,22 @@
     <EmbeddedResource Include="FrmWelcome.resx">
       <DependentUpon>FrmWelcome.cs</DependentUpon>
     </EmbeddedResource>
-	    <EmbeddedResource Include="Help.resx">
-      <DependentUpon>Help.cs</DependentUpon>
+    <EmbeddedResource Include="FrmHelp.resx">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
     </EmbeddedResource>
-	    <EmbeddedResource Include="FrmPreference.resx">
+    <EmbeddedResource Include="FrmPreference.resx">
       <DependentUpon>FrmPreference.cs</DependentUpon>
-
     </EmbeddedResource>
-	    <EmbeddedResource Include="History.resx">
-      <DependentUpon>History.cs</DependentUpon>
+    <EmbeddedResource Include="FrmHistory.resx">
+      <DependentUpon>FrmHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KeyIn.resx">
-      <DependentUpon>KeyIn.cs</DependentUpon>
+    <EmbeddedResource Include="FrmKeyIn.resx">
+      <DependentUpon>FrmKeyIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModifyPasssword.resx">
-      <DependentUpon>ModifyPasssword.cs</DependentUpon>
+    <EmbeddedResource Include="FrmModifyPasssword.resx">
+      <DependentUpon>FrmModifyPasssword.cs</DependentUpon>
     </EmbeddedResource>
-	    <EmbeddedResource Include="FrmMeasure.resx">
+    <EmbeddedResource Include="FrmMeasure.resx">
       <DependentUpon>FrmMeasure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -175,8 +173,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-
-
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
