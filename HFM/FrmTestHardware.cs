@@ -33,7 +33,7 @@ namespace HFM
     {
         #region 基本变量、实例
         //实例化串口
-        CommPort commPort = new CommPort();
+        private CommPort commPort = new CommPort();
         /// <summary>
         /// 存储各个通道最终计算检测值的List
         /// </summary>
@@ -45,7 +45,7 @@ namespace HFM
         /// <summary>
         /// 运行状态枚举
         /// </summary>
-        enum HardwarePlatformState
+        private enum HardwarePlatformState
         {
             /// <summary>
             /// 默认状态
@@ -166,8 +166,12 @@ namespace HFM
             }
             #endregion
 
-            //开启异步线程
-            bkWorkerReceiveData.RunWorkerAsync();
+            if (bkWorkerReceiveData.IsBusy==false)
+            {
+                //开启异步线程
+                bkWorkerReceiveData.RunWorkerAsync();
+            }
+            
         }
         #endregion
 
@@ -386,31 +390,31 @@ namespace HFM
         /// <summary>
         /// 定义dgv高压
         /// </summary>
-        string[] _hv = new string[6];
+        private string[] _hv = new string[6];
         /// <summary>
         /// alpha计数
         /// </summary>
-        string[] _alphacps = new string[6];
+        private string[] _alphacps = new string[6];
         /// <summary>
         /// alpha总计数
         /// </summary>
-        string[] _alphacnt = new string[6];
+        private string[] _alphacnt = new string[6];
         /// <summary>
         /// Beta计数
         /// </summary>
-        string[] _betacps = new string[6];
+        private string[] _betacps = new string[6];
         /// <summary>
         /// Beta总计数
         /// </summary>
-        string[] _betacnt = new string[6];
+        private string[] _betacnt = new string[6];
         /// <summary>
         /// 通道状态
         /// </summary>
-        string[] _strat = new string[6];
+        private string[] _strat = new string[6];
         /// <summary>
         /// 衣物计数
         /// </summary>
-        string frisker = "";
+        private string frisker = "";
         /// <summary>
         /// 红外状态
         /// </summary>
