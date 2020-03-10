@@ -45,10 +45,6 @@ namespace HFM.Components
         private const string SQL_UPDATE_CHANNEL_BY_CHANNELID = "UPDATE  HFM_DIC_Channel " +
                                                                "SET IsEnabled = @IsEnabled " +
                                                                "WHERE (ChannelID = @ChannelID)";
-
-        //按通道ChannelID更新探测面积
-        private const string SQL_UPDATE_PROBEAREA_BY_CHANNELID = "UPDATE HFM_DIC_Channel SET ProbeArea = @ProbeArea" +
-                                                                 " WHERE ChannelID = @ChannelID";
         #endregion
 
         #region 属性
@@ -119,18 +115,21 @@ namespace HFM.Components
         {
             //实例化列表
             IList<Channel> Ichannels = new List<Channel>();
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL);
-            
-            while (reader.Read())
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL))
             {
-                Channel channel = new Channel();
-                channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
-                channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
-                channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
-                channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
-                channel.Status = Convert.ToString(reader["Status"].ToString());
-                channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
-                Ichannels.Add(channel);
+                while (reader.Read())
+                {
+                    Channel channel = new Channel();
+                    channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
+                    channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
+                    channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
+                    channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
+                    channel.Status = Convert.ToString(reader["Status"].ToString());
+                    channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                    Ichannels.Add(channel);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return Ichannels;
         }
@@ -153,25 +152,28 @@ namespace HFM.Components
             };
             parms[0].Value = isEnabled;
             //查询语句
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_ISENABLED, parms);
-            //读取数据赋值列表
-            while (reader.Read())
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_ISENABLED, parms))
             {
-                Channel channel = new Channel();
-                channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
-                channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
-                channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
-                channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
-                channel.Status = Convert.ToString(reader["Status"].ToString());
-                channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
-                Ichannels.Add(channel);
+                //读取数据赋值列表
+                while (reader.Read())
+                {
+                    Channel channel = new Channel();
+                    channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
+                    channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
+                    channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
+                    channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
+                    channel.Status = Convert.ToString(reader["Status"].ToString());
+                    channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                    Ichannels.Add(channel);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return Ichannels;
-
         }
         #endregion
 
-        #region 根据通道ID查询通道信息
+        #region 根据通道ID查询通道信息   
         /// <summary>
         /// 根据通道ID查询通道信息
         /// </summary>
@@ -186,19 +188,23 @@ namespace HFM.Components
             };
             parms[0].Value = channelID;
             //根据通道ID查询通道信息
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELID, parms);
-            Channel channel = new Channel();
-            while (reader.Read())
+            //Channel channel = new Channel();            
+            //OleDbConnection conn=new OleDbConnection();
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELID, parms))
             {
-                channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
-                channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
-                channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
-                channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
-                channel.Status = Convert.ToString(reader["Status"].ToString());
-                channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                while (reader.Read())
+                {
+                    this.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
+                    this.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
+                    this.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
+                    this.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
+                    this.Status = Convert.ToString(reader["Status"].ToString());
+                    this.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
-            
-            return channel;
+            return this;
         }
         #endregion
 
@@ -217,19 +223,22 @@ namespace HFM.Components
             };
             parms[0].Value = channelName;
             //根据通道ID查询通道信息
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELNAME, parms);
-            Channel channel = new Channel();
-            while (reader.Read())
+            //Channel channel = new Channel();
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELNAME, parms))
             {
-                channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
-                channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
-                channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
-                channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
-                channel.Status = Convert.ToString(reader["Status"].ToString());
-                channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                while (reader.Read())
+                {
+                    this.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
+                    this.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
+                    this.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
+                    this.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
+                    this.Status = Convert.ToString(reader["Status"].ToString());
+                    this.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
-
-            return channel;
+            return this;
         }
         #endregion
 
@@ -240,7 +249,7 @@ namespace HFM.Components
         /// <param name="channelType">channelType值可选0：手部（包含左手心、左手背、右手心、右手背）1：脚部（包含左脚、右脚）2：衣物</param>
         /// <param name="isEnabled">false:通道不启用，true：通道启用</param>
         /// <returns>设置成功/失败</returns>
-        public bool SetEnabledByType(int channelType,bool isEnabled)
+        public bool SetEnabledByType(int channelType, bool isEnabled)
         {
             Channel channel = new Channel();
             channel.IsEnabled = isEnabled;
@@ -250,7 +259,7 @@ namespace HFM.Components
             {
                 new OleDbParameter("@IsEnabled",OleDbType.Boolean),
                 new OleDbParameter("@ChannelID",OleDbType.Integer,4)
-                
+
             };
             parms[0].Value = channel.IsEnabled;
             parms[1].Value = channel.ChannelID;
@@ -260,18 +269,18 @@ namespace HFM.Components
             {
                 case 0://手部（包含左手心、左手背、右手心、右手背）
 
-                    
-                    for(int i = 1; i < 5; i++)
+
+                    for (int i = 1; i < 5; i++)
                     {
                         channel.ChannelID = i;
-                        
+
                         parms[1].Value = channel.ChannelID;//给通道ChannelID赋值
                         if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
                         {
                             success++;
                         }
                     }
-                    if(success==4)
+                    if (success == 4)
                     {
                         return isSuccess = true;
                     }
@@ -279,7 +288,7 @@ namespace HFM.Components
                     {
                         return isSuccess = false;
                     }
-                    
+
                 case 1://脚部（包含左脚、右脚）
                     success = 0;
                     for (int i = 5; i < 7; i++)
@@ -327,7 +336,7 @@ namespace HFM.Components
         /// <param name="channelID">通道ID</param>
         /// <param name="isEnabled">false:通道不启用，true：通道启用</param>
         /// <returns></returns>
-        public bool SetEnabledByID(int channelID,bool isEnabled)
+        public bool SetEnabledByID(int channelID, bool isEnabled)
         {
             Channel channel = new Channel();
             channel.IsEnabled = isEnabled;
@@ -341,6 +350,8 @@ namespace HFM.Components
             };
             parms[0].Value = channel.IsEnabled;
             parms[1].Value = channel.ChannelID;
+
+
             if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
             {
                 return true;
@@ -350,34 +361,6 @@ namespace HFM.Components
                 return false;
             }
 
-        }
-        #endregion
-
-        #region 根据通道ID设置探测面积
-        /// <summary>
-        /// 根据通道ID设置探测面积
-        /// </summary>
-        /// <param name="channelID"></param>
-        /// <param name="ProbeArea"></param>
-        /// <returns></returns>
-        public bool SetProbeAreaByID(int channelID, float ProbeArea)
-        {
-            //构造查询参数
-            OleDbParameter[] parms = new OleDbParameter[]
-            {
-                new OleDbParameter("@ProbeArea",OleDbType.Single),
-                new OleDbParameter("@ChannelID",OleDbType.Integer)
-            };
-            parms[0].Value = ProbeArea;
-            parms[1].Value = channelID;
-            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_PROBEAREA_BY_CHANNELID, parms) != 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
         #endregion
     }

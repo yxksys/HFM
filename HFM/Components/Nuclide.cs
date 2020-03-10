@@ -43,7 +43,7 @@ namespace HFM.Components
         private string _alphaNuclideUser;//α核素选择
         private string _betaNuclideUser;//β核素选择
         private string _clothesNucliderUser;//C（衣物探头）核素选择
-        
+
 
         public int AlphaNuclide { get => _alphaNuclide; set => _alphaNuclide = value; }
         public int BetaNuclide { get => _betaNuclide; set => _betaNuclide = value; }
@@ -84,18 +84,22 @@ namespace HFM.Components
         /// <returns></returns>
         public Nuclide GetNuclide()
         {
-            //从数据库中查询当前核素信息数据并赋值给nuclide
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE);
             Nuclide nuclide = new Nuclide();
-            while (reader.Read())//读查询结果
+            //从数据库中查询当前核素信息数据并赋值给nuclide
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE))
             {
-                //根据读出的查询结构构造Nuclide对象
-                nuclide.AlphaNuclide = Convert.ToInt32(reader["AlphaNuclide"]);
-                nuclide.BetaNuclide = Convert.ToInt32(reader["BetaNuclide"]);
-                nuclide.ClothesNuclide = Convert.ToInt32(reader["ClothesNuclide"]);
-                nuclide.AlphaNuclideUser = Convert.ToString(reader["AlphaNuclideUser"]);
-                nuclide.BetaNuclideUser = Convert.ToString(reader["BetaNuclideUser"]);
-                nuclide.ClothesNucliderUser = Convert.ToString(reader["ClothesNuclideUser"]);
+                while (reader.Read())//读查询结果
+                {
+                    //根据读出的查询结构构造Nuclide对象
+                    nuclide.AlphaNuclide = Convert.ToInt32(reader["AlphaNuclide"]);
+                    nuclide.BetaNuclide = Convert.ToInt32(reader["BetaNuclide"]);
+                    nuclide.ClothesNuclide = Convert.ToInt32(reader["ClothesNuclide"]);
+                    nuclide.AlphaNuclideUser = Convert.ToString(reader["AlphaNuclideUser"]);
+                    nuclide.BetaNuclideUser = Convert.ToString(reader["BetaNuclideUser"]);
+                    nuclide.ClothesNucliderUser = Convert.ToString(reader["ClothesNuclideUser"]);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return nuclide;
         }
@@ -105,12 +109,16 @@ namespace HFM.Components
         /// <returns></returns>
         public string GetAlphaNuclideUser()
         {
-            //从数据库中查询当前α核素信息数据
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE);
             string nuclide = "";
-            while (reader.Read())
+            //从数据库中查询当前α核素信息数据
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE))
             {
-                nuclide = Convert.ToString(reader["AlphaNuclideUser"]);
+                while (reader.Read())
+                {
+                    nuclide = Convert.ToString(reader["AlphaNuclideUser"]);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return nuclide;
         }
@@ -120,12 +128,16 @@ namespace HFM.Components
         /// <returns></returns>
         public string GetBetaNuclideUser()
         {
-            //从数据库中查询当前β核素信息数据
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE);
             string nuclide = "";
-            while (reader.Read())
+            //从数据库中查询当前β核素信息数据
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE))
             {
-                nuclide = Convert.ToString(reader["BetaNuclideUser"]);
+                while (reader.Read())
+                {
+                    nuclide = Convert.ToString(reader["BetaNuclideUser"]);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return nuclide;
         }
@@ -135,16 +147,20 @@ namespace HFM.Components
         /// <returns></returns>
         public string GetClothesNuclideUser()
         {
-            //从数据库中查询当前C核素信息数据
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE);
             string nuclide = "";
-            while (reader.Read())
+            //从数据库中查询当前C核素信息数据
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE))
             {
-                nuclide = Convert.ToString(reader["ClothesNuclideUser"]);
+                while (reader.Read())
+                {
+                    nuclide = Convert.ToString(reader["ClothesNuclideUser"]);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return nuclide;
         }
-        
+
         /// <summary>
         /// 设置当前α核素选择，将数据库HFM_MainPreference中的
         /// AlphaNuclideUser字段按照参数alphaNuclideUser进行设置

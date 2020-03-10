@@ -7,6 +7,7 @@
  *  创建时间：
  *  类名：工具类
  *  更新：2020年3月6日 新增方法，窗口错误提示消息,中英文提示框
+ *        2020-03-07增加了16位CRC校验方法
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -107,7 +108,7 @@ namespace HFM.Components
         /// 窗口错误提示消息
         /// </summary>
         /// <param name="num">1:端口打开错误！请检查通讯是否正常。
-        /// 2:通讯错误！请检查通讯是否正常。
+        /// 2:通信故障
         /// 3:通信故障,无法读取数据
         /// 4:登录失败，无法进行操作！
         /// 5:没有选择通道！
@@ -120,7 +121,6 @@ namespace HFM.Components
         /// 12：进行本底测量，确认远离放射源？
         /// 13：请放入放射源！
         /// 14：请输入数字！
-        /// 15:高压输入范围-1000V,高压输入有误！
         /// </param>
         public void PrompMessage(int num)
         {
@@ -142,11 +142,11 @@ namespace HFM.Components
                 case 2:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Communication error! Please check whether the communication is normal.", @"Message");
+                        MessageBox.Show(@"COM Fault!", @"Message");
                     }
                     else
                     {
-                        MessageBox.Show(@"通讯错误！请检查通讯是否正常！", @"提示");
+                        MessageBox.Show(@"通信故障！", @"提示");
                     }
                     break;
                 case 3:
@@ -269,16 +269,6 @@ namespace HFM.Components
                         MessageBox.Show(@"请输入数字！", @"提示");
                     }
                     break;
-                case 15:
-                    if (isEnglish == true)
-                    {
-                        MessageBox.Show(@"HV range 0-1000V,Input Error!", @"Message");
-                    }
-                    else
-                    {
-                        MessageBox.Show(@"高压输入范围-1000V,高压输入有误！", @"提示");
-                    }
-                    break;
                 default:
                     if (isEnglish == true)
                     {
@@ -290,6 +280,36 @@ namespace HFM.Components
                     }
                     break;
             }
+        }
+        #endregion
+
+        #region 生成16位CRC校验码
+        /// <summary>
+        /// 对输入参数data的前length个元素求CRC16检验值
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="length"></param>
+        /// <returns>输入参数data前length个元素的CRC16校验值</returns>
+        public static byte[] CRC16(byte[] data, int length)
+        {
+            int len = data.Length;
+            if (len > 0)
+            {
+                ushort crc = 0xFFFF;
+                for (int i = 0; i < len; i++)
+                {
+                    crc = (ushort)(crc ^ (data[i]));
+                    for (int j = 0; j < 8; j++)
+                    {
+                        crc = (crc & 1) != 0 ? (ushort)((crc >> 1) ^ 0xA001) : (ushort)(crc >> 1);
+                    }
+                }
+                byte hi = (byte)((crc & 0xFF00) >> 8);  //高位置
+                byte lo = (byte)(crc & 0x00FF);         //低位置
+
+                return new byte[] { hi, lo };
+            }
+            return new byte[] { 0, 0 };
         }
         #endregion
 

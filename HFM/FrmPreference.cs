@@ -69,7 +69,7 @@ namespace HFM.Components
         private void FrmPreference_Load(object sender, EventArgs e)
         {
             //线程支持异步取消
-            backgroundWorker_Preference.WorkerSupportsCancellation = false;
+            backgroundWorker_Preference.WorkerSupportsCancellation = true;
 
             GetProferenceData();
             GetAlphaData();
@@ -113,7 +113,7 @@ namespace HFM.Components
         private void GetProferenceData()
         {
             system = new SystemParameter().GetParameter();//获得自检时间、单位等参数
-            factoryParameter = new FactoryParameter().GetParameter();//获得仪器设备信息参数
+            factoryParameter.GetParameter();//获得仪器设备信息参数
 
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得探测面积参数
             probeParameters = probeParameter.GetParameter();
@@ -796,14 +796,14 @@ namespace HFM.Components
             #region 存储数据库
             for (int i = 0; i < channels.Count; i++)
             {
-                if (new Channel().SetProbeAreaByID(channels[i].ChannelID,channels[i].ProbeArea))
-                {
-                }
-                else
-                {
-                    MessageBox.Show("失败");
-                    return;
-                }
+                //if (new Channel().SetProbeAreaByID(channels[i].ChannelID,channels[i].ProbeArea))
+                //{
+                //}
+                //else
+                //{
+                //    MessageBox.Show("失败");
+                //    return;
+                //}
             }
             if (true)
             {

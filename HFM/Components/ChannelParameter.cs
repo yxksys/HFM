@@ -127,40 +127,53 @@ namespace HFM.Components
         {
             IList<ChannelParameter> ICalibrationS = new List<ChannelParameter>();
             //从数据库中查询道盒数据并赋值给ICalibrationS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNELPARAMETER);
-            while (reader.Read())//读查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNELPARAMETER))
             {
-                //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
-                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
-                float probeArea;
-                if (ProbeArea == "")
+                while (reader.Read())//读查询结果
                 {
-                    probeArea = 0.0f;
+                    //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                    //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                    string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                    float probeArea;
+                    if (ProbeArea == "")
+                    {
+                        probeArea = 0.0f;
+                    }
+                    else
+                    {
+                        probeArea = float.Parse(ProbeArea);
+                    }
+                    Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                                   Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                                   Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+                    //根据读出的查询结构构造ChannelParameter对象
+                    ChannelParameter channelParameter = new ChannelParameter();
+                    channelParameter.CheckingID = Convert.ToInt32(reader["CheckingID"]);
+                    channelParameter.AlphaThreshold = Convert.ToSingle(reader["AlphaThreshold"]);
+                    channelParameter.BetaThreshold = Convert.ToSingle(reader["BetaThreshold"]);
+                    channelParameter.PresetHV = Convert.ToSingle(reader["PresetHV"]);
+                    channelParameter.ADCFactor = Convert.ToSingle(reader["ADCFactor"]);
+                    channelParameter.DACFactor = Convert.ToSingle(reader["DACFactor"]);
+                    channelParameter.HVFactor = Convert.ToSingle(reader["HVFactor"]);
+                    channelParameter.HVRatio = Convert.ToSingle(reader["HVRatio"]);
+                    channelParameter.WorkTime = Convert.ToSingle(reader["HVRatio"]);
+                    channelParameter.Channel = channel;
+                    ICalibrationS.Add(channelParameter);
                 }
-                else
-                {
-                    probeArea = float.Parse(ProbeArea);
-                }
-                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
-                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
-                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
-                //根据读出的查询结构构造ChannelParameter对象
-                ChannelParameter channelParameter = new ChannelParameter();
-                channelParameter.CheckingID = Convert.ToInt32(reader["CheckingID"]);
-                channelParameter.AlphaThreshold = Convert.ToSingle(reader["AlphaThreshold"]);
-                channelParameter.BetaThreshold = Convert.ToSingle(reader["BetaThreshold"]);
-                channelParameter.PresetHV = Convert.ToSingle(reader["PresetHV"]);
-                channelParameter.ADCFactor = Convert.ToSingle(reader["ADCFactor"]);
-                channelParameter.DACFactor = Convert.ToSingle(reader["DACFactor"]);
-                channelParameter.HVFactor = Convert.ToSingle(reader["HVFactor"]);
-                channelParameter.HVRatio = Convert.ToSingle(reader["HVRatio"]);
-                channelParameter.WorkTime = Convert.ToSingle(reader["HVRatio"]);
-                channelParameter.Channel = channel;
-                ICalibrationS.Add(channelParameter);
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return ICalibrationS;
 
+        }
+        /// <summary>
+        /// 根据通道ID查询该通道的道盒参数
+        /// </summary>
+        /// <param name="channelID">通道ID</param>
+        /// <returns>道盒参数</returns>
+        public ChannelParameter GetParameter(int channelID)
+        {
+            return null;
         }
         /// <summary>
         /// 根据参数对象channelParameter的通道ID，设置道盒参数
@@ -199,7 +212,7 @@ namespace HFM.Components
             {
                 return false;
             }
-            
+
         }
 
         #endregion

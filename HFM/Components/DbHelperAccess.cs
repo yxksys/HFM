@@ -30,7 +30,8 @@ namespace HFM.Components
     {
         //数据库连接字符串(App.config来配置)，可以动态更改connectionString支持多数据库.		
         public static string connectionString = System.Configuration.ConfigurationManager.AppSettings["connectionStringAcccess"];
-        public  DbHelperAccess()
+        static OleDbConnection conn = new OleDbConnection(connectionString);
+        public DbHelperAccess()
         { }
 
         #region 公用方法
@@ -56,6 +57,16 @@ namespace HFM.Components
                 return true;
             }
         }
+        /// <summary>
+        /// 关闭数据库连接，当数据库查询返回值是DataReader时，调用无法自动关闭数据库连接，须通过此方法关闭
+        /// </summary>
+        public static void Close()
+        {
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
         #endregion
 
         #region  执行简单SQL语句
@@ -67,7 +78,7 @@ namespace HFM.Components
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString)
         {
-            using (OleDbConnection connection = new OleDbConnection (connectionString))
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
                 using (OleDbCommand cmd = new OleDbCommand(SQLString, connection))
                 {
@@ -92,12 +103,12 @@ namespace HFM.Components
         /// <param name="SQLStringList">多条SQL语句</param>		
         public static void ExecuteSqlTran(ArrayList SQLStringList)
         {
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
-                conn.Open();
+                connection.Open();
                 OleDbCommand cmd = new OleDbCommand();
-                cmd.Connection = conn;
-                OleDbTransaction tx = conn.BeginTransaction();
+                cmd.Connection = connection;
+                OleDbTransaction tx = connection.BeginTransaction();
                 cmd.Transaction = tx;
                 try
                 {
@@ -130,7 +141,7 @@ namespace HFM.Components
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
                 OleDbCommand cmd = new OleDbCommand(SQLString, connection);
-                System.Data.OleDb.OleDbParameter myParameter = new OleDbParameter("@content",OleDbType.VarWChar);
+                System.Data.OleDb.OleDbParameter myParameter = new OleDbParameter("@content", OleDbType.VarWChar);
                 myParameter.Value = content;
                 cmd.Parameters.Add(myParameter);
                 try
@@ -150,7 +161,7 @@ namespace HFM.Components
                 }
             }
         }
-        
+
         /// <summary>
         /// 执行一条计算查询结果语句，返回查询结果（object）。
         /// </summary>
@@ -190,21 +201,36 @@ namespace HFM.Components
         /// <returns>SqlDataReader</returns>
         public static OleDbDataReader ExecuteReader(string strSQL)
         {
-            
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand cmd = new OleDbCommand(strSQL, connection);
+            OleDbCommand cmd = new OleDbCommand(strSQL, conn);
             try
             {
-                connection.Open();
+                conn.Open();
                 OleDbDataReader myReader = cmd.ExecuteReader();
                 return myReader;
             }
             catch (System.Data.OleDb.OleDbException e)
             {
-                throw new Exception(e.Message);
+                conn.Close();
+                throw;
             }
-
         }
+        //public static void ExecuteReader(string strSQL,out OleDbConnection conn,out OleDbDataReader dr)
+        //{
+        //    OleDbConnection connection_1 = new OleDbConnection(connectionString);            
+        //    OleDbCommand cmd = new OleDbCommand(strSQL, connection_1);
+        //    try
+        //    {
+        //        connection_1.Open();
+        //        dr = cmd.ExecuteReader();
+        //        conn = connection_1;
+        //            //return myReader;
+        //    }
+        //    catch (System.Data.OleDb.OleDbException e)
+        //    {
+        //        connection_1.Close();
+        //        throw;
+        //    }            
+        //}
         /// <summary>
         /// 执行查询语句，返回DataSet
         /// </summary>
@@ -267,10 +293,10 @@ namespace HFM.Components
         /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SqlParameter[]）</param>
         public static void ExecuteSqlTran(Hashtable SQLStringList)
         {
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
-                conn.Open();
-                using (OleDbTransaction trans = conn.BeginTransaction())
+                connection.Open();
+                using (OleDbTransaction trans = connection.BeginTransaction())
                 {
                     OleDbCommand cmd = new OleDbCommand();
                     try
@@ -335,25 +361,64 @@ namespace HFM.Components
         /// </summary>
         /// <param name="strSQL">查询语句</param>
         /// <returns>SqlDataReader</returns>
-        public static  OleDbDataReader ExecuteReader(string SQLString, params OleDbParameter[] cmdParms)
+        public static OleDbDataReader ExecuteReader(string SQLString, params OleDbParameter[] cmdParms)
         {
-            OleDbConnection connection = new OleDbConnection(connectionString);
             OleDbCommand cmd = new OleDbCommand();
             try
             {
-                PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+                PrepareCommand(cmd, conn, null, SQLString, cmdParms);
                 OleDbDataReader myReader = cmd.ExecuteReader();
                 cmd.Parameters.Clear();
                 return myReader;
             }
             catch (System.Data.OleDb.OleDbException e)
             {
-                throw new Exception(e.Message);
+                conn.Close();
+                throw;
                 //return null;
             }
-
         }
 
+        //public static OleDbDataReader ExecuteReader(string SQLString, OleDbConnection connection,params OleDbParameter[] cmdParms)
+        //{
+        //    connection.ConnectionString = connectionString;
+        //    OleDbCommand cmd = new OleDbCommand();
+        //    try
+        //    {
+        //        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+        //        OleDbDataReader myReader = cmd.ExecuteReader();
+        //        cmd.Parameters.Clear();
+        //        return myReader;
+        //    }
+        //    catch (System.Data.OleDb.OleDbException e)
+        //    {
+        //        connection.Close();
+        //        throw;
+        //        //return null;
+        //    }
+
+        //}
+
+        //public static void  ExecuteReader(string SQLString, out OleDbConnection conn, out OleDbDataReader dr,params OleDbParameter[] cmdParms)
+        //{
+        //    OleDbConnection connection = new OleDbConnection(connectionString);
+        //    OleDbCommand cmd = new OleDbCommand();
+        //    try
+        //    {
+        //        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
+        //        dr = cmd.ExecuteReader();
+        //        cmd.Parameters.Clear();
+        //        conn = connection;
+        //        //return myReader;
+        //    }
+        //    catch (System.Data.OleDb.OleDbException e)
+        //    {
+        //        connection.Close();
+        //        throw;
+        //        //return null;
+        //    }
+
+        //}
         /// <summary>
         /// 执行查询语句，返回DataSet
         /// </summary>
@@ -372,6 +437,7 @@ namespace HFM.Components
                     {
                         da.Fill(ds, "ds");
                         cmd.Parameters.Clear();
+                        connection.Close();
                     }
                     catch (System.Data.OleDb.OleDbException ex)
                     {

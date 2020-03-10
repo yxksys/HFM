@@ -22,7 +22,7 @@ namespace HFM.Components
     class EfficiencyParameter
     {
         #region 常量
-        private const string SQL_SELECT_EFFICIENCYPARAMETER ="SELECT EfficiencyParamID,Efficiency,a.ChannelID,NuclideType," +
+        private const string SQL_SELECT_EFFICIENCYPARAMETER = "SELECT EfficiencyParamID,Efficiency,a.ChannelID,NuclideType," +
                                                              "NuclideName,ChannelName,ChannelName_English,ProbeArea,Status," +
                                                              "IsEnabled FROM HFM_EfficiencyParameter a " +
                                                              "INNER JOIN HFM_DIC_Channel b ON a.ChannelID = b.ChannelID";
@@ -101,34 +101,38 @@ namespace HFM.Components
         {
             IList<EfficiencyParameter> ICalibrationS = new List<EfficiencyParameter>();
             //从数据库中查询全部核素并赋值给ICalibrationS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCYPARAMETER);
-            while(reader.Read())//读查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCYPARAMETER))
             {
-                //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
-                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
-                float probeArea;
-                if (ProbeArea == "")
+                while (reader.Read())//读查询结果
                 {
-                    probeArea = 0.0f;
-                }
-                else
-                {
-                    probeArea = float.Parse(ProbeArea);
-                }
-                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
-                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
-                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+                    //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                    //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                    string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                    float probeArea;
+                    if (ProbeArea == "")
+                    {
+                        probeArea = 0.0f;
+                    }
+                    else
+                    {
+                        probeArea = float.Parse(ProbeArea);
+                    }
+                    Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                                   Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                                   Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
 
-                //根据读出的查询结构构造EfficiencyParameter对象
-                EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
-                efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
-                efficiencyParameter.Channel = channel;
-                efficiencyParameter.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
-                efficiencyParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
-                efficiencyParameter.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
-                //从reader读出并构造的查询结果对象添加到List中
-                ICalibrationS.Add(efficiencyParameter);
+                    //根据读出的查询结构构造EfficiencyParameter对象
+                    EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
+                    efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
+                    efficiencyParameter.Channel = channel;
+                    efficiencyParameter.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
+                    efficiencyParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
+                    efficiencyParameter.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
+                    //从reader读出并构造的查询结果对象添加到List中
+                    ICalibrationS.Add(efficiencyParameter);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return ICalibrationS;
         }
@@ -138,7 +142,7 @@ namespace HFM.Components
         /// <param name="nuclideType"></param>
         /// <param name="nuclideName"></param>
         /// <returns></returns>
-        public IList<EfficiencyParameter> GetParameter(string nuclideType,string nuclideName)
+        public IList<EfficiencyParameter> GetParameter(string nuclideType, string nuclideName)
         {
             IList<EfficiencyParameter> ICalibrationS = new List<EfficiencyParameter>();
             OleDbParameter[] parms = new OleDbParameter[]
@@ -149,33 +153,37 @@ namespace HFM.Components
             parms[0].Value = nuclideType;
             parms[1].Value = nuclideName;
             //从数据库中查询全部探测效率并赋值给ICalibrationS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME, parms);
-            while (reader.Read())//读查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME, parms))
             {
-                //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
-                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
-                float probeArea;
-                if (ProbeArea == "")
+                while (reader.Read())//读查询结果
                 {
-                    probeArea = 0.0f;
+                    //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                    //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                    string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                    float probeArea;
+                    if (ProbeArea == "")
+                    {
+                        probeArea = 0.0f;
+                    }
+                    else
+                    {
+                        probeArea = float.Parse(ProbeArea);
+                    }
+                    Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                                   Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                                   Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+                    //根据读出的查询结构构造EffciencyParameter对象
+                    EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
+                    efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
+                    efficiencyParameter.Channel = channel;
+                    efficiencyParameter.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
+                    efficiencyParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
+                    efficiencyParameter.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
+                    //从reader读出并构造的查询结果对象添加到List中
+                    ICalibrationS.Add(efficiencyParameter);
                 }
-                else
-                {
-                    probeArea = float.Parse(ProbeArea);
-                }
-                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
-                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
-                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
-                //根据读出的查询结构构造EffciencyParameter对象
-                EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
-                efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
-                efficiencyParameter.Channel = channel;
-                efficiencyParameter.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
-                efficiencyParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
-                efficiencyParameter.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
-                //从reader读出并构造的查询结果对象添加到List中
-                ICalibrationS.Add(efficiencyParameter);
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return ICalibrationS;
         }
@@ -186,7 +194,7 @@ namespace HFM.Components
         /// <param name="channelID"></param>
         /// <param name="nuclideName"></param>
         /// <returns></returns>
-        public EfficiencyParameter GetParameter(string nuclideType,string nuclideName ,int channelID)
+        public EfficiencyParameter GetParameter(string nuclideType, string nuclideName, int channelID)
         {
             EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
             OleDbParameter[] parms = new OleDbParameter[]
@@ -199,31 +207,35 @@ namespace HFM.Components
             parms[1].Value = nuclideName;
             parms[2].Value = channelID;
             //从数据库中查询全部探测效率并赋值给ICalibrationS
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_CHANNEL_AND_NUCLIDENAME, parms);
-            while (reader.Read())//读查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_CHANNEL_AND_NUCLIDENAME, parms))
             {
-                //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                while (reader.Read())//读查询结果
+                {
+                    //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
 
-                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
-                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
-                float probeArea;
-                if (ProbeArea == "")
-                {
-                    probeArea = 0.0f;
+                    //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                    string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                    float probeArea;
+                    if (ProbeArea == "")
+                    {
+                        probeArea = 0.0f;
+                    }
+                    else
+                    {
+                        probeArea = float.Parse(ProbeArea);
+                    }
+                    Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                                   Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                                   Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+                    //根据读出的查询结构构造EffciencyParameter对象
+                    efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
+                    efficiencyParameter.Channel = channel;
+                    efficiencyParameter.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
+                    efficiencyParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
+                    efficiencyParameter.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
                 }
-                else
-                {
-                    probeArea = float.Parse(ProbeArea);
-                }
-                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
-                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
-                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
-                //根据读出的查询结构构造EffciencyParameter对象
-                efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
-                efficiencyParameter.Channel = channel;
-                efficiencyParameter.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
-                efficiencyParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
-                efficiencyParameter.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
+                reader.Close();
+                DbHelperAccess.Close();
             }
             return efficiencyParameter;
         }
