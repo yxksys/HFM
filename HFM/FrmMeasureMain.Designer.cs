@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMeasureMain));
             this.PicName = new System.Windows.Forms.PictureBox();
             this.PicIP = new System.Windows.Forms.PictureBox();
             this.PicSN = new System.Windows.Forms.PictureBox();
@@ -35,9 +37,7 @@
             this.PicLHP = new System.Windows.Forms.PictureBox();
             this.PicLF = new System.Windows.Forms.PictureBox();
             this.PicShowStatus = new System.Windows.Forms.PictureBox();
-            this.PicTimeBackground = new System.Windows.Forms.PictureBox();
-            this.PicClothBackground = new System.Windows.Forms.PictureBox();
-            this.PicLeftBackground = new System.Windows.Forms.PictureBox();
+            this.PicFrisker = new System.Windows.Forms.PictureBox();
             this.PicRightBackground = new System.Windows.Forms.PictureBox();
             this.PicLogo = new System.Windows.Forms.PictureBox();
             this.TxtShowResult = new System.Windows.Forms.TextBox();
@@ -57,25 +57,28 @@
             this.TxtRHB = new System.Windows.Forms.TextBox();
             this.TxtRHP = new System.Windows.Forms.TextBox();
             this.TxtRF = new System.Windows.Forms.TextBox();
-            this.TxtRHBA = new System.Windows.Forms.TextBox();
-            this.TxtRHBAB = new System.Windows.Forms.TextBox();
-            this.TxtRHPA = new System.Windows.Forms.TextBox();
-            this.TxtRHPB = new System.Windows.Forms.TextBox();
-            this.TxtRFA = new System.Windows.Forms.TextBox();
-            this.TxtRFB = new System.Windows.Forms.TextBox();
-            this.TxtLFB = new System.Windows.Forms.TextBox();
-            this.TxtLFA = new System.Windows.Forms.TextBox();
-            this.TxtLHPB = new System.Windows.Forms.TextBox();
-            this.TxtLHPA = new System.Windows.Forms.TextBox();
-            this.TxtLHBB = new System.Windows.Forms.TextBox();
-            this.TxtLHBA = new System.Windows.Forms.TextBox();
             this.LblTime = new System.Windows.Forms.Label();
-            this.PicClothdPicture = new System.Windows.Forms.PictureBox();
-            this.PicClothC = new System.Windows.Forms.Label();
-            this.LblLeftt = new System.Windows.Forms.Label();
+            this.LblLeft = new System.Windows.Forms.Label();
             this.LblRight = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
             this.bkWorkerReportStatus = new System.ComponentModel.BackgroundWorker();
+            this.PicTimeBackground = new System.Windows.Forms.PictureBox();
+            this.PnlLHB = new System.Windows.Forms.Panel();
+            this.LblLHB = new System.Windows.Forms.Label();
+            this.PicLeftBackground = new System.Windows.Forms.PictureBox();
+            this.LblFrisker = new System.Windows.Forms.Label();
+            this.LblTimeRemain = new System.Windows.Forms.Label();
+            this.LblRHB = new System.Windows.Forms.Label();
+            this.PnlRHB = new System.Windows.Forms.Panel();
+            this.LblLHP = new System.Windows.Forms.Label();
+            this.PnlLHP = new System.Windows.Forms.Panel();
+            this.LblRHP = new System.Windows.Forms.Label();
+            this.PnlRHP = new System.Windows.Forms.Panel();
+            this.LblRF = new System.Windows.Forms.Label();
+            this.PnlRF = new System.Windows.Forms.Panel();
+            this.LblLF = new System.Windows.Forms.Label();
+            this.PnlLF = new System.Windows.Forms.Panel();
+            this.TmrDispTime = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSN)).BeginInit();
@@ -83,15 +86,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicLHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicShowStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTimeBackground)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClothBackground)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicLeftBackground)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicFrisker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRightBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRHB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRHP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClothdPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTimeBackground)).BeginInit();
+            this.PnlLHB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLeftBackground)).BeginInit();
+            this.PnlRHB.SuspendLayout();
+            this.PnlLHP.SuspendLayout();
+            this.PnlRHP.SuspendLayout();
+            this.PnlRF.SuspendLayout();
+            this.PnlLF.SuspendLayout();
             this.SuspendLayout();
             // 
             // PicName
@@ -153,7 +161,7 @@
             // 
             // PicShowStatus
             // 
-            this.PicShowStatus.BackColor = System.Drawing.Color.Lime;
+            this.PicShowStatus.BackColor = System.Drawing.Color.Orange;
             this.PicShowStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicShowStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PicShowStatus.Location = new System.Drawing.Point(129, 69);
@@ -162,37 +170,16 @@
             this.PicShowStatus.TabIndex = 6;
             this.PicShowStatus.TabStop = false;
             // 
-            // PicTimeBackground
+            // PicFrisker
             // 
-            this.PicTimeBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PicTimeBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicTimeBackground.Location = new System.Drawing.Point(129, 244);
-            this.PicTimeBackground.Name = "PicTimeBackground";
-            this.PicTimeBackground.Size = new System.Drawing.Size(267, 82);
-            this.PicTimeBackground.TabIndex = 7;
-            this.PicTimeBackground.TabStop = false;
-            // 
-            // PicClothBackground
-            // 
-            this.PicClothBackground.BackColor = System.Drawing.Color.Orange;
-            this.PicClothBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PicClothBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicClothBackground.Location = new System.Drawing.Point(401, 244);
-            this.PicClothBackground.Name = "PicClothBackground";
-            this.PicClothBackground.Size = new System.Drawing.Size(267, 82);
-            this.PicClothBackground.TabIndex = 8;
-            this.PicClothBackground.TabStop = false;
-            // 
-            // PicLeftBackground
-            // 
-            this.PicLeftBackground.BackColor = System.Drawing.Color.Orange;
-            this.PicLeftBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PicLeftBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicLeftBackground.Location = new System.Drawing.Point(128, 332);
-            this.PicLeftBackground.Name = "PicLeftBackground";
-            this.PicLeftBackground.Size = new System.Drawing.Size(267, 80);
-            this.PicLeftBackground.TabIndex = 9;
-            this.PicLeftBackground.TabStop = false;
+            this.PicFrisker.BackColor = System.Drawing.Color.Orange;
+            this.PicFrisker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PicFrisker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PicFrisker.Location = new System.Drawing.Point(401, 244);
+            this.PicFrisker.Name = "PicFrisker";
+            this.PicFrisker.Size = new System.Drawing.Size(267, 82);
+            this.PicFrisker.TabIndex = 8;
+            this.PicFrisker.TabStop = false;
             // 
             // PicRightBackground
             // 
@@ -208,6 +195,7 @@
             // PicLogo
             // 
             this.PicLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PicLogo.Image = ((System.Drawing.Image)(resources.GetObject("PicLogo.Image")));
             this.PicLogo.Location = new System.Drawing.Point(128, 549);
             this.PicLogo.Name = "PicLogo";
             this.PicLogo.Size = new System.Drawing.Size(131, 45);
@@ -216,7 +204,7 @@
             // 
             // TxtShowResult
             // 
-            this.TxtShowResult.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TxtShowResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TxtShowResult.Location = new System.Drawing.Point(128, 418);
             this.TxtShowResult.MaxLength = 32767000;
             this.TxtShowResult.Multiline = true;
@@ -226,7 +214,6 @@
             this.TxtShowResult.ShortcutsEnabled = false;
             this.TxtShowResult.Size = new System.Drawing.Size(540, 125);
             this.TxtShowResult.TabIndex = 23;
-            this.TxtShowResult.Visible = false;
             // 
             // BtnChinese
             // 
@@ -240,7 +227,7 @@
             // 
             // BtnEnglish
             // 
-            this.BtnEnglish.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold);
+            this.BtnEnglish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
             this.BtnEnglish.Location = new System.Drawing.Point(454, 549);
             this.BtnEnglish.Name = "BtnEnglish";
             this.BtnEnglish.Size = new System.Drawing.Size(96, 40);
@@ -290,48 +277,48 @@
             // LblName
             // 
             this.LblName.AutoSize = true;
-            this.LblName.Font = new System.Drawing.Font("Arial Narrow", 15.75F);
+            this.LblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.LblName.Location = new System.Drawing.Point(30, 28);
             this.LblName.Name = "LblName";
-            this.LblName.Size = new System.Drawing.Size(239, 25);
+            this.LblName.Size = new System.Drawing.Size(247, 25);
             this.LblName.TabIndex = 9;
             this.LblName.Text = "HFM100 手脚污染监测仪";
             // 
             // LblIP
             // 
             this.LblIP.AutoSize = true;
-            this.LblIP.Font = new System.Drawing.Font("Arial Narrow", 15.75F);
+            this.LblIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.LblIP.Location = new System.Drawing.Point(305, 28);
             this.LblIP.Name = "LblIP";
-            this.LblIP.Size = new System.Drawing.Size(32, 25);
+            this.LblIP.Size = new System.Drawing.Size(37, 25);
             this.LblIP.TabIndex = 10;
             this.LblIP.Text = "IP:";
             // 
             // LblSN
             // 
             this.LblSN.AutoSize = true;
-            this.LblSN.Font = new System.Drawing.Font("Arial Narrow", 15.75F);
+            this.LblSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.LblSN.Location = new System.Drawing.Point(607, 28);
             this.LblSN.Name = "LblSN";
-            this.LblSN.Size = new System.Drawing.Size(40, 25);
+            this.LblSN.Size = new System.Drawing.Size(47, 25);
             this.LblSN.TabIndex = 27;
             this.LblSN.Text = "SN:";
             // 
             // LblShowStutas
             // 
-            this.LblShowStutas.BackColor = System.Drawing.Color.Lime;
-            this.LblShowStutas.Font = new System.Drawing.Font("Arial Narrow", 50.24999F, System.Drawing.FontStyle.Bold);
-            this.LblShowStutas.Location = new System.Drawing.Point(131, 127);
+            this.LblShowStutas.BackColor = System.Drawing.Color.Transparent;
+            this.LblShowStutas.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.24999F, System.Drawing.FontStyle.Bold);
+            this.LblShowStutas.Location = new System.Drawing.Point(139, 127);
             this.LblShowStutas.Name = "LblShowStutas";
-            this.LblShowStutas.Size = new System.Drawing.Size(533, 76);
+            this.LblShowStutas.Size = new System.Drawing.Size(520, 76);
             this.LblShowStutas.TabIndex = 10;
-            this.LblShowStutas.Text = "系统自检";
+            this.LblShowStutas.Text = "仪器自检";
             this.LblShowStutas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TxtLHB
             // 
             this.TxtLHB.BackColor = System.Drawing.Color.Lime;
-            this.TxtLHB.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TxtLHB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TxtLHB.Location = new System.Drawing.Point(10, 79);
             this.TxtLHB.Name = "TxtLHB";
             this.TxtLHB.Size = new System.Drawing.Size(105, 26);
@@ -342,7 +329,7 @@
             // TxtLHP
             // 
             this.TxtLHP.BackColor = System.Drawing.Color.Lime;
-            this.TxtLHP.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TxtLHP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TxtLHP.Location = new System.Drawing.Point(10, 254);
             this.TxtLHP.Name = "TxtLHP";
             this.TxtLHP.Size = new System.Drawing.Size(105, 26);
@@ -353,7 +340,7 @@
             // TxtLF
             // 
             this.TxtLF.BackColor = System.Drawing.Color.Lime;
-            this.TxtLF.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TxtLF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TxtLF.Location = new System.Drawing.Point(15, 426);
             this.TxtLF.Name = "TxtLF";
             this.TxtLF.Size = new System.Drawing.Size(95, 26);
@@ -364,7 +351,7 @@
             // TxtRHB
             // 
             this.TxtRHB.BackColor = System.Drawing.Color.Lime;
-            this.TxtRHB.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TxtRHB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TxtRHB.Location = new System.Drawing.Point(682, 79);
             this.TxtRHB.Name = "TxtRHB";
             this.TxtRHB.Size = new System.Drawing.Size(105, 26);
@@ -375,7 +362,7 @@
             // TxtRHP
             // 
             this.TxtRHP.BackColor = System.Drawing.Color.Lime;
-            this.TxtRHP.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TxtRHP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TxtRHP.Location = new System.Drawing.Point(682, 254);
             this.TxtRHP.Name = "TxtRHP";
             this.TxtRHP.Size = new System.Drawing.Size(105, 26);
@@ -386,169 +373,13 @@
             // TxtRF
             // 
             this.TxtRF.BackColor = System.Drawing.Color.Lime;
-            this.TxtRF.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TxtRF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TxtRF.Location = new System.Drawing.Point(687, 426);
             this.TxtRF.Name = "TxtRF";
             this.TxtRF.Size = new System.Drawing.Size(95, 26);
             this.TxtRF.TabIndex = 29;
             this.TxtRF.Text = "右  脚";
             this.TxtRF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // TxtRHBA
-            // 
-            this.TxtRHBA.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtRHBA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRHBA.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtRHBA.Location = new System.Drawing.Point(682, 177);
-            this.TxtRHBA.MaxLength = 2147483647;
-            this.TxtRHBA.Multiline = true;
-            this.TxtRHBA.Name = "TxtRHBA";
-            this.TxtRHBA.ReadOnly = true;
-            this.TxtRHBA.Size = new System.Drawing.Size(105, 26);
-            this.TxtRHBA.TabIndex = 14;
-            // 
-            // TxtRHBAB
-            // 
-            this.TxtRHBAB.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtRHBAB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRHBAB.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtRHBAB.Location = new System.Drawing.Point(682, 209);
-            this.TxtRHBAB.MaxLength = 2147483647;
-            this.TxtRHBAB.Multiline = true;
-            this.TxtRHBAB.Name = "TxtRHBAB";
-            this.TxtRHBAB.ReadOnly = true;
-            this.TxtRHBAB.Size = new System.Drawing.Size(105, 26);
-            this.TxtRHBAB.TabIndex = 14;
-            // 
-            // TxtRHPA
-            // 
-            this.TxtRHPA.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtRHPA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRHPA.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtRHPA.Location = new System.Drawing.Point(682, 352);
-            this.TxtRHPA.MaxLength = 2147483647;
-            this.TxtRHPA.Multiline = true;
-            this.TxtRHPA.Name = "TxtRHPA";
-            this.TxtRHPA.ReadOnly = true;
-            this.TxtRHPA.Size = new System.Drawing.Size(105, 26);
-            this.TxtRHPA.TabIndex = 30;
-            // 
-            // TxtRHPB
-            // 
-            this.TxtRHPB.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtRHPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRHPB.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtRHPB.Location = new System.Drawing.Point(682, 384);
-            this.TxtRHPB.MaxLength = 2147483647;
-            this.TxtRHPB.Multiline = true;
-            this.TxtRHPB.Name = "TxtRHPB";
-            this.TxtRHPB.ReadOnly = true;
-            this.TxtRHPB.Size = new System.Drawing.Size(105, 26);
-            this.TxtRHPB.TabIndex = 31;
-            // 
-            // TxtRFA
-            // 
-            this.TxtRFA.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtRFA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRFA.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtRFA.Location = new System.Drawing.Point(682, 527);
-            this.TxtRFA.MaxLength = 2147483647;
-            this.TxtRFA.Multiline = true;
-            this.TxtRFA.Name = "TxtRFA";
-            this.TxtRFA.ReadOnly = true;
-            this.TxtRFA.Size = new System.Drawing.Size(105, 26);
-            this.TxtRFA.TabIndex = 32;
-            // 
-            // TxtRFB
-            // 
-            this.TxtRFB.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtRFB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRFB.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtRFB.Location = new System.Drawing.Point(682, 559);
-            this.TxtRFB.MaxLength = 2147483647;
-            this.TxtRFB.Multiline = true;
-            this.TxtRFB.Name = "TxtRFB";
-            this.TxtRFB.ReadOnly = true;
-            this.TxtRFB.Size = new System.Drawing.Size(105, 26);
-            this.TxtRFB.TabIndex = 33;
-            // 
-            // TxtLFB
-            // 
-            this.TxtLFB.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtLFB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtLFB.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtLFB.Location = new System.Drawing.Point(10, 559);
-            this.TxtLFB.MaxLength = 2147483647;
-            this.TxtLFB.Multiline = true;
-            this.TxtLFB.Name = "TxtLFB";
-            this.TxtLFB.ReadOnly = true;
-            this.TxtLFB.Size = new System.Drawing.Size(105, 26);
-            this.TxtLFB.TabIndex = 34;
-            // 
-            // TxtLFA
-            // 
-            this.TxtLFA.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtLFA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtLFA.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtLFA.Location = new System.Drawing.Point(10, 527);
-            this.TxtLFA.MaxLength = 2147483647;
-            this.TxtLFA.Multiline = true;
-            this.TxtLFA.Name = "TxtLFA";
-            this.TxtLFA.ReadOnly = true;
-            this.TxtLFA.Size = new System.Drawing.Size(105, 26);
-            this.TxtLFA.TabIndex = 35;
-            // 
-            // TxtLHPB
-            // 
-            this.TxtLHPB.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtLHPB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtLHPB.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtLHPB.Location = new System.Drawing.Point(12, 384);
-            this.TxtLHPB.MaxLength = 2147483647;
-            this.TxtLHPB.Multiline = true;
-            this.TxtLHPB.Name = "TxtLHPB";
-            this.TxtLHPB.ReadOnly = true;
-            this.TxtLHPB.Size = new System.Drawing.Size(105, 26);
-            this.TxtLHPB.TabIndex = 36;
-            // 
-            // TxtLHPA
-            // 
-            this.TxtLHPA.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtLHPA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtLHPA.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtLHPA.Location = new System.Drawing.Point(12, 352);
-            this.TxtLHPA.MaxLength = 2147483647;
-            this.TxtLHPA.Multiline = true;
-            this.TxtLHPA.Name = "TxtLHPA";
-            this.TxtLHPA.ReadOnly = true;
-            this.TxtLHPA.Size = new System.Drawing.Size(105, 26);
-            this.TxtLHPA.TabIndex = 37;
-            // 
-            // TxtLHBB
-            // 
-            this.TxtLHBB.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtLHBB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtLHBB.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtLHBB.Location = new System.Drawing.Point(12, 209);
-            this.TxtLHBB.MaxLength = 2147483647;
-            this.TxtLHBB.Multiline = true;
-            this.TxtLHBB.Name = "TxtLHBB";
-            this.TxtLHBB.ReadOnly = true;
-            this.TxtLHBB.Size = new System.Drawing.Size(105, 26);
-            this.TxtLHBB.TabIndex = 38;
-            // 
-            // TxtLHBA
-            // 
-            this.TxtLHBA.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtLHBA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtLHBA.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.TxtLHBA.Location = new System.Drawing.Point(12, 177);
-            this.TxtLHBA.MaxLength = 2147483647;
-            this.TxtLHBA.Multiline = true;
-            this.TxtLHBA.Name = "TxtLHBA";
-            this.TxtLHBA.ReadOnly = true;
-            this.TxtLHBA.Size = new System.Drawing.Size(105, 26);
-            this.TxtLHBA.TabIndex = 39;
             // 
             // LblTime
             // 
@@ -561,46 +392,26 @@
             this.LblTime.TabIndex = 10;
             this.LblTime.Text = "09:12:00";
             // 
-            // PicClothdPicture
+            // LblLeft
             // 
-            this.PicClothdPicture.BackColor = System.Drawing.Color.Orange;
-            this.PicClothdPicture.Location = new System.Drawing.Point(401, 244);
-            this.PicClothdPicture.Name = "PicClothdPicture";
-            this.PicClothdPicture.Size = new System.Drawing.Size(267, 82);
-            this.PicClothdPicture.TabIndex = 40;
-            this.PicClothdPicture.TabStop = false;
-            // 
-            // PicClothC
-            // 
-            this.PicClothC.BackColor = System.Drawing.Color.Orange;
-            this.PicClothC.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold);
-            this.PicClothC.ForeColor = System.Drawing.Color.Black;
-            this.PicClothC.Location = new System.Drawing.Point(495, 261);
-            this.PicClothC.Name = "PicClothC";
-            this.PicClothC.Size = new System.Drawing.Size(170, 48);
-            this.PicClothC.TabIndex = 10;
-            this.PicClothC.Text = "0.0cps";
-            // 
-            // LblLeftt
-            // 
-            this.LblLeftt.BackColor = System.Drawing.Color.Orange;
-            this.LblLeftt.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLeftt.ForeColor = System.Drawing.Color.Black;
-            this.LblLeftt.Location = new System.Drawing.Point(130, 352);
-            this.LblLeftt.Name = "LblLeftt";
-            this.LblLeftt.Size = new System.Drawing.Size(262, 40);
-            this.LblLeftt.TabIndex = 41;
-            this.LblLeftt.Text = "左手不到位";
-            this.LblLeftt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblLeft.BackColor = System.Drawing.Color.Transparent;
+            this.LblLeft.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLeft.ForeColor = System.Drawing.Color.Black;
+            this.LblLeft.Location = new System.Drawing.Point(137, 352);
+            this.LblLeft.Name = "LblLeft";
+            this.LblLeft.Size = new System.Drawing.Size(250, 40);
+            this.LblLeft.TabIndex = 41;
+            this.LblLeft.Text = "左手不到位";
+            this.LblLeft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblRight
             // 
-            this.LblRight.BackColor = System.Drawing.Color.Orange;
+            this.LblRight.BackColor = System.Drawing.Color.Transparent;
             this.LblRight.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblRight.ForeColor = System.Drawing.Color.Black;
-            this.LblRight.Location = new System.Drawing.Point(405, 352);
+            this.LblRight.Location = new System.Drawing.Point(411, 352);
             this.LblRight.Name = "LblRight";
-            this.LblRight.Size = new System.Drawing.Size(262, 40);
+            this.LblRight.Size = new System.Drawing.Size(249, 40);
             this.LblRight.TabIndex = 42;
             this.LblRight.Text = "右手不到位";
             this.LblRight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -615,48 +426,211 @@
             // 
             this.bkWorkerReportStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReportStatus_DoWork);
             // 
+            // PicTimeBackground
+            // 
+            this.PicTimeBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PicTimeBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PicTimeBackground.Location = new System.Drawing.Point(129, 244);
+            this.PicTimeBackground.Name = "PicTimeBackground";
+            this.PicTimeBackground.Size = new System.Drawing.Size(267, 82);
+            this.PicTimeBackground.TabIndex = 7;
+            this.PicTimeBackground.TabStop = false;
+            // 
+            // PnlLHB
+            // 
+            this.PnlLHB.BackColor = System.Drawing.SystemColors.Control;
+            this.PnlLHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PnlLHB.Controls.Add(this.LblLHB);
+            this.PnlLHB.Location = new System.Drawing.Point(11, 196);
+            this.PnlLHB.Name = "PnlLHB";
+            this.PnlLHB.Size = new System.Drawing.Size(107, 40);
+            this.PnlLHB.TabIndex = 44;
+            // 
+            // LblLHB
+            // 
+            this.LblLHB.AutoSize = true;
+            this.LblLHB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LblLHB.Location = new System.Drawing.Point(0, 17);
+            this.LblLHB.Name = "LblLHB";
+            this.LblLHB.Size = new System.Drawing.Size(53, 19);
+            this.LblLHB.TabIndex = 44;
+            this.LblLHB.Text = "0cps";
+            // 
+            // PicLeftBackground
+            // 
+            this.PicLeftBackground.BackColor = System.Drawing.Color.Orange;
+            this.PicLeftBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PicLeftBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PicLeftBackground.Location = new System.Drawing.Point(128, 332);
+            this.PicLeftBackground.Name = "PicLeftBackground";
+            this.PicLeftBackground.Size = new System.Drawing.Size(267, 80);
+            this.PicLeftBackground.TabIndex = 9;
+            this.PicLeftBackground.TabStop = false;
+            // 
+            // LblFrisker
+            // 
+            this.LblFrisker.AutoSize = true;
+            this.LblFrisker.BackColor = System.Drawing.Color.Transparent;
+            this.LblFrisker.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblFrisker.Location = new System.Drawing.Point(495, 261);
+            this.LblFrisker.Name = "LblFrisker";
+            this.LblFrisker.Size = new System.Drawing.Size(170, 48);
+            this.LblFrisker.TabIndex = 45;
+            this.LblFrisker.Text = "0.0cps";
+            // 
+            // LblTimeRemain
+            // 
+            this.LblTimeRemain.BackColor = System.Drawing.Color.Transparent;
+            this.LblTimeRemain.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTimeRemain.Location = new System.Drawing.Point(587, 79);
+            this.LblTimeRemain.Name = "LblTimeRemain";
+            this.LblTimeRemain.Size = new System.Drawing.Size(78, 42);
+            this.LblTimeRemain.TabIndex = 46;
+            this.LblTimeRemain.Text = "0 s";
+            this.LblTimeRemain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblRHB
+            // 
+            this.LblRHB.AutoSize = true;
+            this.LblRHB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LblRHB.Location = new System.Drawing.Point(0, 17);
+            this.LblRHB.Name = "LblRHB";
+            this.LblRHB.Size = new System.Drawing.Size(53, 19);
+            this.LblRHB.TabIndex = 44;
+            this.LblRHB.Text = "0cps";
+            // 
+            // PnlRHB
+            // 
+            this.PnlRHB.BackColor = System.Drawing.SystemColors.Control;
+            this.PnlRHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PnlRHB.Controls.Add(this.LblRHB);
+            this.PnlRHB.Location = new System.Drawing.Point(680, 196);
+            this.PnlRHB.Name = "PnlRHB";
+            this.PnlRHB.Size = new System.Drawing.Size(107, 40);
+            this.PnlRHB.TabIndex = 45;
+            // 
+            // LblLHP
+            // 
+            this.LblLHP.AutoSize = true;
+            this.LblLHP.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LblLHP.Location = new System.Drawing.Point(0, 17);
+            this.LblLHP.Name = "LblLHP";
+            this.LblLHP.Size = new System.Drawing.Size(53, 19);
+            this.LblLHP.TabIndex = 44;
+            this.LblLHP.Text = "0cps";
+            // 
+            // PnlLHP
+            // 
+            this.PnlLHP.BackColor = System.Drawing.SystemColors.Control;
+            this.PnlLHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PnlLHP.Controls.Add(this.LblLHP);
+            this.PnlLHP.Location = new System.Drawing.Point(10, 370);
+            this.PnlLHP.Name = "PnlLHP";
+            this.PnlLHP.Size = new System.Drawing.Size(107, 40);
+            this.PnlLHP.TabIndex = 46;
+            // 
+            // LblRHP
+            // 
+            this.LblRHP.AutoSize = true;
+            this.LblRHP.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LblRHP.Location = new System.Drawing.Point(0, 17);
+            this.LblRHP.Name = "LblRHP";
+            this.LblRHP.Size = new System.Drawing.Size(53, 19);
+            this.LblRHP.TabIndex = 44;
+            this.LblRHP.Text = "0cps";
+            // 
+            // PnlRHP
+            // 
+            this.PnlRHP.BackColor = System.Drawing.SystemColors.Control;
+            this.PnlRHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PnlRHP.Controls.Add(this.LblRHP);
+            this.PnlRHP.Location = new System.Drawing.Point(681, 371);
+            this.PnlRHP.Name = "PnlRHP";
+            this.PnlRHP.Size = new System.Drawing.Size(107, 40);
+            this.PnlRHP.TabIndex = 46;
+            // 
+            // LblRF
+            // 
+            this.LblRF.AutoSize = true;
+            this.LblRF.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LblRF.Location = new System.Drawing.Point(0, 17);
+            this.LblRF.Name = "LblRF";
+            this.LblRF.Size = new System.Drawing.Size(53, 19);
+            this.LblRF.TabIndex = 44;
+            this.LblRF.Text = "0cps";
+            // 
+            // PnlRF
+            // 
+            this.PnlRF.BackColor = System.Drawing.SystemColors.Control;
+            this.PnlRF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PnlRF.Controls.Add(this.LblRF);
+            this.PnlRF.Location = new System.Drawing.Point(681, 546);
+            this.PnlRF.Name = "PnlRF";
+            this.PnlRF.Size = new System.Drawing.Size(107, 40);
+            this.PnlRF.TabIndex = 46;
+            // 
+            // LblLF
+            // 
+            this.LblLF.AutoSize = true;
+            this.LblLF.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LblLF.Location = new System.Drawing.Point(0, 17);
+            this.LblLF.Name = "LblLF";
+            this.LblLF.Size = new System.Drawing.Size(53, 19);
+            this.LblLF.TabIndex = 44;
+            this.LblLF.Text = "0cps";
+            // 
+            // PnlLF
+            // 
+            this.PnlLF.BackColor = System.Drawing.SystemColors.Control;
+            this.PnlLF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PnlLF.Controls.Add(this.LblLF);
+            this.PnlLF.Location = new System.Drawing.Point(8, 546);
+            this.PnlLF.Name = "PnlLF";
+            this.PnlLF.Size = new System.Drawing.Size(107, 40);
+            this.PnlLF.TabIndex = 46;
+            // 
+            // TmrDispTime
+            // 
+            this.TmrDispTime.Enabled = true;
+            this.TmrDispTime.Interval = 1000;
+            this.TmrDispTime.Tick += new System.EventHandler(this.TmrDispTime_Tick);
+            // 
             // FrmMeasureMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.PnlRF);
+            this.Controls.Add(this.PnlLF);
+            this.Controls.Add(this.PnlRHP);
+            this.Controls.Add(this.PnlLHP);
+            this.Controls.Add(this.PnlRHB);
+            this.Controls.Add(this.PnlLHB);
+            this.Controls.Add(this.LblShowStutas);
+            this.Controls.Add(this.LblTimeRemain);
+            this.Controls.Add(this.LblFrisker);
+            this.Controls.Add(this.LblLeft);
+            this.Controls.Add(this.TxtShowResult);
+            this.Controls.Add(this.LblSN);
+            this.Controls.Add(this.LblIP);
+            this.Controls.Add(this.LblName);
             this.Controls.Add(this.LblRight);
-            this.Controls.Add(this.LblLeftt);
-            this.Controls.Add(this.PicClothC);
-            this.Controls.Add(this.PicClothdPicture);
             this.Controls.Add(this.LblTime);
-            this.Controls.Add(this.TxtLHBA);
-            this.Controls.Add(this.TxtLHBB);
-            this.Controls.Add(this.TxtLHPA);
-            this.Controls.Add(this.TxtLHPB);
-            this.Controls.Add(this.TxtLFA);
-            this.Controls.Add(this.TxtLFB);
-            this.Controls.Add(this.TxtRFB);
-            this.Controls.Add(this.TxtRFA);
-            this.Controls.Add(this.TxtRHPB);
-            this.Controls.Add(this.TxtRHPA);
-            this.Controls.Add(this.TxtRHBAB);
-            this.Controls.Add(this.TxtRHBA);
             this.Controls.Add(this.TxtRF);
             this.Controls.Add(this.TxtRHP);
             this.Controls.Add(this.TxtRHB);
             this.Controls.Add(this.TxtLF);
             this.Controls.Add(this.TxtLHP);
             this.Controls.Add(this.TxtLHB);
-            this.Controls.Add(this.LblShowStutas);
-            this.Controls.Add(this.LblSN);
-            this.Controls.Add(this.LblIP);
-            this.Controls.Add(this.LblName);
             this.Controls.Add(this.PicRF);
             this.Controls.Add(this.PicRHP);
             this.Controls.Add(this.PicRHB);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnEnglish);
             this.Controls.Add(this.BtnChinese);
-            this.Controls.Add(this.TxtShowResult);
             this.Controls.Add(this.PicLogo);
             this.Controls.Add(this.PicRightBackground);
             this.Controls.Add(this.PicLeftBackground);
-            this.Controls.Add(this.PicClothBackground);
+            this.Controls.Add(this.PicFrisker);
             this.Controls.Add(this.PicTimeBackground);
             this.Controls.Add(this.PicShowStatus);
             this.Controls.Add(this.PicLF);
@@ -665,7 +639,6 @@
             this.Controls.Add(this.PicSN);
             this.Controls.Add(this.PicIP);
             this.Controls.Add(this.PicName);
-            this.Enabled = false;
             this.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -679,15 +652,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicLHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicShowStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicTimeBackground)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClothBackground)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicLeftBackground)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicFrisker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRightBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRHB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRHP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicRF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClothdPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicTimeBackground)).EndInit();
+            this.PnlLHB.ResumeLayout(false);
+            this.PnlLHB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLeftBackground)).EndInit();
+            this.PnlRHB.ResumeLayout(false);
+            this.PnlRHB.PerformLayout();
+            this.PnlLHP.ResumeLayout(false);
+            this.PnlLHP.PerformLayout();
+            this.PnlRHP.ResumeLayout(false);
+            this.PnlRHP.PerformLayout();
+            this.PnlRF.ResumeLayout(false);
+            this.PnlRF.PerformLayout();
+            this.PnlLF.ResumeLayout(false);
+            this.PnlLF.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,9 +686,7 @@
         private System.Windows.Forms.PictureBox PicLHP;
         private System.Windows.Forms.PictureBox PicLF;
         private System.Windows.Forms.PictureBox PicShowStatus;
-        private System.Windows.Forms.PictureBox PicTimeBackground;
-        private System.Windows.Forms.PictureBox PicClothBackground;
-        private System.Windows.Forms.PictureBox PicLeftBackground;
+        private System.Windows.Forms.PictureBox PicFrisker;
         private System.Windows.Forms.PictureBox PicRightBackground;
         private System.Windows.Forms.PictureBox PicLogo;
         private System.Windows.Forms.TextBox TxtShowResult;
@@ -724,24 +706,27 @@
         private System.Windows.Forms.TextBox TxtRHB;
         private System.Windows.Forms.TextBox TxtRHP;
         private System.Windows.Forms.TextBox TxtRF;
-        private System.Windows.Forms.TextBox TxtRHBA;
-        private System.Windows.Forms.TextBox TxtRHBAB;
-        private System.Windows.Forms.TextBox TxtRHPA;
-        private System.Windows.Forms.TextBox TxtRHPB;
-        private System.Windows.Forms.TextBox TxtRFA;
-        private System.Windows.Forms.TextBox TxtRFB;
-        private System.Windows.Forms.TextBox TxtLFB;
-        private System.Windows.Forms.TextBox TxtLFA;
-        private System.Windows.Forms.TextBox TxtLHPB;
-        private System.Windows.Forms.TextBox TxtLHPA;
-        private System.Windows.Forms.TextBox TxtLHBB;
-        private System.Windows.Forms.TextBox TxtLHBA;
         private System.Windows.Forms.Label LblTime;
-        private System.Windows.Forms.PictureBox PicClothdPicture;
-        private System.Windows.Forms.Label PicClothC;
-        private System.Windows.Forms.Label LblLeftt;
+        private System.Windows.Forms.Label LblLeft;
         private System.Windows.Forms.Label LblRight;
         private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
         private System.ComponentModel.BackgroundWorker bkWorkerReportStatus;
+        private System.Windows.Forms.PictureBox PicTimeBackground;
+        private System.Windows.Forms.Panel PnlLHB;
+        private System.Windows.Forms.Label LblLHB;
+        private System.Windows.Forms.PictureBox PicLeftBackground;
+        private System.Windows.Forms.Label LblFrisker;
+        private System.Windows.Forms.Label LblTimeRemain;
+        private System.Windows.Forms.Label LblRHB;
+        private System.Windows.Forms.Panel PnlRHB;
+        private System.Windows.Forms.Label LblLHP;
+        private System.Windows.Forms.Panel PnlLHP;
+        private System.Windows.Forms.Label LblRHP;
+        private System.Windows.Forms.Panel PnlRHP;
+        private System.Windows.Forms.Label LblRF;
+        private System.Windows.Forms.Panel PnlRF;
+        private System.Windows.Forms.Label LblLF;
+        private System.Windows.Forms.Panel PnlLF;
+        private System.Windows.Forms.Timer TmrDispTime;
     }
 }

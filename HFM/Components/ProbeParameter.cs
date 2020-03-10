@@ -267,21 +267,21 @@ namespace HFM.Components
                                                    Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
                     //根据读出的查询结构构造ProbeParameter对象
 
-                    probeParameter.PreferenceID = Convert.ToInt32(reader["PreferenceID"].ToString());
-                    probeParameter.ProbeType = Convert.ToString(reader["ProbeType"].ToString());
-                    probeParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
-                    probeParameter.ProbeChannel = channel;
-                    probeParameter.HBackground = Convert.ToSingle(reader["HBackground"].ToString());
-                    probeParameter.LBackground = Convert.ToSingle(reader["LBackground"].ToString());
-                    probeParameter.Alarm_1 = Convert.ToSingle(reader["Alarm_1"].ToString());
-                    probeParameter.Alarm_2 = Convert.ToSingle(reader["Alarm_2"].ToString());
-                    probeParameter.Efficiency = Convert.ToSingle(reader["Efficiency"]);
+                    this.PreferenceID = Convert.ToInt32(reader["PreferenceID"].ToString());
+                    this.ProbeType = Convert.ToString(reader["ProbeType"].ToString());
+                    this.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
+                    this.ProbeChannel = channel;
+                    this.HBackground = Convert.ToSingle(reader["HBackground"].ToString());
+                    this.LBackground = Convert.ToSingle(reader["LBackground"].ToString());
+                    this.Alarm_1 = Convert.ToSingle(reader["Alarm_1"].ToString());
+                    this.Alarm_2 = Convert.ToSingle(reader["Alarm_2"].ToString());
+                    this.Efficiency = Convert.ToSingle(reader["Efficiency"]);
 
                 }
                 reader.Close();
                 DbHelperAccess.Close();
             }
-            return probeParameter;
+            return this;
         }
         #endregion
 
