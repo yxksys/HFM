@@ -31,7 +31,7 @@ namespace HFM.Components
         //数据库连接字符串(App.config来配置)，可以动态更改connectionString支持多数据库.		
         public static string connectionString = System.Configuration.ConfigurationManager.AppSettings["connectionStringAcccess"];
         static OleDbConnection conn = new OleDbConnection(connectionString);
-        public DbHelperAccess()
+        public  DbHelperAccess()
         { }
 
         #region 公用方法
@@ -62,7 +62,7 @@ namespace HFM.Components
         /// </summary>
         public static void Close()
         {
-            if (conn != null)
+            if(conn != null)
             {
                 conn.Close();
             }
@@ -78,7 +78,7 @@ namespace HFM.Components
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString)
         {
-            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            using (OleDbConnection connection = new OleDbConnection (connectionString))
             {
                 using (OleDbCommand cmd = new OleDbCommand(SQLString, connection))
                 {
@@ -141,7 +141,7 @@ namespace HFM.Components
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
                 OleDbCommand cmd = new OleDbCommand(SQLString, connection);
-                System.Data.OleDb.OleDbParameter myParameter = new OleDbParameter("@content", OleDbType.VarWChar);
+                System.Data.OleDb.OleDbParameter myParameter = new OleDbParameter("@content",OleDbType.VarWChar);
                 myParameter.Value = content;
                 cmd.Parameters.Add(myParameter);
                 try
@@ -161,7 +161,7 @@ namespace HFM.Components
                 }
             }
         }
-
+        
         /// <summary>
         /// 执行一条计算查询结果语句，返回查询结果（object）。
         /// </summary>
@@ -200,7 +200,7 @@ namespace HFM.Components
         /// <param name="strSQL">查询语句</param>
         /// <returns>SqlDataReader</returns>
         public static OleDbDataReader ExecuteReader(string strSQL)
-        {
+        {            
             OleDbCommand cmd = new OleDbCommand(strSQL, conn);
             try
             {
@@ -208,11 +208,11 @@ namespace HFM.Components
                 OleDbDataReader myReader = cmd.ExecuteReader();
                 return myReader;
             }
-            catch (System.Data.OleDb.OleDbException e)
+                catch (System.Data.OleDb.OleDbException e)
             {
                 conn.Close();
                 throw;
-            }
+            }            
         }
         //public static void ExecuteReader(string strSQL,out OleDbConnection conn,out OleDbDataReader dr)
         //{
@@ -361,22 +361,22 @@ namespace HFM.Components
         /// </summary>
         /// <param name="strSQL">查询语句</param>
         /// <returns>SqlDataReader</returns>
-        public static OleDbDataReader ExecuteReader(string SQLString, params OleDbParameter[] cmdParms)
+        public static  OleDbDataReader ExecuteReader(string SQLString, params OleDbParameter[] cmdParms)
         {
-            OleDbCommand cmd = new OleDbCommand();
-            try
-            {
-                PrepareCommand(cmd, conn, null, SQLString, cmdParms);
-                OleDbDataReader myReader = cmd.ExecuteReader();
-                cmd.Parameters.Clear();
-                return myReader;
-            }
-            catch (System.Data.OleDb.OleDbException e)
-            {
-                conn.Close();
-                throw;
-                //return null;
-            }
+                OleDbCommand cmd = new OleDbCommand();
+                try
+                {
+                    PrepareCommand(cmd,conn, null, SQLString, cmdParms);
+                    OleDbDataReader myReader = cmd.ExecuteReader();
+                    cmd.Parameters.Clear();
+                    return myReader;
+                }
+                catch (System.Data.OleDb.OleDbException e)
+                {
+                    conn.Close();
+                    throw;
+                    //return null;
+                }
         }
 
         //public static OleDbDataReader ExecuteReader(string SQLString, OleDbConnection connection,params OleDbParameter[] cmdParms)

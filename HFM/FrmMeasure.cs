@@ -18,9 +18,15 @@ namespace HFM
 {
     public partial class FrmMeasure : Form
     {
+        int ix = 1;
         CommPort commPort = new CommPort();
         //工厂参数
         FactoryParameter factoryParameter = new FactoryParameter();
+        //系统参数
+        Components.SystemParameter systemParameter = new Components.SystemParameter();
+        int checkTime = 0;
+        //报警时间长度
+        int alarmTime = 0;
         //当前可使用的检测通道
         IList<Channel> channelS = new List<Channel>();
         //运行状态枚举类型
@@ -35,10 +41,20 @@ namespace HFM
         }
         //运行状态标志
         PlatformState platformState;
+        //监测状态枚举
+        enum DeviceStatus
+        {
+            OperatingNormally = 1,
+            OperatingFaulted = 2,
+            OperatingContaminated = 4
+        }
+        //监测状态，用于生成向下位机发送当前设备监测状态报文
+        byte deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
         const int BASE_DATA= 1000;
         //存储各个通道最终计算检测值的List
         IList<MeasureData> calculatedMeasureDataS=new List<MeasureData>();
         int stateTimeSet = 0;//系统当前运行状态的检测时间设置
+        DateTime stateTimeStart = DateTime.Now;//系统当前运行状态的开始计时变量
         //存储本底计算结果，用例对测量数据进行校正
         IList<MeasureData> baseData = new List<MeasureData>();
         public FrmMeasure()
@@ -47,9 +63,19 @@ namespace HFM
         }
 
         private void FrmMeasure_Load(object sender, EventArgs e)
-        {           
+        {            
+            systemParameter.GetParameter();
+            checkTime = systemParameter.SelfCheckTime;
+
+            MeasureData[] measureDataS = new MeasureData[100];
+            for (int i = 0; i < 100; i++)
+            {
+                measureDataS[i] = new MeasureData((i+1)%7, DateTime.Now, 1, i++, 1, 1, 1);
+            }
             //线程支持异步取消
-            bkWorkerReceiveData.WorkerSupportsCancellation = true;            
+            bkWorkerReceiveData.WorkerSupportsCancellation = true;
+            //线程支持报告进度
+            bkWorkerReceiveData.WorkerReportsProgress = true;
             if(commPort.Opened==true)
             {
                 commPort.Close();
@@ -104,7 +130,8 @@ namespace HFM
             {
                 if(channelS[i].ProbeArea==0)
                 {
-                    channelS.RemoveAt(i);
+                    channelS.RemoveAt(i);                    
+                    i--;
                 }
             }
             //根据有效通道对象初始化用来存储最终监测数据的列表
@@ -161,10 +188,6 @@ namespace HFM
                 //如果当前运行状态为“仪器自检”，则根据不同探测类型向下位机下发相应的自检指令
                 if (platformState == PlatformState.SelfTest)
                 {
-                    //获得系统自检时间,并计算下发时间参数：自检时间/2-2一并下发
-                    Components.SystemParameter systemParameter = new Components.SystemParameter();
-                    systemParameter.GetParameter();
-                    int checkTime = systemParameter.SelfCheckTime / 2;
                     byte[] messageDate = null;
                     switch (factoryParameter.MeasureType)
                     {
@@ -172,7 +195,7 @@ namespace HFM
                         //生成Beta自检指令报文，包含参数：自检时间/2-2
                         case "α":
                             //下发Alpha自检指令
-                            messageDate=Components.Message.BuildMessage(0, checkTime);
+                            messageDate=Components.Message.BuildMessage(0, checkTime/2);
                             //如果不成功则：
                             if(Components.Message.SendMessage(messageDate,commPort)!=true)
                             {
@@ -229,25 +252,36 @@ namespace HFM
 
         //异步线程读取串口数据后的ReportProgress事件响应
         private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
+        {            
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
-            byte[] receiveBufferMessage; //存储接收报文信息缓冲区
-            IList<MeasureData> measureDataS=new List<MeasureData>(); //解析后报文结构数据存储List对象            
-            DateTime stateTimeStart=DateTime.Now;//系统当前运行状态的开始计时变量
+            byte[] receiveBufferMessage=null; //存储接收报文信息缓冲区
+            IList<MeasureData> measureDataS=new List<MeasureData>(); //解析后报文结构数据存储List对象                        
             bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
             string pollutionRecord = null;//记录测量污染详细数据
-            //对事件参数类中的数据对象序列化为byte[]
-            using (MemoryStream ms = new MemoryStream())
+            if(e.UserState is byte[])
             {
-                IFormatter iFormatter = new BinaryFormatter();
-                iFormatter.Serialize(ms, e.UserState);
-                receiveBufferMessage = ms.GetBuffer();
-            }
+                receiveBufferMessage = (byte[])e.UserState;
+            }            
+           
+                Channel channel = new Channel();
+                int channelid = ix % 7 == 0 ? 7 : ix% 7;
+                channel.GetChannel(ix);
+            textBox1.Text +=ix.ToString()+ " ";// i.ToString()+" ";
+            ix++;
+               // System.Threading.Thread.Sleep(300);
+            //对事件参数类中的数据对象序列化为byte[]            
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    IFormatter iFormatter = new BinaryFormatter();
+            //    iFormatter.Serialize(ms, e.UserState);
+            //    receiveBufferMessage = new byte[ms.Length];
+            //    receiveBufferMessage = ms.GetBuffer();
+            //}
             //更新当前显示时间
             //
             //接收报文数据为空
-            if(receiveBufferMessage.Length< messageBufferLength)
+            if (receiveBufferMessage.Length< messageBufferLength)
             {
                 //数据接收出现错误次数超限
                 if(errNumber>=2)
@@ -263,9 +297,12 @@ namespace HFM
             }
             //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
             measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
+            //textBox1.Text += measureDataS.ToString();
+            //return;
             //如果当前运行状态为“运行准备”
             if (platformState==PlatformState.ReadyToRun)
             {
+                textBox1.Text = platformState.ToString();
                 //判断衣物探头被拿起
                 if(measureDataS[6].InfraredStatus==1)
                 {
@@ -283,6 +320,7 @@ namespace HFM
             //如果当前运行状态为“仪器自检”
             if(platformState==PlatformState.SelfTest)
             {
+                textBox1.Text += platformState.ToString();
                 //获得当前系统参数设置中的的自检时间并赋值给stateTimeSet
                 //           
                 //系统语音提示“仪器自检”，并在设备运行状态区域显示“仪器自检”
@@ -313,11 +351,13 @@ namespace HFM
                     //
                 }
                 //自检时间到
-                if (stateTimeRemain == 0)
+                if (stateTimeRemain <= 0)
                 {
                     string errRecord=BaseCheck();
                     if (errRecord == null)//自检通过
                     {
+                        //设备监测状态为正常
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         // 运行状态标志设置为“本底测量”
                         platformState = PlatformState.BackGrouneMeasure;
                         //启动本底测量计时 
@@ -331,10 +371,13 @@ namespace HFM
                     }
                     else
                     {
+                        //将设备监测状态设置为“故障”
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
                         //将故障信息errRecord写入数据库
                         //
                         //界面显示“仪器故障”同时进行语音提示
                         //
+                        //启动故障报警计时
                     }
                     return;
                 }
@@ -342,6 +385,7 @@ namespace HFM
             //运行状态为本底测量
             if(platformState==PlatformState.BackGrouneMeasure)
             {
+                textBox1.Text += platformState.ToString();
                 //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
                 //           
                 //系统语音提示“本底测量”，并在设备运行状态区域显示“本底测量”
@@ -407,11 +451,13 @@ namespace HFM
                         //界面显示“本底测量未通过”同时进行语音提示
                         //
                     }
+                    return;
                 }
             }
             //运行状态为等待测量
             if(platformState==PlatformState.ReadyToMeasure)
             {
+                textBox1.Text += platformState.ToString();
                 //所有手部红外到位标志，默认全部到位
                 bool isHandInfraredStatus = true;
                 //系统语音提示“等待测量”，并在设备运行状态区域显示“等待测量”
@@ -460,7 +506,7 @@ namespace HFM
                     return;
                 }
                 //本底测量时间到，进行本底判断
-                if (stateTimeSet-(System.DateTime.Now-stateTimeStart).Seconds==0)
+                if (stateTimeSet-(System.DateTime.Now-stateTimeStart).Seconds<=0)
                 {
                     string errRecord = BaseCheck();
                     //本底测量判断
@@ -490,7 +536,8 @@ namespace HFM
             }            
             //运行状态为开始测量
             if(platformState==PlatformState.Measuring)
-            {                
+            {
+                textBox1.Text += platformState.ToString();
                 float conversionData=0;
                 //获得当前系统参数设置中的的测量时间并赋值给stateTimeSet
                 //    
@@ -578,8 +625,9 @@ namespace HFM
             //运行状态为“测量结束”
             if(platformState==PlatformState.Result)
             {
+                textBox1.Text += platformState.ToString();
                 //本次测量无污染
-                if(pollutionRecord==null)
+                if (pollutionRecord==null)
                 {
                     //获得系统参数设置中的强制本地次数
                     Components.SystemParameter systemParameter = new Components.SystemParameter();

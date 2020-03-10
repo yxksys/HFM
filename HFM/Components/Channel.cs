@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using System.Data.OleDb;
 
 namespace HFM.Components
-{
+{ 
     class Channel
     {
         #region 数据库查询语言
@@ -190,7 +190,7 @@ namespace HFM.Components
             //根据通道ID查询通道信息
             //Channel channel = new Channel();            
             //OleDbConnection conn=new OleDbConnection();
-            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELID, parms))
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELID,parms))
             {
                 while (reader.Read())
                 {
@@ -202,7 +202,7 @@ namespace HFM.Components
                     this.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
                 }
                 reader.Close();
-                DbHelperAccess.Close();
+                DbHelperAccess.Close();                
             }
             return this;
         }
@@ -225,7 +225,7 @@ namespace HFM.Components
             //根据通道ID查询通道信息
             //Channel channel = new Channel();
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNEL_BY_CHANNELNAME, parms))
-            {
+            {               
                 while (reader.Read())
                 {
                     this.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
@@ -249,7 +249,7 @@ namespace HFM.Components
         /// <param name="channelType">channelType值可选0：手部（包含左手心、左手背、右手心、右手背）1：脚部（包含左脚、右脚）2：衣物</param>
         /// <param name="isEnabled">false:通道不启用，true：通道启用</param>
         /// <returns>设置成功/失败</returns>
-        public bool SetEnabledByType(int channelType, bool isEnabled)
+        public bool SetEnabledByType(int channelType,bool isEnabled)
         {
             Channel channel = new Channel();
             channel.IsEnabled = isEnabled;
@@ -259,7 +259,7 @@ namespace HFM.Components
             {
                 new OleDbParameter("@IsEnabled",OleDbType.Boolean),
                 new OleDbParameter("@ChannelID",OleDbType.Integer,4)
-
+                
             };
             parms[0].Value = channel.IsEnabled;
             parms[1].Value = channel.ChannelID;
@@ -269,18 +269,18 @@ namespace HFM.Components
             {
                 case 0://手部（包含左手心、左手背、右手心、右手背）
 
-
-                    for (int i = 1; i < 5; i++)
+                    
+                    for(int i = 1; i < 5; i++)
                     {
                         channel.ChannelID = i;
-
+                        
                         parms[1].Value = channel.ChannelID;//给通道ChannelID赋值
-                        if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
+                        if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms)!= 0)                    
                         {
                             success++;
-                        }
+                        }                    
                     }
-                    if (success == 4)
+                    if(success==4)
                     {
                         return isSuccess = true;
                     }
@@ -288,7 +288,7 @@ namespace HFM.Components
                     {
                         return isSuccess = false;
                     }
-
+                    
                 case 1://脚部（包含左脚、右脚）
                     success = 0;
                     for (int i = 5; i < 7; i++)
@@ -336,7 +336,7 @@ namespace HFM.Components
         /// <param name="channelID">通道ID</param>
         /// <param name="isEnabled">false:通道不启用，true：通道启用</param>
         /// <returns></returns>
-        public bool SetEnabledByID(int channelID, bool isEnabled)
+        public bool SetEnabledByID(int channelID,bool isEnabled)
         {
             Channel channel = new Channel();
             channel.IsEnabled = isEnabled;
@@ -350,17 +350,17 @@ namespace HFM.Components
             };
             parms[0].Value = channel.IsEnabled;
             parms[1].Value = channel.ChannelID;
-
-
-            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            
+            
+                if (DbHelperAccess.ExecuteSql(SQL_UPDATE_CHANNEL_BY_CHANNELID, parms) != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            
         }
         #endregion
     }

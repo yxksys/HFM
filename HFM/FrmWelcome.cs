@@ -4,59 +4,102 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
+using Message = HFM.Components.Message;
 
-namespace HFM.Components
+namespace HFM
 {
     public partial class FrmWelcome : Form
     {
+        enum HardwarePlatformState
+        {
+            /// <summary>
+            /// 默认状态
+            /// </summary>
+            Default = 0,
+            /// <summary>
+            /// Alpha自检
+            /// </summary>
+            AlphaCheck = 1,
+            /// <summary>
+            /// Beta自检
+            /// </summary>
+            BetaCheck = 2,
+            /// <summary>
+            /// 自检
+            /// </summary>
+            SelfTest = 3
+        }
+        //运行状态标志
+        HardwarePlatformState platformState;
         public FrmWelcome()
         {
             InitializeComponent();
+
         }
 
+        string[] _hv = new string[6];
+        //alpha计数
+        string[] _alphacps = new string[6];
+        //alpha总计数
+        string[] _alphacnt = new string[6];
+        //Beta计数
+        string[] _betacps = new string[6];
+        //Beta总计数
+        string[] _betacnt = new string[6];
+        //通道状态
+        string[] _strat = new string[6];
+        //衣物计数
+        string frisker = "";
         private void BtnTestRorW_Click(object sender, EventArgs e)
         {
-            byte[] mess = new byte[4];
-            mess[0] =Convert.ToByte( 'p');
-            mess[1] = 48;
-            mess[2] = 49;
-            mess[3] = 125;
-            string head = Convert.ToChar(mess[0]).ToString();
-            MessageBox.Show("hello word!...");
-            int x = mess[1];
-            int y = mess[2];
-            int z = mess[3];
-            MessageBox.Show("123");
-            MessageBox.Show("456");
-            Channel channel = new Channel();
-            //SystemParameter systemParameter = new SystemParameter();
-            string str = "112";
-            x = 1110;
-            int ii = Convert.ToInt32(str);
-            HexCon hexcon = new HexCon();
-            str = hexcon.ByteToString(new byte[] { 48 });
-            byte[] oo = new byte[1];
-            oo = hexcon.StringToByte(str);
-            ii = Convert.ToInt32(oo[0]);
-            ProbeParameter probeParameter = new ProbeParameter();
-            ProbeParameter text = new ProbeParameter();
-            probeParameter.ProbeType = "闪烁体";
-            probeParameter.NuclideType = "α";
-            probeParameter.ProbeChannel = new Channel(2, "", "", 20, "", false);
-            probeParameter.HBackground = 61;
-            probeParameter.LBackground = 21;
-            probeParameter.Efficiency = 91;
-            probeParameter.Alarm_1 = 60;
-            probeParameter.Alarm_2 = 87;
-            bool rows=text.SetParameter(probeParameter);
-            //测试CalibrationGetData方法
+
+            FactoryParameter factoryParameter = new FactoryParameter();
+            factoryParameter.GetParameter();
+            factoryParameter=new FactoryParameter("1001", "HFM", "110.110.110.110", "100", false, "a", 100, true, "address");
+            factoryParameter.GetParameter();
+            //byte[] mess = new byte[4];
+            //mess[0] =Convert.ToByte( 'p');
+            //mess[1] = 48;
+            //mess[2] = 49;
+            //mess[3] = 125;
+            //string head = Convert.ToChar(mess[0]).ToString();
+            //MessageBox.Show("hello word!...");
+            //int x = mess[1];
+            //int y = mess[2];
+            //int z = mess[3];
+            //MessageBox.Show("123");
+            //MessageBox.Show("456");
+            //Channel channel = new Channel();
+            ////SystemParameter systemParameter = new SystemParameter();
+            //string str = "112";
+            //x = 1110;
+            //int ii = Convert.ToInt32(str);
+            //HexCon hexcon = new HexCon();
+            //str = hexcon.ByteToString(new byte[] { 48 });
+            //byte[] oo = new byte[1];
+            //oo = hexcon.StringToByte(str);
+            //ii = Convert.ToInt32(oo[0]);
+            //ProbeParameter probeParameter = new ProbeParameter();
+            //ProbeParameter text = new ProbeParameter();
+            //probeParameter.ProbeType = "闪烁体";
+            //probeParameter.NuclideType = "α";
+            //probeParameter.ProbeChannel = new Channel(2, "", "", 20, "", false);
+            //probeParameter.HBackground = 61;
+            //probeParameter.LBackground = 21;
+            //probeParameter.Efficiency = 91;
+            //probeParameter.Alarm_1 = 60;
+            //probeParameter.Alarm_2 = 87;
+            //bool rows=text.SetParameter(probeParameter);
+            ////测试CalibrationGetData方法
             //Calibration calibration = new Calibration();
-            //不带参数查询测试
+            ////不带参数查询测试
             //IList<Calibration> Icalibrations = calibration.GetData();
+
             //带参数查询测试
             //Icalibrations = calibration.GetData(1);
             //if (calibration.AddData(new Calibration(DateTime.Now, 2, 3, 4, 5, 6, 7)) == true)
@@ -66,59 +109,17 @@ namespace HFM.Components
 
             ////测试通道类查询    
             //Channel channel = new Channel();    
-            //channel.GetChannel(1);    
-            //channel.GetChannel("左手心");
-            //channel.SetEnabledByType(0, false);
-            //if (channel.SetEnabledByType(0, false) == true)
-            //{
-            //    MessageBox.Show("更新成功");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("更新失败");
-            //}
-            //测试工厂参数类查询
-            //FactoryParameter factory = new FactoryParameter();    
-            //factory.GetParameter();
-            //if(factory.SetParameter(new FactoryParameter("1","2","3","4",true,"6",7,true)) == true)
-            //{
-            //    MessageBox.Show("更新成功");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("更新失败");
-            //}
+
             //测试系统参数查询
             //Components.SystemParameter system = new Components.SystemParameter();
+            //测试检测完成后检查次数+1
+            //system.UpdateMeasuredCount();
+            //system.ClearMeasuredCount();
             //system.GetParameter();
             //if(system.SetParameter(new Components.SystemParameter("1", 1, 1, 1, 1, 1, 1, false)) == true)
             //{
             //    MessageBox.Show("更新成功");
             //}
-            //测试系统参数查询(新增)
-            //ProbeParameter probeParameter = new ProbeParameter();
-            //probeParameter=probeParameter.GetParameter(2,"α");
-            //if (probeParameter != null)
-            //{
-            //    MessageBox.Show("ok");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("no");
-            //}
-            Nuclide nuclide = new Nuclide();
-            string a = nuclide.GetAlphaNuclideUser();
-            IList<EfficiencyParameter> p = new List<EfficiencyParameter>();
-            EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
-            p = efficiencyParameter.GetParameter("α", a);
-            for (int i = 0; i < p.Count && p[i].NuclideType == "α"; i++)
-            {
-                if (!efficiencyParameter.SetParameter(p[i]))
-                {
-                    MessageBox.Show("数据库存取失败");
-                    return;
-                }
-            }
         }
 
         private void BtnCommport_Click(object sender, EventArgs e)
@@ -166,6 +167,34 @@ namespace HFM.Components
                 }
             }
            
+        }
+        [DllImport("kernel32", CharSet = CharSet.Ansi)]
+        private static extern bool SetSystemTime(ref SYSTEMTIME t);
+        
+        [StructLayout(LayoutKind.Sequential)]
+        struct SYSTEMTIME
+        {
+            public short Year;
+            public short Month;
+            public short DayofWeek;
+            public short Day;
+            public short Hour;
+            public short Minute;
+            public short Second;
+            public short MiliSecond;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            short time = 13;
+            SYSTEMTIME t = new SYSTEMTIME();
+            t.Year = 2020;
+            t.Month = 3;
+            t.Day = 6;
+            t.Hour =(short)(time - 8)<=0? (short)(time - 8+24): (short)(time - 8);
+            t.Minute = 35;
+            t.Second = 0;
+            t.MiliSecond = 20;
+            bool v = SetSystemTime(ref t);
         }
     }
 }

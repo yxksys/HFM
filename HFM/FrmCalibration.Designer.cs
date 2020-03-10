@@ -42,14 +42,14 @@
             this.LblSFR = new System.Windows.Forms.Label();
             this.BtnCalibrate = new System.Windows.Forms.Button();
             this.BtnSet = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CmbNuclideSelect = new System.Windows.Forms.ComboBox();
             this.Txtβ = new System.Windows.Forms.TextBox();
             this.Txtα = new System.Windows.Forms.TextBox();
             this.Lblβ = new System.Windows.Forms.Label();
             this.Lblα = new System.Windows.Forms.Label();
             this.LblNuclide = new System.Windows.Forms.Label();
             this.LblThreshold = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtCount = new System.Windows.Forms.TextBox();
             this.TxtHV = new System.Windows.Forms.TextBox();
             this.LblCount = new System.Windows.Forms.Label();
             this.LblHV = new System.Windows.Forms.Label();
@@ -70,12 +70,12 @@
             // 
             this.TabCalibration.Controls.Add(this.TabpageCalibration);
             this.TabCalibration.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TabCalibration.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.TabCalibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TabCalibration.ItemSize = new System.Drawing.Size(76, 25);
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(775, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(826, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -84,7 +84,7 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(767, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(818, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             this.TabpageCalibration.UseVisualStyleBackColor = true;
@@ -96,14 +96,14 @@
             this.GrpCalibration.Controls.Add(this.LblSFR);
             this.GrpCalibration.Controls.Add(this.BtnCalibrate);
             this.GrpCalibration.Controls.Add(this.BtnSet);
-            this.GrpCalibration.Controls.Add(this.comboBox1);
+            this.GrpCalibration.Controls.Add(this.CmbNuclideSelect);
             this.GrpCalibration.Controls.Add(this.Txtβ);
             this.GrpCalibration.Controls.Add(this.Txtα);
             this.GrpCalibration.Controls.Add(this.Lblβ);
             this.GrpCalibration.Controls.Add(this.Lblα);
             this.GrpCalibration.Controls.Add(this.LblNuclide);
             this.GrpCalibration.Controls.Add(this.LblThreshold);
-            this.GrpCalibration.Controls.Add(this.textBox1);
+            this.GrpCalibration.Controls.Add(this.TxtCount);
             this.GrpCalibration.Controls.Add(this.TxtHV);
             this.GrpCalibration.Controls.Add(this.LblCount);
             this.GrpCalibration.Controls.Add(this.LblHV);
@@ -201,6 +201,7 @@
             this.BtnCalibrate.TabIndex = 18;
             this.BtnCalibrate.Text = "刻度";
             this.BtnCalibrate.UseVisualStyleBackColor = true;
+            this.BtnCalibrate.Click += new System.EventHandler(this.BtnCalibrate_Click);
             // 
             // BtnSet
             // 
@@ -210,16 +211,18 @@
             this.BtnSet.TabIndex = 17;
             this.BtnSet.Text = "设置";
             this.BtnSet.UseVisualStyleBackColor = true;
+            this.BtnSet.Click += new System.EventHandler(this.BtnSet_Click);
             // 
-            // comboBox1
+            // CmbNuclideSelect
             // 
-            this.comboBox1.DropDownWidth = 74;
-            this.comboBox1.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(408, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(93, 28);
-            this.comboBox1.TabIndex = 16;
+            this.CmbNuclideSelect.DropDownWidth = 74;
+            this.CmbNuclideSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.CmbNuclideSelect.FormattingEnabled = true;
+            this.CmbNuclideSelect.Location = new System.Drawing.Point(408, 67);
+            this.CmbNuclideSelect.Name = "CmbNuclideSelect";
+            this.CmbNuclideSelect.Size = new System.Drawing.Size(93, 28);
+            this.CmbNuclideSelect.TabIndex = 16;
+            this.CmbNuclideSelect.DropDown += new System.EventHandler(this.CmbNuclideSelect_DropDown);
             // 
             // Txtβ
             // 
@@ -273,14 +276,14 @@
             this.LblThreshold.Text = "阈值(mV)";
             this.LblThreshold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // TxtCount
             // 
-            this.textBox1.Location = new System.Drawing.Point(256, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(54, 26);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtCount.Location = new System.Drawing.Point(256, 69);
+            this.TxtCount.Name = "TxtCount";
+            this.TxtCount.Size = new System.Drawing.Size(54, 26);
+            this.TxtCount.TabIndex = 9;
+            this.TxtCount.Text = "1";
+            this.TxtCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtHV
             // 
@@ -323,16 +326,18 @@
             this.TxtMeasuringTime.TabIndex = 4;
             this.TxtMeasuringTime.Text = "5";
             this.TxtMeasuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtMeasuringTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMeasuringTime_KeyPress);
             // 
             // CmbChannelSelection
             // 
             this.CmbChannelSelection.DropDownWidth = 74;
-            this.CmbChannelSelection.Font = new System.Drawing.Font("Arial Narrow", 9F);
+            this.CmbChannelSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.CmbChannelSelection.FormattingEnabled = true;
             this.CmbChannelSelection.Location = new System.Drawing.Point(118, 25);
             this.CmbChannelSelection.Name = "CmbChannelSelection";
-            this.CmbChannelSelection.Size = new System.Drawing.Size(74, 24);
+            this.CmbChannelSelection.Size = new System.Drawing.Size(74, 23);
             this.CmbChannelSelection.TabIndex = 3;
+            this.CmbChannelSelection.SelectedValueChanged += new System.EventHandler(this.CmbChannelSelection_SelectedValueChanged);
             // 
             // LblResult
             // 
@@ -361,12 +366,17 @@
             this.LblChannelSelection.Text = "通道选择";
             this.LblChannelSelection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // bkWorkerReceiveData
+            // 
+            this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
+            this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
+            // 
             // FrmCalibration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(792, 722);
+            this.ClientSize = new System.Drawing.Size(843, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
@@ -394,7 +404,7 @@
         private System.Windows.Forms.TextBox TxtResult;
         private System.Windows.Forms.Label LblHV;
         private System.Windows.Forms.Label LblThreshold;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox TxtCount;
         public System.Windows.Forms.TextBox TxtHV;
         private System.Windows.Forms.Label LblCount;
         private System.Windows.Forms.DataGridView DgvInformation;
@@ -402,7 +412,7 @@
         private System.Windows.Forms.Label LblSFR;
         private System.Windows.Forms.Button BtnCalibrate;
         private System.Windows.Forms.Button BtnSet;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CmbNuclideSelect;
         public System.Windows.Forms.TextBox Txtβ;
         public System.Windows.Forms.TextBox Txtα;
         private System.Windows.Forms.Label Lblβ;

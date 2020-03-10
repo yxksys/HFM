@@ -24,14 +24,14 @@ namespace HFM.Components
         public struct ColorStatus
         {
             public static Color CORLOR_NORMAL = Color.FromArgb(128, 255, 128);//绿色
-            public static Color COLOC_PINGBI = Color.FromArgb(64, 64, 64);
+            public static Color COLOC_PINGBI = Color.FromArgb(64,64,64);
             public static Color COLOR_STATUS = Color.Lime;
             public static Color COLOR_STOP = Color.Gray;
             public static Color CORLOR_ERROR = Color.Orange;
             public static Color COLOR_ALARM_1 = Color.Orange;
             public static Color COLOR_ALARM_2 = Color.Red;
             public static Color COLOR_SYSTEM = SystemColors.Control;
-        }
+        } 
         public struct ErrorRange
         {
             public static double HV_ERROR = 0.2;
@@ -47,6 +47,6 @@ namespace HFM.Components
 
         }
         #endregion
-
+        
     }
 }

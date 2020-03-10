@@ -43,7 +43,7 @@ namespace HFM.Components
         private string _alphaNuclideUser;//α核素选择
         private string _betaNuclideUser;//β核素选择
         private string _clothesNucliderUser;//C（衣物探头）核素选择
-
+        
 
         public int AlphaNuclide { get => _alphaNuclide; set => _alphaNuclide = value; }
         public int BetaNuclide { get => _betaNuclide; set => _betaNuclide = value; }
@@ -131,7 +131,7 @@ namespace HFM.Components
             string nuclide = "";
             //从数据库中查询当前β核素信息数据
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_NUCLIDE))
-            {
+            {                
                 while (reader.Read())
                 {
                     nuclide = Convert.ToString(reader["BetaNuclideUser"]);
@@ -160,7 +160,7 @@ namespace HFM.Components
             }
             return nuclide;
         }
-
+        
         /// <summary>
         /// 设置当前α核素选择，将数据库HFM_MainPreference中的
         /// AlphaNuclideUser字段按照参数alphaNuclideUser进行设置

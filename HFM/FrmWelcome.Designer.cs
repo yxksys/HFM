@@ -1,4 +1,4 @@
-﻿namespace HFM.Components
+﻿namespace HFM
 {
     partial class FrmWelcome
     {
@@ -31,6 +31,14 @@
             this.BtnTestRorW = new System.Windows.Forms.Button();
             this.BtnCommport = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.hv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alpha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alphacnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.beta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.betacnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,17 +65,79 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hv,
+            this.alpha,
+            this.alphacnt,
+            this.beta,
+            this.betacnt,
+            this.start});
             this.dataGridView1.Location = new System.Drawing.Point(258, 30);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(597, 293);
+            this.dataGridView1.Size = new System.Drawing.Size(678, 293);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // hv
+            // 
+            this.hv.HeaderText = "hv";
+            this.hv.Name = "hv";
+            this.hv.ReadOnly = true;
+            // 
+            // alpha
+            // 
+            this.alpha.HeaderText = "alpha";
+            this.alpha.Name = "alpha";
+            this.alpha.ReadOnly = true;
+            // 
+            // alphacnt
+            // 
+            this.alphacnt.HeaderText = "alphacnt";
+            this.alphacnt.Name = "alphacnt";
+            this.alphacnt.ReadOnly = true;
+            // 
+            // beta
+            // 
+            this.beta.HeaderText = "beta";
+            this.beta.Name = "beta";
+            this.beta.ReadOnly = true;
+            // 
+            // betacnt
+            // 
+            this.betacnt.HeaderText = "betacnt";
+            this.betacnt.Name = "betacnt";
+            this.betacnt.ReadOnly = true;
+            // 
+            // start
+            // 
+            this.start.HeaderText = "start";
+            this.start.Name = "start";
+            this.start.ReadOnly = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(135, 153);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(135, 222);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 393);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BtnCommport);
             this.Controls.Add(this.BtnTestRorW);
@@ -75,6 +145,7 @@
             this.Text = "FrmWelcome";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -83,5 +154,13 @@
         private System.Windows.Forms.Button BtnTestRorW;
         private System.Windows.Forms.Button BtnCommport;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alpha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alphacnt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn beta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn betacnt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn start;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

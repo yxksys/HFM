@@ -107,7 +107,7 @@ namespace HFM.Components
         /// <param name="smoothingFactor">平滑因子</param>
         /// <param name="isDoubleProbe">手部是否双探测器：bool值</param>
         /// <param name="deviceAddress">设备地址</param>
-        public FactoryParameter(string instrumentNum, string softName, string ipAddress, string portNumber, bool isConnectedAuto, string measureType, float smoothingFactor, bool isDoubleProbe, string deviceAddress)
+        public FactoryParameter(string instrumentNum, string softName, string ipAddress, string portNumber, bool isConnectedAuto, string measureType, float smoothingFactor, bool isDoubleProbe,string deviceAddress)
         {
             this._instrumentNum = instrumentNum;
             this._softName = softName;
@@ -178,7 +178,7 @@ namespace HFM.Components
             parms[7].Value = factoryParameter.IsDoubleProbe;
             parms[8].Value = factoryParameter.DeviceAddress.ToString();
             //执行更新语句
-            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE, parms) != 0)
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE,parms) != 0)
             {
                 return true;
             }
