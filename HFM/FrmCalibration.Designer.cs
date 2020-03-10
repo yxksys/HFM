@@ -60,6 +60,7 @@
             this.LblMeasuringTime = new System.Windows.Forms.Label();
             this.LblChannelSelection = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
+            this.Lbl__ = new System.Windows.Forms.Label();
             this.TabCalibration.SuspendLayout();
             this.TabpageCalibration.SuspendLayout();
             this.GrpCalibration.SuspendLayout();
@@ -75,7 +76,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(809, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(860, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -84,13 +85,14 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(801, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(852, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             this.TabpageCalibration.UseVisualStyleBackColor = true;
             // 
             // GrpCalibration
             // 
+            this.GrpCalibration.Controls.Add(this.Lbl__);
             this.GrpCalibration.Controls.Add(this.DgvInformation);
             this.GrpCalibration.Controls.Add(this.TxtSFR);
             this.GrpCalibration.Controls.Add(this.LblSFR);
@@ -153,7 +155,7 @@
             // 
             // Area
             // 
-            this.Area.HeaderText = "面积";
+            this.Area.HeaderText = "面积(cm2)";
             this.Area.Name = "Area";
             this.Area.ReadOnly = true;
             // 
@@ -183,6 +185,7 @@
             this.TxtSFR.Size = new System.Drawing.Size(96, 26);
             this.TxtSFR.TabIndex = 20;
             this.TxtSFR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtSFR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSFR_KeyPress);
             // 
             // LblSFR
             // 
@@ -201,6 +204,7 @@
             this.BtnCalibrate.TabIndex = 18;
             this.BtnCalibrate.Text = "刻度";
             this.BtnCalibrate.UseVisualStyleBackColor = true;
+            this.BtnCalibrate.Click += new System.EventHandler(this.BtnCalibrate_Click);
             // 
             // BtnSet
             // 
@@ -210,6 +214,7 @@
             this.BtnSet.TabIndex = 17;
             this.BtnSet.Text = "设置";
             this.BtnSet.UseVisualStyleBackColor = true;
+            this.BtnSet.Click += new System.EventHandler(this.BtnSet_Click);
             // 
             // CmbNuclideSelect
             // 
@@ -229,6 +234,7 @@
             this.Txtβ.Size = new System.Drawing.Size(42, 26);
             this.Txtβ.TabIndex = 15;
             this.Txtβ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Txtβ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtβ_KeyPress);
             // 
             // Txtα
             // 
@@ -237,6 +243,7 @@
             this.Txtα.Size = new System.Drawing.Size(42, 26);
             this.Txtα.TabIndex = 14;
             this.Txtα.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Txtα.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtα_KeyPress);
             // 
             // Lblβ
             // 
@@ -282,6 +289,7 @@
             this.TxtCount.TabIndex = 9;
             this.TxtCount.Text = "1";
             this.TxtCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCount_KeyPress);
             // 
             // TxtHV
             // 
@@ -290,6 +298,7 @@
             this.TxtHV.Size = new System.Drawing.Size(54, 26);
             this.TxtHV.TabIndex = 8;
             this.TxtHV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtHV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtHV_KeyPress);
             // 
             // LblCount
             // 
@@ -324,6 +333,7 @@
             this.TxtMeasuringTime.TabIndex = 4;
             this.TxtMeasuringTime.Text = "5";
             this.TxtMeasuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtMeasuringTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMeasuringTime_KeyPress);
             // 
             // CmbChannelSelection
             // 
@@ -368,12 +378,20 @@
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
             // 
+            // Lbl__
+            // 
+            this.Lbl__.AutoSize = true;
+            this.Lbl__.Location = new System.Drawing.Point(37, 143);
+            this.Lbl__.Name = "Lbl__";
+            this.Lbl__.Size = new System.Drawing.Size(0, 20);
+            this.Lbl__.TabIndex = 22;
+            // 
             // FrmCalibration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(826, 722);
+            this.ClientSize = new System.Drawing.Size(877, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
@@ -415,12 +433,13 @@
         private System.Windows.Forms.Label Lblβ;
         private System.Windows.Forms.Label Lblα;
         private System.Windows.Forms.Label LblNuclide;
+        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Channel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Area;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
         private System.Windows.Forms.DataGridViewTextBoxColumn HV;
-        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
+        private System.Windows.Forms.Label Lbl__;
     }
 }
