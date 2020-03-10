@@ -123,24 +123,24 @@ namespace HFM.Components
         /// <returns>返回系统参数对象</returns>
         public SystemParameter GetParameter()
         {
-            SystemParameter systemParameter = new SystemParameter();
+            //SystemParameter systemParameter = new SystemParameter();
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE))
             {
                 while (reader.Read())
                 {
-                    systemParameter.MeasurementUnit = Convert.ToString(reader["MeasurementUnit"].ToString());
-                    systemParameter.SelfCheckTime = Convert.ToInt32(reader["SelfCheckTime"].ToString() == "" ? "0" : reader["SelfCheckTime"].ToString());
-                    systemParameter.SmoothingTime = Convert.ToInt32(reader["SmoothingTime"].ToString() == "" ? "0" : reader["SmoothingTime"].ToString());
-                    systemParameter.MeasuringTime = Convert.ToInt32(reader["MeasuringTime"].ToString() == "" ? "0" : reader["MeasuringTime"].ToString());
-                    systemParameter.AlarmTime = Convert.ToInt32(reader["AlarmTime"].ToString() == "" ? "0" : reader["AlarmTime"].ToString());
-                    systemParameter.BkgUpdate = Convert.ToInt32(reader["BKGUpdate"].ToString() == "" ? "0" : reader["BKGUpdate"].ToString());
-                    systemParameter.ClothOfflineTime = Convert.ToInt32(reader["ClothOfflineTime"].ToString() == "" ? "0" : reader["ClothOfflineTime"].ToString());
-                    systemParameter.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    this.MeasurementUnit = Convert.ToString(reader["MeasurementUnit"].ToString());
+                    this.SelfCheckTime = Convert.ToInt32(reader["SelfCheckTime"].ToString() == "" ? "0" : reader["SelfCheckTime"].ToString());
+                    this.SmoothingTime = Convert.ToInt32(reader["SmoothingTime"].ToString() == "" ? "0" : reader["SmoothingTime"].ToString());
+                    this.MeasuringTime = Convert.ToInt32(reader["MeasuringTime"].ToString() == "" ? "0" : reader["MeasuringTime"].ToString());
+                    this.AlarmTime = Convert.ToInt32(reader["AlarmTime"].ToString() == "" ? "0" : reader["AlarmTime"].ToString());
+                    this.BkgUpdate = Convert.ToInt32(reader["BKGUpdate"].ToString() == "" ? "0" : reader["BKGUpdate"].ToString());
+                    this.ClothOfflineTime = Convert.ToInt32(reader["ClothOfflineTime"].ToString() == "" ? "0" : reader["ClothOfflineTime"].ToString());
+                    this.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
             }
-            return systemParameter;
+            return this;
         }
         /// <summary>
         /// 更新数据库中系统设置

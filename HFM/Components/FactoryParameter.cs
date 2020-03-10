@@ -127,26 +127,26 @@ namespace HFM.Components
         /// <returns>返回工厂参数对象</returns>
         public FactoryParameter GetParameter()
         {
-            FactoryParameter factoryParameter = new FactoryParameter();
+            //FactoryParameter factoryParameter = new FactoryParameter();
             //查询表部分字段信息
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE))
             {
                 while (reader.Read())
                 {
-                    factoryParameter.InstrumentNum = Convert.ToString(reader["InstrumentNum"].ToString());
-                    factoryParameter.SoftName = Convert.ToString(reader["SoftName"].ToString());
-                    factoryParameter.IpAddress = Convert.ToString(reader["IPAddress"].ToString());
-                    factoryParameter.PortNumber = Convert.ToString(reader["PortNumber"].ToString());
-                    factoryParameter.IsConnectedAuto = Convert.ToBoolean(reader["IsConnectedAuto"].ToString());
-                    factoryParameter.MeasureType = Convert.ToString(reader["MeasureType"].ToString());
-                    factoryParameter.SmoothingFactor = Convert.ToSingle(reader["SmoothingFactor"].ToString() == "" ? "0" : reader["SmoothingFactor"].ToString());
-                    factoryParameter.IsDoubleProbe = Convert.ToBoolean(reader["IsDoubleProbe"].ToString());
-                    factoryParameter.DeviceAddress = Convert.ToString(reader["DeviceAddress"].ToString());
+                    this.InstrumentNum = Convert.ToString(reader["InstrumentNum"].ToString());
+                    this.SoftName = Convert.ToString(reader["SoftName"].ToString());
+                    this.IpAddress = Convert.ToString(reader["IPAddress"].ToString());
+                    this.PortNumber = Convert.ToString(reader["PortNumber"].ToString());
+                    this.IsConnectedAuto = Convert.ToBoolean(reader["IsConnectedAuto"].ToString());
+                    this.MeasureType = Convert.ToString(reader["MeasureType"].ToString());
+                    this.SmoothingFactor = Convert.ToSingle(reader["SmoothingFactor"].ToString() == "" ? "0" : reader["SmoothingFactor"].ToString());
+                    this.IsDoubleProbe = Convert.ToBoolean(reader["IsDoubleProbe"].ToString());
+                    this.DeviceAddress = Convert.ToString(reader["DeviceAddress"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
             }
-            return factoryParameter;
+            return this;
         }
         /// <summary>
         /// 更新数据库中工厂设置
