@@ -132,7 +132,7 @@ namespace HFM.Components
             parms[0].Value = errorData.ErrTime;
             parms[1].Value = errorData.Record.ToString();
             parms[2].Value = errorData.IsEnglish;
-            if (DbHelperAccess.ExecuteSql(SQL_INSERT_ERRORDATA,parms) != 0)
+            if (DbHelperAccess.ExecuteSql(SQL_INSERT_ERRORDATA, parms) != 0)
             {
                 return true;
             }
@@ -141,7 +141,7 @@ namespace HFM.Components
                 return false;
             }
         }
-        
+
         #endregion
 
 

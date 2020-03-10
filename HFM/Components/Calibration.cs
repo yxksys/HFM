@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using System.Data.OleDb;  
+using System.Data.OleDb;
 
 namespace HFM.Components
 {
@@ -26,21 +26,21 @@ namespace HFM.Components
                                                       "Threshold,Efficiency,MDA,AlphaBetaPercent," +
                                                       "ChannelName,ChannelName_English,ProbeArea,Status,IsEnabled " +
                                                       "FROM HFM_Calibration a " +
-                                                      "INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID";            
-       private const string SQL_SELECT_CALIBRATION_BY_CHANNELID = "SELECT CalibrationID,CalibrationTime,a.ChannelID,HighVoltage," +
-                                                      "Threshold,Efficiency,MDA,AlphaBetaPercent," +
-                                                      "ChannelName,ChannelName_English,ProbeArea,Status,IsEnabled " +
-                                                      "FROM HFM_Calibration a " +
-                                                      "INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID " +
-                                                      "WHERE a.ChannelID=@ChannelID";
+                                                      "INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID";
+        private const string SQL_SELECT_CALIBRATION_BY_CHANNELID = "SELECT CalibrationID,CalibrationTime,a.ChannelID,HighVoltage," +
+                                                       "Threshold,Efficiency,MDA,AlphaBetaPercent," +
+                                                       "ChannelName,ChannelName_English,ProbeArea,Status,IsEnabled " +
+                                                       "FROM HFM_Calibration a " +
+                                                       "INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID " +
+                                                       "WHERE a.ChannelID=@ChannelID";
 
         private const string SQL_INSERT_CALIBRATION = "INSERT INTO HFM_Calibration(CalibrationTime,ChannelID,HighVoltage," +
                                                       "Threshold,Efficiency,MDA,AlphaBetaPercent)" +
-                                                      " VALUES(@CalibrationTime,@ChannelID,@HighVoltage,@Threshold,@Efficiency,@MDA,@AlphaBetaPercent)";                                                     
+                                                      " VALUES(@CalibrationTime,@ChannelID,@HighVoltage,@Threshold,@Efficiency,@MDA,@AlphaBetaPercent)";
         #region 构造函数
         public Calibration()
         { }
-        public Calibration(DateTime calibrationTime,int channelID,float highVoltage,float threshold,float efficiency,float mDA,float alphaBetaPercent)
+        public Calibration(DateTime calibrationTime, int channelID, float highVoltage, float threshold, float efficiency, float mDA, float alphaBetaPercent)
         {
             this._calibrationTime = calibrationTime;
             //根据
@@ -207,7 +207,7 @@ namespace HFM.Components
         {
             //构造查询参数
             OleDbParameter[] parms = new OleDbParameter[]
-            {                
+            {
                 new OleDbParameter("@CalibrationTime",OleDbType.Date,8),
                 new OleDbParameter("@ChannelID",OleDbType.Integer,4),
                 new OleDbParameter("@HighVoltage",OleDbType.VarChar,255),
@@ -223,7 +223,7 @@ namespace HFM.Components
             parms[4].Value = calibration.Efficiency.ToString();
             parms[5].Value = calibration.MDA.ToString();
             parms[6].Value = calibration.AlphaBetaPercent.ToString();
-            if(DbHelperAccess.ExecuteSql(SQL_INSERT_CALIBRATION,parms)!=0)
+            if (DbHelperAccess.ExecuteSql(SQL_INSERT_CALIBRATION, parms) != 0)
             {
                 return true;
             }
