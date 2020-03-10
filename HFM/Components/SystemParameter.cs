@@ -31,7 +31,7 @@ namespace HFM.Components
         private const string SQL_UPDATE_MAINPREFERENCE = "UPDATE HFM_MainPreference " +
                                                         "SET  MeasurementUnit=@MeasurementUnit, SelfCheckTime=@SelfCheckTime," +
                                                         " SmoothingTime=@SmoothingTime, MeasuringTime=@MeasuringTime, AlarmTime=@AlarmTime," +
-                                                        " BKGUpdate='@BKGUpdate', ClothOfflineTime=@ClothOfflineTime, IsEnglish=@IsEnglish";
+                                                        " BKGUpdate=@BKGUpdate, ClothOfflineTime=@ClothOfflineTime, IsEnglish=@IsEnglish";
         #endregion
 
         #region 属性
@@ -146,7 +146,7 @@ namespace HFM.Components
                 new OleDbParameter("SelfCheckTime",OleDbType.VarChar,255),
                 new OleDbParameter("SmoothingTime",OleDbType.VarChar,255),
                 new OleDbParameter("MeasuringTime",OleDbType.VarChar,255),
-                new OleDbParameter("AlarmTime",OleDbType.Boolean),
+                new OleDbParameter("AlarmTime",OleDbType.VarChar,255),
                 new OleDbParameter("BkgUpdate",OleDbType.VarChar,255),
                 new OleDbParameter("ClothOfflineTime",OleDbType.VarChar,255),
                 new OleDbParameter("IsEnglish",OleDbType.Boolean)
@@ -155,7 +155,7 @@ namespace HFM.Components
             parms[1].Value = systemParameter.SelfCheckTime.ToString();
             parms[2].Value = systemParameter.SmoothingTime.ToString();
             parms[3].Value = systemParameter.MeasuringTime.ToString();
-            parms[4].Value = systemParameter.AlarmTime;
+            parms[4].Value = systemParameter.AlarmTime.ToString();
             parms[5].Value = systemParameter.BkgUpdate.ToString();
             parms[6].Value = systemParameter.ClothOfflineTime.ToString();
             parms[7].Value = systemParameter.IsEnglish;

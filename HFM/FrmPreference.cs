@@ -69,7 +69,7 @@ namespace HFM.Components
         private void FrmPreference_Load(object sender, EventArgs e)
         {
             //线程支持异步取消
-            backgroundWorker_Preference.WorkerSupportsCancellation = true;
+            backgroundWorker_Preference.WorkerSupportsCancellation = false;
 
             GetProferenceData();
             GetAlphaData();
@@ -112,8 +112,8 @@ namespace HFM.Components
         /// </summary>
         private void GetProferenceData()
         {
-            system = system.GetParameter();//获得自检时间、单位等参数
-            factoryParameter = factoryParameter.GetParameter();//获得仪器设备信息参数
+            system = new SystemParameter().GetParameter();//获得自检时间、单位等参数
+            factoryParameter = new FactoryParameter().GetParameter();//获得仪器设备信息参数
 
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得探测面积参数
             probeParameters = probeParameter.GetParameter();
@@ -674,12 +674,6 @@ namespace HFM.Components
             {
                 if (receiveBufferMessage[0] == Convert.ToByte('P'))
                 {
-                    //清除所有行(因为每次切换页面都会增加相应的行)
-                    for (int i = 0; i < DgvMainPreferenceSet.Rows.Count; i++)
-                    {
-                        DgvMainPreferenceSet.Rows.Remove(DgvMainPreferenceSet.Rows[i]);
-                        i--;
-                    }
                     IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
                     //解析报文
                     channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
@@ -744,7 +738,81 @@ namespace HFM.Components
         /// <param name="e"></param>
         private void BtnPreferenceOk_Click(object sender, EventArgs e)
         {
+            #region 系统参数
+            //首先获得默认参数,通过对原始数据赋值来实现更新
+            SystemParameter system = new SystemParameter();
+            system = system.GetParameter();
+            system.SelfCheckTime = int.Parse(TxtSelfCheckTime.Text);
 
+            system.SmoothingTime = Convert.ToInt32(TxtSmoothingTime.Text);//ok
+
+            system.MeasuringTime = int.Parse(TxtMeasuringTime.Text);
+            system.MeasurementUnit = CmbMeasurementUnit.Text;
+            system.AlarmTime = int.Parse(TxtAlarmTime.Text);
+            system.BkgUpdate = int.Parse(TxtBKGUpdate.Text);
+            #endregion
+
+            #region 探测面积
+            IList<Channel> channels = new Channel().GetChannel();//获得探测面积参数
+            IList<TextBox> a = new List<TextBox>(7);//channel测量面积数组
+            a.Add(TxtLeftInProbeArea);
+            a.Add(TxtLeftOutProbeArea);
+            a.Add(TxtRightInProbeArea);
+            a.Add(TxtRightOutProbeArea);
+            a.Add(TxtLeftFootProbeArea);
+            a.Add(TxtRightFootProbeArea);
+            a.Add(TxtCloseProbeArea);
+            for (int i = 0; i < a.Count; i++)
+            {
+                //写入已启用设备面积
+                if (a[i].Enabled)
+                {
+                    //根据通道id修改数据
+                    for (int j = 0; j < channels.Count; j++)
+                    {
+                        if (channels[j].ChannelID == i+1)
+                        {
+                            channels[j].ProbeArea = Convert.ToSingle(a[i].Text);
+                        }
+                    }
+                    
+                }
+            }
+            #endregion
+
+            #region 工厂参数
+            FactoryParameter factoryParameter = new FactoryParameter().GetParameter();
+            //factoryParameter = factoryParameter.GetParameter();//获得仪器设备信息参数
+            factoryParameter.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
+            factoryParameter.InstrumentNum = TxtInstrumentNum.Text;
+            factoryParameter.SoftName = TxtSoftName.Text;
+            factoryParameter.PortNumber = TxtPortNumber.Text;
+            factoryParameter.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+            factoryParameter.MeasureType = CmbUnclideType.Text;
+            factoryParameter.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
+                                         + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
+            #endregion
+
+            #region 存储数据库
+            for (int i = 0; i < channels.Count; i++)
+            {
+                if (new Channel().SetProbeAreaByID(channels[i].ChannelID,channels[i].ProbeArea))
+                {
+                }
+                else
+                {
+                    MessageBox.Show("失败");
+                    return;
+                }
+            }
+            if (true)
+            {
+                new SystemParameter().SetParameter(system);
+                new FactoryParameter().SetParameter(factoryParameter);
+                MessageBox.Show("ok");
+            }
+            
+            #endregion
         }
         /// <summary>
         /// 取消
@@ -753,7 +821,8 @@ namespace HFM.Components
         /// <param name="e"></param>
         private void BtnPreferenceNo_Click(object sender, EventArgs e)
         {
-
+            //重新获得数据库数据
+            GetProferenceData();
         }
 
         #endregion
@@ -852,7 +921,7 @@ namespace HFM.Components
         /// <param name="e"></param>
         private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
         {
-
+                    
         }
         /// <summary>
         /// 写参数
