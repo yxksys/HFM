@@ -167,6 +167,15 @@ namespace HFM.Components
 
         }
         /// <summary>
+        /// 根据通道ID查询该通道的道盒参数
+        /// </summary>
+        /// <param name="channelID">通道ID</param>
+        /// <returns>道盒参数</returns>
+        public ChannelParameter GetParameter(int channelID)
+        {
+            return null;
+        }
+        /// <summary>
         /// 根据参数对象channelParameter的通道ID，设置道盒参数
         /// </summary>
         /// <param name="channelParameter"></param>

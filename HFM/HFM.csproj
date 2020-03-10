@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -70,6 +73,12 @@
     <Compile Include="FrmCalibration.Designer.cs">
       <DependentUpon>FrmCalibration.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMeasureMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMeasureMain.Designer.cs">
+      <DependentUpon>FrmMeasureMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTestHardware.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +107,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmCalibration.resx">
       <DependentUpon>FrmCalibration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeasureMain.resx">
+      <DependentUpon>FrmMeasureMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTestHardware.resx">
       <DependentUpon>FrmTestHardware.cs</DependentUpon>
@@ -141,6 +153,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="app.ico" />
     <Content Include="Audio\Chinese_One.wav" />
     <Content Include="Audio\Chinese_Ten.wav" />
     <Content Include="Audio\Chinese_Two.wav" />
@@ -196,19 +209,15 @@
     <Content Include="Audio\Chinese_No Contamination_please_leave.wav" />
     <Content Include="Audio\Chinese_Decontaminate_please.wav" />
     <Content Include="Images\app.ico" />
-    <Content Include="Images\longin.png" />
-    <Content Include="Images\point1.png" />
-    <Content Include="Images\point11.png" />
-    <Content Include="Images\point12.png" />
-    <Content Include="Images\point13.png" />
-    <Content Include="Images\point14.png" />
-    <Content Include="Images\point15.png" />
-    <Content Include="Images\point16.png" />
-    <Content Include="Images\point2.png" />
-    <Content Include="Images\point3.png" />
-    <Content Include="Images\point4.png" />
-    <Content Include="Images\point5.png" />
-    <Content Include="Images\point6.png" />
+    <Content Include="Images\clothes.png" />
+    <Content Include="Images\LF.png" />
+    <Content Include="Images\LHB.png" />
+    <Content Include="Images\LHP.png" />
+    <Content Include="Images\logo.ico" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\RF.png" />
+    <Content Include="Images\RHB.png" />
+    <Content Include="Images\RHP.png" />
     <Content Include="Images\welcome.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

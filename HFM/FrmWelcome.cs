@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -166,6 +167,34 @@ namespace HFM
                 }
             }
            
+        }
+        [DllImport("kernel32", CharSet = CharSet.Ansi)]
+        private static extern bool SetSystemTime(ref SYSTEMTIME t);
+        
+        [StructLayout(LayoutKind.Sequential)]
+        struct SYSTEMTIME
+        {
+            public short Year;
+            public short Month;
+            public short DayofWeek;
+            public short Day;
+            public short Hour;
+            public short Minute;
+            public short Second;
+            public short MiliSecond;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            short time = 13;
+            SYSTEMTIME t = new SYSTEMTIME();
+            t.Year = 2020;
+            t.Month = 3;
+            t.Day = 6;
+            t.Hour =(short)(time - 8)<=0? (short)(time - 8+24): (short)(time - 8);
+            t.Minute = 35;
+            t.Second = 0;
+            t.MiliSecond = 20;
+            bool v = SetSystemTime(ref t);
         }
     }
 }

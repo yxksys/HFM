@@ -246,39 +246,42 @@ namespace HFM.Components
             parms[1].Value = _nuclideType;
 
             //从数据库中查询全部刻度操作记录并赋值给probeparameter
-            OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECCT_PROBERPARAMETER_BY_CHANNELID_ADN_NUCLIDETYPE, parms);
-            while (reader.Read())//读查询结果
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECCT_PROBERPARAMETER_BY_CHANNELID_ADN_NUCLIDETYPE, parms))
             {
-                //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
-                //解决ProbeArea类型转换问题，若为空则不能直接转换为float
-                string ProbeArea = Convert.ToString(reader["ProbeArea"]);
-                float probeArea;
-                if (ProbeArea == "")
+                while (reader.Read())//读查询结果
                 {
-                    probeArea = 0.0f;
-                }
-                else
-                {
-                    probeArea = float.Parse(ProbeArea);
-                }
-                Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
-                                               Convert.ToString(reader["ChannelName_English"]), probeArea,
-                                               Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
-                //根据读出的查询结构构造ProbeParameter对象
-                
-                probeParameter.PreferenceID = Convert.ToInt32(reader["PreferenceID"].ToString());
-                probeParameter.ProbeType = Convert.ToString(reader["ProbeType"].ToString());
-                probeParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
-                probeParameter.ProbeChannel = channel;
-                probeParameter.HBackground = Convert.ToSingle(reader["HBackground"].ToString());
-                probeParameter.LBackground = Convert.ToSingle(reader["LBackground"].ToString());
-                probeParameter.Alarm_1 = Convert.ToSingle(reader["Alarm_1"].ToString());
-                probeParameter.Alarm_2 = Convert.ToSingle(reader["Alarm_2"].ToString());
-                probeParameter.Efficiency = Convert.ToSingle(reader["Efficiency"]);
+                    //根据查询结果即ChannelID对应的Channel信息，构造Channel对象
+                    //解决ProbeArea类型转换问题，若为空则不能直接转换为float
+                    string ProbeArea = Convert.ToString(reader["ProbeArea"]);
+                    float probeArea;
+                    if (ProbeArea == "")
+                    {
+                        probeArea = 0.0f;
+                    }
+                    else
+                    {
+                        probeArea = float.Parse(ProbeArea);
+                    }
+                    Channel channel = new Channel(Convert.ToInt32(reader["ChannelID"]), Convert.ToString(reader["ChannelName"]),
+                                                   Convert.ToString(reader["ChannelName_English"]), probeArea,
+                                                   Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
+                    //根据读出的查询结构构造ProbeParameter对象
 
+                    this.PreferenceID = Convert.ToInt32(reader["PreferenceID"].ToString());
+                    this.ProbeType = Convert.ToString(reader["ProbeType"].ToString());
+                    this.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
+                    this.ProbeChannel = channel;
+                    this.HBackground = Convert.ToSingle(reader["HBackground"].ToString());
+                    this.LBackground = Convert.ToSingle(reader["LBackground"].ToString());
+                    this.Alarm_1 = Convert.ToSingle(reader["Alarm_1"].ToString());
+                    this.Alarm_2 = Convert.ToSingle(reader["Alarm_2"].ToString());
+                    this.Efficiency = Convert.ToSingle(reader["Efficiency"]);
+
+                }
+                reader.Close();
+                DbHelperAccess.Close();
             }
-
-            return probeParameter;
+            return this;
         }
         #endregion
 

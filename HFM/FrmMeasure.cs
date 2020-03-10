@@ -25,6 +25,8 @@ namespace HFM
         //系统参数
         Components.SystemParameter systemParameter = new Components.SystemParameter();
         int checkTime = 0;
+        //报警时间长度
+        int alarmTime = 0;
         //当前可使用的检测通道
         IList<Channel> channelS = new List<Channel>();
         //运行状态枚举类型
@@ -39,6 +41,15 @@ namespace HFM
         }
         //运行状态标志
         PlatformState platformState;
+        //监测状态枚举
+        enum DeviceStatus
+        {
+            OperatingNormally = 1,
+            OperatingFaulted = 2,
+            OperatingContaminated = 4
+        }
+        //监测状态，用于生成向下位机发送当前设备监测状态报文
+        byte deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
         const int BASE_DATA= 1000;
         //存储各个通道最终计算检测值的List
         IList<MeasureData> calculatedMeasureDataS=new List<MeasureData>();
@@ -345,6 +356,8 @@ namespace HFM
                     string errRecord=BaseCheck();
                     if (errRecord == null)//自检通过
                     {
+                        //设备监测状态为正常
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         // 运行状态标志设置为“本底测量”
                         platformState = PlatformState.BackGrouneMeasure;
                         //启动本底测量计时 
@@ -358,10 +371,13 @@ namespace HFM
                     }
                     else
                     {
+                        //将设备监测状态设置为“故障”
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
                         //将故障信息errRecord写入数据库
                         //
                         //界面显示“仪器故障”同时进行语音提示
                         //
+                        //启动故障报警计时
                     }
                     return;
                 }
