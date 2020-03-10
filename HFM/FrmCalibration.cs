@@ -518,8 +518,6 @@ namespace HFM
             int errNumber = 0; //报文接收出现错误计数器
             byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
             IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                        
-            bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
-            string pollutionRecord = null;//记录测量污染详细数据
             if (e.UserState is byte[])
             {
                 receiveBufferMessage = (byte[])e.UserState;
@@ -655,14 +653,20 @@ namespace HFM
                             (p * (betaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount)) +
                                   betaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount) * 2)) +
                              (0.005f * betaNB)) / (effBeta / 2) / Convert.ToInt16(TxtSFR);
-
+                        //Alpha探测下限
+                        alphaMDER =
+                            (p * (alphaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount)) +
+                                  alphaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount) * 2)) +
+                             (0.005f * betaNB)) / (effBeta / 2) / Convert.ToInt16(TxtSFR);
+                        resultMDER = effAlpha > effBeta ? alphaMDER : betaMDER;//探测下限取值和效率一样的
 
                         //挂起线程
                         bkWorkerReceiveData.CancelAsync();
                        
                     }
                 }
-                
+
+                TxtResult.Text = @"";
                 Lbl__.Text = measuringTime.ToString();
                 
                 

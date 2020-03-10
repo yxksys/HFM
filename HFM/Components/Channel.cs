@@ -45,6 +45,9 @@ namespace HFM.Components
         private const string SQL_UPDATE_CHANNEL_BY_CHANNELID = "UPDATE  HFM_DIC_Channel " +
                                                                "SET IsEnabled = @IsEnabled " +
                                                                "WHERE (ChannelID = @ChannelID)";
+        //按通道ChannelID更新探测面积
+        private const string SQL_UPDATE_PROBEAREA_BY_CHANNELID = "UPDATE HFM_DIC_Channel SET ProbeArea = @ProbeArea" +
+                                                                 " WHERE ChannelID = @ChannelID";
         #endregion
 
         #region 属性
@@ -361,6 +364,34 @@ namespace HFM.Components
                     return false;
                 }
             
+        }
+        #endregion
+
+        #region 根据通道ID设置探测面积
+        /// <summary>
+        /// 根据通道ID设置探测面积
+        /// </summary>
+        /// <param name="channelID"></param>
+        /// <param name="ProbeArea"></param>
+        /// <returns></returns>
+        public bool SetProbeAreaByID(int channelID, float ProbeArea)
+        {
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@ProbeArea",OleDbType.Single),
+                new OleDbParameter("@ChannelID",OleDbType.Integer)
+            };
+            parms[0].Value = ProbeArea;
+            parms[1].Value = channelID;
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_PROBEAREA_BY_CHANNELID, parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
     }
