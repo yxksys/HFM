@@ -21,8 +21,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Collections;
+using HFM.Components;
 
-namespace HFM.Components
+
+namespace HFM
 {
     public partial class FrmPreference : Form
     {
@@ -42,7 +44,7 @@ namespace HFM.Components
 
         //运行参数设置
         private ChannelParameter channelParameter = new ChannelParameter();//道盒信息(α阈值等)
-        private SystemParameter system = new SystemParameter();//(自检时间、单位等)
+        private HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();//(自检时间、单位等)
         private FactoryParameter factoryParameter = new FactoryParameter();//仪器设备信息(IP地址、软件名称、是否双手探测器等)
         private ProbeParameter probeParameter = new ProbeParameter();//系统参数(各类型的本底上限等参数)
         private Nuclide nuclide = new Nuclide();//核素选择(U_235等)
@@ -112,7 +114,7 @@ namespace HFM.Components
         /// </summary>
         private void GetProferenceData()
         {
-            system = new SystemParameter().GetParameter();//获得自检时间、单位等参数
+            system = new HFM.Components.SystemParameter().GetParameter();//获得自检时间、单位等参数
             factoryParameter.GetParameter();//获得仪器设备信息参数
 
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得探测面积参数
@@ -611,7 +613,7 @@ namespace HFM.Components
                         //添加数据对象到列表
                         setChannelParameters.Add(channelParameter);
                         //生成报文
-                        buffMessage = Message.BuildMessage(setChannelParameters);
+                        buffMessage = HFM.Components.Message.BuildMessage(setChannelParameters);
                         //成功则关闭线程
                         if (Components.Message.SendMessage(buffMessage, commPort) == true)
                         {
@@ -676,7 +678,7 @@ namespace HFM.Components
                 {
                     IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
                     //解析报文
-                    channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
+                    channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
                     foreach (var itemParameter in channelParameters)
                     {
                         //显示内容
@@ -740,7 +742,7 @@ namespace HFM.Components
         {
             #region 系统参数
             //首先获得默认参数,通过对原始数据赋值来实现更新
-            SystemParameter system = new SystemParameter();
+            HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();
             system = system.GetParameter();
             system.SelfCheckTime = int.Parse(TxtSelfCheckTime.Text);
 
@@ -807,7 +809,7 @@ namespace HFM.Components
             }
             if (true)
             {
-                new SystemParameter().SetParameter(system);
+                new HFM.Components.SystemParameter().SetParameter(system);
                 new FactoryParameter().SetParameter(factoryParameter);
                 MessageBox.Show("ok");
             }

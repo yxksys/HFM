@@ -1,4 +1,4 @@
-﻿namespace HFM.Components
+﻿namespace HFM
 {
     partial class FrmPreference
     {
