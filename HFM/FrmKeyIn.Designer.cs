@@ -41,7 +41,7 @@
             this.BtnDot = new System.Windows.Forms.Button();
             this.BtnEnter = new System.Windows.Forms.Button();
             this.BtnBackspace = new System.Windows.Forms.Button();
-            this.label_zifuxianshi = new System.Windows.Forms.Label();
+            this.LblLetter = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnOne
@@ -176,6 +176,7 @@
             this.BtnEnter.Size = new System.Drawing.Size(65, 124);
             this.BtnEnter.TabIndex = 0;
             this.BtnEnter.Text = "Enter";
+            this.BtnEnter.Click += new System.EventHandler(this.BtnEnter_Click);
             // 
             // BtnBackspace
             // 
@@ -187,26 +188,27 @@
             this.BtnBackspace.TabIndex = 1;
             this.BtnBackspace.Text = "Backspace";
             this.BtnBackspace.UseVisualStyleBackColor = true;
+            this.BtnBackspace.Click += new System.EventHandler(this.BtnBackspace_Click);
             // 
-            // label_zifuxianshi
+            // LblLetter
             // 
-            this.label_zifuxianshi.AutoSize = true;
-            this.label_zifuxianshi.BackColor = System.Drawing.Color.Black;
-            this.label_zifuxianshi.Font = new System.Drawing.Font("宋体", 200.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_zifuxianshi.ForeColor = System.Drawing.Color.Transparent;
-            this.label_zifuxianshi.Location = new System.Drawing.Point(12, 9);
-            this.label_zifuxianshi.Name = "label_zifuxianshi";
-            this.label_zifuxianshi.Size = new System.Drawing.Size(247, 267);
-            this.label_zifuxianshi.TabIndex = 3;
-            this.label_zifuxianshi.Text = "A";
-            this.label_zifuxianshi.Visible = false;
+            this.LblLetter.AutoSize = true;
+            this.LblLetter.BackColor = System.Drawing.Color.Black;
+            this.LblLetter.Font = new System.Drawing.Font("宋体", 200.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLetter.ForeColor = System.Drawing.Color.Transparent;
+            this.LblLetter.Location = new System.Drawing.Point(12, 9);
+            this.LblLetter.Name = "LblLetter";
+            this.LblLetter.Size = new System.Drawing.Size(247, 267);
+            this.LblLetter.TabIndex = 3;
+            this.LblLetter.Text = "A";
+            this.LblLetter.Visible = false;
             // 
             // FrmKeyIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(276, 310);
-            this.Controls.Add(this.label_zifuxianshi);
+            this.Controls.Add(this.LblLetter);
             this.Controls.Add(this.BtnBackspace);
             this.Controls.Add(this.BtnEnter);
             this.Controls.Add(this.BtnDot);
@@ -230,6 +232,7 @@
             this.Name = "FrmKeyIn";
             this.Text = "Keyboard";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FrmKeyIn_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,6 +253,6 @@
         private System.Windows.Forms.Button BtnDot;
         private System.Windows.Forms.Button BtnEnter;
         private System.Windows.Forms.Button BtnBackspace;
-        private System.Windows.Forms.Label label_zifuxianshi;
+        private System.Windows.Forms.Label LblLetter;
     }
 }

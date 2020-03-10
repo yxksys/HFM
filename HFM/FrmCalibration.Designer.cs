@@ -31,6 +31,7 @@
             this.TabCalibration = new System.Windows.Forms.TabControl();
             this.TabpageCalibration = new System.Windows.Forms.TabPage();
             this.GrpCalibration = new System.Windows.Forms.GroupBox();
+            this.Lbl__ = new System.Windows.Forms.Label();
             this.DgvInformation = new System.Windows.Forms.DataGridView();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Channel = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +61,6 @@
             this.LblMeasuringTime = new System.Windows.Forms.Label();
             this.LblChannelSelection = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
-            this.Lbl__ = new System.Windows.Forms.Label();
             this.TabCalibration.SuspendLayout();
             this.TabpageCalibration.SuspendLayout();
             this.GrpCalibration.SuspendLayout();
@@ -120,6 +120,14 @@
             this.GrpCalibration.Size = new System.Drawing.Size(760, 859);
             this.GrpCalibration.TabIndex = 0;
             this.GrpCalibration.TabStop = false;
+            // 
+            // Lbl__
+            // 
+            this.Lbl__.AutoSize = true;
+            this.Lbl__.Location = new System.Drawing.Point(37, 143);
+            this.Lbl__.Name = "Lbl__";
+            this.Lbl__.Size = new System.Drawing.Size(0, 20);
+            this.Lbl__.TabIndex = 22;
             // 
             // DgvInformation
             // 
@@ -377,14 +385,6 @@
             // 
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
-            // 
-            // Lbl__
-            // 
-            this.Lbl__.AutoSize = true;
-            this.Lbl__.Location = new System.Drawing.Point(37, 143);
-            this.Lbl__.Name = "Lbl__";
-            this.Lbl__.Size = new System.Drawing.Size(0, 20);
-            this.Lbl__.TabIndex = 22;
             // 
             // FrmCalibration
             // 
