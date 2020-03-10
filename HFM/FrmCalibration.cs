@@ -508,6 +508,10 @@ namespace HFM
         /// 单位时间内单次平均数组
         /// </summary>
         private string[] addInformation = new string[6];
+        /// <summary>
+        /// 探测器是否合格
+        /// </summary>
+        private string isStandardize; 
 
         #endregion
         #region ProgressChanged
@@ -608,8 +612,8 @@ namespace HFM
 
                     if (measuringCount==0)
                     {
-                        alphaNB = alphacnt / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount));//本底总计数的平均值
-                        betaNB = betacnt / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount));//本地总计数的平均值
+                        alphaNB = alphacnt / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount.Text));//本底总计数的平均值
+                        betaNB = betacnt / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount.Text ));//本地总计数的平均值
                         alphacnt = 0;//类型内计数清零
                         betacnt = 0;//类型内计数清零
                         measuringTime = Convert.ToInt16(TxtMeasuringTime.Text);//恢复时间为填写时间
@@ -623,7 +627,8 @@ namespace HFM
                         }
                     }
                 }
-                else
+
+                if (sclaeState==true)
                 {
                     addInformation[0] = "带源测量";
                     addInformation[1] = CmbChannelSelection.Text;
@@ -643,30 +648,40 @@ namespace HFM
 
                     if (measuringCount == 0)
                     {
-                        alphaNR = alphacnt / (Convert.ToInt16(TxtMeasuringTime.Text)*Convert.ToInt16(TxtCount));//带源总计数的平均值
-                        betaNR = betacnt / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount));//带源总计数的平均值
+                        alphaNR = alphacnt / (Convert.ToInt16(TxtMeasuringTime.Text)*Convert.ToInt16(TxtCount.Text));//带源总计数的平均值
+                        betaNR = betacnt / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount.Text));//带源总计数的平均值
                         effAlpha = (alphaNR - alphaNB) / Convert.ToInt16(TxtSFR.Text);//Alpha效率
                         effBeta = (betaNR - betaNB) / Convert.ToInt16(TxtSFR.Text);//Beta效率
                         eff = effAlpha > effBeta ? effAlpha : effBeta;//效率取Alpha或Beta的最大值
                         //Beta探测下限
                         betaMDER =
-                            (p * (betaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount)) +
-                                  betaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount) * 2)) +
-                             (0.005f * betaNB)) / (effBeta / 2) / Convert.ToInt16(TxtSFR);
+                            (p * (betaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount.Text)) +
+                                  betaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount.Text) * 2)) +
+                             (0.005f * betaNB)) / (effBeta / 2) / ((float)(Convert.ToInt32(TxtSFR.Text))/2)/area;
                         //Alpha探测下限
                         alphaMDER =
-                            (p * (alphaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount)) +
-                                  alphaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount) * 2)) +
-                             (0.005f * betaNB)) / (effBeta / 2) / Convert.ToInt16(TxtSFR);
+                            (p * (alphaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount.Text)) +
+                                  alphaNB / (Convert.ToInt16(TxtMeasuringTime.Text) * Convert.ToInt16(TxtCount.Text ) * 2)) +
+                             (0.005f * betaNB)) / (effBeta / 2) / ((float)(Convert.ToInt32(TxtSFR.Text)) / 2)/ area;
                         resultMDER = effAlpha > effBeta ? alphaMDER : betaMDER;//探测下限取值和效率一样的
 
+                        //判断效率大于30%同时探测下限在一定范围内为合格
+                        if (eff>=0.3 )//需要补充代码的探测器下限范围
+                        {
+                            isStandardize = "探测器合格!";
+                        }
+                        else
+                        {
+                            isStandardize = "探测器不合格!";
+                        }
+                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{eff:F1}%，可探测下限:{resultMDER:F3}Bq/cm^2;串道比:100.000；{isStandardize}";
                         //挂起线程
                         bkWorkerReceiveData.CancelAsync();
                        
                     }
                 }
 
-                TxtResult.Text = @"";
+                
                 Lbl__.Text = measuringTime.ToString();
                 
                 
