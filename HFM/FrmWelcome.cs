@@ -58,10 +58,10 @@ namespace HFM
         private void BtnTestRorW_Click(object sender, EventArgs e)
         {
 
-            FactoryParameter factoryParameter = new FactoryParameter();
-            factoryParameter.GetParameter();
-            factoryParameter=new FactoryParameter("1001", "HFM", "110.110.110.110", "100", false, "a", 100, true, "address");
-            factoryParameter.GetParameter();
+            //FactoryParameter factoryParameter = new FactoryParameter();
+            //factoryParameter.GetParameter();
+            //factoryParameter=new FactoryParameter("1001", "HFM", "110.110.110.110", "100", false, "a", 100, true, "address");
+            //factoryParameter.GetParameter();
             //byte[] mess = new byte[4];
             //mess[0] =Convert.ToByte( 'p');
             //mess[1] = 48;
@@ -120,6 +120,16 @@ namespace HFM
             //{
             //    MessageBox.Show("更新成功");
             //}
+
+
+            //测试ChannelParameter
+            ChannelParameter channelParameter = new ChannelParameter();
+            ChannelParameter p = new ChannelParameter();
+            channelParameter = p.GetParameter(1);
+            if (channelParameter.CheckingID != 0)
+            {
+                MessageBox.Show("ok");
+            }
         }
 
         private void BtnCommport_Click(object sender, EventArgs e)
