@@ -24,7 +24,7 @@ namespace HFM.Components
         private const string SQL_SELECT_ERRORDATA = "SELECT ErrID,ErrTime,Record,IsEnglish FROM HFM_ErrData";
         private const string SQL_SELECT_ERRORDATA_BY_ISENGLISH = "SELECT ErrID,ErrTime,Record,IsEnglish" +
                                                                  "FROM HFM_ErrData WHRER IsEnglish=@IsEnglish";
-        private const string SQL_INSERT_ERRORDATA = "INSERT INTO FROM HFM_ErrData (ErrTime,Record,IsEnglish)" +
+        private const string SQL_INSERT_ERRORDATA = "INSERT INTO HFM_ErrData (ErrTime,Record,IsEnglish)" +
                                                     "VALUES(@ErrTime,@Record,@IsEnglish )";
         #region 字段属性
         private int _errID;//故障ID
@@ -132,7 +132,7 @@ namespace HFM.Components
             parms[0].Value = errorData.ErrTime;
             parms[1].Value = errorData.Record.ToString();
             parms[2].Value = errorData.IsEnglish;
-            if (DbHelperAccess.ExecuteSql(SQL_INSERT_ERRORDATA,parms) != 0)
+            if (DbHelperAccess.ExecuteSql(SQL_INSERT_ERRORDATA, parms) != 0)
             {
                 return true;
             }
@@ -141,7 +141,7 @@ namespace HFM.Components
                 return false;
             }
         }
-        
+
         #endregion
 
 

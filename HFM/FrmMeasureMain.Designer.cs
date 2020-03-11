@@ -486,7 +486,7 @@
             this.LblTimeRemain.Name = "LblTimeRemain";
             this.LblTimeRemain.Size = new System.Drawing.Size(78, 42);
             this.LblTimeRemain.TabIndex = 46;
-            this.LblTimeRemain.Text = "0 s";
+            this.LblTimeRemain.Text = " ";
             this.LblTimeRemain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblRHB

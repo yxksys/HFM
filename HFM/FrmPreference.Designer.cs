@@ -1,4 +1,4 @@
-﻿namespace HFM.Components
+﻿namespace HFM
 {
     partial class FrmPreference
     {
@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
+            this.ChkIsConnectedAuto = new System.Windows.Forms.CheckBox();
             this.CmbUnclideType = new System.Windows.Forms.ComboBox();
             this.LblUnclideType = new System.Windows.Forms.Label();
             this.TxtPortNumber = new System.Windows.Forms.TextBox();
@@ -173,17 +174,16 @@
             this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
             this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
             this.设备配置 = new System.Windows.Forms.TabPage();
+            this.ChkClothes = new System.Windows.Forms.CheckBox();
+            this.ChkFoot = new System.Windows.Forms.CheckBox();
+            this.ChkHand = new System.Windows.Forms.CheckBox();
             this.GrpHand = new System.Windows.Forms.GroupBox();
             this.RdoSingleHand = new System.Windows.Forms.RadioButton();
             this.RdoDoubleHand = new System.Windows.Forms.RadioButton();
             this.LblFacility = new System.Windows.Forms.Label();
-            this.RdoClothes = new System.Windows.Forms.RadioButton();
             this.BtnFacilityNo = new System.Windows.Forms.Button();
-            this.RdoFoot = new System.Windows.Forms.RadioButton();
             this.BtnFacilityOk = new System.Windows.Forms.Button();
-            this.RdoHand = new System.Windows.Forms.RadioButton();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
-            this.ChkIsConnectedAuto = new System.Windows.Forms.CheckBox();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpFacilityData.SuspendLayout();
@@ -264,6 +264,16 @@
             this.GrpFacilityData.TabIndex = 4;
             this.GrpFacilityData.TabStop = false;
             this.GrpFacilityData.Text = "工厂参数";
+            // 
+            // ChkIsConnectedAuto
+            // 
+            this.ChkIsConnectedAuto.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ChkIsConnectedAuto.Location = new System.Drawing.Point(491, 71);
+            this.ChkIsConnectedAuto.Name = "ChkIsConnectedAuto";
+            this.ChkIsConnectedAuto.Size = new System.Drawing.Size(110, 25);
+            this.ChkIsConnectedAuto.TabIndex = 17;
+            this.ChkIsConnectedAuto.Text = "自动连接";
+            this.ChkIsConnectedAuto.UseVisualStyleBackColor = true;
             // 
             // CmbUnclideType
             // 
@@ -435,6 +445,7 @@
             this.BtnPreferenceNo.TabIndex = 3;
             this.BtnPreferenceNo.Text = "取消";
             this.BtnPreferenceNo.UseVisualStyleBackColor = true;
+            this.BtnPreferenceNo.Click += new System.EventHandler(this.BtnPreferenceNo_Click);
             // 
             // BtnPreferenceOk
             // 
@@ -446,6 +457,7 @@
             this.BtnPreferenceOk.TabIndex = 2;
             this.BtnPreferenceOk.Text = "确认";
             this.BtnPreferenceOk.UseVisualStyleBackColor = true;
+            this.BtnPreferenceOk.Click += new System.EventHandler(this.BtnPreferenceOk_Click);
             // 
             // GrpPreferenceArea
             // 
@@ -804,14 +816,15 @@
             // DgvAlphaSet
             // 
             this.DgvAlphaSet.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -881,6 +894,7 @@
             this.BtnAlphaNo.TabIndex = 3;
             this.BtnAlphaNo.Text = "取消";
             this.BtnAlphaNo.UseVisualStyleBackColor = true;
+            this.BtnAlphaNo.Click += new System.EventHandler(this.BtnAlphaNo_Click);
             // 
             // BtnAlphaOk
             // 
@@ -892,6 +906,7 @@
             this.BtnAlphaOk.TabIndex = 2;
             this.BtnAlphaOk.Text = "确定";
             this.BtnAlphaOk.UseVisualStyleBackColor = true;
+            this.BtnAlphaOk.Click += new System.EventHandler(this.BtnAlphaOk_Click);
             // 
             // GrpAlphaNuclideChoose
             // 
@@ -1017,14 +1032,16 @@
             // 
             // DgvBetaSet
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.DgvBetaSet.AllowUserToAddRows = false;
+            this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -1033,11 +1050,15 @@
             this.TxtBetaAlarm_1,
             this.TxtBetaAlarm_2,
             this.TxtBetaEfficiency});
+            this.DgvBetaSet.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DgvBetaSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.DgvBetaSet.Location = new System.Drawing.Point(28, 36);
             this.DgvBetaSet.Margin = new System.Windows.Forms.Padding(2);
             this.DgvBetaSet.Name = "DgvBetaSet";
+            this.DgvBetaSet.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.DgvBetaSet.RowHeadersVisible = false;
             this.DgvBetaSet.RowHeadersWidth = 20;
+            this.DgvBetaSet.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DgvBetaSet.RowTemplate.Height = 27;
             this.DgvBetaSet.Size = new System.Drawing.Size(722, 258);
             this.DgvBetaSet.TabIndex = 12;
@@ -1094,6 +1115,7 @@
             this.BtnBetaNo.TabIndex = 2;
             this.BtnBetaNo.Text = "取消";
             this.BtnBetaNo.UseVisualStyleBackColor = true;
+            this.BtnBetaNo.Click += new System.EventHandler(this.BtnBetaNo_Click);
             // 
             // BtnBetaOk
             // 
@@ -1105,6 +1127,7 @@
             this.BtnBetaOk.TabIndex = 2;
             this.BtnBetaOk.Text = "确定";
             this.BtnBetaOk.UseVisualStyleBackColor = true;
+            this.BtnBetaOk.Click += new System.EventHandler(this.BtnBetaOk_Click);
             // 
             // GrpBetaNuclideChoose
             // 
@@ -1153,7 +1176,7 @@
             this.RdoBeta192.Size = new System.Drawing.Size(74, 20);
             this.RdoBeta192.TabIndex = 35;
             this.RdoBeta192.TabStop = true;
-            this.RdoBeta192.Text = "Ir-192";
+            this.RdoBeta192.Text = "Ir_192";
             this.RdoBeta192.UseVisualStyleBackColor = true;
             // 
             // RdoBeta90
@@ -1166,7 +1189,7 @@
             this.RdoBeta90.Size = new System.Drawing.Size(66, 20);
             this.RdoBeta90.TabIndex = 34;
             this.RdoBeta90.TabStop = true;
-            this.RdoBeta90.Text = "Sr-90";
+            this.RdoBeta90.Text = "Sr_90";
             this.RdoBeta90.UseVisualStyleBackColor = true;
             // 
             // RdoBeta36
@@ -1179,7 +1202,7 @@
             this.RdoBeta36.Size = new System.Drawing.Size(66, 20);
             this.RdoBeta36.TabIndex = 33;
             this.RdoBeta36.TabStop = true;
-            this.RdoBeta36.Text = "Cl-36";
+            this.RdoBeta36.Text = "Cl_36";
             this.RdoBeta36.UseVisualStyleBackColor = true;
             // 
             // RdoBetaDefine1
@@ -1205,7 +1228,7 @@
             this.RdoBeta137.Size = new System.Drawing.Size(74, 20);
             this.RdoBeta137.TabIndex = 31;
             this.RdoBeta137.TabStop = true;
-            this.RdoBeta137.Text = "Cs-137";
+            this.RdoBeta137.Text = "Cs_137";
             this.RdoBeta137.UseVisualStyleBackColor = true;
             // 
             // RdoBeta60
@@ -1218,7 +1241,7 @@
             this.RdoBeta60.Size = new System.Drawing.Size(66, 20);
             this.RdoBeta60.TabIndex = 30;
             this.RdoBeta60.TabStop = true;
-            this.RdoBeta60.Text = "Co-60";
+            this.RdoBeta60.Text = "Co_60";
             this.RdoBeta60.UseVisualStyleBackColor = true;
             // 
             // RdoBeta32
@@ -1231,7 +1254,7 @@
             this.RdoBeta32.Size = new System.Drawing.Size(58, 20);
             this.RdoBeta32.TabIndex = 29;
             this.RdoBeta32.TabStop = true;
-            this.RdoBeta32.Text = "P-32";
+            this.RdoBeta32.Text = "P_32";
             this.RdoBeta32.UseVisualStyleBackColor = true;
             // 
             // RdoBeta204
@@ -1244,7 +1267,7 @@
             this.RdoBeta204.Size = new System.Drawing.Size(74, 20);
             this.RdoBeta204.TabIndex = 28;
             this.RdoBeta204.TabStop = true;
-            this.RdoBeta204.Text = "Tl-204";
+            this.RdoBeta204.Text = "Tl_204";
             this.RdoBeta204.UseVisualStyleBackColor = true;
             // 
             // RdoBeta131
@@ -1257,7 +1280,7 @@
             this.RdoBeta131.Size = new System.Drawing.Size(66, 20);
             this.RdoBeta131.TabIndex = 27;
             this.RdoBeta131.TabStop = true;
-            this.RdoBeta131.Text = "l-131";
+            this.RdoBeta131.Text = "l_131";
             this.RdoBeta131.UseVisualStyleBackColor = true;
             // 
             // RdoBeta58
@@ -1270,7 +1293,7 @@
             this.RdoBeta58.Size = new System.Drawing.Size(66, 20);
             this.RdoBeta58.TabIndex = 26;
             this.RdoBeta58.TabStop = true;
-            this.RdoBeta58.Text = "Co-58";
+            this.RdoBeta58.Text = "Co_58";
             this.RdoBeta58.UseVisualStyleBackColor = true;
             // 
             // RdoBeta14
@@ -1283,7 +1306,7 @@
             this.RdoBeta14.Size = new System.Drawing.Size(58, 20);
             this.RdoBeta14.TabIndex = 25;
             this.RdoBeta14.TabStop = true;
-            this.RdoBeta14.Text = "C-14";
+            this.RdoBeta14.Text = "C_14";
             this.RdoBeta14.UseVisualStyleBackColor = true;
             // 
             // 衣物探头
@@ -1310,6 +1333,7 @@
             this.BtnClothesNo.TabIndex = 4;
             this.BtnClothesNo.Text = "取消";
             this.BtnClothesNo.UseVisualStyleBackColor = true;
+            this.BtnClothesNo.Click += new System.EventHandler(this.BtnClothesNo_Click);
             // 
             // BtnClothesOk
             // 
@@ -1321,6 +1345,7 @@
             this.BtnClothesOk.TabIndex = 3;
             this.BtnClothesOk.Text = "确定";
             this.BtnClothesOk.UseVisualStyleBackColor = true;
+            this.BtnClothesOk.Click += new System.EventHandler(this.BtnClothesOk_Click);
             // 
             // GrpClothesNuclideChoose
             // 
@@ -1359,10 +1384,10 @@
             this.RdoClothesBetaDefine1.Location = new System.Drawing.Point(128, 301);
             this.RdoClothesBetaDefine1.Margin = new System.Windows.Forms.Padding(2);
             this.RdoClothesBetaDefine1.Name = "RdoClothesBetaDefine1";
-            this.RdoClothesBetaDefine1.Size = new System.Drawing.Size(98, 20);
+            this.RdoClothesBetaDefine1.Size = new System.Drawing.Size(82, 20);
             this.RdoClothesBetaDefine1.TabIndex = 49;
             this.RdoClothesBetaDefine1.TabStop = true;
-            this.RdoClothesBetaDefine1.Text = "β自定义1";
+            this.RdoClothesBetaDefine1.Text = "自定义2";
             this.RdoClothesBetaDefine1.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta192
@@ -1375,7 +1400,7 @@
             this.RdoClothesBeta192.Size = new System.Drawing.Size(74, 20);
             this.RdoClothesBeta192.TabIndex = 48;
             this.RdoClothesBeta192.TabStop = true;
-            this.RdoClothesBeta192.Text = "Ir-192";
+            this.RdoClothesBeta192.Text = "Ir_192";
             this.RdoClothesBeta192.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta90
@@ -1388,7 +1413,7 @@
             this.RdoClothesBeta90.Size = new System.Drawing.Size(66, 20);
             this.RdoClothesBeta90.TabIndex = 47;
             this.RdoClothesBeta90.TabStop = true;
-            this.RdoClothesBeta90.Text = "Sr-90";
+            this.RdoClothesBeta90.Text = "Sr_90";
             this.RdoClothesBeta90.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta36
@@ -1401,7 +1426,7 @@
             this.RdoClothesBeta36.Size = new System.Drawing.Size(66, 20);
             this.RdoClothesBeta36.TabIndex = 46;
             this.RdoClothesBeta36.TabStop = true;
-            this.RdoClothesBeta36.Text = "Cl-36";
+            this.RdoClothesBeta36.Text = "Cl_36";
             this.RdoClothesBeta36.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta137
@@ -1414,7 +1439,7 @@
             this.RdoClothesBeta137.Size = new System.Drawing.Size(74, 20);
             this.RdoClothesBeta137.TabIndex = 45;
             this.RdoClothesBeta137.TabStop = true;
-            this.RdoClothesBeta137.Text = "Cs-137";
+            this.RdoClothesBeta137.Text = "Cs_137";
             this.RdoClothesBeta137.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta60
@@ -1427,7 +1452,7 @@
             this.RdoClothesBeta60.Size = new System.Drawing.Size(66, 20);
             this.RdoClothesBeta60.TabIndex = 44;
             this.RdoClothesBeta60.TabStop = true;
-            this.RdoClothesBeta60.Text = "Co-60";
+            this.RdoClothesBeta60.Text = "Co_60";
             this.RdoClothesBeta60.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta32
@@ -1440,7 +1465,7 @@
             this.RdoClothesBeta32.Size = new System.Drawing.Size(58, 20);
             this.RdoClothesBeta32.TabIndex = 43;
             this.RdoClothesBeta32.TabStop = true;
-            this.RdoClothesBeta32.Text = "P-32";
+            this.RdoClothesBeta32.Text = "P_32";
             this.RdoClothesBeta32.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta204
@@ -1453,7 +1478,7 @@
             this.RdoClothesBeta204.Size = new System.Drawing.Size(74, 20);
             this.RdoClothesBeta204.TabIndex = 42;
             this.RdoClothesBeta204.TabStop = true;
-            this.RdoClothesBeta204.Text = "Tl-204";
+            this.RdoClothesBeta204.Text = "Tl_204";
             this.RdoClothesBeta204.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta131
@@ -1466,7 +1491,7 @@
             this.RdoClothesBeta131.Size = new System.Drawing.Size(66, 20);
             this.RdoClothesBeta131.TabIndex = 41;
             this.RdoClothesBeta131.TabStop = true;
-            this.RdoClothesBeta131.Text = "l-131";
+            this.RdoClothesBeta131.Text = "l_131";
             this.RdoClothesBeta131.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta58
@@ -1479,7 +1504,7 @@
             this.RdoClothesBeta58.Size = new System.Drawing.Size(66, 20);
             this.RdoClothesBeta58.TabIndex = 40;
             this.RdoClothesBeta58.TabStop = true;
-            this.RdoClothesBeta58.Text = "Co-58";
+            this.RdoClothesBeta58.Text = "Co_58";
             this.RdoClothesBeta58.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta14
@@ -1492,7 +1517,7 @@
             this.RdoClothesBeta14.Size = new System.Drawing.Size(58, 20);
             this.RdoClothesBeta14.TabIndex = 39;
             this.RdoClothesBeta14.TabStop = true;
-            this.RdoClothesBeta14.Text = "C-14";
+            this.RdoClothesBeta14.Text = "C_14";
             this.RdoClothesBeta14.UseVisualStyleBackColor = true;
             // 
             // RdoClothesAlphaDefine1
@@ -1502,10 +1527,10 @@
             this.RdoClothesAlphaDefine1.Location = new System.Drawing.Point(128, 105);
             this.RdoClothesAlphaDefine1.Margin = new System.Windows.Forms.Padding(2);
             this.RdoClothesAlphaDefine1.Name = "RdoClothesAlphaDefine1";
-            this.RdoClothesAlphaDefine1.Size = new System.Drawing.Size(98, 20);
+            this.RdoClothesAlphaDefine1.Size = new System.Drawing.Size(82, 20);
             this.RdoClothesAlphaDefine1.TabIndex = 38;
             this.RdoClothesAlphaDefine1.TabStop = true;
-            this.RdoClothesAlphaDefine1.Text = "α自定义1";
+            this.RdoClothesAlphaDefine1.Text = "自定义1";
             this.RdoClothesAlphaDefine1.UseVisualStyleBackColor = true;
             // 
             // RdoClothesAlpha241
@@ -1518,7 +1543,7 @@
             this.RdoClothesAlpha241.Size = new System.Drawing.Size(74, 20);
             this.RdoClothesAlpha241.TabIndex = 37;
             this.RdoClothesAlpha241.TabStop = true;
-            this.RdoClothesAlpha241.Text = "Am-241";
+            this.RdoClothesAlpha241.Text = "Am_241";
             this.RdoClothesAlpha241.UseVisualStyleBackColor = true;
             // 
             // RdoClothesAlpha238
@@ -1531,7 +1556,7 @@
             this.RdoClothesAlpha238.Size = new System.Drawing.Size(74, 20);
             this.RdoClothesAlpha238.TabIndex = 36;
             this.RdoClothesAlpha238.TabStop = true;
-            this.RdoClothesAlpha238.Text = "Pu-238";
+            this.RdoClothesAlpha238.Text = "Pu_238";
             this.RdoClothesAlpha238.UseVisualStyleBackColor = true;
             // 
             // RdoClothesAlpha239
@@ -1544,7 +1569,7 @@
             this.RdoClothesAlpha239.Size = new System.Drawing.Size(74, 20);
             this.RdoClothesAlpha239.TabIndex = 35;
             this.RdoClothesAlpha239.TabStop = true;
-            this.RdoClothesAlpha239.Text = "Pu-239";
+            this.RdoClothesAlpha239.Text = "Pu_239";
             this.RdoClothesAlpha239.UseVisualStyleBackColor = true;
             // 
             // RdoClothesAlpha235
@@ -1557,7 +1582,7 @@
             this.RdoClothesAlpha235.Size = new System.Drawing.Size(66, 20);
             this.RdoClothesAlpha235.TabIndex = 34;
             this.RdoClothesAlpha235.TabStop = true;
-            this.RdoClothesAlpha235.Text = "U-235";
+            this.RdoClothesAlpha235.Text = "U_235";
             this.RdoClothesAlpha235.UseVisualStyleBackColor = true;
             // 
             // LblClothesBetaOrClothes
@@ -1608,13 +1633,14 @@
             // 
             // TxtClothOfflineTime
             // 
-            this.TxtClothOfflineTime.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothOfflineTime.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtClothOfflineTime.Location = new System.Drawing.Point(150, 283);
             this.TxtClothOfflineTime.Margin = new System.Windows.Forms.Padding(2);
             this.TxtClothOfflineTime.Multiline = true;
             this.TxtClothOfflineTime.Name = "TxtClothOfflineTime";
             this.TxtClothOfflineTime.Size = new System.Drawing.Size(130, 26);
             this.TxtClothOfflineTime.TabIndex = 23;
+            this.TxtClothOfflineTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblClothOfflineTime
             // 
@@ -1629,53 +1655,58 @@
             // 
             // TxtClothesEfficiency
             // 
-            this.TxtClothesEfficiency.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesEfficiency.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtClothesEfficiency.Location = new System.Drawing.Point(150, 232);
             this.TxtClothesEfficiency.Margin = new System.Windows.Forms.Padding(2);
             this.TxtClothesEfficiency.Multiline = true;
             this.TxtClothesEfficiency.Name = "TxtClothesEfficiency";
             this.TxtClothesEfficiency.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesEfficiency.TabIndex = 21;
+            this.TxtClothesEfficiency.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtClothesAlarm_2
             // 
-            this.TxtClothesAlarm_2.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesAlarm_2.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtClothesAlarm_2.Location = new System.Drawing.Point(150, 185);
             this.TxtClothesAlarm_2.Margin = new System.Windows.Forms.Padding(2);
             this.TxtClothesAlarm_2.Multiline = true;
             this.TxtClothesAlarm_2.Name = "TxtClothesAlarm_2";
             this.TxtClothesAlarm_2.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesAlarm_2.TabIndex = 20;
+            this.TxtClothesAlarm_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtClothesAlarm_1
             // 
-            this.TxtClothesAlarm_1.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesAlarm_1.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtClothesAlarm_1.Location = new System.Drawing.Point(150, 136);
             this.TxtClothesAlarm_1.Margin = new System.Windows.Forms.Padding(2);
             this.TxtClothesAlarm_1.Multiline = true;
             this.TxtClothesAlarm_1.Name = "TxtClothesAlarm_1";
             this.TxtClothesAlarm_1.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesAlarm_1.TabIndex = 19;
+            this.TxtClothesAlarm_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtClothesLBackground
             // 
-            this.TxtClothesLBackground.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesLBackground.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtClothesLBackground.Location = new System.Drawing.Point(150, 91);
             this.TxtClothesLBackground.Margin = new System.Windows.Forms.Padding(2);
             this.TxtClothesLBackground.Multiline = true;
             this.TxtClothesLBackground.Name = "TxtClothesLBackground";
             this.TxtClothesLBackground.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesLBackground.TabIndex = 18;
+            this.TxtClothesLBackground.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TxtClothesHBackground
             // 
-            this.TxtClothesHBackground.Font = new System.Drawing.Font("宋体", 10F);
+            this.TxtClothesHBackground.Font = new System.Drawing.Font("宋体", 12F);
             this.TxtClothesHBackground.Location = new System.Drawing.Point(150, 44);
             this.TxtClothesHBackground.Margin = new System.Windows.Forms.Padding(2);
             this.TxtClothesHBackground.Multiline = true;
             this.TxtClothesHBackground.Name = "TxtClothesHBackground";
             this.TxtClothesHBackground.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesHBackground.TabIndex = 17;
+            this.TxtClothesHBackground.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblClothesEfficiency
             // 
@@ -1761,13 +1792,14 @@
             // 
             // DgvMainPreferenceSet
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.DgvMainPreferenceSet.AllowUserToAddRows = false;
+            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle48;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -1861,6 +1893,7 @@
             this.BtnMainPreferenceWrite.TabIndex = 4;
             this.BtnMainPreferenceWrite.Text = "写参数";
             this.BtnMainPreferenceWrite.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceWrite.Click += new System.EventHandler(this.BtnMainPreferenceWrite_Click);
             // 
             // BtnMainPreferenceRead
             // 
@@ -1872,6 +1905,7 @@
             this.BtnMainPreferenceRead.TabIndex = 4;
             this.BtnMainPreferenceRead.Text = "读参数";
             this.BtnMainPreferenceRead.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceRead.Click += new System.EventHandler(this.BtnMainPreferenceRead_Click);
             // 
             // BtnMainPreferenceSet
             // 
@@ -1883,6 +1917,7 @@
             this.BtnMainPreferenceSet.TabIndex = 4;
             this.BtnMainPreferenceSet.Text = "设置默认";
             this.BtnMainPreferenceSet.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceSet.Click += new System.EventHandler(this.BtnMainPreferenceSet_Click);
             // 
             // BtnMainPreferenceRetuen
             // 
@@ -1894,16 +1929,17 @@
             this.BtnMainPreferenceRetuen.TabIndex = 4;
             this.BtnMainPreferenceRetuen.Text = "恢复默认";
             this.BtnMainPreferenceRetuen.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceRetuen.Click += new System.EventHandler(this.BtnMainPreferenceRetuen_Click);
             // 
             // 设备配置
             // 
+            this.设备配置.Controls.Add(this.ChkClothes);
+            this.设备配置.Controls.Add(this.ChkFoot);
+            this.设备配置.Controls.Add(this.ChkHand);
             this.设备配置.Controls.Add(this.GrpHand);
             this.设备配置.Controls.Add(this.LblFacility);
-            this.设备配置.Controls.Add(this.RdoClothes);
             this.设备配置.Controls.Add(this.BtnFacilityNo);
-            this.设备配置.Controls.Add(this.RdoFoot);
             this.设备配置.Controls.Add(this.BtnFacilityOk);
-            this.设备配置.Controls.Add(this.RdoHand);
             this.设备配置.Font = new System.Drawing.Font("宋体", 12F);
             this.设备配置.Location = new System.Drawing.Point(4, 30);
             this.设备配置.Margin = new System.Windows.Forms.Padding(2);
@@ -1912,6 +1948,36 @@
             this.设备配置.TabIndex = 5;
             this.设备配置.Text = "设备配置";
             this.设备配置.UseVisualStyleBackColor = true;
+            // 
+            // ChkClothes
+            // 
+            this.ChkClothes.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkClothes.Location = new System.Drawing.Point(86, 246);
+            this.ChkClothes.Name = "ChkClothes";
+            this.ChkClothes.Size = new System.Drawing.Size(110, 25);
+            this.ChkClothes.TabIndex = 20;
+            this.ChkClothes.Text = "衣物探头";
+            this.ChkClothes.UseVisualStyleBackColor = true;
+            // 
+            // ChkFoot
+            // 
+            this.ChkFoot.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkFoot.Location = new System.Drawing.Point(86, 177);
+            this.ChkFoot.Name = "ChkFoot";
+            this.ChkFoot.Size = new System.Drawing.Size(110, 25);
+            this.ChkFoot.TabIndex = 19;
+            this.ChkFoot.Text = "脚步";
+            this.ChkFoot.UseVisualStyleBackColor = true;
+            // 
+            // ChkHand
+            // 
+            this.ChkHand.Font = new System.Drawing.Font("宋体", 12F);
+            this.ChkHand.Location = new System.Drawing.Point(86, 64);
+            this.ChkHand.Name = "ChkHand";
+            this.ChkHand.Size = new System.Drawing.Size(110, 25);
+            this.ChkHand.TabIndex = 18;
+            this.ChkHand.Text = "手部";
+            this.ChkHand.UseVisualStyleBackColor = true;
             // 
             // GrpHand
             // 
@@ -1962,19 +2028,6 @@
             this.LblFacility.TabIndex = 16;
             this.LblFacility.Text = "设备配置";
             // 
-            // RdoClothes
-            // 
-            this.RdoClothes.AutoSize = true;
-            this.RdoClothes.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoClothes.Location = new System.Drawing.Point(86, 246);
-            this.RdoClothes.Margin = new System.Windows.Forms.Padding(2);
-            this.RdoClothes.Name = "RdoClothes";
-            this.RdoClothes.Size = new System.Drawing.Size(90, 20);
-            this.RdoClothes.TabIndex = 15;
-            this.RdoClothes.TabStop = true;
-            this.RdoClothes.Text = "衣物探头";
-            this.RdoClothes.UseVisualStyleBackColor = true;
-            // 
             // BtnFacilityNo
             // 
             this.BtnFacilityNo.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1985,19 +2038,7 @@
             this.BtnFacilityNo.TabIndex = 5;
             this.BtnFacilityNo.Text = "取消";
             this.BtnFacilityNo.UseVisualStyleBackColor = true;
-            // 
-            // RdoFoot
-            // 
-            this.RdoFoot.AutoSize = true;
-            this.RdoFoot.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoFoot.Location = new System.Drawing.Point(86, 180);
-            this.RdoFoot.Margin = new System.Windows.Forms.Padding(2);
-            this.RdoFoot.Name = "RdoFoot";
-            this.RdoFoot.Size = new System.Drawing.Size(58, 20);
-            this.RdoFoot.TabIndex = 15;
-            this.RdoFoot.TabStop = true;
-            this.RdoFoot.Text = "脚部";
-            this.RdoFoot.UseVisualStyleBackColor = true;
+            this.BtnFacilityNo.Click += new System.EventHandler(this.BtnFacilityNo_Click);
             // 
             // BtnFacilityOk
             // 
@@ -2009,29 +2050,12 @@
             this.BtnFacilityOk.TabIndex = 4;
             this.BtnFacilityOk.Text = "确定";
             this.BtnFacilityOk.UseVisualStyleBackColor = true;
+            this.BtnFacilityOk.Click += new System.EventHandler(this.BtnFacilityOk_Click);
             // 
-            // RdoHand
+            // backgroundWorker_Preference
             // 
-            this.RdoHand.AutoSize = true;
-            this.RdoHand.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.RdoHand.Location = new System.Drawing.Point(86, 63);
-            this.RdoHand.Margin = new System.Windows.Forms.Padding(2);
-            this.RdoHand.Name = "RdoHand";
-            this.RdoHand.Size = new System.Drawing.Size(58, 20);
-            this.RdoHand.TabIndex = 15;
-            this.RdoHand.TabStop = true;
-            this.RdoHand.Text = "手部";
-            this.RdoHand.UseVisualStyleBackColor = true;
-            // 
-            // ChkIsConnectedAuto
-            // 
-            this.ChkIsConnectedAuto.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ChkIsConnectedAuto.Location = new System.Drawing.Point(491, 71);
-            this.ChkIsConnectedAuto.Name = "ChkIsConnectedAuto";
-            this.ChkIsConnectedAuto.Size = new System.Drawing.Size(110, 25);
-            this.ChkIsConnectedAuto.TabIndex = 17;
-            this.ChkIsConnectedAuto.Text = "自动连接";
-            this.ChkIsConnectedAuto.UseVisualStyleBackColor = true;
+            this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
+            this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
             // 
             // FrmPreference
             // 
@@ -2145,9 +2169,6 @@
         private System.Windows.Forms.Button BtnMainPreferenceRead;
         private System.Windows.Forms.Button BtnMainPreferenceSet;
         private System.Windows.Forms.Button BtnMainPreferenceRetuen;
-        private System.Windows.Forms.RadioButton RdoHand;
-        private System.Windows.Forms.RadioButton RdoClothes;
-        private System.Windows.Forms.RadioButton RdoFoot;
         private System.Windows.Forms.RadioButton RdoDoubleHand;
         private System.Windows.Forms.RadioButton RdoSingleHand;
         private System.Windows.Forms.Button BtnFacilityNo;
@@ -2221,7 +2242,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVRatio;
         private System.Windows.Forms.Label LblAlpha;
         private System.Windows.Forms.Label LblBeta;
-        private System.Windows.Forms.DataGridView DgvBetaSet;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaChannelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaHBackground;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaLBackground;
@@ -2231,5 +2251,9 @@
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker_Preference;
         private System.Windows.Forms.CheckBox ChkIsConnectedAuto;
+        private System.Windows.Forms.DataGridView DgvBetaSet;
+        private System.Windows.Forms.CheckBox ChkHand;
+        private System.Windows.Forms.CheckBox ChkFoot;
+        private System.Windows.Forms.CheckBox ChkClothes;
     }
 }
