@@ -364,13 +364,13 @@ namespace HFM.Components
                         if (packageIndex == 0) //第一个数据包1-4通道为手部探头
                         {
                             //左手到位
-                            if ((infraredStatus & 1)==0)
+                            if ((infraredStatus & 1)==1)
                             {
                                 measureDataS[0].InfraredStatus = 1;
                                 measureDataS[1].InfraredStatus = 1;
                             }
                             ////右手到位
-                            if ((infraredStatus & 2)==0)
+                            if ((infraredStatus & 2)==1)
                             {
                                 measureDataS[2].InfraredStatus = 1;
                                 measureDataS[3].InfraredStatus = 1;
@@ -379,7 +379,7 @@ namespace HFM.Components
                         else//第二个数据包为5-7为脚步探头和衣物探头
                         {
                             //衣物探头拿起
-                            if ((infraredStatus & 4)==1)
+                            if ((infraredStatus & 4)==0)
                             {
                                 measureDataS[6].InfraredStatus = 1;
                             }
