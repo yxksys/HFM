@@ -32,7 +32,7 @@ namespace HFM.Components
         private const string SQL_UPDATE_MAINPREFERENCE = "UPDATE HFM_MainPreference " +
                                                         "SET  MeasurementUnit=@MeasurementUnit, SelfCheckTime=@SelfCheckTime," +
                                                         " SmoothingTime=@SmoothingTime, MeasuringTime=@MeasuringTime, AlarmTime=@AlarmTime," +
-                                                        " BKGUpdate='@BKGUpdate', ClothOfflineTime=@ClothOfflineTime, IsEnglish=@IsEnglish";
+                                                        " BKGUpdate=@BKGUpdate, ClothOfflineTime=@ClothOfflineTime, IsEnglish=@IsEnglish";
         /// <summary>
         /// 更新字段:已经完成检查次数
         /// </summary>
@@ -156,7 +156,7 @@ namespace HFM.Components
                 new OleDbParameter("SelfCheckTime",OleDbType.VarChar,255),
                 new OleDbParameter("SmoothingTime",OleDbType.VarChar,255),
                 new OleDbParameter("MeasuringTime",OleDbType.VarChar,255),
-                new OleDbParameter("AlarmTime",OleDbType.Boolean),
+                new OleDbParameter("AlarmTime",OleDbType.Integer,4),
                 new OleDbParameter("BkgUpdate",OleDbType.VarChar,255),
                 new OleDbParameter("ClothOfflineTime",OleDbType.VarChar,255),
                 new OleDbParameter("IsEnglish",OleDbType.Boolean)
