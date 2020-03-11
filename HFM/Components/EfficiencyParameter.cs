@@ -22,7 +22,7 @@ namespace HFM.Components
     class EfficiencyParameter
     {
         #region 常量
-        private const string SQL_SELECT_EFFICIENCYPARAMETER ="SELECT EfficiencyParamID,Efficiency,a.ChannelID,NuclideType," +
+        private const string SQL_SELECT_EFFICIENCYPARAMETER = "SELECT EfficiencyParamID,Efficiency,a.ChannelID,NuclideType," +
                                                              "NuclideName,ChannelName,ChannelName_English,ProbeArea,Status," +
                                                              "IsEnabled FROM HFM_EfficiencyParameter a " +
                                                              "INNER JOIN HFM_DIC_Channel b ON a.ChannelID = b.ChannelID";
@@ -142,7 +142,7 @@ namespace HFM.Components
         /// <param name="nuclideType"></param>
         /// <param name="nuclideName"></param>
         /// <returns></returns>
-        public IList<EfficiencyParameter> GetParameter(string nuclideType,string nuclideName)
+        public IList<EfficiencyParameter> GetParameter(string nuclideType, string nuclideName)
         {
             IList<EfficiencyParameter> ICalibrationS = new List<EfficiencyParameter>();
             OleDbParameter[] parms = new OleDbParameter[]
@@ -194,7 +194,7 @@ namespace HFM.Components
         /// <param name="channelID"></param>
         /// <param name="nuclideName"></param>
         /// <returns></returns>
-        public EfficiencyParameter GetParameter(string nuclideType,string nuclideName ,int channelID)
+        public EfficiencyParameter GetParameter(string nuclideType, string nuclideName, int channelID)
         {
             EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
             OleDbParameter[] parms = new OleDbParameter[]

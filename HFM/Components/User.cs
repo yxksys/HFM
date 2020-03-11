@@ -111,7 +111,7 @@ namespace HFM.Components
             };
             parms[0].Value = userID;
             parms[1].Value = passWord;
-            if (DbHelperAccess.ExecuteSql(SQL_UPDATA_USER,parms) != 0)
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATA_USER, parms) != 0)
             {
                 return true;
             }
@@ -181,7 +181,7 @@ namespace HFM.Components
                 DbHelperAccess.Close();
             }
             //从reader读出的查询对象添加到List中
-            return user ;
+            return user;
         }
         #endregion
     }

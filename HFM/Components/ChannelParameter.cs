@@ -30,6 +30,8 @@ namespace HFM.Components
                                                            "BetaThreshold = @BetaThreshold,PresetHV = @PresetHV,ADCFactor = @ADCFactor," +
                                                            "DACFactor = @DACFactor,HVFactor = @HVFactor,HVRatio = @HVRatio,WorkTime = @WorkTime " +
                                                            "WHERE ChannelID = @ChannelID";
+        private const string SQL_SELECT_CHANNELPARAMETER_BY_CHANNELID = "SELECT AlphaThreshold,BetaThreshold,PresetHV,ADCFactor,DACFactor," +
+                                                           "HVFactor,HVRatio,WorkTime,CheckingID FROM HFM_ChannelParameter WHERE ChannelID = @ChannelID";
         #endregion
 
         #region 属性
@@ -173,7 +175,37 @@ namespace HFM.Components
         /// <returns>道盒参数</returns>
         public ChannelParameter GetParameter(int channelID)
         {
-            return null;
+            ChannelParameter channelParameter = new ChannelParameter();
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@ChannelID",OleDbType.Integer,4)
+            };
+            parms[0].Value = channelID;
+
+            //从数据库中查询全部刻度操作记录并赋值给channelParameter
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_CHANNELPARAMETER_BY_CHANNELID, parms))
+            {
+                while (reader.Read())//读查询结果
+                {
+                    //根据读出的查询结构构造channelParameter对象
+
+                    this.AlphaThreshold = Convert.ToSingle(reader["AlphaThreshold"]);
+                    this.BetaThreshold = Convert.ToSingle(reader["BetaThreshold"]);
+                    this.PresetHV = Convert.ToSingle(reader["PresetHV"]);
+                    this.ADCFactor = Convert.ToSingle(reader["ADCFactor"]);
+                    this.DACFactor = Convert.ToSingle(reader["DACFactor"]);
+                    this.HVFactor = Convert.ToSingle(reader["HVFactor"]);
+                    this.HVRatio = Convert.ToSingle(reader["HVRatio"]);
+                    this.WorkTime = Convert.ToSingle(reader["HVRatio"]);
+                    this.CheckingID = Convert.ToInt32(reader["CheckingID"]);
+                }
+                reader.Close();
+                DbHelperAccess.Close();
+            }
+            this.Channel = new Channel().GetChannel(channelID);//根据channelID获得channel信息
+            return this;
+
         }
         /// <summary>
         /// 根据参数对象channelParameter的通道ID，设置道盒参数
@@ -212,7 +244,7 @@ namespace HFM.Components
             {
                 return false;
             }
-            
+
         }
 
         #endregion
