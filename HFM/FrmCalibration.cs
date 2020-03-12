@@ -13,6 +13,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -518,15 +519,15 @@ namespace HFM
         /// <summary>
         /// 结果探测下限
         /// </summary>
-        private float resultMDER = 0;
+        private float resultMDA = 0;
         /// <summary>
         /// Alpha探测下限
         /// </summary>
-        private float alphaMDER = 0;
+        private float alphaMDA = 0;
         /// <summary>
         /// Beta探测下限
         /// </summary>
-        private float betaMDER = 0;
+        private float betaMDA = 0;
         /// <summary>
         /// 为5%误报率所要求的标准差数
         /// </summary>
@@ -624,8 +625,8 @@ namespace HFM
                     addInformation[0] = "本底测量";
                     addInformation[1] = CmbChannelSelection.Text;
                     addInformation[2] = area.ToString();
-                    addInformation[3] = ((alphacps / (float)Convert.ToDouble(TxtMeasuringTime.Text))).ToString();
-                    addInformation[4] = ((betacps /(float) Convert.ToDouble(TxtMeasuringTime.Text))).ToString();
+                    addInformation[3] = ((alphacps / Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
+                    addInformation[4] = ((betacps / Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
                     addInformation[5] = hv.ToString();
                     measuringTime--;
                     if (measuringTime == 0)
@@ -639,8 +640,8 @@ namespace HFM
 
                     if (measuringCount==0 )
                     {
-                        alphaNB =(float) (alphacnt / (Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)));//本底总计数的平均值
-                        betaNB = (float)(betacnt / (Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text )));//本地总计数的平均值
+                        alphaNB =(alphacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)));//本底总计数的平均值
+                        betaNB = (betacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text )));//本地总计数的平均值
                         alphacnt = 0;//类型内计数清零
                         betacnt = 0;//类型内计数清零
                         measuringTime = Convert.ToInt16(TxtMeasuringTime.Text);//恢复时间为填写时间
@@ -665,8 +666,8 @@ namespace HFM
                     addInformation[0] = "带源测量";
                     addInformation[1] = CmbChannelSelection.Text;
                     addInformation[2] = area.ToString();
-                    addInformation[3] = ((alphacps /(float) Convert.ToDouble(TxtMeasuringTime.Text))).ToString();
-                    addInformation[4] = ((betacps /(float) Convert.ToDouble(TxtMeasuringTime.Text))).ToString();
+                    addInformation[3] = ((alphacps /Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
+                    addInformation[4] = ((betacps /Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
                     addInformation[5] = hv.ToString();
                     measuringTime--;
                     if (measuringTime == 0)
@@ -680,34 +681,35 @@ namespace HFM
 
                     if (measuringCount == 0 )
                     {
+                        //挂起线程
                         bkWorkerReceiveData.CancelAsync();
-                        alphaNR = (float)(alphacnt / (Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text))); ;//带源总计数的平均值
-                        betaNR = (float)(betacnt / (Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)));//带源总计数的平均值
-                        effAlpha =(float)((alphaNR - alphaNB) / Convert.ToDouble(TxtSFR.Text));//Alpha效率
-                        effBeta = (float)((betaNR - betaNB) / Convert.ToDouble(TxtSFR.Text));//Beta效率
+                        alphaNR = (alphacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text))); ;//带源总计数的平均值
+                        betaNR = (betacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)));//带源总计数的平均值
+                        effAlpha =((alphaNR - alphaNB) / Convert.ToSingle(TxtSFR.Text));//Alpha效率
+                        effBeta = ((betaNR - betaNB) / Convert.ToSingle(TxtSFR.Text));//Beta效率
                         eff = effAlpha > effBeta ? effAlpha*100 : effBeta*100;//效率取Alpha或Beta的最大值
                         //Beta探测下限
-                        betaMDER =
-                            (p * (betaNB / (float)(Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) +
-                                  betaNB / (float)(Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text) * 2)) +
+                        betaMDA =
+                            (p * (betaNB / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
+                                  betaNB / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
                              (0.005f * betaNB)) / (effBeta / 2) / area;
                         //Alpha探测下限
-                        alphaMDER =
-                            (p * (alphaNB / (float)(Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) +
-                                  alphaNB / (float)(Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text) * 2)) +
+                        alphaMDA =
+                            (p * (alphaNB / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
+                                  alphaNB / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
                              (0.005f * betaNB)) / (effBeta / 2) / area;
-                        //alphaMDER =
+                        //alphaMDA =
                         //    ((2 * p) *
                         //     (float)((alphaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) +
                         //      (alphaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) *
                         //      2)) / effAlpha/2/area;
-                        //betaMDER =
+                        //betaMDA =
                         //    ((2 * p) *
                         //     (float)((betaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) +
                         //             (betaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) *
                         //             2)) / effBeta/2/area;
-                        resultMDER = effAlpha > effBeta ? alphaMDER : betaMDER;//探测下限取值和效率一样的
-                        float rangeMDER;//探测下限范围
+                        resultMDA = effAlpha > effBeta ? alphaMDA : betaMDA;//探测下限取值和效率一样的
+                        float rangeMDA;//探测下限范围
                         //取当前核素的对象
                         var listef = efficiencyList.Where(n =>
                                 n.Channel.ChannelID == channel.ChannelID && n.NuclideName == CmbNuclideSelect.Text)
@@ -719,15 +721,15 @@ namespace HFM
                         //根据核素类型判断探测下限范围
                         if (changedEfficiency.NuclideType=="α")
                         {
-                            rangeMDER = 0.037f;
+                            rangeMDA = 0.037f;
                         }
                         else if (changedEfficiency.NuclideType=="β")
                         {
-                            rangeMDER = 0.37f;
+                            rangeMDA = 0.37f;
                         }
                         else
                         {
-                            rangeMDER = 0;
+                            rangeMDA = 0;
                         }
                         //按通道用不同的判断方法判断探测器的合格
                         if (channel.ChannelID==7)
@@ -744,7 +746,7 @@ namespace HFM
                         else
                         {
                             //判断效率大于30%同时探测下限在一定范围内为合格
-                            if (eff >= 30 && resultMDER<=rangeMDER)//需要补充代码的探测器下限范围
+                            if (eff >= 30 && resultMDA<=rangeMDA)//需要补充代码的探测器下限范围
                             {
                                 isStandardize = "探测器合格!";
                             }
@@ -754,9 +756,56 @@ namespace HFM
                             }
                         }
 
+                        //向刻度数据表添加信息
+                        Calibration calibration = new Calibration();
+                        calibration.Efficiency = eff;//效率
+                        calibration.MDA = resultMDA;
+                        calibration.AlphaBetaPercent = 0;//串道比
+                        calibration.CalibrationTime = DateTime.Now;
+                        calibration.Channel = changedEfficiency.Channel;
+                        calibration.HighVoltage = setChannelParameter.PresetHV;
+                        calibration.Threshold =
+                            Convert.ToString(
+                                $"α:{setChannelParameter.AlphaThreshold};β:{setChannelParameter.BetaThreshold}");
+                        calibration.AddData(calibration);
+                        //合格则把结果存入数据库
+                        if (isStandardize== "探测器合格!")
+                        {
+                            //向核素数据表添加信息
+                            changedEfficiency.Efficiency = eff;
+                            changedEfficiency.SetParameter(changedEfficiency);
+                            
+                        }
+                        //不合格则把数据存入文本文件
+                        else if(isStandardize== "探测器不合格!")
+                        {
+                            string path = $@"CalibrationLog\{DateTime.Now.ToString("yyyyMMddTHHmmss")}.txt";
+                            if (!File.Exists(path))
+                            {
+                                // Create a file to write to.
+                                FileInfo fi1 = new FileInfo(path);
+                                using (StreamWriter sw = fi1.CreateText())
+                                {
+                                    sw.WriteLine("状态\t通道\t面积(cm2)\tα计数\tβ计数\t高压（V）");
+                                    string str = "";
+                                    for (int i = 0; i < DgvInformation.Rows.Count - 1; i++)
+                                    {
+                                        for (int j = 0; j < DgvInformation.Columns.Count; j++)
+                                        {
+                                            str = DgvInformation.Rows[i].Cells[j].Value.ToString().Trim();
+                                            str = str + "\t";
+                                            sw.Write(str);
+                                        }
+                                        sw.WriteLine("");
+                                    }
+                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{eff:F1}%，可探测下限:{resultMDA:F3}Bq/cm^2;串道比:100.000；{isStandardize}");
+                                    sw.Close();
+                                }
+                            }
+                        }
+                        //测量结果
+                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{eff:F1}%，可探测下限:{resultMDA:F3}Bq/cm^2;串道比:100.000；{isStandardize}";
                         
-                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{eff:F1}%，可探测下限:{resultMDER:F3}Bq/cm^2;串道比:100.000；{isStandardize}";
-                        //挂起线程
                         
                        
                     }
