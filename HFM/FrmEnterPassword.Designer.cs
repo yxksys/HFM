@@ -52,6 +52,7 @@
             this.TxtPassword.PasswordChar = '*';
             this.TxtPassword.Size = new System.Drawing.Size(128, 26);
             this.TxtPassword.TabIndex = 3;
+            this.TxtPassword.TextChanged += new System.EventHandler(this.TxtPassword_TextChanged);
             // 
             // BtnConfirm
             // 
@@ -62,6 +63,7 @@
             this.BtnConfirm.TabIndex = 6;
             this.BtnConfirm.Text = "确定";
             this.BtnConfirm.UseVisualStyleBackColor = true;
+            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // BtnCancel
             // 
@@ -72,6 +74,7 @@
             this.BtnCancel.TabIndex = 7;
             this.BtnCancel.Text = "取消";
             this.BtnCancel.UseVisualStyleBackColor = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // FrmEnterPassword
             // 
@@ -88,6 +91,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "维护密码";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FrmEnterPassword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
