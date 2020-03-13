@@ -745,9 +745,7 @@ namespace HFM
             HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();
             system = system.GetParameter();
             system.SelfCheckTime = int.Parse(TxtSelfCheckTime.Text);
-
-            system.SmoothingTime = Convert.ToInt32(TxtSmoothingTime.Text);//ok
-
+            system.SmoothingTime = Convert.ToInt32(TxtSmoothingTime.Text);
             system.MeasuringTime = int.Parse(TxtMeasuringTime.Text);
             system.MeasurementUnit = CmbMeasurementUnit.Text;
             system.AlarmTime = int.Parse(TxtAlarmTime.Text);
@@ -783,8 +781,7 @@ namespace HFM
             #endregion
 
             #region 工厂参数
-            FactoryParameter factoryParameter = new FactoryParameter().GetParameter();
-            //factoryParameter = factoryParameter.GetParameter();//获得仪器设备信息参数
+            FactoryParameter factoryParameter = new FactoryParameter().GetParameter();//获得仪器设备信息参数
             factoryParameter.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
             factoryParameter.InstrumentNum = TxtInstrumentNum.Text;
             factoryParameter.SoftName = TxtSoftName.Text;
@@ -803,16 +800,21 @@ namespace HFM
                 }
                 else
                 {
-                    MessageBox.Show("失败");
+                    MessageBox.Show("更新失败");
                     return;
                 }
             }
-            if (true)
+            if (new HFM.Components.SystemParameter().SetParameter(system) && new FactoryParameter().SetParameter(factoryParameter))
             {
-                new HFM.Components.SystemParameter().SetParameter(system);
-                new FactoryParameter().SetParameter(factoryParameter);
-                MessageBox.Show("ok");
+                MessageBox.Show("更新成功");
             }
+            else
+            {
+                MessageBox.Show("更新失败");
+                return;
+            }
+                
+            
             
             #endregion
         }
@@ -837,7 +839,76 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnAlphaOk_Click(object sender, EventArgs e)
         {
+            //注：α参数和α核素选择顺序不可互换
 
+            #region α核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> button = new List<RadioButton>();//核素选择数组
+            button.Add(RdoAlpha235);
+            button.Add(RdoAlpha239);
+            button.Add(RdoAlphaDefine1);
+            button.Add(RdoAlpha238);
+            button.Add(RdoAlpha241);
+            button.Add(RdoAlphaDefine2);
+            for (int i = 0; i < button.Count; i++)
+            {
+                if (button[i].Checked)
+                {
+                    nuclidename = button[i].Text;
+                    break;
+                }
+            }
+            
+            #endregion
+
+            #region α参数
+            IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//更新α参数
+            IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
+            for (int i = 0; i < DgvAlphaSet.RowCount; i++)
+            {
+                ProbeParameter p = new ProbeParameter();
+                HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
+                efficiency.Channel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                efficiency.NuclideType = "α";
+                efficiency.NuclideName = nuclidename;
+                efficiency.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                efficiencyParameters.Add(efficiency);
+
+                p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                p.NuclideType = "α";
+                p.ProbeType = "闪烁体";
+                p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
+                p.LBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[2].Value);
+                p.Alarm_1 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);
+                p.Alarm_2 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[4].Value);
+                p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                probeParameters.Add(p);
+            }
+            #endregion
+
+            #region 更新数据库
+            for (int i = 0; i < probeParameters.Count; i++)
+            {
+                bool k = new ProbeParameter().SetParameter(probeParameters[i]);
+                bool l = new HFM.Components.EfficiencyParameter().SetParameter(efficiencyParameters[i]);
+                if (k && l)
+                {
+                }
+                else
+                {
+                    MessageBox.Show("更新失败");
+                    return;
+                }
+            }
+            if (new Nuclide().SetAlphaNuclideUser(nuclidename))
+            {
+                MessageBox.Show("更新成功");
+            }
+            else
+            {
+                MessageBox.Show("更新失败");
+            }
+            #endregion
         }
         /// <summary>
         /// 取消
@@ -846,7 +917,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnAlphaNo_Click(object sender, EventArgs e)
         {
-
+            //重新获得数据库数据
+            GetAlphaData();
         }
 
 
