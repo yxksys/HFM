@@ -7,19 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HFM.Components;
 
 namespace HFM
 {
     public partial class FrmEnterPassword : Form
     {
+        #region 字段
+        private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
+        private User _user = new User();
+        #endregion
 
-        private bool isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
-
+        #region 方法
         public FrmEnterPassword()
         {
             InitializeComponent();
         }
+        #endregion 
 
+        #region 传值
         private void TxtPassword_TextChanged(object sender, EventArgs e)
         {
             FrmKeyIn frmKeyIn = new FrmKeyIn();
@@ -30,15 +36,33 @@ namespace HFM
         {
             TxtPassword.Text = str;
         }
+        #endregion
 
+        #region 确认
+        private void BtnConfirm_Click(object sender, EventArgs e)
+        {
+            _user.Login(TxtPassword.Text);
+            if (_user == null)
+            {
+            }
+            else
+            {
+
+            }
+        }
+        #endregion
+
+        #region 取消
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        #endregion
 
+        #region 窗口加载前
         private void FrmEnterPassword_Load(object sender, EventArgs e)
         {
-            if (isEnglish == true )
+            if (_isEnglish == true )
             {
                 this.Text = "Maintenance";
                 BtnCancel.Text = "Cancel";
@@ -53,10 +77,6 @@ namespace HFM
                 LblPassword.Text = "密码";
             }
         }
-
-        private void BtnConfirm_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }
