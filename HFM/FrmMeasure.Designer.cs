@@ -1,6 +1,6 @@
 ﻿namespace HFM
 {
-    partial class FrmMeasureData
+    partial class FrmMeasure
     {
         /// <summary>
         /// Required designer variable.
