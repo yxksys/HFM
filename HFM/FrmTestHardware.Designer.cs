@@ -599,8 +599,8 @@
             // 
             // bkWorkerReceiveData
             // 
-            this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
-            this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
+            this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BkWorkerReceiveData_DoWork);
+            this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BkWorkerReceiveData_ProgressChanged);
             // 
             // FrmTestHardware
             // 

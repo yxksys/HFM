@@ -33,19 +33,19 @@ namespace HFM
     {
         #region 基本变量、实例
         //实例化串口
-        CommPort commPort = new CommPort();
+        private CommPort _commPort = new CommPort();
         /// <summary>
         /// 存储各个通道最终计算检测值的List
         /// </summary>
-        private IList<MeasureData> calculatedMeasureDataS = new List<MeasureData>();
+        private IList<MeasureData> _calculatedMeasureDataS = new List<MeasureData>();
         /// <summary>
         /// 测量时间
         /// </summary>
-        private int measuringTime;
+        private int _measuringTime;
         /// <summary>
         /// 运行状态枚举
         /// </summary>
-        enum HardwarePlatformState
+        private enum HardwarePlatformState
         {
             /// <summary>
             /// 默认状态
@@ -68,19 +68,19 @@ namespace HFM
         /// <summary>
         /// 运行状态标志
         /// </summary>
-        private HardwarePlatformState platformState;
+        private HardwarePlatformState _platformState;
         /// <summary>
         /// 系统数据库中读取的测量时间
         /// </summary>
-        private int sqltime = (new HFM.Components.SystemParameter().GetParameter().MeasuringTime)<=1?10: (new HFM.Components.SystemParameter().GetParameter().MeasuringTime);
+        private int _sqltime = (new Components.SystemParameter().GetParameter().MeasuringTime)<=1?10: (new Components.SystemParameter().GetParameter().MeasuringTime);
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
-        private bool isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
+        private bool _isEnglish = (new Components.SystemParameter().GetParameter().IsEnglish);
         /// <summary>
         /// 异步线程初始化化时间,ReportProgress百分比数值
         /// </summary>
-        private int bkworkTime = 0;
+        private int _bkworkTime = 0;
         #endregion
         public FrmTestHardware()
         {
@@ -95,9 +95,9 @@ namespace HFM
         private void FrmTestHardware_Load(object sender, EventArgs e)
         {
             #region 中英文转换
-            if (isEnglish==true)
+            if (_isEnglish)
             {
-                this.Text = "Hardware Checking";//硬件检测
+                Text = "Hardware Checking";//硬件检测
                 LblLHP.Text = "LHP";//左手心
                 LblLHB.Text = "LHB";//左手背
                 LblRHP.Text = "RHP";//右手心
@@ -135,25 +135,25 @@ namespace HFM
             }
                 #endregion
             //初始化运行状态为默认状态
-            platformState = HardwarePlatformState.Default;
+            _platformState = HardwarePlatformState.Default;
             //初始化测量时间为系统参数时间
-            measuringTime = sqltime;
+            _measuringTime = _sqltime;
 
             #region 开启端口
             //从配置文件获得当前串口配置
-            if (commPort.Opened == true)
+            if (_commPort.Opened == true)
             {
-                commPort.Close();
+                _commPort.Close();
             }
-            commPort.GetCommPortSet();
+            _commPort.GetCommPortSet();
             //打开串口
             try
             {
-                commPort.Open();
+                _commPort.Open();
             }
             catch
             {
-                if (isEnglish == true)
+                if (_isEnglish == true)
                 {
                     MessageBox.Show("Port open error! Please check whether the communication is normal.");
                     //return;
@@ -166,8 +166,12 @@ namespace HFM
             }
             #endregion
 
-            //开启异步线程
-            bkWorkerReceiveData.RunWorkerAsync();
+            if (bkWorkerReceiveData.IsBusy==false)
+            {
+                //开启异步线程
+                bkWorkerReceiveData.RunWorkerAsync();
+            }
+            
         }
         #endregion
 
@@ -177,7 +181,7 @@ namespace HFM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bkWorkerReceiveData_DoWork(object sender, DoWorkEventArgs e)
+        private void BkWorkerReceiveData_DoWork(object sender, DoWorkEventArgs e)
         {
             //如果没有取消异步线程
             if (bkWorkerReceiveData.CancellationPending == false)
@@ -198,17 +202,17 @@ namespace HFM
         private void TimeConutPort()
         {
             //线程计时等于测量时间
-            if (bkworkTime == measuringTime)
+            if (_bkworkTime == _measuringTime)
             {
                 //总计数清空
                 DgvArrayClear();
                 //异步初始化为0
-                bkworkTime = 0;
+                _bkworkTime = 0;
 
-                platformState = HardwarePlatformState.Default;
-                measuringTime = sqltime;
+                _platformState = HardwarePlatformState.Default;
+                _measuringTime = _sqltime;
             }
-            bkworkTime = bkworkTime + 1;
+            _bkworkTime = _bkworkTime + 1;
         } 
         #endregion
 
@@ -237,7 +241,7 @@ namespace HFM
                 //如果当前运行状态为不是“默认状态
                 //则根据不同探测类型向下位机下发相应的自检指令
                 byte[] messageDate = null;
-                switch (platformState)
+                switch (_platformState)
                 {
                     case HardwarePlatformState.Default:
                         TimeConutPort();
@@ -247,7 +251,7 @@ namespace HFM
                         //下发Alpha自检指令
                         messageDate = Components.Message.BuildMessage(0);
                         //如果不成功则：
-                        if (Components.Message.SendMessage(messageDate, commPort) != true)
+                        if (Components.Message.SendMessage(messageDate, _commPort) != true)
                         {
                             //错误计数器errorNumber+1
                             errorNumber++;
@@ -255,11 +259,11 @@ namespace HFM
                             if (errorNumber > 5)
                             {
                                 
-                                bkworker.ReportProgress(bkworkTime, null);
+                                bkworker.ReportProgress(_bkworkTime, null);
                             }
                             else
                             {
-                                System.Threading.Thread.Sleep(delayTime);
+                                Thread.Sleep(delayTime);
                                 continue;
                             }
                         }
@@ -269,18 +273,18 @@ namespace HFM
                         //下发Beta自检指令
                         messageDate = Components.Message.BuildMessage(1);
                         //如果不成功则：
-                        if (Components.Message.SendMessage(messageDate, commPort) != true)
+                        if (Components.Message.SendMessage(messageDate, _commPort) != true)
                         {
                             //错误计数器errorNumber+1
                             errorNumber++;
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
                             if (errorNumber > 5)
                             {
-                                bkworker.ReportProgress(bkworkTime, null);
+                                bkworker.ReportProgress(_bkworkTime, null);
                             }
                             else
                             {
-                                System.Threading.Thread.Sleep(delayTime);
+                                Thread.Sleep(delayTime);
                                 continue;
                             }
                         }
@@ -320,18 +324,18 @@ namespace HFM
                         //下发自检指令
                         messageDate = Components.Message.BuildMessage(Convert.ToInt32(TxtCheckCount.Text), pulse, control, Convert.ToInt32(TxtPWidth.Text));
                         //如果不成功则：
-                        if (Components.Message.SendMessage(messageDate, commPort) != true)
+                        if (Components.Message.SendMessage(messageDate, _commPort) != true)
                         {
                             //错误计数器errorNumber+1
                             errorNumber++;
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
                             if (errorNumber > 5)
                             {
-                                bkworker.ReportProgress(bkworkTime, null);
+                                bkworker.ReportProgress(_bkworkTime, null);
                             }
                             else
                             {
-                                System.Threading.Thread.Sleep(delayTime);
+                                Thread.Sleep(delayTime);
                                 continue;
                             }
                         }
@@ -350,31 +354,31 @@ namespace HFM
                 byte[] buffMessage = new byte[62];
                 buffMessage[0] = Convert.ToByte('C');
                 //判断串口是否打开，打开则用传输数据，否则用模拟数据
-                if (commPort.Opened == true)
+                if (_commPort.Opened == true)
                 {
-                    if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)    //正式
+                    if (Components.Message.SendMessage(buffMessage, _commPort) == true)    //正式
                                                                                               //if (HFM.Components.Message.SendMessage(buffMessage, commPort) != true)      //测试使用
                     {
                         //延时
                         Thread.Sleep(100);
-                        receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
+                        receiveBuffMessage = Components.Message.ReceiveMessage(_commPort);
                         //延时
                         Thread.Sleep(500);
                         //触发向主线程返回下位机上传数据事件
-                        bkworker.ReportProgress(bkworkTime, receiveBuffMessage);
+                        bkworker.ReportProgress(_bkworkTime, receiveBuffMessage);
                     }
                 }
                 else
                 {
-                    if (HFM.Components.Message.SendMessage(buffMessage, commPort) != true)      //测试使用
+                    if (Components.Message.SendMessage(buffMessage, _commPort) != true)      //测试使用
                     {
                         //延时
                         Thread.Sleep(100);
-                        receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
+                        receiveBuffMessage = Components.Message.ReceiveMessage(_commPort);
                         //延时
                         Thread.Sleep(500);
                         //触发向主线程返回下位机上传数据事件
-                        bkworker.ReportProgress(bkworkTime, receiveBuffMessage);
+                        bkworker.ReportProgress(_bkworkTime, receiveBuffMessage);
                     }
                 }
                 #endregion
@@ -386,31 +390,31 @@ namespace HFM
         /// <summary>
         /// 定义dgv高压
         /// </summary>
-        string[] _hv = new string[6];
+        private string[] _hv = new string[6];
         /// <summary>
         /// alpha计数
         /// </summary>
-        string[] _alphacps = new string[6];
+        private string[] _alphacps = new string[6];
         /// <summary>
         /// alpha总计数
         /// </summary>
-        string[] _alphacnt = new string[6];
+        private string[] _alphacnt = new string[6];
         /// <summary>
         /// Beta计数
         /// </summary>
-        string[] _betacps = new string[6];
+        private string[] _betacps = new string[6];
         /// <summary>
         /// Beta总计数
         /// </summary>
-        string[] _betacnt = new string[6];
+        private string[] _betacnt = new string[6];
         /// <summary>
         /// 通道状态
         /// </summary>
-        string[] _strat = new string[6];
+        private string[] _strat = new string[6];
         /// <summary>
         /// 衣物计数
         /// </summary>
-        string frisker = "";
+        private string _frisker = "";
         /// <summary>
         /// 红外状态
         /// </summary>
@@ -427,14 +431,14 @@ namespace HFM
         
         #region 异步线程读取串口数据后的ReportProgress事件响应
         //异步线程读取串口数据后的ReportProgress事件响应
-        private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void BkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
             byte[] receiveBufferMessage=null; //存储接收报文信息缓冲区
             IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象            
             //判断串口是否打开，打开则用传输数据，否则用模拟数据
-            if (commPort.Opened == true)
+            if (_commPort.Opened)
             {
                 //对事件参数类中的数据对象序列化为byte[]
                 if (e.UserState is byte[])
@@ -447,7 +451,7 @@ namespace HFM
                     //数据接收出现错误次数超限
                     if (errNumber >= 2)
                     {
-                        if (isEnglish == true)
+                        if (_isEnglish)
                         {
                             MessageBox.Show("Communication error! Please check whether the communication is normal.");
                             return;
@@ -481,17 +485,17 @@ namespace HFM
                 if (i == 6)
                 {
                     _infraredStatus[i] = item.InfraredStatus;
-                    if (platformState == HardwarePlatformState.AlphaCheck)
+                    if (_platformState == HardwarePlatformState.AlphaCheck)
                     {
-                        frisker = Convert.ToString(item.Alpha);
+                        _frisker = Convert.ToString(item.Alpha);
                     }
-                    else if (platformState == HardwarePlatformState.BetaCheck)
+                    else if (_platformState == HardwarePlatformState.BetaCheck)
                     {
-                        frisker = Convert.ToString(item.Beta);
+                        _frisker = Convert.ToString(item.Beta);
                     }
                     else
                     {
-                        frisker = Convert.ToString(item.Alpha);
+                        _frisker = Convert.ToString(item.Alpha);
                     }
                     break;
                 }
@@ -509,9 +513,20 @@ namespace HFM
                 //beta总计数
                 _betacnt[i] = Convert.ToString(Convert.ToInt32(_betacnt[i]) + Convert.ToInt32(_betacps[i]));
                 //判断通道状态
-                if (Convert.ToInt32(_hv[i]) == 0 && (Convert.ToInt32(_alphacnt[i]) == 0 || Convert.ToInt32(_betacnt[i]) == 0))
+                if (new Channel().GetChannel(i).IsEnabled==false)
                 {
-                    if (isEnglish == true)
+                    if (_isEnglish)
+                    {
+                        _strat[i] = "Not enabled";
+                    }
+                    else
+                    {
+                        _strat[i] = "未启用";
+                    }
+                }
+                else if (Convert.ToInt32(_hv[i]) == 0 && (Convert.ToInt32(_alphacnt[i]) == 0 || Convert.ToInt32(_betacnt[i]) == 0))
+                {
+                    if (_isEnglish)
                     {
                         _strat[i] = "COM fault";
                     }
@@ -522,7 +537,7 @@ namespace HFM
                 }
                 else if (Convert.ToInt32(_alphacnt[i]) == 0 && Convert.ToInt32(_betacnt[i]) == 0)
                 {
-                    if (isEnglish == true)
+                    if (_isEnglish)
                     {
                         _strat[i] = "Probe fault";
                     }
@@ -533,7 +548,7 @@ namespace HFM
                 }
                 else
                 {
-                    if (isEnglish == true)
+                    if (_isEnglish)
                     {
                         _strat[i] = "OK";
                     }
@@ -551,10 +566,10 @@ namespace HFM
             DgvWork.Rows.Insert(3, _betacps);
             DgvWork.Rows.Insert(4, _betacnt);
             DgvWork.Rows.Insert(5, _strat);
-            TxtFriskercount.Text = frisker;
+            TxtFriskercount.Text = _frisker;
 
-            int time = this.measuringTime - e.ProgressPercentage;
-            if (isEnglish == true)
+            int time = _measuringTime - e.ProgressPercentage;
+            if (_isEnglish)
             {
                 LblTimeWork.Text = "Countdown " + time + " s";
             }
@@ -565,30 +580,30 @@ namespace HFM
             //判断右手红外状态界面显示颜色
             if (_infraredStatus[0] == 1 && _infraredStatus[1] == 1)
             {
-                TxtLHandState.BackColor = System.Drawing.Color.Lime;
+                TxtLHandState.BackColor = Color.Lime;
             }
             else
             {
-                TxtLHandState.BackColor = System.Drawing.Color.Orange;
+                TxtLHandState.BackColor = Color.Orange;
             }
             //判断右手红外状态界面显示颜色
             if (_infraredStatus[2] == 1 && _infraredStatus[3] == 1)
             {
-                TxtRHandState.BackColor = System.Drawing.Color.Lime;
+                TxtRHandState.BackColor = Color.Lime;
             }
             else
             {
-                TxtRHandState.BackColor = System.Drawing.Color.Orange;
+                TxtRHandState.BackColor = Color.Orange;
             }
             //
             //判断右手红外状态界面显示颜色
             if (_infraredStatus[6] == 1)
             {
-                TxtFriskerState.BackColor = System.Drawing.Color.Lime;
+                TxtFriskerState.BackColor = Color.Lime;
             }
             else
             {
-                TxtFriskerState.BackColor = System.Drawing.Color.Orange;
+                TxtFriskerState.BackColor = Color.Orange;
             }
             #endregion
         }
@@ -601,10 +616,10 @@ namespace HFM
         /// <param name="platform">自检运行状态</param>
         private void BtnCurency(HardwarePlatformState platform)
         {
-            platformState = platform;
-            measuringTime = sqltime;
+            _platformState = platform;
+            _measuringTime = _sqltime;
             DgvArrayClear();
-            bkworkTime = 0;
+            _bkworkTime = 0;
         }
         #endregion
 

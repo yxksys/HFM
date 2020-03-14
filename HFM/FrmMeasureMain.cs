@@ -318,6 +318,7 @@ namespace HFM
             bool isSelfCheckSended = false;
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
+            //DateTime stateTimeStart = DateTime.Now.AddSeconds(-3);//初始化计时开始时间
             while (true)
             {
                 //请求进程中断读取数据
@@ -422,8 +423,10 @@ namespace HFM
                     }
                     //下发成功，置报文已经发送标志
                     isSelfCheckSended = true;
-                    //延时1000毫秒
-                    Thread.Sleep(1000);
+                    //延时100毫秒
+                    Thread.Sleep(100);
+                    //启动自检计时 
+                    //stateTimeStart = System.DateTime.Now.AddSeconds(-3);
                 }
                 //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
@@ -433,12 +436,12 @@ namespace HFM
                 if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)
                 {
                     //延时
-                    Thread.Sleep(200);
+                    Thread.Sleep(100);
                     //读取串口回传数据并赋值给receiveBuffMessage
                     byte[] receiveBuffMessage = new byte[200];
                     receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
                     //延时
-                    Thread.Sleep(800);
+                    Thread.Sleep(700);
                     //触发向主线程返回下位机上传数据事件
                     worker.ReportProgress(1, receiveBuffMessage);
                 }
@@ -446,18 +449,7 @@ namespace HFM
         }
 
         private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            //ix++;
-            //if(ix>5)
-            //{
-            //    bkWorkerReceiveData.CancelAsync();
-            //    Thread.Sleep(1000);
-            //    if(MessageBox.Show("123")==DialogResult.OK)
-            //    {
-            //        bkWorkerReceiveData.RunWorkerAsync();
-            //    }
-            //}
-            //return;
+        {            
             string appPath = Application.StartupPath;
             int messageBufferLength = 62; //最短报文长度            
             byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
@@ -507,7 +499,7 @@ namespace HFM
                     //
                 }
                 //如果手部探测器为启用状态，则判断左右手是否到位，到位则相应指示框背景变为绿色，否则为橙色，同时进行文字信息提示（具体操作可参考老版本源代码）
-                if(channelS.First(channel => channel.ChannelName_English == "LHB")!=null)//只要手部一个通道启用则其它通道全部启用
+                if(channelS.FirstOrDefault(channel => channel.ChannelName_English == "LHP")!=null)//只要手部一个通道启用则其它通道全部启用
                 {
                     if(measureDataS[0].InfraredStatus!=1)//红外不到位
                     {
@@ -526,8 +518,16 @@ namespace HFM
                 }
                 //当前运行状态设置为“仪器自检”
                 platformState = PlatformState.SelfTest;
+                //if (isPlayed != true)
+                //{
+                    player.SoundLocation = appPath + "\\Audio\\Chinese_Self_checking.wav";
+                    player.Play();
+                ////设备运行状态区域显示“仪器自检”
+                //TxtShowResult.Text += "仪器自检\r\n";
+                //isPlayed = true;
+                //}
                 //启动自检计时 
-                stateTimeStart = System.DateTime.Now;
+                stateTimeStart = System.DateTime.Now.AddSeconds(1);
                 return;
             }
             //如果当前运行状态为“仪器自检”
@@ -539,14 +539,16 @@ namespace HFM
                 //系统语音提示“仪器自检”，只播报一次 
                 if (isPlayed != true)
                 {
-                    player.SoundLocation = appPath + "\\Audio\\Chinese_Self_checking.wav";
-                    player.Play();
-                    //设备运行状态区域显示“仪器自检”
+                    //    player.SoundLocation = appPath + "\\Audio\\Chinese_Self_checking.wav";
+                    //    player.Play();
+                    //    //设备运行状态区域显示“仪器自检”
                     TxtShowResult.Text += "仪器自检\r\n";
                     isPlayed = true;
-                }                
+                }
                 ////更新剩余时间：系统自检设置时间-已经用时
-                //stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;                                
+                stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
+                //更新当前系统运行状态剩余时间
+                LblTimeRemain.Text = stateTimeRemain.ToString();
                 // IList<int> channelIDS=channelS.Select(channel => channel.ChannelID).ToList();               
                 for (int i = 0; i < channelS.Count; i++)
                 {
@@ -568,7 +570,7 @@ namespace HFM
                 //界面中对应通道显示当前测量值
                 DisplayMeasureData(calculatedMeasureDataS,"cps");
                 //自检时间到
-                if (stateTimeRemain <= 0)
+                if (stateTimeRemain < 0)
                 {
                     isPlayed = false;
                     string[] errRecordS = new string[2];
@@ -607,6 +609,7 @@ namespace HFM
                         //语音提示故障
                         player.SoundLocation = appPath + "\\Audio\\Chinese_Self-checking_fault.wav";
                         player.Play();
+                        Thread.Sleep(5000);
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now;
                         //重新启动自检计时
@@ -1047,7 +1050,7 @@ namespace HFM
                     PicShowStatus.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                     if (platformState == PlatformState.SelfTest)
                     {
-                        LblShowStutas.Text = "仪器故障;";
+                        LblShowStutas.Text = "仪器故障";
                     }
                     TxtShowResult.Text += calculatedMeasureDataS[i].Channel.ChannelName + errRecord + "\r\n";
                     //对应通道名字文本框背景色显示为ERROR
@@ -1060,7 +1063,7 @@ namespace HFM
                     if (platformState == PlatformState.SelfTest)
                     {
                         //设备状态区域文字提示“仪器正常”
-                        LblShowStutas.Text = "仪器正常;";
+                        LblShowStutas.Text = "仪器正常";
                     }
                     //对应通道名字文本框背景色显示为NORMAL
                     ((TextBox)(this.Controls[string.Format("Txt{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)])).BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
@@ -1117,9 +1120,9 @@ namespace HFM
             //更新当前显示时间
             LblTime.Text = DateTime.Now.ToLongTimeString();
             //更新剩余时间：系统自检设置时间-已经用时
-            stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
-            //更新当前系统运行状态剩余时间
-            LblTimeRemain.Text = stateTimeRemain.ToString();
+            //stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
+            ////更新当前系统运行状态剩余时间
+            //LblTimeRemain.Text = stateTimeRemain.ToString();
         }
     }
 }
