@@ -105,7 +105,7 @@
             // PicName
             // 
             this.PicName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicName.Location = new System.Drawing.Point(5, 12);
+            this.PicName.Location = new System.Drawing.Point(6, 12);
             this.PicName.Name = "PicName";
             this.PicName.Size = new System.Drawing.Size(284, 52);
             this.PicName.TabIndex = 0;
@@ -114,18 +114,18 @@
             // PicIP
             // 
             this.PicIP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicIP.Location = new System.Drawing.Point(295, 12);
+            this.PicIP.Location = new System.Drawing.Point(296, 12);
             this.PicIP.Name = "PicIP";
-            this.PicIP.Size = new System.Drawing.Size(284, 52);
+            this.PicIP.Size = new System.Drawing.Size(268, 52);
             this.PicIP.TabIndex = 1;
             this.PicIP.TabStop = false;
             // 
             // PicSN
             // 
             this.PicSN.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicSN.Location = new System.Drawing.Point(596, 12);
+            this.PicSN.Location = new System.Drawing.Point(570, 12);
             this.PicSN.Name = "PicSN";
-            this.PicSN.Size = new System.Drawing.Size(198, 52);
+            this.PicSN.Size = new System.Drawing.Size(224, 52);
             this.PicSN.TabIndex = 2;
             this.PicSN.TabStop = false;
             // 
@@ -133,9 +133,9 @@
             // 
             this.PicLHB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicLHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicLHB.Location = new System.Drawing.Point(4, 69);
+            this.PicLHB.Location = new System.Drawing.Point(6, 69);
             this.PicLHB.Name = "PicLHB";
-            this.PicLHB.Size = new System.Drawing.Size(120, 170);
+            this.PicLHB.Size = new System.Drawing.Size(135, 170);
             this.PicLHB.TabIndex = 3;
             this.PicLHB.TabStop = false;
             // 
@@ -143,7 +143,7 @@
             // 
             this.PicLHP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicLHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicLHP.Location = new System.Drawing.Point(4, 244);
+            this.PicLHP.Location = new System.Drawing.Point(6, 244);
             this.PicLHP.Name = "PicLHP";
             this.PicLHP.Size = new System.Drawing.Size(135, 170);
             this.PicLHP.TabIndex = 4;
@@ -153,9 +153,9 @@
             // 
             this.PicLF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicLF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicLF.Location = new System.Drawing.Point(2, 419);
+            this.PicLF.Location = new System.Drawing.Point(6, 419);
             this.PicLF.Name = "PicLF";
-            this.PicLF.Size = new System.Drawing.Size(120, 170);
+            this.PicLF.Size = new System.Drawing.Size(135, 170);
             this.PicLF.TabIndex = 5;
             this.PicLF.TabStop = false;
             // 
@@ -164,9 +164,9 @@
             this.PicShowStatus.BackColor = System.Drawing.Color.Orange;
             this.PicShowStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicShowStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicShowStatus.Location = new System.Drawing.Point(131, 69);
+            this.PicShowStatus.Location = new System.Drawing.Point(147, 69);
             this.PicShowStatus.Name = "PicShowStatus";
-            this.PicShowStatus.Size = new System.Drawing.Size(530, 169);
+            this.PicShowStatus.Size = new System.Drawing.Size(504, 169);
             this.PicShowStatus.TabIndex = 6;
             this.PicShowStatus.TabStop = false;
             // 
@@ -175,9 +175,9 @@
             this.PicFrisker.BackColor = System.Drawing.Color.Orange;
             this.PicFrisker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicFrisker.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicFrisker.Location = new System.Drawing.Point(401, 244);
+            this.PicFrisker.Location = new System.Drawing.Point(403, 244);
             this.PicFrisker.Name = "PicFrisker";
-            this.PicFrisker.Size = new System.Drawing.Size(267, 82);
+            this.PicFrisker.Size = new System.Drawing.Size(250, 82);
             this.PicFrisker.TabIndex = 8;
             this.PicFrisker.TabStop = false;
             // 
@@ -186,9 +186,9 @@
             this.PicRightBackground.BackColor = System.Drawing.Color.Orange;
             this.PicRightBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicRightBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicRightBackground.Location = new System.Drawing.Point(402, 330);
+            this.PicRightBackground.Location = new System.Drawing.Point(403, 330);
             this.PicRightBackground.Name = "PicRightBackground";
-            this.PicRightBackground.Size = new System.Drawing.Size(267, 82);
+            this.PicRightBackground.Size = new System.Drawing.Size(250, 82);
             this.PicRightBackground.TabIndex = 10;
             this.PicRightBackground.TabStop = false;
             // 
@@ -196,7 +196,7 @@
             // 
             this.PicLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicLogo.Image = ((System.Drawing.Image)(resources.GetObject("PicLogo.Image")));
-            this.PicLogo.Location = new System.Drawing.Point(128, 549);
+            this.PicLogo.Location = new System.Drawing.Point(147, 549);
             this.PicLogo.Name = "PicLogo";
             this.PicLogo.Size = new System.Drawing.Size(131, 45);
             this.PicLogo.TabIndex = 11;
@@ -205,20 +205,20 @@
             // TxtShowResult
             // 
             this.TxtShowResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtShowResult.Location = new System.Drawing.Point(128, 418);
+            this.TxtShowResult.Location = new System.Drawing.Point(147, 418);
             this.TxtShowResult.MaxLength = 32767000;
             this.TxtShowResult.Multiline = true;
             this.TxtShowResult.Name = "TxtShowResult";
             this.TxtShowResult.ReadOnly = true;
             this.TxtShowResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TxtShowResult.ShortcutsEnabled = false;
-            this.TxtShowResult.Size = new System.Drawing.Size(540, 125);
+            this.TxtShowResult.Size = new System.Drawing.Size(506, 125);
             this.TxtShowResult.TabIndex = 23;
             // 
             // BtnChinese
             // 
             this.BtnChinese.Enabled = false;
-            this.BtnChinese.Location = new System.Drawing.Point(334, 549);
+            this.BtnChinese.Location = new System.Drawing.Point(343, 549);
             this.BtnChinese.Name = "BtnChinese";
             this.BtnChinese.Size = new System.Drawing.Size(96, 40);
             this.BtnChinese.TabIndex = 21;
@@ -228,7 +228,7 @@
             // BtnEnglish
             // 
             this.BtnEnglish.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
-            this.BtnEnglish.Location = new System.Drawing.Point(454, 549);
+            this.BtnEnglish.Location = new System.Drawing.Point(450, 549);
             this.BtnEnglish.Name = "BtnEnglish";
             this.BtnEnglish.Size = new System.Drawing.Size(96, 40);
             this.BtnEnglish.TabIndex = 22;
@@ -237,7 +237,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(573, 549);
+            this.button1.Location = new System.Drawing.Point(557, 549);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 40);
             this.button1.TabIndex = 3;
@@ -248,7 +248,7 @@
             // 
             this.PicRHB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicRHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicRHB.Location = new System.Drawing.Point(660, 69);
+            this.PicRHB.Location = new System.Drawing.Point(659, 69);
             this.PicRHB.Name = "PicRHB";
             this.PicRHB.Size = new System.Drawing.Size(135, 170);
             this.PicRHB.TabIndex = 24;
@@ -258,9 +258,9 @@
             // 
             this.PicRHP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicRHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicRHP.Location = new System.Drawing.Point(674, 244);
+            this.PicRHP.Location = new System.Drawing.Point(659, 244);
             this.PicRHP.Name = "PicRHP";
-            this.PicRHP.Size = new System.Drawing.Size(120, 170);
+            this.PicRHP.Size = new System.Drawing.Size(135, 170);
             this.PicRHP.TabIndex = 25;
             this.PicRHP.TabStop = false;
             // 
@@ -268,9 +268,9 @@
             // 
             this.PicRF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicRF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicRF.Location = new System.Drawing.Point(674, 419);
+            this.PicRF.Location = new System.Drawing.Point(659, 419);
             this.PicRF.Name = "PicRF";
-            this.PicRF.Size = new System.Drawing.Size(120, 170);
+            this.PicRF.Size = new System.Drawing.Size(135, 170);
             this.PicRF.TabIndex = 26;
             this.PicRF.TabStop = false;
             // 
@@ -298,7 +298,7 @@
             // 
             this.LblSN.AutoSize = true;
             this.LblSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.LblSN.Location = new System.Drawing.Point(607, 28);
+            this.LblSN.Location = new System.Drawing.Point(579, 28);
             this.LblSN.Name = "LblSN";
             this.LblSN.Size = new System.Drawing.Size(47, 25);
             this.LblSN.TabIndex = 27;
@@ -306,11 +306,11 @@
             // 
             // LblShowStutas
             // 
-            this.LblShowStutas.BackColor = System.Drawing.Color.Transparent;
+            this.LblShowStutas.BackColor = System.Drawing.Color.Orange;
             this.LblShowStutas.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.24999F, System.Drawing.FontStyle.Bold);
-            this.LblShowStutas.Location = new System.Drawing.Point(134, 127);
+            this.LblShowStutas.Location = new System.Drawing.Point(158, 127);
             this.LblShowStutas.Name = "LblShowStutas";
-            this.LblShowStutas.Size = new System.Drawing.Size(520, 76);
+            this.LblShowStutas.Size = new System.Drawing.Size(480, 76);
             this.LblShowStutas.TabIndex = 10;
             this.LblShowStutas.Text = "仪器自检";
             this.LblShowStutas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -319,9 +319,9 @@
             // 
             this.TxtLHB.BackColor = System.Drawing.Color.Lime;
             this.TxtLHB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtLHB.Location = new System.Drawing.Point(10, 79);
+            this.TxtLHB.Location = new System.Drawing.Point(14, 79);
             this.TxtLHB.Name = "TxtLHB";
-            this.TxtLHB.Size = new System.Drawing.Size(105, 26);
+            this.TxtLHB.Size = new System.Drawing.Size(120, 26);
             this.TxtLHB.TabIndex = 16;
             this.TxtLHB.Text = "左手背";
             this.TxtLHB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -330,9 +330,9 @@
             // 
             this.TxtLHP.BackColor = System.Drawing.Color.Lime;
             this.TxtLHP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtLHP.Location = new System.Drawing.Point(10, 254);
+            this.TxtLHP.Location = new System.Drawing.Point(14, 254);
             this.TxtLHP.Name = "TxtLHP";
-            this.TxtLHP.Size = new System.Drawing.Size(105, 26);
+            this.TxtLHP.Size = new System.Drawing.Size(120, 26);
             this.TxtLHP.TabIndex = 28;
             this.TxtLHP.Text = "左手心";
             this.TxtLHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -341,9 +341,9 @@
             // 
             this.TxtLF.BackColor = System.Drawing.Color.Lime;
             this.TxtLF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtLF.Location = new System.Drawing.Point(15, 426);
+            this.TxtLF.Location = new System.Drawing.Point(14, 426);
             this.TxtLF.Name = "TxtLF";
-            this.TxtLF.Size = new System.Drawing.Size(95, 26);
+            this.TxtLF.Size = new System.Drawing.Size(120, 26);
             this.TxtLF.TabIndex = 19;
             this.TxtLF.Text = "左  脚";
             this.TxtLF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -352,9 +352,9 @@
             // 
             this.TxtRHB.BackColor = System.Drawing.Color.Lime;
             this.TxtRHB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtRHB.Location = new System.Drawing.Point(682, 79);
+            this.TxtRHB.Location = new System.Drawing.Point(667, 79);
             this.TxtRHB.Name = "TxtRHB";
-            this.TxtRHB.Size = new System.Drawing.Size(105, 26);
+            this.TxtRHB.Size = new System.Drawing.Size(120, 26);
             this.TxtRHB.TabIndex = 20;
             this.TxtRHB.Text = "右手背";
             this.TxtRHB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -363,9 +363,9 @@
             // 
             this.TxtRHP.BackColor = System.Drawing.Color.Lime;
             this.TxtRHP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtRHP.Location = new System.Drawing.Point(682, 254);
+            this.TxtRHP.Location = new System.Drawing.Point(667, 254);
             this.TxtRHP.Name = "TxtRHP";
-            this.TxtRHP.Size = new System.Drawing.Size(105, 26);
+            this.TxtRHP.Size = new System.Drawing.Size(120, 26);
             this.TxtRHP.TabIndex = 15;
             this.TxtRHP.Text = "右手心";
             this.TxtRHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -374,9 +374,9 @@
             // 
             this.TxtRF.BackColor = System.Drawing.Color.Lime;
             this.TxtRF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TxtRF.Location = new System.Drawing.Point(687, 426);
+            this.TxtRF.Location = new System.Drawing.Point(667, 426);
             this.TxtRF.Name = "TxtRF";
-            this.TxtRF.Size = new System.Drawing.Size(95, 26);
+            this.TxtRF.Size = new System.Drawing.Size(120, 26);
             this.TxtRF.TabIndex = 29;
             this.TxtRF.Text = "右  脚";
             this.TxtRF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -386,7 +386,7 @@
             this.LblTime.AutoSize = true;
             this.LblTime.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold);
             this.LblTime.ForeColor = System.Drawing.Color.DarkBlue;
-            this.LblTime.Location = new System.Drawing.Point(152, 261);
+            this.LblTime.Location = new System.Drawing.Point(162, 261);
             this.LblTime.Name = "LblTime";
             this.LblTime.Size = new System.Drawing.Size(220, 48);
             this.LblTime.TabIndex = 10;
@@ -394,24 +394,24 @@
             // 
             // LblLeft
             // 
-            this.LblLeft.BackColor = System.Drawing.Color.Transparent;
+            this.LblLeft.BackColor = System.Drawing.Color.Orange;
             this.LblLeft.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLeft.ForeColor = System.Drawing.Color.Black;
-            this.LblLeft.Location = new System.Drawing.Point(147, 352);
+            this.LblLeft.Location = new System.Drawing.Point(170, 352);
             this.LblLeft.Name = "LblLeft";
-            this.LblLeft.Size = new System.Drawing.Size(240, 40);
+            this.LblLeft.Size = new System.Drawing.Size(220, 40);
             this.LblLeft.TabIndex = 41;
             this.LblLeft.Text = "左手不到位";
             this.LblLeft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblRight
             // 
-            this.LblRight.BackColor = System.Drawing.Color.Transparent;
+            this.LblRight.BackColor = System.Drawing.Color.Orange;
             this.LblRight.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblRight.ForeColor = System.Drawing.Color.Black;
-            this.LblRight.Location = new System.Drawing.Point(411, 352);
+            this.LblRight.Location = new System.Drawing.Point(421, 352);
             this.LblRight.Name = "LblRight";
-            this.LblRight.Size = new System.Drawing.Size(249, 40);
+            this.LblRight.Size = new System.Drawing.Size(220, 40);
             this.LblRight.TabIndex = 42;
             this.LblRight.Text = "右手不到位";
             this.LblRight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -432,7 +432,7 @@
             this.PicTimeBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PicTimeBackground.Location = new System.Drawing.Point(147, 244);
             this.PicTimeBackground.Name = "PicTimeBackground";
-            this.PicTimeBackground.Size = new System.Drawing.Size(249, 82);
+            this.PicTimeBackground.Size = new System.Drawing.Size(250, 82);
             this.PicTimeBackground.TabIndex = 7;
             this.PicTimeBackground.TabStop = false;
             // 
@@ -441,9 +441,9 @@
             this.PnlLHB.BackColor = System.Drawing.SystemColors.Control;
             this.PnlLHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlLHB.Controls.Add(this.LblLHB);
-            this.PnlLHB.Location = new System.Drawing.Point(5, 196);
+            this.PnlLHB.Location = new System.Drawing.Point(6, 198);
             this.PnlLHB.Name = "PnlLHB";
-            this.PnlLHB.Size = new System.Drawing.Size(120, 40);
+            this.PnlLHB.Size = new System.Drawing.Size(135, 40);
             this.PnlLHB.TabIndex = 44;
             // 
             // LblLHB
@@ -461,18 +461,18 @@
             this.PicLeftBackground.BackColor = System.Drawing.Color.Orange;
             this.PicLeftBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicLeftBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicLeftBackground.Location = new System.Drawing.Point(144, 332);
+            this.PicLeftBackground.Location = new System.Drawing.Point(147, 332);
             this.PicLeftBackground.Name = "PicLeftBackground";
-            this.PicLeftBackground.Size = new System.Drawing.Size(251, 80);
+            this.PicLeftBackground.Size = new System.Drawing.Size(250, 80);
             this.PicLeftBackground.TabIndex = 9;
             this.PicLeftBackground.TabStop = false;
             // 
             // LblFrisker
             // 
             this.LblFrisker.AutoSize = true;
-            this.LblFrisker.BackColor = System.Drawing.Color.Transparent;
+            this.LblFrisker.BackColor = System.Drawing.Color.Orange;
             this.LblFrisker.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblFrisker.Location = new System.Drawing.Point(495, 261);
+            this.LblFrisker.Location = new System.Drawing.Point(478, 261);
             this.LblFrisker.Name = "LblFrisker";
             this.LblFrisker.Size = new System.Drawing.Size(170, 48);
             this.LblFrisker.TabIndex = 45;
@@ -480,13 +480,13 @@
             // 
             // LblTimeRemain
             // 
-            this.LblTimeRemain.BackColor = System.Drawing.Color.Transparent;
+            this.LblTimeRemain.BackColor = System.Drawing.Color.Orange;
             this.LblTimeRemain.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTimeRemain.Location = new System.Drawing.Point(579, 79);
+            this.LblTimeRemain.Location = new System.Drawing.Point(577, 79);
             this.LblTimeRemain.Name = "LblTimeRemain";
-            this.LblTimeRemain.Size = new System.Drawing.Size(78, 42);
+            this.LblTimeRemain.Size = new System.Drawing.Size(70, 42);
             this.LblTimeRemain.TabIndex = 46;
-            this.LblTimeRemain.Text = " ";
+            this.LblTimeRemain.Text = " 0 s";
             this.LblTimeRemain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblRHB
@@ -504,7 +504,7 @@
             this.PnlRHB.BackColor = System.Drawing.SystemColors.Control;
             this.PnlRHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlRHB.Controls.Add(this.LblRHB);
-            this.PnlRHB.Location = new System.Drawing.Point(661, 196);
+            this.PnlRHB.Location = new System.Drawing.Point(659, 198);
             this.PnlRHB.Name = "PnlRHB";
             this.PnlRHB.Size = new System.Drawing.Size(135, 40);
             this.PnlRHB.TabIndex = 45;
@@ -524,7 +524,7 @@
             this.PnlLHP.BackColor = System.Drawing.SystemColors.Control;
             this.PnlLHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlLHP.Controls.Add(this.LblLHP);
-            this.PnlLHP.Location = new System.Drawing.Point(4, 370);
+            this.PnlLHP.Location = new System.Drawing.Point(6, 372);
             this.PnlLHP.Name = "PnlLHP";
             this.PnlLHP.Size = new System.Drawing.Size(135, 40);
             this.PnlLHP.TabIndex = 46;
@@ -544,9 +544,9 @@
             this.PnlRHP.BackColor = System.Drawing.SystemColors.Control;
             this.PnlRHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlRHP.Controls.Add(this.LblRHP);
-            this.PnlRHP.Location = new System.Drawing.Point(674, 371);
+            this.PnlRHP.Location = new System.Drawing.Point(659, 373);
             this.PnlRHP.Name = "PnlRHP";
-            this.PnlRHP.Size = new System.Drawing.Size(120, 40);
+            this.PnlRHP.Size = new System.Drawing.Size(135, 40);
             this.PnlRHP.TabIndex = 46;
             // 
             // LblRF
@@ -564,9 +564,9 @@
             this.PnlRF.BackColor = System.Drawing.SystemColors.Control;
             this.PnlRF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlRF.Controls.Add(this.LblRF);
-            this.PnlRF.Location = new System.Drawing.Point(675, 546);
+            this.PnlRF.Location = new System.Drawing.Point(659, 548);
             this.PnlRF.Name = "PnlRF";
-            this.PnlRF.Size = new System.Drawing.Size(120, 40);
+            this.PnlRF.Size = new System.Drawing.Size(135, 40);
             this.PnlRF.TabIndex = 46;
             // 
             // LblLF
@@ -584,9 +584,9 @@
             this.PnlLF.BackColor = System.Drawing.SystemColors.Control;
             this.PnlLF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlLF.Controls.Add(this.LblLF);
-            this.PnlLF.Location = new System.Drawing.Point(3, 546);
+            this.PnlLF.Location = new System.Drawing.Point(6, 548);
             this.PnlLF.Name = "PnlLF";
-            this.PnlLF.Size = new System.Drawing.Size(120, 40);
+            this.PnlLF.Size = new System.Drawing.Size(135, 40);
             this.PnlLF.TabIndex = 46;
             // 
             // TmrDispTime
