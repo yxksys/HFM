@@ -145,7 +145,7 @@
             this.PicLHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PicLHP.Location = new System.Drawing.Point(4, 244);
             this.PicLHP.Name = "PicLHP";
-            this.PicLHP.Size = new System.Drawing.Size(120, 170);
+            this.PicLHP.Size = new System.Drawing.Size(135, 170);
             this.PicLHP.TabIndex = 4;
             this.PicLHP.TabStop = false;
             // 
@@ -164,9 +164,9 @@
             this.PicShowStatus.BackColor = System.Drawing.Color.Orange;
             this.PicShowStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicShowStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicShowStatus.Location = new System.Drawing.Point(129, 69);
+            this.PicShowStatus.Location = new System.Drawing.Point(131, 69);
             this.PicShowStatus.Name = "PicShowStatus";
-            this.PicShowStatus.Size = new System.Drawing.Size(540, 169);
+            this.PicShowStatus.Size = new System.Drawing.Size(530, 169);
             this.PicShowStatus.TabIndex = 6;
             this.PicShowStatus.TabStop = false;
             // 
@@ -248,9 +248,9 @@
             // 
             this.PicRHB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicRHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicRHB.Location = new System.Drawing.Point(674, 69);
+            this.PicRHB.Location = new System.Drawing.Point(660, 69);
             this.PicRHB.Name = "PicRHB";
-            this.PicRHB.Size = new System.Drawing.Size(120, 170);
+            this.PicRHB.Size = new System.Drawing.Size(135, 170);
             this.PicRHB.TabIndex = 24;
             this.PicRHB.TabStop = false;
             // 
@@ -308,7 +308,7 @@
             // 
             this.LblShowStutas.BackColor = System.Drawing.Color.Transparent;
             this.LblShowStutas.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.24999F, System.Drawing.FontStyle.Bold);
-            this.LblShowStutas.Location = new System.Drawing.Point(139, 127);
+            this.LblShowStutas.Location = new System.Drawing.Point(134, 127);
             this.LblShowStutas.Name = "LblShowStutas";
             this.LblShowStutas.Size = new System.Drawing.Size(520, 76);
             this.LblShowStutas.TabIndex = 10;
@@ -397,9 +397,9 @@
             this.LblLeft.BackColor = System.Drawing.Color.Transparent;
             this.LblLeft.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLeft.ForeColor = System.Drawing.Color.Black;
-            this.LblLeft.Location = new System.Drawing.Point(137, 352);
+            this.LblLeft.Location = new System.Drawing.Point(147, 352);
             this.LblLeft.Name = "LblLeft";
-            this.LblLeft.Size = new System.Drawing.Size(250, 40);
+            this.LblLeft.Size = new System.Drawing.Size(240, 40);
             this.LblLeft.TabIndex = 41;
             this.LblLeft.Text = "左手不到位";
             this.LblLeft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -430,9 +430,9 @@
             // 
             this.PicTimeBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicTimeBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicTimeBackground.Location = new System.Drawing.Point(129, 244);
+            this.PicTimeBackground.Location = new System.Drawing.Point(147, 244);
             this.PicTimeBackground.Name = "PicTimeBackground";
-            this.PicTimeBackground.Size = new System.Drawing.Size(267, 82);
+            this.PicTimeBackground.Size = new System.Drawing.Size(249, 82);
             this.PicTimeBackground.TabIndex = 7;
             this.PicTimeBackground.TabStop = false;
             // 
@@ -441,9 +441,9 @@
             this.PnlLHB.BackColor = System.Drawing.SystemColors.Control;
             this.PnlLHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlLHB.Controls.Add(this.LblLHB);
-            this.PnlLHB.Location = new System.Drawing.Point(11, 196);
+            this.PnlLHB.Location = new System.Drawing.Point(5, 196);
             this.PnlLHB.Name = "PnlLHB";
-            this.PnlLHB.Size = new System.Drawing.Size(107, 40);
+            this.PnlLHB.Size = new System.Drawing.Size(120, 40);
             this.PnlLHB.TabIndex = 44;
             // 
             // LblLHB
@@ -461,9 +461,9 @@
             this.PicLeftBackground.BackColor = System.Drawing.Color.Orange;
             this.PicLeftBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PicLeftBackground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PicLeftBackground.Location = new System.Drawing.Point(128, 332);
+            this.PicLeftBackground.Location = new System.Drawing.Point(144, 332);
             this.PicLeftBackground.Name = "PicLeftBackground";
-            this.PicLeftBackground.Size = new System.Drawing.Size(267, 80);
+            this.PicLeftBackground.Size = new System.Drawing.Size(251, 80);
             this.PicLeftBackground.TabIndex = 9;
             this.PicLeftBackground.TabStop = false;
             // 
@@ -482,7 +482,7 @@
             // 
             this.LblTimeRemain.BackColor = System.Drawing.Color.Transparent;
             this.LblTimeRemain.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTimeRemain.Location = new System.Drawing.Point(587, 79);
+            this.LblTimeRemain.Location = new System.Drawing.Point(579, 79);
             this.LblTimeRemain.Name = "LblTimeRemain";
             this.LblTimeRemain.Size = new System.Drawing.Size(78, 42);
             this.LblTimeRemain.TabIndex = 46;
@@ -504,9 +504,9 @@
             this.PnlRHB.BackColor = System.Drawing.SystemColors.Control;
             this.PnlRHB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlRHB.Controls.Add(this.LblRHB);
-            this.PnlRHB.Location = new System.Drawing.Point(680, 196);
+            this.PnlRHB.Location = new System.Drawing.Point(661, 196);
             this.PnlRHB.Name = "PnlRHB";
-            this.PnlRHB.Size = new System.Drawing.Size(107, 40);
+            this.PnlRHB.Size = new System.Drawing.Size(135, 40);
             this.PnlRHB.TabIndex = 45;
             // 
             // LblLHP
@@ -524,9 +524,9 @@
             this.PnlLHP.BackColor = System.Drawing.SystemColors.Control;
             this.PnlLHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlLHP.Controls.Add(this.LblLHP);
-            this.PnlLHP.Location = new System.Drawing.Point(10, 370);
+            this.PnlLHP.Location = new System.Drawing.Point(4, 370);
             this.PnlLHP.Name = "PnlLHP";
-            this.PnlLHP.Size = new System.Drawing.Size(107, 40);
+            this.PnlLHP.Size = new System.Drawing.Size(135, 40);
             this.PnlLHP.TabIndex = 46;
             // 
             // LblRHP
@@ -544,9 +544,9 @@
             this.PnlRHP.BackColor = System.Drawing.SystemColors.Control;
             this.PnlRHP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlRHP.Controls.Add(this.LblRHP);
-            this.PnlRHP.Location = new System.Drawing.Point(681, 371);
+            this.PnlRHP.Location = new System.Drawing.Point(674, 371);
             this.PnlRHP.Name = "PnlRHP";
-            this.PnlRHP.Size = new System.Drawing.Size(107, 40);
+            this.PnlRHP.Size = new System.Drawing.Size(120, 40);
             this.PnlRHP.TabIndex = 46;
             // 
             // LblRF
@@ -564,9 +564,9 @@
             this.PnlRF.BackColor = System.Drawing.SystemColors.Control;
             this.PnlRF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlRF.Controls.Add(this.LblRF);
-            this.PnlRF.Location = new System.Drawing.Point(681, 546);
+            this.PnlRF.Location = new System.Drawing.Point(675, 546);
             this.PnlRF.Name = "PnlRF";
-            this.PnlRF.Size = new System.Drawing.Size(107, 40);
+            this.PnlRF.Size = new System.Drawing.Size(120, 40);
             this.PnlRF.TabIndex = 46;
             // 
             // LblLF
@@ -584,9 +584,9 @@
             this.PnlLF.BackColor = System.Drawing.SystemColors.Control;
             this.PnlLF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PnlLF.Controls.Add(this.LblLF);
-            this.PnlLF.Location = new System.Drawing.Point(8, 546);
+            this.PnlLF.Location = new System.Drawing.Point(3, 546);
             this.PnlLF.Name = "PnlLF";
-            this.PnlLF.Size = new System.Drawing.Size(107, 40);
+            this.PnlLF.Size = new System.Drawing.Size(120, 40);
             this.PnlLF.TabIndex = 46;
             // 
             // TmrDispTime
