@@ -29,7 +29,7 @@ namespace HFM.Components
         /// 报文格式：Alpha自检：0x5A,0x00,0x0B,0x03,0xEB,0x00,0x01,0x00,0x03
         ///           Beta自检： 0x5A,0x00,0x0B,0x03,0xEB,0x00,0x00,0x00,0x03
         /// </summary>
-        /// <param name="checkType">自检类型，0：Alpha1：Beta</param>
+        /// <param name="checkType">自检类型，0：Alpha 1：Beta</param>
         /// <returns>自检报文数组</returns>
         public static byte[] BuildMessage(int checkType)
         {
