@@ -798,14 +798,14 @@ namespace HFM
             #region 存储数据库
             for (int i = 0; i < channels.Count; i++)
             {
-                //if (new Channel().SetProbeAreaByID(channels[i].ChannelID,channels[i].ProbeArea))
-                //{
-                //}
-                //else
-                //{
-                //    MessageBox.Show("失败");
-                //    return;
-                //}
+                if (new Channel().SetProbeAreaByID(channels[i].ChannelID, channels[i].ProbeArea))
+                {
+                }
+                else
+                {
+                    MessageBox.Show("失败");
+                    return;
+                }
             }
             if (true)
             {

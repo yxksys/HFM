@@ -40,7 +40,7 @@ namespace HFM.Components
         #region 构造函数
         public Calibration()
         { }
-        public Calibration(DateTime calibrationTime, int channelID, float highVoltage, float threshold, float efficiency, float mDA, float alphaBetaPercent)
+        public Calibration(DateTime calibrationTime, int channelID, float highVoltage, string threshold, float efficiency, float mDA, float alphaBetaPercent)
         {
             this._calibrationTime = calibrationTime;
             //根据
@@ -58,7 +58,7 @@ namespace HFM.Components
         private DateTime _calibrationTime;//刻度时间
         private Channel _channel;//刻度通道
         private float _highVoltage;//高压值
-        private float _threshold;//阈值
+        private string _threshold;//阈值
         private float _efficiency;//效率
         private float _mDA;//探测下限值
         private float _alphaBetaPercent;//串道比
@@ -90,7 +90,7 @@ namespace HFM.Components
         /// <summary>
         /// 阈值
         /// </summary>
-        public float Threshold
+        public string Threshold
         {
             get => _threshold;
             set => _threshold = value;
@@ -146,7 +146,7 @@ namespace HFM.Components
                     calibraion.CalibrationTime = Convert.ToDateTime(reader["CalibrationTime"].ToString());
                     calibraion.Channel = channel;
                     calibraion.HighVoltage = Convert.ToSingle(reader["HighVoltage"].ToString());
-                    calibraion.Threshold = Convert.ToSingle(reader["Threshold"].ToString());
+                    calibraion.Threshold = (reader["Threshold"].ToString());
                     calibraion.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
                     calibraion.MDA = Convert.ToSingle(reader["MDA"].ToString());
                     calibraion.AlphaBetaPercent = Convert.ToSingle(reader["AlphaBetaPercent"].ToString());
@@ -186,7 +186,7 @@ namespace HFM.Components
                     calibraion.CalibrationTime = Convert.ToDateTime(reader["CalibrationTime"].ToString());
                     calibraion.Channel = channel;
                     calibraion.HighVoltage = Convert.ToSingle(reader["HighVoltage"].ToString());
-                    calibraion.Threshold = Convert.ToSingle(reader["Threshold"].ToString());
+                    calibraion.Threshold = (reader["Threshold"].ToString());
                     calibraion.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
                     calibraion.MDA = Convert.ToSingle(reader["MDA"].ToString());
                     calibraion.AlphaBetaPercent = Convert.ToSingle(reader["AlphaBetaPercent"].ToString());

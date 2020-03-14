@@ -31,6 +31,7 @@
             this.TabCalibration = new System.Windows.Forms.TabControl();
             this.TabpageCalibration = new System.Windows.Forms.TabPage();
             this.GrpCalibration = new System.Windows.Forms.GroupBox();
+            this.Lbl__time = new System.Windows.Forms.Label();
             this.DgvInformation = new System.Windows.Forms.DataGridView();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Channel = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +61,6 @@
             this.LblMeasuringTime = new System.Windows.Forms.Label();
             this.LblChannelSelection = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
-            this.Lbl__ = new System.Windows.Forms.Label();
             this.TabCalibration.SuspendLayout();
             this.TabpageCalibration.SuspendLayout();
             this.GrpCalibration.SuspendLayout();
@@ -76,7 +76,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(860, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(767, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -85,14 +85,13 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(852, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(759, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
-            this.TabpageCalibration.UseVisualStyleBackColor = true;
             // 
             // GrpCalibration
             // 
-            this.GrpCalibration.Controls.Add(this.Lbl__);
+            this.GrpCalibration.Controls.Add(this.Lbl__time);
             this.GrpCalibration.Controls.Add(this.DgvInformation);
             this.GrpCalibration.Controls.Add(this.TxtSFR);
             this.GrpCalibration.Controls.Add(this.LblSFR);
@@ -120,6 +119,15 @@
             this.GrpCalibration.Size = new System.Drawing.Size(760, 859);
             this.GrpCalibration.TabIndex = 0;
             this.GrpCalibration.TabStop = false;
+            // 
+            // Lbl__time
+            // 
+            this.Lbl__time.AutoSize = true;
+            this.Lbl__time.Location = new System.Drawing.Point(37, 143);
+            this.Lbl__time.Name = "Lbl__time";
+            this.Lbl__time.Size = new System.Drawing.Size(39, 20);
+            this.Lbl__time.TabIndex = 22;
+            this.Lbl__time.Text = "time";
             // 
             // DgvInformation
             // 
@@ -375,23 +383,15 @@
             // 
             // bkWorkerReceiveData
             // 
-            this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
-            this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
-            // 
-            // Lbl__
-            // 
-            this.Lbl__.AutoSize = true;
-            this.Lbl__.Location = new System.Drawing.Point(37, 143);
-            this.Lbl__.Name = "Lbl__";
-            this.Lbl__.Size = new System.Drawing.Size(0, 20);
-            this.Lbl__.TabIndex = 22;
+            this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BkWorkerReceiveData_DoWork);
+            this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BkWorkerReceiveData_ProgressChanged);
             // 
             // FrmCalibration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(877, 722);
+            this.ClientSize = new System.Drawing.Size(784, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
@@ -440,6 +440,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
         private System.Windows.Forms.DataGridViewTextBoxColumn HV;
-        private System.Windows.Forms.Label Lbl__;
+        private System.Windows.Forms.Label Lbl__time;
     }
 }
