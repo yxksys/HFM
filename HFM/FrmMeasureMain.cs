@@ -30,7 +30,6 @@ namespace HFM
         int stateTimeRemain = 0;//系统当前运行状态剩余时间
         int errNumber = 0; //报文接收出现错误计数器   
         bool isPlayed = false;//是否已经进行语音播报
-        bool isSelfCheckSended = false;
         //当前可使用的检测通道,即全部启用的监测通道
         IList<Channel> channelS = new List<Channel>();
         //运行状态枚举类型
@@ -315,7 +314,8 @@ namespace HFM
         /// <param name="e"></param>
         /// <returns></returns>
         private byte[] ReadDataFromSerialPort(BackgroundWorker worker, DoWorkEventArgs e)
-        {            
+        {
+            bool isSelfCheckSended = false;
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
             //DateTime stateTimeStart = DateTime.Now.AddSeconds(-3);//初始化计时开始时间
@@ -615,9 +615,8 @@ namespace HFM
                             calculatedMeasureDataS[i].Alpha = 0;
                             calculatedMeasureDataS[i].Beta = 0;
                         }
-                        isSelfCheckSended = false;
-                        //启动故障报警计时
-                        alarmTimeStart = System.DateTime.Now;
+                            //启动故障报警计时
+                            alarmTimeStart = System.DateTime.Now;
                         //重新启动自检计时
                         stateTimeStart = System.DateTime.Now;
                     }
