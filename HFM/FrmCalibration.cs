@@ -99,6 +99,7 @@ namespace HFM
         /// </summary>
         private EfficiencyParameter _changedEfficiency=new EfficiencyParameter();
 
+        IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
         #endregion
 
         #region 方法
@@ -158,10 +159,36 @@ namespace HFM
         {
             //线程支持异步取消
             bkWorkerReceiveData.WorkerSupportsCancellation = true;
-            
+
+            #region 中英文翻译
+
+            if (_isEnglish)
+            {
+                Text = @"Calibration";//测试刻度
+                TabCalibration.TabPages[0].Text = @"Calibration"; //仪器刻度
+                LblChannelSelection.Text = @"Channel selection";//通道选择
+                LblHV.Text = @"HV(V)";//高压(V)
+                LblThreshold.Text = @"Threshold(mV)";//阈值(mV)
+                BtnSet.Text = @"Set";//设置
+                BtnCalibrate.Text = @"Calibrate";//刻度
+                LblMeasuringTime.Text = @"Measuring time(s)";//测量时间(s)
+                LblCount.Text = @"Times";//次数
+                LblNuclide.Text = @"Nuclide";//核素
+                LblSFR.Text = @"SFR";//表面发射率
+                LblResult.Text = @"Result";//测量完毕
+                DgvInformation.Columns[0].HeaderText = @"Status"; //状态
+                DgvInformation.Columns[1].HeaderText = @"Channel"; //通道
+                DgvInformation.Columns[2].HeaderText = @"Area"; //面积
+                DgvInformation.Columns[3].HeaderText = @"αCounts"; //α计数
+                DgvInformation.Columns[4].HeaderText = @"βCounts"; //β计数
+                DgvInformation.Columns[5].HeaderText = @"HV"; //高压
+            }
+
+            #endregion
+
             #region 获得全部启用的通道添加到下拉列表中，更具系统中英文状态选择中英文
-            
-            
+
+
             //根据系统语言填充通道下拉列表
             if (_isEnglish==true)
             {
@@ -302,6 +329,7 @@ namespace HFM
 
                         //向下位机下发“p”指令码
                         buffMessage[0] = Convert.ToByte('P');
+                        buffMessage[61] = Convert.ToByte(1);
                         if (Components.Message.SendMessage(buffMessage, _commPort) != true)
                         {
                             errorNumber++;
@@ -339,6 +367,14 @@ namespace HFM
 
                     #region P写入指令下发
                     case MessageType.PSet:
+                        foreach (var item in channelParameters)
+                        {
+                            if (CmbChannelSelection.Text == item.Channel.ChannelName_English || CmbChannelSelection.Text == item.Channel.ChannelName)
+                            {
+                                channelParameters.RemoveAt(item.CheckingID);
+                                channelParameters.Insert(item.CheckingID,_setChannelParameter);
+                            }
+                        }
                         //实例化道盒列表
                         IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>
                         {
@@ -374,6 +410,7 @@ namespace HFM
                         
                         //向下位机下发“C”指令码
                         buffMessage[0] = Convert.ToByte('C');
+                        buffMessage[61] = Convert.ToByte(1);
                         if (Message.SendMessage(buffMessage, _commPort) == true)    //正式
                         {
                             //延时
@@ -386,43 +423,6 @@ namespace HFM
                         }
                         else
                         {
-                            //if (sclaeState == false)
-                            //{
-                            //    Thread.Sleep(500);
-                            //    receiveBuffMessage[0] = Convert.ToByte('C');
-                            //    receiveBuffMessage[1] = Convert.ToByte(1);
-                            //    receiveBuffMessage[2] = Convert.ToByte(1.3);
-                            //    receiveBuffMessage[6] = Convert.ToByte(6.5);
-                            //    receiveBuffMessage[15] = Convert.ToByte(100);
-                            //    receiveBuffMessage[16] = Convert.ToByte(2);
-                            //    receiveBuffMessage[31] = Convert.ToByte(3);
-                            //    receiveBuffMessage[46] = Convert.ToByte(4);
-                            //    receiveBuffMessage[63] = Convert.ToByte(5);
-                            //    receiveBuffMessage[78] = Convert.ToByte(6);
-                            //    receiveBuffMessage[93] = Convert.ToByte(7);
-                            //}
-
-                            //if (sclaeState == true)
-                            //{
-                            //    Thread.Sleep(500);
-                            //    receiveBuffMessage[0] = Convert.ToByte('C');
-                            //    receiveBuffMessage[1] = Convert.ToByte(1);
-                            //    receiveBuffMessage[2] = Convert.ToByte(1.3);
-                            //    receiveBuffMessage[6] = Convert.ToByte(200);
-                            //    receiveBuffMessage[7] = Convert.ToByte(7);
-                            //    receiveBuffMessage[15] = Convert.ToByte(100);
-                            //    receiveBuffMessage[16] = Convert.ToByte(2);
-                            //    receiveBuffMessage[31] = Convert.ToByte(3);
-                            //    receiveBuffMessage[46] = Convert.ToByte(4);
-                            //    receiveBuffMessage[63] = Convert.ToByte(5);
-                            //    receiveBuffMessage[78] = Convert.ToByte(6);
-                            //    receiveBuffMessage[93] = Convert.ToByte(7);
-                            //}
-
-                            ////延时
-                            //Thread.Sleep(500);
-                            ////触发向主线程返回下位机上传数据事件
-                            //bkWorker.ReportProgress(1, receiveBuffMessage);
                             errorNumber++;
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
                             if (errorNumber > 5)
@@ -561,7 +561,7 @@ namespace HFM
 
             if (receiveBufferMessage[0] == Convert.ToByte('P'))
             {
-                IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
+                
 
                 channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);//解析报文
                 _numForaech = 0;//
@@ -600,7 +600,14 @@ namespace HFM
 
                 if (_sclaeState==false)
                 {
-                    _addInformation[0] = "本底测量";
+                    if (_isEnglish)
+                    {
+                        _addInformation[0] = "BKG";
+                    }
+                    else
+                    {
+                        _addInformation[0] = "本底测量";
+                    }
                     _addInformation[1] = CmbChannelSelection.Text;
                     _addInformation[2] = area.ToString();
                     _addInformation[3] = ((_alphacps / Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
@@ -627,9 +634,19 @@ namespace HFM
                         _sclaeState = true;//刻度测量状态更换为"带源测量"
                         bkWorkerReceiveData.CancelAsync();
                         Thread.Sleep(500);
-                        if (MessageBox.Show(@"请放入放射源！", @"提示")==DialogResult.OK)
+                        if (_isEnglish)
                         {
-                            bkWorkerReceiveData.RunWorkerAsync();
+                            if (MessageBox.Show(@"Please insert the source!", @"Message") == DialogResult.OK)
+                            {
+                                bkWorkerReceiveData.RunWorkerAsync();
+                            }
+                        }
+                        else
+                        {
+                            if (MessageBox.Show(@"请放入放射源！", @"提示") == DialogResult.OK)
+                            {
+                                bkWorkerReceiveData.RunWorkerAsync();
+                            }
                         }
                         return;
                     }
