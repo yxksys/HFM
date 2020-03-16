@@ -99,7 +99,7 @@ namespace HFM
         /// </summary>
         private EfficiencyParameter _changedEfficiency=new EfficiencyParameter();
 
-        IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
+        private IList<ChannelParameter> _setchannelParameters = new List<ChannelParameter>();
         #endregion
 
         #region 方法
@@ -244,20 +244,20 @@ namespace HFM
             {
                 _channel = b;
             }
-            //if (commPort.Opened==true)
-            //{
-            //开启异步线程
-            if (bkWorkerReceiveData.IsBusy != true)
+            if (_commPort.Opened == true)
             {
-                bkWorkerReceiveData.RunWorkerAsync();
+                //开启异步线程
+                if (bkWorkerReceiveData.IsBusy != true)
+                {
+                    bkWorkerReceiveData.RunWorkerAsync();
+                }
+                else
+                {
+                    bkWorkerReceiveData.CancelAsync();
+                    Thread.Sleep(100);
+                    bkWorkerReceiveData.RunWorkerAsync();
+                }
             }
-            else
-            {
-                bkWorkerReceiveData.CancelAsync();
-                Thread.Sleep(100);
-                bkWorkerReceiveData.RunWorkerAsync();
-            }
-            //}
 
 
         }
@@ -354,10 +354,10 @@ namespace HFM
                                 break;
                             }
                             //延时
-                            Thread.Sleep(100);
+                            Thread.Sleep(200);
                             receiveBuffMessage = Components.Message.ReceiveMessage(_commPort);
                             //延时
-                            Thread.Sleep(1000);
+                            Thread.Sleep(800);
                             //触发向主线程返回下位机上传数据事件
                             bkWorker.ReportProgress(_bkworkTime, receiveBuffMessage);
                         }
@@ -367,27 +367,20 @@ namespace HFM
 
                     #region P写入指令下发
                     case MessageType.PSet:
-                        foreach (var item in channelParameters)
-                        {
-                            if (CmbChannelSelection.Text == item.Channel.ChannelName_English || CmbChannelSelection.Text == item.Channel.ChannelName)
-                            {
-                                channelParameters.RemoveAt(item.CheckingID);
-                                channelParameters.Insert(item.CheckingID,_setChannelParameter);
-                            }
-                        }
-                        ////实例化道盒列表
-                        //IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>
-                        //{
-                        //    //添加数据对象到列表
-                        //    _setChannelParameter
-                        //};
+                       
+                        // //实例化道盒列表
+                        // IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>
+                        // {
+                        //     //添加数据对象到列表
+                        //     _setChannelParameter
+                        // };
                         //生成报文
-                        buffMessage = Message.BuildMessage(channelParameters);
+                        buffMessage = Message.BuildMessage(_setchannelParameters);
                         //成功则关闭线程
                         if (Message.SendMessage(buffMessage,_commPort)==true)
                         {
                             //写入成功,返回p指令读取当前高压以确认更改成功
-                            Thread.Sleep(300);
+                            Thread.Sleep(1000);
                             _messageType = MessageType.PRead;
                         }
                         //发送失败次数大于5次,提示错误并挂起线程
@@ -558,14 +551,13 @@ namespace HFM
                 return;
             }
 
-
+            //解析P数据报文
             if (receiveBufferMessage[0] == Convert.ToByte('P'))
             {
-                
-
-                channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);//解析报文
+                IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
+                _channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);//解析报文
                 _numForaech = 0;//
-                foreach (var itemParameter in channelParameters)
+                foreach (var itemParameter in _channelParameters)
                 {
                     if (CmbChannelSelection.Text == itemParameter.Channel.ChannelName_English || CmbChannelSelection.Text == itemParameter.Channel.ChannelName)
                     {
@@ -574,10 +566,11 @@ namespace HFM
                         Txtβ.Text = itemParameter.BetaThreshold.ToString();
 
                         _setChannelParameter = itemParameter;
+                        // _channelParameters.Remove(itemParameter);
                     }
                 }
             }
-
+            //解析C数据报文
             if (receiveBufferMessage[0] == Convert.ToByte('C'))
             {
                 IList<MeasureData> measureDatas = new List<MeasureData>();
