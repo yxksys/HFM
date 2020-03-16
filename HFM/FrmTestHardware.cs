@@ -590,7 +590,7 @@ namespace HFM
                 LblTimeWork.Text = "测量剩余时间 " + time + " 秒";
             }
             //判断右手红外状态界面显示颜色
-            if (_infraredStatus[0] == 1 || _infraredStatus[1] == 1)
+            if (_infraredStatus[0] == 0 && _infraredStatus[1] == 0)
             {
                 TxtLHandState.BackColor = Color.Lime;
             }
@@ -599,7 +599,7 @@ namespace HFM
                 TxtLHandState.BackColor = Color.Orange;
             }
             //判断右手红外状态界面显示颜色
-            if (_infraredStatus[2] == 1 || _infraredStatus[3] == 1)
+            if (_infraredStatus[2] == 0 || _infraredStatus[3] == 0)
             {
                 TxtRHandState.BackColor = Color.Lime;
             }
@@ -609,7 +609,7 @@ namespace HFM
             }
             //
             //判断右手红外状态界面显示颜色
-            if (_infraredStatus[6] == 1)
+            if (_infraredStatus[6] == 0)
             {
                 TxtFriskerState.BackColor = Color.Lime;
             }

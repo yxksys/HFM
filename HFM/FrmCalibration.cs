@@ -375,14 +375,14 @@ namespace HFM
                                 channelParameters.Insert(item.CheckingID,_setChannelParameter);
                             }
                         }
-                        //实例化道盒列表
-                        IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>
-                        {
-                            //添加数据对象到列表
-                            _setChannelParameter
-                        };
+                        ////实例化道盒列表
+                        //IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>
+                        //{
+                        //    //添加数据对象到列表
+                        //    _setChannelParameter
+                        //};
                         //生成报文
-                        buffMessage = Message.BuildMessage(setChannelParameters);
+                        buffMessage = Message.BuildMessage(channelParameters);
                         //成功则关闭线程
                         if (Message.SendMessage(buffMessage,_commPort)==true)
                         {
