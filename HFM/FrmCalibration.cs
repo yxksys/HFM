@@ -98,8 +98,12 @@ namespace HFM
         /// 当前核素对象数据
         /// </summary>
         private EfficiencyParameter _changedEfficiency=new EfficiencyParameter();
+        /// <summary>
+        /// 解析的道盒列表参数
+        /// </summary>
+        private IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
 
-        private IList<ChannelParameter> _setchannelParameters = new List<ChannelParameter>();
+        
         #endregion
 
         #region 方法
@@ -367,15 +371,27 @@ namespace HFM
 
                     #region P写入指令下发
                     case MessageType.PSet:
-                       
-                        // //实例化道盒列表
-                        // IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>
-                        // {
-                        //     //添加数据对象到列表
-                        //     _setChannelParameter
-                        // };
+                        //把当前的高压阈值修改的数据对象添加到列表中
+                        for (int i = 0; i < _channelParameters.Count; i++)
+                        {
+                            if (_setChannelParameter.CheckingID == _channelParameters[i].CheckingID)
+                            {
+                                _channelParameters.RemoveAt(i);
+                                _channelParameters.Insert(i,_setChannelParameter);
+                            }
+                        }
+                        //格式化道盒列表为7个通道,(超过程序出错)
+                        for (int i = 0; i < _channelParameters.Count; i++)
+                        {
+                            if (i > 6)
+                            {
+                                _channelParameters.RemoveAt(i);
+                                i--;
+                            }
+                        }
+                        
                         //生成报文
-                        buffMessage = Message.BuildMessage(_setchannelParameters);
+                        buffMessage = Message.BuildMessage(_channelParameters);
                         //成功则关闭线程
                         if (Message.SendMessage(buffMessage,_commPort)==true)
                         {
@@ -554,19 +570,19 @@ namespace HFM
             //解析P数据报文
             if (receiveBufferMessage[0] == Convert.ToByte('P'))
             {
-                IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
                 _channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);//解析报文
-                _numForaech = 0;//
                 foreach (var itemParameter in _channelParameters)
                 {
                     if (CmbChannelSelection.Text == itemParameter.Channel.ChannelName_English || CmbChannelSelection.Text == itemParameter.Channel.ChannelName)
                     {
+                        /*
+                         * 高压阈值赋值
+                         */
                         TxtHV.Text = itemParameter.PresetHV.ToString();
                         Txtα.Text = itemParameter.AlphaThreshold.ToString();
                         Txtβ.Text = itemParameter.BetaThreshold.ToString();
-
+                        //当前通道道盒参数
                         _setChannelParameter = itemParameter;
-                        // _channelParameters.Remove(itemParameter);
                     }
                 }
             }
