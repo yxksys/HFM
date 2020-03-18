@@ -22,6 +22,7 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Collections;
 using HFM.Components;
+using System.Threading;
 
 
 namespace HFM
@@ -31,15 +32,6 @@ namespace HFM
         public FrmPreference()
         {
             InitializeComponent();
-            //OleDbConnection oleDbConnection = new OleDbConnection(DbHelperAccess.connectionString);
-            //string SQL = "SELECT * FROM HFM_Preference";
-            //OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter(SQL, oleDbConnection);
-            //System.Data.DataSet thisDataSet = new System.Data.DataSet();
-            //oleDbDataAdapter.Fill(thisDataSet, "HFM_Preference");
-            //DataTable dt = thisDataSet.Tables["HFM_Preference"];
-            //this.DgvAlphaSet.DataSource = dt;
-            //oleDbConnection.Close();
-
         }
 
         //运行参数设置
@@ -90,19 +82,26 @@ namespace HFM
             //根据页面索引更新当前页面值
             switch (TabPresence.SelectedIndex)
             {
-                case 0: GetProferenceData();
+                case 0:
+                    GetProferenceData();
                     break;
-                case 1: GetAlphaData();
+                case 1:
+                    GetAlphaData();
                     break;
-                case 2: GetBetaData();
+                case 2:
+                    GetBetaData();
                     break;
-                case 3: GetClothesData();
+                case 3:
+                    GetClothesData();
                     break;
-                case 4: GetMainProferenceData();
+                case 4:
+                    GetMainProferenceData();
                     break;
-                case 5: GetFacilityData();
+                case 5:
+                    GetFacilityData();
                     break;
-                default: MessageBox.Show("选择有误，请重新选择");
+                default:
+                    MessageBox.Show("选择有误，请重新选择");
                     break;
             }
 
@@ -1171,6 +1170,89 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnFacilityOk_Click(object sender, EventArgs e)
         {
+            //获得是否启用
+            bool hand,foot,clothes,two = false;//(手部、脚部、衣物、双手)
+
+            #region 手部启用
+            //手部启用
+            if (ChkHand.Checked)
+            {
+                hand = true;
+                //启用双探头
+                if (RdoSingleHand.Checked)
+                {
+                    two = false;
+                }
+                else
+                {
+                    two = true;
+                }
+            }
+            else
+            {
+                hand = false;
+            }
+            #endregion
+
+            #region 脚步启用
+
+            if (ChkFoot.Checked)
+            {
+                foot = true;
+            }
+            else
+            {
+                foot = false;
+            }
+
+            #endregion
+
+            #region 衣物启用
+
+            if(ChkClothes.Checked)
+            {
+                clothes = true;
+            }
+            else
+            {
+                clothes = false;
+            }
+
+            #endregion
+
+            #region 写入数据库
+
+            Channel channel = new Channel();
+
+            //手部启用
+            if (hand)
+            {
+                //双手启用
+                if (two)
+                {
+                    channel.SetEnabledByID(1, true);
+                    channel.SetEnabledByID(2, true);
+                    channel.SetEnabledByID(3, true);
+                    channel.SetEnabledByID(4, true);
+                }
+                //单手启用
+                else
+                {
+                    channel.SetEnabledByID(1, true);
+                    channel.SetEnabledByID(2, false);
+                    channel.SetEnabledByID(3, true);
+                    channel.SetEnabledByID(4, false);
+                }
+            }
+            else
+            {
+                channel.SetEnabledByID(1, false);
+                channel.SetEnabledByID(2, false);
+                channel.SetEnabledByID(3, false);
+                channel.SetEnabledByID(4, false);
+            }
+
+            #endregion
 
         }
         /// <summary>
@@ -1180,7 +1262,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnFacilityNo_Click(object sender, EventArgs e)
         {
-
+            //重新获得数据库数据
+            GetFacilityData();
         }
         #endregion
 

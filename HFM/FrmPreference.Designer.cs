@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
@@ -281,6 +281,10 @@
             this.CmbUnclideType.Font = new System.Drawing.Font("宋体", 12F);
             this.CmbUnclideType.FormattingEnabled = true;
             this.CmbUnclideType.ItemHeight = 20;
+            this.CmbUnclideType.Items.AddRange(new object[] {
+            "α",
+            "β",
+            "C"});
             this.CmbUnclideType.Location = new System.Drawing.Point(656, 69);
             this.CmbUnclideType.Margin = new System.Windows.Forms.Padding(2);
             this.CmbUnclideType.Name = "CmbUnclideType";
@@ -720,6 +724,14 @@
             this.CmbMeasurementUnit.FormattingEnabled = true;
             this.CmbMeasurementUnit.IntegralHeight = false;
             this.CmbMeasurementUnit.ItemHeight = 20;
+            this.CmbMeasurementUnit.Items.AddRange(new object[] {
+            "cps",
+            "Bp/cm",
+            "Bp",
+            "dpm",
+            "nCi",
+            "cpm",
+            "kBq/cm"});
             this.CmbMeasurementUnit.Location = new System.Drawing.Point(139, 132);
             this.CmbMeasurementUnit.Margin = new System.Windows.Forms.Padding(2);
             this.CmbMeasurementUnit.Name = "CmbMeasurementUnit";
@@ -818,14 +830,14 @@
             this.DgvAlphaSet.AllowUserToAddRows = false;
             this.DgvAlphaSet.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -1035,14 +1047,14 @@
             // 
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -1385,10 +1397,10 @@
             this.RdoClothesBetaDefine1.Location = new System.Drawing.Point(128, 301);
             this.RdoClothesBetaDefine1.Margin = new System.Windows.Forms.Padding(2);
             this.RdoClothesBetaDefine1.Name = "RdoClothesBetaDefine1";
-            this.RdoClothesBetaDefine1.Size = new System.Drawing.Size(82, 20);
+            this.RdoClothesBetaDefine1.Size = new System.Drawing.Size(90, 20);
             this.RdoClothesBetaDefine1.TabIndex = 49;
             this.RdoClothesBetaDefine1.TabStop = true;
-            this.RdoClothesBetaDefine1.Text = "自定义2";
+            this.RdoClothesBetaDefine1.Text = "C自定义2";
             this.RdoClothesBetaDefine1.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta192
@@ -1479,7 +1491,7 @@
             this.RdoClothesBeta204.Size = new System.Drawing.Size(74, 20);
             this.RdoClothesBeta204.TabIndex = 42;
             this.RdoClothesBeta204.TabStop = true;
-            this.RdoClothesBeta204.Text = "Tl_204";
+            this.RdoClothesBeta204.Text = "Tl_240";
             this.RdoClothesBeta204.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta131
@@ -1492,7 +1504,7 @@
             this.RdoClothesBeta131.Size = new System.Drawing.Size(66, 20);
             this.RdoClothesBeta131.TabIndex = 41;
             this.RdoClothesBeta131.TabStop = true;
-            this.RdoClothesBeta131.Text = "l_131";
+            this.RdoClothesBeta131.Text = "I_131";
             this.RdoClothesBeta131.UseVisualStyleBackColor = true;
             // 
             // RdoClothesBeta58
@@ -1528,10 +1540,10 @@
             this.RdoClothesAlphaDefine1.Location = new System.Drawing.Point(128, 105);
             this.RdoClothesAlphaDefine1.Margin = new System.Windows.Forms.Padding(2);
             this.RdoClothesAlphaDefine1.Name = "RdoClothesAlphaDefine1";
-            this.RdoClothesAlphaDefine1.Size = new System.Drawing.Size(82, 20);
+            this.RdoClothesAlphaDefine1.Size = new System.Drawing.Size(90, 20);
             this.RdoClothesAlphaDefine1.TabIndex = 38;
             this.RdoClothesAlphaDefine1.TabStop = true;
-            this.RdoClothesAlphaDefine1.Text = "自定义1";
+            this.RdoClothesAlphaDefine1.Text = "C自定义1";
             this.RdoClothesAlphaDefine1.UseVisualStyleBackColor = true;
             // 
             // RdoClothesAlpha241
@@ -1794,13 +1806,13 @@
             // DgvMainPreferenceSet
             // 
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
