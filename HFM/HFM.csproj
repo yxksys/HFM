@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCalibration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalibration.Designer.cs">
+      <DependentUpon>FrmCalibration.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmClothes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
       <DependentUpon>FrmModifyPasssword.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <EmbeddedResource Include="FrmCalibration.resx">
+      <DependentUpon>FrmCalibration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEnterPassword.resx">
       <DependentUpon>FrmEnterPassword.cs</DependentUpon>
     </EmbeddedResource>

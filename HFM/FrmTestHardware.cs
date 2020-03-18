@@ -8,22 +8,16 @@
  *  类名：硬件检测窗体
  *  完成：2020年3月2日 18:25:27
  *  更新：更新2020年3月1日 20:59:07 Beta1.1-2020年3月5日
- *  测试：
+ *          更新:2020年3月18日内容,红外判断
+ *  测试：测试时间2020年3月15日
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
 
@@ -64,7 +58,7 @@ namespace HFM
             /// </summary>
             SelfTest = 3
         }
-        
+
         /// <summary>
         /// 运行状态标志
         /// </summary>
@@ -72,7 +66,7 @@ namespace HFM
         /// <summary>
         /// 系统数据库中读取的测量时间
         /// </summary>
-        private int _sqltime = (new Components.SystemParameter().GetParameter().MeasuringTime)<=1?10: (new Components.SystemParameter().GetParameter().MeasuringTime);
+        private int _sqltime = (new Components.SystemParameter().GetParameter().MeasuringTime) <= 1 ? 10 : (new Components.SystemParameter().GetParameter().MeasuringTime);
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -133,11 +127,11 @@ namespace HFM
                 LblPulse.Text = "Pulse";//脉冲
                 LblSelfcount.Text = "Count rate";//计数
             }
-                #endregion
+            #endregion
             //初始化运行状态为默认状态
             _platformState = HardwarePlatformState.Default;
             //初始化测量时间为系统参数时间
-            _measuringTime = _sqltime;
+            _measuringTime = _sqltime + 1;
 
             #region 开启端口
             //从配置文件获得当前串口配置
@@ -145,6 +139,7 @@ namespace HFM
             {
                 _commPort.Close();
             }
+
             _commPort.GetCommPortSet();
             //打开串口
             try
@@ -166,12 +161,12 @@ namespace HFM
             }
             #endregion
 
-            if (bkWorkerReceiveData.IsBusy==false)
+            if (bkWorkerReceiveData.IsBusy == false)
             {
                 //开启异步线程
                 bkWorkerReceiveData.RunWorkerAsync();
             }
-            
+
         }
         #endregion
 
@@ -209,11 +204,12 @@ namespace HFM
                 //异步初始化为0
                 _bkworkTime = 0;
 
-                _platformState = HardwarePlatformState.Default;
-                _measuringTime = _sqltime;
+
+                _measuringTime = _sqltime + 1;
             }
+            _platformState = HardwarePlatformState.Default;
             _bkworkTime = _bkworkTime + 1;
-        } 
+        }
         #endregion
 
         #region 通过串口读取下位机上传数据
@@ -228,7 +224,7 @@ namespace HFM
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
             byte[] receiveBuffMessage = new byte[200];
-            
+
             while (true)
             {
                 #region Alpha、beta、自检下发指令
@@ -258,7 +254,7 @@ namespace HFM
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
                             if (errorNumber > 5)
                             {
-                                
+
                                 bkworker.ReportProgress(_bkworkTime, null);
                             }
                             else
@@ -267,6 +263,8 @@ namespace HFM
                                 continue;
                             }
                         }
+                        Thread.Sleep(2000);
+                        DgvArrayClear();
                         TimeConutPort();
                         break;
                     case HardwarePlatformState.BetaCheck:
@@ -288,6 +286,8 @@ namespace HFM
                                 continue;
                             }
                         }
+                        Thread.Sleep(2000);
+                        DgvArrayClear();
                         TimeConutPort();
                         break;
                     case HardwarePlatformState.SelfTest:
@@ -339,13 +339,15 @@ namespace HFM
                                 continue;
                             }
                         }
+                        Thread.Sleep(2000);
+                        DgvArrayClear();
                         TimeConutPort();
                         break;
                     default:
                         break;
                 }
                 //延时毫秒
-                Thread.Sleep(500);
+                //Thread.Sleep(400);
 
                 #endregion
 
@@ -353,17 +355,18 @@ namespace HFM
                 //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
                 buffMessage[0] = Convert.ToByte('C');
+                buffMessage[61] = Convert.ToByte(16);
                 //判断串口是否打开，打开则用传输数据，否则用模拟数据
                 if (_commPort.Opened == true)
                 {
                     if (Components.Message.SendMessage(buffMessage, _commPort) == true)    //正式
-                                                                                              //if (HFM.Components.Message.SendMessage(buffMessage, commPort) != true)      //测试使用
+                                                                                           //if (HFM.Components.Message.SendMessage(buffMessage, commPort) != true)      //测试使用
                     {
                         //延时
-                        Thread.Sleep(100);
+                        Thread.Sleep(200);
                         receiveBuffMessage = Components.Message.ReceiveMessage(_commPort);
                         //延时
-                        Thread.Sleep(500);
+                        Thread.Sleep(800);
                         //触发向主线程返回下位机上传数据事件
                         bkworker.ReportProgress(_bkworkTime, receiveBuffMessage);
                     }
@@ -378,14 +381,14 @@ namespace HFM
                         //延时
                         Thread.Sleep(500);
                         //触发向主线程返回下位机上传数据事件
-                        bkworker.ReportProgress(_bkworkTime, receiveBuffMessage);
+                        bkworker.ReportProgress(1, null);
                     }
                 }
                 #endregion
             }
         }
         #endregion
-        
+
         #region Dgv列表数组
         /// <summary>
         /// 定义dgv高压
@@ -418,24 +421,26 @@ namespace HFM
         /// <summary>
         /// 红外状态
         /// </summary>
-        private int[] _infraredStatus=new int[7];
+        private int[] _infraredStatus = new int[7];
         /// <summary>
         /// Dgv列表总计数清零
         /// </summary>
         private void DgvArrayClear()
         {
-            Array.Clear(_betacnt,0,6);
-            Array.Clear(_alphacnt,0,6);
+            Array.Clear(_alphacps, 0, 6);
+            Array.Clear(_betacps, 0, 6);
+            Array.Clear(_betacnt, 0, 6);
+            Array.Clear(_alphacnt, 0, 6);
         }
         #endregion
-        
+
         #region 异步线程读取串口数据后的ReportProgress事件响应
         //异步线程读取串口数据后的ReportProgress事件响应
         private void BkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
-            byte[] receiveBufferMessage=null; //存储接收报文信息缓冲区
+            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
             IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象            
             //判断串口是否打开，打开则用传输数据，否则用模拟数据
             if (_commPort.Opened)
@@ -461,7 +466,6 @@ namespace HFM
                             MessageBox.Show("通讯错误！请检查通讯是否正常。");
                             return;
                         }
-                        
                     }
                     else
                     {
@@ -474,7 +478,7 @@ namespace HFM
                 //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
                 measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
             }
-            
+
             #region 从监测存储到的measureDataS数据中解析到界面数值
             //临时变量
             int i = 0;
@@ -505,6 +509,7 @@ namespace HFM
                 _infraredStatus[i] = item.InfraredStatus;
                 i++;
             }
+            
             //赋值alpha和Beta总计数并且判断赋值通道状态
             for (i = 0; i < 6; i++)
             {
@@ -513,7 +518,7 @@ namespace HFM
                 //beta总计数
                 _betacnt[i] = Convert.ToString(Convert.ToInt32(_betacnt[i]) + Convert.ToInt32(_betacps[i]));
                 //判断通道状态
-                if (new Channel().GetChannel(i).IsEnabled==false)
+                if (new Channel().GetChannel(i + 1).IsEnabled == false)
                 {
                     if (_isEnglish)
                     {
@@ -557,6 +562,7 @@ namespace HFM
                         _strat[i] = "正常工作";
                     }
                 }
+
             }
 
             DgvWork.Rows.Clear();
@@ -587,7 +593,7 @@ namespace HFM
                 TxtLHandState.BackColor = Color.Orange;
             }
             //判断右手红外状态界面显示颜色
-            if (_infraredStatus[2] == 1 && _infraredStatus[3] == 1)
+            if (_infraredStatus[2] == 1 || _infraredStatus[3] == 1)
             {
                 TxtRHandState.BackColor = Color.Lime;
             }
@@ -617,9 +623,9 @@ namespace HFM
         private void BtnCurency(HardwarePlatformState platform)
         {
             _platformState = platform;
-            _measuringTime = _sqltime;
-            DgvArrayClear();
+            _measuringTime = _sqltime + 1;
             _bkworkTime = 0;
+            DgvArrayClear();
         }
         #endregion
 
@@ -650,7 +656,7 @@ namespace HFM
         private void BtnSelfCheck_Click(object sender, EventArgs e)
         {
             BtnCurency(HardwarePlatformState.SelfTest);
-        } 
+        }
         #endregion
     }
 }
