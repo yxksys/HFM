@@ -248,22 +248,17 @@ namespace HFM
             {
                 _channel = b;
             }
-            if (_commPort.Opened == true)
+            //开启异步线程
+            if (bkWorkerReceiveData.IsBusy != true)
             {
-                //开启异步线程
-                if (bkWorkerReceiveData.IsBusy != true)
-                {
-                    bkWorkerReceiveData.RunWorkerAsync();
-                }
-                else
-                {
-                    bkWorkerReceiveData.CancelAsync();
-                    Thread.Sleep(100);
-                    bkWorkerReceiveData.RunWorkerAsync();
-                }
+                bkWorkerReceiveData.RunWorkerAsync();
             }
-
-
+            else
+            {
+                bkWorkerReceiveData.CancelAsync();
+                Thread.Sleep(100);
+                bkWorkerReceiveData.RunWorkerAsync();
+            }
         }
         #endregion
 
@@ -315,7 +310,7 @@ namespace HFM
         {
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
-            byte[] receiveBuffMessage = new byte[200];//接受的报文
+            byte[] receiveBuffMessage = new byte[124];//接受的报文
             byte[] buffMessage = new byte[62];//报文长度
             while (true)
             {
@@ -333,8 +328,26 @@ namespace HFM
 
                         //向下位机下发“p”指令码
                         buffMessage[0] = Convert.ToByte('P');
-                        buffMessage[61] = Convert.ToByte(1);
-                        if (Components.Message.SendMessage(buffMessage, _commPort) != true)
+                        //buffMessage[61] = Convert.ToByte(0);
+                        _bkworkTime++;
+                        if (_bkworkTime > 1)
+                        {
+                            bkWorkerReceiveData.CancelAsync();
+                            _bkworkTime = 0;
+                            break;
+                        }
+                        if (Components.Message.SendMessage(buffMessage, _commPort))    //正式
+                        {
+                            
+                            //延时
+                            Thread.Sleep(300);
+                            receiveBuffMessage = Components.Message.ReceiveMessage(_commPort);
+                            //延时
+                            Thread.Sleep(300);
+                            //触发向主线程返回下位机上传数据事件
+                            bkWorker.ReportProgress(_bkworkTime, receiveBuffMessage);
+                        }
+                        else
                         {
                             errorNumber++;
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
@@ -348,24 +361,6 @@ namespace HFM
                                 Thread.Sleep(delayTime);
                             }
                         }
-                        else if (Components.Message.SendMessage(buffMessage, _commPort) == true)    //正式
-                        {
-                            _bkworkTime++;
-                            if (_bkworkTime > 1)
-                            {
-                                bkWorkerReceiveData.CancelAsync();
-                                _bkworkTime = 0;
-                                break;
-                            }
-                            //延时
-                            Thread.Sleep(200);
-                            receiveBuffMessage = Components.Message.ReceiveMessage(_commPort);
-                            //延时
-                            Thread.Sleep(800);
-                            //触发向主线程返回下位机上传数据事件
-                            bkWorker.ReportProgress(_bkworkTime, receiveBuffMessage);
-                        }
-
                         break;
                     #endregion
 
@@ -381,23 +376,32 @@ namespace HFM
                             }
                         }
                         //格式化道盒列表为7个通道,(超过程序出错)
-                        for (int i = 0; i < _channelParameters.Count; i++)
-                        {
-                            if (i > 6)
-                            {
-                                _channelParameters.RemoveAt(i);
-                                i--;
-                            }
-                        }
+                        // for (int i = 0; i < _channelParameters.Count; i++)
+                        // {
+                        //     if (i > 6)
+                        //     {
+                        //         _channelParameters.RemoveAt(i);
+                        //         i--;
+                        //     }
+                        // }
                         
                         //生成报文
                         buffMessage = Message.BuildMessage(_channelParameters);
                         //成功则关闭线程
-                        if (Message.SendMessage(buffMessage,_commPort)==true)
+                        if (Message.SendMessage(buffMessage, _commPort)==true)
                         {
                             //写入成功,返回p指令读取当前高压以确认更改成功
-                            Thread.Sleep(1000);
-                            _messageType = MessageType.PRead;
+                            // bkWorkerReceiveData.CancelAsync();
+                            // MessageBox.Show("OK");
+                            // _messageType = MessageType.PRead;
+                            //延时
+                            Thread.Sleep(300);
+                            receiveBuffMessage = Components.Message.ReceiveMessage(_commPort);
+                            //延时
+                            Thread.Sleep(300);
+                            //触发向主线程返回下位机上传数据事件
+                            bkWorker.ReportProgress(_bkworkTime, receiveBuffMessage);
+                            bkWorkerReceiveData.CancelAsync();
                         }
                         //发送失败次数大于5次,提示错误并挂起线程
                         else
@@ -419,7 +423,7 @@ namespace HFM
                         
                         //向下位机下发“C”指令码
                         buffMessage[0] = Convert.ToByte('C');
-                        buffMessage[61] = Convert.ToByte(1);
+                        buffMessage[61] = Convert.ToByte(16);
                         if (Message.SendMessage(buffMessage, _commPort) == true)    //正式
                         {
                             //延时
@@ -947,7 +951,6 @@ namespace HFM
                 }
                 else
                 {
-
                     bkWorkerReceiveData.RunWorkerAsync();
                 }
             }

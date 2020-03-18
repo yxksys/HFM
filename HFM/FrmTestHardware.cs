@@ -8,6 +8,7 @@
  *  类名：硬件检测窗体
  *  完成：2020年3月2日 18:25:27
  *  更新：更新2020年3月1日 20:59:07 Beta1.1-2020年3月5日
+ *          更新:2020年3月18日内容,红外判断
  *  测试：测试时间2020年3月15日
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -15,15 +16,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
 
@@ -361,7 +355,7 @@ namespace HFM
                 //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
                 buffMessage[0] = Convert.ToByte('C');
-                buffMessage[61] = Convert.ToByte(1);
+                buffMessage[61] = Convert.ToByte(16);
                 //判断串口是否打开，打开则用传输数据，否则用模拟数据
                 if (_commPort.Opened == true)
                 {
@@ -472,7 +466,6 @@ namespace HFM
                             MessageBox.Show("通讯错误！请检查通讯是否正常。");
                             return;
                         }
-
                     }
                     else
                     {
@@ -516,6 +509,7 @@ namespace HFM
                 _infraredStatus[i] = item.InfraredStatus;
                 i++;
             }
+            
             //赋值alpha和Beta总计数并且判断赋值通道状态
             for (i = 0; i < 6; i++)
             {
@@ -590,7 +584,7 @@ namespace HFM
                 LblTimeWork.Text = "测量剩余时间 " + time + " 秒";
             }
             //判断右手红外状态界面显示颜色
-            if (_infraredStatus[0] == 0 && _infraredStatus[1] == 0)
+            if (_infraredStatus[0] == 1 && _infraredStatus[1] == 1)
             {
                 TxtLHandState.BackColor = Color.Lime;
             }
@@ -599,7 +593,7 @@ namespace HFM
                 TxtLHandState.BackColor = Color.Orange;
             }
             //判断右手红外状态界面显示颜色
-            if (_infraredStatus[2] == 0 || _infraredStatus[3] == 0)
+            if (_infraredStatus[2] == 1 || _infraredStatus[3] == 1)
             {
                 TxtRHandState.BackColor = Color.Lime;
             }
@@ -609,7 +603,7 @@ namespace HFM
             }
             //
             //判断右手红外状态界面显示颜色
-            if (_infraredStatus[6] == 0)
+            if (_infraredStatus[6] == 1)
             {
                 TxtFriskerState.BackColor = Color.Lime;
             }
