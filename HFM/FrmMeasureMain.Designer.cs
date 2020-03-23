@@ -306,11 +306,11 @@
             // 
             // LblShowStutas
             // 
-            this.LblShowStutas.BackColor = System.Drawing.Color.Orange;
+            this.LblShowStutas.BackColor = System.Drawing.Color.Transparent;
             this.LblShowStutas.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.24999F, System.Drawing.FontStyle.Bold);
-            this.LblShowStutas.Location = new System.Drawing.Point(158, 127);
+            this.LblShowStutas.Location = new System.Drawing.Point(147, 127);
             this.LblShowStutas.Name = "LblShowStutas";
-            this.LblShowStutas.Size = new System.Drawing.Size(480, 76);
+            this.LblShowStutas.Size = new System.Drawing.Size(501, 76);
             this.LblShowStutas.TabIndex = 10;
             this.LblShowStutas.Text = "仪器自检";
             this.LblShowStutas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -384,6 +384,7 @@
             // LblTime
             // 
             this.LblTime.AutoSize = true;
+            this.LblTime.BackColor = System.Drawing.Color.Transparent;
             this.LblTime.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold);
             this.LblTime.ForeColor = System.Drawing.Color.DarkBlue;
             this.LblTime.Location = new System.Drawing.Point(162, 261);
@@ -394,7 +395,7 @@
             // 
             // LblLeft
             // 
-            this.LblLeft.BackColor = System.Drawing.Color.Orange;
+            this.LblLeft.BackColor = System.Drawing.Color.Transparent;
             this.LblLeft.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblLeft.ForeColor = System.Drawing.Color.Black;
             this.LblLeft.Location = new System.Drawing.Point(170, 352);
@@ -406,7 +407,7 @@
             // 
             // LblRight
             // 
-            this.LblRight.BackColor = System.Drawing.Color.Orange;
+            this.LblRight.BackColor = System.Drawing.Color.Transparent;
             this.LblRight.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblRight.ForeColor = System.Drawing.Color.Black;
             this.LblRight.Location = new System.Drawing.Point(421, 352);
@@ -470,7 +471,7 @@
             // LblFrisker
             // 
             this.LblFrisker.AutoSize = true;
-            this.LblFrisker.BackColor = System.Drawing.Color.Orange;
+            this.LblFrisker.BackColor = System.Drawing.Color.Transparent;
             this.LblFrisker.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LblFrisker.Location = new System.Drawing.Point(478, 261);
             this.LblFrisker.Name = "LblFrisker";
@@ -480,7 +481,7 @@
             // 
             // LblTimeRemain
             // 
-            this.LblTimeRemain.BackColor = System.Drawing.Color.Orange;
+            this.LblTimeRemain.BackColor = System.Drawing.Color.Transparent;
             this.LblTimeRemain.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTimeRemain.Location = new System.Drawing.Point(577, 79);
             this.LblTimeRemain.Name = "LblTimeRemain";

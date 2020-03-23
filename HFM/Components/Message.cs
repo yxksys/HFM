@@ -10,6 +10,7 @@
  *            2020-02-21修正了解析报文中Alpha和Beta计数值四个字节信息的解析方式
  *            2020-03-07增加了生成“向管理机上报监测状态”报文方法
  *                      增加了解析管理机下发报文方法（上报监测状态指令码和时间同步指令码）
+ *          杨旭锴2020年3月23日修改了道盒下发指令,从大写P改为小写p,以及把下发数字的除数改为int型,浮点型会对下发后的数字造成数字增加256.
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -162,7 +163,7 @@ namespace HFM.Components
             byte[] messageData = new byte[62];
             int j = 1;
             //报文头，1字节
-            messageData[0] =Convert.ToByte('P');
+            messageData[0] =Convert.ToByte('p');
             //循环生成4个通道的报文，每个通道15个字节
             for(int i=0; i<4; i++)
             {               
@@ -173,27 +174,27 @@ namespace HFM.Components
                 //Beta阈值，1字节
                 messageData[j + 2] = Convert.ToByte(channelParameterS[i].BetaThreshold/10);
                 //高压值，2字节
-                messageData[j + 3] = Convert.ToByte(channelParameterS[i].PresetHV/256);
+                messageData[j + 3] = Convert.ToByte((int)(channelParameterS[i].PresetHV / 256));
                 messageData[j + 4] = Convert.ToByte(channelParameterS[i].PresetHV%256);
                 //AD因子，2字节
-                messageData[j + 5] = Convert.ToByte(channelParameterS[i].ADCFactor/256);
+                messageData[j + 5] = Convert.ToByte((int)(channelParameterS[i].ADCFactor / 256));
                 messageData[j + 6] = Convert.ToByte(channelParameterS[i].ADCFactor % 256);
                 //DA因子，2字节
-                messageData[j + 7] = Convert.ToByte(channelParameterS[i].DACFactor / 256);
+                messageData[j + 7] = Convert.ToByte((int)(channelParameterS[i].DACFactor / 256));
                 messageData[j + 8] = Convert.ToByte(channelParameterS[i].DACFactor % 256);
                 //高压因子，2字节
-                messageData[j + 9] = Convert.ToByte(channelParameterS[i].HVFactor / 256);
+                messageData[j + 9] = Convert.ToByte((int)(channelParameterS[i].HVFactor / 256));
                 messageData[j + 10] = Convert.ToByte(channelParameterS[i].HVFactor % 256);
                 //工作时间，2字节
-                messageData[j + 11] = Convert.ToByte(channelParameterS[i].WorkTime / 256);
+                messageData[j + 11] = Convert.ToByte((int)(channelParameterS[i].WorkTime / 256));
                 messageData[j + 12] = Convert.ToByte(channelParameterS[i].WorkTime % 256);
                 //高压倍数，2字节
-                messageData[j + 13] = Convert.ToByte(channelParameterS[i].HVRatio / 256);
+                messageData[j + 13] = Convert.ToByte((int) (channelParameterS[i].HVRatio / 256));
                 messageData[j + 14] = Convert.ToByte(channelParameterS[i].HVRatio % 256);
                 j = j + 15;
             }
             //报文结束标志，1字节
-            messageData[61] = Convert.ToByte('P');
+            messageData[61] = Convert.ToByte('p');
             return messageData;
         }
         #endregion
@@ -364,13 +365,13 @@ namespace HFM.Components
                         if (packageIndex == 0) //第一个数据包1-4通道为手部探头
                         {
                             //左手到位
-                            if ((infraredStatus & 1)==1)
+                            if ((infraredStatus & 1)==0)
                             {
                                 measureDataS[0].InfraredStatus = 1;
                                 measureDataS[1].InfraredStatus = 1;
                             }
                             ////右手到位
-                            if ((infraredStatus & 2)==1)
+                            if ((infraredStatus & 2)==0)
                             {
                                 measureDataS[2].InfraredStatus = 1;
                                 measureDataS[3].InfraredStatus = 1;
@@ -379,7 +380,7 @@ namespace HFM.Components
                         else//第二个数据包为5-7为脚步探头和衣物探头
                         {
                             //衣物探头拿起
-                            if ((infraredStatus & 4)==0)
+                            if ((infraredStatus & 4)==1)
                             {
                                 measureDataS[6].InfraredStatus = 1;
                             }

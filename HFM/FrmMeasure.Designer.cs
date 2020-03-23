@@ -74,6 +74,8 @@
             this.PicClothC = new System.Windows.Forms.Label();
             this.LblLeftt = new System.Windows.Forms.Label();
             this.LblRight = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSN)).BeginInit();
@@ -603,10 +605,18 @@
             this.LblRight.Text = "右手不到位";
             this.LblRight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // FrmMeasureData
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(160, 426);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 29);
+            this.textBox1.TabIndex = 43;
+            // 
+            // FrmMeasure
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.LblRight);
             this.Controls.Add(this.LblLeftt);
             this.Controls.Add(this.PicClothC);
@@ -657,7 +667,7 @@
             this.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmMeasureData";
+            this.Name = "FrmMeasure";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).EndInit();
@@ -728,5 +738,7 @@
         private System.Windows.Forms.Label PicClothC;
         private System.Windows.Forms.Label LblLeftt;
         private System.Windows.Forms.Label LblRight;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
     }
 }
