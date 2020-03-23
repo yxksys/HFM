@@ -99,6 +99,7 @@ namespace HFM
         /// </summary>
         private EfficiencyParameter _changedEfficiency=new EfficiencyParameter();
 
+        IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
         #endregion
 
         #region 方法
@@ -158,10 +159,19 @@ namespace HFM
         {
             //线程支持异步取消
             bkWorkerReceiveData.WorkerSupportsCancellation = true;
-            
+
+            #region 中英文翻译
+
+            if (_isEnglish)
+            {
+                
+            }
+
+            #endregion
+
             #region 获得全部启用的通道添加到下拉列表中，更具系统中英文状态选择中英文
-            
-            
+
+
             //根据系统语言填充通道下拉列表
             if (_isEnglish==true)
             {
@@ -302,6 +312,7 @@ namespace HFM
 
                         //向下位机下发“p”指令码
                         buffMessage[0] = Convert.ToByte('P');
+                        buffMessage[61] = Convert.ToByte(1);
                         if (Components.Message.SendMessage(buffMessage, _commPort) != true)
                         {
                             errorNumber++;
@@ -339,6 +350,14 @@ namespace HFM
 
                     #region P写入指令下发
                     case MessageType.PSet:
+                        foreach (var item in channelParameters)
+                        {
+                            if (CmbChannelSelection.Text == item.Channel.ChannelName_English || CmbChannelSelection.Text == item.Channel.ChannelName)
+                            {
+                                channelParameters.RemoveAt(item.CheckingID);
+                                channelParameters.Insert(item.CheckingID,_setChannelParameter);
+                            }
+                        }
                         //实例化道盒列表
                         IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>
                         {
@@ -374,6 +393,7 @@ namespace HFM
                         
                         //向下位机下发“C”指令码
                         buffMessage[0] = Convert.ToByte('C');
+                        buffMessage[61] = Convert.ToByte(1);
                         if (Message.SendMessage(buffMessage, _commPort) == true)    //正式
                         {
                             //延时
@@ -386,43 +406,6 @@ namespace HFM
                         }
                         else
                         {
-                            //if (sclaeState == false)
-                            //{
-                            //    Thread.Sleep(500);
-                            //    receiveBuffMessage[0] = Convert.ToByte('C');
-                            //    receiveBuffMessage[1] = Convert.ToByte(1);
-                            //    receiveBuffMessage[2] = Convert.ToByte(1.3);
-                            //    receiveBuffMessage[6] = Convert.ToByte(6.5);
-                            //    receiveBuffMessage[15] = Convert.ToByte(100);
-                            //    receiveBuffMessage[16] = Convert.ToByte(2);
-                            //    receiveBuffMessage[31] = Convert.ToByte(3);
-                            //    receiveBuffMessage[46] = Convert.ToByte(4);
-                            //    receiveBuffMessage[63] = Convert.ToByte(5);
-                            //    receiveBuffMessage[78] = Convert.ToByte(6);
-                            //    receiveBuffMessage[93] = Convert.ToByte(7);
-                            //}
-
-                            //if (sclaeState == true)
-                            //{
-                            //    Thread.Sleep(500);
-                            //    receiveBuffMessage[0] = Convert.ToByte('C');
-                            //    receiveBuffMessage[1] = Convert.ToByte(1);
-                            //    receiveBuffMessage[2] = Convert.ToByte(1.3);
-                            //    receiveBuffMessage[6] = Convert.ToByte(200);
-                            //    receiveBuffMessage[7] = Convert.ToByte(7);
-                            //    receiveBuffMessage[15] = Convert.ToByte(100);
-                            //    receiveBuffMessage[16] = Convert.ToByte(2);
-                            //    receiveBuffMessage[31] = Convert.ToByte(3);
-                            //    receiveBuffMessage[46] = Convert.ToByte(4);
-                            //    receiveBuffMessage[63] = Convert.ToByte(5);
-                            //    receiveBuffMessage[78] = Convert.ToByte(6);
-                            //    receiveBuffMessage[93] = Convert.ToByte(7);
-                            //}
-
-                            ////延时
-                            //Thread.Sleep(500);
-                            ////触发向主线程返回下位机上传数据事件
-                            //bkWorker.ReportProgress(1, receiveBuffMessage);
                             errorNumber++;
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
                             if (errorNumber > 5)
@@ -561,7 +544,7 @@ namespace HFM
 
             if (receiveBufferMessage[0] == Convert.ToByte('P'))
             {
-                IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
+                
 
                 channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);//解析报文
                 _numForaech = 0;//
