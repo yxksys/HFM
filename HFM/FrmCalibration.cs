@@ -3,7 +3,7 @@
  *
  *  描述：刻度窗体
  *  作者：杨旭锴
- *  版本：Alpha v.0.63-2020年3月7日;Alpha v.0.27-2020年3月6日
+ *  版本：v1.0
  *  创建时间：2020年2月25日 16:58:28
  *  类名：刻度窗体
  *  
@@ -545,7 +545,7 @@ namespace HFM
             float area = _channel.ProbeArea;//探测面积
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
-            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
+            byte[] receiveBufferMessage = new byte[124]; //存储接收报文信息缓冲区
             IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                        
             if (e.UserState is byte[])
             {
