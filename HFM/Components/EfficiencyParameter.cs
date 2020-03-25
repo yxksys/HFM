@@ -228,16 +228,16 @@ namespace HFM.Components
                                                    Convert.ToString(reader["ChannelName_English"]), probeArea,
                                                    Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
                     //根据读出的查询结构构造EffciencyParameter对象
-                    efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
-                    efficiencyParameter.Channel = channel;
-                    efficiencyParameter.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
-                    efficiencyParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
-                    efficiencyParameter.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
+                    this.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
+                    this.Channel = channel;
+                    this.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
+                    this.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
+                    this.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
             }
-            return efficiencyParameter;
+            return this;
         }
         /// <summary>
         /// 根据参数对象efficiencyParameter的ChannelID、NuclideType，NuclideName更新其Efficiency值

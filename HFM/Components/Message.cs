@@ -150,8 +150,8 @@ namespace HFM.Components
         #region 生成下发下位机的写道盒参数报文（P写参数命令码）
         /// <summary>
         /// 生成下发下位机的写道盒参数报文（P写参数命令码）
-        /// 报文格式:'P',通道（1~7），Alpha阈值（1字节），Beta阈值（1字节），高压（2字节），AD因子（2字节），
-        /// DA因子（2字节），高压因子（2字节），工作时间（2字节），高压倍数（2字节）...。共四个通道参数值，'P'（第62个字节）
+        /// 报文格式:'p',通道（1~7），Alpha阈值（1字节），Beta阈值（1字节），高压（2字节），AD因子（2字节），
+        /// DA因子（2字节），高压因子（2字节），工作时间（2字节），高压倍数（2字节）...。共四个通道参数值，'p'（第62个字节）
         /// 特别注意：通道ID1-7，但是一个数据包最多封装4个通道，因此7个通道需封装成两个报文数据包分别进行下发。
         ///           第1次，封装通道1-4并下发，第二次，封装通道5-7并下发
         /// </summary>
@@ -162,7 +162,7 @@ namespace HFM.Components
             byte[] messageData = new byte[62];
             int j = 1;
             //报文头，1字节
-            messageData[0] =Convert.ToByte('P');
+            messageData[0] =Convert.ToByte('p');
             //循环生成4个通道的报文，每个通道15个字节
             for(int i=0; i<4; i++)
             {               
@@ -193,7 +193,7 @@ namespace HFM.Components
                 j = j + 15;
             }
             //报文结束标志，1字节
-            messageData[61] = Convert.ToByte('P');
+            messageData[61] = Convert.ToByte('p');
             return messageData;
         }
         #endregion
@@ -251,7 +251,7 @@ namespace HFM.Components
         /// <param name="message">下位机上传的报文信息</param>
         /// <returns>解析后的报文对象列表</returns>
         public static IList<T> ExplainMessage<T>(byte[]  message)
-        {
+        {            
             //初始化返回P命令码道盒参数对象列表
             IList<ChannelParameter> channelParameterS = new List<ChannelParameter>();
             //初始化返回C命令码测试数据对象列表
@@ -302,7 +302,7 @@ namespace HFM.Components
                             //按照解析的道盒参数构造道盒参数对象                                                                               
                             ChannelParameter channelParameter = new ChannelParameter(channelID, alphaThreshold, betaThreshold, presetHV, aDCFactor, dACFactor, hVFactor, workTime, hVRatio);
                             //将构造的道盒参数对象添加到列表中
-                            channelParameterS.Add(channelParameter);
+                            channelParameterS.Add(channelParameter);                            
                             //更新报文指针
                             channelHeadIndex = channelHeadIndex + 15;
                         }
@@ -340,11 +340,12 @@ namespace HFM.Components
                             hV += Convert.ToSingle(message[channelHeadIndex + 14]);//高压值两个字节                            
 
                             //按照解析的测量数据构造测量数据对象
-                            //其它参数给默认值
+                            //其它参数给默认值                            
+                            //channel.GetChannel(channelID); 
                             Channel channel = new Channel();
-                            //channel.GetChannel(channelID);
-                            channel.ChannelID = channelID;
                             MeasureData measureData = new MeasureData();
+                            //channel.GetChannel(channelID);
+                            channel.ChannelID = channelID;                           
                             measureData.Channel = channel;
                             measureData.Alpha = alpha;
                             measureData.Beta = beta;

@@ -200,7 +200,7 @@ namespace HFM.Components
                     new OleDbParameter ("@IsEnglish",OleDbType.Boolean ,2)
                 };
             parms[0].Value = measureData.MeasureDate;
-            parms[1].Value = measureData.InfraredStatus.ToString();
+            parms[1].Value = measureData.MeasureStatus.ToString();
             parms[2].Value = measureData.DetailedInfo.ToString();
             parms[3].Value = measureData.IsEnglish;
             if (DbHelperAccess.ExecuteSql(SQL_INSERT_MEASUREDATA, parms) != 0)

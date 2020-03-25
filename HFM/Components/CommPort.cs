@@ -157,6 +157,9 @@ namespace HFM.Components
 		private static extern bool CloseHandle( 
 			int hObject   // handle to object 
 			);
+
+        [DllImport("kernel32")]
+        private static extern bool PurgeComm(int hFile, uint dwFlags);
         #endregion
 
         #region 打开串口
@@ -377,7 +380,17 @@ namespace HFM.Components
 
         #endregion
 
-        
+        #region 清空串口缓冲区数据
+        public bool ClearPortData()
+        {
+            bool result = false;
+            if(hComm!=INVALID_HANDLE_value)
+            {
+                result = PurgeComm(hComm, 0);
+            }
+            return result;
+        }
+        #endregion
 
     }
 }

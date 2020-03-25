@@ -79,6 +79,7 @@
             this.LblLF = new System.Windows.Forms.Label();
             this.PnlLF = new System.Windows.Forms.Panel();
             this.TmrDispTime = new System.Windows.Forms.Timer(this.components);
+            this.PnlFrisker = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSN)).BeginInit();
@@ -100,6 +101,7 @@
             this.PnlRHP.SuspendLayout();
             this.PnlRF.SuspendLayout();
             this.PnlLF.SuspendLayout();
+            this.PnlFrisker.SuspendLayout();
             this.SuspendLayout();
             // 
             // PicName
@@ -473,7 +475,7 @@
             this.LblFrisker.AutoSize = true;
             this.LblFrisker.BackColor = System.Drawing.Color.Transparent;
             this.LblFrisker.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblFrisker.Location = new System.Drawing.Point(478, 261);
+            this.LblFrisker.Location = new System.Drawing.Point(27, 14);
             this.LblFrisker.Name = "LblFrisker";
             this.LblFrisker.Size = new System.Drawing.Size(170, 48);
             this.LblFrisker.TabIndex = 45;
@@ -596,10 +598,20 @@
             this.TmrDispTime.Interval = 1000;
             this.TmrDispTime.Tick += new System.EventHandler(this.TmrDispTime_Tick);
             // 
+            // PnlFrisker
+            // 
+            this.PnlFrisker.BackColor = System.Drawing.Color.Transparent;
+            this.PnlFrisker.Controls.Add(this.LblFrisker);
+            this.PnlFrisker.Location = new System.Drawing.Point(441, 254);
+            this.PnlFrisker.Name = "PnlFrisker";
+            this.PnlFrisker.Size = new System.Drawing.Size(200, 62);
+            this.PnlFrisker.TabIndex = 47;
+            // 
             // FrmMeasureMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.PnlFrisker);
             this.Controls.Add(this.PnlRF);
             this.Controls.Add(this.PnlLF);
             this.Controls.Add(this.PnlRHP);
@@ -608,7 +620,6 @@
             this.Controls.Add(this.PnlLHB);
             this.Controls.Add(this.LblShowStutas);
             this.Controls.Add(this.LblTimeRemain);
-            this.Controls.Add(this.LblFrisker);
             this.Controls.Add(this.LblLeft);
             this.Controls.Add(this.TxtShowResult);
             this.Controls.Add(this.LblSN);
@@ -673,6 +684,8 @@
             this.PnlRF.PerformLayout();
             this.PnlLF.ResumeLayout(false);
             this.PnlLF.PerformLayout();
+            this.PnlFrisker.ResumeLayout(false);
+            this.PnlFrisker.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,5 +742,6 @@
         private System.Windows.Forms.Label LblLF;
         private System.Windows.Forms.Panel PnlLF;
         private System.Windows.Forms.Timer TmrDispTime;
+        private System.Windows.Forms.Panel PnlFrisker;
     }
 }

@@ -34,6 +34,7 @@ namespace HFM
             /// </summary>
             SelfTest = 3
         }
+        FrmTest frmTest = null;
         //运行状态标志
         HardwarePlatformState platformState;
         public FrmWelcome()
@@ -206,6 +207,23 @@ namespace HFM
             t.Second = 0;
             t.MiliSecond = 20;
             bool v = SetSystemTime(ref t);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {            
+            frmTest.MdiParent = this;
+            frmTest.Controls["textBox1"].Text = (Convert.ToInt32(frmTest.Controls["textBox1"].Text)+1).ToString();
+            frmTest.Show();
+        }
+
+        private void FrmWelcome_Load(object sender, EventArgs e)
+        {
+            frmTest = new FrmTest();
         }
     }
 }
