@@ -10,6 +10,7 @@
  *            2020-02-21修正了解析报文中Alpha和Beta计数值四个字节信息的解析方式
  *            2020-03-07增加了生成“向管理机上报监测状态”报文方法
  *                      增加了解析管理机下发报文方法（上报监测状态指令码和时间同步指令码）
+ *          杨旭锴2020年3月23日修改了道盒下发指令,从大写P改为小写p,以及把下发数字的除数改为int型,浮点型会对下发后的数字造成数字增加256.
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -173,22 +174,22 @@ namespace HFM.Components
                 //Beta阈值，1字节
                 messageData[j + 2] = Convert.ToByte(channelParameterS[i].BetaThreshold/10);
                 //高压值，2字节
-                messageData[j + 3] = Convert.ToByte(channelParameterS[i].PresetHV/256);
+                messageData[j + 3] = Convert.ToByte((int)(channelParameterS[i].PresetHV / 256));
                 messageData[j + 4] = Convert.ToByte(channelParameterS[i].PresetHV%256);
                 //AD因子，2字节
-                messageData[j + 5] = Convert.ToByte(channelParameterS[i].ADCFactor/256);
+                messageData[j + 5] = Convert.ToByte((int)(channelParameterS[i].ADCFactor / 256));
                 messageData[j + 6] = Convert.ToByte(channelParameterS[i].ADCFactor % 256);
                 //DA因子，2字节
-                messageData[j + 7] = Convert.ToByte(channelParameterS[i].DACFactor / 256);
+                messageData[j + 7] = Convert.ToByte((int)(channelParameterS[i].DACFactor / 256));
                 messageData[j + 8] = Convert.ToByte(channelParameterS[i].DACFactor % 256);
                 //高压因子，2字节
-                messageData[j + 9] = Convert.ToByte(channelParameterS[i].HVFactor / 256);
+                messageData[j + 9] = Convert.ToByte((int)(channelParameterS[i].HVFactor / 256));
                 messageData[j + 10] = Convert.ToByte(channelParameterS[i].HVFactor % 256);
                 //工作时间，2字节
-                messageData[j + 11] = Convert.ToByte(channelParameterS[i].WorkTime / 256);
+                messageData[j + 11] = Convert.ToByte((int)(channelParameterS[i].WorkTime / 256));
                 messageData[j + 12] = Convert.ToByte(channelParameterS[i].WorkTime % 256);
                 //高压倍数，2字节
-                messageData[j + 13] = Convert.ToByte(channelParameterS[i].HVRatio / 256);
+                messageData[j + 13] = Convert.ToByte((int) (channelParameterS[i].HVRatio / 256));
                 messageData[j + 14] = Convert.ToByte(channelParameterS[i].HVRatio % 256);
                 j = j + 15;
             }

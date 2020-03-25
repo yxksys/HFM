@@ -22,6 +22,7 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Collections;
 using HFM.Components;
+using System.Threading;
 
 
 namespace HFM
@@ -31,15 +32,6 @@ namespace HFM
         public FrmPreference()
         {
             InitializeComponent();
-            //OleDbConnection oleDbConnection = new OleDbConnection(DbHelperAccess.connectionString);
-            //string SQL = "SELECT * FROM HFM_Preference";
-            //OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter(SQL, oleDbConnection);
-            //System.Data.DataSet thisDataSet = new System.Data.DataSet();
-            //oleDbDataAdapter.Fill(thisDataSet, "HFM_Preference");
-            //DataTable dt = thisDataSet.Tables["HFM_Preference"];
-            //this.DgvAlphaSet.DataSource = dt;
-            //oleDbConnection.Close();
-
         }
 
         //运行参数设置
@@ -90,19 +82,26 @@ namespace HFM
             //根据页面索引更新当前页面值
             switch (TabPresence.SelectedIndex)
             {
-                case 0: GetProferenceData();
+                case 0:
+                    GetProferenceData();
                     break;
-                case 1: GetAlphaData();
+                case 1:
+                    GetAlphaData();
                     break;
-                case 2: GetBetaData();
+                case 2:
+                    GetBetaData();
                     break;
-                case 3: GetClothesData();
+                case 3:
+                    GetClothesData();
                     break;
-                case 4: GetMainProferenceData();
+                case 4:
+                    GetMainProferenceData();
                     break;
-                case 5: GetFacilityData();
+                case 5:
+                    GetFacilityData();
                     break;
-                default: MessageBox.Show("选择有误，请重新选择");
+                default:
+                    MessageBox.Show("选择有误，请重新选择");
                     break;
             }
 
@@ -932,7 +931,79 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnBetaOk_Click(object sender, EventArgs e)
         {
+            #region β核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> button = new List<RadioButton>();//核素选择数组
+            button.Add(RdoBeta14);
+            button.Add(RdoBeta58);
+            button.Add(RdoBeta131);
+            button.Add(RdoBeta204);
+            button.Add(RdoBeta32);
+            button.Add(RdoBeta60);
+            button.Add(RdoBeta137);
+            button.Add(RdoBetaDefine1);
+            button.Add(RdoBeta36);
+            button.Add(RdoBeta90);
+            button.Add(RdoBeta192);
+            button.Add(RdoBetaDefine2);
+            for (int i = 0; i < button.Count; i++)
+            {
+                if (button[i].Checked)
+                {
+                    nuclidename = button[i].Text;
+                    break;
+                }
+            }
+            #endregion
 
+            #region β参数
+            IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//更新β参数
+            IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
+            for (int i = 0; i < DgvBetaSet.RowCount; i++)
+            {
+                ProbeParameter p = new ProbeParameter();
+                HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
+                efficiency.Channel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                efficiency.NuclideType = "β";
+                efficiency.NuclideName = nuclidename;
+                efficiency.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                efficiencyParameters.Add(efficiency);
+
+                p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                p.NuclideType = "β";
+                p.ProbeType = "闪烁体";
+                p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
+                p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
+                p.Alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);
+                p.Alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);
+                p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                probeParameters.Add(p);
+            }
+            #endregion
+
+            #region 更新数据库
+            for (int i = 0; i < probeParameters.Count; i++)
+            {
+                bool k = new ProbeParameter().SetParameter(probeParameters[i]);
+                bool l = new HFM.Components.EfficiencyParameter().SetParameter(efficiencyParameters[i]);
+                if (k && l)
+                {
+                }
+                else
+                {
+                    MessageBox.Show("更新失败");
+                    return;
+                }
+            }
+            if (new Nuclide().SetBetaNuclideUser(nuclidename))
+            {
+                MessageBox.Show("更新成功");
+            }
+            else
+            {
+                MessageBox.Show("更新失败");
+            }
+            #endregion
         }
         /// <summary>
         /// 取消
@@ -941,7 +1012,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnBetaNo_Click(object sender, EventArgs e)
         {
-
+            //重新获得数据库数据
+            GetBetaData();
         }
 
 
@@ -955,7 +1027,87 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnClothesOk_Click(object sender, EventArgs e)
         {
+            //注：核算选择和衣物探头选择顺序不可互换
+            #region 核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> button = new List<RadioButton>();//核素选择数组
 
+            #region 添加核素
+            //0-4为α核素，5-15为β核素
+            //α核素
+            button.Add(RdoClothesAlpha235);
+            button.Add(RdoClothesAlpha238);
+            button.Add(RdoClothesAlpha239);
+            button.Add(RdoClothesAlpha241);
+            button.Add(RdoClothesAlphaDefine1);
+            //β核素
+            button.Add(RdoClothesBeta14);
+            button.Add(RdoClothesBeta32);
+            button.Add(RdoClothesBeta36);
+            button.Add(RdoClothesBeta58);
+            button.Add(RdoClothesBeta60);
+            button.Add(RdoClothesBeta90);
+            button.Add(RdoClothesBeta131);
+            button.Add(RdoClothesBeta137);
+            button.Add(RdoClothesBeta192);
+            button.Add(RdoClothesBeta204);
+            button.Add(RdoClothesBetaDefine1);
+
+            #endregion
+
+            //获得当前核素，同时记录核素编号
+            int number = 0;
+            for (int i = 0; i < button.Count; i++)
+            {
+                if (button[i].Checked)
+                {
+                    nuclidename = button[i].Text;
+                    number = i;
+                    break;
+                }
+            }
+            #endregion
+
+            #region 衣物探头
+            //衣物离线自检时间数据在SystemParameter中，故需要单独存储
+            Components.SystemParameter systemParameter = new Components.SystemParameter();
+            systemParameter.GetParameter();//或当当前数据
+            systemParameter.ClothOfflineTime = Convert.ToInt32(TxtClothOfflineTime.Text);
+
+            ProbeParameter probeParameter = new ProbeParameter();//更新衣物参数
+            Components.EfficiencyParameter effciency = new Components.EfficiencyParameter(); //更新效率
+            effciency.Channel = new Channel().GetChannel(7);
+            effciency.NuclideName = nuclidename;
+            effciency.Efficiency = Convert.ToSingle(TxtClothesEfficiency.Text);
+            //0-4为α核素，5-15为β核素
+            if (number < 5 && number > 0)
+            {
+                effciency.NuclideType = "C";
+            }
+            else
+            {
+                effciency.NuclideType = "C";
+            }
+
+            probeParameter.ProbeChannel = effciency.Channel;
+            probeParameter.NuclideType = effciency.NuclideType;
+            probeParameter.ProbeType = "GM管";
+            probeParameter.HBackground = Convert.ToSingle(TxtClothesHBackground.Text);
+            probeParameter.LBackground = Convert.ToSingle(TxtClothesLBackground.Text);
+            probeParameter.Alarm_1 = Convert.ToSingle(TxtClothesAlarm_1.Text);
+            probeParameter.Alarm_2 = Convert.ToSingle(TxtClothesAlarm_2.Text);
+            #endregion
+
+            #region 更新数据库
+            if (new Nuclide().SetClothesNuclideUser(nuclidename) && new Components.EfficiencyParameter().SetParameter(effciency) && new ProbeParameter().SetParameter(probeParameter))
+            {
+                MessageBox.Show("更新成功");
+            }
+            else
+            {
+                MessageBox.Show("更新失败");
+            }
+            #endregion
         }
         /// <summary>
         /// 取消
@@ -964,7 +1116,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnClothesNo_Click(object sender, EventArgs e)
         {
-
+            //重新获得数据库数据
+            GetClothesData();
         }
 
         #endregion
@@ -1017,6 +1170,113 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnFacilityOk_Click(object sender, EventArgs e)
         {
+            //获得是否启用
+            bool hand, foot, clothes, two = false;//(手部、脚部、衣物、双手)
+
+            #region 手部启用
+            //手部启用
+            if (ChkHand.Checked)
+            {
+                hand = true;
+                //启用双探头
+                if (RdoSingleHand.Checked)
+                {
+                    two = false;
+                }
+                else
+                {
+                    two = true;
+                }
+            }
+            else
+            {
+                hand = false;
+            }
+            #endregion
+
+            #region 脚步启用
+
+            if (ChkFoot.Checked)
+            {
+                foot = true;
+            }
+            else
+            {
+                foot = false;
+            }
+
+            #endregion
+
+            #region 衣物启用
+
+            if (ChkClothes.Checked)
+            {
+                clothes = true;
+            }
+            else
+            {
+                clothes = false;
+            }
+
+            #endregion
+
+            #region 写入数据库
+
+            Channel channel = new Channel();
+
+            //手部启用
+            if (hand)
+            {
+                //双手启用
+                if (two)
+                {
+                    channel.SetEnabledByID(1, true);
+                    channel.SetEnabledByID(2, true);
+                    channel.SetEnabledByID(3, true);
+                    channel.SetEnabledByID(4, true);
+                }
+                //单手启用
+                else
+                {
+                    channel.SetEnabledByID(1, true);
+                    channel.SetEnabledByID(2, false);
+                    channel.SetEnabledByID(3, true);
+                    channel.SetEnabledByID(4, false);
+                }
+            }
+            else
+            {
+                channel.SetEnabledByID(1, false);
+                channel.SetEnabledByID(2, false);
+                channel.SetEnabledByID(3, false);
+                channel.SetEnabledByID(4, false);
+            }
+
+            //脚部启用
+            if (foot)
+            {
+                channel.SetEnabledByID(5, true);
+                channel.SetEnabledByID(6, true);
+            }
+            else
+            {
+                channel.SetEnabledByID(5, false);
+                channel.SetEnabledByID(6, false);
+            }
+
+            //衣物探头启用
+            if(clothes)
+            {
+                channel.SetEnabledByID(7, true);
+            }
+            else
+            {
+                channel.SetEnabledByID(7, false);
+            }
+
+            MessageBox.Show("ok");
+
+            #endregion
 
         }
         /// <summary>
@@ -1026,7 +1286,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnFacilityNo_Click(object sender, EventArgs e)
         {
-
+            //重新获得数据库数据
+            GetFacilityData();
         }
         #endregion
 
