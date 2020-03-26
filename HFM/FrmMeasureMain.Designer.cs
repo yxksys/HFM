@@ -595,7 +595,7 @@
             // TmrDispTime
             // 
             this.TmrDispTime.Enabled = true;
-            this.TmrDispTime.Interval = 1000;
+            this.TmrDispTime.Interval = 500;
             this.TmrDispTime.Tick += new System.EventHandler(this.TmrDispTime_Tick);
             // 
             // PnlFrisker

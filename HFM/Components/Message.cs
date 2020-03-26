@@ -345,8 +345,8 @@ namespace HFM.Components
                             //channel.GetChannel(channelID); 
                             Channel channel = new Channel();
                             MeasureData measureData = new MeasureData();
-                            //channel.GetChannel(channelID);
-                            channel.ChannelID = channelID;                           
+                            channel.GetChannel(channelID);
+                            //channel.ChannelID = channelID;                           
                             measureData.Channel = channel;
                             measureData.Alpha = alpha;
                             measureData.Beta = beta;
@@ -381,7 +381,7 @@ namespace HFM.Components
                         else//第二个数据包为5-7为脚步探头和衣物探头
                         {
                             //衣物探头拿起
-                            if ((infraredStatus & 4)==1)
+                            if ((infraredStatus & 4)==4)
                             {
                                 measureDataS[6].InfraredStatus = 1;
                             }
