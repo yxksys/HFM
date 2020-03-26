@@ -521,7 +521,6 @@ namespace HFM
                 //判断通道状态
                 if (new Channel().GetChannel(i + 1).IsEnabled == false)
                 {
-                    
                     if (_isEnglish)
                     {
                         _strat[i] = "Not enabled";
