@@ -69,7 +69,6 @@ namespace HFM
             GetAlphaData();
             GetBetaData();
             GetClothesData();
-            GetMainProferenceData();
             GetFacilityData();
         }
         /// <summary>
@@ -444,27 +443,19 @@ namespace HFM
                 DgvMainPreferenceSet.Rows.Remove(DgvMainPreferenceSet.Rows[i]);
                 i--;
             }
-            //选出启用的设备
+            //选出所有设备
             for (int i = 0; i < channelParameters.Count; i++)
             {
-                //设备启用设备
-                if (channelParameters[i].Channel.IsEnabled)
-                {
-                    int index = this.DgvMainPreferenceSet.Rows.Add();
-                    DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
-                    DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
-                    DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
-                    DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
-                    DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
-                    DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
-                    DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
-                    DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
-                    DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
-                }
-                //设备未启用(暂时不显示)
-                else
-                {
-                }
+                int index = this.DgvMainPreferenceSet.Rows.Add();
+                DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
+                DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
+                DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
+                DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
+                DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
+                DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
             }
 
         }
@@ -1130,7 +1121,9 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceRetuen_Click(object sender, EventArgs e)
         {
-
+            //重新获得数据库数据
+            GetMainProferenceData();
+            MessageBox.Show("恢复成功");
         }
         /// <summary>
         /// 设置默认
@@ -1139,7 +1132,77 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceSet_Click(object sender, EventArgs e)
         {
+            #region 获得数据
 
+            IList<ChannelParameter> channelParameters = new List<ChannelParameter>();//更新道盒参数
+            //循环每一行
+            for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++)
+            {
+                ChannelParameter channelParameter = new ChannelParameter();
+                channelParameter.Channel = new Channel();
+                channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
+                channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
+                channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
+                channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
+                channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
+                channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
+                channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
+                channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
+                channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
+                channelParameters.Add(channelParameter);
+            }
+            //获得channelID
+            for (int i = 0; i < channelParameters.Count; i++)
+            {
+                if (channelParameters[i].Channel.ChannelName == "左手心")
+                {
+                    channelParameters[i].Channel.ChannelID = 1;
+                }
+                if (channelParameters[i].Channel.ChannelName == "左手背")
+                {
+                    channelParameters[i].Channel.ChannelID = 2;
+                }
+                if (channelParameters[i].Channel.ChannelName == "右手心")
+                {
+                    channelParameters[i].Channel.ChannelID = 3;
+                }
+                if (channelParameters[i].Channel.ChannelName == "右手背")
+                {
+                    channelParameters[i].Channel.ChannelID = 4;
+                }
+                if (channelParameters[i].Channel.ChannelName == "左脚")
+                {
+                    channelParameters[i].Channel.ChannelID = 5;
+                }
+                if (channelParameters[i].Channel.ChannelName == "右脚")
+                {
+                    channelParameters[i].Channel.ChannelID = 6;
+                }
+                if (channelParameters[i].Channel.ChannelName == "衣物探头")
+                {
+                    channelParameters[i].Channel.ChannelID = 7;
+                }
+            }
+
+            #endregion
+
+            #region 数据库更新
+
+            for (int i = 0; i < channelParameters.Count; i++)
+            {
+                if(new ChannelParameter().SetParameter(channelParameters[i]))
+                {
+                }
+                else
+                {
+                    MessageBox.Show("更新失败");
+                    return;
+                }
+            }
+            MessageBox.Show("更新成功");
+
+
+            #endregion
         }
         /// <summary>
         /// 读参数
