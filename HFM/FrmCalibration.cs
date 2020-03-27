@@ -697,26 +697,28 @@ namespace HFM
                         _effAlpha =((_alphaNr - _alphaNb) / Convert.ToSingle(TxtSFR.Text));//Alpha效率
                         _effBeta = ((_betaNr - _betaNb) / Convert.ToSingle(TxtSFR.Text));//Beta效率
                         _eff = _effAlpha > _effBeta ? _effAlpha*100 : _effBeta*100;//效率取Alpha或Beta的最大值
-                        //Beta探测下限
-                        _betaMda =
-                            (_p * (_betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
-                                  _betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
-                             (0.005f * _betaNb)) / (_effBeta / 2) / area;
-                        //Alpha探测下限
-                        _alphaMda =
-                            (_p * (_alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
-                                  _alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
-                             (0.005f * _betaNb)) / (_effBeta / 2) / area;
-                        //alphaMDA =
-                        //    ((2 * p) *
-                        //     (float)((alphaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) +
-                        //      (alphaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) *
-                        //      2)) / effAlpha/2/area;
-                        //betaMDA =
-                        //    ((2 * p) *
-                        //     (float)((betaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) +
-                        //             (betaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) *
-                        //             2)) / effBeta/2/area;
+                        try
+                        {
+                            //Beta探测下限
+                            _betaMda =
+                                (_p * (_betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
+                                       _betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
+                                 (0.005f * _betaNb)) / (_effBeta / 2) / area;
+                            //Alpha探测下限
+                            _alphaMda =
+                                (_p * (_alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
+                                       _alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
+                                 (0.005f * _betaNb)) / (_effBeta / 2) / area;
+                        }
+                        catch (Exception exception)
+                        {
+                            //Beta探测下限
+                            _betaMda = 0;
+                            //Alpha探测下限
+                            _alphaMda = 0;
+                           throw;
+                        }
+                        
                         _resultMda = _effAlpha > _effBeta ? _alphaMda : _betaMda;//探测下限取值和效率一样的
                         float rangeMda;//探测下限范围
                         //取当前核素的对象
@@ -960,10 +962,15 @@ namespace HFM
             
         }
 
-        #endregion
 
         #endregion
 
+        #endregion
 
+        private void TxtHV_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn key=new FrmKeyIn();
+            key.Show();
+        }
     }
 }

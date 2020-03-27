@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,8 +18,7 @@ namespace HFM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new FrmCalibration());
-            Application.Run(new FrmTestHardware());
+            Application.Run(new FrmMain());
         }
         
     }
