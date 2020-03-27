@@ -1171,7 +1171,7 @@ namespace HFM
         private void BtnFacilityOk_Click(object sender, EventArgs e)
         {
             //获得是否启用
-            bool hand,foot,clothes,two = false;//(手部、脚部、衣物、双手)
+            bool hand, foot, clothes, two = false;//(手部、脚部、衣物、双手)
 
             #region 手部启用
             //手部启用
@@ -1209,7 +1209,7 @@ namespace HFM
 
             #region 衣物启用
 
-            if(ChkClothes.Checked)
+            if (ChkClothes.Checked)
             {
                 clothes = true;
             }
@@ -1251,6 +1251,30 @@ namespace HFM
                 channel.SetEnabledByID(3, false);
                 channel.SetEnabledByID(4, false);
             }
+
+            //脚部启用
+            if (foot)
+            {
+                channel.SetEnabledByID(5, true);
+                channel.SetEnabledByID(6, true);
+            }
+            else
+            {
+                channel.SetEnabledByID(5, false);
+                channel.SetEnabledByID(6, false);
+            }
+
+            //衣物探头启用
+            if(clothes)
+            {
+                channel.SetEnabledByID(7, true);
+            }
+            else
+            {
+                channel.SetEnabledByID(7, false);
+            }
+
+            MessageBox.Show("ok");
 
             #endregion
 

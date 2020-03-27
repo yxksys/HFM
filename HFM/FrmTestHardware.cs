@@ -223,7 +223,7 @@ namespace HFM
         {
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
-            byte[] receiveBuffMessage = new byte[200];
+            byte[] receiveBuffMessage = new byte[124];
 
             while (true)
             {
@@ -373,15 +373,16 @@ namespace HFM
                 }
                 else
                 {
-                    if (Components.Message.SendMessage(buffMessage, _commPort) != true)      //测试使用
+                    errorNumber++;
+                    //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                    if (errorNumber > 5)
                     {
-                        //延时
-                        Thread.Sleep(100);
-                        receiveBuffMessage = Components.Message.ReceiveMessage(_commPort);
-                        //延时
-                        Thread.Sleep(500);
-                        //触发向主线程返回下位机上传数据事件
                         bkworker.ReportProgress(1, null);
+                        bkWorkerReceiveData.CancelAsync();
+                    }
+                    else
+                    {
+                        Thread.Sleep(delayTime);
                     }
                 }
                 #endregion

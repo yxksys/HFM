@@ -22,22 +22,22 @@ namespace HFM.Components
     class EfficiencyParameter
     {
         #region 常量
-        private const string SQL_SELECT_EFFICIENCYPARAMETER = "SELECT EfficiencyParamID,Efficiency,a.ChannelID,NuclideType," +
-                                                             "NuclideName,ChannelName,ChannelName_English,ProbeArea,Status," +
-                                                             "IsEnabled FROM HFM_EfficiencyParameter a " +
+        private const string SQL_SELECT_EFFICIENCYPARAMETER = "SELECT a.EfficiencyParamID,a.Efficiency,a.ChannelID,a.NuclideType," +
+                                                             "a.NuclideName,b.ChannelName,b.ChannelName_English,b.ProbeArea,b.Status," +
+                                                             "b.IsEnabled FROM HFM_EfficiencyParameter a " +
                                                              "INNER JOIN HFM_DIC_Channel b ON a.ChannelID = b.ChannelID";
-        private const string SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME = "SELECT EfficiencyParamID,a.ChannelID," +
-                                                              "Efficiency,NuclideType,NuclideName,ChannelName,ChannelName_English," +
-                                                              "ProbeArea,Status,IsEnabled FROM HFM_EfficiencyParameter a, " +
+        private const string SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME = "SELECT a.EfficiencyParamID,a.ChannelID," +
+                                                              "a.Efficiency,a.NuclideType,a.NuclideName,b.ChannelName,b.ChannelName_English," +
+                                                              "b.ProbeArea,b.Status,b.IsEnabled FROM HFM_EfficiencyParameter a, " +
                                                               "HFM_DIC_Channel b WHERE NuclideType = @NuclideType AND " +
-                                                              "NuclideName = @NuclideName AND a.ChannelID = b.ChannelID";
-        private const string SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_CHANNEL_AND_NUCLIDENAME = "SELECT EfficiencyParamID,a.ChannelID,Efficiency, NuclideType," +
-                                                              "NuclideName,ChannelName,ChannelName_English,ProbeArea,Status,IsEnabled FROM HFM_EfficiencyParameter" +
-                                                              " a,HFM_DIC_Channel b WHERE NuclideType = @NuclideType AND NuclideName = @NuclideName " +
-                                                              " AND a.ChannelID = @ChannelID AND a.ChannelID = b.ChannelID";
+                                                              "NuclideName=@NuclideName AND a.ChannelID = b.ChannelID";
+        private const string SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_CHANNEL_AND_NUCLIDENAME = "SELECT a.EfficiencyParamID, a.ChannelID,a.Efficiency," +
+                                                              " a.NuclideType,a.NuclideName,b.ChannelName,b.ChannelName_English,b.ProbeArea,b.Status," +
+                                                              " b.IsEnabled FROM HFM_EfficiencyParameter a,HFM_DIC_Channel b WHERE a.NuclideType = @NuclideType" +
+                                                              " AND a.NuclideName like @NuclideName AND a.ChannelID = @ChannelID AND a.ChannelID = b.ChannelID";
         private const string SQL_UPDATE_EFFICIENCY_BY_NUCLIDETYPE_AND_NUCLIDENAME_AND_CHANNELID = "UPDATE HFM_EfficiencyParameter" +
                                                               " SET Efficiency = @Efficiency WHERE NuclideType = @NuclideType AND " +
-                                                              "NuclideName = @NuclideName AND ChannelID = @ChannelID";
+                                                              "NuclideName=@NuclideName AND ChannelID = @ChannelID";
 
         #endregion
 
@@ -204,7 +204,7 @@ namespace HFM.Components
                 new OleDbParameter("@ChannelID",OleDbType.Integer,4)
             };
             parms[0].Value = nuclideType;
-            parms[1].Value = nuclideName;
+            parms[1].Value =nuclideName;
             parms[2].Value = channelID;
             //从数据库中查询全部探测效率并赋值给ICalibrationS
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_EFFICIENCY_BY_NUCLIDETYPE_AND_CHANNEL_AND_NUCLIDENAME, parms))
@@ -228,16 +228,16 @@ namespace HFM.Components
                                                    Convert.ToString(reader["ChannelName_English"]), probeArea,
                                                    Convert.ToString(reader["Status"]), Convert.ToBoolean(reader["IsEnabled"]));
                     //根据读出的查询结构构造EffciencyParameter对象
-                    efficiencyParameter.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
-                    efficiencyParameter.Channel = channel;
-                    efficiencyParameter.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
-                    efficiencyParameter.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
-                    efficiencyParameter.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
+                    this.EfficiencyParamID = Convert.ToInt32(reader["EfficiencyParamID"].ToString());
+                    this.Channel = channel;
+                    this.Efficiency = Convert.ToSingle(reader["Efficiency"].ToString());
+                    this.NuclideType = Convert.ToString(reader["NuclideType"].ToString());
+                    this.NuclideName = Convert.ToString(reader["NuclideName"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
             }
-            return efficiencyParameter;
+            return this;
         }
         /// <summary>
         /// 根据参数对象efficiencyParameter的ChannelID、NuclideType，NuclideName更新其Efficiency值
