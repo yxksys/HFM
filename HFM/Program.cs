@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
+using System;
 using System.Windows.Forms;
-using System.Threading;
 
 namespace HFM
 {
@@ -17,8 +14,7 @@ namespace HFM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMeasureMain());
-            // Application.Run(new FrmTestHardware());
+            Application.Run(new FrmMain());
         }
         
     }

@@ -307,7 +307,7 @@ namespace HFM
         {
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
-            
+            byte[] receiveBuffMessage = new byte[124];//接受的报文
             byte[] buffMessage = new byte[62];//报文长度
             while (true)
             {
@@ -322,12 +322,12 @@ namespace HFM
                 {
                     #region P读取指令下发并接收数据上传
                     case MessageType.PRead:
-                        byte[] receiveBuffMessage = new byte[124];//接受的报文
+
                         //向下位机下发“p”指令码
                         buffMessage[0] = Convert.ToByte('P');
                         //buffMessage[61] = Convert.ToByte(0);
                         _bkworkTime++;
-                        if (_bkworkTime > 2)
+                        if (_bkworkTime > 3)
                         {
                             bkWorkerReceiveData.CancelAsync();
                             _bkworkTime = 0;
@@ -426,7 +426,6 @@ namespace HFM
 
                     #region C读取指令下发并接收数据上传
                     case MessageType.CRead:
-                        byte[] receiveBuffMessagec = new byte[124];
                         //向下位机下发“C”指令码
                         buffMessage[0] = Convert.ToByte('C');
                         buffMessage[61] = Convert.ToByte(16);
@@ -434,16 +433,12 @@ namespace HFM
                         {
                             //延时
                             Thread.Sleep(200);
-                            receiveBuffMessagec = Message.ReceiveMessage(_commPort);
-                            if (receiveBuffMessagec.Length > 124)
-                            {
-                                break;
-                                
-                            }
+                            receiveBuffMessage = Message.ReceiveMessage(_commPort);
+                            
                             //延时
                             Thread.Sleep(800);
                             //触发向主线程返回下位机上传数据事件
-                            bkWorker.ReportProgress(1, receiveBuffMessagec);
+                            bkWorker.ReportProgress(1, receiveBuffMessage);
                         }
                         else
                         {
@@ -550,7 +545,7 @@ namespace HFM
             float area = _channel.ProbeArea;//探测面积
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
-            byte[] receiveBufferMessage = new byte[124]; //存储接收报文信息缓冲区
+            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
             IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                        
             if (e.UserState is byte[])
             {
@@ -702,26 +697,28 @@ namespace HFM
                         _effAlpha =((_alphaNr - _alphaNb) / Convert.ToSingle(TxtSFR.Text));//Alpha效率
                         _effBeta = ((_betaNr - _betaNb) / Convert.ToSingle(TxtSFR.Text));//Beta效率
                         _eff = _effAlpha > _effBeta ? _effAlpha*100 : _effBeta*100;//效率取Alpha或Beta的最大值
-                        //Beta探测下限
-                        _betaMda =
-                            (float) ((_p *Math.Sqrt((_betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
-                                                     _betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)))  +
-                                      (0.005f * _betaNb)) / (_effBeta / 2) / area);
-                        //Alpha探测下限
-                        _alphaMda =
-                            (float) ((_p *Math.Sqrt((_alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
-                                                     _alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)))  +
-                                      (0.005f * _betaNb)) / (_effBeta / 2) / area);
-                        //alphaMDA =
-                        //    ((2 * p) *
-                        //     (float)((alphaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) +
-                        //      (alphaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) *
-                        //      2)) / effAlpha/2/area;
-                        //betaMDA =
-                        //    ((2 * p) *
-                        //     (float)((betaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) +
-                        //             (betaNB / Convert.ToDouble(TxtMeasuringTime.Text) * Convert.ToDouble(TxtCount.Text)) *
-                        //             2)) / effBeta/2/area;
+                        try
+                        {
+                            //Beta探测下限
+                            _betaMda =
+                                (_p * (_betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
+                                       _betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
+                                 (0.005f * _betaNb)) / (_effBeta / 2) / area;
+                            //Alpha探测下限
+                            _alphaMda =
+                                (_p * (_alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
+                                       _alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
+                                 (0.005f * _betaNb)) / (_effBeta / 2) / area;
+                        }
+                        catch (Exception exception)
+                        {
+                            //Beta探测下限
+                            _betaMda = 0;
+                            //Alpha探测下限
+                            _alphaMda = 0;
+                           throw;
+                        }
+                        
                         _resultMda = _effAlpha > _effBeta ? _alphaMda : _betaMda;//探测下限取值和效率一样的
                         float rangeMda;//探测下限范围
                         //取当前核素的对象
@@ -965,10 +962,15 @@ namespace HFM
             
         }
 
-        #endregion
 
         #endregion
 
+        #endregion
 
+        private void TxtHV_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn key=new FrmKeyIn();
+            key.Show();
+        }
     }
 }

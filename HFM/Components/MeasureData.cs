@@ -21,10 +21,10 @@ namespace HFM.Components
 {
     class MeasureData
     {
-        private const string SQL_SELECT_MEASUREDATA = "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish" +
+        private const string SQL_SELECT_MEASUREDATA = "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish " +
                                                      "FROM HFM_MeasureData";
-        private const string SQL_SELECT_MEASUREDATA_BY_ISENGLISH= "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish" +
-                                                     "FROM HFM_MeasureData WHRER IsEnglish=@IsEnglish";
+        private const string SQL_SELECT_MEASUREDATA_BY_ISENGLISH= "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish " +
+                                                     "FROM HFM_MeasureData WHERE IsEnglish=@IsEnglish";
         private const string SQL_INSERT_MEASUREDATA = "INSERT INTO HFM_MeasureData(MeasureDate,MeasureStatus,DetailedInfo,IsEnglish)" +
                                                      "VALUES(@MeasureDate,@MeasureStatus,@DetailedInfo,@IsEnglish)";
 

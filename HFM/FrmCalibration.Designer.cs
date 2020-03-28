@@ -76,7 +76,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(835, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(767, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -85,7 +85,7 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(827, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(759, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             // 
@@ -302,6 +302,7 @@
             this.TxtHV.Size = new System.Drawing.Size(54, 26);
             this.TxtHV.TabIndex = 8;
             this.TxtHV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtHV.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtHV_MouseClick);
             // 
             // LblCount
             // 
@@ -385,7 +386,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(852, 722);
+            this.ClientSize = new System.Drawing.Size(784, 722);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
@@ -403,20 +404,17 @@
         #endregion
 
         public System.Windows.Forms.TabControl TabCalibration;
+        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
         public System.Windows.Forms.TabPage TabpageCalibration;
         private System.Windows.Forms.GroupBox GrpCalibration;
-        private System.Windows.Forms.Label LblChannelSelection;
-        private System.Windows.Forms.Label LblMeasuringTime;
-        private System.Windows.Forms.Label LblResult;
-        public System.Windows.Forms.TextBox TxtMeasuringTime;
-        private System.Windows.Forms.ComboBox CmbChannelSelection;
-        private System.Windows.Forms.TextBox TxtResult;
-        private System.Windows.Forms.Label LblHV;
-        private System.Windows.Forms.Label LblThreshold;
-        public System.Windows.Forms.TextBox TxtCount;
-        public System.Windows.Forms.TextBox TxtHV;
-        private System.Windows.Forms.Label LblCount;
+        private System.Windows.Forms.Label Lbl__time;
         private System.Windows.Forms.DataGridView DgvInformation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Channel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Area;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HV;
         public System.Windows.Forms.TextBox TxtSFR;
         private System.Windows.Forms.Label LblSFR;
         private System.Windows.Forms.Button BtnCalibrate;
@@ -427,13 +425,16 @@
         private System.Windows.Forms.Label Lblβ;
         private System.Windows.Forms.Label Lblα;
         private System.Windows.Forms.Label LblNuclide;
-        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Area;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HV;
-        private System.Windows.Forms.Label Lbl__time;
+        private System.Windows.Forms.Label LblThreshold;
+        public System.Windows.Forms.TextBox TxtCount;
+        public System.Windows.Forms.TextBox TxtHV;
+        private System.Windows.Forms.Label LblCount;
+        private System.Windows.Forms.Label LblHV;
+        private System.Windows.Forms.TextBox TxtResult;
+        public System.Windows.Forms.TextBox TxtMeasuringTime;
+        private System.Windows.Forms.ComboBox CmbChannelSelection;
+        private System.Windows.Forms.Label LblResult;
+        private System.Windows.Forms.Label LblMeasuringTime;
+        private System.Windows.Forms.Label LblChannelSelection;
     }
 }
