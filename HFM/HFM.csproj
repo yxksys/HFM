@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\MeasureIO.cs" />
     <Compile Include="FrmClothes.cs">
       <SubType>Form</SubType>
     </Compile>
