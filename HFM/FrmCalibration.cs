@@ -27,7 +27,10 @@ namespace HFM
         #region 字段、方法、实例
 
         #region 字段、数组
-        
+        /// <summary>
+        /// 传入值
+        /// </summary>
+        private string _value = "";
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -969,8 +972,12 @@ namespace HFM
 
         private void TxtHV_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn key=new FrmKeyIn();
+            FrmKeyIn key=new FrmKeyIn(ReceiveValue, _value);
             key.Show();
+        }
+        void ReceiveValue(string value)
+        {
+            //XXX.Text = value;
         }
     }
 }
