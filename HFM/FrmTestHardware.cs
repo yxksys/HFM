@@ -521,8 +521,17 @@ namespace HFM
                 //判断通道状态
                 if (new Channel().GetChannel(i + 1).IsEnabled == false)
                 {
+                    DgvWork.Columns[i].DefaultCellStyle.ForeColor = Color.AntiqueWhite; //前景颜色改变
+                    DgvWork.Columns[i].DefaultCellStyle.BackColor = Color.DarkGray;     //背景颜色改变
+                    _hv[i] = "";            //未启用的通道信息清空
+                    _alphacps[i] = "";      //未启用的通道信息清空
+                    _alphacnt[i] = "";      //未启用的通道信息清空
+                    _betacps[i] = "";       //未启用的通道信息清空
+                    _betacnt[i] = "";       //未启用的通道信息清空
+
                     if (_isEnglish)
                     {
+                        
                         _strat[i] = "Not enabled";
                     }
                     else

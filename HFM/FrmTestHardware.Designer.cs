@@ -138,42 +138,36 @@
             // 
             this.LHP.HeaderText = "LHP";
             this.LHP.Name = "LHP";
-            this.LHP.ReadOnly = true;
             this.LHP.Width = 82;
             // 
             // LHB
             // 
             this.LHB.HeaderText = "LHB";
             this.LHB.Name = "LHB";
-            this.LHB.ReadOnly = true;
             this.LHB.Width = 82;
             // 
             // RHP
             // 
             this.RHP.HeaderText = "RHP";
             this.RHP.Name = "RHP";
-            this.RHP.ReadOnly = true;
             this.RHP.Width = 82;
             // 
             // RHB
             // 
             this.RHB.HeaderText = "RHB";
             this.RHB.Name = "RHB";
-            this.RHB.ReadOnly = true;
             this.RHB.Width = 82;
             // 
             // LF
             // 
             this.LF.HeaderText = "LF";
             this.LF.Name = "LF";
-            this.LF.ReadOnly = true;
             this.LF.Width = 80;
             // 
             // RF
             // 
             this.RF.HeaderText = "RF";
             this.RF.Name = "RF";
-            this.RF.ReadOnly = true;
             this.RF.Width = 80;
             // 
             // LblBetacnt
