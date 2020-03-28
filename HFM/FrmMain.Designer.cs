@@ -37,11 +37,11 @@
             this.SetUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParameterSettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MaintainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CalibrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TestHardwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HistoricalRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutHFMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StsFoot = new System.Windows.Forms.StatusStrip();
             this.Tsslbl_Name = new System.Windows.Forms.ToolStripStatusLabel();
@@ -81,28 +81,28 @@
             // StartRunningToolStripMenuItem
             // 
             this.StartRunningToolStripMenuItem.Name = "StartRunningToolStripMenuItem";
-            this.StartRunningToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.StartRunningToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.StartRunningToolStripMenuItem.Text = "开始运行";
             this.StartRunningToolStripMenuItem.Click += new System.EventHandler(this.StartRunningToolStripMenuItem_Click);
             // 
             // SuperUserToolStripMenuItem
             // 
             this.SuperUserToolStripMenuItem.Name = "SuperUserToolStripMenuItem";
-            this.SuperUserToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.SuperUserToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.SuperUserToolStripMenuItem.Text = "超级用户";
             this.SuperUserToolStripMenuItem.Click += new System.EventHandler(this.SuperUserToolStripMenuItem_Click);
             // 
             // ChangePasswordToolStripMenuItem
             // 
             this.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem";
-            this.ChangePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.ChangePasswordToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.ChangePasswordToolStripMenuItem.Text = "修改密码";
             this.ChangePasswordToolStripMenuItem.Click += new System.EventHandler(this.ChangePasswordToolStripMenuItem_Click);
             // 
             // RetreatSystemToolStripMenuItem
             // 
             this.RetreatSystemToolStripMenuItem.Name = "RetreatSystemToolStripMenuItem";
-            this.RetreatSystemToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.RetreatSystemToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.RetreatSystemToolStripMenuItem.Text = "退出系统";
             this.RetreatSystemToolStripMenuItem.Click += new System.EventHandler(this.RetreatSystemToolStripMenuItem_Click);
             // 
@@ -118,7 +118,7 @@
             // ParameterSettingToolStripMenuItem
             // 
             this.ParameterSettingToolStripMenuItem.Name = "ParameterSettingToolStripMenuItem";
-            this.ParameterSettingToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.ParameterSettingToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.ParameterSettingToolStripMenuItem.Text = "参数设置";
             this.ParameterSettingToolStripMenuItem.Click += new System.EventHandler(this.ParameterSettingToolStripMenuItem_Click);
             // 
@@ -132,6 +132,20 @@
             this.MaintainToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.MaintainToolStripMenuItem.Text = "维护(T)";
             // 
+            // CalibrationToolStripMenuItem
+            // 
+            this.CalibrationToolStripMenuItem.Name = "CalibrationToolStripMenuItem";
+            this.CalibrationToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.CalibrationToolStripMenuItem.Text = "测试刻度";
+            this.CalibrationToolStripMenuItem.Click += new System.EventHandler(this.CalibrationToolStripMenuItem_Click);
+            // 
+            // TestHardwareToolStripMenuItem
+            // 
+            this.TestHardwareToolStripMenuItem.Name = "TestHardwareToolStripMenuItem";
+            this.TestHardwareToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.TestHardwareToolStripMenuItem.Text = "硬件检测";
+            this.TestHardwareToolStripMenuItem.Click += new System.EventHandler(this.TestHardwareToolStripMenuItem_Click);
+            // 
             // RecordToolStripMenuItem
             // 
             this.RecordToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -140,6 +154,13 @@
             this.RecordToolStripMenuItem.Name = "RecordToolStripMenuItem";
             this.RecordToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.RecordToolStripMenuItem.Text = "记录(R)";
+            // 
+            // HistoricalRecordToolStripMenuItem
+            // 
+            this.HistoricalRecordToolStripMenuItem.Name = "HistoricalRecordToolStripMenuItem";
+            this.HistoricalRecordToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.HistoricalRecordToolStripMenuItem.Text = "历史记录";
+            this.HistoricalRecordToolStripMenuItem.Click += new System.EventHandler(this.HistoricalRecordToolStripMenuItem_Click);
             // 
             // AboutToolStripMenuItem
             // 
@@ -150,31 +171,10 @@
             this.AboutToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.AboutToolStripMenuItem.Text = "关于(A)";
             // 
-            // CalibrationToolStripMenuItem
-            // 
-            this.CalibrationToolStripMenuItem.Name = "CalibrationToolStripMenuItem";
-            this.CalibrationToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.CalibrationToolStripMenuItem.Text = "测试刻度";
-            this.CalibrationToolStripMenuItem.Click += new System.EventHandler(this.CalibrationToolStripMenuItem_Click);
-            // 
-            // TestHardwareToolStripMenuItem
-            // 
-            this.TestHardwareToolStripMenuItem.Name = "TestHardwareToolStripMenuItem";
-            this.TestHardwareToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.TestHardwareToolStripMenuItem.Text = "硬件检测";
-            this.TestHardwareToolStripMenuItem.Click += new System.EventHandler(this.TestHardwareToolStripMenuItem_Click);
-            // 
-            // HistoricalRecordToolStripMenuItem
-            // 
-            this.HistoricalRecordToolStripMenuItem.Name = "HistoricalRecordToolStripMenuItem";
-            this.HistoricalRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.HistoricalRecordToolStripMenuItem.Text = "历史记录";
-            this.HistoricalRecordToolStripMenuItem.Click += new System.EventHandler(this.HistoricalRecordToolStripMenuItem_Click);
-            // 
             // AboutHFMToolStripMenuItem
             // 
             this.AboutHFMToolStripMenuItem.Name = "AboutHFMToolStripMenuItem";
-            this.AboutHFMToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.AboutHFMToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
             this.AboutHFMToolStripMenuItem.Text = "关于HFM";
             this.AboutHFMToolStripMenuItem.Click += new System.EventHandler(this.AboutHFMToolStripMenuItem_Click);
             // 
@@ -217,7 +217,7 @@
             this.Tsslbl_NowTime.AutoSize = false;
             this.Tsslbl_NowTime.Font = new System.Drawing.Font("Arial Narrow", 12F);
             this.Tsslbl_NowTime.Name = "Tsslbl_NowTime";
-            this.Tsslbl_NowTime.Size = new System.Drawing.Size(429, 20);
+            this.Tsslbl_NowTime.Size = new System.Drawing.Size(400, 20);
             this.Tsslbl_NowTime.Text = "2020年3月27日 18点42分";
             this.Tsslbl_NowTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -232,7 +232,8 @@
             this.MainMenuStrip = this.MnsFunction;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HFM100 手脚表面污染监测仪";
+            this.Text = "HFM100 ";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.MnsFunction.ResumeLayout(false);
             this.MnsFunction.PerformLayout();
             this.StsFoot.ResumeLayout(false);

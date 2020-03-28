@@ -16,9 +16,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HFM.Components;
 
 namespace HFM
 {
@@ -37,6 +39,30 @@ namespace HFM
         /// 当前登陆角色
         /// </summary>
         public LandingRole _LandingRole { get; set; }
+        #endregion
+
+        #region 实例
+        /// <summary>
+        /// 查询到当前工厂参数的实例
+        /// </summary>
+        FactoryParameter _factoryParameter = new FactoryParameter().GetParameter();
+        /// <summary>
+        /// 查询当前的系统参数实例
+        /// </summary>
+        private Components.SystemParameter _systemParameter = new Components.SystemParameter().GetParameter();
+        /// <summary>
+        /// 端口类实例
+        /// </summary>
+        private CommPort _commPort = new CommPort();
+        /// <summary>
+        /// 工具类实例
+        /// </summary>
+        private Tools _tools=new Tools();
+        /// <summary>
+        /// 实例化Timer类，设置间隔时间为10000毫秒
+        /// </summary>
+        System.Timers.Timer TmrStatus = new System.Timers.Timer(10000);  
+
         #endregion
 
         #region 方法
@@ -107,13 +133,61 @@ namespace HFM
             }
 
         }
+        /// <summary>
+        /// 窗口底部信息判断
+        /// </summary>
+        private void Tsslbl_Status_Text()
+        {
+            if (_systemParameter.IsEnglish)
+            {
+                Tsslbl_Status.Text = _commPort.Opened == false ? @"COM Fault!" : @"COM Connected!";
+            }
+
+            if (_systemParameter.IsEnglish == false)
+            {
+                Tsslbl_Status.Text = _commPort.Opened == false ? @"通信故障!" : @"通信正常!";
+            }
+        }
         #endregion
-        
+
         #region 构造函数
         public FrmMain()
         {
             InitializeComponent();
+            Text = _factoryParameter.SoftName;            //头部软件名称显示
+            Tsslbl_Name.Text = _factoryParameter.SoftName;//底部软件名称显示
+
+            //设置timer可用
+            TmrStatus.Enabled = true;
+            //设置timer
+            TmrStatus.Interval = 1000;
+            //设置是否重复计时，如果该属性设为False,则只执行timer_Elapsed方法一次。
+            TmrStatus.AutoReset = true;
+
+            TmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(TmrStatus_Elapsed);
+
+        }
+        #endregion
+
+        #region 事件
+        /// <summary>
+        /// 计时器事件,实时更新底部状态信息和时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TmrStatus_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            Tsslbl_Status_Text();
         } 
+        #endregion
+
+        #region 启动加载
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            
+
+        }
         #endregion
 
         #region 系统
@@ -239,6 +313,7 @@ namespace HFM
             //开启关于窗体
             FrmDisposeNormal(new FrmHelp());
         }
+
         #endregion
 
         
