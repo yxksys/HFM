@@ -13,7 +13,7 @@ using System.Threading;
 namespace HFM
 {
     #region 委托函数
-    public delegate void SendPassword(string str);
+    public delegate void SendValue(string str);
     #endregion
     public partial class FrmKeyIn : Form
     {
@@ -21,15 +21,15 @@ namespace HFM
         /// <summary>
         /// 字符串 用于记录密码字符
         /// </summary>
-        private string _code;
+        private string _code="";
         /// <summary>
         /// 临时按钮 在键盘输入时用来变黑显示
         /// </summary>
         private Button _tempButton;
         /// <summary>
-        /// 委托变量 用来发送密码
+        /// 委托变量 
         /// </summary>
-        public event SendPassword sendPassword;
+        public event SendValue sendValue;
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -45,10 +45,11 @@ namespace HFM
         public Button TempButton { get => _tempButton; set => _tempButton = value; }
         #endregion
         #region 方法
-        #region 初始化数据
-        public FrmKeyIn()
+         //初始化数据
+        public FrmKeyIn(SendValue _sendValue, string _value)
         {
-            Code = "";
+            sendValue = _sendValue;
+            Code = _value;
             //使得临时按钮的大小与数字键盘上按钮的大小相同，但颜色为黑色，不可视
             TempButton.BackColor = Color.Black;
             TempButton.Size = new System.Drawing.Size(292, 349); 
@@ -61,10 +62,7 @@ namespace HFM
             //高亮集中在“确认”按钮上
             BtnEnter.Focus();
             InitializeComponent();
-        }
-        #endregion
-
-        
+        }        
         #endregion
 
         #region 界面初始加载
@@ -89,7 +87,7 @@ namespace HFM
         private void BtnEnter_Click(object sender, EventArgs e)
         {
             //执行委托
-            sendPassword(Code);
+            sendValue.Invoke(Code);
             //关闭窗口
             this.Close();
         }
@@ -163,14 +161,16 @@ namespace HFM
         {
             //找到请求的发送者
             Button btn = (Button)sender;
-            //临时按钮获取该发送者的位置坐标
+            //添加数字键盘上输入的数字
+            Code += btn.Text;
+            //临时按钮获取该发送者的位置坐标和内容
             TempButton.Location = btn.Location;
             //使得临时按钮可视
             TempButton.Visible = true;
             //延时
             Thread.Sleep(200);
             //使得临时按钮不可视
-            TempButton.Visible = false;       
+            TempButton.Visible = false;
         }
         #endregion
     }
