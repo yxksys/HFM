@@ -80,6 +80,7 @@ namespace HFM
         //float clotheseEfficiency = 0;//衣物检测探测效率    
         FactoryParameter factoryParameter = new FactoryParameter();//工厂参数        
         Components.SystemParameter systemParameter = new Components.SystemParameter();//系统参数
+        Channel[] channelsAll=new Channel[7];//全部通道
         IList<Channel> channelS = new List<Channel>();//当前可使用的检测通道,即全部启用的监测通道
         IList<MeasureData> baseData = new List<MeasureData>(); //存储本底计算结果，用例对测量数据进行校正
         IList<MeasureData> calculatedMeasureDataS = new List<MeasureData>();//存储各个通道最终计算检测值的列表
@@ -342,7 +343,8 @@ namespace HFM
             channelParameterS = channelParameter.GetParameter();
             //获得全部通道信息
             Channel channel = new Channel();            
-            channelS = channel.GetChannel();            
+            channelS = channel.GetChannel();
+            channelS.CopyTo(channelsAll,0);//将全部通道信息复制到channelsAll中
             //初始化显示界面
             DisplayInit();
             //实例化衣物探测界面
@@ -615,7 +617,11 @@ namespace HFM
                 return;
             }
             //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
-            measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);                        
+            measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);    
+            for(int i=0;i<channelsAll.Count();i++)
+            {
+                measureDataS[i].Channel = channelsAll[i];
+            }
             //衣物探头被启用
             if (measureDataS[6].Channel.IsEnabled == true)
             {
