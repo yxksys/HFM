@@ -30,12 +30,14 @@
         {
             this.TabHistory = new System.Windows.Forms.TabControl();
             this.TabMeasure = new System.Windows.Forms.TabPage();
-            this.TabCalibration = new System.Windows.Forms.TabPage();
             this.DgvMeasure = new System.Windows.Forms.DataGridView();
             this.MeasureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MeasureStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailedInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsEnglish = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TabCalibration = new System.Windows.Forms.TabPage();
+            this.BtnDeleteCalibration = new System.Windows.Forms.Button();
+            this.BtnDeriveCalibration = new System.Windows.Forms.Button();
             this.DgvCalibration = new System.Windows.Forms.DataGridView();
             this.CalibrationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChannelID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,18 +47,16 @@
             this.MDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AlphaBetaPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabError = new System.Windows.Forms.TabPage();
-            this.DgvError = new System.Windows.Forms.DataGridView();
-            this.BtnDeriveError = new System.Windows.Forms.Button();
             this.BtnDeleteError = new System.Windows.Forms.Button();
+            this.BtnDeriveError = new System.Windows.Forms.Button();
+            this.DgvError = new System.Windows.Forms.DataGridView();
             this.ErrTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Record = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsEnglishsError = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.BtnDeriveCalibration = new System.Windows.Forms.Button();
-            this.BtnDeleteCalibration = new System.Windows.Forms.Button();
             this.TabHistory.SuspendLayout();
             this.TabMeasure.SuspendLayout();
-            this.TabCalibration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMeasure)).BeginInit();
+            this.TabCalibration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCalibration)).BeginInit();
             this.TabError.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvError)).BeginInit();
@@ -74,6 +74,7 @@
             this.TabHistory.SelectedIndex = 0;
             this.TabHistory.Size = new System.Drawing.Size(792, 516);
             this.TabHistory.TabIndex = 3;
+            this.TabHistory.SelectedIndexChanged += new System.EventHandler(this.TabHistory_SelectedIndexChanged);
             // 
             // TabMeasure
             // 
@@ -85,19 +86,6 @@
             this.TabMeasure.Size = new System.Drawing.Size(784, 483);
             this.TabMeasure.TabIndex = 0;
             this.TabMeasure.Text = "测量日志";
-            // 
-            // TabCalibration
-            // 
-            this.TabCalibration.Controls.Add(this.BtnDeleteCalibration);
-            this.TabCalibration.Controls.Add(this.BtnDeriveCalibration);
-            this.TabCalibration.Controls.Add(this.DgvCalibration);
-            this.TabCalibration.Location = new System.Drawing.Point(4, 29);
-            this.TabCalibration.Name = "TabCalibration";
-            this.TabCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabCalibration.Size = new System.Drawing.Size(784, 483);
-            this.TabCalibration.TabIndex = 1;
-            this.TabCalibration.Text = "刻度日志";
-            this.TabCalibration.UseVisualStyleBackColor = true;
             // 
             // DgvMeasure
             // 
@@ -140,6 +128,43 @@
             // 
             this.IsEnglish.HeaderText = "是否英文";
             this.IsEnglish.Name = "IsEnglish";
+            // 
+            // TabCalibration
+            // 
+            this.TabCalibration.Controls.Add(this.BtnDeleteCalibration);
+            this.TabCalibration.Controls.Add(this.BtnDeriveCalibration);
+            this.TabCalibration.Controls.Add(this.DgvCalibration);
+            this.TabCalibration.Location = new System.Drawing.Point(4, 29);
+            this.TabCalibration.Name = "TabCalibration";
+            this.TabCalibration.Padding = new System.Windows.Forms.Padding(3);
+            this.TabCalibration.Size = new System.Drawing.Size(784, 483);
+            this.TabCalibration.TabIndex = 1;
+            this.TabCalibration.Text = "刻度日志";
+            this.TabCalibration.UseVisualStyleBackColor = true;
+            // 
+            // BtnDeleteCalibration
+            // 
+            this.BtnDeleteCalibration.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnDeleteCalibration.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnDeleteCalibration.Font = new System.Drawing.Font("Arial Narrow", 8F);
+            this.BtnDeleteCalibration.Location = new System.Drawing.Point(66, 457);
+            this.BtnDeleteCalibration.Name = "BtnDeleteCalibration";
+            this.BtnDeleteCalibration.Size = new System.Drawing.Size(67, 23);
+            this.BtnDeleteCalibration.TabIndex = 5;
+            this.BtnDeleteCalibration.Text = "删除数据";
+            this.BtnDeleteCalibration.UseVisualStyleBackColor = false;
+            // 
+            // BtnDeriveCalibration
+            // 
+            this.BtnDeriveCalibration.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnDeriveCalibration.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnDeriveCalibration.Font = new System.Drawing.Font("Arial Narrow", 8F);
+            this.BtnDeriveCalibration.Location = new System.Drawing.Point(3, 457);
+            this.BtnDeriveCalibration.Name = "BtnDeriveCalibration";
+            this.BtnDeriveCalibration.Size = new System.Drawing.Size(67, 23);
+            this.BtnDeriveCalibration.TabIndex = 4;
+            this.BtnDeriveCalibration.Text = "导出数据";
+            this.BtnDeriveCalibration.UseVisualStyleBackColor = false;
             // 
             // DgvCalibration
             // 
@@ -226,20 +251,18 @@
             this.TabError.Text = "故障日志";
             this.TabError.UseVisualStyleBackColor = true;
             // 
-            // DgvError
+            // BtnDeleteError
             // 
-            this.DgvError.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ErrTime,
-            this.Record,
-            this.IsEnglishsError});
-            this.DgvError.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvError.Location = new System.Drawing.Point(3, 3);
-            this.DgvError.Name = "DgvError";
-            this.DgvError.RowTemplate.Height = 23;
-            this.DgvError.Size = new System.Drawing.Size(778, 477);
-            this.DgvError.TabIndex = 2;
+            this.BtnDeleteError.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnDeleteError.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnDeleteError.Font = new System.Drawing.Font("Arial Narrow", 8F);
+            this.BtnDeleteError.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnDeleteError.Location = new System.Drawing.Point(66, 457);
+            this.BtnDeleteError.Name = "BtnDeleteError";
+            this.BtnDeleteError.Size = new System.Drawing.Size(67, 23);
+            this.BtnDeleteError.TabIndex = 4;
+            this.BtnDeleteError.Text = "删除数据";
+            this.BtnDeleteError.UseVisualStyleBackColor = false;
             // 
             // BtnDeriveError
             // 
@@ -254,18 +277,20 @@
             this.BtnDeriveError.Text = "导出数据";
             this.BtnDeriveError.UseVisualStyleBackColor = false;
             // 
-            // BtnDeleteError
+            // DgvError
             // 
-            this.BtnDeleteError.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnDeleteError.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnDeleteError.Font = new System.Drawing.Font("Arial Narrow", 8F);
-            this.BtnDeleteError.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnDeleteError.Location = new System.Drawing.Point(66, 457);
-            this.BtnDeleteError.Name = "BtnDeleteError";
-            this.BtnDeleteError.Size = new System.Drawing.Size(67, 23);
-            this.BtnDeleteError.TabIndex = 4;
-            this.BtnDeleteError.Text = "删除数据";
-            this.BtnDeleteError.UseVisualStyleBackColor = false;
+            this.DgvError.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ErrTime,
+            this.Record,
+            this.IsEnglishsError});
+            this.DgvError.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvError.Location = new System.Drawing.Point(3, 3);
+            this.DgvError.Name = "DgvError";
+            this.DgvError.RowTemplate.Height = 23;
+            this.DgvError.Size = new System.Drawing.Size(778, 477);
+            this.DgvError.TabIndex = 2;
             // 
             // ErrTime
             // 
@@ -285,30 +310,6 @@
             this.IsEnglishsError.Name = "IsEnglishsError";
             this.IsEnglishsError.Width = 105;
             // 
-            // BtnDeriveCalibration
-            // 
-            this.BtnDeriveCalibration.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnDeriveCalibration.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnDeriveCalibration.Font = new System.Drawing.Font("Arial Narrow", 8F);
-            this.BtnDeriveCalibration.Location = new System.Drawing.Point(3, 457);
-            this.BtnDeriveCalibration.Name = "BtnDeriveCalibration";
-            this.BtnDeriveCalibration.Size = new System.Drawing.Size(67, 23);
-            this.BtnDeriveCalibration.TabIndex = 4;
-            this.BtnDeriveCalibration.Text = "导出数据";
-            this.BtnDeriveCalibration.UseVisualStyleBackColor = false;
-            // 
-            // BtnDeleteCalibration
-            // 
-            this.BtnDeleteCalibration.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnDeleteCalibration.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnDeleteCalibration.Font = new System.Drawing.Font("Arial Narrow", 8F);
-            this.BtnDeleteCalibration.Location = new System.Drawing.Point(66, 457);
-            this.BtnDeleteCalibration.Name = "BtnDeleteCalibration";
-            this.BtnDeleteCalibration.Size = new System.Drawing.Size(67, 23);
-            this.BtnDeleteCalibration.TabIndex = 5;
-            this.BtnDeleteCalibration.Text = "删除数据";
-            this.BtnDeleteCalibration.UseVisualStyleBackColor = false;
-            // 
             // FrmHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -320,8 +321,8 @@
             this.Text = "历史记录";
             this.TabHistory.ResumeLayout(false);
             this.TabMeasure.ResumeLayout(false);
-            this.TabCalibration.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvMeasure)).EndInit();
+            this.TabCalibration.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvCalibration)).EndInit();
             this.TabError.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvError)).EndInit();

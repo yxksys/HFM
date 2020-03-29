@@ -39,7 +39,11 @@ namespace HFM
         /// </summary>
         private Button[] buttonNum = new Button[9];
         #endregion
+        #region 封装
+        public string Code { get => _code; set => _code = value; }
 
+        public Button TempButton { get => _tempButton; set => _tempButton = value; }
+        #endregion
         #region 方法
         #region 初始化数据
         public FrmKeyIn()
@@ -60,11 +64,7 @@ namespace HFM
         }
         #endregion
 
-        #region 封装
-        public string Code { get => _code; set => _code = value; }
-
-        public Button TempButton { get => _tempButton; set => _tempButton = value; }
-        #endregion
+        
         #endregion
 
         #region 界面初始加载
