@@ -25,6 +25,7 @@ namespace HFM
 
         private string[] _errorDataArray=new string[3];
         #endregion
+
         #region 实例
         /// <summary>
         /// 系统参数
@@ -56,6 +57,7 @@ namespace HFM
             InitializeComponent();
         }
 
+        #region 页面切换
         /// <summary>
         /// 页面切换
         /// </summary>
@@ -119,7 +121,7 @@ namespace HFM
                             _errorDataArray[2] = errorData.IsEnglish.ToString();
                             DgvError.Rows.Add(_errorDataArray);
                         }
-                        
+
                     }
                     else
                     {
@@ -137,7 +139,8 @@ namespace HFM
                     break;
             }
 
-        }
+        } 
+        #endregion
     }
 
     
