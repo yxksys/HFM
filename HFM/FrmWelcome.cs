@@ -195,8 +195,23 @@ namespace HFM
             public short Second;
             public short MiliSecond;
         }
+        public void checkPWD(string pwd)
+        {            
+        }
         private void button1_Click(object sender, EventArgs e)
         {
+            SendValue sendValue= checkPWD;            
+            FrmKeyIn frmkey = new FrmKeyIn(sendValue, "");
+            frmkey.ShowDialog();
+            string str=frmkey.Code;
+
+            IList <ProbeParameter> ls = new List<ProbeParameter>();
+            ProbeParameter p = new ProbeParameter();
+            ls = p.GetParameter(); //(x => x.id).Where(x => x.Count() > 1).Select(x => x.First())
+            IList<ProbeParameter> ls1=ls.Where(p1 => p1.ProbeChannel.ChannelID == 1 && p1.NuclideType == "β").ToList();
+            IList<ProbeParameter> ls2=ls.Where(p1 => p1.ProbeChannel.ChannelID == 7).ToList();            
+            var a = ls.GroupBy(p1 => p1.ProbeChannel.ChannelID).Where(p1 => p1.Count() > 1).Select(p1 => p1.First()).ToList();
+            //IList<int> ls1 = ls.Select(p1 => p1.ProbeChannel.ChannelID).ToList();
             short time = 13;
             SYSTEMTIME t = new SYSTEMTIME();
             t.Year = 2020;
