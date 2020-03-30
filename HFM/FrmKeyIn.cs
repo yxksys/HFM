@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 
 
+
 namespace HFM
 {
     #region 委托函数
@@ -31,9 +32,9 @@ namespace HFM
         /// </summary>
         public event SendValue sendValue;
         /// <summary>
-        /// 系统数据库中读取是否开启英文
+        /// 判断系统数据库中读取是否开启英文
         /// </summary>
-        private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
+        private bool _isEnglish = false;
         /// <summary>
         /// 数组按钮
         /// </summary>
