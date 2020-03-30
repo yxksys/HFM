@@ -22,7 +22,7 @@ namespace HFM.Components
 {
     public class User
     {
-        private const string SQL_SELECT_USER_BY_LOGIN = "SELECT UserID FROM HFM_UserInfo WHERE PassWord=@PassWord";
+        private const string SQL_SELECT_USER_BY_LOGIN = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo WHERE PassWord=@PassWord";
         private const string SQL_UPDATA_USER = "UPDATA HFM_UserInfo SET passWord=@passWord WHERE userID=@userID";
         private const string SQL_SELECT_USER = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo";
         private const string SQL_SELECT_USER_BY_USERID = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo WHERE UserID=@UserID";
@@ -50,7 +50,7 @@ namespace HFM.Components
 
         /// <summary>
         /// 当前用户登陆角色
-        /// 0:超级管理员，1：普通用户，99：无权限
+        /// 1:超级管理员，2：普通用户，99：无权限
         /// </summary>
         public static int LandingRole { get; set; } = 99;
         #endregion

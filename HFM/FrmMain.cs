@@ -27,18 +27,7 @@ namespace HFM
     public partial class FrmMain : Form
     {
         #region 字段
-        /// <summary>
-        /// 枚举登陆角色状态信息
-        /// </summary>
-        public enum LandingRole
-        {
-            Admin,
-            User
-        }
-        /// <summary>
-        /// 当前登陆角色
-        /// </summary>
-        public LandingRole _LandingRole { get; set; }
+        
         #endregion
 
         #region 实例
@@ -214,18 +203,13 @@ namespace HFM
              * 是:弹出提示框,让用户选择退出当前用户状态
              * 否:弹出维护密码窗体
              */
-            if (_LandingRole == LandingRole.Admin)
+            if (User.LandingRole == 1)
             {
                 //提示框
-                if (MessageBox.Show("是否退出当前管理用户?", "提示", MessageBoxButtons.OKCancel)==DialogResult.OK)
+                if (MessageBox.Show("是否退出当前用户?", "提示", MessageBoxButtons.OKCancel)==DialogResult.OK)
                 {
-                    _LandingRole = LandingRole.User;
+                    User.LandingRole = 99;
                 }
-                else
-                {
-                    _LandingRole = LandingRole.Admin;
-                }
-
             }
             else
             {

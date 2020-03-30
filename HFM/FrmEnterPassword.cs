@@ -28,27 +28,60 @@ namespace HFM
         #endregion 
 
         #region 传值
-        private void TxtPassword_TextChanged(object sender, EventArgs e)
-        {
-            FrmKeyIn frmKeyIn = new FrmKeyIn(ReceiveValue,_value);
-            frmKeyIn.Show();
-        }
-        void ReceiveValue(string value)
-        {
-            TxtPassword.Text = value;
-        }
+        
         #endregion
 
         #region 确认
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
-            _user.Login(TxtPassword.Text);
-            if (_user == null)
+            //给对象赋值
+            _user=_user.Login(TxtPassword.Text.ToString());
+            //判断对象的角色，超级管理员和普通用户都可以登陆成功
+            if (_user.Role == 1||_user.Role==2)
             {
+                bool isOpened = false;
+                User.LandingRole = _user.Role;
+                FrmMain frmMain=new FrmMain();
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (frmMain.Name == form.Name)          //若该窗体已被打开
+                    {
+                        frmMain.Activate();               //激活该窗体
+                        isOpened = true;                    //设置子窗体的打开标记为true
+                    }
+                }
+                if (!isOpened)                              //若该窗体未打开,则显示该子窗体
+                {
+                    frmMain.Show();
+                }
+                this.Close();
+                if (_isEnglish)
+                {
+                    MessageBox.Show("Login Successful!", "Success");
+                }
+                else
+                {
+                    MessageBox.Show("用户登录成功！", "成功");
+                }
             }
             else
             {
-
+                if (_isEnglish)
+                {
+                    if (MessageBox.Show("Wrong Password!", "Error") == DialogResult.OK)
+                    {
+                        TxtPassword.Clear();
+                        TxtPassword.Focus();
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("密码错误！", "错误") == DialogResult.OK)
+                    {
+                        TxtPassword.Clear();
+                        TxtPassword.Focus();
+                    }
+                }
             }
 
         }
@@ -80,5 +113,10 @@ namespace HFM
             }
         }
         #endregion
+
+        private void TxtPassword_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtPassword);
+        }
     }
 }
