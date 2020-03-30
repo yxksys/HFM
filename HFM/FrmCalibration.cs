@@ -977,7 +977,7 @@ namespace HFM
         }
         void ReceiveValue(string value)
         {
-            //XXX.Text = value;
+            TxtHV.Text = value;
         }
     }
 }

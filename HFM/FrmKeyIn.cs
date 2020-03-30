@@ -37,7 +37,7 @@ namespace HFM
         /// <summary>
         /// 数组按钮
         /// </summary>
-        private Button[] buttonNum = new Button[9];
+        private Button[] buttonNum = new Button[10];
         #endregion
         #region 封装
         public string Code { get => _code; set => _code = value; }
@@ -48,12 +48,17 @@ namespace HFM
          //初始化数据
         public FrmKeyIn(SendValue _sendValue, string _value)
         {
+            InitializeComponent();
             sendValue = _sendValue;
             Code = _value;
             //使得临时按钮的大小与数字键盘上按钮的大小相同，但颜色为黑色，不可视
-            TempButton.BackColor = Color.Black;
-            TempButton.Size = new System.Drawing.Size(292, 349); 
-            TempButton.Visible = false;
+            if (TempButton != null)
+            {
+                TempButton.BackColor = Color.Black;
+                TempButton.Size = new System.Drawing.Size(292, 349);
+                TempButton.Visible = false;
+            }
+
             //给按钮数组赋值
             buttonNum[0] = BtnDot;
             buttonNum[1] = BtnOne;   buttonNum[2] = BtnTwo;   buttonNum[3] = BtnThree;
@@ -61,7 +66,7 @@ namespace HFM
             buttonNum[7] = BtnSeven; buttonNum[8] = BtnEight; buttonNum[9] = BtnNine;
             //高亮集中在“确认”按钮上
             BtnEnter.Focus();
-            InitializeComponent();
+            
         }        
         #endregion
 
@@ -164,13 +169,18 @@ namespace HFM
             //添加数字键盘上输入的数字
             Code += btn.Text;
             //临时按钮获取该发送者的位置坐标和内容
-            TempButton.Location = btn.Location;
-            //使得临时按钮可视
-            TempButton.Visible = true;
-            //延时
-            Thread.Sleep(200);
-            //使得临时按钮不可视
-            TempButton.Visible = false;
+            if (TempButton != null)
+            {
+                TempButton.Location = btn.Location;
+                //使得临时按钮可视
+                TempButton.Visible = true;
+                //延时
+                Thread.Sleep(200);
+                //使得临时按钮不可视
+                TempButton.Visible = false;
+            }
+            //执行委托
+            sendValue.Invoke(Code);
         }
         #endregion
     }
