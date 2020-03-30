@@ -183,5 +183,29 @@ namespace HFM
             sendValue.Invoke(Code);
         }
         #endregion
+
+
+        #region 小键盘公共静态方法,可在其他窗体中直接使用小键盘
+        /// <summary>
+        /// 传入值
+        /// </summary>
+        private static string _value = "";
+        /// <summary>
+        /// 委托小键盘传入值
+        /// </summary>
+        /// <param name="textBox">当前文本框名称</param>
+        public static void DelegatesKeyIn(TextBox textBox)
+        {
+            //实例化委托
+            SendValue value = _value => textBox.Text = _value;
+            // 实例化小键盘,并传入委托和传入值
+            FrmKeyIn key = new FrmKeyIn(value, _value);
+            //显示小键盘
+            key.ShowDialog();
+        }
+        /*使用示例
+         * FrmKeyIn.DelegatesKeyIn(TxtSFR);
+         */
+        #endregion
     }
 }

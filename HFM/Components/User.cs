@@ -6,6 +6,7 @@
  *  版本：
  *  创建时间：框架搭建时间 2020年2月14日 20:49:45
  *  类名：用户类
+ *  更新:
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -19,7 +20,7 @@ using System.Data.OleDb;
 
 namespace HFM.Components
 {
-    class User
+    public class User
     {
         private const string SQL_SELECT_USER_BY_LOGIN = "SELECT UserID FROM HFM_UserInfo WHERE PassWord=@PassWord";
         private const string SQL_UPDATA_USER = "UPDATA HFM_UserInfo SET passWord=@passWord WHERE userID=@userID";
@@ -47,6 +48,11 @@ namespace HFM.Components
         /// </summary>
         public int Role { get => _role; set => _role = value; }
 
+        /// <summary>
+        /// 当前用户登陆角色
+        /// 0:超级管理员，1：普通用户，99：无权限
+        /// </summary>
+        public static int LandingRole { get; set; } = 99;
         #endregion
 
         #region 构造函数
