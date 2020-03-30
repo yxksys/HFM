@@ -195,9 +195,17 @@ namespace HFM
             public short Second;
             public short MiliSecond;
         }
+        public void checkPWD(string pwd)
+        {            
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            IList<ProbeParameter> ls = new List<ProbeParameter>();
+            SendValue sendValue= checkPWD;            
+            FrmKeyIn frmkey = new FrmKeyIn(sendValue, "");
+            frmkey.ShowDialog();
+            string str=frmkey.Code;
+
+            IList <ProbeParameter> ls = new List<ProbeParameter>();
             ProbeParameter p = new ProbeParameter();
             ls = p.GetParameter(); //(x => x.id).Where(x => x.Count() > 1).Select(x => x.First())
             IList<ProbeParameter> ls1=ls.Where(p1 => p1.ProbeChannel.ChannelID == 1 && p1.NuclideType == "β").ToList();

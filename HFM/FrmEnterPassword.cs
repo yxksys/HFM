@@ -11,13 +11,15 @@ using HFM.Components;
 
 namespace HFM
 {
+
     public partial class FrmEnterPassword : Form
     {
         #region 字段
+        private string _value="";
         private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
         private User _user = new User();
-        #endregion
 
+        #endregion
         #region 方法
         public FrmEnterPassword()
         {
@@ -28,13 +30,12 @@ namespace HFM
         #region 传值
         private void TxtPassword_TextChanged(object sender, EventArgs e)
         {
-            FrmKeyIn frmKeyIn = new FrmKeyIn();
-            frmKeyIn.sendPassword += new SendPassword(ReceivePassword);
+            FrmKeyIn frmKeyIn = new FrmKeyIn(ReceiveValue,_value);
             frmKeyIn.Show();
         }
-        void ReceivePassword(string str)
+        void ReceiveValue(string value)
         {
-            TxtPassword.Text = str;
+            TxtPassword.Text = value;
         }
         #endregion
 
@@ -49,6 +50,7 @@ namespace HFM
             {
 
             }
+
         }
         #endregion
 

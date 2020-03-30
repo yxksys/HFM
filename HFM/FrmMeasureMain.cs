@@ -629,12 +629,14 @@ namespace HFM
                 if (measureDataS[6].InfraredStatus == 1)
                 {
                     //衣物探头已经被拿起（不是刚被拿起）
-                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);
+                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Alpha);
                     //设置衣物探测结果显示区域背景色为STATUS
                     PicFrisker.BackColor = PlatForm.ColorStatus.COLOR_STATUS;
                     //如果当前状态为等待测量或开始测量则,说明衣物探测界面已经加载
                     if (platformState == PlatformState.ReadyToMeasure || platformState == PlatformState.Measuring)
                     {
+                        //获得当前衣物检测通道的探测参数
+                        IList<ProbeParameter> clothesProbeParmeter = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == 7).ToList();
                         //衣物离线时间计数器+1（1s）
                         clothesTimeCount++;
                         //衣物探头刚刚被拿起（红外状态为到位，衣物探头状态clothesStatus为0（还未被拿起），说明衣物探头是刚被拿起）  
@@ -644,6 +646,15 @@ namespace HFM
                             clothesStatus = 1;
                             //重新开始衣物离线时间计数
                             clothesTimeCount = 0;
+                            if(frmClothes.IsDisposed)//如果窗体已经被释放，则重新创建
+                            {
+                                frmClothes = new FrmClothes();                               
+                            }
+                            //设置窗体进度条状态
+                            frmClothes.loadingCircle.Active = true;
+                            frmClothes.PrgClothAlarm_2.Maximum = (int)clothesProbeParmeter[0].Alarm_2;
+                            frmClothes.PrgClothAlarm_1.Maximum = (int)clothesProbeParmeter[0].Alarm_1;
+                            //frmClothes.PrgClothAlarm_1.Width = (int)(frmClothes.PrgClothAlarm_2.Width * clothesProbeParmeter[0].Alarm_1 / clothesProbeParmeter[0].Alarm_2);
                             //显示衣物探头监测窗口                    
                             frmClothes.Show();
                             return;
@@ -661,22 +672,25 @@ namespace HFM
                             float converedData = UnitConver(smoothedDataOfClothes, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, measureDataS[6].Channel.ProbeArea);
                             frmClothes.TxtMeasureValue.Text = string.Format("{0}{1}", converedData.ToString("F1"), systemParameter.MeasurementUnit);
                             #region 如果减去本底值后的测量值大于一级报警，说明有污染  
-                            //获得当前衣物检测通道的探测参数
-                            IList<ProbeParameter> clothesProbeParmeter = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == 7).ToList();
+                            ////获得当前衣物检测通道的探测参数
+                            //IList<ProbeParameter> clothesProbeParmeter = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == 7).ToList();
                             if (smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_1)
                             {
                                 //大于二级报警，衣物探测界面测量结果显示文本框背景色设置为ALATM2
                                 if (smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2)
                                 {
                                     frmClothes.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
+                                    frmClothes.PrgClothAlarm_2.Value = 100;
                                 }
                                 else
                                 {
                                     //大于一级报警，衣物探测界面测量结果显示文本框背景色设置为ALATM1
                                     frmClothes.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
+                                    frmClothes.PrgClothAlarm_1.Value = 100;
                                 }
                                 //衣物探测界面进度条设置为100%
-                                frmClothes.PrgClothC.Value = 100;
+                                //frmClothes.PrgClothAlarm_1.Value = 100;
+                                frmClothes.loadingCircle.Active = false;
                                 //报警次数+1
                                 alarmCountOfClothes++;
                                 //如果连续三次出现污染报警（污染报警计数器超过3）
@@ -708,7 +722,9 @@ namespace HFM
                             else
                             {
                                 //设置衣物探测界面进度条变化百分比
-                                frmClothes.PrgClothC.Value = (int)(100 * smoothedDataOfClothes / efficiencyParameterNow[0].Efficiency);
+                                int prgBarValue = (int)(smoothedDataOfClothes / efficiencyParameterNow[0].Efficiency);
+                                frmClothes.PrgClothAlarm_1.Value = prgBarValue>=frmClothes.PrgClothAlarm_1.Maximum?frmClothes.PrgClothAlarm_1.Maximum: prgBarValue;
+                                frmClothes.PrgClothAlarm_2.Value= prgBarValue >= frmClothes.PrgClothAlarm_2.Maximum ? frmClothes.PrgClothAlarm_2.Maximum : prgBarValue;
                                 //衣物探测界面测量结果显示文本框背景色设置为SYSTEM
                                 frmClothes.TxtMeasureValue.BackColor = PlatForm.ColorStatus.COLOR_SYSTEM;
                                 //报警计数器归0
@@ -725,7 +741,7 @@ namespace HFM
                 }
                 //衣物探头红外未到位
                 if (measureDataS[6].InfraredStatus == 0)
-                {
+                {                    
                     //衣物探测显示区域背景色为ERROR
                     PicFrisker.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                     if (clothesStatus == 1)//探头当前状态为已经被拿起，说明衣物探头刚刚被放下
@@ -753,10 +769,11 @@ namespace HFM
                             platformState = PlatformState.BackGrouneMeasure;
                             return;
                         }
+                        return;
                         #endregion
                     }
                     //对衣物探头测量数据进行平滑处理
-                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);
+                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Alpha);
                     if (platformState == PlatformState.BackGrouneMeasure || platformState == PlatformState.Measuring)
                     {
                         //将当前平滑处理后的检测值作为本底值
@@ -935,6 +952,7 @@ namespace HFM
             //运行状态为本底测量
             if (platformState == PlatformState.BackGrouneMeasure)
             {
+                bool isReDisplay = false; //是否需要重新显示"本底测量"提示信息,默认false
                 //textBox1.Text += platformState.ToString();
                 //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
                 stateTimeSet = systemParameter.SmoothingTime;                        
@@ -1021,13 +1039,11 @@ namespace HFM
                     }
                     else//当前通道红外不到位
                     {
-                        if(lastInfraredStatus[2] == 1)//衣物探头红外到位，则直接返回。直到衣物红外不到位重新开始本底测量
+                        //左右手和衣物,只要有一个之前出现过红外到位，而现在不到位，说明测量被中断过，就需要重新显示“本底测量”提示信息，重新开始计时
+                        if (lastInfraredStatus[0] == 1|| lastInfraredStatus[1] == 1|| lastInfraredStatus[2] == 1)//上次为红外到位，说明刚从到位变为不到位，需提示开始本底测量。
                         {
-                            //重新启动本底测量（本底测量时间重新开始计时）
-                            stateTimeStart = System.DateTime.Now.AddSeconds(1);
-                            return;
-                        }
-                        LblShowStutas.Text = "本底测量";
+                            isReDisplay = true;                            
+                        }                              
                         //记录本次红外状态
                         switch (calculatedMeasureDataS[i].Channel.ChannelID)
                         {
@@ -1044,6 +1060,15 @@ namespace HFM
                                 break;
                         }
                     }                    
+                }
+                //之前测量被中断过，需要重新显示提示信息
+                if (isReDisplay== true)
+                {                    
+                    LblShowStutas.Text = "本底测量";
+                    //重新启动本底测量（本底测量时间重新开始计时）
+                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    isReDisplay =false;
+                    return;
                 }
                 //本底测量时间到
                 if (stateTimeRemain < 0)
@@ -1494,7 +1519,7 @@ namespace HFM
             float region_H = 0;
             int status = 0;
             int mutation_i = 0;//突变
-            if (smoothingData.average <= 1 && data < 4)
+            if (smoothingData.average <= 1 && data < 4)//平均值小于1，下次计数小于4
             {
                 if (smoothingData.team_Full == 1)
                 {
@@ -1504,7 +1529,7 @@ namespace HFM
                     }
                     smoothingData.sum = smoothingData.sum + data - smoothingData.team[smoothingData.team_i];
                     smoothingData.team[smoothingData.team_i] = data;
-                    smoothedData= smoothingData.sum / TEAM_LENGTH;
+                    smoothedData= (float)smoothingData.sum / TEAM_LENGTH;
                     smoothingData.average = (UInt32)smoothedData;
                     smoothingData.team_i++;
                 }
@@ -1513,7 +1538,7 @@ namespace HFM
                     smoothingData.team[smoothingData.team_i] = data;
                     smoothingData.sum += data;
                     smoothingData.team_i++;
-                    smoothedData= smoothingData.sum / (smoothingData.team_i + 1);
+                    smoothedData= (float)smoothingData.sum / (smoothingData.team_i + 1);
                     smoothingData.average = (UInt32)smoothedData;
                     if (smoothingData.team_i == TEAM_LENGTH)
                     {
@@ -1538,7 +1563,7 @@ namespace HFM
                             smoothingData.team[9 - i] = smoothingData.team[mutation_i];
                             smoothingData.sum = smoothingData.sum + smoothingData.team[9 - i];
                         }
-                        smoothedData= smoothingData.sum / 10;
+                        smoothedData=(float)smoothingData.sum / 10;
                         smoothingData.average = (UInt32)smoothedData;
                         smoothingData.team_i = 10;
                     }
@@ -1601,7 +1626,7 @@ namespace HFM
                         }
                         smoothingData.sum = smoothingData.sum + data - smoothingData.team[smoothingData.team_i];
                         smoothingData.team[smoothingData.team_i] = data;
-                        smoothedData= smoothingData.sum / TEAM_LENGTH;
+                        smoothedData= (float)smoothingData.sum / TEAM_LENGTH;
                         smoothingData.average = (UInt32)smoothedData;
                         smoothingData.team_i++;
                     }
@@ -1610,7 +1635,7 @@ namespace HFM
                         smoothingData.team[smoothingData.team_i] = data;
                         smoothingData.sum += data;
                         smoothingData.team_i++;
-                        smoothedData= smoothingData.sum / (smoothingData.team_i + 1);
+                        smoothedData= (float)smoothingData.sum / (smoothingData.team_i + 1);
                         smoothingData.average = (UInt32)smoothedData;
                         if (smoothingData.team_i == TEAM_LENGTH)
                         {
@@ -1671,7 +1696,7 @@ namespace HFM
                         }
                         smoothingData.sum = smoothingData.sum + data - smoothingData.team[smoothingData.team_i];
                         smoothingData.team[smoothingData.team_i] = data;
-                        smoothedData = smoothingData.sum / TEAM_LENGTH;
+                        smoothedData = (float)smoothingData.sum / TEAM_LENGTH;
                         smoothingData.average = (UInt32)smoothedData;
                         smoothingData.team_i++;
                     }
@@ -1680,7 +1705,7 @@ namespace HFM
                         smoothingData.team[smoothingData.team_i] = data;
                         smoothingData.sum += data;
                         smoothingData.team_i++;
-                        smoothedData = smoothingData.sum / (smoothingData.team_i + 1);
+                        smoothedData = (float)smoothingData.sum / (smoothingData.team_i + 1);
                         smoothingData.average =(UInt32) smoothedData;
                         if(smoothingData.team_i==TEAM_LENGTH)
                         {
@@ -1693,7 +1718,7 @@ namespace HFM
                     smoothingData.team[0] = data;
                     smoothingData.average = data;
                     smoothingData.sum = data;
-                    smoothedData = data;
+                    smoothedData = (float)data;
                     smoothingData.team_i = 0;
                     smoothingData.team_Full = 0;
                 }
@@ -1899,10 +1924,13 @@ namespace HFM
         /// <returns>目标单位值</returns>
         private float UnitConver(float data, string unit,float efficiency,float proberArea)
         {
-            float convertedData;
+            float convertedData=0;
             //将data（单位为cps）换算为目标单位unit后返回
             switch (unit)
             {
+                case "cps":
+                    convertedData = data;
+                    break;
                 case "cpm": //最终测量计数平均值(cpm) = 60 * 计算平均值(cps)
                     convertedData = 60 * data;
                     break;
@@ -1922,7 +1950,7 @@ namespace HFM
                     convertedData =Convert.ToSingle(200 * data / efficiency * 0.027);
                     break;
             }                                                                       
-            return 0;
+            return convertedData;
         }
         private void bkWorkerReportStatus_DoWork(object sender, DoWorkEventArgs e)
         {

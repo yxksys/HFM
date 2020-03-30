@@ -49,7 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\LoadingCircle.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\MeasureIO.cs" />
+    <Compile Include="FrmCalibration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalibration.Designer.cs">
+      <DependentUpon>FrmCalibration.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmClothes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +88,12 @@
     </Compile>
     <Compile Include="FrmEnterPassword.Designer.cs">
       <DependentUpon>FrmEnterPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMeasureMain.cs">
       <SubType>Form</SubType>
@@ -135,11 +150,17 @@
       <DependentUpon>FrmModifyPasssword.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <EmbeddedResource Include="FrmCalibration.resx">
+      <DependentUpon>FrmCalibration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEnterPassword.resx">
       <DependentUpon>FrmEnterPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClothes.resx">
       <DependentUpon>FrmClothes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMeasureMain.resx">
       <DependentUpon>FrmMeasureMain.cs</DependentUpon>
