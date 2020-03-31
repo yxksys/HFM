@@ -35,12 +35,12 @@ namespace HFM
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
             //给对象赋值
-            _user=_user.Login(TxtPassword.Text.ToString());
+            _user=_user.Login(Tools.MD5Encrypt32(TxtPassword.Text));
             //判断对象的角色，超级管理员和普通用户都可以登陆成功
             if (_user.Role == 1||_user.Role==2)
             {
                 bool isOpened = false;
-                User.LandingRole = _user.Role;
+                User.LandingUser = _user;
                 FrmMain frmMain=new FrmMain();
                 for (int i = 0; i < Application.OpenForms.Count; i++)
                 {

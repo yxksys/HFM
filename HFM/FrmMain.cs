@@ -203,12 +203,12 @@ namespace HFM
              * 是:弹出提示框,让用户选择退出当前用户状态
              * 否:弹出维护密码窗体
              */
-            if (User.LandingRole == 1)
+            if (User.LandingUser.Role ==1 )
             {
                 //提示框
                 if (MessageBox.Show("是否退出当前用户?", "提示", MessageBoxButtons.OKCancel)==DialogResult.OK)
                 {
-                    User.LandingRole = 99;
+                    User.LandingUser = User.LandingUser.GetUser(3);
                 }
             }
             else
@@ -300,8 +300,12 @@ namespace HFM
             FrmDisposeNormal(new FrmHelp());
         }
 
+
         #endregion
 
-        
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
