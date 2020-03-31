@@ -555,26 +555,44 @@ namespace HFM
                 receiveBufferMessage = (byte[])e.UserState;
             }
             //接收报文数据为空
-            if (receiveBufferMessage.Length < messageBufferLength)
+            try
             {
-                errNumber++;
-                //数据接收出现错误次数超限
-                if (errNumber >= 2)
+                if (receiveBufferMessage.Length < messageBufferLength)
                 {
-                    if (_isEnglish == true)
+                    errNumber++;
+                    //数据接收出现错误次数超限
+                    if (errNumber >= 2)
                     {
-                        MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
-                        return;
+                        if (_isEnglish == true)
+                        {
+                            MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+                            return;
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
-                        return;
-                    }
+                    return;
                 }
-                return;
             }
-
+            catch (Exception EX_NAME)
+            {
+                Tools.ErrorLog(EX_NAME.ToString());
+                if (_isEnglish == true)
+                {
+                    MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+                    return;
+                }
+                // Console.WriteLine(EX_NAME);
+                throw;
+            }
             //解析P数据报文
             if (receiveBufferMessage[0] == Convert.ToByte('P'))
             {

@@ -319,6 +319,7 @@
             this.Controls.Add(this.TabHistory);
             this.Name = "FrmHistory";
             this.Text = "历史记录";
+            this.Load += new System.EventHandler(this.FrmHistory_Load);
             this.TabHistory.ResumeLayout(false);
             this.TabMeasure.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvMeasure)).EndInit();

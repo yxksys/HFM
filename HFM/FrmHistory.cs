@@ -52,9 +52,45 @@ namespace HFM
         /// </summary>
         private IList<ErrorData> _errorDatasChinese = new ErrorData().GetData(false);
         #endregion
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public FrmHistory()
         {
             InitializeComponent();
+        }
+        /// <summary>
+        /// 启动加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmHistory_Load(object sender, EventArgs e)
+        {
+            DgvMeasure.Rows.Clear();        //清理Dgv数据表
+            if (_systemParameter.IsEnglish)
+            {
+                //遍历列表对象,取出数据按字段,添加到Dgv中
+                foreach (var measureData in _measureDataEnglish)
+                {
+                    _measurArray[0] = measureData.MeasureDate.ToString();
+                    _measurArray[1] = measureData.MeasureStatus;
+                    _measurArray[2] = measureData.DetailedInfo;
+                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    DgvMeasure.Rows.Add(_measurArray);
+                }
+            }
+            else
+            {
+                //遍历列表对象,取出数据按字段,添加到Dgv中
+                foreach (var measureData in _measureDataChinese)
+                {
+                    _measurArray[0] = measureData.MeasureDate.ToString();
+                    _measurArray[1] = measureData.MeasureStatus;
+                    _measurArray[2] = measureData.DetailedInfo;
+                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    DgvMeasure.Rows.Add(_measurArray);
+                }
+            }
         }
 
         #region 页面切换
@@ -139,8 +175,10 @@ namespace HFM
                     break;
             }
 
-        } 
+        }
         #endregion
+
+        
     }
 
     
