@@ -970,14 +970,37 @@ namespace HFM
 
         #endregion
 
+        #region 文本框需要使用小键盘输入的
         private void TxtHV_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn key=new FrmKeyIn(ReceiveValue, _value);
-            key.Show();
+            FrmKeyIn.DelegatesKeyIn(TxtHV);
         }
-        void ReceiveValue(string value)
+
+
+        private void Txtα_MouseClick(object sender, MouseEventArgs e)
         {
-            //XXX.Text = value;
+            FrmKeyIn.DelegatesKeyIn(Txtα);
         }
+
+        private void Txtβ_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(Txtβ);
+        }
+
+        private void TxtMeasuringTime_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtMeasuringTime);
+        }
+
+        private void TxtCount_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtCount);
+        }
+
+        private void TxtSFR_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtSFR);
+        } 
+        #endregion
     }
 }

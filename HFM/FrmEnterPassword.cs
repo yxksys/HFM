@@ -15,27 +15,10 @@ namespace HFM
     public partial class FrmEnterPassword : Form
     {
         #region 字段
-        /// <summary>
-        /// 传值
-        /// </summary>
         private string _value="";
-        /// <summary>
-        /// 判断系统数据库中读取是否开启英文
-        /// </summary>
-        private bool _isEnglish = false;
-        /// <summary>
-        /// 创建用户类的一个对象
-        /// </summary>
+        private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
         private User _user = new User();
-        /// <summary>
-        /// 登录状态
-        /// </summary>
-        private bool _loggingStatus = false;
 
-
-        #endregion
-        #region 封装
-        public bool LoggingStatus { get => _loggingStatus; set => _loggingStatus = value; }
         #endregion
         #region 方法
         public FrmEnterPassword()
@@ -45,45 +28,66 @@ namespace HFM
         #endregion 
 
         #region 传值
-        private void TxtPassword_TextChanged(object sender, EventArgs e)
-        {
-            FrmKeyIn frmKeyIn = new FrmKeyIn(ReceiveValue,_value);
-            frmKeyIn.Show();
-        }
-        private  void ReceiveValue(string value)
-        {
-            TxtPassword.Text = value;
-        }
+        
         #endregion
 
         #region 确认
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
-            _user.Login(TxtPassword.Text);
-            if(_isEnglish)
-            { 
-                if (_user == null)
+            //给对象赋值
+            _user=_user.Login(Tools.MD5Encrypt32(TxtPassword.Text));
+            //判断对象的角色，超级管理员和普通用户都可以登陆成功
+            if (_user.Role == 1||_user.Role==2)
+            {
+                bool isOpened = false;
+                User.LandingUser = _user;
+                FrmMain frmMain=new FrmMain();
+                for (int i = 0; i < Application.OpenForms.Count; i++)
                 {
-                    MessageBox.Show("Wrong Password!", "Error");
+                    if (frmMain.Name != Application.OpenForms[i].Text)
+                    {
+                        Application.OpenForms[i].Hide();
+                    }
+                    if (frmMain.Name == Application.OpenForms[i].Text)          //若该窗体已被打开
+                    {
+                        frmMain.Activate();               //激活该窗体
+                        isOpened = true;                    //设置子窗体的打开标记为true
+                    }
                 }
-                else
+
+                if (!isOpened)                              //若该窗体未打开,则显示该子窗体
+                {
+                    frmMain.Show();
+                }
+                this.Close();
+
+                
+                if (_isEnglish)
                 {
                     MessageBox.Show("Login Successful!", "Success");
-                    LoggingStatus = true;
-                    this.Close();
-                }
-            }
-            else
-            {
-                if (_user == null)
-                {
-                    MessageBox.Show("密码错误！", "错误");
                 }
                 else
                 {
                     MessageBox.Show("用户登录成功！", "成功");
-                    LoggingStatus = true;
-                    this.Close();
+                }
+            }
+            else
+            {
+                if (_isEnglish)
+                {
+                    if (MessageBox.Show("Wrong Password!", "Error") == DialogResult.OK)
+                    {
+                        TxtPassword.Clear();
+                        TxtPassword.Focus();
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("密码错误！", "错误") == DialogResult.OK)
+                    {
+                        TxtPassword.Clear();
+                        TxtPassword.Focus();
+                    }
                 }
             }
 
@@ -100,7 +104,7 @@ namespace HFM
         #region 窗口加载前
         private void FrmEnterPassword_Load(object sender, EventArgs e)
         {
-            if (_isEnglish )
+            if (_isEnglish == true )
             {
                 this.Text = "Maintenance";
                 BtnCancel.Text = "Cancel";
@@ -116,5 +120,10 @@ namespace HFM
             }
         }
         #endregion
+
+        private void TxtPassword_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtPassword);
+        }
     }
 }

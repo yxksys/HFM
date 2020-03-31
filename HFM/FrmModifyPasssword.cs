@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,106 +14,93 @@ namespace HFM
 {
     public partial class FrmModifyPasssword : Form
     {
-
-        #region 字段
-
-        TextBox _tempTextBox;
-        /// <summary>
-        /// 传值
-        /// </summary>
-        private string _value = "";
-        /// <summary>
-        /// 判断系统数据库中读取是否开启英文
-        /// </summary>
-        /// 
-        private Components.User _user = new User();
-        private bool _isEnglish = false;
-
-        #endregion
-
         public FrmModifyPasssword()
         {
             InitializeComponent();
         }
 
-
-        #region 窗体加载前
-        private void FrmModifyPasssword_Load(object sender, EventArgs e)
+        #region 文本框创建小键盘事件
+        /// <summary>
+        /// 当前密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtOldPassword_MouseClick(object sender, MouseEventArgs e)
         {
-            if(_isEnglish)
+            FrmKeyIn.DelegatesKeyIn(TxtOldPassword);
+        }
+        /// <summary>
+        /// 新的密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtNewPassword_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtNewPassword);
+        }
+        /// <summary>
+        /// 重复密码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtFinalPsaaword_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtFinalPsaaword);
+        }
+        #endregion
+
+        
+
+        /// <summary>
+        /// 确定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnConfirm_Click(object sender, EventArgs e)
+        {
+            MD5 md5=new MD5CryptoServiceProvider();
+            //按旧密码查询用户
+            User _user=new User().Login(Tools.MD5Encrypt32(TxtOldPassword.Text));
+            
+            if (_user.Role==null ||_user.Role==0)
             {
-                BtnCancel.Text = "Close";
-                BtnConfirm.Text = "OK";
-                LblFinalPsaaword.Text = "Re-enter Password";
-                LblNewPassword.Text = "New Password";
-                LblOldPassword.Text = "Current Password";
-                this.Text = "Change password";
+                MessageBox.Show("密码错误", "提示");
+                TxtOldPassword.Clear();
+                TxtOldPassword.Focus();
+                
+            }
+            else if (TxtNewPassword.Text!=TxtFinalPsaaword.Text)
+            {
+                MessageBox.Show("两次密码不一致,请重新输入");
+                TxtNewPassword.Clear();
+                TxtFinalPsaaword.Clear();
+                TxtNewPassword.Focus();
+            }
+            else if (TxtNewPassword.Text == TxtFinalPsaaword.Text)
+            {
+                User _userpwd=new User();
+                _userpwd.UserName = _user.UserName;
+                _userpwd.PassWord = Tools.MD5Encrypt32(TxtNewPassword.Text);
+                _user.ChangePassWord(_userpwd);
+                MessageBox.Show("修改成功");
+                this.Close();
             }
             else
             {
-                BtnCancel.Text = "取消";
-                BtnConfirm.Text = "确定";
-                LblFinalPsaaword.Text = "重复密码";
-                LblNewPassword.Text = "新的密码";
-                LblOldPassword.Text = "当前密码";
-                this.Text = "修改密码";
+                MessageBox.Show("修改失败!");
             }
         }
-        #endregion
 
 
-        #region 传值
-        private void Txt_TextChanged(object sender, EventArgs e)
-        {
-            FrmKeyIn frmKeyIn = new FrmKeyIn(ReceiveValue, _value);
-            frmKeyIn.Show();
-
-            _tempTextBox = (TextBox)sender;
-            void ReceiveValue(string value)
-            {
-                if(_tempTextBox==TxtFinalPsaaword)
-                {
-                    TxtFinalPsaaword.Text = _value;
-                }
-                else if(_tempTextBox == TxtNewPassword)
-                {
-                    TxtNewPassword.Text = _value;
-                }
-                else if(_tempTextBox==TxtOldPassword)
-                {
-                    TxtOldPassword.Text = _value;
-                }
-            }
-        }
         
-        #endregion
-
-        #region 关闭按钮
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        #endregion
-
-        #region 确认按钮
-        private void BtnConfirm_Click(object sender, EventArgs e)
-        {
-            if (_isEnglish)
-            {
-                if (TxtOldPassword == TxtFinalPsaaword)
-                {
-                    
-                }
-                else
-                {
-                    MessageBox.Show("Wrong user name or password!", "Error");
-                }
-            }
-            else
-            {
-
-            }
-        }
-        #endregion
     }
 }

@@ -31,9 +31,13 @@
             this.Txt = new System.Windows.Forms.Label();
             this.LblBackground = new System.Windows.Forms.Label();
             this.LblMeasure = new System.Windows.Forms.Label();
-            this.PrgClothC = new System.Windows.Forms.ProgressBar();
             this.TxtBackgroundValue = new System.Windows.Forms.TextBox();
             this.TxtMeasureValue = new System.Windows.Forms.TextBox();
+            this.loadingCircle = new HFM.Controls.LoadingCircle();
+            this.PrgClothAlarm_1 = new System.Windows.Forms.ProgressBar();
+            this.PrgClothAlarm_2 = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Txt
@@ -68,15 +72,6 @@
             this.LblMeasure.TabIndex = 17;
             this.LblMeasure.Text = "测量值";
             // 
-            // PrgClothC
-            // 
-            this.PrgClothC.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PrgClothC.Location = new System.Drawing.Point(67, 214);
-            this.PrgClothC.Name = "PrgClothC";
-            this.PrgClothC.Size = new System.Drawing.Size(431, 25);
-            this.PrgClothC.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.PrgClothC.TabIndex = 18;
-            // 
             // TxtBackgroundValue
             // 
             this.TxtBackgroundValue.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -97,27 +92,85 @@
             this.TxtMeasureValue.TabIndex = 20;
             this.TxtMeasureValue.TabStop = false;
             // 
+            // loadingCircle
+            // 
+            this.loadingCircle.Active = false;
+            this.loadingCircle.BackColor = System.Drawing.Color.Transparent;
+            this.loadingCircle.Color = System.Drawing.Color.Orange;
+            this.loadingCircle.InnerCircleRadius = 5;
+            this.loadingCircle.Location = new System.Drawing.Point(486, 132);
+            this.loadingCircle.Name = "loadingCircle";
+            this.loadingCircle.NumberSpoke = 12;
+            this.loadingCircle.OuterCircleRadius = 11;
+            this.loadingCircle.RotationSpeed = 100;
+            this.loadingCircle.Size = new System.Drawing.Size(75, 56);
+            this.loadingCircle.SpokeThickness = 2;
+            this.loadingCircle.StylePreset = HFM.Controls.LoadingCircle.StylePresets.MacOSX;
+            this.loadingCircle.TabIndex = 21;
+            this.loadingCircle.Text = "loadingCircle1";
+            // 
+            // PrgClothAlarm_1
+            // 
+            this.PrgClothAlarm_1.Location = new System.Drawing.Point(180, 204);
+            this.PrgClothAlarm_1.Name = "PrgClothAlarm_1";
+            this.PrgClothAlarm_1.Size = new System.Drawing.Size(300, 10);
+            this.PrgClothAlarm_1.TabIndex = 22;
+            // 
+            // PrgClothAlarm_2
+            // 
+            this.PrgClothAlarm_2.Location = new System.Drawing.Point(180, 239);
+            this.PrgClothAlarm_2.Name = "PrgClothAlarm_2";
+            this.PrgClothAlarm_2.Size = new System.Drawing.Size(300, 10);
+            this.PrgClothAlarm_2.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(4, 193);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(161, 36);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "污染报警";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(4, 229);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(161, 36);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "高阶报警";
+            // 
             // FrmClothes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SpringGreen;
-            this.ClientSize = new System.Drawing.Size(589, 277);
+            this.ClientSize = new System.Drawing.Size(589, 308);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.PrgClothAlarm_2);
+            this.Controls.Add(this.PrgClothAlarm_1);
+            this.Controls.Add(this.loadingCircle);
             this.Controls.Add(this.TxtMeasureValue);
             this.Controls.Add(this.TxtBackgroundValue);
-            this.Controls.Add(this.PrgClothC);
             this.Controls.Add(this.LblMeasure);
             this.Controls.Add(this.LblBackground);
             this.Controls.Add(this.Txt);
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmClothes";
             this.Text = "衣物探头";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FrmClothes_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,8 +181,12 @@
         private System.Windows.Forms.Label Txt;
         private System.Windows.Forms.Label LblBackground;
         private System.Windows.Forms.Label LblMeasure;
-        public System.Windows.Forms.ProgressBar PrgClothC;
         public System.Windows.Forms.TextBox TxtBackgroundValue;
         public System.Windows.Forms.TextBox TxtMeasureValue;
+        public Controls.LoadingCircle loadingCircle;
+        public System.Windows.Forms.ProgressBar PrgClothAlarm_1;
+        public System.Windows.Forms.ProgressBar PrgClothAlarm_2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

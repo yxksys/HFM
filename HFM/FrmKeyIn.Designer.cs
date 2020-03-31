@@ -241,6 +241,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmKeyIn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keyboard";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FrmKeyIn_Load);

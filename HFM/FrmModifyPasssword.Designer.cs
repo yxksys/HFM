@@ -56,7 +56,7 @@
             this.TxtOldPassword.PasswordChar = '*';
             this.TxtOldPassword.Size = new System.Drawing.Size(132, 26);
             this.TxtOldPassword.TabIndex = 29;
-            this.TxtOldPassword.TextChanged += new System.EventHandler(this.Txt_TextChanged);
+            this.TxtOldPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtOldPassword_MouseClick);
             // 
             // LblNewPassword
             // 
@@ -76,7 +76,7 @@
             this.TxtNewPassword.PasswordChar = '*';
             this.TxtNewPassword.Size = new System.Drawing.Size(132, 26);
             this.TxtNewPassword.TabIndex = 30;
-            this.TxtNewPassword.TextChanged += new System.EventHandler(this.Txt_TextChanged);
+            this.TxtNewPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtNewPassword_MouseClick);
             // 
             // LblFinalPsaaword
             // 
@@ -96,7 +96,7 @@
             this.TxtFinalPsaaword.PasswordChar = '*';
             this.TxtFinalPsaaword.Size = new System.Drawing.Size(132, 26);
             this.TxtFinalPsaaword.TabIndex = 32;
-            this.TxtFinalPsaaword.TextChanged += new System.EventHandler(this.Txt_TextChanged);
+            this.TxtFinalPsaaword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtFinalPsaaword_MouseClick);
             // 
             // BtnConfirm
             // 
@@ -136,7 +136,6 @@
             this.Name = "FrmModifyPasssword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "修改密码";
-            this.Load += new System.EventHandler(this.FrmModifyPasssword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
