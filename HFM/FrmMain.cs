@@ -50,7 +50,9 @@ namespace HFM
         /// <summary>
         /// 实例化Timer类，设置间隔时间为10000毫秒
         /// </summary>
-        System.Timers.Timer TmrStatus = new System.Timers.Timer(10000);  
+        System.Timers.Timer TmrStatus = new System.Timers.Timer(10000);
+
+        public static FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
 
         #endregion
 
@@ -174,7 +176,6 @@ namespace HFM
         #region 启动加载
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            
 
         }
         #endregion
@@ -187,9 +188,8 @@ namespace HFM
         /// <param name="e"></param>
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
-            frmMeasureMain.Show();
-            this.Hide();
+            frmMeasureMain.ShowDialog();
+            this.Dispose();
         }
 
         /// <summary>
@@ -214,7 +214,9 @@ namespace HFM
             else
             {
                 //开起维护密码窗体
-                FrmDisposeNormal(new FrmEnterPassword());
+                FrmEnterPassword frmEnterPassword=new FrmEnterPassword();
+                frmEnterPassword.Show();
+                // FrmDisposeNormal(new FrmEnterPassword());
             }
         }
         /// <summary>
@@ -233,8 +235,8 @@ namespace HFM
         /// <param name="e"></param>
         private void RetreatSystemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //释放当前所有资源
-            this.Dispose();
+            //退出系统
+            Application.Exit();
         }
         #endregion
 

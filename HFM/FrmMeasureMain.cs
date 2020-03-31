@@ -2019,6 +2019,43 @@ namespace HFM
             //stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
             ////更新当前系统运行状态剩余时间
             //LblTimeRemain.Text = stateTimeRemain.ToString();
-        }              
+        }
+
+        #region 按钮单击事件
+        /// <summary>
+        /// 维护
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnMaintain_Click(object sender, EventArgs e)
+        {
+            FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
+            frmEnterPassword.Show();
+        }
+        /// <summary>
+        /// 设置英文
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnEnglish_Click(object sender, EventArgs e)
+        {
+            systemParameter.IsEnglish = true;
+            systemParameter.SetParameter(systemParameter);
+            BtnChinese.Enabled = true;
+            BtnEnglish.Enabled = false;
+        }
+        /// <summary>
+        /// 设置中文
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnChinese_Click(object sender, EventArgs e)
+        {
+            systemParameter.IsEnglish = false;
+            systemParameter.SetParameter(systemParameter);
+            BtnChinese.Enabled = false;
+            BtnEnglish.Enabled = true;
+        } 
+        #endregion
     }
 }
