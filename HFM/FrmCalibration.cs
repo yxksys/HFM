@@ -27,7 +27,10 @@ namespace HFM
         #region 字段、方法、实例
 
         #region 字段、数组
-        
+        /// <summary>
+        /// 传入值
+        /// </summary>
+        private string _value = "";
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -967,10 +970,37 @@ namespace HFM
 
         #endregion
 
+        #region 文本框需要使用小键盘输入的
         private void TxtHV_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn key=new FrmKeyIn();
-            key.Show();
+            FrmKeyIn.DelegatesKeyIn(TxtHV);
         }
+
+
+        private void Txtα_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(Txtα);
+        }
+
+        private void Txtβ_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(Txtβ);
+        }
+
+        private void TxtMeasuringTime_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtMeasuringTime);
+        }
+
+        private void TxtCount_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtCount);
+        }
+
+        private void TxtSFR_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyIn(TxtSFR);
+        } 
+        #endregion
     }
 }

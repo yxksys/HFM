@@ -43,7 +43,7 @@
             this.TxtShowResult = new System.Windows.Forms.TextBox();
             this.BtnChinese = new System.Windows.Forms.Button();
             this.BtnEnglish = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnMaintain = new System.Windows.Forms.Button();
             this.PicRHB = new System.Windows.Forms.PictureBox();
             this.PicRHP = new System.Windows.Forms.PictureBox();
             this.PicRF = new System.Windows.Forms.PictureBox();
@@ -226,6 +226,7 @@
             this.BtnChinese.TabIndex = 21;
             this.BtnChinese.Text = "中文";
             this.BtnChinese.UseVisualStyleBackColor = true;
+            this.BtnChinese.Click += new System.EventHandler(this.BtnChinese_Click);
             // 
             // BtnEnglish
             // 
@@ -236,15 +237,17 @@
             this.BtnEnglish.TabIndex = 22;
             this.BtnEnglish.Text = "English";
             this.BtnEnglish.UseVisualStyleBackColor = true;
+            this.BtnEnglish.Click += new System.EventHandler(this.BtnEnglish_Click);
             // 
-            // button1
+            // BtnMaintain
             // 
-            this.button1.Location = new System.Drawing.Point(557, 549);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 40);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "维护";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnMaintain.Location = new System.Drawing.Point(557, 549);
+            this.BtnMaintain.Name = "BtnMaintain";
+            this.BtnMaintain.Size = new System.Drawing.Size(96, 40);
+            this.BtnMaintain.TabIndex = 3;
+            this.BtnMaintain.Text = "维护";
+            this.BtnMaintain.UseVisualStyleBackColor = true;
+            this.BtnMaintain.Click += new System.EventHandler(this.BtnMaintain_Click);
             // 
             // PicRHB
             // 
@@ -636,7 +639,7 @@
             this.Controls.Add(this.PicRF);
             this.Controls.Add(this.PicRHP);
             this.Controls.Add(this.PicRHB);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnMaintain);
             this.Controls.Add(this.BtnEnglish);
             this.Controls.Add(this.BtnChinese);
             this.Controls.Add(this.PicLogo);
@@ -655,7 +658,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMeasureMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmMeasureMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).EndInit();
@@ -706,7 +709,7 @@
         private System.Windows.Forms.TextBox TxtShowResult;
         private System.Windows.Forms.Button BtnChinese;
         private System.Windows.Forms.Button BtnEnglish;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnMaintain;
         private System.Windows.Forms.PictureBox PicRHB;
         private System.Windows.Forms.PictureBox PicRHP;
         private System.Windows.Forms.PictureBox PicRF;

@@ -13,7 +13,7 @@ using System.Threading;
 namespace HFM
 {
     #region 委托函数
-    public delegate void SendPassword(string str);
+    public delegate void SendValue(string str);
     #endregion
     public partial class FrmKeyIn : Form
     {
@@ -21,15 +21,15 @@ namespace HFM
         /// <summary>
         /// 字符串 用于记录密码字符
         /// </summary>
-        private string _code;
+        private string _code="";
         /// <summary>
         /// 临时按钮 在键盘输入时用来变黑显示
         /// </summary>
         private Button _tempButton;
         /// <summary>
-        /// 委托变量 用来发送密码
+        /// 委托变量 
         /// </summary>
-        public event SendPassword sendPassword;
+        public event SendValue sendValue;
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -37,7 +37,7 @@ namespace HFM
         /// <summary>
         /// 数组按钮
         /// </summary>
-        private Button[] buttonNum = new Button[9];
+        private Button[] buttonNum = new Button[10];
         #endregion
         #region 封装
         public string Code { get => _code; set => _code = value; }
@@ -45,14 +45,20 @@ namespace HFM
         public Button TempButton { get => _tempButton; set => _tempButton = value; }
         #endregion
         #region 方法
-        #region 初始化数据
-        public FrmKeyIn()
+         //初始化数据
+        public FrmKeyIn(SendValue _sendValue, string _value)
         {
-            Code = "";
+            InitializeComponent();
+            sendValue = _sendValue;
+            Code = _value;
             //使得临时按钮的大小与数字键盘上按钮的大小相同，但颜色为黑色，不可视
-            TempButton.BackColor = Color.Black;
-            TempButton.Size = new System.Drawing.Size(292, 349); 
-            TempButton.Visible = false;
+            if (TempButton != null)
+            {
+                TempButton.BackColor = Color.Black;
+                TempButton.Size = new System.Drawing.Size(292, 349);
+                TempButton.Visible = false;
+            }
+
             //给按钮数组赋值
             buttonNum[0] = BtnDot;
             buttonNum[1] = BtnOne;   buttonNum[2] = BtnTwo;   buttonNum[3] = BtnThree;
@@ -60,11 +66,8 @@ namespace HFM
             buttonNum[7] = BtnSeven; buttonNum[8] = BtnEight; buttonNum[9] = BtnNine;
             //高亮集中在“确认”按钮上
             BtnEnter.Focus();
-            InitializeComponent();
-        }
-        #endregion
-
-        
+            
+        }        
         #endregion
 
         #region 界面初始加载
@@ -89,7 +92,7 @@ namespace HFM
         private void BtnEnter_Click(object sender, EventArgs e)
         {
             //执行委托
-            sendPassword(Code);
+            sendValue.Invoke(Code);
             //关闭窗口
             this.Close();
         }
@@ -163,15 +166,46 @@ namespace HFM
         {
             //找到请求的发送者
             Button btn = (Button)sender;
-            //临时按钮获取该发送者的位置坐标
-            TempButton.Location = btn.Location;
-            //使得临时按钮可视
-            TempButton.Visible = true;
-            //延时
-            Thread.Sleep(200);
-            //使得临时按钮不可视
-            TempButton.Visible = false;       
+            //添加数字键盘上输入的数字
+            Code += btn.Text;
+            //临时按钮获取该发送者的位置坐标和内容
+            if (TempButton != null)
+            {
+                TempButton.Location = btn.Location;
+                //使得临时按钮可视
+                TempButton.Visible = true;
+                //延时
+                Thread.Sleep(200);
+                //使得临时按钮不可视
+                TempButton.Visible = false;
+            }
+            //执行委托
+            sendValue.Invoke(Code);
         }
+        #endregion
+
+
+        #region 小键盘公共静态方法,可在其他窗体中直接使用小键盘
+        /// <summary>
+        /// 传入值
+        /// </summary>
+        private static string _value = "";
+        /// <summary>
+        /// 委托小键盘传入值
+        /// </summary>
+        /// <param name="textBox">当前文本框名称</param>
+        public static void DelegatesKeyIn(TextBox textBox)
+        {
+            //实例化委托
+            SendValue value = _value => textBox.Text = _value;
+            // 实例化小键盘,并传入委托和传入值
+            FrmKeyIn key = new FrmKeyIn(value, _value);
+            //显示小键盘
+            key.ShowDialog();
+        }
+        /*使用示例
+         * FrmKeyIn.DelegatesKeyIn(TxtSFR);
+         */
         #endregion
     }
 }

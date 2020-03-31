@@ -56,6 +56,7 @@
             this.TxtOldPassword.PasswordChar = '*';
             this.TxtOldPassword.Size = new System.Drawing.Size(132, 26);
             this.TxtOldPassword.TabIndex = 29;
+            this.TxtOldPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtOldPassword_MouseClick);
             // 
             // LblNewPassword
             // 
@@ -75,6 +76,7 @@
             this.TxtNewPassword.PasswordChar = '*';
             this.TxtNewPassword.Size = new System.Drawing.Size(132, 26);
             this.TxtNewPassword.TabIndex = 30;
+            this.TxtNewPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtNewPassword_MouseClick);
             // 
             // LblFinalPsaaword
             // 
@@ -94,6 +96,7 @@
             this.TxtFinalPsaaword.PasswordChar = '*';
             this.TxtFinalPsaaword.Size = new System.Drawing.Size(132, 26);
             this.TxtFinalPsaaword.TabIndex = 32;
+            this.TxtFinalPsaaword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtFinalPsaaword_MouseClick);
             // 
             // BtnConfirm
             // 
@@ -104,6 +107,7 @@
             this.BtnConfirm.TabIndex = 33;
             this.BtnConfirm.Text = "确定";
             this.BtnConfirm.UseVisualStyleBackColor = true;
+            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // BtnCancel
             // 
@@ -114,6 +118,7 @@
             this.BtnCancel.TabIndex = 34;
             this.BtnCancel.Text = "取消";
             this.BtnCancel.UseVisualStyleBackColor = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // FrmModifyPasssword
             // 

@@ -6,6 +6,7 @@
  *  版本：
  *  创建时间：框架搭建时间 2020年2月14日 20:49:45
  *  类名：用户类
+ *  更新:
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
@@ -19,10 +20,11 @@ using System.Data.OleDb;
 
 namespace HFM.Components
 {
-    class User
+    public class User
     {
-        private const string SQL_SELECT_USER_BY_LOGIN = "SELECT UserID FROM HFM_UserInfo WHERE PassWord=@PassWord";
-        private const string SQL_UPDATA_USER = "UPDATA HFM_UserInfo SET passWord=@passWord WHERE userID=@userID";
+        private const string SQL_SELECT_USER_BY_LOGIN = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo WHERE PassWord=@PassWord";
+        private const string SQL_UPDATA_USER = "UPDATE  HFM_UserInfo  SET  [PassWord] = @UserPassWord   WHERE UserName = @UserName";
+        
         private const string SQL_SELECT_USER = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo";
         private const string SQL_SELECT_USER_BY_USERID = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo WHERE UserID=@UserID";
         #region 字段属性
@@ -47,6 +49,11 @@ namespace HFM.Components
         /// </summary>
         public int Role { get => _role; set => _role = value; }
 
+        /// <summary>
+        /// 当前用户登陆角色
+        /// 1:超级管理员，2：普通用户，99：无权限
+        /// </summary>
+        public static User LandingUser { get; set; }
         #endregion
 
         #region 构造函数
@@ -95,22 +102,21 @@ namespace HFM.Components
 
         #region 根据用户ID修改密码
         /// <summary>
-        /// 根据用户ID修改密码
+        /// 根据用户类的用户名称,修改密码
         /// </summary>
-        /// <param name="userID">用户ID</param>
-        /// <param name="passWord">密码</param>
+        /// <param name="User">需要修改的用户类</param>
         /// <returns>返回成功
         ///          或失败   </returns>
-        public bool ChangePassWord(int userID, string passWord)
+        public bool ChangePassWord(User user)
         {
             //构造查询参数
             OleDbParameter[] parms = new OleDbParameter[]
             {
-                new OleDbParameter("@userID",OleDbType.Integer),
-                new OleDbParameter("@PassWord",OleDbType.VarChar,255)
+                new OleDbParameter("@UserPassWord",OleDbType.VarChar,255),
+                new OleDbParameter("@UserName",OleDbType.VarChar,255),
             };
-            parms[0].Value = userID;
-            parms[1].Value = passWord;
+            parms[0].Value = user.PassWord;
+            parms[1].Value = user.UserName;
             if (DbHelperAccess.ExecuteSql(SQL_UPDATA_USER, parms) != 0)
             {
                 return true;
