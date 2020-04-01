@@ -29,7 +29,7 @@ namespace HFM
         /// <summary>
         /// 委托变量 
         /// </summary>
-        public event SendValue sendValue;
+        public event SendValue SendValueEventHandler;
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -46,10 +46,10 @@ namespace HFM
         #endregion
         #region 方法
          //初始化数据
-        public FrmKeyIn(SendValue _sendValue, string _value)
+        public FrmKeyIn(SendValue sendValueEventHandler, string _value)
         {
             InitializeComponent();
-            sendValue = _sendValue;
+            SendValueEventHandler = sendValueEventHandler;
             Code = _value;
             //使得临时按钮的大小与数字键盘上按钮的大小相同，但颜色为黑色，不可视
             if (TempButton != null)
@@ -73,7 +73,7 @@ namespace HFM
         #region 界面初始加载
         private void FrmKeyIn_Load(object sender, EventArgs e)
         {
-            if (_isEnglish == true)
+            if (_isEnglish != true)
             {
                 this.Text = "数字输入";
                 BtnBackspace.Text = "退格";
@@ -92,7 +92,7 @@ namespace HFM
         private void BtnEnter_Click(object sender, EventArgs e)
         {
             //执行委托
-            sendValue.Invoke(Code);
+            SendValueEventHandler.Invoke(Code);
             //关闭窗口
             this.Close();
         }
@@ -180,7 +180,7 @@ namespace HFM
                 TempButton.Visible = false;
             }
             //执行委托
-            sendValue.Invoke(Code);
+            SendValueEventHandler.Invoke(Code);
         }
         #endregion
 
@@ -198,9 +198,9 @@ namespace HFM
         public static void DelegatesKeyInTextBox(TextBox textBox)
         {
             //实例化委托
-            SendValue value = _value => textBox.Text = _value;
+            void SendValue(string _value) => textBox.Text = _value;
             // 实例化小键盘,并传入委托和传入值
-            FrmKeyIn key = new FrmKeyIn(value, _value);
+            FrmKeyIn key = new FrmKeyIn(SendValue, _value);
             //显示小键盘
             key.ShowDialog();
         }
@@ -218,9 +218,9 @@ namespace HFM
                     if (Dgv.Rows[i].Cells[j].Selected == true)
                     {
                         //实例化委托
-                        SendValue value = _value => Dgv.Rows[i].Cells[j].Value = _value;
+                        void SendValue(string _value) => Dgv.Rows[i].Cells[j].Value = _value;
                         // 实例化小键盘,并传入委托和传入值
-                        FrmKeyIn key = new FrmKeyIn(value, _value);
+                        FrmKeyIn key = new FrmKeyIn(SendValue, _value);
                         //显示小键盘
                         key.ShowDialog();
                     }

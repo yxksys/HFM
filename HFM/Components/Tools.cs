@@ -374,7 +374,7 @@ namespace HFM.Components
                         sw.Close();
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     MessageBox.Show("程序中找不到错误日志文件目录,请手动在程序目录中创建日志目录'ErrorLog'");
                     throw;

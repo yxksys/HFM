@@ -210,23 +210,24 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnDeriveError_Click(object sender, EventArgs e)
         {
-            string localFilePath = "", fileNameExt = "", newFileName = "", FilePath = "";
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            string localFilePath = "", fileNameExt = "", FilePath = "";
             //设置文件类型
             //书写规则例如：txt files(*.txt)|*.txt
-            saveFileDialog.Filter = "txt files(*.txt)|*.txt|xls files(*.xls)|*.xls|All files(*.*)|*.*";
             //设置默认文件名（可以不设置）
-            saveFileDialog.FileName = DateTime.Now.ToString("yyyy MMMM dd") + "FaultLog";
             //主设置默认文件extension（可以不设置）
-            saveFileDialog.DefaultExt = "txt";
             //获取或设置一个值，该值指示如果用户省略扩展名，文件对话框是否自动在文件名中添加扩展名。（可以不设置）
-            saveFileDialog.AddExtension = true;
             //设置默认文件类型显示顺序（可以不设置）
-            saveFileDialog.FilterIndex = 2;
-
             //保存对话框是否记忆上次打开的目录
-            saveFileDialog.RestoreDirectory = true;
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "txt files(*.txt)|*.txt|xls files(*.xls)|*.xls|All files(*.*)|*.*",
+                FileName = DateTime.Now.ToString("yyyy MMMM dd") + "FaultLog",
+                DefaultExt = "txt",
+                AddExtension = true,
+                FilterIndex = 2,
+                RestoreDirectory = true
+            };
+            
             // Show save file dialog box
             DialogResult result = saveFileDialog.ShowDialog();
             //点了保存按钮进入
@@ -280,22 +281,24 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnDeriveCalibration_Click(object sender, EventArgs e)
         {
-            string localFilePath = "", fileNameExt = "", newFileName = "", FilePath = "";
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            string localFilePath = "", fileNameExt = "",FilePath = "";
             //设置文件类型
             //书写规则例如：txt files(*.txt)|*.txt
-            saveFileDialog.Filter = "txt files(*.txt)|*.txt|xls files(*.xls)|*.xls|All files(*.*)|*.*";
             //设置默认文件名（可以不设置）
-            saveFileDialog.FileName = DateTime.Now.ToString("yyyy MMMM dd") + "CalibrationLog";
             //主设置默认文件extension（可以不设置）
-            saveFileDialog.DefaultExt = "txt";
             //获取或设置一个值，该值指示如果用户省略扩展名，文件对话框是否自动在文件名中添加扩展名。（可以不设置）
-            saveFileDialog.AddExtension = true;
             //设置默认文件类型显示顺序（可以不设置）
-            saveFileDialog.FilterIndex = 2;
-
             //保存对话框是否记忆上次打开的目录
-            saveFileDialog.RestoreDirectory = true;
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "txt files(*.txt)|*.txt|xls files(*.xls)|*.xls|All files(*.*)|*.*",
+                FileName = DateTime.Now.ToString("yyyy MMMM dd") + "CalibrationLog",
+                DefaultExt = "txt",
+                AddExtension = true,
+                FilterIndex = 2,
+                RestoreDirectory = true
+            };
+            
 
             // Show save file dialog box
             DialogResult result = saveFileDialog.ShowDialog();

@@ -62,7 +62,7 @@ namespace HFM
             //按旧密码查询用户
             User _user=new User().Login(Tools.MD5Encrypt32(TxtOldPassword.Text));
             
-            if (_user.Role==null ||_user.Role==0)
+            if (_user.Role==0)
             {
                 MessageBox.Show("密码错误", "提示");
                 TxtOldPassword.Clear();
