@@ -277,18 +277,20 @@
             // 
             // CmbUnclideType
             // 
+            this.CmbUnclideType.AccessibleRole = System.Windows.Forms.AccessibleRole.Slider;
+            this.CmbUnclideType.AllowDrop = true;
             this.CmbUnclideType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.CmbUnclideType.Font = new System.Drawing.Font("宋体", 12F);
             this.CmbUnclideType.FormattingEnabled = true;
-            this.CmbUnclideType.ItemHeight = 20;
+            this.CmbUnclideType.ItemHeight = 25;
             this.CmbUnclideType.Items.AddRange(new object[] {
             "α",
             "β",
-            "C"});
+            "α/β"});
             this.CmbUnclideType.Location = new System.Drawing.Point(656, 69);
             this.CmbUnclideType.Margin = new System.Windows.Forms.Padding(2);
             this.CmbUnclideType.Name = "CmbUnclideType";
-            this.CmbUnclideType.Size = new System.Drawing.Size(46, 26);
+            this.CmbUnclideType.Size = new System.Drawing.Size(46, 31);
             this.CmbUnclideType.TabIndex = 15;
             // 
             // LblUnclideType
