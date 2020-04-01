@@ -184,7 +184,6 @@ namespace HFM
         }
         #endregion
 
-
         #region 小键盘公共静态方法,可在其他窗体中直接使用小键盘
         /// <summary>
         /// 传入值

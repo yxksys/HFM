@@ -22,11 +22,14 @@ namespace HFM.Components
 {
     public class User
     {
+        #region 数据库查询语句
         private const string SQL_SELECT_USER_BY_LOGIN = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo WHERE PassWord=@PassWord";
         private const string SQL_UPDATA_USER = "UPDATE  HFM_UserInfo  SET  [PassWord] = @UserPassWord   WHERE UserName = @UserName";
         
         private const string SQL_SELECT_USER = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo";
         private const string SQL_SELECT_USER_BY_USERID = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo WHERE UserID=@UserID";
+        #endregion
+
         #region 字段属性
         private int _userId;
         private string _userName;

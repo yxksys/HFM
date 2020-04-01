@@ -21,20 +21,42 @@ namespace HFM.Components
 {
     public class ErrorData
     {
-        private const string SQL_SELECT_ERRORDATA = "SELECT ErrID,ErrTime,Record,IsEnglish FROM HFM_ErrData";
-        private const string SQL_SELECT_ERRORDATA_BY_ISENGLISH = "SELECT ErrID,ErrTime,Record,IsEnglish " +
+        #region 数据库查询语句
+        /// <summary>
+        /// 查询所有故障数据
+        /// </summary>
+        private const string SQL_SELECT_ERRORDATA = "SELECT ErrID,ErrTime,Record,IsEnglish,IsReported FROM HFM_ErrData";
+        /// <summary>
+        /// 按照语言查询故障数据
+        /// </summary>
+        private const string SQL_SELECT_ERRORDATA_BY_ISENGLISH = "SELECT ErrID,ErrTime,Record,IsEnglish,IsReported " +
                                                                  "FROM HFM_ErrData WHERE IsEnglish=@IsEnglish";
-        private const string SQL_INSERT_ERRORDATA = "INSERT INTO HFM_ErrData (ErrTime,Record,IsEnglish)" +
+        /// <summary>
+        /// /添加故障数据
+        /// </summary>
+        private const string SQL_INSERT_ERRORDATA = "INSERT INTO HFM_ErrData (ErrTime,Record,IsEnglish,IsReported)" +
                                                     "VALUES(@ErrTime,@Record,@IsEnglish )";
         /// <summary>
         /// 删除故障记录表中所有记录 
         /// </summary>
         private const string SQL_DELETE_ERRORDATA = "DELETE FROM HFM_ErrData";
+        /// <summary>
+        /// 查询最新一条监测记录
+        /// </summary>
+        private const string SQL_SELECT_ERRORDATA_BY_NEWRECORD = "SELECT MAX(ErrID),ErrTime,Record,IsEnglish,IsReported FROM HFM_ErrData";
+        /// <summary>
+        /// 查询ID小于errorDataID的所有监测数据记录的IsReported值
+        /// </summary>
+        /// 
+        private const string SQL_SELECT_ERRORDATA_BY_ISREPORTED = "SELECT IsReported FROM HFM_ErrData WHERE ErrID=@errorDataID";
+        #endregion
+
         #region 字段属性
         private int _errID;//故障ID
         private DateTime _errTime;//故障时间
         private string _record;//备注
         private bool _isEnglish;//是否英文
+        private bool _isReported;//是否上报
         /// <summary>
         /// 故障ID
         /// </summary>
@@ -51,6 +73,11 @@ namespace HFM.Components
         /// 是否英文
         /// </summary>
         public bool IsEnglish { get => _isEnglish; set => _isEnglish = value; }
+        /// <summary>
+        /// 是否上报
+        /// </summary>
+        public bool IsReported { get => _isReported; set => _isReported = value; }
+
         #endregion
 
         #region 查询所有故障数据
@@ -72,6 +99,7 @@ namespace HFM.Components
                     errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
                     errorData.Record = Convert.ToString(reader["Record"].ToString());
                     errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    errorData.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                     //将reader读出并构造的查询结果添加到List中
                     IErrorDateS.Add(errorData);
                 }
@@ -108,6 +136,7 @@ namespace HFM.Components
                     errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
                     errorData.Record = Convert.ToString(reader["Record"].ToString());
                     errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    errorData.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                     //将reader读出并构造的查询结果添加到List中
                     IErrorDateS.Add(errorData);
                 }
@@ -131,11 +160,13 @@ namespace HFM.Components
             {
             new OleDbParameter("@ErrTime", OleDbType.Date, 8),
             new OleDbParameter("@Record", OleDbType.LongVarChar),
-            new OleDbParameter("@IsEnglish", OleDbType.Boolean, 2)
+            new OleDbParameter("@IsEnglish", OleDbType.Boolean, 2),
+            new OleDbParameter ("@IsReported",OleDbType.Boolean ,2)
             };
             parms[0].Value = errorData.ErrTime;
             parms[1].Value = errorData.Record.ToString();
             parms[2].Value = errorData.IsEnglish;
+            parms[4].Value = errorData.IsReported;
             if (DbHelperAccess.ExecuteSql(SQL_INSERT_ERRORDATA, parms) != 0)
             {
                 return true;
@@ -157,15 +188,48 @@ namespace HFM.Components
 
         #endregion
 
-        public MeasureData GetData()
+        #region 查询最新一条监测记录
+        public ErrorData GetData()
         {
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_NEWRECORD))
+            {
+                while (reader.Read())//读取查询结果
+                {
+                    //构造ErrorData对象
+                    ErrorData errorData = new ErrorData();
+                    errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
+                    errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
+                    errorData.Record = Convert.ToString(reader["Record"].ToString());
+                    errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    errorData.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
+                }
+                reader.Close();
+                DbHelperAccess.Close();
+            }
+            return this;
         }
-#endregion
+        #endregion
 
         #region 更新上报状态。
-        public bool UpdataReported(bool isReported, int measureDataID)
+        public bool UpdateReported(bool isReported, int errorDataID)
         {
-
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@errorDataID",OleDbType.Integer,4)
+            };
+            parms[0].Value = errorDataID;
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_ISREPORTED, parms))
+            {
+                while (reader.Read())
+                {
+                    //将ID小于errorDataID的所有监测数据记录的IsReported字段全部更新为isReported的值
+                    this.IsReported = isReported;
+                }
+                reader.Close();
+                DbHelperAccess.Close();
+            }
+            return true;
         }
         #endregion
     }
