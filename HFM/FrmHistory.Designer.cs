@@ -153,6 +153,7 @@
             this.BtnDeleteCalibration.TabIndex = 5;
             this.BtnDeleteCalibration.Text = "删除数据";
             this.BtnDeleteCalibration.UseVisualStyleBackColor = false;
+            this.BtnDeleteCalibration.Click += new System.EventHandler(this.BtnDeleteCalibration_Click);
             // 
             // BtnDeriveCalibration
             // 
@@ -322,6 +323,7 @@
             this.Controls.Add(this.TabHistory);
             this.Name = "FrmHistory";
             this.Text = "历史记录";
+            this.Load += new System.EventHandler(this.FrmHistory_Load);
             this.TabHistory.ResumeLayout(false);
             this.TabMeasure.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvMeasure)).EndInit();

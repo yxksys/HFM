@@ -15,6 +15,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -347,6 +348,38 @@ namespace HFM.Components
                 pwd = pwd + s[i].ToString("X");
             }
             return pwd;
+        }
+
+        #endregion
+
+        #region 错误日志记录
+        /// <summary>
+        /// 错误日志文件创建
+        /// </summary>
+        /// <param name="error"></param>
+        public static void ErrorLog(string error)
+        {
+            //错误日志文件创建位置
+            string path = $@"ErrorLog\{DateTime.Now.ToString("yyyyMMddTHHmmss")}.txt";
+            if (!File.Exists(path))
+            {
+                // 创建要写入的文件。
+                FileInfo fi1 = new FileInfo(path);
+                try
+                {
+                    using (StreamWriter sw = fi1.CreateText())
+                    {
+                        sw.WriteLine(error);
+
+                        sw.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("程序中找不到错误日志文件目录,请手动在程序目录中创建日志目录'ErrorLog'");
+                    throw;
+                }
+            }
         }
 
         #endregion
