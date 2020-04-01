@@ -142,11 +142,13 @@ namespace HFM.Components
                 while (reader.Read()) //读查询结果
                 {
                     //构造User对象
-                    User user = new User();
-                    user.UserId = Convert.ToInt32(reader["UserID"].ToString());
-                    user.UserName = Convert.ToString(reader["UserName"].ToString());
-                    user.PassWord = Convert.ToString(reader["PassWord"].ToString());
-                    user.Role = Convert.ToInt32(reader["Role"].ToString());
+                    User user = new User
+                    {
+                        UserId = Convert.ToInt32(reader["UserID"].ToString()),
+                        UserName = Convert.ToString(reader["UserName"].ToString()),
+                        PassWord = Convert.ToString(reader["PassWord"].ToString()),
+                        Role = Convert.ToInt32(reader["Role"].ToString())
+                    };
                     //从reader读出的查询对象添加到List中
                     IUserS.Add(user);
                 }

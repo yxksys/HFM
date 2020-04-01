@@ -15,7 +15,6 @@ namespace HFM
     public partial class FrmEnterPassword : Form
     {
         #region 字段
-        private string _value="";
         private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
         private User _user = new User();
 

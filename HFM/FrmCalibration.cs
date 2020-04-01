@@ -28,10 +28,6 @@ namespace HFM
 
         #region 字段、数组
         /// <summary>
-        /// 传入值
-        /// </summary>
-        private string _value = "";
-        /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
         private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
