@@ -6,7 +6,7 @@
  *  版本：
  *  创建时间：2020年2月25日
  *  类名：参数设置
- *  
+ *  更新:杨旭锴 数字键盘添加,2020年4月1日
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -1289,10 +1289,218 @@ namespace HFM
             //重新获得数据库数据
             GetFacilityData();
         }
-        #endregion
 
         #endregion
 
+        #endregion
+        
+        #region 数字键盘
+        #region alpha,beta,道盒参数标签页Dgv,数字键盘
+        /// <summary>
+        /// alpha参数标签页,小键盘事件添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DgvAlphaSet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInDGV(DgvAlphaSet);
+        }
+        /// <summary>
+        /// beta参数标签页,小键盘事件添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DgvBetaSet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInDGV(DgvBetaSet);
+        }
+        /// <summary>
+        /// 道盒参数标签页,小键盘事件添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DgvMainPreferenceSet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInDGV(DgvMainPreferenceSet);
+        }
+        #endregion
 
+        #region 系统参数数字键盘
+        /// <summary>
+        /// 自检时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtSelfCheckTime_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtSelfCheckTime);
+        }
+        /// <summary>
+        /// 平滑时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtSmoothingTime_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtSmoothingTime);
+        }
+        /// <summary>
+        /// 测量时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtMeasuringTime_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtMeasuringTime);
+        }
+        /// <summary>
+        /// 警报时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtAlarmTime_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtAlarmTime);
+        }
+        /// <summary>
+        /// 强制本地次
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtBKGUpdate_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtBKGUpdate);
+        }
+        /// <summary>
+        /// 左手心
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtLeftInProbeArea_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtLeftInProbeArea);
+        }
+        /// <summary>
+        /// 右手心
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtRightInProbeArea_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtRightInProbeArea);
+        }
+        /// <summary>
+        /// 左手背
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtLeftOutProbeArea_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtLeftOutProbeArea);
+        }
+        /// <summary>
+        /// 右手背
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtRightOutProbeArea_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtRightOutProbeArea);
+        }
+        /// <summary>
+        /// 左脚
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtLeftFootProbeArea_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtLeftFootProbeArea);
+        }
+        /// <summary>
+        /// 右脚
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtRightFootProbeArea_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtRightFootProbeArea);
+        }
+        /// <summary>
+        /// 衣物探头
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtCloseProbeArea_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtCloseProbeArea);
+        }
+        /// <summary>
+        /// 平滑因子
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtSmoothingFactor_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtSmoothingFactor);
+        }
+        #endregion
+
+        #region 衣物探头
+        /// <summary>
+        /// 本地上限
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtClothesHBackground_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtClothesHBackground);
+        }
+        /// <summary>
+        /// 本地下限
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtClothesLBackground_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtClothesLBackground);
+        }
+        /// <summary>
+        /// 污染警报
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtClothesAlarm_1_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtClothesAlarm_1);
+        }
+        /// <summary>
+        /// 高阶警报
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtClothesAlarm_2_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtClothesAlarm_2);
+        }
+        /// <summary>
+        /// 参测效率
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtClothesEfficiency_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtClothesEfficiency);
+        }
+        /// <summary>
+        /// 离线自检
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtClothOfflineTime_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtClothOfflineTime);
+        }
+        #endregion 
+        #endregion
     }
 }

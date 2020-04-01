@@ -123,7 +123,7 @@ namespace HFM
 
         private void TxtPassword_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(TxtPassword);
+            FrmKeyIn.DelegatesKeyInTextBox(TxtPassword);
         }
     }
 }

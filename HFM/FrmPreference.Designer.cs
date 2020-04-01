@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
@@ -418,6 +418,7 @@
             this.TxtSmoothingFactor.Size = new System.Drawing.Size(104, 26);
             this.TxtSmoothingFactor.TabIndex = 2;
             this.TxtSmoothingFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtSmoothingFactor.Enter += new System.EventHandler(this.TxtSmoothingFactor_Enter);
             // 
             // LblIPAddress
             // 
@@ -499,6 +500,7 @@
             this.TxtRightFootProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtRightFootProbeArea.TabIndex = 12;
             this.TxtRightFootProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtRightFootProbeArea.Enter += new System.EventHandler(this.TxtRightFootProbeArea_Enter);
             // 
             // TxtRightOutProbeArea
             // 
@@ -510,6 +512,7 @@
             this.TxtRightOutProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtRightOutProbeArea.TabIndex = 11;
             this.TxtRightOutProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtRightOutProbeArea.Enter += new System.EventHandler(this.TxtRightOutProbeArea_Enter);
             // 
             // TxtLeftOutProbeArea
             // 
@@ -521,6 +524,7 @@
             this.TxtLeftOutProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtLeftOutProbeArea.TabIndex = 10;
             this.TxtLeftOutProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtLeftOutProbeArea.Enter += new System.EventHandler(this.TxtLeftOutProbeArea_Enter);
             // 
             // TxtCloseProbeArea
             // 
@@ -532,6 +536,7 @@
             this.TxtCloseProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtCloseProbeArea.TabIndex = 9;
             this.TxtCloseProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtCloseProbeArea.Enter += new System.EventHandler(this.TxtCloseProbeArea_Enter);
             // 
             // TxtLeftFootProbeArea
             // 
@@ -543,6 +548,7 @@
             this.TxtLeftFootProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtLeftFootProbeArea.TabIndex = 8;
             this.TxtLeftFootProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtLeftFootProbeArea.Enter += new System.EventHandler(this.TxtLeftFootProbeArea_Enter);
             // 
             // TxtRightInProbeArea
             // 
@@ -554,6 +560,7 @@
             this.TxtRightInProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtRightInProbeArea.TabIndex = 7;
             this.TxtRightInProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtRightInProbeArea.Enter += new System.EventHandler(this.TxtRightInProbeArea_Enter);
             // 
             // TxtLeftInProbeArea
             // 
@@ -565,6 +572,7 @@
             this.TxtLeftInProbeArea.Size = new System.Drawing.Size(78, 26);
             this.TxtLeftInProbeArea.TabIndex = 6;
             this.TxtLeftInProbeArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtLeftInProbeArea.Enter += new System.EventHandler(this.TxtLeftInProbeArea_Enter);
             // 
             // LblRightFootProbeArea
             // 
@@ -670,6 +678,7 @@
             this.TxtBKGUpdate.Size = new System.Drawing.Size(104, 26);
             this.TxtBKGUpdate.TabIndex = 11;
             this.TxtBKGUpdate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtBKGUpdate.Enter += new System.EventHandler(this.TxtBKGUpdate_Enter);
             // 
             // TxtAlarmTime
             // 
@@ -681,6 +690,7 @@
             this.TxtAlarmTime.Size = new System.Drawing.Size(104, 26);
             this.TxtAlarmTime.TabIndex = 10;
             this.TxtAlarmTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtAlarmTime.Enter += new System.EventHandler(this.TxtAlarmTime_Enter);
             // 
             // TxtMeasuringTime
             // 
@@ -692,6 +702,7 @@
             this.TxtMeasuringTime.Size = new System.Drawing.Size(104, 26);
             this.TxtMeasuringTime.TabIndex = 9;
             this.TxtMeasuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtMeasuringTime.Enter += new System.EventHandler(this.TxtMeasuringTime_Enter);
             // 
             // TxtSmoothingTime
             // 
@@ -703,6 +714,7 @@
             this.TxtSmoothingTime.Size = new System.Drawing.Size(104, 26);
             this.TxtSmoothingTime.TabIndex = 8;
             this.TxtSmoothingTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtSmoothingTime.Enter += new System.EventHandler(this.TxtSmoothingTime_Enter);
             // 
             // TxtSelfCheckTime
             // 
@@ -714,6 +726,7 @@
             this.TxtSelfCheckTime.Size = new System.Drawing.Size(104, 26);
             this.TxtSelfCheckTime.TabIndex = 7;
             this.TxtSelfCheckTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtSelfCheckTime.Enter += new System.EventHandler(this.TxtSelfCheckTime_Enter);
             // 
             // CmbMeasurementUnit
             // 
@@ -830,14 +843,14 @@
             this.DgvAlphaSet.AllowUserToAddRows = false;
             this.DgvAlphaSet.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle58.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle58;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -854,6 +867,7 @@
             this.DgvAlphaSet.RowTemplate.Height = 27;
             this.DgvAlphaSet.Size = new System.Drawing.Size(722, 258);
             this.DgvAlphaSet.TabIndex = 11;
+            this.DgvAlphaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAlphaSet_CellClick);
             // 
             // TxtAlphaChannelName
             // 
@@ -1047,14 +1061,14 @@
             // 
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle59.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle59;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -1075,6 +1089,7 @@
             this.DgvBetaSet.RowTemplate.Height = 27;
             this.DgvBetaSet.Size = new System.Drawing.Size(722, 258);
             this.DgvBetaSet.TabIndex = 12;
+            this.DgvBetaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBetaSet_CellClick);
             // 
             // TxtBetaChannelName
             // 
@@ -1654,6 +1669,7 @@
             this.TxtClothOfflineTime.Size = new System.Drawing.Size(130, 26);
             this.TxtClothOfflineTime.TabIndex = 23;
             this.TxtClothOfflineTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtClothOfflineTime.Enter += new System.EventHandler(this.TxtClothOfflineTime_Enter);
             // 
             // LblClothOfflineTime
             // 
@@ -1676,6 +1692,7 @@
             this.TxtClothesEfficiency.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesEfficiency.TabIndex = 21;
             this.TxtClothesEfficiency.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtClothesEfficiency.Enter += new System.EventHandler(this.TxtClothesEfficiency_Enter);
             // 
             // TxtClothesAlarm_2
             // 
@@ -1687,6 +1704,7 @@
             this.TxtClothesAlarm_2.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesAlarm_2.TabIndex = 20;
             this.TxtClothesAlarm_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtClothesAlarm_2.Enter += new System.EventHandler(this.TxtClothesAlarm_2_Enter);
             // 
             // TxtClothesAlarm_1
             // 
@@ -1698,6 +1716,7 @@
             this.TxtClothesAlarm_1.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesAlarm_1.TabIndex = 19;
             this.TxtClothesAlarm_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtClothesAlarm_1.Enter += new System.EventHandler(this.TxtClothesAlarm_1_Enter);
             // 
             // TxtClothesLBackground
             // 
@@ -1709,6 +1728,7 @@
             this.TxtClothesLBackground.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesLBackground.TabIndex = 18;
             this.TxtClothesLBackground.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtClothesLBackground.Enter += new System.EventHandler(this.TxtClothesLBackground_Enter);
             // 
             // TxtClothesHBackground
             // 
@@ -1720,6 +1740,7 @@
             this.TxtClothesHBackground.Size = new System.Drawing.Size(130, 26);
             this.TxtClothesHBackground.TabIndex = 17;
             this.TxtClothesHBackground.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtClothesHBackground.Enter += new System.EventHandler(this.TxtClothesHBackground_Enter);
             // 
             // LblClothesEfficiency
             // 
@@ -1806,13 +1827,13 @@
             // DgvMainPreferenceSet
             // 
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle60.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle60;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -1832,6 +1853,7 @@
             this.DgvMainPreferenceSet.RowTemplate.Height = 27;
             this.DgvMainPreferenceSet.Size = new System.Drawing.Size(745, 330);
             this.DgvMainPreferenceSet.TabIndex = 12;
+            this.DgvMainPreferenceSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMainPreferenceSet_CellClick);
             // 
             // TxtMainPreferenceChanneName
             // 
