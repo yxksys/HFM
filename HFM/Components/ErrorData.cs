@@ -2,9 +2,9 @@
  * ________________________________________________________________________________ 
  *
  *  描述：故障数据类
- *  作者：
+ *  作者：白茹
  *  版本：
- *  创建时间：
+ *  创建时间：2020年2月19日
  *  类名：故障数据类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
@@ -157,5 +157,16 @@ namespace HFM.Components
 
         #endregion
 
+        public MeasureData GetData()
+        {
+        }
+#endregion
+
+        #region 更新上报状态。
+        public bool UpdataReported(bool isReported, int measureDataID)
+        {
+
+        }
+        #endregion
     }
 }

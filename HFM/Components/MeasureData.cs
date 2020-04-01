@@ -2,9 +2,9 @@
  * ________________________________________________________________________________ 
  *
  *  描述：
- *  作者：
+ *  作者：白茹
  *  版本：
- *  创建时间：
+ *  创建时间：2020年2月17日
  *  类名：监测数据类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
@@ -41,6 +41,7 @@ namespace HFM.Components
         private float _hV;//高压值
         private int _infraredStatus=0;//红外状态，0：手部不到位/衣物探头未拿起 1：手部到位/衣物探头拿起
         private bool _isEnglish=false;//是否英文
+        private bool _isReported;//是否上报
         /// <summary>
         /// 测量数据ID
         /// </summary>
@@ -89,6 +90,10 @@ namespace HFM.Components
         /// 测量通道
         /// </summary>
         internal Channel Channel { get => _channel; set => _channel = value; }
+        /// <summary>
+        /// 是否上报
+        /// </summary>
+        public bool IsReported { get => _isReported; set => _isReported = value; }
         #endregion
 
         #region 构造函数
@@ -211,6 +216,20 @@ namespace HFM.Components
             {
                 return false;
             }
+        }
+        #endregion
+
+        #region 查询最新一条监测记录
+        public MeasureData GetData()
+        {
+
+        }
+        #endregion
+
+        #region 更新上报状态。
+        public bool UpdataReported(bool isReported, int measureDataID)
+        {
+
         }
         #endregion
     }
