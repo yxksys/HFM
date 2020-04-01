@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,30 +32,59 @@ namespace HFM
         /// 系统参数
         /// </summary>
         private Components.SystemParameter _systemParameter=new Components.SystemParameter().GetParameter();
-        /// <summary>
-        /// 检测数据(英文)数据库查询所得
-        /// </summary>
-        private IList<MeasureData> _measureDataEnglish =new MeasureData().GetData(true);
-        /// <summary>
-        /// 检测数据(中文)数据库查询所得
-        /// </summary>
-        private IList<MeasureData> _measureDataChinese = new MeasureData().GetData();
-        /// <summary>
-        /// 刻度记录-数据库查询所得
-        /// </summary>
-        private IList<Calibration> _calibrations = new Calibration().GetData();
-        /// <summary>
-        /// 故障记录(英文)数据库查询所得
-        /// </summary>
-        private IList<ErrorData> _errorDatasEnglish=new ErrorData().GetData(true);
-        /// <summary>
-        /// 故障记录(中文)数据库查询所得
-        /// </summary>
-        private IList<ErrorData> _errorDatasChinese = new ErrorData().GetData(false);
+        
+        
+        
         #endregion
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public FrmHistory()
         {
             InitializeComponent();
+        }
+        /// <summary>
+        /// 启动加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmHistory_Load(object sender, EventArgs e)
+        {
+            /// <summary>
+            /// 检测数据(英文)数据库查询所得
+            /// </summary>
+            IList<MeasureData> _measureDataEnglish = new MeasureData().GetData(true);
+            /// <summary>
+            /// 检测数据(中文)数据库查询所得
+            /// </summary>
+            IList<MeasureData> _measureDataChinese = new MeasureData().GetData();
+
+
+            DgvMeasure.Rows.Clear();        //清理Dgv数据表
+            if (_systemParameter.IsEnglish)
+            {
+                //遍历列表对象,取出数据按字段,添加到Dgv中
+                foreach (var measureData in _measureDataEnglish)
+                {
+                    _measurArray[0] = measureData.MeasureDate.ToString();
+                    _measurArray[1] = measureData.MeasureStatus;
+                    _measurArray[2] = measureData.DetailedInfo;
+                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    DgvMeasure.Rows.Add(_measurArray);
+                }
+            }
+            else
+            {
+                //遍历列表对象,取出数据按字段,添加到Dgv中
+                foreach (var measureData in _measureDataChinese)
+                {
+                    _measurArray[0] = measureData.MeasureDate.ToString();
+                    _measurArray[1] = measureData.MeasureStatus;
+                    _measurArray[2] = measureData.DetailedInfo;
+                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    DgvMeasure.Rows.Add(_measurArray);
+                }
+            }
         }
 
         #region 页面切换
@@ -70,6 +100,14 @@ namespace HFM
             {
                 case 0:
                     DgvMeasure.Rows.Clear();        //清理Dgv数据表
+                    /// <summary>
+                    /// 检测数据(英文)数据库查询所得
+                    /// </summary>
+                    IList<MeasureData> _measureDataEnglish = new MeasureData().GetData(true);
+                    /// <summary>
+                    /// 检测数据(中文)数据库查询所得
+                    /// </summary>
+                    IList<MeasureData> _measureDataChinese = new MeasureData().GetData();
                     if (_systemParameter.IsEnglish)
                     {
                         //遍历列表对象,取出数据按字段,添加到Dgv中
@@ -97,6 +135,10 @@ namespace HFM
                     break;
                 case 1:
                     DgvCalibration.Rows.Clear();        //清理Dgv数据表
+                    /// <summary>
+                    /// 刻度记录-数据库查询所得
+                    /// </summary>
+                    IList<Calibration> _calibrations = new Calibration().GetData();
                     //遍历列表对象,取出数据按字段,添加到Dgv中
                     foreach (var calibration in _calibrations)
                     {
@@ -112,6 +154,14 @@ namespace HFM
                     break;
                 case 2:
                     DgvError.Rows.Clear();
+                    /// <summary>
+                    /// 故障记录(英文)数据库查询所得
+                    /// </summary>
+                    IList<ErrorData> _errorDatasEnglish = new ErrorData().GetData(true);
+                    /// <summary>
+                    /// 故障记录(中文)数据库查询所得
+                    /// </summary>
+                    IList<ErrorData> _errorDatasChinese = new ErrorData().GetData(false);
                     if (_systemParameter.IsEnglish)
                     {
                         foreach (var errorData in _errorDatasEnglish)
@@ -139,8 +189,145 @@ namespace HFM
                     break;
             }
 
-        } 
+        }
+
         #endregion
+
+        /// <summary>
+        /// 导出故障记录文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDeriveError_Click(object sender, EventArgs e)
+        {
+            string localFilePath = "", fileNameExt = "", newFileName = "", FilePath = "";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //设置文件类型
+            //书写规则例如：txt files(*.txt)|*.txt
+            saveFileDialog.Filter = "txt files(*.txt)|*.txt|xls files(*.xls)|*.xls|All files(*.*)|*.*";
+            //设置默认文件名（可以不设置）
+            saveFileDialog.FileName = DateTime.Now.ToString("yyyy MMMM dd") + "FaultLog";
+            //主设置默认文件extension（可以不设置）
+            saveFileDialog.DefaultExt = "txt";
+            //获取或设置一个值，该值指示如果用户省略扩展名，文件对话框是否自动在文件名中添加扩展名。（可以不设置）
+            saveFileDialog.AddExtension = true;
+            //设置默认文件类型显示顺序（可以不设置）
+            saveFileDialog.FilterIndex = 2;
+
+            //保存对话框是否记忆上次打开的目录
+            saveFileDialog.RestoreDirectory = true;
+
+            // Show save file dialog box
+            DialogResult result = saveFileDialog.ShowDialog();
+            //点了保存按钮进入
+            if (result == DialogResult.OK)
+            {
+                //获得文件路径
+                localFilePath = saveFileDialog.FileName.ToString();
+                //获取文件名，不带路径
+                fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1);
+                //获取文件路径，不带文件名
+                FilePath = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));//在文件名里加字符
+                //saveFileDialog.FileName.Insert(1,"dameng");
+                //为用户使用 SaveFileDialog 选定的文件名创建读/写文件流。
+                //System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog.OpenFile();//输出文件
+                //fs可以用于其他要写入的操作
+                System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog.OpenFile();//输出文件
+                //fs可以用于其他要写入的操作
+                AddText(fs,"故障时间\t故障记录\t是否英文\n");
+                string str = "";
+                for (int i = 0; i < DgvError.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < DgvError.Columns.Count; j++)
+                    {
+                        str = DgvError.Rows[i].Cells[j].Value.ToString().Trim();
+                        str = str + "\t";
+                        AddText(fs,str);
+                    }
+                    AddText(fs,"\n");
+                }
+                fs.Close();
+            }
+        }
+        /// <summary>
+        /// 导出文件写入操作
+        /// </summary>
+        /// <param name="fs"></param>
+        /// <param name="value"></param>
+        private static void AddText(FileStream fs, string value)
+        {
+            byte[] info = new UTF8Encoding(true).GetBytes(value);
+            fs.Write(info, 0, info.Length);
+        }
+        /// <summary>
+        /// 导出刻度记录文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDeriveCalibration_Click(object sender, EventArgs e)
+        {
+            string localFilePath = "", fileNameExt = "", newFileName = "", FilePath = "";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //设置文件类型
+            //书写规则例如：txt files(*.txt)|*.txt
+            saveFileDialog.Filter = "txt files(*.txt)|*.txt|xls files(*.xls)|*.xls|All files(*.*)|*.*";
+            //设置默认文件名（可以不设置）
+            saveFileDialog.FileName = DateTime.Now.ToString("yyyy MMMM dd")+"CalibrationLog";
+            //主设置默认文件extension（可以不设置）
+            saveFileDialog.DefaultExt = "txt";
+            //获取或设置一个值，该值指示如果用户省略扩展名，文件对话框是否自动在文件名中添加扩展名。（可以不设置）
+            saveFileDialog.AddExtension = true;
+            //设置默认文件类型显示顺序（可以不设置）
+            saveFileDialog.FilterIndex = 2;
+
+            //保存对话框是否记忆上次打开的目录
+            saveFileDialog.RestoreDirectory = true;
+
+            // Show save file dialog box
+            DialogResult result = saveFileDialog.ShowDialog();
+            //点了保存按钮进入
+            if (result == DialogResult.OK)
+            {
+                //获得文件路径
+                localFilePath = saveFileDialog.FileName.ToString();
+                //获取文件名，不带路径
+                fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1);
+                //获取文件路径，不带文件名
+                FilePath = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));//在文件名里加字符
+                //saveFileDialog.FileName.Insert(1,"dameng");
+                //为用户使用 SaveFileDialog 选定的文件名创建读/写文件流。
+                //System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog.OpenFile();//输出文件
+                //fs可以用于其他要写入的操作
+                System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog.OpenFile();//输出文件
+                //fs可以用于其他要写入的操作
+                AddText(fs, "刻度时间\t刻度通道\t高压值\t阈值\t效率\t探测下限\t串道比\n");
+                string str = "";
+                for (int i = 0; i < DgvCalibration.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < DgvCalibration.Columns.Count; j++)
+                    {
+                        str = DgvCalibration.Rows[i].Cells[j].Value.ToString().Trim();
+                        str = str + "\t";
+                        AddText(fs, str);
+                    }
+                    AddText(fs, "\n");
+                }
+                fs.Close();
+            }
+        }
+        /// <summary>
+        /// 故障日志,删除数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDeleteError_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要删除所有故障日记记录么?","提示",MessageBoxButtons.OKCancel)==DialogResult.OK)
+            {
+                int count=new ErrorData().DeleteData();
+                MessageBox.Show($"您成功删除{count}条记录");
+            }
+        }
     }
 
     
