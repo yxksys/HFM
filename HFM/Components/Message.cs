@@ -345,8 +345,8 @@ namespace HFM.Components
                             //channel.GetChannel(channelID); 
                             Channel channel = new Channel();
                             MeasureData measureData = new MeasureData();
-                            channel.GetChannel(channelID);
-                            //channel.ChannelID = channelID;                           
+                            //channel.GetChannel(channelID);
+                            channel.ChannelID = channelID;                           
                             measureData.Channel = channel;
                             measureData.Alpha = alpha;
                             measureData.Beta = beta;
