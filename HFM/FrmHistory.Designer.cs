@@ -165,6 +165,7 @@
             this.BtnDeriveCalibration.TabIndex = 4;
             this.BtnDeriveCalibration.Text = "导出数据";
             this.BtnDeriveCalibration.UseVisualStyleBackColor = false;
+            this.BtnDeriveCalibration.Click += new System.EventHandler(this.BtnDeriveCalibration_Click);
             // 
             // DgvCalibration
             // 
@@ -263,6 +264,7 @@
             this.BtnDeleteError.TabIndex = 4;
             this.BtnDeleteError.Text = "删除数据";
             this.BtnDeleteError.UseVisualStyleBackColor = false;
+            this.BtnDeleteError.Click += new System.EventHandler(this.BtnDeleteError_Click);
             // 
             // BtnDeriveError
             // 
@@ -276,6 +278,7 @@
             this.BtnDeriveError.TabIndex = 3;
             this.BtnDeriveError.Text = "导出数据";
             this.BtnDeriveError.UseVisualStyleBackColor = false;
+            this.BtnDeriveError.Click += new System.EventHandler(this.BtnDeriveError_Click);
             // 
             // DgvError
             // 
