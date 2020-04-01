@@ -1,7 +1,7 @@
 ﻿/**
  * ________________________________________________________________________________ 
  *
- *  描述：
+ *  描述：故障数据类
  *  作者：
  *  版本：
  *  创建时间：
@@ -26,6 +26,10 @@ namespace HFM.Components
                                                                  "FROM HFM_ErrData WHERE IsEnglish=@IsEnglish";
         private const string SQL_INSERT_ERRORDATA = "INSERT INTO HFM_ErrData (ErrTime,Record,IsEnglish)" +
                                                     "VALUES(@ErrTime,@Record,@IsEnglish )";
+        /// <summary>
+        /// 删除故障记录表中所有记录 
+        /// </summary>
+        private const string SQL_DELETE_ERRORDATA = "DELETE FROM HFM_ErrData";
         #region 字段属性
         private int _errID;//故障ID
         private DateTime _errTime;//故障时间
@@ -144,6 +148,14 @@ namespace HFM.Components
 
         #endregion
 
+        #region 删除表中所有记录
+
+        public int DeleteData()
+        {
+            return DbHelperAccess.ExecuteSql(SQL_DELETE_ERRORDATA);
+        }
+
+        #endregion
 
     }
 }

@@ -153,6 +153,7 @@
             this.BtnDeleteCalibration.TabIndex = 5;
             this.BtnDeleteCalibration.Text = "删除数据";
             this.BtnDeleteCalibration.UseVisualStyleBackColor = false;
+            this.BtnDeleteCalibration.Click += new System.EventHandler(this.BtnDeleteCalibration_Click);
             // 
             // BtnDeriveCalibration
             // 
@@ -165,6 +166,7 @@
             this.BtnDeriveCalibration.TabIndex = 4;
             this.BtnDeriveCalibration.Text = "导出数据";
             this.BtnDeriveCalibration.UseVisualStyleBackColor = false;
+            this.BtnDeriveCalibration.Click += new System.EventHandler(this.BtnDeriveCalibration_Click);
             // 
             // DgvCalibration
             // 
@@ -263,6 +265,7 @@
             this.BtnDeleteError.TabIndex = 4;
             this.BtnDeleteError.Text = "删除数据";
             this.BtnDeleteError.UseVisualStyleBackColor = false;
+            this.BtnDeleteError.Click += new System.EventHandler(this.BtnDeleteError_Click);
             // 
             // BtnDeriveError
             // 
@@ -276,6 +279,7 @@
             this.BtnDeriveError.TabIndex = 3;
             this.BtnDeriveError.Text = "导出数据";
             this.BtnDeriveError.UseVisualStyleBackColor = false;
+            this.BtnDeriveError.Click += new System.EventHandler(this.BtnDeriveError_Click);
             // 
             // DgvError
             // 
@@ -319,6 +323,7 @@
             this.Controls.Add(this.TabHistory);
             this.Name = "FrmHistory";
             this.Text = "历史记录";
+            this.Load += new System.EventHandler(this.FrmHistory_Load);
             this.TabHistory.ResumeLayout(false);
             this.TabMeasure.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvMeasure)).EndInit();

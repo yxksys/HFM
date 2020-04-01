@@ -37,6 +37,8 @@ namespace HFM.Components
         private const string SQL_INSERT_CALIBRATION = "INSERT INTO HFM_Calibration(CalibrationTime,ChannelID,HighVoltage," +
                                                       "Threshold,Efficiency,MDA,AlphaBetaPercent)" +
                                                       " VALUES(@CalibrationTime,@ChannelID,@HighVoltage,@Threshold,@Efficiency,@MDA,@AlphaBetaPercent)";
+
+        private const string SQL_DELETE_CALIBRATION = "DELETE FROM HFM_Calibration";
         #region 构造函数
         public Calibration()
         { }
@@ -231,6 +233,14 @@ namespace HFM.Components
             {
                 return false;
             }
+        }
+        /// <summary>
+        /// 删除表中数据信息
+        /// </summary>
+        /// <returns></returns>
+        public int DeleteData()
+        {
+            return DbHelperAccess.ExecuteSql(SQL_DELETE_CALIBRATION);
         }
     }
 }
