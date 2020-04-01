@@ -153,6 +153,7 @@
             this.BtnDeleteCalibration.TabIndex = 5;
             this.BtnDeleteCalibration.Text = "删除数据";
             this.BtnDeleteCalibration.UseVisualStyleBackColor = false;
+            this.BtnDeleteCalibration.Click += new System.EventHandler(this.BtnDeleteCalibration_Click);
             // 
             // BtnDeriveCalibration
             // 
