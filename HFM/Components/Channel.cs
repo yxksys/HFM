@@ -160,13 +160,17 @@ namespace HFM.Components
                 //读取数据赋值列表
                 while (reader.Read())
                 {
-                    Channel channel = new Channel();
-                    channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
-                    channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
-                    channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
-                    channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
-                    channel.Status = Convert.ToString(reader["Status"].ToString());
-                    channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                    Channel channel = new Channel
+                    {
+                        ChannelID = Convert.ToInt32(reader["ChannelID"].ToString()),
+                        ChannelName = Convert.ToString(reader["ChannelName"].ToString()),
+                        ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString()),
+                        ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == ""
+                            ? "0"
+                            : reader["ProbeArea"].ToString()),
+                        Status = Convert.ToString(reader["Status"].ToString()),
+                        IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString())
+                    };
                     Ichannels.Add(channel);
                 }
                 reader.Close();
