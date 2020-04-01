@@ -191,10 +191,11 @@ namespace HFM
         /// </summary>
         private static string _value = "";
         /// <summary>
-        /// 委托小键盘传入值
+        /// TextBox委托小键盘传入值
+        /// 使用示例FrmKeyIn.DelegatesKeyInTextBox(TxtSFR);
         /// </summary>
         /// <param name="textBox">当前文本框名称</param>
-        public static void DelegatesKeyIn(TextBox textBox)
+        public static void DelegatesKeyInTextBox(TextBox textBox)
         {
             //实例化委托
             SendValue value = _value => textBox.Text = _value;
@@ -203,9 +204,31 @@ namespace HFM
             //显示小键盘
             key.ShowDialog();
         }
-        /*使用示例
-         * FrmKeyIn.DelegatesKeyIn(TxtSFR);
-         */
+        /// <summary>
+        /// DataGridView委托小键盘传入值
+        /// 使用示例FrmKeyIn.DelegatesKeyInDGV(TxtSFR);
+        /// </summary>
+        /// <param name="Dgv">DGV名称</param>
+        public static void DelegatesKeyInDGV(DataGridView Dgv)
+        {
+            for (int i = 0; i < Dgv.Rows.Count; i++)
+            {
+                for (int j = 0; j < Dgv.Rows[i].Cells.Count; j++)
+                {
+                    if (Dgv.Rows[i].Cells[j].Selected == true)
+                    {
+                        //实例化委托
+                        SendValue value = _value => Dgv.Rows[i].Cells[j].Value = _value;
+                        // 实例化小键盘,并传入委托和传入值
+                        FrmKeyIn key = new FrmKeyIn(value, _value);
+                        //显示小键盘
+                        key.ShowDialog();
+                    }
+                }
+            }
+        }
+
+
         #endregion
     }
 }

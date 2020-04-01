@@ -27,7 +27,7 @@ namespace HFM
         /// <param name="e"></param>
         private void TxtOldPassword_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(TxtOldPassword);
+            FrmKeyIn.DelegatesKeyInTextBox(TxtOldPassword);
         }
         /// <summary>
         /// 新的密码
@@ -36,7 +36,7 @@ namespace HFM
         /// <param name="e"></param>
         private void TxtNewPassword_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(TxtNewPassword);
+            FrmKeyIn.DelegatesKeyInTextBox(TxtNewPassword);
         }
         /// <summary>
         /// 重复密码
@@ -45,7 +45,7 @@ namespace HFM
         /// <param name="e"></param>
         private void TxtFinalPsaaword_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(TxtFinalPsaaword);
+            FrmKeyIn.DelegatesKeyInTextBox(TxtFinalPsaaword);
         }
         #endregion
 

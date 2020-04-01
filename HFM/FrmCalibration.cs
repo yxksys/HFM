@@ -973,33 +973,33 @@ namespace HFM
         #region 文本框需要使用小键盘输入的
         private void TxtHV_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(TxtHV);
+            FrmKeyIn.DelegatesKeyInTextBox(TxtHV);
         }
 
 
         private void Txtα_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(Txtα);
+            FrmKeyIn.DelegatesKeyInTextBox(Txtα);
         }
 
         private void Txtβ_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(Txtβ);
+            FrmKeyIn.DelegatesKeyInTextBox(Txtβ);
         }
 
         private void TxtMeasuringTime_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(TxtMeasuringTime);
+            FrmKeyIn.DelegatesKeyInTextBox(TxtMeasuringTime);
         }
 
         private void TxtCount_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(TxtCount);
+            FrmKeyIn.DelegatesKeyInTextBox(TxtCount);
         }
 
         private void TxtSFR_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn.DelegatesKeyIn(TxtSFR);
+            FrmKeyIn.DelegatesKeyInTextBox(TxtSFR);
         } 
         #endregion
     }
