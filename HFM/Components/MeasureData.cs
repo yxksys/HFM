@@ -2,9 +2,9 @@
  * ________________________________________________________________________________ 
  *
  *  描述：
- *  作者：
+ *  作者：白茹
  *  版本：
- *  创建时间：
+ *  创建时间：2020年2月17日
  *  类名：监测数据类
  *  
  *  Copyright (C) 2020 TIT All rights reserved.
@@ -21,12 +21,32 @@ namespace HFM.Components
 {
     class MeasureData
     {
-        private const string SQL_SELECT_MEASUREDATA = "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish " +
+        #region 数据库查询语句
+        /// <summary>
+        /// 查询所有监测数据
+        /// </summary>
+        private const string SQL_SELECT_MEASUREDATA = "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported" +
                                                      "FROM HFM_MeasureData";
-        private const string SQL_SELECT_MEASUREDATA_BY_ISENGLISH= "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish " +
+        /// <summary>
+        /// （2）按照语言查询监测数据
+        /// </summary>
+        private const string SQL_SELECT_MEASUREDATA_BY_ISENGLISH= "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported" +
                                                      "FROM HFM_MeasureData WHERE IsEnglish=@IsEnglish";
-        private const string SQL_INSERT_MEASUREDATA = "INSERT INTO HFM_MeasureData(MeasureDate,MeasureStatus,DetailedInfo,IsEnglish)" +
+        /// <summary>
+        /// 添加监测数据
+        /// </summary>
+        private const string SQL_INSERT_MEASUREDATA = "INSERT INTO HFM_MeasureData(MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported)" +
                                                      "VALUES(@MeasureDate,@MeasureStatus,@DetailedInfo,@IsEnglish)";
+        /// <summary>
+        /// 查询最新一条监测记录
+        /// </summary>
+        private const string SQL_SELECT_MEASUREDATA_BY_NEWRECORD = "SELECT MAX(MeasureID),MeasureDate,MeasureStatus,DetailedInfo,IsEnglish ," +
+                                                          "IsReported FROM HFM_MeasureData";
+        /// <summary>
+        /// 查询ID小于measureDataID的所有监测数据记录的IsReported值
+        /// </summary>
+        private const string SQL_SELECT_MEASUREDATA_BY_ISREPORTED = "SELECT IsReported FROM HFM_MeasureData WHERE MeasureID<@measureDataID";
+        #endregion
 
         #region 字段属性
         private int _measureID;//ID
@@ -41,6 +61,7 @@ namespace HFM.Components
         private float _hV;//高压值
         private int _infraredStatus=0;//红外状态，0：手部不到位/衣物探头未拿起 1：手部到位/衣物探头拿起
         private bool _isEnglish=false;//是否英文
+        private bool _isReported;//是否上报
         /// <summary>
         /// 测量数据ID
         /// </summary>
@@ -89,6 +110,10 @@ namespace HFM.Components
         /// 测量通道
         /// </summary>
         internal Channel Channel { get => _channel; set => _channel = value; }
+        /// <summary>
+        /// 是否上报
+        /// </summary>
+        public bool IsReported { get => _isReported; set => _isReported = value; }
         #endregion
 
         #region 构造函数
@@ -135,7 +160,8 @@ namespace HFM.Components
                     measuredata.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
                     measuredata.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
                     measuredata.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
-                    measuredata.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());                    
+                    measuredata.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    measuredata.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                     //从reader读出并将构造的查询结果添加到List中
                     IMeasureDateS.Add(measuredata);
                 }
@@ -173,6 +199,7 @@ namespace HFM.Components
                     measureData.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
                     measureData.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
                     measureData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    measureData.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                     //从reader读出并将构造的对象添加到List中
                     IMeasureDateS.Add(measureData);
                 }
@@ -202,12 +229,14 @@ namespace HFM.Components
                     new OleDbParameter ("@MeasureDate",OleDbType.Date ,8),
                     new OleDbParameter ("@MeasureStatus",OleDbType.VarChar,50),
                     new OleDbParameter ("@DetailedInfo",OleDbType.LongVarChar),
-                    new OleDbParameter ("@IsEnglish",OleDbType.Boolean ,2)
+                    new OleDbParameter ("@IsEnglish",OleDbType.Boolean ,2),
+                    new OleDbParameter ("@IsReported",OleDbType.Boolean ,2)
                 };
             parms[0].Value = measureData.MeasureDate;
             parms[1].Value = measureData.MeasureStatus.ToString();
             parms[2].Value = measureData.DetailedInfo.ToString();
             parms[3].Value = measureData.IsEnglish;
+            parms[4].Value = measureData.IsReported;
             if (DbHelperAccess.ExecuteSql(SQL_INSERT_MEASUREDATA, parms) != 0)
             {
                 return true;
@@ -216,6 +245,49 @@ namespace HFM.Components
             {
                 return false;
             }
+        }
+        #endregion
+
+        #region 查询最新一条监测记录
+        public MeasureData GetData()
+        {
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_NEWRECORD))
+            {
+                while (reader.Read())//读查询结果
+                {
+                    this.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
+                    this.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
+                    this.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
+                    this.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
+                    this.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    this.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
+                }
+                reader.Close();
+                DbHelperAccess.Close();
+            }
+            return this;
+        }
+        #endregion
+
+        #region 更新上报状态。
+        public bool UpdataReported(bool isReported, int measureDataID)
+        {
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("@measureDataID",OleDbType.Integer,4)
+            };
+            parms[0].Value = measureDataID;
+            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_ISREPORTED, parms))
+            {
+                while (reader.Read())
+                {
+                    this.IsReported = isReported;                
+                }
+                reader.Close();
+                DbHelperAccess.Close();
+            }
+            return true;
         }
         #endregion
     }
