@@ -2562,5 +2562,10 @@ namespace HFM
 
         [DllImport("kernel32", CharSet = CharSet.Ansi)]
         private static extern bool SetSystemTime(ref SYSTEMTIME t);
+
+        private void BtnOption_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

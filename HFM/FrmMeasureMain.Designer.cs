@@ -202,6 +202,7 @@
             resources.ApplyResources(this.BtnOption, "BtnOption");
             this.BtnOption.Name = "BtnOption";
             this.BtnOption.UseVisualStyleBackColor = true;
+            this.BtnOption.Click += new System.EventHandler(this.BtnOption_Click);
             // 
             // PicRHB
             // 
