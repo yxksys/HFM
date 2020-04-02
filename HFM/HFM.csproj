@@ -162,6 +162,9 @@
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMeasureMain.en.resx">
+      <DependentUpon>FrmMeasureMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMeasureMain.resx">
       <DependentUpon>FrmMeasureMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,9 +222,11 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="app.ico" />
+    <Content Include="Audio\Chinese_NoContamination_please_leave.wav" />
     <Content Include="Audio\Chinese_One.wav" />
     <Content Include="Audio\Chinese_Ten.wav" />
     <Content Include="Audio\Chinese_Two.wav" />
+    <Content Include="Audio\English_NoContamination_please_frisker.wav" />
     <Content Include="Audio\English_Ten.wav" />
     <Content Include="Audio\English_One.wav" />
     <Content Include="Audio\English_Two.wav" />
@@ -251,7 +256,6 @@
     <Content Include="Audio\English_fault.wav" />
     <Content Include="Audio\English_Background_abnomal.wav" />
     <Content Include="Audio\English_Updating_background.wav" />
-    <Content Include="Audio\English_No Contamination_please_leave.wav" />
     <Content Include="Audio\English_Self-checking_fault.wav" />
     <Content Include="Audio\English_frisker_In_place.wav" />
     <Content Include="Audio\English_Clothing_contaminated.wav" />
@@ -271,7 +275,6 @@
     <Content Include="Audio\Chinese_Self-checking_fault.wav" />
     <Content Include="Audio\Chinese_frisker_In_place.wav" />
     <Content Include="Audio\Chinese_Clothing_contaminated.wav" />
-    <Content Include="Audio\Chinese_No Contamination_please_leave.wav" />
     <Content Include="Audio\Chinese_Decontaminate_please.wav" />
     <Content Include="Images\app.ico" />
     <Content Include="Images\clothes.png" />

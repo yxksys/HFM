@@ -295,12 +295,12 @@ namespace HFM.Components
         /// </summary>
         /// <param></param>
         /// <returns>当前端口设置</returns>
-        public CommPort GetCommPortSet()
+        public CommPort GetCommPortSet(string key)
         {
             string portNum = "COM1";
             string parity ="无";
             string stopBits = "1";
-            string portSetString = System.Configuration.ConfigurationManager.AppSettings["commportSet"].ToString();
+            string portSetString = System.Configuration.ConfigurationManager.AppSettings[key].ToString();
             string[] portSetArray=portSetString.Split(';');
             HexCon hexCon = new HexCon();
             for(int i=0;i<portSetArray.Length;i++)

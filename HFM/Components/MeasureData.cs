@@ -183,6 +183,11 @@ namespace HFM.Components
         }
         #endregion
 
+        public MeasureData GetLatestData()
+        {
+            return null;
+        }
+
         #region 添加监测数据
         /// <summary>
         /// 添加监测数据。
