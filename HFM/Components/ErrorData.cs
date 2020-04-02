@@ -189,19 +189,17 @@ namespace HFM.Components
         #endregion
 
         #region 查询最新一条监测记录
-        public ErrorData GetData()
+        public ErrorData GetLatestData()
         {
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_NEWRECORD))
             {
                 while (reader.Read())//读取查询结果
                 {
-                    //构造ErrorData对象
-                    ErrorData errorData = new ErrorData();
-                    errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
-                    errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
-                    errorData.Record = Convert.ToString(reader["Record"].ToString());
-                    errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
-                    errorData.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
+                    this.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
+                    this.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
+                    this.Record = Convert.ToString(reader["Record"].ToString());
+                    this.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    this.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
