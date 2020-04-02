@@ -15,6 +15,9 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using HFM.Components;
 namespace HFM.Components
@@ -304,10 +307,10 @@ namespace HFM.Components
         public static byte[] CRC16(byte[] data, int length)
         {
             int len = data.Length;
-            if (len > 0&& len>=length)
+            if (len > 0)
             {
                 ushort crc = 0xFFFF;
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < len; i++)
                 {
                     crc = (ushort)(crc ^ (data[i]));
                     for (int j = 0; j < 8; j++)
@@ -324,18 +327,61 @@ namespace HFM.Components
         }
         #endregion
 
-        #region 中英文界面转换时加载语言资源
-        public static void ApplyLanguageResource(Form form)
+        #region 加密方法
+
+        /// <summary>
+        /// 32位MD5加密
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static string MD5Encrypt32(string password)
         {
-            System.ComponentModel.ComponentResourceManager res = new System.ComponentModel.ComponentResourceManager(form.GetType());
-            foreach (Control ctl in form.Controls)
+            string cl = password;
+            string pwd = "";
+            MD5 md5 = MD5.Create(); //实例化一个md5对像
+            // 加密后是一个字节类型的数组，这里要注意编码UTF8/Unicode等的选择　
+            byte[] s = md5.ComputeHash(Encoding.UTF8.GetBytes(cl));
+            // 通过使用循环，将字节类型的数组转换为字符串，此字符串是常规字符格式化所得
+            for (int i = 0; i < s.Length; i++)
             {
-                res.ApplyResources(ctl, ctl.Name);
+                // 将得到的字符串使用十六进制类型格式。格式后的字符是小写的字母，如果使用大写（X）则格式后的字符是大写字符 
+                pwd = pwd + s[i].ToString("X");
             }
-            form.ResumeLayout(false);
-            form.PerformLayout();
-            res.ApplyResources(form, "$form");
+            return pwd;
         }
+
+        #endregion
+
+        #region 错误日志记录
+        /// <summary>
+        /// 错误日志文件创建
+        /// </summary>
+        /// <param name="error"></param>
+        public static void ErrorLog(string error)
+        {
+            //错误日志文件创建位置
+            string path = $@"ErrorLog\{DateTime.Now.ToString("yyyyMMddTHHmmss")}.txt";
+            if (!File.Exists(path))
+            {
+                // 创建要写入的文件。
+                FileInfo fi1 = new FileInfo(path);
+                try
+                {
+                    using (StreamWriter sw = fi1.CreateText())
+                    {
+                        sw.WriteLine(error);
+
+                        sw.Close();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("程序中找不到错误日志文件目录,请手动在程序目录中创建日志目录'ErrorLog'");
+                    throw;
+                }
+            }
+        }
+
         #endregion
     }
 }

@@ -27,18 +27,7 @@ namespace HFM
     public partial class FrmMain : Form
     {
         #region 字段
-        /// <summary>
-        /// 枚举登陆角色状态信息
-        /// </summary>
-        public enum LandingRole
-        {
-            Admin,
-            User
-        }
-        /// <summary>
-        /// 当前登陆角色
-        /// </summary>
-        public LandingRole _LandingRole { get; set; }
+        
         #endregion
 
         #region 实例
@@ -61,7 +50,9 @@ namespace HFM
         /// <summary>
         /// 实例化Timer类，设置间隔时间为10000毫秒
         /// </summary>
-        System.Timers.Timer TmrStatus = new System.Timers.Timer(10000);  
+        System.Timers.Timer TmrStatus = new System.Timers.Timer(10000);
+
+        public static FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
 
         #endregion
 
@@ -185,7 +176,6 @@ namespace HFM
         #region 启动加载
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            
 
         }
         #endregion
@@ -198,9 +188,8 @@ namespace HFM
         /// <param name="e"></param>
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
-            frmMeasureMain.Show();
-            this.Hide();
+            frmMeasureMain.ShowDialog();
+            this.Dispose();
         }
 
         /// <summary>
@@ -214,23 +203,20 @@ namespace HFM
              * 是:弹出提示框,让用户选择退出当前用户状态
              * 否:弹出维护密码窗体
              */
-            if (_LandingRole == LandingRole.Admin)
+            if (User.LandingUser.Role ==1 )
             {
                 //提示框
-                if (MessageBox.Show("是否退出当前管理用户?", "提示", MessageBoxButtons.OKCancel)==DialogResult.OK)
+                if (MessageBox.Show("是否退出当前用户?", "提示", MessageBoxButtons.OKCancel)==DialogResult.OK)
                 {
-                    _LandingRole = LandingRole.User;
+                    User.LandingUser = User.LandingUser.GetUser(3);
                 }
-                else
-                {
-                    _LandingRole = LandingRole.Admin;
-                }
-
             }
             else
             {
                 //开起维护密码窗体
-                FrmDisposeNormal(new FrmEnterPassword());
+                FrmEnterPassword frmEnterPassword=new FrmEnterPassword();
+                frmEnterPassword.Show();
+                // FrmDisposeNormal(new FrmEnterPassword());
             }
         }
         /// <summary>
@@ -249,8 +235,8 @@ namespace HFM
         /// <param name="e"></param>
         private void RetreatSystemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //释放当前所有资源
-            this.Dispose();
+            //退出系统
+            Application.Exit();
         }
         #endregion
 
@@ -314,8 +300,12 @@ namespace HFM
             FrmDisposeNormal(new FrmHelp());
         }
 
+
         #endregion
 
-        
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

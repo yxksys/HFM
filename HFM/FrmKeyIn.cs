@@ -29,7 +29,7 @@ namespace HFM
         /// <summary>
         /// 委托变量 
         /// </summary>
-        public event SendValue sendValue;
+        public event SendValue SendValueEventHandler;
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -46,16 +46,19 @@ namespace HFM
         #endregion
         #region 方法
          //初始化数据
-        public FrmKeyIn(SendValue _sendValue, string _value)
+        public FrmKeyIn(SendValue sendValueEventHandler, string _value)
         {
             InitializeComponent();
-            sendValue = _sendValue;
+            SendValueEventHandler = sendValueEventHandler;
             Code = _value;
-            TempButton = new Button();
             //使得临时按钮的大小与数字键盘上按钮的大小相同，但颜色为黑色，不可视
-            TempButton.BackColor = Color.Black;
-            TempButton.Size = new System.Drawing.Size(292, 349); 
-            TempButton.Visible = false;
+            if (TempButton != null)
+            {
+                TempButton.BackColor = Color.Black;
+                TempButton.Size = new System.Drawing.Size(292, 349);
+                TempButton.Visible = false;
+            }
+
             //给按钮数组赋值
             buttonNum[0] = BtnDot;
             buttonNum[1] = BtnOne;   buttonNum[2] = BtnTwo;   buttonNum[3] = BtnThree;
@@ -63,13 +66,14 @@ namespace HFM
             buttonNum[7] = BtnSeven; buttonNum[8] = BtnEight; buttonNum[9] = BtnNine;
             //高亮集中在“确认”按钮上
             BtnEnter.Focus();
+            
         }        
         #endregion
 
         #region 界面初始加载
         private void FrmKeyIn_Load(object sender, EventArgs e)
         {
-            if (_isEnglish == true)
+            if (_isEnglish != true)
             {
                 this.Text = "数字输入";
                 BtnBackspace.Text = "退格";
@@ -88,7 +92,7 @@ namespace HFM
         private void BtnEnter_Click(object sender, EventArgs e)
         {
             //执行委托
-            sendValue.Invoke(Code);
+            SendValueEventHandler.Invoke(Code);
             //关闭窗口
             this.Close();
         }
@@ -165,14 +169,66 @@ namespace HFM
             //添加数字键盘上输入的数字
             Code += btn.Text;
             //临时按钮获取该发送者的位置坐标和内容
-            TempButton.Location = btn.Location;
-            //使得临时按钮可视
-            TempButton.Visible = true;
-            //延时
-            Thread.Sleep(200);
-            //使得临时按钮不可视
-            TempButton.Visible = false;
+            if (TempButton != null)
+            {
+                TempButton.Location = btn.Location;
+                //使得临时按钮可视
+                TempButton.Visible = true;
+                //延时
+                Thread.Sleep(200);
+                //使得临时按钮不可视
+                TempButton.Visible = false;
+            }
+            //执行委托
+            SendValueEventHandler.Invoke(Code);
         }
+        #endregion
+
+
+        #region 小键盘公共静态方法,可在其他窗体中直接使用小键盘
+        /// <summary>
+        /// 传入值
+        /// </summary>
+        private static string _value = "";
+        /// <summary>
+        /// TextBox委托小键盘传入值
+        /// 使用示例FrmKeyIn.DelegatesKeyInTextBox(TxtSFR);
+        /// </summary>
+        /// <param name="textBox">当前文本框名称</param>
+        public static void DelegatesKeyInTextBox(TextBox textBox)
+        {
+            //实例化委托
+            void SendValue(string _value) => textBox.Text = _value;
+            // 实例化小键盘,并传入委托和传入值
+            FrmKeyIn key = new FrmKeyIn(SendValue, _value);
+            //显示小键盘
+            key.ShowDialog();
+        }
+        /// <summary>
+        /// DataGridView委托小键盘传入值
+        /// 使用示例FrmKeyIn.DelegatesKeyInDGV(TxtSFR);
+        /// </summary>
+        /// <param name="Dgv">DGV名称</param>
+        public static void DelegatesKeyInDGV(DataGridView Dgv)
+        {
+            for (int i = 0; i < Dgv.Rows.Count; i++)
+            {
+                for (int j = 0; j < Dgv.Rows[i].Cells.Count; j++)
+                {
+                    if (Dgv.Rows[i].Cells[j].Selected == true)
+                    {
+                        //实例化委托
+                        void SendValue(string _value) => Dgv.Rows[i].Cells[j].Value = _value;
+                        // 实例化小键盘,并传入委托和传入值
+                        FrmKeyIn key = new FrmKeyIn(SendValue, _value);
+                        //显示小键盘
+                        key.ShowDialog();
+                    }
+                }
+            }
+        }
+
+
         #endregion
     }
 }

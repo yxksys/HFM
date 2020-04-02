@@ -555,26 +555,44 @@ namespace HFM
                 receiveBufferMessage = (byte[])e.UserState;
             }
             //接收报文数据为空
-            if (receiveBufferMessage.Length < messageBufferLength)
+            try
             {
-                errNumber++;
-                //数据接收出现错误次数超限
-                if (errNumber >= 2)
+                if (receiveBufferMessage.Length < messageBufferLength)
                 {
-                    if (_isEnglish == true)
+                    errNumber++;
+                    //数据接收出现错误次数超限
+                    if (errNumber >= 2)
                     {
-                        MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
-                        return;
+                        if (_isEnglish == true)
+                        {
+                            MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+                            return;
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
-                        return;
-                    }
+                    return;
                 }
-                return;
             }
-
+            catch (Exception EX_NAME)
+            {
+                Tools.ErrorLog(EX_NAME.ToString());
+                if (_isEnglish == true)
+                {
+                    MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+                    return;
+                }
+                // Console.WriteLine(EX_NAME);
+                throw;
+            }
             //解析P数据报文
             if (receiveBufferMessage[0] == Convert.ToByte('P'))
             {
@@ -700,27 +718,17 @@ namespace HFM
                         _effAlpha =((_alphaNr - _alphaNb) / Convert.ToSingle(TxtSFR.Text));//Alpha效率
                         _effBeta = ((_betaNr - _betaNb) / Convert.ToSingle(TxtSFR.Text));//Beta效率
                         _eff = _effAlpha > _effBeta ? _effAlpha*100 : _effBeta*100;//效率取Alpha或Beta的最大值
-                        try
-                        {
-                            //Beta探测下限
-                            _betaMda =
-                                (_p * (_betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
-                                       _betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
-                                 (0.005f * _betaNb)) / (_effBeta / 2) / area;
-                            //Alpha探测下限
-                            _alphaMda =
-                                (_p * (_alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
-                                       _alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
-                                 (0.005f * _betaNb)) / (_effBeta / 2) / area;
-                        }
-                        catch (Exception exception)
-                        {
-                            //Beta探测下限
-                            _betaMda = 0;
-                            //Alpha探测下限
-                            _alphaMda = 0;
-                           throw;
-                        }
+
+                        //Beta探测下限
+                        _betaMda =
+                            (_p * (_betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
+                                   _betaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
+                             (0.005f * _betaNb)) / (_effBeta / 2) / area;
+                        //Alpha探测下限
+                        _alphaMda =
+                            (_p * (_alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)) +
+                                   _alphaNb / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text) * 2)) +
+                             (0.005f * _betaNb)) / (_effBeta / 2) / area;
                         
                         _resultMda = _effAlpha > _effBeta ? _alphaMda : _betaMda;//探测下限取值和效率一样的
                         float rangeMda;//探测下限范围
@@ -970,14 +978,37 @@ namespace HFM
 
         #endregion
 
+        #region 文本框需要使用小键盘输入的
         private void TxtHV_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmKeyIn key=new FrmKeyIn(ReceiveValue, _value);
-            key.Show();
+            FrmKeyIn.DelegatesKeyInTextBox(TxtHV);
         }
-        void ReceiveValue(string value)
+
+
+        private void Txtα_MouseClick(object sender, MouseEventArgs e)
         {
-            //XXX.Text = value;
+            FrmKeyIn.DelegatesKeyInTextBox(Txtα);
         }
+
+        private void Txtβ_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(Txtβ);
+        }
+
+        private void TxtMeasuringTime_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtMeasuringTime);
+        }
+
+        private void TxtCount_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtCount);
+        }
+
+        private void TxtSFR_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtSFR);
+        } 
+        #endregion
     }
 }

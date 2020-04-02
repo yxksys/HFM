@@ -1,7 +1,7 @@
 ﻿/**
  * ________________________________________________________________________________ 
  *
- *  描述：
+ *  描述：故障数据类
  *  作者：
  *  版本：
  *  创建时间：
@@ -26,6 +26,10 @@ namespace HFM.Components
                                                                  "FROM HFM_ErrData WHERE IsEnglish=@IsEnglish";
         private const string SQL_INSERT_ERRORDATA = "INSERT INTO HFM_ErrData (ErrTime,Record,IsEnglish)" +
                                                     "VALUES(@ErrTime,@Record,@IsEnglish )";
+        /// <summary>
+        /// 删除故障记录表中所有记录 
+        /// </summary>
+        private const string SQL_DELETE_ERRORDATA = "DELETE FROM HFM_ErrData";
         #region 字段属性
         private int _errID;//故障ID
         private DateTime _errTime;//故障时间
@@ -63,11 +67,13 @@ namespace HFM.Components
                 while (reader.Read())//读取查询结果
                 {
                     //构造ErrorData对象
-                    ErrorData errorData = new ErrorData();
-                    errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
-                    errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
-                    errorData.Record = Convert.ToString(reader["Record"].ToString());
-                    errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    ErrorData errorData = new ErrorData
+                    {
+                        ErrID = Convert.ToInt32(reader["ErrID"].ToString()),
+                        ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString()),
+                        Record = Convert.ToString(reader["Record"].ToString()),
+                        IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString())
+                    };
                     //将reader读出并构造的查询结果添加到List中
                     IErrorDateS.Add(errorData);
                 }
@@ -99,11 +105,13 @@ namespace HFM.Components
                 while (reader.Read())//读取查询结果
                 {
                     //构造ErrorData对象
-                    ErrorData errorData = new ErrorData();
-                    errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
-                    errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
-                    errorData.Record = Convert.ToString(reader["Record"].ToString());
-                    errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    ErrorData errorData = new ErrorData
+                    {
+                        ErrID = Convert.ToInt32(reader["ErrID"].ToString()),
+                        ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString()),
+                        Record = Convert.ToString(reader["Record"].ToString()),
+                        IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString())
+                    };
                     //将reader读出并构造的查询结果添加到List中
                     IErrorDateS.Add(errorData);
                 }
@@ -144,6 +152,14 @@ namespace HFM.Components
 
         #endregion
 
+        #region 删除表中所有记录
+
+        public int DeleteData()
+        {
+            return DbHelperAccess.ExecuteSql(SQL_DELETE_ERRORDATA);
+        }
+
+        #endregion
 
     }
 }

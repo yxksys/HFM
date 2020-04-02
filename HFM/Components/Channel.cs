@@ -122,13 +122,17 @@ namespace HFM.Components
             {
                 while (reader.Read())
                 {
-                    Channel channel = new Channel();
-                    channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
-                    channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
-                    channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
-                    channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
-                    channel.Status = Convert.ToString(reader["Status"].ToString());
-                    channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                    Channel channel = new Channel
+                    {
+                        ChannelID = Convert.ToInt32(reader["ChannelID"].ToString()),
+                        ChannelName = Convert.ToString(reader["ChannelName"].ToString()),
+                        ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString()),
+                        ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == ""
+                            ? "0"
+                            : reader["ProbeArea"].ToString()),
+                        Status = Convert.ToString(reader["Status"].ToString()),
+                        IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString())
+                    };
                     Ichannels.Add(channel);
                 }
                 reader.Close();
@@ -160,13 +164,17 @@ namespace HFM.Components
                 //读取数据赋值列表
                 while (reader.Read())
                 {
-                    Channel channel = new Channel();
-                    channel.ChannelID = Convert.ToInt32(reader["ChannelID"].ToString());
-                    channel.ChannelName = Convert.ToString(reader["ChannelName"].ToString());
-                    channel.ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString());
-                    channel.ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == "" ? "0" : reader["ProbeArea"].ToString());
-                    channel.Status = Convert.ToString(reader["Status"].ToString());
-                    channel.IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString());
+                    Channel channel = new Channel
+                    {
+                        ChannelID = Convert.ToInt32(reader["ChannelID"].ToString()),
+                        ChannelName = Convert.ToString(reader["ChannelName"].ToString()),
+                        ChannelName_English = Convert.ToString(reader["ChannelName_English"].ToString()),
+                        ProbeArea = Convert.ToSingle(reader["ProbeArea"].ToString() == ""
+                            ? "0"
+                            : reader["ProbeArea"].ToString()),
+                        Status = Convert.ToString(reader["Status"].ToString()),
+                        IsEnabled = Convert.ToBoolean(reader["IsEnabled"].ToString())
+                    };
                     Ichannels.Add(channel);
                 }
                 reader.Close();
@@ -254,9 +262,7 @@ namespace HFM.Components
         /// <returns>设置成功/失败</returns>
         public bool SetEnabledByType(int channelType,bool isEnabled)
         {
-            Channel channel = new Channel();
-            channel.IsEnabled = isEnabled;
-            channel.ChannelID = 0;
+            Channel channel = new Channel {IsEnabled = isEnabled, ChannelID = 0};
             //构造查询参数
             OleDbParameter[] parms = new OleDbParameter[]
             {
@@ -341,9 +347,7 @@ namespace HFM.Components
         /// <returns></returns>
         public bool SetEnabledByID(int channelID,bool isEnabled)
         {
-            Channel channel = new Channel();
-            channel.IsEnabled = isEnabled;
-            channel.ChannelID = channelID;
+            Channel channel = new Channel {IsEnabled = isEnabled, ChannelID = channelID};
             //构造查询参数
             OleDbParameter[] parms = new OleDbParameter[]
             {
