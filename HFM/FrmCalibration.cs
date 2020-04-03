@@ -117,7 +117,7 @@ namespace HFM
             {
                 _commPort.Close();
             }
-            _commPort.GetCommPortSet();
+            _commPort.GetCommPortSet("commportSet");
             //打开串口
             try
             {

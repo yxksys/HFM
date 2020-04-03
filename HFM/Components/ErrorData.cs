@@ -191,7 +191,7 @@ namespace HFM.Components
         #endregion
 
         #region 查询最新一条监测记录
-        public ErrorData GetData()
+        public ErrorData GetLatestData()
         {
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_NEWRECORD))
             {

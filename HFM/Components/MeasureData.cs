@@ -209,12 +209,7 @@ namespace HFM.Components
             return IMeasureDateS;
         }
         #endregion
-
-        public MeasureData GetLatestData()
-        {
-            return null;
-        }
-
+        
         #region 添加监测数据
         /// <summary>
         /// 添加监测数据。
@@ -249,7 +244,7 @@ namespace HFM.Components
         #endregion
 
         #region 查询最新一条监测记录
-        public MeasureData GetData()
+        public MeasureData GetLatestData()
         {
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_NEWRECORD))
             {

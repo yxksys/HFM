@@ -438,11 +438,11 @@ namespace HFM.Components
             //校验成功
             switch(message[1])
             {                
-                case 0x03://向管理机上报监测状态
+                case 0x03://向管理机上报监测状态报文
                     messageData = new int[1];
                     messageData[0] = message[0];
                     break;                   
-                case 0x10://进行时间同步
+                case 0x10://进行时间同步报文
                     if (message.Length >= 17)//报文长度满足要求
                     {
                         messageData = new int[7];
