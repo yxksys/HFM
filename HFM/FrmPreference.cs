@@ -64,12 +64,7 @@ namespace HFM
         {
             //线程支持异步取消
             backgroundWorker_Preference.WorkerSupportsCancellation = true;
-
             GetProferenceData();
-            GetAlphaData();
-            GetBetaData();
-            GetClothesData();
-            GetFacilityData();
         }
         /// <summary>
         /// 页面切换
@@ -95,9 +90,6 @@ namespace HFM
                     break;
                 case 4:
                     GetMainProferenceData();
-                    break;
-                case 5:
-                    GetFacilityData();
                     break;
                 default:
                     MessageBox.Show("选择有误，请重新选择");
@@ -180,7 +172,7 @@ namespace HFM
                 }
             }
             //未启用则数据修改只能对左手进行
-            if (!factoryParameter.IsDoubleProbe)
+            if (factoryParameter.IsDoubleProbe==true)
             {
                 //使外手心同步与内手心
                 ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
@@ -190,6 +182,48 @@ namespace HFM
                 ((Label)label[1]).Enabled = false;
                 ((Label)label[3]).Enabled = false;
             }
+            #endregion
+
+            #region 设备配置
+
+            IList<Channel> channellList = new Channel().GetChannel();
+            //判断是否启用手部
+            
+            if (channellList[0].IsEnabled && channellList[1].IsEnabled)
+            {
+                ChkHand.Checked = true;//手部
+                RdoDoubleHand.Checked = true;//双探测器
+            }
+            else if (channellList[0].IsEnabled && channellList[1].IsEnabled==false)
+            {
+                ChkHand.Checked = true;//手部
+                RdoSingleHand.Checked = true;//单探测器
+            }
+            else
+            {
+                ChkHand.Checked = false;
+                RdoSingleHand.Checked = false;
+                RdoDoubleHand.Checked = false;
+            }
+            //判断是否启用脚步
+            if (channellList[4].IsEnabled &&channellList[5].IsEnabled)
+            {
+                ChkFoot.Checked = true;
+            }
+            else
+            {
+                ChkFoot.Checked = false;
+            }
+            //判断是否启用衣物探头
+            if (channellList[6].IsEnabled)
+            {
+                ChkClothes.Checked = true;
+            }
+            else
+            {
+                ChkClothes.Checked = false;
+            }
+
             #endregion
 
         }
@@ -459,59 +493,7 @@ namespace HFM
             }
 
         }
-        //获得仪器选择参数
-        private void GetFacilityData()
-        {
-            Channel channel = new Channel();
-            //判断是否启用手部
-            channel = channel.GetChannel(1);
-            if(channel.IsEnabled)
-            {
-                ChkHand.Checked = true;
-                //判断是否启用双探头
-                factoryParameter = factoryParameter.GetParameter();
-                //如果未启用则关闭手背设备,以手心为主
-                if (!factoryParameter.IsDoubleProbe)
-                {
-                    channel.SetEnabledByID(2, false);
-                    channel.SetEnabledByID(4, false);
-                    RdoSingleHand.Checked = true;
-                }
-                else
-                {
-                    RdoDoubleHand.Checked = true;
-                }
-            }
-            else
-            {
-                ChkHand.Checked = false;
-                RdoSingleHand.Checked = false;
-                RdoDoubleHand.Checked = false;
-            }
-            //判断是否启用脚步
-            channel = channel.GetChannel(5);
-            if (channel.IsEnabled)
-            {
-                ChkFoot.Checked = true;
-            }
-            else
-            {
-                ChkFoot.Checked = false;
-            }
-            //判断是否启用衣物探头
-            channel = channel.GetChannel(7);
-            if (channel.IsEnabled)
-            {
-                ChkClothes.Checked = true;
-            }
-            else
-            {
-                ChkClothes.Checked = false;
-            }
-        }
-
-
-
+       
         #endregion
 
         #region 串口通信
@@ -771,15 +753,75 @@ namespace HFM
             #endregion
 
             #region 工厂参数
-            FactoryParameter factoryParameter = new FactoryParameter().GetParameter();//获得仪器设备信息参数
-            factoryParameter.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
-            factoryParameter.InstrumentNum = TxtInstrumentNum.Text;
-            factoryParameter.SoftName = TxtSoftName.Text;
-            factoryParameter.PortNumber = TxtPortNumber.Text;
-            factoryParameter.IsConnectedAuto = ChkIsConnectedAuto.Checked;
-            factoryParameter.MeasureType = CmbUnclideType.Text;
-            factoryParameter.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
+            FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
+            factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
+            factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
+            factoryParameterBtn.SoftName = TxtSoftName.Text;
+            factoryParameterBtn.PortNumber = TxtPortNumber.Text;
+            factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+            factoryParameterBtn.MeasureType = CmbUnclideType.Text;
+            factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
                                          + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
+            #endregion
+
+            #region 设备配置
+            //获得是否启用
+            Channel channelBtnOk = new Channel();
+            #region 手部启用
+            //手部启用
+            if (ChkHand.Checked)
+            {
+                //启用双探头
+                if (RdoSingleHand.Checked)
+                {
+                    channelBtnOk.SetEnabledByID(1, true);
+                    channelBtnOk.SetEnabledByID(2, false);
+                    channelBtnOk.SetEnabledByID(3, true);
+                    channelBtnOk.SetEnabledByID(4, false);
+                    //单探测器
+                    factoryParameterBtn.IsDoubleProbe = false;
+                }
+                else if(RdoDoubleHand.Checked)
+                {
+                    //根据类型全部启用首部探测器
+                    channelBtnOk.SetEnabledByType(0, true);
+                    //双探测器
+                    factoryParameterBtn.IsDoubleProbe = true;
+                    
+                }
+            }
+            else
+            {
+                channelBtnOk.SetEnabledByType(0, false);
+            }
+            #endregion
+
+            #region 脚步启用
+
+            if (ChkFoot.Checked)
+            {
+                channelBtnOk.SetEnabledByType(1, true);
+            }
+            else
+            {
+                channelBtnOk.SetEnabledByType(1, false);
+            }
+
+            #endregion
+
+            #region 衣物启用
+
+            if (ChkClothes.Checked)
+            {
+                channelBtnOk.SetEnabledByID(7, true);
+            }
+            else
+            {
+                channelBtnOk.SetEnabledByID(7, false);
+            }
+
+            #endregion
+            
             #endregion
 
             #region 存储数据库
@@ -794,7 +836,7 @@ namespace HFM
                     return;
                 }
             }
-            if (new HFM.Components.SystemParameter().SetParameter(system) && new FactoryParameter().SetParameter(factoryParameter))
+            if (new HFM.Components.SystemParameter().SetParameter(system) && new FactoryParameter().SetParameter(factoryParameterBtn))
             {
                 MessageBox.Show("更新成功");
             }
@@ -803,10 +845,9 @@ namespace HFM
                 MessageBox.Show("更新失败");
                 return;
             }
-                
-            
-            
+
             #endregion
+            
         }
         /// <summary>
         /// 取消
@@ -1225,137 +1266,7 @@ namespace HFM
 
         #endregion
 
-        #region 设备设置界面
-        /// <summary>
-        /// 确定
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnFacilityOk_Click(object sender, EventArgs e)
-        {
-            //获得是否启用
-            bool hand, foot, clothes, two = false;//(手部、脚部、衣物、双手)
-
-            #region 手部启用
-            //手部启用
-            if (ChkHand.Checked)
-            {
-                hand = true;
-                //启用双探头
-                if (RdoSingleHand.Checked)
-                {
-                    two = false;
-                }
-                else
-                {
-                    two = true;
-                }
-            }
-            else
-            {
-                hand = false;
-            }
-            #endregion
-
-            #region 脚步启用
-
-            if (ChkFoot.Checked)
-            {
-                foot = true;
-            }
-            else
-            {
-                foot = false;
-            }
-
-            #endregion
-
-            #region 衣物启用
-
-            if (ChkClothes.Checked)
-            {
-                clothes = true;
-            }
-            else
-            {
-                clothes = false;
-            }
-
-            #endregion
-
-            #region 写入数据库
-
-            Channel channel = new Channel();
-
-            //手部启用
-            if (hand)
-            {
-                //双手启用
-                if (two)
-                {
-                    channel.SetEnabledByID(1, true);
-                    channel.SetEnabledByID(2, true);
-                    channel.SetEnabledByID(3, true);
-                    channel.SetEnabledByID(4, true);
-                }
-                //单手启用
-                else
-                {
-                    channel.SetEnabledByID(1, true);
-                    channel.SetEnabledByID(2, false);
-                    channel.SetEnabledByID(3, true);
-                    channel.SetEnabledByID(4, false);
-                }
-            }
-            else
-            {
-                channel.SetEnabledByID(1, false);
-                channel.SetEnabledByID(2, false);
-                channel.SetEnabledByID(3, false);
-                channel.SetEnabledByID(4, false);
-            }
-
-            //脚部启用
-            if (foot)
-            {
-                channel.SetEnabledByID(5, true);
-                channel.SetEnabledByID(6, true);
-            }
-            else
-            {
-                channel.SetEnabledByID(5, false);
-                channel.SetEnabledByID(6, false);
-            }
-
-            //衣物探头启用
-            if(clothes)
-            {
-                channel.SetEnabledByID(7, true);
-            }
-            else
-            {
-                channel.SetEnabledByID(7, false);
-            }
-
-            MessageBox.Show("ok");
-
-            #endregion
-
-        }
-        /// <summary>
-        /// 取消
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnFacilityNo_Click(object sender, EventArgs e)
-        {
-            //重新获得数据库数据
-            GetFacilityData();
-        }
-
-        #endregion
-
-        #endregion
+       #endregion
         
         #region 数字键盘
         #region alpha,beta,道盒参数标签页Dgv,数字键盘
