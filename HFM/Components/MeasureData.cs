@@ -25,17 +25,17 @@ namespace HFM.Components
         /// <summary>
         /// 查询所有监测数据
         /// </summary>
-        private const string SQL_SELECT_MEASUREDATA = "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported" +
+        private const string SQL_SELECT_MEASUREDATA = "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported " +
                                                      "FROM HFM_MeasureData";
         /// <summary>
         /// （2）按照语言查询监测数据
         /// </summary>
-        private const string SQL_SELECT_MEASUREDATA_BY_ISENGLISH= "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported" +
+        private const string SQL_SELECT_MEASUREDATA_BY_ISENGLISH= "SELECT MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported " +
                                                      "FROM HFM_MeasureData WHERE IsEnglish=@IsEnglish";
         /// <summary>
         /// 添加监测数据
         /// </summary>
-        private const string SQL_INSERT_MEASUREDATA = "INSERT INTO HFM_MeasureData(MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported)" +
+        private const string SQL_INSERT_MEASUREDATA = "INSERT INTO HFM_MeasureData(MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported) " +
                                                      "VALUES(@MeasureDate,@MeasureStatus,@DetailedInfo,@IsEnglish)";
         /// <summary>
         /// 查询最新一条监测记录
@@ -184,7 +184,7 @@ namespace HFM.Components
             //构造查询参数
             OleDbParameter[] parms = new OleDbParameter[]
                 {
-                    new OleDbParameter("@isEnglish",OleDbType.Boolean,2)
+                    new OleDbParameter("@IsEnglish",OleDbType.Boolean,2)
                 };
             parms[0].Value = isEnglish;
             //根据语言从数据库中查询全部的监测数据记录并赋值给IMeasureDataS
