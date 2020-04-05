@@ -179,7 +179,7 @@ namespace HFM
                     ((Label)label[probeParameters[i].ProbeChannel.ChannelID - 1]).Enabled = false;
                 }
             }
-            //未启用则数据修改只能对左手进行
+            //未启用双探测器,则数据修改只能对左手进行
             if (!factoryParameter.IsDoubleProbe)
             {
                 //使外手心同步与内手心
@@ -189,6 +189,13 @@ namespace HFM
                 ((TextBox)a[3]).Enabled = false;
                 ((Label)label[1]).Enabled = false;
                 ((Label)label[3]).Enabled = false;
+            }
+            else
+            {
+                ((TextBox)a[1]).Enabled = true;
+                ((TextBox)a[3]).Enabled = true;
+                ((Label)label[1]).Enabled = true;
+                ((Label)label[3]).Enabled = true;
             }
             #endregion
 
@@ -1286,6 +1293,7 @@ namespace HFM
             #region 写入数据库
 
             Channel channel = new Channel();
+            FactoryParameter factoryParameter = new FactoryParameter();
 
             //手部启用
             if (hand)
@@ -1297,6 +1305,12 @@ namespace HFM
                     channel.SetEnabledByID(2, true);
                     channel.SetEnabledByID(3, true);
                     channel.SetEnabledByID(4, true);
+
+                    //更新是否启用双探测器
+                    if(factoryParameter.SetIsDoubleProbe(two))
+                    {
+                        MessageBox.Show("ok");
+                    }
                 }
                 //单手启用
                 else
@@ -1305,6 +1319,12 @@ namespace HFM
                     channel.SetEnabledByID(2, false);
                     channel.SetEnabledByID(3, true);
                     channel.SetEnabledByID(4, false);
+
+                    //更新是否启用双探测器
+                    if(factoryParameter.SetIsDoubleProbe(two))
+                    {
+                        MessageBox.Show("ok");
+                    }
                 }
             }
             else

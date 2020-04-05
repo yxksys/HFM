@@ -36,6 +36,7 @@ namespace HFM.Components
                                                         " IPAddress=@IPAddress, PortNumber=@PortNumber, IsConnectedAuto=@IsConnectedAuto," +
                                                         " MeasureType=@MeasureType, SmoothingFactor=@SmoothingFactor, IsDoubleProbe=@IsDoubleProbe" +
                                                         "DeviceAddress=@DeviceAddress";
+        private const string SQL_UPDATE__ISDOUBLEPROBE = "UPDATE HFM_MainPreference SET IsDoubleProbe = @IsDoubleProbe";
         #endregion
 
         #region 属性
@@ -179,6 +180,29 @@ namespace HFM.Components
             parms[8].Value = factoryParameter.DeviceAddress.ToString();
             //执行更新语句
             if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE,parms) != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 设置手部是否为双探测器
+        /// </summary>
+        /// <param name="isDouble"></param>
+        /// <returns></returns>
+        public bool SetIsDoubleProbe(bool isDouble)
+        {
+            //构造查询参数
+            OleDbParameter[] parms = new OleDbParameter[]
+            {
+                new OleDbParameter("IsDoubleProbe",OleDbType.Boolean)
+            };
+            parms[0].Value = isDouble;
+            //执行更新语句
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE__ISDOUBLEPROBE, parms) != 0)
             {
                 return true;
             }
