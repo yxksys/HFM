@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpPresence = new System.Windows.Forms.GroupBox();
@@ -180,6 +180,7 @@
             this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
             this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -346,24 +347,24 @@
             // 
             this.CmbUnclideType.AccessibleRole = System.Windows.Forms.AccessibleRole.Slider;
             this.CmbUnclideType.AllowDrop = true;
-            this.CmbUnclideType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CmbUnclideType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbUnclideType.Font = new System.Drawing.Font("宋体", 12F);
             this.CmbUnclideType.FormattingEnabled = true;
-            this.CmbUnclideType.ItemHeight = 25;
+            this.CmbUnclideType.ItemHeight = 16;
             this.CmbUnclideType.Items.AddRange(new object[] {
             "α",
             "β",
             "α/β"});
-            this.CmbUnclideType.Location = new System.Drawing.Point(656, 69);
+            this.CmbUnclideType.Location = new System.Drawing.Point(641, 69);
             this.CmbUnclideType.Margin = new System.Windows.Forms.Padding(2);
             this.CmbUnclideType.Name = "CmbUnclideType";
-            this.CmbUnclideType.Size = new System.Drawing.Size(46, 31);
+            this.CmbUnclideType.Size = new System.Drawing.Size(61, 24);
             this.CmbUnclideType.TabIndex = 15;
             // 
             // LblUnclideType
             // 
             this.LblUnclideType.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblUnclideType.Location = new System.Drawing.Point(611, 72);
+            this.LblUnclideType.Location = new System.Drawing.Point(600, 72);
             this.LblUnclideType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblUnclideType.Name = "LblUnclideType";
             this.LblUnclideType.Size = new System.Drawing.Size(60, 21);
@@ -799,13 +800,14 @@
             // 
             // CmbMeasurementUnit
             // 
+            this.CmbMeasurementUnit.AllowDrop = true;
             this.CmbMeasurementUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmbMeasurementUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.CmbMeasurementUnit.DropDownHeight = 95;
+            this.CmbMeasurementUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbMeasurementUnit.Font = new System.Drawing.Font("宋体", 12F);
             this.CmbMeasurementUnit.FormattingEnabled = true;
             this.CmbMeasurementUnit.IntegralHeight = false;
-            this.CmbMeasurementUnit.ItemHeight = 20;
+            this.CmbMeasurementUnit.ItemHeight = 16;
             this.CmbMeasurementUnit.Items.AddRange(new object[] {
             "cps",
             "Bp/cm",
@@ -817,7 +819,7 @@
             this.CmbMeasurementUnit.Location = new System.Drawing.Point(139, 132);
             this.CmbMeasurementUnit.Margin = new System.Windows.Forms.Padding(2);
             this.CmbMeasurementUnit.Name = "CmbMeasurementUnit";
-            this.CmbMeasurementUnit.Size = new System.Drawing.Size(130, 26);
+            this.CmbMeasurementUnit.Size = new System.Drawing.Size(104, 24);
             this.CmbMeasurementUnit.TabIndex = 6;
             // 
             // LblBKGUpdate
@@ -912,14 +914,14 @@
             this.DgvAlphaSet.AllowUserToAddRows = false;
             this.DgvAlphaSet.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -1130,14 +1132,14 @@
             // 
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -1896,13 +1898,13 @@
             // DgvMainPreferenceSet
             // 
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -2232,5 +2234,6 @@
         private System.Windows.Forms.CheckBox ChkClothes;
         private System.Windows.Forms.CheckBox ChkFoot;
         private System.Windows.Forms.CheckBox ChkHand;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
