@@ -2,7 +2,7 @@
  * ________________________________________________________________________________ 
  *
  *  描述：
- *  作者：
+ *  作者：白茹
  *  版本：
  *  创建时间：框架搭建时间 2020年2月14日 20:49:45
  *  类名：用户类
@@ -22,11 +22,14 @@ namespace HFM.Components
 {
     public class User
     {
+        #region 数据库查询语句
         private const string SQL_SELECT_USER_BY_LOGIN = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo WHERE PassWord=@PassWord";
         private const string SQL_UPDATA_USER = "UPDATE  HFM_UserInfo  SET  [PassWord] = @UserPassWord   WHERE UserName = @UserName";
         
         private const string SQL_SELECT_USER = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo";
         private const string SQL_SELECT_USER_BY_USERID = "SELECT UserID,UserName,PassWord,Role FROM HFM_UserInfo WHERE UserID=@UserID";
+        #endregion
+
         #region 字段属性
         private int _userId;
         private string _userName;

@@ -21,15 +21,15 @@ namespace HFM.Components
             System.Media.SoundPlayer player = new System.Media.SoundPlayer();
             switch (ioContent)
             {
-                case "SelfTest":
+                case "SelfTest":                    
                     player.SoundLocation = appPath + "\\Audio\\Chinese_Self_checking.wav";
                     break;
                 case "SelfTestFault":
                     break;
                 case "BackGrouneMeasure":
                     break;
-            }
-            player.Play();
+            }           
+            player.Play();            
         }
     }
 }

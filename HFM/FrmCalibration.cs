@@ -28,6 +28,10 @@ namespace HFM
 
         #region 字段、数组
         /// <summary>
+        /// 传入值
+        /// </summary>
+        private string _value = "";
+        /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
         private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
@@ -113,7 +117,7 @@ namespace HFM
             {
                 _commPort.Close();
             }
-            _commPort.GetCommPortSet();
+            _commPort.GetCommPortSet("commportSet");
             //打开串口
             try
             {
@@ -773,13 +777,30 @@ namespace HFM
                                 _isStandardize = "探测器不合格!";
                             }
                         }
+                        //串道比计算
+                        Calibration calibration_AlphaBetaPercent = new Calibration();
+                        if (_alphacnt>0)
+                        {
+                            //alpha 串道计数
+                            calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
+                        }
+                        else if(_betacnt>0)
+                        {
+                            //beta 串道计数
+                            calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
+                        }
 
+                        if (calibration_AlphaBetaPercent.AlphaBetaPercent<=0)
+                        {
+                            //串道比小与零强制为0
+                            calibration_AlphaBetaPercent.AlphaBetaPercent = 0;
+                        }
                         //向刻度数据表添加信息
                         Calibration calibration = new Calibration
                         {
                             Efficiency = _eff,//效率
                             MDA = _resultMda,
-                            AlphaBetaPercent = 0,//串道比
+                            AlphaBetaPercent = calibration_AlphaBetaPercent.AlphaBetaPercent,//串道比
                             CalibrationTime = DateTime.Now,
                             Channel = _changedEfficiency.Channel,
                             HighVoltage = _setChannelParameter.PresetHV,
@@ -818,13 +839,13 @@ namespace HFM
                                         }
                                         sw.WriteLine("");
                                     }
-                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:100.000；{_isStandardize}");
+                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}；{_isStandardize}");
                                     sw.Close();
                                 }
                             }
                         }
                         //测量结果
-                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:100.000；{_isStandardize}";
+                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}；{_isStandardize}";
                         
                         
                        

@@ -6,15 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Threading;
+using System.Globalization;
 using HFM.Components;
 
 namespace HFM
 {
     public partial class FrmMeasureMain : Form
     {       
-        int ix = 0;           
+        bool isEnglish = false;//当前语言，默认中文
         //监测时间
         int checkTime = 0;
         //系统报警时间长度设置
@@ -69,7 +71,8 @@ namespace HFM
         DateTime stateTimeStart = DateTime.Now;//系统当前运行状态的开始计时变量        
         //创建音频播放对象
         System.Media.SoundPlayer player = new System.Media.SoundPlayer();
-        CommPort commPort = new CommPort();               
+        CommPort commPort = new CommPort();//监测端口
+        CommPort commPort_Supervisory = new CommPort();//和管理机通信端口
         Thread IOThread = null;
         float smoothedDataOfClothes = 0;//平滑处理后的衣物测量值
         float baseDataOfClothes = 0;//衣物探头本底值
@@ -129,21 +132,35 @@ namespace HFM
             public UInt32 baseSum;
         }
         SMOOTHINGDATA smoothingData;
+        [StructLayout(LayoutKind.Sequential)]
+        struct SYSTEMTIME //系统时间结构体
+        {
+            public short Year;
+            public short Month;
+            public short DayofWeek;
+            public short Day;
+            public short Hour;
+            public short Minute;
+            public short Second;
+            public short MiliSecond;
+        }
         float[] poissonTable_1 =new float[50]{ 0, 3, 0, 4, 0, 6, 0, 7, 1, 9,
                                              1,10,2,11,3,13,3,14,4,15,
                                              5,16,6,18,6,19,7,20,8,21,
                                              9,23,10,24,10,25,11,26,12,27,
-                                            17,34,18,36,19,37,19,38,20,39 };
+                                            17,34,18,36,19,37,19,38,20,39 };//泊松表1
         float[] poissonTable = new float[50]{ 0, 4, 0, 6, 0, 8, 0, 10, 0, 11,
                                              1,13,1,14,2,16,2,17,3,18,
                                              4,20,4,21,5,22,6,24,6,25,
                                              7,26,8,28,8,29,9,30,10,31,
-                                            11,33,11,34,12,35,13,36,14,38 };
+                                            11,33,11,34,12,35,13,36,14,38 };//泊松表2
         int[] cycleLength = new int[8] { 16, 25, 36, 49, 64, 81, 100, 121 };
         const double POISSONUA_2 = 1.658;
         const double POISSONUA = 2.5758;
         const double POISSONUA2_4 = 0.676;
         const int LONGTIME = 60;
+        //int handTestCount=0;//手部检测计数器。由于单探测器时，手心手背必须分两次进行检测，用来手心、手背检测计数。
+        bool isHandTested = false;//手部检测是否完成标志，由于单探测器时，手心手背必须分两次进行检测，手部第一次检测完成后，根据该标志进行线语音提示，然后进该标志置为true
         public FrmMeasureMain()
         {
             InitializeComponent();
@@ -324,11 +341,12 @@ namespace HFM
         }        
         private void FrmMeasureMain_Load(object sender, EventArgs e)
         {
+            BtnChinese.Enabled = false;
             smoothingData.team = new UInt32[TEAM_LENGTH];
             //获得工厂参数设置信息           
             factoryParameter.GetParameter();
             //获得系统参数设置信息
-            systemParameter.GetParameter();
+            systemParameter.GetParameter();            
             Nuclide nuclide = new Nuclide();
             clotheseNuclideUsed = nuclide.GetClothesNuclideUser(); //获得用户衣物探测核素选择
             alphaNuclideUsed = nuclide.GetAlphaNuclideUser();//获得用户Alpha探测核素选择
@@ -395,22 +413,65 @@ namespace HFM
             {
                 commPort.Close();
             }
-            //从配置文件获得当前串口配置
-            commPort.GetCommPortSet();
-            //打开串口
+            //从配置文件获得当前监测串口配置
+            commPort.GetCommPortSet("commportSet");
+            //打开监测通信串口
             try
             {
                 commPort.Open();
             }
             catch
             {
-                MessageBox.Show("端口打开错误！请检查通讯是否正常。");
-                TxtShowResult.Text = "串口打开失败";
+                if (isEnglish)
+                {
+                    MessageBox.Show("Measuring Comm open fault！Please check the serial Port!");
+                    TxtShowResult.Text = "Measuring Comm open fault";
+                }
+                else
+                {
+                    MessageBox.Show("监测端口打开错误！请检查通讯是否正常。");
+                    TxtShowResult.Text = "串口打开失败";
+                }
                 return;
             }
-            MeasureIO measureIO = new MeasureIO();
-            IOThread = new Thread(measureIO.HFMeasureIO);
-            IOThread.IsBackground = true;
+            //打开管理机通讯串口
+            if (commPort_Supervisory.Opened == true)
+            {
+                commPort_Supervisory.Close();
+            }
+            //从配置文件获得当前管理机串口通信配置
+            commPort_Supervisory.GetCommPortSet("commportSetOfReport");
+            if (commPort_Supervisory.IsEnabled == true)
+            {
+                //打开管理机通信串口
+                try
+                {
+                    commPort_Supervisory.Open();
+                }
+                catch
+                {
+                    if (isEnglish)
+                    {
+                        MessageBox.Show("Supervisor Comm open fault！Please check the serial Port!");
+                        TxtShowResult.Text = "Supervisor Comm open fault";
+                    }
+                    else
+                    {
+                        MessageBox.Show("管理机端口打开错误！请检查通讯是否正常。");
+                        TxtShowResult.Text = "管理机串口打开失败";
+                    }
+                    return;
+                }
+                //线程支持异步取消
+                bkWorkerReportStatus.WorkerSupportsCancellation = true;
+                //线程支持报告进度
+                bkWorkerReportStatus.WorkerReportsProgress = true;
+                //启动异步线程,响应DoWork事件
+                bkWorkerReportStatus.RunWorkerAsync();
+            }
+            //MeasureIO measureIO = new MeasureIO();
+            //IOThread = new Thread(measureIO.HFMeasureIO);
+            //IOThread.IsBackground = true;
             //将运行状态标志设置为“运行准备”
             platformState = PlatformState.ReadyToRun;
             //线程支持异步取消
@@ -418,8 +479,7 @@ namespace HFM
             //线程支持报告进度
             bkWorkerReceiveData.WorkerReportsProgress = true;
             //启动异步线程,响应DoWork事件
-            bkWorkerReceiveData.RunWorkerAsync();
-            bkWorkerReportStatus.RunWorkerAsync();
+            bkWorkerReceiveData.RunWorkerAsync();            
         }
         /// <summary>
         /// 异步线程DoWork事件响应
@@ -608,7 +668,14 @@ namespace HFM
                 if (errNumber >= 2)
                 {
                     //界面提示“通讯错误”
-                    TxtShowResult.Text = "通讯错误！";
+                    if (isEnglish)
+                    {
+                        TxtShowResult.Text = "Communication Error！";
+                    }
+                    else
+                    {
+                        TxtShowResult.Text = "通讯错误！";
+                    }
                 }
                 else
                 {
@@ -617,7 +684,11 @@ namespace HFM
                 return;
             }
             //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
-            measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);    
+            measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage); 
+            if(measureDataS==null)//解析失败
+            {
+                return;
+            }
             for(int i=0;i<channelsAll.Count();i++)
             {
                 measureDataS[i].Channel = channelsAll[i];
@@ -697,10 +768,18 @@ namespace HFM
                                 if (alarmCountOfClothes > 2)
                                 {
                                     //探测主界面的探测结果显示区域显示衣物污染
-                                    TxtShowResult.Text += "衣物污染\r\n";
-                                    //语音提示被测人员污染
-                                    player.SoundLocation = appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
-                                    player.Play();
+                                    if (isEnglish)
+                                    {
+                                        TxtShowResult.Text += "Clothing Contaminated\r\n";
+                                        player.SoundLocation = appPath + "\\Audio\\English_Decontaminate_please.wav";
+                                    }
+                                    else
+                                    {
+                                        TxtShowResult.Text += "衣物污染\r\n";
+                                        //语音提示被测人员污染
+                                        player.SoundLocation = appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
+                                    }
+                                    player.PlaySync();
                                     //Thread.Sleep(2000);
                                     //将测量时间（当前时间）、状态（“污染”）、详细信息（“衣物探头”+测量值）写入数据库                                
                                     MeasureData measureData = new MeasureData();
@@ -760,10 +839,18 @@ namespace HFM
                             //重置衣物探测实践次数
                             clothesTimeCount = 0;
                             //监测结果显示区域显示“仪器本底测量”
-                            TxtShowResult.Text += "仪器本底测量\r\n";
-                            //语音提示本底测量
-                            player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
-                            player.Play();
+                            if (isEnglish)
+                            {
+                                TxtShowResult.Text += "Updating background\r\n";
+                                player.SoundLocation = appPath + "\\Audio\\English_Updating_background.wav";
+                            }
+                            else
+                            {
+                                TxtShowResult.Text += "仪器本底测量\r\n";
+                                //语音提示本底测量
+                                player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
+                            }
+                            player.PlaySync();
                             //Thread.Sleep(1000);
                             //将当前系统状态设置为本底测量
                             platformState = PlatformState.BackGrouneMeasure;
@@ -805,32 +892,71 @@ namespace HFM
                 {                    
                     if(measureDataS[0].InfraredStatus!=1)//左手红外不到位（左手心和左手背红外状态一致，所以判断左手心即可）
                     {
-                        PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;                        
-                        LblLeft.Text = "左手不到位";                        
+                        PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
+                        if (isEnglish)
+                        {
+                            LblLeft.Text = "LH not in place";
+                        }
+                        else
+                        {
+                            LblLeft.Text = "左手不到位";
+                        }
                     }
                     else
                     {
-                        PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;                        
-                        LblLeft.Text = "左手到位";                        
+                        PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
+                        if (isEnglish)
+                        {
+                            LblLeft.Text = "LH in place";
+                        }
+                        else
+                        {
+                            LblLeft.Text = "左手到位";
+                        }
                     }
                     if(measureDataS[2].InfraredStatus!=1)//右手红外不到位（有手心和右手背红外状态一致，所以判断右手心即可）
                     {
                         PicRightBackground.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
-                        LblRight.Text = "右手不到位";
+                        if (isEnglish)
+                        {
+                            LblRight.Text = "RH not in place";
+                        }
+                        else
+                        {
+                            LblRight.Text = "右手不到位";
+                        }
                     }
                     else
                     {
                         PicRightBackground.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
-                        LblRight.Text = "右手到位";
+                        if (isEnglish)
+                        {
+                            LblRight.Text = "RH in place";
+                        }
+                        else
+                        {
+                            LblRight.Text = "右手到位";
+                        }
                     }
                 }
                 //当前运行状态设置为“仪器自检”
                 platformState = PlatformState.SelfTest;
-                LblShowStutas.Text = "仪器自检";
-                TxtShowResult.Text += "仪器自检\r\n";
-                //IOThread.Start("SelfTest");                
-                //IOThread.Suspend();
-                player.SoundLocation = appPath + "\\Audio\\Chinese_Self_checking.wav";
+                if (isEnglish)
+                {
+                    LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                    LblShowStutas.Text = "Self-checking";
+                    TxtShowResult.Text += "Self-checking\r\n";                    
+                    player.SoundLocation = appPath + "\\Audio\\English_Self_checking.wav";
+                }
+                else
+                {
+                    LblShowStutas.Font = new Font("宋体", 48,FontStyle.Bold);
+                    LblShowStutas.Text = "仪器自检";
+                    TxtShowResult.Text += "仪器自检\r\n";
+                    //IOThread.Start("SelfTest");                
+                    //IOThread.Suspend();
+                    player.SoundLocation = appPath + "\\Audio\\Chinese_Self_checking.wav";
+                }
                 player.Play();
                 stateTimeStart = System.DateTime.Now.AddSeconds(1);
                 //Thread.Sleep(1000);
@@ -845,9 +971,9 @@ namespace HFM
                 //更新剩余时间：系统自检设置时间-已经用时
                 stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
                 //更新当前系统运行状态剩余时间
-                LblTimeRemain.Text = stateTimeRemain < 0 ? "0" : stateTimeRemain.ToString();                        
+                LblTimeRemain.Text = stateTimeRemain < 0 ? "0" : stateTimeRemain.ToString();                
                 for (int i = 0; i < channelS.Count; i++) //遍历全部启用的检测通道
-                {
+                {                    
                     /*因为measureDataS中是从报文协议中解析的全部7个通道的监测数据，但是calculatedMeasureDataS只是存储当前在用的通道信息
                     *所以，需要从measureDataS中找到对应通道的监测数据赋值给calculatedMeasureDataS，但是本地值Alpha和Beta需要累加*/
                     //从解析的7个通道的measureDataS监测数据中找到当前通道的测量数据
@@ -868,13 +994,27 @@ namespace HFM
                         //左手
                         if (calculatedMeasureDataS[i].Channel.ChannelID == 1 || calculatedMeasureDataS[i].Channel.ChannelID ==2)
                         {
-                            LblLeft.Text = "左手到位";
+                            if (isEnglish)
+                            {
+                                LblLeft.Text = "LH in place";
+                            }
+                            else
+                            {
+                                LblLeft.Text = "左手到位";
+                            }
                             PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
                         }
                         //右手
                         if((calculatedMeasureDataS[i].Channel.ChannelID == 3 || calculatedMeasureDataS[i].Channel.ChannelID ==4))
                         {
-                            LblRight.Text = "右手到位";
+                            if (isEnglish)
+                            {
+                                LblRight.Text = "RH in place";
+                            }
+                            else
+                            {
+                                LblRight.Text = "右手到位";
+                            }
                             PicRightBackground.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
                         }
                     }
@@ -883,13 +1023,26 @@ namespace HFM
                         //左手
                         if (calculatedMeasureDataS[i].Channel.ChannelID ==1 || calculatedMeasureDataS[i].Channel.ChannelID ==2)
                         {
-                            LblLeft.Text = "左手不到位";
+                            if (isEnglish)
+                            {
+                                LblLeft.Text = "LH not in place";
+                            }
+                            else
+                            {
+                                LblLeft.Text = "左手不到位";
+                            }
                             PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                         }
                         //右手
                         if ((calculatedMeasureDataS[i].Channel.ChannelID == 3 || calculatedMeasureDataS[i].Channel.ChannelID ==4))
                         {
-                            LblRight.Text = "右手不到位";
+                            if (isEnglish)
+                            {
+                                LblRight.Text = "RH not in place";
+                            }
+                            else {
+                                LblRight.Text = "右手不到位";
+                            }
                             PicRightBackground.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                         }
                     }
@@ -916,22 +1069,42 @@ namespace HFM
                             calculatedMeasureDataS[i].Beta = 0;
                         }
                         //系统状态显示区域显示本底测量
-                        LblShowStutas.Text = "本底测量";
-                        //测试结果区域显示本底测量
-                        TxtShowResult.Text += "本底测量\r\n";
-                        //系统提示本底测量                                                
-                        player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
-                        player.Play();
+                        if (isEnglish)
+                        {
+                            LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                            LblShowStutas.Text = "Updating Background";
+                            //测试结果区域显示本底测量
+                            TxtShowResult.Text += "Updating Background\r\n";
+                            //系统提示本底测量                                                
+                            player.SoundLocation = appPath + "\\Audio\\English_Updating_background.wav";
+                        }
+                        else
+                        {
+                            LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                            LblShowStutas.Text = "本底测量";
+                            //测试结果区域显示本底测量
+                            TxtShowResult.Text += "本底测量\r\n";
+                            //系统提示本底测量                                                
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
+                        }
+                        player.PlaySync();
                     }
                     else
                     {
                         //将设备监测状态设置为“故障”
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
                         //将故障信息errRecord写入数据库    
-                        AddErrorData(errRecordS);                       
+                        AddErrorData(errRecordS);
                         //语音提示故障
-                        player.SoundLocation = appPath + "\\Audio\\Chinese_Self-checking_fault.wav";
-                        player.Play();
+                        if (isEnglish)
+                        {
+                            player.SoundLocation = appPath + "\\Audio\\English_Self-checking_fault.wav";
+                        }
+                        else
+                        {
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_Self-checking_fault.wav";
+                        }
+                        player.PlaySync();
                         //Thread.Sleep(3000);
                         //测量数据存储全部清零
                         for (int i = 0; i < channelS.Count; i++)
@@ -960,7 +1133,7 @@ namespace HFM
                 stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
                 LblTimeRemain.Text = stateTimeRemain < 0 ? "0" : stateTimeRemain.ToString();
                 for (int i = 0; i < channelS.Count; i++)
-                {
+                {                    
                     //因为measureDataS中是从报文协议中解析的全部7个通道的监测数据，但是calculatedMeasureDataS只是存储当前在用的通道信息
                     //所以，需要从measureDataS中找到对应通道的监测数据通过平滑计算后赋值给calculatedMeasureDataS
                     //从解析的7个通道的measureDataS监测数据中找到当前通道的测量数据
@@ -979,11 +1152,21 @@ namespace HFM
                             if (lastInfraredStatus[0] == 0) //左手上次为红外不到位，本次为红外到位，说明需要重新进行语音提示
                             {
                                 //系统状态显示区域显示测量中断
-                                LblShowStutas.Text = "测量中断";
-                                //测量结果显示区域显示左手到位重新测量
-                                TxtShowResult.Text += "左手到位，重新测量\r\n";
-                                player.SoundLocation = appPath + "\\Audio\\Chinese_Left_hand_in_place_please_measure_again.wav";
-                                player.Play();
+                                if (isEnglish)
+                                {
+                                    LblShowStutas.Text = "Interrupted";
+                                    //测量结果显示区域显示左手到位重新测量
+                                    TxtShowResult.Text += "Left hand in place,Please measure again!\r\n";
+                                    player.SoundLocation = appPath + "\\Audio\\English_Left_hand_in_place_please_measure_again.wav";
+                                }
+                                else
+                                {
+                                    LblShowStutas.Text = "测量中断";
+                                    //测量结果显示区域显示左手到位重新测量
+                                    TxtShowResult.Text += "左手到位，重新测量\r\n";
+                                    player.SoundLocation = appPath + "\\Audio\\Chinese_Left_hand_in_place_please_measure_again.wav";
+                                }
+                                player.PlaySync();
                                 //重新启动测量计时
                                 stateTimeStart = System.DateTime.Now.AddSeconds(1);
                                 //Thread.Sleep(3000);
@@ -996,13 +1179,23 @@ namespace HFM
                             if (lastInfraredStatus[1] == 0)//右手上次为红外不到位，本次为红外到位，说明需要重新进行语音提示
                             {
                                 //系统状态显示区域显示测量中断
-                                LblShowStutas.Text = "测量中断";
-                                //测量结果显示区域显示右手到位重新测量
-                                TxtShowResult.Text += "右手手到位，重新测量\r\n";
-                                //PicRightBackground.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
-                                LblRight.Text = "右手到位，重新测量";                                                        
-                                player.SoundLocation = appPath + "\\Audio\\Chinese_right_hand_in_place_please_measure_again.wav";
-                                player.Play();
+                                if (isEnglish)
+                                {
+                                    LblShowStutas.Text = "Interrupted";
+                                    //测量结果显示区域显示左手到位重新测量
+                                    TxtShowResult.Text += "Right hand in place,Please measure again!\r\n";
+                                    player.SoundLocation = appPath + "\\Audio\\English_right_hand_in_place_please_measure_again.wav";
+                                }
+                                else
+                                {
+                                    LblShowStutas.Text = "测量中断";
+                                    //测量结果显示区域显示右手到位重新测量
+                                    TxtShowResult.Text += "右手手到位，重新测量\r\n";
+                                    //PicRightBackground.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
+                                    LblRight.Text = "右手到位，重新测量";
+                                    player.SoundLocation = appPath + "\\Audio\\Chinese_right_hand_in_place_please_measure_again.wav";
+                                }
+                                player.PlaySync();
                                 //重新启动测量计时
                                 stateTimeStart = System.DateTime.Now.AddSeconds(1);
                                 //Thread.Sleep(3000);
@@ -1015,11 +1208,21 @@ namespace HFM
                             if (lastInfraredStatus[2] == 0)//衣物上次为红外不到位，本次为红外到位，说明需要重新进行本地测量，进行语音提示
                             {
                                 //系统状态显示区域显示测量中断
-                                LblShowStutas.Text = "测量中断";
-                                //测量结果显示区域显示衣物探头到位重新测量
-                                TxtShowResult.Text += "衣物探头到位，重新测量\r\n";
-                                player.SoundLocation = appPath + "\\Audio\\Chinese_frisker_In_place_measure_again.wav";
-                                player.Play();
+                                if (isEnglish)
+                                {
+                                    LblShowStutas.Text = "Interrupted";
+                                    //测量结果显示区域显示左手到位重新测量
+                                    TxtShowResult.Text += "Frisker in place,Please measure again!\r\n";
+                                    player.SoundLocation = appPath + "\\Audio\\English_frisker_In_place.wav";
+                                }
+                                else
+                                {
+                                    LblShowStutas.Text = "测量中断";
+                                    //测量结果显示区域显示衣物探头到位重新测量
+                                    TxtShowResult.Text += "衣物探头到位，重新测量\r\n";
+                                    player.SoundLocation = appPath + "\\Audio\\Chinese_frisker_In_place_measure_again.wav";
+                                }
+                                player.PlaySync();
                                 //重新启动测量计时
                                 stateTimeStart = System.DateTime.Now.AddSeconds(1);
                                 //Thread.Sleep(3000);
@@ -1063,8 +1266,17 @@ namespace HFM
                 }
                 //之前测量被中断过，需要重新显示提示信息
                 if (isReDisplay== true)
-                {                    
-                    LblShowStutas.Text = "本底测量";
+                {
+                    if (isEnglish)
+                    {
+                        LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                        LblShowStutas.Text = "Updating Background";
+                    }
+                    else
+                    {
+                        LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                        LblShowStutas.Text = "本底测量";
+                    }
                     //重新启动本底测量（本底测量时间重新开始计时）
                     stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     isReDisplay =false;
@@ -1080,12 +1292,23 @@ namespace HFM
                     if (errRecordS == null)//本底测量通过
                     {
                         //系统状态显示区域显示等待测量
-                        LblShowStutas.Text = "等待测量";
-                        //测试结果区域显示仪器正常等待测量
-                        TxtShowResult.Text += "仪器正常 等待测量\r\n";
-                        //系统语音提示仪器正常等待测量
-                        player.SoundLocation = appPath + "\\Audio\\Chinese_Ready.wav";
-                        player.Play();
+                        if (isEnglish)
+                        {
+                            LblShowStutas.Text = "Ready";
+                            //测试结果区域显示仪器正常等待测量
+                            TxtShowResult.Text += "Ready\r\n";
+                            //系统语音提示仪器正常等待测量
+                            player.SoundLocation = appPath + "\\Audio\\English_Ready.wav";
+                        }
+                        else
+                        {
+                            LblShowStutas.Text = "等待测量";
+                            //测试结果区域显示仪器正常等待测量
+                            TxtShowResult.Text += "仪器正常 等待测量\r\n";
+                            //系统语音提示仪器正常等待测量
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_Ready.wav";
+                        }
+                        player.PlaySync();
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //系统参数中，将上次本底测量后已测量人数清零                        
@@ -1139,27 +1362,46 @@ namespace HFM
                             }
                             //手部红外状态到位标志置false，说明手部不到位
                             isHandInfraredStatus = false;
-                            //继续计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
-                            //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）               
-                            calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
-                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1); ;
-                            calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;                       
+                        //继续计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
+                        //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）                                       
+                        calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
+                        calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1); ;
+                        calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;                       
                     }
                 }
                 //所有通道手部红外状态全部到位
                 if (isHandInfraredStatus == true)
                 {
                     //系统语音提示仪器正常开始测量
-                    player.SoundLocation = appPath + "\\Audio\\Chinese_Start_counting.wav";
+                    if(isEnglish)
+                    {
+                        //系统状态显示区域显示开始测量
+                        LblShowStutas.Text = "Start counting";
+                        //测试结果区域显示开始测量
+                        TxtShowResult.Text += "Start counting\r\n";
+                        player.SoundLocation = appPath + "\\Audio\\English_Start_counting.wav";
+                    }
+                    else
+                    {
+                        //系统状态显示区域显示开始测量
+                        LblShowStutas.Text = "开始测量";
+                        //测试结果区域显示开始测量
+                        TxtShowResult.Text += "开始测量\r\n";
+                        player.SoundLocation = appPath + "\\Audio\\Chinese_Start_counting.wav";
+                    }                    
                     player.Play();
-                    //系统状态显示区域显示开始测量
-                    LblShowStutas.Text = "开始测量";
-                    //测试结果区域显示开始测量
-                    TxtShowResult.Text += "开始测量\r\n";
                     //左右手状态区域显示正常
-                    LblLeft.Text = "左手到位";
+                    if (isEnglish)
+                    {
+                        LblLeft.Text = "Left hand in place";
+                        LblRight.Text = "Left hand in place";
+                    }
+                    else
+                    {
+                        LblLeft.Text = "左手到位";
+                        LblRight.Text = "右手到位";
+                    }
                     PicLeftBackground.BackColor = PlatForm.ColorStatus.COLOR_STATUS;
-                    LblRight.Text = "右手到位";
                     PicRightBackground.BackColor = PlatForm.ColorStatus.COLOR_STATUS;                   
                     // Thread.Sleep(2000);                   
                     //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为测量时计算做准备
@@ -1233,29 +1475,55 @@ namespace HFM
                         //进行文字和语音提示，该通道channelS[i].ChannelName不到位
                         if(list[0].Channel.ChannelID==1|| list[0].Channel.ChannelID==2)//左手
                         {
-                            TxtShowResult.Text += "左手移动,重新测量";
-                            //系统语音提示左手移动重新测量
-                            player.SoundLocation = appPath + "\\Audio\\Chinese_Left_hand_moved_please_measure_again.wav";
-                            player.Play();
+                            if(isEnglish)
+                            {
+                                TxtShowResult.Text += "Left hand moving, please measure again";
+                                //系统语音提示左手移动重新测量
+                                player.SoundLocation = appPath + "\\Audio\\English_Left_hand_moved_please_measure_again.wav";
+                            }
+                            else
+                            {
+                                TxtShowResult.Text += "左手移动,重新测量";
+                                //系统语音提示左手移动重新测量
+                                player.SoundLocation = appPath + "\\Audio\\Chinese_Left_hand_moved_please_measure_again.wav";
+                            }                            
+                            player.PlaySync();
                             //Thread.Sleep(2000);
                         }
                         if (list[0].Channel.ChannelID == 3 || list[0].Channel.ChannelID ==4)
                         {
-                            TxtShowResult.Text += "右手移动,重新测量";
-                            //系统语音提示右手移动重新测量
-                            player.SoundLocation = appPath + "\\Audio\\Chinese_right_hand_moved_please_measure_again.wav";
-                            player.Play();
+                            if (isEnglish)
+                            {
+                                TxtShowResult.Text += "Right hand moving, please measure again";
+                                //系统语音提示左手移动重新测量
+                                player.SoundLocation = appPath + "\\Audio\\English_right_hand_moved_please_measure_again.wav";                                
+                            }
+                            else
+                            {                                
+                                TxtShowResult.Text += "右手移动,重新测量";
+                                //系统语音提示右手移动重新测量
+                                player.SoundLocation = appPath + "\\Audio\\Chinese_right_hand_moved_please_measure_again.wav";
+                            }
+                            player.PlaySync();                            
+                            if(isEnglish)
+                            {
+                                //切换到等待测量阶段，进行必要的显示
+                                LblShowStutas.Text = "Ready";
+                            }
+                            else
+                            {
+                                //切换到等待测量阶段，进行必要的显示
+                                LblShowStutas.Text = "等待测量";
+                            }
                             //Thread.Sleep(2000);
-                        }
-                        //切换到等待测量阶段，进行必要的显示
-                        LblShowStutas.Text = "等待测量";
+                        }                        
                         //设定当前运行状态为“等待测量”
                         platformState = PlatformState.ReadyToMeasure;
                         //重新启动测量计时
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                         return;                        
                     }
-                    //计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)进行累加：                               
+                    //计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)进行累加：                    
                     calculatedMeasureDataS[i].Alpha += list[0].Alpha;
                     calculatedMeasureDataS[i].Beta += list[0].Beta;
                     calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;                    
@@ -1287,18 +1555,10 @@ namespace HFM
                         panel = (Panel)(pictureBox.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                         //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名
                         label = (Label)(panel.Controls[string.Format("Lbl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                        //获得当前系统参数设置中的测量单位                        
-                        //systemParameter.GetParameter();
-                        //将当前通道的最终测量数据转换为系统参数设置的目标测量单位
-                        //Nuclide nuclide = new Nuclide();
-                        //string nuclideUser=nuclide.GetAlphaNuclideUser();
-                        //EfficiencyParameter efficiencyParameter = new EfficiencyParameter();
-                        //efficiencyParameter.GetParameter("α", nuclideUser,calculatedMeasureDataS[i].Channel.ChannelID);
+                        //获得当前系统参数设置中的测量单位                                                
                         //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
                         IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
-                        conversionData.Alpha = UnitConver(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency,calculatedMeasureDataS[i].Channel.ProbeArea);
-                        //nuclideUser = nuclide.GetBetaNuclideUser();
-                       // efficiencyParameter.GetParameter("β", nuclideUser, calculatedMeasureDataS[i].Channel.ChannelID);
+                        conversionData.Alpha = UnitConver(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency,calculatedMeasureDataS[i].Channel.ProbeArea);                        
                         efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "β" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == betaNuclideUsed).ToList();
                         conversionData.Beta = UnitConver(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency,calculatedMeasureDataS[i].Channel.ProbeArea);
                         conversionData.Channel = calculatedMeasureDataS[i].Channel;
@@ -1308,10 +1568,7 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Alpha < 0)
                         {
                             calculatedMeasureDataS[i].Alpha = 0;
-                        }
-                        //ProbeParameter probeParameter = new ProbeParameter();
-                        //获得当前通道的一级和二级报警阈值 
-                        //probeParameter.GetParameter(calculatedMeasureDataS[i].Channel.ChannelID, "α");
+                        }                        
                         //获得当前检测通道的Alpha探测参数
                         IList<ProbeParameter> probeParmeterNow = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && probeParmeter.NuclideType== "α").ToList();                       
                         //判断当前通道Alpha测量值是否超过报警阈值
@@ -1334,8 +1591,7 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Beta < 0)
                         {
                             calculatedMeasureDataS[i].Beta = 0;
-                        }
-                        //probeParameter.GetParameter(calculatedMeasureDataS[i].Channel.ChannelID, "β");
+                        }                        
                         //获得当前检测通道的Beta探测参数
                         probeParmeterNow = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && probeParmeter.NuclideType == "β").ToList();
                         if (calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_1 || calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_2)
@@ -1358,14 +1614,69 @@ namespace HFM
                     DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);
                     if (pollutionRecord == null)//说明本次测量无污染
                     {
-                        //语音和文字提示“没有污染”
-                        player.SoundLocation = appPath + "\\Audio\\Chinese_No Contamination_please_frisker.wav";
-                        player.Play();
+                        if(factoryParameter.IsDoubleProbe==false)//单探测器检测，则探测器接到手心/手背一个道盒，所以手心手背的检测需分两次进行
+                        {
+                            //当前为手手部第一次检测完成
+                            if(isHandTested==false)//说明手部第一次检测刚刚完成
+                            {
+                                isHandTested = true;//设置手部检测完成标志为true
+                                LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                                //语音提示翻转手掌进行检测
+                                if (isEnglish)
+                                {                                                                       
+                                    //提示翻转手掌
+                                    player.SoundLocation = appPath + "\\Audio\\English_Please_Flip_Palm_for_Measuring.wav";
+                                }
+                                else
+                                {                                                                       
+                                    player.SoundLocation = appPath + "\\Audio\\Chinese_Please_Flip_Palm_for_Measuring.wav";
+                                }
+                                player.PlaySync();     
+                                if(isEnglish)
+                                {
+                                    LblShowStutas.Text = "Ready";
+                                    //测试结果区域显示等待测量
+                                    TxtShowResult.Text += "Ready\r\n";
+                                }
+                                else
+                                {
+                                    LblShowStutas.Text = "等待测量";
+                                    //测试结果区域显示等待测量
+                                    TxtShowResult.Text += "等待测量\r\n";
+                                }
+                                //设备监测状态为正常
+                                deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
+                                //commPort.
+                                //设置运行状态为等待测量
+                                platformState = PlatformState.ReadyToMeasure;
+                                //返回
+                                return;                                
+                            }                                                       
+                        }
+                        //检测完成，语音和文字提示“没有污染”
+                        if (isEnglish)
+                        {
+                            player.SoundLocation = appPath + "\\Audio\\English_NoContamination_please_frisker.wav";
+                        }
+                        else
+                        {
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_NoContamination_please_frisker.wav";
+                        }
+                        player.PlaySync();
                         //设备状态区域显示无污染
-                        LblShowStutas.Text = "无污染";
+                        if (isEnglish)
+                        {
+                            LblShowStutas.Text = "No Contamination";                            
+                            //测量结果显示区域提示没有污染，请进行衣物测量
+                            TxtShowResult.Text += "No Contamination,Please measure the clothing!\r\n";
+                        }
+                        else
+                        {
+                            LblShowStutas.Text = "无污染";                            
+                            //测量结果显示区域提示没有污染，请进行衣物测量
+                            TxtShowResult.Text += "没有污染，请进行衣物测量\r\n";
+                        }
                         PicShowStatus.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
-                        //测量结果显示区域提示没有污染，请进行衣物测量
-                        TxtShowResult.Text += "没有污染，请进行衣物测量\r\n";
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);                        
                         //Thread.Sleep(3000);
@@ -1373,16 +1684,27 @@ namespace HFM
                     else
                     {
                         // 设备状态区域显示人员污染
-                        LblShowStutas.Text = "人员污染";
+                        if (isEnglish)
+                        {
+                            LblShowStutas.Text = "Contaminated";
+                            //测量结果显示区域提示被测人员污染，请去污
+                            TxtShowResult.Text += "Decontaminate, please!\r\n";
+                            //语音提示被测人员污染
+                            player.SoundLocation = appPath + "\\Audio\\English_Decontaminate_please.wav";
+                        }
+                        else
+                        {
+                            LblShowStutas.Text = "人员污染";
+                            //测量结果显示区域提示被测人员污染，请去污
+                            TxtShowResult.Text += "被测人员污染，请去污！\r\n";
+                            //语音提示被测人员污染
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
+                        }
                         //设置状态显示区域背景色
-                        PicShowStatus.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
-                        //测量结果显示区域提示被测人员污染，请去污
-                        TxtShowResult.Text += "被测人员污染，请去污！\r\n";                        
+                        PicShowStatus.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;                                               
                         //将设备监测状态设置为“污染”
-                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated);
-                        //语音提示被测人员污染
-                        player.SoundLocation = appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
-                        player.Play();
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated);                       
+                        player.PlaySync();
                         //Thread.Sleep(3000);
                         //将本次测量数据和污染描述字符串pollutionRecord保存到数据库
                         MeasureData measureData = new MeasureData();
@@ -1397,7 +1719,9 @@ namespace HFM
                         measureData.AddData(measureData);
                         //启动报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
-                    }                    
+                    }
+                    //本次检测完成，设置手部监测标志为false，为下一个人检测做准备
+                    isHandTested = false;
                     //更新本底测量次数（+1）                    
                     systemParameter.UpdateMeasuredCount();
                     //运行状态设置为“测量结束”
@@ -1425,10 +1749,7 @@ namespace HFM
                 throwDataCount = 0;                
                 //本次测量无污染
                 if (pollutionRecord == null)
-                {
-                    //获得系统参数设置中的强制本地次数                    
-                    //systemParameter.GetParameter();
-                    //获得测量总人数（从上次本底测量开始）
+                {                   
                     //如果测量人数大于系统设置的强制本底次数则，转到“本底测量”状态
                     if (systemParameter.MeasuredCount >= systemParameter.BkgUpdate) 
                     {
@@ -1443,26 +1764,52 @@ namespace HFM
                             calculatedMeasureDataS[i].Beta = 0;
                         }
                         //系统状态显示区域显示本底测量
-                        LblShowStutas.Text = "本底测量";
-                        //测试结果区域显示本底测量
-                        TxtShowResult.Text += "本底测量\r\n";
-                        //系统提示本底测量
-                        player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
-                        player.Play();
+                        if (isEnglish)
+                        {
+                            LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                            LblShowStutas.Text = "Updating Background";
+                            //测试结果区域显示本底测量
+                            TxtShowResult.Text += "Updating Background\r\n";
+                            //系统提示本底测量
+                            player.SoundLocation = appPath + "\\Audio\\English_Updating_background.wav";
+                        }
+                        else
+                        {
+                            LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                            LblShowStutas.Text = "本底测量";
+                            //测试结果区域显示本底测量
+                            TxtShowResult.Text += "本底测量\r\n";
+                            //系统提示本底测量
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
+                        }
+                        player.PlaySync();
                         //启动本底测量计时 
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                         //Thread.Sleep(1000);
                         return;
                     }
                     else
-                    {                       
+                    {
                         //系统状态显示区域显示等待测量
-                        LblShowStutas.Text = "等待测量";
-                        //测试结果区域显示等待测量
-                        TxtShowResult.Text += "等待测量\r\n";
-                        //系统语音提示仪器正常等待测量
-                        player.SoundLocation = appPath + "\\Audio\\Chinese_Ready.wav";
-                        player.Play();
+                        if (isEnglish)
+                        {
+                            LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                            LblShowStutas.Text = "Ready";
+                            //测试结果区域显示等待测量
+                            TxtShowResult.Text += "Ready\r\n";
+                            //系统语音提示仪器正常等待测量
+                            player.SoundLocation = appPath + "\\Audio\\English_Ready.wav";
+                        }
+                        else
+                        {
+                            LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                            LblShowStutas.Text = "等待测量";
+                            //测试结果区域显示等待测量
+                            TxtShowResult.Text += "等待测量\r\n";
+                            //系统语音提示仪器正常等待测量
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_Ready.wav";
+                        }
+                        player.PlaySync();
                         //Thread.Sleep(3000);
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);                        
@@ -1485,12 +1832,25 @@ namespace HFM
                         calculatedMeasureDataS[i].Beta = 0;
                     }
                     //系统状态显示区域显示本底测量
-                    LblShowStutas.Text = "本底测量";
-                    //测试结果区域显示本底测量
-                    TxtShowResult.Text += "本底测量\r\n";
-                    //系统提示本底测量
-                    player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
-                    player.Play();
+                    if (isEnglish)
+                    {
+                        LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                        LblShowStutas.Text = "Updating Background";
+                        //测试结果区域显示本底测量
+                        TxtShowResult.Text += "Updating Background\r\n";
+                        //系统提示本底测量
+                        player.SoundLocation = appPath + "\\Audio\\English_Updating_background.wav";
+                    }
+                    else
+                    {
+                        LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                        LblShowStutas.Text = "本底测量";
+                        //测试结果区域显示本底测量
+                        TxtShowResult.Text += "本底测量\r\n";
+                        //系统提示本底测量
+                        player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
+                    }
+                    player.PlaySync();
                     //启动本底测量计时 
                     stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     //Thread.Sleep(1000);
@@ -1877,7 +2237,14 @@ namespace HFM
                     PicShowStatus.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                     if (platformState == PlatformState.SelfTest)
                     {
-                        LblShowStutas.Text = "仪器故障";
+                        if (isEnglish)
+                        {
+                            LblShowStutas.Text = "Fault";
+                        }
+                        else
+                        {
+                            LblShowStutas.Text = "仪器故障";
+                        }
                     }
                     TxtShowResult.Text += calculatedMeasureDataS[i].Channel.ChannelName + errRecord + "\r\n";
                     //对应通道名字文本框背景色显示为ERROR
@@ -1893,7 +2260,14 @@ namespace HFM
                     if (platformState == PlatformState.SelfTest)
                     {
                         //设备状态区域文字提示“仪器正常”
-                        LblShowStutas.Text = "仪器正常";
+                        if (isEnglish)
+                        {
+                            LblShowStutas.Text = "Ready";
+                        }
+                        else
+                        {
+                            LblShowStutas.Text = "仪器正常";
+                        }
                     }
                     //对应通道名字文本框背景色显示为NORMAL
                     if (calculatedMeasureDataS[i].Channel.ChannelID != 7)//衣物探头除外
@@ -1963,11 +2337,197 @@ namespace HFM
             }
             e.Cancel = true;
         }
-        private void ReadDataFromSerialPortReport(BackgroundWorker worker, DoWorkEventArgs e)
+        private byte[] ReadDataFromSerialPortReport(BackgroundWorker worker, DoWorkEventArgs e)
         {
-
+            //巡检管理机下发的报文
+            while (true)
+            {
+                //请求进程中断读取数据
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return null;
+                }
+                //读取串口回传数据并赋值给receiveBuffMessage
+                byte[] receiveBuffMessage = new byte[20];
+                receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory);
+                //延时
+                Thread.Sleep(1000);
+                //触发向主线程返回下位机上传数据事件
+                if (receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
+                {
+                    worker.ReportProgress(1, receiveBuffMessage);
+                }
+            }
         }
 
+        private void bkWorkerReportStatus_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            string appPath = Application.StartupPath;
+            int messageBufferLength =8; //最短报文长度            
+            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
+            int[] message = new int[7]; //解析后报文结构数据存储List对象                                                            
+            if (e.UserState is byte[])
+            {
+                receiveBufferMessage = (byte[])e.UserState;
+            }
+            //接收报文数据为空，说明没有收到管理机下发的命令
+            if (receiveBufferMessage.Length < messageBufferLength)
+            {
+                //数据接收出现错误次数超限
+                if (errNumber >= 2)
+                {
+                    //界面提示“通讯错误”
+                    if (isEnglish)
+                    {
+                        TxtShowResult.Text = "Communication with Supervisor Error！";
+                    }
+                    else
+                    {
+                        TxtShowResult.Text += "管理机通讯错误！";
+                    }
+                }
+                else
+                {
+                    errNumber++;
+                }
+                return;
+            }
+            //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
+            message = Components.Message.ExplainMessage(receiveBufferMessage);
+            if (message == null)//解析失败
+            {
+                return;
+            }
+            //解析成功
+            if(message.Count()>=7)//长度大于1，为时间同步命令
+            {
+                //将当前系统时间同步为管理机下发的时间
+                SYSTEMTIME timeForSyn = new SYSTEMTIME();
+                timeForSyn.Year =(short) message[0];
+                timeForSyn.Month = (short)message[1];
+                timeForSyn.Day = (short)message[2];
+                timeForSyn.Hour = (short)(message[3] - 8) <= 0 ? (short)(message[3] - 8 + 24) : (short)(message[3] - 8);
+                timeForSyn.Minute = (short)message[4];
+                timeForSyn.Second = (short)message[5];
+                timeForSyn.MiliSecond = (short)message[6];
+                try
+                {
+                    SetSystemTime(ref timeForSyn);                                  
+                    //向管理机恢复时间同步报文
+                    byte[] timeSynMessage = new byte[8];
+                    timeSynMessage[0] = 0x01;
+                    timeSynMessage[1] = 0x10;
+                    timeSynMessage[2] = 0x11;
+                    timeSynMessage[3] = 0x00;
+                    timeSynMessage[4] = 0x00;
+                    timeSynMessage[5] = 0x04;
+                    //生成CRC校验码
+                    byte[] crc16 = new byte[2];
+                    crc16 = Tools.CRC16(timeSynMessage, timeSynMessage.Length - 2);
+                    timeSynMessage[6] = crc16[0];
+                    timeSynMessage[7] = crc16[1];
+                    Components.Message.SendMessage(timeSynMessage, commPort_Supervisory);                    
+                    if (isEnglish)
+                    {
+                        TxtShowResult.Text += "Time synchronization completed!\r\n";
+                    }
+                    else
+                    {
+                        TxtShowResult.Text += "时间同步完成\r\n";
+                    }                   
+                }
+                catch
+                {
+                    if (isEnglish)
+                    {
+                        TxtShowResult.Text += "Time synchronization failed!\r\n";
+                    }
+                    else
+                    {
+                        TxtShowResult.Text += "时间同步失败\r\n";
+                    }
+                }
+            }
+            else//是上报测试状态命令
+            {
+                //下发地址和当前设备地址不一致则返回
+                if (factoryParameter.DeviceAddress != message[0].ToString())
+                {
+                    return;
+                }
+                else //下发地址和当前设备地址一致，则上传当前测试状态
+                {
+                    byte[] deviceStatusMessage=null;
+                    //从数据库中查询最近一次记录的测量数据
+                    MeasureData measureData = new MeasureData();
+                    measureData.GetLatestData();
+                    //从数据库中查询最近一次记录的故障数据
+                    ErrorData errorData = new ErrorData();
+                    errorData.GetLatestData();
+                    //测量数据和故障数据都为空，说明仪器正常
+                    if(measureData==null && errorData==null)
+                    {
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
+                    }                    
+                    //监测数据和故障数据都已经上报，说明最近仪器正常，上报时间为当前时间
+                    if(measureData.IsReported==true && errorData.IsReported==true)
+                    {
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
+                    }
+                    //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
+                    if((measureData==null||measureData.IsReported==true) && errorData.IsReported==false)
+                    {
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02);//0x02:仪器故障
+                    }
+                    //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
+                    if(measureData.IsReported==false && (errorData.IsReported==true||errorData==null))
+                    {
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x02:仪器污染
+                    }
+                    //监测数据和故障数据都未上报，则将最近的状态进行上报，更新两条记录为已上报
+                    if (measureData.IsReported == false && errorData.IsReported == false)
+                    {
+                        if (measureData.MeasureDate > errorData.ErrTime)//最近一次记录为MeasureData，说明是状态为污染（因为只有污染状态才会记录，正常不记录）
+                        {
+                            //生成上报管理机的监测仪测试状态(污染)报文                    
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x04);//仪器状态为污染
+                        }
+                        else
+                        {
+                            //生成上报管理机的监测仪测试状态（故障）报文                    
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),errorData.ErrTime, 0x02);//仪器状态为故障
+                        }
+                    }
+                    //向管理机上报仪器检测状态
+                    if(Components.Message.SendMessage(deviceStatusMessage, commPort_Supervisory))//上报成功
+                    {
+                        //数据库中更新上报标志
+                        if(measureData!=null)
+                        {
+                            //更新上报标志
+                            measureData.UpdataReported(true, measureData.MeasureID);
+                        }
+                        if(errorData!=null)
+                        {
+                            //更新上报标志
+                            errorData.UpdateReported(true, errorData.ErrID);
+                        }
+                    }                    
+                    else
+                    {
+                        if (isEnglish)
+                        {
+                            TxtShowResult.Text += "Report status failed!\r\n";
+                        }
+                        else
+                        {
+                            TxtShowResult.Text += "上报状态失败\r\n";
+                        }
+                    }
+                }
+            }
+        }        
         private void TmrDispTime_Tick(object sender, EventArgs e)
         {
             //更新当前显示时间
@@ -1981,12 +2541,26 @@ namespace HFM
                     case 2:
                         if (usedChannelData.InfraredStatus == 1)//红外到位
                         {
-                            LblLeft.Text = "左手到位";
+                            if(isEnglish)
+                            {
+                                LblLeft.Text = "LH in place";
+                            }
+                            else
+                            {
+                                LblLeft.Text = "左手到位";
+                            }                            
                             PicLeftBackground.BackColor = PlatForm.ColorStatus.COLOR_STATUS;
                         }
                         else
                         {
-                            LblLeft.Text = "左手不到位";
+                            if (isEnglish)
+                            {
+                                LblLeft.Text = "LH not in place";
+                            }
+                            else
+                            {
+                                LblLeft.Text = "左手不到位";
+                            }                            
                             PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                         }
                         break;
@@ -1994,12 +2568,26 @@ namespace HFM
                     case 4:
                         if (usedChannelData.InfraredStatus == 1)//红外到位
                         {
-                            LblRight.Text = "右手到位";
+                            if (isEnglish)
+                            {
+                                LblRight.Text = "RH in place";
+                            }
+                            else
+                            {
+                                LblRight.Text = "右手到位";
+                            }
                             PicRightBackground.BackColor = PlatForm.ColorStatus.COLOR_STATUS;
                         }
                         else
                         {
-                            LblRight.Text = "右手不到位";
+                            if (isEnglish)
+                            {
+                                LblRight.Text = "RH not in place";
+                            }
+                            else
+                            {
+                                LblRight.Text = "右手不到位";
+                            }
                             PicRightBackground.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                         }
                         break;
@@ -2021,41 +2609,51 @@ namespace HFM
             //LblTimeRemain.Text = stateTimeRemain.ToString();
         }
 
-        #region 按钮单击事件
-        /// <summary>
-        /// 维护
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnMaintain_Click(object sender, EventArgs e)
+        private void BtnChinese_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                systemParameter.IsEnglish = false;
+                systemParameter.SetParameter(systemParameter);
+                isEnglish = false;
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
+                this.BtnEnglish.Enabled = true;
+                this.BtnChinese.Enabled = false;
+                Tools.ApplyLanguageResource(this);
+            }
+            catch
+            {
+                MessageBox.Show("切换失败，请稍后再试");
+                return;
+            }
+        }
+
+        private void BtnEnglish_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                systemParameter.IsEnglish = true;
+                systemParameter.SetParameter(systemParameter);
+                isEnglish = true;
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+                this.BtnChinese.Enabled = true;
+                this.BtnEnglish.Enabled = false;
+                Tools.ApplyLanguageResource(this);
+            }
+            catch
+            {
+                MessageBox.Show("Switch Fault，please try later");
+                return;
+            }
+        }
+
+        [DllImport("kernel32", CharSet = CharSet.Ansi)]
+        private static extern bool SetSystemTime(ref SYSTEMTIME t);
+
+        private void BtnOption_Click(object sender, EventArgs e)
         {
             FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
             frmEnterPassword.Show();
         }
-        /// <summary>
-        /// 设置英文
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnEnglish_Click(object sender, EventArgs e)
-        {
-            systemParameter.IsEnglish = true;
-            systemParameter.SetParameter(systemParameter);
-            BtnChinese.Enabled = true;
-            BtnEnglish.Enabled = false;
-        }
-        /// <summary>
-        /// 设置中文
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnChinese_Click(object sender, EventArgs e)
-        {
-            systemParameter.IsEnglish = false;
-            systemParameter.SetParameter(systemParameter);
-            BtnChinese.Enabled = false;
-            BtnEnglish.Enabled = true;
-        } 
-        #endregion
     }
 }

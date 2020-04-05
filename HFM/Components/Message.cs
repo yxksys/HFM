@@ -208,9 +208,9 @@ namespace HFM.Components
         ///           监测仪状态（2字节：0x0001表示正常，0x0002表示故障，0x0004表示污染）、
         ///           16位CRC校验（2字节：校验码高位-校验码低位）                
         /// </summary>
-        /// <param name="deviceAddress"></param>
-        /// <param name="submitTime"></param>
-        /// <param name="deviceStatus"></param>
+        /// <param name="deviceAddress">设备地址</param>
+        /// <param name="submitTime">上报时间</param>
+        /// <param name="deviceStatus">设备状态</param>
         /// <returns></returns>
         public static byte[] BuildMessage(int deviceAddress,DateTime submitTime,int deviceStatus)
         {
@@ -228,6 +228,18 @@ namespace HFM.Components
             messageData[10] = Convert.ToByte(submitTime.Millisecond);
             //监测状态，2字节
             messageData[11] = 0x00;
+            switch (deviceStatus)//控制板中16、32、64分别表示正常、故障、污染。上报管理机时1、2、4分别表示正常、故障、污染
+            {
+                case 16:
+                    deviceStatus = 0x01;
+                    break;
+                case 32:
+                    deviceStatus = 0x02;
+                    break;
+                case 64:
+                    deviceStatus = 0x04;
+                    break;
+            }
             messageData[12] = Convert.ToByte(deviceStatus);
             //求CRC校验值
             byte[] crc16 = new byte[2];
@@ -345,8 +357,8 @@ namespace HFM.Components
                             //channel.GetChannel(channelID); 
                             Channel channel = new Channel();
                             MeasureData measureData = new MeasureData();
-                            channel.GetChannel(channelID);
-                            //channel.ChannelID = channelID;                           
+                            //channel.GetChannel(channelID);
+                            channel.ChannelID = channelID;                           
                             measureData.Channel = channel;
                             measureData.Alpha = alpha;
                             measureData.Beta = beta;
@@ -417,20 +429,20 @@ namespace HFM.Components
             }
             //进行CRC校验
             byte[] crc16 = new byte[2];
-            crc16 = Tools.CRC16(message, message.Length - 1);
+            crc16 = Tools.CRC16(message, message.Length - 2);
             //校验失败返回
-            if(message[message.Length-2]!=crc16[0] || message[message.Length-1]!=crc16[1])
+            if(message[message.Length-2]!=crc16[1] || message[message.Length-1]!=crc16[0])
             {
                 return null;
             }
             //校验成功
             switch(message[1])
             {                
-                case 0x03://向管理机上报监测状态
+                case 0x03://向管理机上报监测状态报文
                     messageData = new int[1];
                     messageData[0] = message[0];
                     break;                   
-                case 0x10://完成时间同步
+                case 0x10://进行时间同步报文
                     if (message.Length >= 17)//报文长度满足要求
                     {
                         messageData = new int[7];
@@ -496,11 +508,9 @@ namespace HFM.Components
         ///                 接收失败：返回null  </returns>
         public static byte[] ReceiveMessage(CommPort commport)
         {
-            //串口已打开
-
+            //串口已打开            
             int NumBytes;
             HexCon hexcon = new HexCon();
-
             NumBytes = 200;
             byte[] RecBuf = new byte[200];
             //获得当前系统时间

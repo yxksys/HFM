@@ -7,6 +7,7 @@
  *  创建时间：2020年2月25日
  *  类名：参数设置
  *  更新:杨旭锴 数字键盘添加,2020年4月1日
+ *  更新:杨旭锴 优化更新 2020年4月5日
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -23,6 +24,7 @@ using System.Data.OleDb;
 using System.Collections;
 using HFM.Components;
 using System.Threading;
+using Message = HFM.Components.Message;
 
 
 namespace HFM
@@ -34,6 +36,7 @@ namespace HFM
             InitializeComponent();
         }
 
+        #region 实例字段
         //运行参数设置
         private ChannelParameter channelParameter = new ChannelParameter();//道盒信息(α阈值等)
         private HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();//(自检时间、单位等)
@@ -44,7 +47,28 @@ namespace HFM
         private CommPort commPort = new CommPort();//串口通讯
         private IList<MeasureData> measureDataS = new List<MeasureData>();//解析报文
         private int bkworkTime = 0;// 异步线程初始化化时间,ReportProgress百分比数值
-        private Tools tools = new Tools();//工具类
+        private Tools _tools = new Tools();//工具类
+        /// <summary>
+        /// 异步线程初始化化时间,ReportProgress百分比数值
+        /// </summary>
+        private int _bkworkTime;
+        /// <summary>
+        /// 串口实例
+        /// </summary>
+        private CommPort _commPort = new CommPort();
+        /// <summary>
+        /// 系统数据库中读取是否开启英文
+        /// </summary>
+        private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
+        /// <summary>
+        /// 当前发送报文的类型
+        /// </summary>
+        private MessageType _messageType;
+
+        private IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
+        #endregion
+
+
         //通讯类型
         enum MessageType
         {
@@ -64,13 +88,7 @@ namespace HFM
         {
             //线程支持异步取消
             backgroundWorker_Preference.WorkerSupportsCancellation = true;
-
             GetProferenceData();
-            GetAlphaData();
-            GetBetaData();
-            GetClothesData();
-            GetMainProferenceData();
-            GetFacilityData();
         }
         /// <summary>
         /// 页面切换
@@ -96,9 +114,6 @@ namespace HFM
                     break;
                 case 4:
                     GetMainProferenceData();
-                    break;
-                case 5:
-                    GetFacilityData();
                     break;
                 default:
                     MessageBox.Show("选择有误，请重新选择");
@@ -172,6 +187,9 @@ namespace HFM
                 {
                     //根据channelID来修改数据
                     ((TextBox)a[probeParameters[i].ProbeChannel.ChannelID - 1]).Text = probeParameters[i].ProbeChannel.ProbeArea.ToString();
+                    //根据channelID来修改数据
+                    ((TextBox)a[probeParameters[i].ProbeChannel.ChannelID - 1]).Enabled = true;
+                    ((Label)label[probeParameters[i].ProbeChannel.ChannelID - 1]).Enabled = true;
                 }
                 else
                 {
@@ -181,7 +199,7 @@ namespace HFM
                 }
             }
             //未启用则数据修改只能对左手进行
-            if (!factoryParameter.IsDoubleProbe)
+            if (factoryParameter.IsDoubleProbe==true)
             {
                 //使外手心同步与内手心
                 ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
@@ -191,6 +209,48 @@ namespace HFM
                 ((Label)label[1]).Enabled = false;
                 ((Label)label[3]).Enabled = false;
             }
+            #endregion
+
+            #region 设备配置
+
+            IList<Channel> channellList = new Channel().GetChannel();
+            //判断是否启用手部
+            
+            if (channellList[0].IsEnabled && channellList[1].IsEnabled)
+            {
+                ChkHand.Checked = true;//手部
+                RdoDoubleHand.Checked = true;//双探测器
+            }
+            else if (channellList[0].IsEnabled && channellList[1].IsEnabled==false)
+            {
+                ChkHand.Checked = true;//手部
+                RdoSingleHand.Checked = true;//单探测器
+            }
+            else
+            {
+                ChkHand.Checked = false;
+                RdoSingleHand.Checked = false;
+                RdoDoubleHand.Checked = false;
+            }
+            //判断是否启用脚步
+            if (channellList[4].IsEnabled &&channellList[5].IsEnabled)
+            {
+                ChkFoot.Checked = true;
+            }
+            else
+            {
+                ChkFoot.Checked = false;
+            }
+            //判断是否启用衣物探头
+            if (channellList[6].IsEnabled)
+            {
+                ChkClothes.Checked = true;
+            }
+            else
+            {
+                ChkClothes.Checked = false;
+            }
+
             #endregion
 
         }
@@ -327,11 +387,12 @@ namespace HFM
             #region β参数
 
             //清除所有行(因为每次切换页面都会增加相应的行)
-            for (int i = 0; i < DgvBetaSet.Rows.Count; i++)
-            {
-                DgvBetaSet.Rows.Remove(DgvBetaSet.Rows[i]);
-                i--;
-            }
+            // for (int i = 0; i < DgvBetaSet.Rows.Count; i++)
+            // {
+            //     DgvBetaSet.Rows.Remove(DgvBetaSet.Rows[i]);
+            //     i--;
+            // }
+            DgvBetaSet.Rows.Clear();
 
             //选出启用的设备
             for (int i = 0; i < probeParameters.Count; i++)
@@ -439,88 +500,29 @@ namespace HFM
             IList<ChannelParameter> channelParameters = new List<ChannelParameter>();//获得道盒参数
             channelParameters = channelParameter.GetParameter();
             //清除所有行(因为每次切换页面都会增加相应的行)
-            for (int i = 0; i < DgvMainPreferenceSet.Rows.Count; i++)
-            {
-                DgvMainPreferenceSet.Rows.Remove(DgvMainPreferenceSet.Rows[i]);
-                i--;
-            }
-            //选出启用的设备
+            // for (int i = 0; i < DgvMainPreferenceSet.Rows.Count; i++)
+            // {
+            //     DgvMainPreferenceSet.Rows.Remove(DgvMainPreferenceSet.Rows[i]);
+            //     i--;
+            // }
+            DgvMainPreferenceSet.Rows.Clear();
+            //选出所有设备
             for (int i = 0; i < channelParameters.Count; i++)
             {
-                //设备启用设备
-                if (channelParameters[i].Channel.IsEnabled)
-                {
-                    int index = this.DgvMainPreferenceSet.Rows.Add();
-                    DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
-                    DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
-                    DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
-                    DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
-                    DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
-                    DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
-                    DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
-                    DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
-                    DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
-                }
-                //设备未启用(暂时不显示)
-                else
-                {
-                }
+                int index = this.DgvMainPreferenceSet.Rows.Add();
+                DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
+                DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
+                DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
+                DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
+                DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
+                DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
             }
 
         }
-        //获得仪器选择参数
-        private void GetFacilityData()
-        {
-            Channel channel = new Channel();
-            //判断是否启用手部
-            channel = channel.GetChannel(1);
-            if(channel.IsEnabled)
-            {
-                ChkHand.Checked = true;
-                //判断是否启用双探头
-                factoryParameter = factoryParameter.GetParameter();
-                //如果未启用则关闭手背设备,以手心为主
-                if (!factoryParameter.IsDoubleProbe)
-                {
-                    channel.SetEnabledByID(2, false);
-                    channel.SetEnabledByID(4, false);
-                    RdoSingleHand.Checked = true;
-                }
-                else
-                {
-                    RdoDoubleHand.Checked = true;
-                }
-            }
-            else
-            {
-                ChkHand.Checked = false;
-                RdoSingleHand.Checked = false;
-                RdoDoubleHand.Checked = false;
-            }
-            //判断是否启用脚步
-            channel = channel.GetChannel(5);
-            if (channel.IsEnabled)
-            {
-                ChkFoot.Checked = true;
-            }
-            else
-            {
-                ChkFoot.Checked = false;
-            }
-            //判断是否启用衣物探头
-            channel = channel.GetChannel(7);
-            if (channel.IsEnabled)
-            {
-                ChkClothes.Checked = true;
-            }
-            else
-            {
-                ChkClothes.Checked = false;
-            }
-        }
-
-
-
+       
         #endregion
 
         #region 串口通信
@@ -547,16 +549,16 @@ namespace HFM
         /// <param name="worker"></param>
         /// <param name="e"></param>
         /// <returns></returns>
-        private byte[] ReadDataFromSerialPort(BackgroundWorker worker, DoWorkEventArgs e)
+        private byte[] ReadDataFromSerialPort(BackgroundWorker bkWorker, DoWorkEventArgs e)
         {
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
-            byte[] receiveBuffMessage = new byte[200];//接受的报文
+            byte[] receiveBuffMessage = new byte[124];//接受的报文
             byte[] buffMessage = new byte[62];//报文长度
             while (true)
             {
                 //请求进程中断读取数据
-                if (worker.CancellationPending)
+                if (bkWorker.CancellationPending)
                 {
                     e.Cancel = true;
                     return null;
@@ -566,72 +568,103 @@ namespace HFM
                 {
                     #region P读取指令下发并接收数据上传
                     case MessageType.pRead:
-                        //向下位机下发“P”指令码
+
+                        //向下位机下发“p”指令码
                         buffMessage[0] = Convert.ToByte('P');
-                        if (Components.Message.SendMessage(buffMessage, commPort) != true)
+                        //buffMessage[61] = Convert.ToByte(0);
+                        _bkworkTime++;
+                        if (_bkworkTime > 3)
+                        {
+                            backgroundWorker_Preference.CancelAsync();
+                            _bkworkTime = 0;
+                            break;
+                        }
+                        if (Message.SendMessage(buffMessage, _commPort))    //正式
+                        {
+
+                            //延时
+                            Thread.Sleep(100);
+                            receiveBuffMessage = Message.ReceiveMessage(_commPort);
+                            //延时
+                            Thread.Sleep(200);
+                            //触发向主线程返回下位机上传数据事件
+                            bkWorker.ReportProgress(_bkworkTime, receiveBuffMessage);
+                        }
+                        else
                         {
                             errorNumber++;
                             //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
                             if (errorNumber > 5)
                             {
-
-                                MessageBox.Show("发送超时~", "提示");
-                                //bkWorkerReceiveData.CancelAsync();
-                                worker.ReportProgress(1, receiveBuffMessage);
+                                bkWorker.ReportProgress(1, null);
                                 backgroundWorker_Preference.CancelAsync();
                             }
                             else
                             {
-                                System.Threading.Thread.Sleep(delayTime);
+                                Thread.Sleep(delayTime);
                             }
-                        }
-                        else if (Components.Message.SendMessage(buffMessage, commPort) == true)//正式
-                        {
-                            bkworkTime++;
-                            if (bkworkTime > 1)
-                            {
-                                backgroundWorker_Preference.CancelAsync();
-                                bkworkTime = 0;
-                                break;
-                            }
-                            //延时
-                            System.Threading.Thread.Sleep(100);
-                            receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
-                            //延时
-                            System.Threading.Thread.Sleep(1000);
-                            //触发向主线程返回下位机上传数据事件
-                            worker.ReportProgress(bkworkTime, receiveBuffMessage);
                         }
                         break;
                     #endregion
 
                     #region P写入指令下发
                     case MessageType.pSet:
-                        //实例化道盒列表
-                        IList<ChannelParameter> setChannelParameters = new List<ChannelParameter>();
-                        //添加数据对象到列表
-                        setChannelParameters.Add(channelParameter);
-                        //生成报文
-                        buffMessage = HFM.Components.Message.BuildMessage(setChannelParameters);
-                        //成功则关闭线程
-                        if (Components.Message.SendMessage(buffMessage, commPort) == true)
+                        IList<ChannelParameter> _first_setChannelP = new List<ChannelParameter>();
+                        IList<ChannelParameter> _second_setChanelP = new List<ChannelParameter>();
+                        int i = 0;
+                        //把当前的高压阈值修改的数据对象添加到列表中
+                        foreach (var itme in _channelParameters)
                         {
-                            //写入成功,返回p指令读取当前高压以确认更改成功
-                            System.Threading.Thread.Sleep(300);
-                            messageType = MessageType.pRead;
-                        }
-                        else
-                        {
-                            errorNumber++;
-                            if (errorNumber > 5)
+                            if (i < 4)
                             {
-                                tools.PrompMessage(2);//提示
-                                backgroundWorker_Preference.CancelAsync();
+                                _first_setChannelP.Add(itme);
                             }
-                            System.Threading.Thread.Sleep(200);
+                            else
+                            {
+                                _second_setChanelP.Add(itme);
+                            }
+                            i++;
+                        }
+
+                        //生成报文
+                        buffMessage = Message.BuildMessage(_first_setChannelP);
+                        buffMessage = Message.BuildMessage(_second_setChanelP);
+                        //成功则关闭线程
+                        try
+                        {
+                            if (Message.SendMessage(buffMessage, _commPort))
+                            {
+                                //写入成功,返回p指令读取当前高压以确认更改成功
+                                backgroundWorker_Preference.CancelAsync();
+                                if (_isEnglish)
+                                {
+                                    MessageBox.Show("Data has been distributed!", "Message");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("数据已经下发!", "提示");
+                                }
+                                _messageType = MessageType.pRead;
+                            }
+                            //发送失败次数大于5次,提示错误并挂起线程
+                            else
+                            {
+                                errorNumber++;
+                                if (errorNumber > 5)
+                                {
+                                    _tools.PrompMessage(2);
+                                    backgroundWorker_Preference.CancelAsync();
+                                }
+                                Thread.Sleep(200);
+
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("设置失败,请重新尝试!");
                         }
                         break;
-                    #endregion
+                        #endregion
                 }
 
             }
@@ -653,32 +686,53 @@ namespace HFM
                 receiveBufferMessage = (byte[])e.UserState;
             }
 
-            //接收报文数据为空
-            if (receiveBufferMessage.Length < messageBufferLength)
+            try
             {
-                //数据接收出现错误次数超限
-                if (errNumber >= 5)
+                if (receiveBufferMessage.Length < messageBufferLength)
                 {
-                    //界面提示“通讯错误”
-                    MessageBox.Show("通讯错误");
+                    errNumber++;
+                    //数据接收出现错误次数超限
+                    if (errNumber >= 2)
+                    {
+                        if (_isEnglish == true)
+                        {
+                            MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+                            return;
+                        }
+                    }
                     return;
-
+                }
+            }
+            catch (Exception EX_NAME)
+            {
+                Tools.ErrorLog(EX_NAME.ToString());
+                if (_isEnglish == true)
+                {
+                    MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+                    return;
                 }
                 else
                 {
-                    errNumber++;
+                    MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+                    return;
                 }
-                return;
+                // Console.WriteLine(EX_NAME);
+                throw;
             }
             //接收报文无误，进行报文解析，并将解析后的道盒数据存储到channelParameters中 
             try
             {
                 if (receiveBufferMessage[0] == Convert.ToByte('P'))
                 {
-                    IList<ChannelParameter> channelParameters = new List<ChannelParameter>();
+                    
                     //解析报文
-                    channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
-                    foreach (var itemParameter in channelParameters)
+                    _channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
+                    foreach (var itemParameter in _channelParameters)
                     {
                         //显示内容
                         int index = this.DgvMainPreferenceSet.Rows.Add();
@@ -695,16 +749,12 @@ namespace HFM
                 }
 
             }
-            catch (Exception)
+            catch (Exception EX_NAME)
             {
-                MessageBox.Show("", "Message");
+                Tools.ErrorLog(EX_NAME.ToString());
                 throw;
             }
         }
-
-    
-
-
         /// <summary>
         /// 开启串口封装的方法
         /// </summary>
@@ -715,7 +765,7 @@ namespace HFM
             {
                 commPort.Close();
             }
-            commPort.GetCommPortSet();
+            commPort.GetCommPortSet("commportSet");
             //打开串口
             try
             {
@@ -780,15 +830,75 @@ namespace HFM
             #endregion
 
             #region 工厂参数
-            FactoryParameter factoryParameter = new FactoryParameter().GetParameter();//获得仪器设备信息参数
-            factoryParameter.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
-            factoryParameter.InstrumentNum = TxtInstrumentNum.Text;
-            factoryParameter.SoftName = TxtSoftName.Text;
-            factoryParameter.PortNumber = TxtPortNumber.Text;
-            factoryParameter.IsConnectedAuto = ChkIsConnectedAuto.Checked;
-            factoryParameter.MeasureType = CmbUnclideType.Text;
-            factoryParameter.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
+            FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
+            factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
+            factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
+            factoryParameterBtn.SoftName = TxtSoftName.Text;
+            factoryParameterBtn.PortNumber = TxtPortNumber.Text;
+            factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+            factoryParameterBtn.MeasureType = CmbUnclideType.Text;
+            factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
                                          + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
+            #endregion
+
+            #region 设备配置
+            //获得是否启用
+            Channel channelBtnOk = new Channel();
+            #region 手部启用
+            //手部启用
+            if (ChkHand.Checked)
+            {
+                //启用双探头
+                if (RdoSingleHand.Checked)
+                {
+                    channelBtnOk.SetEnabledByID(1, true);
+                    channelBtnOk.SetEnabledByID(2, false);
+                    channelBtnOk.SetEnabledByID(3, true);
+                    channelBtnOk.SetEnabledByID(4, false);
+                    //单探测器
+                    factoryParameterBtn.IsDoubleProbe = false;
+                }
+                else if(RdoDoubleHand.Checked)
+                {
+                    //根据类型全部启用首部探测器
+                    channelBtnOk.SetEnabledByType(0, true);
+                    //双探测器
+                    factoryParameterBtn.IsDoubleProbe = true;
+                    
+                }
+            }
+            else
+            {
+                channelBtnOk.SetEnabledByType(0, false);
+            }
+            #endregion
+
+            #region 脚步启用
+
+            if (ChkFoot.Checked)
+            {
+                channelBtnOk.SetEnabledByType(1, true);
+            }
+            else
+            {
+                channelBtnOk.SetEnabledByType(1, false);
+            }
+
+            #endregion
+
+            #region 衣物启用
+
+            if (ChkClothes.Checked)
+            {
+                channelBtnOk.SetEnabledByID(7, true);
+            }
+            else
+            {
+                channelBtnOk.SetEnabledByID(7, false);
+            }
+
+            #endregion
+            
             #endregion
 
             #region 存储数据库
@@ -803,7 +913,7 @@ namespace HFM
                     return;
                 }
             }
-            if (new HFM.Components.SystemParameter().SetParameter(system) && new FactoryParameter().SetParameter(factoryParameter))
+            if (new HFM.Components.SystemParameter().SetParameter(system) && new FactoryParameter().SetParameter(factoryParameterBtn))
             {
                 MessageBox.Show("更新成功");
             }
@@ -812,10 +922,11 @@ namespace HFM
                 MessageBox.Show("更新失败");
                 return;
             }
-                
-            
-            
+
             #endregion
+
+            GetProferenceData();
+            
         }
         /// <summary>
         /// 取消
@@ -827,6 +938,8 @@ namespace HFM
             //重新获得数据库数据
             GetProferenceData();
         }
+
+
 
         #endregion
 
@@ -986,7 +1099,7 @@ namespace HFM
             {
                 bool k = new ProbeParameter().SetParameter(probeParameters[i]);
                 bool l = new HFM.Components.EfficiencyParameter().SetParameter(efficiencyParameters[i]);
-                if (k && l)
+                if (k || l)
                 {
                 }
                 else
@@ -1130,7 +1243,9 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceRetuen_Click(object sender, EventArgs e)
         {
-
+            //重新获得数据库数据
+            GetMainProferenceData();
+            MessageBox.Show("恢复成功");
         }
         /// <summary>
         /// 设置默认
@@ -1139,7 +1254,77 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceSet_Click(object sender, EventArgs e)
         {
+            #region 获得数据
 
+            IList<ChannelParameter> channelParameters = new List<ChannelParameter>();//更新道盒参数
+            //循环每一行
+            for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++) 
+            {
+                ChannelParameter channelParameter = new ChannelParameter();
+                channelParameter.Channel = new Channel();
+                channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
+                channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
+                channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
+                channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
+                channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
+                channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
+                channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
+                channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
+                channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
+                channelParameters.Add(channelParameter);
+            }
+            //获得channelID
+            for (int i = 0; i < channelParameters.Count; i++)
+            {
+                if (channelParameters[i].Channel.ChannelName == "左手心")
+                {
+                    channelParameters[i].Channel.ChannelID = 1;
+                }
+                if (channelParameters[i].Channel.ChannelName == "左手背")
+                {
+                    channelParameters[i].Channel.ChannelID = 2;
+                }
+                if (channelParameters[i].Channel.ChannelName == "右手心")
+                {
+                    channelParameters[i].Channel.ChannelID = 3;
+                }
+                if (channelParameters[i].Channel.ChannelName == "右手背")
+                {
+                    channelParameters[i].Channel.ChannelID = 4;
+                }
+                if (channelParameters[i].Channel.ChannelName == "左脚")
+                {
+                    channelParameters[i].Channel.ChannelID = 5;
+                }
+                if (channelParameters[i].Channel.ChannelName == "右脚")
+                {
+                    channelParameters[i].Channel.ChannelID = 6;
+                }
+                if (channelParameters[i].Channel.ChannelName == "衣物探头")
+                {
+                    channelParameters[i].Channel.ChannelID = 7;
+                }
+            }
+
+            #endregion
+
+            #region 数据库更新
+
+            for (int i = 0; i < channelParameters.Count; i++)
+            {
+                if(new ChannelParameter().SetParameter(channelParameters[i]))
+                {
+                }
+                else
+                {
+                    MessageBox.Show("更新失败");
+                    return;
+                }
+            }
+            MessageBox.Show("更新成功");
+
+
+            #endregion
         }
         /// <summary>
         /// 读参数
@@ -1162,137 +1347,7 @@ namespace HFM
 
         #endregion
 
-        #region 设备设置界面
-        /// <summary>
-        /// 确定
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnFacilityOk_Click(object sender, EventArgs e)
-        {
-            //获得是否启用
-            bool hand, foot, clothes, two = false;//(手部、脚部、衣物、双手)
-
-            #region 手部启用
-            //手部启用
-            if (ChkHand.Checked)
-            {
-                hand = true;
-                //启用双探头
-                if (RdoSingleHand.Checked)
-                {
-                    two = false;
-                }
-                else
-                {
-                    two = true;
-                }
-            }
-            else
-            {
-                hand = false;
-            }
-            #endregion
-
-            #region 脚步启用
-
-            if (ChkFoot.Checked)
-            {
-                foot = true;
-            }
-            else
-            {
-                foot = false;
-            }
-
-            #endregion
-
-            #region 衣物启用
-
-            if (ChkClothes.Checked)
-            {
-                clothes = true;
-            }
-            else
-            {
-                clothes = false;
-            }
-
-            #endregion
-
-            #region 写入数据库
-
-            Channel channel = new Channel();
-
-            //手部启用
-            if (hand)
-            {
-                //双手启用
-                if (two)
-                {
-                    channel.SetEnabledByID(1, true);
-                    channel.SetEnabledByID(2, true);
-                    channel.SetEnabledByID(3, true);
-                    channel.SetEnabledByID(4, true);
-                }
-                //单手启用
-                else
-                {
-                    channel.SetEnabledByID(1, true);
-                    channel.SetEnabledByID(2, false);
-                    channel.SetEnabledByID(3, true);
-                    channel.SetEnabledByID(4, false);
-                }
-            }
-            else
-            {
-                channel.SetEnabledByID(1, false);
-                channel.SetEnabledByID(2, false);
-                channel.SetEnabledByID(3, false);
-                channel.SetEnabledByID(4, false);
-            }
-
-            //脚部启用
-            if (foot)
-            {
-                channel.SetEnabledByID(5, true);
-                channel.SetEnabledByID(6, true);
-            }
-            else
-            {
-                channel.SetEnabledByID(5, false);
-                channel.SetEnabledByID(6, false);
-            }
-
-            //衣物探头启用
-            if(clothes)
-            {
-                channel.SetEnabledByID(7, true);
-            }
-            else
-            {
-                channel.SetEnabledByID(7, false);
-            }
-
-            MessageBox.Show("ok");
-
-            #endregion
-
-        }
-        /// <summary>
-        /// 取消
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnFacilityNo_Click(object sender, EventArgs e)
-        {
-            //重新获得数据库数据
-            GetFacilityData();
-        }
-
-        #endregion
-
-        #endregion
+       #endregion
         
         #region 数字键盘
         #region alpha,beta,道盒参数标签页Dgv,数字键盘
