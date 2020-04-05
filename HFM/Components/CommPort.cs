@@ -34,6 +34,7 @@ namespace HFM.Components
 		public byte Parity; // 0-4=no,odd,even,mark,space  
 		public byte StopBits; // 0,1,2 = 1, 1.5, 2  
 		public int ReadTimeout;
+        public bool IsEnabled=true;
         #region 引用并调用windows系统文件句柄及api
         //comm port win32 file handle 
         public int hComm = -1; 
@@ -79,7 +80,7 @@ namespace HFM.Components
 			public char ErrorChar;          // error replacement character  
 			public char EofChar;            // end of input character  
 			public char EvtChar;            // received event character  
-			public ushort wReserved1;         // reserved; do not use  
+			public ushort wReserved1;         // reserved; do not use             
 		} 
 
 		[StructLayout(LayoutKind.Sequential)] 
@@ -295,12 +296,12 @@ namespace HFM.Components
         /// </summary>
         /// <param></param>
         /// <returns>当前端口设置</returns>
-        public CommPort GetCommPortSet()
+        public CommPort GetCommPortSet(string key)
         {
             string portNum = "COM1";
             string parity ="无";
             string stopBits = "1";
-            string portSetString = System.Configuration.ConfigurationManager.AppSettings["commportSet"].ToString();
+            string portSetString = System.Configuration.ConfigurationManager.AppSettings[key].ToString();
             string[] portSetArray=portSetString.Split(';');
             HexCon hexCon = new HexCon();
             for(int i=0;i<portSetArray.Length;i++)
@@ -324,8 +325,10 @@ namespace HFM.Components
                         case "StopBits":
                             stopBits= portSetArray[i].Split('=')[1].ToString();
                             break;
-                    } 
-                    
+                        case "IsEnabled":
+                            this.IsEnabled = portSetArray[i].Split('=')[1].ToString().ToLower() == "true" ? true : false; 
+                            break;
+                    }                     
                     switch (portNum.ToUpper())
                     {
                         case "COM1":

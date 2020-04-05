@@ -765,7 +765,7 @@ namespace HFM
             {
                 commPort.Close();
             }
-            commPort.GetCommPortSet();
+            commPort.GetCommPortSet("commportSet");
             //打开串口
             try
             {

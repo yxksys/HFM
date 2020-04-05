@@ -307,10 +307,10 @@ namespace HFM.Components
         public static byte[] CRC16(byte[] data, int length)
         {
             int len = data.Length;
-            if (len > 0)
+            if (len > 0 && len>=length)
             {
                 ushort crc = 0xFFFF;
-                for (int i = 0; i < len; i++)
+                for (int i = 0; i < length; i++)
                 {
                     crc = (ushort)(crc ^ (data[i]));
                     for (int j = 0; j < 8; j++)
@@ -382,6 +382,20 @@ namespace HFM.Components
             }
         }
 
+        #endregion
+
+        #region 中英文界面转换时加载语言资源
+        public static void ApplyLanguageResource(Form form)
+        {
+            System.ComponentModel.ComponentResourceManager res = new System.ComponentModel.ComponentResourceManager(form.GetType());
+            foreach (Control ctl in form.Controls)
+            {
+                res.ApplyResources(ctl, ctl.Name);
+            }
+            form.ResumeLayout(false);
+            form.PerformLayout();
+            res.ApplyResources(form, "$form");
+        }
         #endregion
     }
 }

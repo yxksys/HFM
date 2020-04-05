@@ -30,7 +30,7 @@ namespace HFM.Components
         private const string SQL_SELECT_CHANNEL_BY_ISENABLED = "SELECT ChannelID, ChannelName, ChannelName_English," +
                                                                 " ProbeArea, Status, IsEnabled " +
                                                                 "FROM HFM_DIC_Channel " +
-                                                                "WHERE IsEnabled = @IsEnabled";
+                                                                "WHERE IsEnabled = @IsEnabled ORDER BY ChannelID";
         //按通道ChannelID查询
         private const string SQL_SELECT_CHANNEL_BY_CHANNELID = "SELECT ChannelID, ChannelName, ChannelName_English," +
                                                                 " ProbeArea, Status, IsEnabled " +
