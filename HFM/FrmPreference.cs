@@ -86,6 +86,8 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmPreference_Load(object sender, EventArgs e)
         {
+            //打开端口
+            OpenPort();
             //线程支持异步取消
             backgroundWorker_Preference.WorkerSupportsCancellation = true;
             GetProferenceData();
@@ -627,12 +629,12 @@ namespace HFM
                         }
 
                         //生成报文
-                        buffMessage = Message.BuildMessage(_first_setChannelP);
-                        buffMessage = Message.BuildMessage(_second_setChanelP);
+                        byte[] buffMessage_first = Message.BuildMessage(_first_setChannelP);
+                        byte[] buffMessage_second = Message.BuildMessage(_second_setChanelP);
                         //成功则关闭线程
                         try
                         {
-                            if (Message.SendMessage(buffMessage, _commPort))
+                            if (Message.SendMessage(buffMessage_first, _commPort) && Message.SendMessage(buffMessage_second,_commPort))
                             {
                                 //写入成功,返回p指令读取当前高压以确认更改成功
                                 backgroundWorker_Preference.CancelAsync();
@@ -1333,7 +1335,24 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
         {
-                    
+            //当前发送报文类型换成p写入
+            _messageType = MessageType.pRead;
+            
+            //判断串口是否打开
+            if (_commPort.Opened == true)
+            {
+                //判断线程是否运行
+                if (backgroundWorker_Preference.IsBusy == false)
+                {
+                    backgroundWorker_Preference.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                //错误提示
+                _tools.PrompMessage(2);
+                return;
+            }
         }
         /// <summary>
         /// 写参数
@@ -1342,6 +1361,74 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceWrite_Click(object sender, EventArgs e)
         {
+            #region 读取数据到列表
+            for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++)
+            {
+                ChannelParameter channelParameter = new ChannelParameter();
+                channelParameter.Channel = new Channel();
+                channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
+                channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
+                channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
+                channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
+                channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
+                channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
+                channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
+                channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
+                channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
+                _channelParameters.Add(channelParameter);
+            }
+            //获得channelID
+            for (int i = 0; i < _channelParameters.Count; i++)
+            {
+                if (_channelParameters[i].Channel.ChannelName == "左手心")
+                {
+                    _channelParameters[i].Channel.ChannelID = 1;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "左手背")
+                {
+                    _channelParameters[i].Channel.ChannelID = 2;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "右手心")
+                {
+                    _channelParameters[i].Channel.ChannelID = 3;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "右手背")
+                {
+                    _channelParameters[i].Channel.ChannelID = 4;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "左脚")
+                {
+                    _channelParameters[i].Channel.ChannelID = 5;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "右脚")
+                {
+                    _channelParameters[i].Channel.ChannelID = 6;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "衣物探头")
+                {
+                    _channelParameters[i].Channel.ChannelID = 7;
+                }
+            }
+            #endregion
+
+            //当前发送报文类型换成p写入
+            _messageType = MessageType.pSet;
+
+            //判断串口是否打开
+            if (_commPort.Opened == true)
+            {
+                //判断线程是否运行
+                if (backgroundWorker_Preference.IsBusy == false)
+                {
+                    backgroundWorker_Preference.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                //错误提示
+                _tools.PrompMessage(2);
+                return;
+            }
 
         }
 
