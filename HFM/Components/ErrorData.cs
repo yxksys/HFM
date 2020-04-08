@@ -34,8 +34,8 @@ namespace HFM.Components
         /// <summary>
         /// /添加故障数据
         /// </summary>
-        private const string SQL_INSERT_ERRORDATA = "INSERT INTO HFM_ErrData (ErrTime,Record,IsEnglish,IsReported)" +
-                                                    "VALUES(@ErrTime,@Record,@IsEnglish )";
+        private const string SQL_INSERT_ERRORDATA = "INSERT INTO HFM_ErrData (ErrTime,Record,IsEnglish,IsReported) " +
+                                                    "VALUES(@ErrTime,@Record,@IsEnglish,@IsReported)";
         /// <summary>
         /// 删除故障记录表中所有记录 
         /// </summary>
@@ -168,7 +168,7 @@ namespace HFM.Components
             parms[0].Value = errorData.ErrTime;
             parms[1].Value = errorData.Record.ToString();
             parms[2].Value = errorData.IsEnglish;
-            parms[4].Value = errorData.IsReported;
+            parms[3].Value = errorData.IsReported;
             if (DbHelperAccess.ExecuteSql(SQL_INSERT_ERRORDATA, parms) != 0)
             {
                 return true;

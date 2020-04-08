@@ -34,8 +34,9 @@ namespace HFM
         #region 确认
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
+            string mm = Tools.MD5Encrypt32(TxtPassword.Text);
             //给对象赋值
-            _user=_user.Login(Tools.MD5Encrypt32(TxtPassword.Text));
+            _user =_user.Login(Tools.MD5Encrypt32(TxtPassword.Text));
             //判断对象的角色，超级管理员和普通用户都可以登陆成功
             if (_user.Role == 1||_user.Role==2)
             {

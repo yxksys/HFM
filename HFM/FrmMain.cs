@@ -168,8 +168,17 @@ namespace HFM
         /// <param name="e"></param>
         private void TmrStatus_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            Tsslbl_Status_Text();
+            try
+            {
+                Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                Tsslbl_Status_Text();
+            }
+            catch (Exception exception)
+            {
+                Tools.ErrorLog(exception.ToString());
+                throw;
+            }
+            
         } 
         #endregion
 

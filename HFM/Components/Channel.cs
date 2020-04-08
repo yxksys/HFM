@@ -317,6 +317,7 @@ namespace HFM.Components
                     {
                         return isSuccess = false;
                     }
+                    
                 case 2://衣物
 
                     channel.ChannelID = 7;
@@ -329,6 +330,7 @@ namespace HFM.Components
                     {
                         return isSuccess = false;
                     }
+                    
                 default:
                     break;
             }
