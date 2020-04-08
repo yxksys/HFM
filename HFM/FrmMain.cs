@@ -240,7 +240,7 @@ namespace HFM
             else
             {
                 //开起维护密码窗体
-                FrmEnterPassword frmEnterPassword=new FrmEnterPassword();
+                FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
                 frmEnterPassword.Show();
                 // FrmDisposeNormal(new FrmEnterPassword());
             }

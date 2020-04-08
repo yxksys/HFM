@@ -23,9 +23,8 @@ namespace HFM
 
         #endregion
         #region 方法
-        public FrmEnterPassword(FrmMeasureMain frm)
+        public FrmEnterPassword()
         {
-            frmMeasureMain = frm;
             InitializeComponent();
         }
         #endregion 
