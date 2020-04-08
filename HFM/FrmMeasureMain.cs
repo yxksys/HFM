@@ -2669,7 +2669,7 @@ namespace HFM
             {
                 bkWorkerReceiveData.CancelAsync();
             }
-            frmEnterPassword.Show();
+            frmEnterPassword.Show();            
         }
     }
 }

@@ -179,7 +179,7 @@
     <value>Maintenance(T)</value>
   </data>
   <data name="HistoricalRecordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>176, 24</value>
   </data>
   <data name="HistoricalRecordToolStripMenuItem.Text" xml:space="preserve">
     <value>History record</value>
@@ -191,7 +191,7 @@
     <value>Record(R)</value>
   </data>
   <data name="AboutHFMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>160, 24</value>
   </data>
   <data name="AboutHFMToolStripMenuItem.Text" xml:space="preserve">
     <value>About HFM</value>

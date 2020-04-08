@@ -47,16 +47,16 @@ namespace HFM
                 {
                     if (frmMain.Name != Application.OpenForms[i].Text)
                     {
-                        Application.OpenForms[i].Hide();
+                        Application.OpenForms[i].Close();
                     }
                     if (frmMain.Name == Application.OpenForms[i].Text)          //若该窗体已被打开
                     {
-                        frmMain.Activate();               //激活该窗体
-                        isOpened = true;                    //设置子窗体的打开标记为true
+                        frmMain.Activate();  //激活该窗体
+                        isOpened = true;     //设置子窗体的打开标记为true
                     }
                 }
                 
-                if (!isOpened)                              //若该窗体未打开,则显示该子窗体
+                if (!isOpened) //若该窗体未打开,则显示该子窗体
                 {
                     frmMain.Show();
                 }

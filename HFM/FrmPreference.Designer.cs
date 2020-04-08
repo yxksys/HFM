@@ -172,12 +172,6 @@
             this.工厂参数 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.DgvMainPreferenceSet = new System.Windows.Forms.DataGridView();
-            this.BtnMainPreferenceWrite = new System.Windows.Forms.Button();
-            this.BtnMainPreferenceRead = new System.Windows.Forms.Button();
-            this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
-            this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
-            this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.TxtMainPreferenceChanneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceAlphaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceBetaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -187,6 +181,14 @@
             this.TxtMainPreferenceHVFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceWorkTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtMainPreferenceHVRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnMainPreferenceWrite = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceRead = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
+            this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
+            this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.TxtDeviceAddress = new System.Windows.Forms.TextBox();
+            this.LblDeviceAddress = new System.Windows.Forms.Label();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -314,6 +316,8 @@
             // 
             // GrpFacilityData
             // 
+            this.GrpFacilityData.Controls.Add(this.TxtDeviceAddress);
+            this.GrpFacilityData.Controls.Add(this.LblDeviceAddress);
             this.GrpFacilityData.Controls.Add(this.ChkIsConnectedAuto);
             this.GrpFacilityData.Controls.Add(this.CmbUnclideType);
             this.GrpFacilityData.Controls.Add(this.LblUnclideType);
@@ -343,9 +347,9 @@
             // ChkIsConnectedAuto
             // 
             this.ChkIsConnectedAuto.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ChkIsConnectedAuto.Location = new System.Drawing.Point(491, 71);
+            this.ChkIsConnectedAuto.Location = new System.Drawing.Point(455, 71);
             this.ChkIsConnectedAuto.Name = "ChkIsConnectedAuto";
-            this.ChkIsConnectedAuto.Size = new System.Drawing.Size(110, 25);
+            this.ChkIsConnectedAuto.Size = new System.Drawing.Size(99, 25);
             this.ChkIsConnectedAuto.TabIndex = 17;
             this.ChkIsConnectedAuto.Text = "自动连接";
             this.ChkIsConnectedAuto.UseVisualStyleBackColor = true;
@@ -362,7 +366,7 @@
             "α",
             "β",
             "α/β"});
-            this.CmbUnclideType.Location = new System.Drawing.Point(641, 69);
+            this.CmbUnclideType.Location = new System.Drawing.Point(664, 34);
             this.CmbUnclideType.Margin = new System.Windows.Forms.Padding(2);
             this.CmbUnclideType.Name = "CmbUnclideType";
             this.CmbUnclideType.Size = new System.Drawing.Size(61, 24);
@@ -371,7 +375,7 @@
             // LblUnclideType
             // 
             this.LblUnclideType.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblUnclideType.Location = new System.Drawing.Point(600, 72);
+            this.LblUnclideType.Location = new System.Drawing.Point(623, 37);
             this.LblUnclideType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblUnclideType.Name = "LblUnclideType";
             this.LblUnclideType.Size = new System.Drawing.Size(60, 21);
@@ -381,7 +385,7 @@
             // TxtPortNumber
             // 
             this.TxtPortNumber.Font = new System.Drawing.Font("宋体", 12F);
-            this.TxtPortNumber.Location = new System.Drawing.Point(391, 71);
+            this.TxtPortNumber.Location = new System.Drawing.Point(350, 70);
             this.TxtPortNumber.Margin = new System.Windows.Forms.Padding(2);
             this.TxtPortNumber.Multiline = true;
             this.TxtPortNumber.Name = "TxtPortNumber";
@@ -392,7 +396,7 @@
             // LblPortNumber
             // 
             this.LblPortNumber.Font = new System.Drawing.Font("宋体", 12F);
-            this.LblPortNumber.Location = new System.Drawing.Point(348, 73);
+            this.LblPortNumber.Location = new System.Drawing.Point(307, 74);
             this.LblPortNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblPortNumber.Name = "LblPortNumber";
             this.LblPortNumber.Size = new System.Drawing.Size(60, 21);
@@ -402,7 +406,7 @@
             // TxtIPAddressFour
             // 
             this.TxtIPAddressFour.Font = new System.Drawing.Font("宋体", 12F);
-            this.TxtIPAddressFour.Location = new System.Drawing.Point(243, 71);
+            this.TxtIPAddressFour.Location = new System.Drawing.Point(234, 71);
             this.TxtIPAddressFour.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIPAddressFour.Multiline = true;
             this.TxtIPAddressFour.Name = "TxtIPAddressFour";
@@ -413,7 +417,7 @@
             // TxtIPAddressThree
             // 
             this.TxtIPAddressThree.Font = new System.Drawing.Font("宋体", 12F);
-            this.TxtIPAddressThree.Location = new System.Drawing.Point(192, 71);
+            this.TxtIPAddressThree.Location = new System.Drawing.Point(183, 71);
             this.TxtIPAddressThree.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIPAddressThree.Multiline = true;
             this.TxtIPAddressThree.Name = "TxtIPAddressThree";
@@ -424,7 +428,7 @@
             // TxtIPAddressTwo
             // 
             this.TxtIPAddressTwo.Font = new System.Drawing.Font("宋体", 12F);
-            this.TxtIPAddressTwo.Location = new System.Drawing.Point(142, 71);
+            this.TxtIPAddressTwo.Location = new System.Drawing.Point(133, 71);
             this.TxtIPAddressTwo.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIPAddressTwo.Multiline = true;
             this.TxtIPAddressTwo.Name = "TxtIPAddressTwo";
@@ -435,7 +439,7 @@
             // TxtIPAddressOne
             // 
             this.TxtIPAddressOne.Font = new System.Drawing.Font("宋体", 12F);
-            this.TxtIPAddressOne.Location = new System.Drawing.Point(92, 71);
+            this.TxtIPAddressOne.Location = new System.Drawing.Point(83, 71);
             this.TxtIPAddressOne.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIPAddressOne.Multiline = true;
             this.TxtIPAddressOne.Name = "TxtIPAddressOne";
@@ -446,7 +450,7 @@
             // TxtSoftName
             // 
             this.TxtSoftName.Font = new System.Drawing.Font("宋体", 12F);
-            this.TxtSoftName.Location = new System.Drawing.Point(485, 34);
+            this.TxtSoftName.Location = new System.Drawing.Point(378, 34);
             this.TxtSoftName.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSoftName.Multiline = true;
             this.TxtSoftName.Name = "TxtSoftName";
@@ -457,7 +461,7 @@
             // LblSoftName
             // 
             this.LblSoftName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblSoftName.Location = new System.Drawing.Point(414, 36);
+            this.LblSoftName.Location = new System.Drawing.Point(307, 36);
             this.LblSoftName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblSoftName.Name = "LblSoftName";
             this.LblSoftName.Size = new System.Drawing.Size(80, 21);
@@ -467,18 +471,18 @@
             // TxtInstrumentNum
             // 
             this.TxtInstrumentNum.Font = new System.Drawing.Font("宋体", 12F);
-            this.TxtInstrumentNum.Location = new System.Drawing.Point(276, 34);
+            this.TxtInstrumentNum.Location = new System.Drawing.Point(192, 33);
             this.TxtInstrumentNum.Margin = new System.Windows.Forms.Padding(2);
             this.TxtInstrumentNum.Multiline = true;
             this.TxtInstrumentNum.Name = "TxtInstrumentNum";
-            this.TxtInstrumentNum.Size = new System.Drawing.Size(104, 26);
+            this.TxtInstrumentNum.Size = new System.Drawing.Size(88, 26);
             this.TxtInstrumentNum.TabIndex = 4;
             this.TxtInstrumentNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblInstrumentNum
             // 
             this.LblInstrumentNum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblInstrumentNum.Location = new System.Drawing.Point(238, 36);
+            this.LblInstrumentNum.Location = new System.Drawing.Point(154, 38);
             this.LblInstrumentNum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblInstrumentNum.Name = "LblInstrumentNum";
             this.LblInstrumentNum.Size = new System.Drawing.Size(50, 32);
@@ -488,11 +492,11 @@
             // TxtSmoothingFactor
             // 
             this.TxtSmoothingFactor.Font = new System.Drawing.Font("宋体", 12F);
-            this.TxtSmoothingFactor.Location = new System.Drawing.Point(92, 34);
+            this.TxtSmoothingFactor.Location = new System.Drawing.Point(83, 34);
             this.TxtSmoothingFactor.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSmoothingFactor.Multiline = true;
             this.TxtSmoothingFactor.Name = "TxtSmoothingFactor";
-            this.TxtSmoothingFactor.Size = new System.Drawing.Size(104, 26);
+            this.TxtSmoothingFactor.Size = new System.Drawing.Size(46, 26);
             this.TxtSmoothingFactor.TabIndex = 2;
             this.TxtSmoothingFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtSmoothingFactor.Enter += new System.EventHandler(this.TxtSmoothingFactor_Enter);
@@ -500,7 +504,7 @@
             // LblIPAddress
             // 
             this.LblIPAddress.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblIPAddress.Location = new System.Drawing.Point(24, 73);
+            this.LblIPAddress.Location = new System.Drawing.Point(15, 75);
             this.LblIPAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblIPAddress.Name = "LblIPAddress";
             this.LblIPAddress.Size = new System.Drawing.Size(60, 21);
@@ -510,7 +514,7 @@
             // LblSmoothingFactor
             // 
             this.LblSmoothingFactor.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblSmoothingFactor.Location = new System.Drawing.Point(20, 35);
+            this.LblSmoothingFactor.Location = new System.Drawing.Point(11, 38);
             this.LblSmoothingFactor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblSmoothingFactor.Name = "LblSmoothingFactor";
             this.LblSmoothingFactor.Size = new System.Drawing.Size(75, 21);
@@ -1147,7 +1151,7 @@
             this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1178,7 +1182,7 @@
             this.DgvBetaSet.RightToLeft = System.Windows.Forms.RightToLeft.No;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1933,7 +1937,7 @@
             this.DgvMainPreferenceSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 12F);
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1961,59 +1965,6 @@
             this.DgvMainPreferenceSet.Size = new System.Drawing.Size(745, 330);
             this.DgvMainPreferenceSet.TabIndex = 12;
             this.DgvMainPreferenceSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMainPreferenceSet_CellClick);
-            // 
-            // BtnMainPreferenceWrite
-            // 
-            this.BtnMainPreferenceWrite.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMainPreferenceWrite.Location = new System.Drawing.Point(543, 386);
-            this.BtnMainPreferenceWrite.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMainPreferenceWrite.Name = "BtnMainPreferenceWrite";
-            this.BtnMainPreferenceWrite.Size = new System.Drawing.Size(110, 42);
-            this.BtnMainPreferenceWrite.TabIndex = 4;
-            this.BtnMainPreferenceWrite.Text = "写参数";
-            this.BtnMainPreferenceWrite.UseVisualStyleBackColor = true;
-            this.BtnMainPreferenceWrite.Click += new System.EventHandler(this.BtnMainPreferenceWrite_Click);
-            // 
-            // BtnMainPreferenceRead
-            // 
-            this.BtnMainPreferenceRead.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMainPreferenceRead.Location = new System.Drawing.Point(415, 386);
-            this.BtnMainPreferenceRead.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMainPreferenceRead.Name = "BtnMainPreferenceRead";
-            this.BtnMainPreferenceRead.Size = new System.Drawing.Size(110, 42);
-            this.BtnMainPreferenceRead.TabIndex = 4;
-            this.BtnMainPreferenceRead.Text = "读参数";
-            this.BtnMainPreferenceRead.UseVisualStyleBackColor = true;
-            this.BtnMainPreferenceRead.Click += new System.EventHandler(this.BtnMainPreferenceRead_Click);
-            // 
-            // BtnMainPreferenceSet
-            // 
-            this.BtnMainPreferenceSet.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMainPreferenceSet.Location = new System.Drawing.Point(288, 386);
-            this.BtnMainPreferenceSet.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMainPreferenceSet.Name = "BtnMainPreferenceSet";
-            this.BtnMainPreferenceSet.Size = new System.Drawing.Size(110, 42);
-            this.BtnMainPreferenceSet.TabIndex = 4;
-            this.BtnMainPreferenceSet.Text = "设置默认";
-            this.BtnMainPreferenceSet.UseVisualStyleBackColor = true;
-            this.BtnMainPreferenceSet.Click += new System.EventHandler(this.BtnMainPreferenceSet_Click);
-            // 
-            // BtnMainPreferenceRetuen
-            // 
-            this.BtnMainPreferenceRetuen.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnMainPreferenceRetuen.Location = new System.Drawing.Point(160, 386);
-            this.BtnMainPreferenceRetuen.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnMainPreferenceRetuen.Name = "BtnMainPreferenceRetuen";
-            this.BtnMainPreferenceRetuen.Size = new System.Drawing.Size(110, 42);
-            this.BtnMainPreferenceRetuen.TabIndex = 4;
-            this.BtnMainPreferenceRetuen.Text = "恢复默认";
-            this.BtnMainPreferenceRetuen.UseVisualStyleBackColor = true;
-            this.BtnMainPreferenceRetuen.Click += new System.EventHandler(this.BtnMainPreferenceRetuen_Click);
-            // 
-            // backgroundWorker_Preference
-            // 
-            this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
-            this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
             // 
             // TxtMainPreferenceChanneName
             // 
@@ -2080,6 +2031,80 @@
             this.TxtMainPreferenceHVRatio.HeaderText = "高压倍数";
             this.TxtMainPreferenceHVRatio.Name = "TxtMainPreferenceHVRatio";
             this.TxtMainPreferenceHVRatio.Width = 86;
+            // 
+            // BtnMainPreferenceWrite
+            // 
+            this.BtnMainPreferenceWrite.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMainPreferenceWrite.Location = new System.Drawing.Point(543, 386);
+            this.BtnMainPreferenceWrite.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMainPreferenceWrite.Name = "BtnMainPreferenceWrite";
+            this.BtnMainPreferenceWrite.Size = new System.Drawing.Size(110, 42);
+            this.BtnMainPreferenceWrite.TabIndex = 4;
+            this.BtnMainPreferenceWrite.Text = "写参数";
+            this.BtnMainPreferenceWrite.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceWrite.Click += new System.EventHandler(this.BtnMainPreferenceWrite_Click);
+            // 
+            // BtnMainPreferenceRead
+            // 
+            this.BtnMainPreferenceRead.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMainPreferenceRead.Location = new System.Drawing.Point(415, 386);
+            this.BtnMainPreferenceRead.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMainPreferenceRead.Name = "BtnMainPreferenceRead";
+            this.BtnMainPreferenceRead.Size = new System.Drawing.Size(110, 42);
+            this.BtnMainPreferenceRead.TabIndex = 4;
+            this.BtnMainPreferenceRead.Text = "读参数";
+            this.BtnMainPreferenceRead.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceRead.Click += new System.EventHandler(this.BtnMainPreferenceRead_Click);
+            // 
+            // BtnMainPreferenceSet
+            // 
+            this.BtnMainPreferenceSet.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMainPreferenceSet.Location = new System.Drawing.Point(288, 386);
+            this.BtnMainPreferenceSet.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMainPreferenceSet.Name = "BtnMainPreferenceSet";
+            this.BtnMainPreferenceSet.Size = new System.Drawing.Size(110, 42);
+            this.BtnMainPreferenceSet.TabIndex = 4;
+            this.BtnMainPreferenceSet.Text = "设置默认";
+            this.BtnMainPreferenceSet.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceSet.Click += new System.EventHandler(this.BtnMainPreferenceSet_Click);
+            // 
+            // BtnMainPreferenceRetuen
+            // 
+            this.BtnMainPreferenceRetuen.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnMainPreferenceRetuen.Location = new System.Drawing.Point(160, 386);
+            this.BtnMainPreferenceRetuen.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnMainPreferenceRetuen.Name = "BtnMainPreferenceRetuen";
+            this.BtnMainPreferenceRetuen.Size = new System.Drawing.Size(110, 42);
+            this.BtnMainPreferenceRetuen.TabIndex = 4;
+            this.BtnMainPreferenceRetuen.Text = "恢复默认";
+            this.BtnMainPreferenceRetuen.UseVisualStyleBackColor = true;
+            this.BtnMainPreferenceRetuen.Click += new System.EventHandler(this.BtnMainPreferenceRetuen_Click);
+            // 
+            // backgroundWorker_Preference
+            // 
+            this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
+            this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
+            // 
+            // TxtDeviceAddress
+            // 
+            this.TxtDeviceAddress.Font = new System.Drawing.Font("宋体", 12F);
+            this.TxtDeviceAddress.Location = new System.Drawing.Point(651, 70);
+            this.TxtDeviceAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtDeviceAddress.Multiline = true;
+            this.TxtDeviceAddress.Name = "TxtDeviceAddress";
+            this.TxtDeviceAddress.Size = new System.Drawing.Size(74, 26);
+            this.TxtDeviceAddress.TabIndex = 19;
+            this.TxtDeviceAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // LblDeviceAddress
+            // 
+            this.LblDeviceAddress.Font = new System.Drawing.Font("宋体", 12F);
+            this.LblDeviceAddress.Location = new System.Drawing.Point(579, 73);
+            this.LblDeviceAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblDeviceAddress.Name = "LblDeviceAddress";
+            this.LblDeviceAddress.Size = new System.Drawing.Size(83, 21);
+            this.LblDeviceAddress.TabIndex = 18;
+            this.LblDeviceAddress.Text = "仪器地址";
             // 
             // FrmPreference
             // 
@@ -2274,5 +2299,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVFactor;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceWorkTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVRatio;
+        private System.Windows.Forms.TextBox TxtDeviceAddress;
+        private System.Windows.Forms.Label LblDeviceAddress;
     }
 }

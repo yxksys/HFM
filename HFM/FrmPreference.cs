@@ -142,7 +142,7 @@ namespace HFM
             TxtMeasuringTime.Text = system.MeasuringTime.ToString();
             CmbMeasurementUnit.Text = system.MeasurementUnit.ToString();
             TxtAlarmTime.Text = system.AlarmTime.ToString();
-            TxtBKGUpdate.Text = system.BkgUpdate.ToString();
+            TxtBKGUpdate.Text = system.BkgUpdate.ToString();            
             #endregion
 
             #region 工厂参数
@@ -160,7 +160,8 @@ namespace HFM
             TxtPortNumber.Text = factoryParameter.PortNumber;
             ChkIsConnectedAuto.Checked = factoryParameter.IsConnectedAuto;
             CmbUnclideType.Text = factoryParameter.MeasureType;
-            TxtPortNumber.Text = factoryParameter.PortNumber;  
+            TxtPortNumber.Text = factoryParameter.PortNumber;
+            TxtDeviceAddress.Text = factoryParameter.DeviceAddress;
             #endregion
 
             #region 探测面积
@@ -794,7 +795,7 @@ namespace HFM
             #region 系统参数
             //首先获得默认参数,通过对原始数据赋值来实现更新
             HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();
-            system = system.GetParameter();
+            //system = system.GetParameter();
             system.SelfCheckTime = int.Parse(TxtSelfCheckTime.Text);
             system.SmoothingTime = Convert.ToInt32(TxtSmoothingTime.Text);
             system.MeasuringTime = int.Parse(TxtMeasuringTime.Text);
@@ -832,7 +833,7 @@ namespace HFM
             #endregion
 
             #region 工厂参数
-            FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
+            FactoryParameter factoryParameterBtn = new FactoryParameter();//获得仪器设备信息参数
             factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
             factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
             factoryParameterBtn.SoftName = TxtSoftName.Text;
@@ -841,6 +842,7 @@ namespace HFM
             factoryParameterBtn.MeasureType = CmbUnclideType.Text;
             factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
                                          + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
+            factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
             #endregion
 
             #region 设备配置
@@ -915,7 +917,7 @@ namespace HFM
                     return;
                 }
             }
-            if (new HFM.Components.SystemParameter().SetParameter(system) && new FactoryParameter().SetParameter(factoryParameterBtn))
+            if (system.SetParameter(system) && factoryParameterBtn.SetParameter(factoryParameterBtn))
             {
                 MessageBox.Show("更新成功");
             }
