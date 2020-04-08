@@ -21,8 +21,8 @@ namespace HFM
             Thread.Sleep(500);
             FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
             frmMeasureMain.Show();
-            this.Close();
-            Time_Welcome_cloes.Stop();
+            this.Dispose();
+            //Time_Welcome_cloes.Stop();
         }
 
         private void FrmWelcome_FormClosed(object sender, FormClosedEventArgs e)
