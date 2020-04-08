@@ -184,6 +184,9 @@
     <EmbeddedResource Include="FrmMeasureMain.resx">
       <DependentUpon>FrmMeasureMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmModifyPasssword.en.resx">
+      <DependentUpon>FrmModifyPasssword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPreference.en.resx">
       <DependentUpon>FrmPreference.cs</DependentUpon>
     </EmbeddedResource>
