@@ -21,7 +21,7 @@ namespace HFM
             Thread.Sleep(500);
             FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
             frmMeasureMain.Show();
-            this.Hide();
+            this.Close();
             Time_Welcome_cloes.Stop();
         }
 
