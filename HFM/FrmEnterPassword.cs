@@ -55,7 +55,7 @@ namespace HFM
                         isOpened = true;                    //设置子窗体的打开标记为true
                     }
                 }
-
+                
                 if (!isOpened)                              //若该窗体未打开,则显示该子窗体
                 {
                     frmMain.Show();

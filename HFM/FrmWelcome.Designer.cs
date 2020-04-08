@@ -29,27 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Time_Welcome_cloes = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // timer1
+            // Time_Welcome_cloes
             // 
-            this.timer1.Interval = 1000;
+            this.Time_Welcome_cloes.Interval = 1000;
+            this.Time_Welcome_cloes.Tick += new System.EventHandler(this.Time_Welcome_cloes_Tick);
             // 
             // FrmWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::HFM.Properties.Resources.welcome;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "FrmWelcome";
-            this.Text = "FrmWelcome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "欢迎";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmWelcome_FormClosed);
             this.Load += new System.EventHandler(this.FrmWelcome_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer Time_Welcome_cloes;
     }
 }

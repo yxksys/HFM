@@ -168,7 +168,7 @@ namespace HFM.Components
             parms[0].Value = errorData.ErrTime;
             parms[1].Value = errorData.Record.ToString();
             parms[2].Value = errorData.IsEnglish;
-            parms[4].Value = errorData.IsReported;
+            parms[3].Value = errorData.IsReported;
             if (DbHelperAccess.ExecuteSql(SQL_INSERT_ERRORDATA, parms) != 0)
             {
                 return true;

@@ -2653,6 +2653,10 @@ namespace HFM
         private void BtnOption_Click(object sender, EventArgs e)
         {
             FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
+            if (bkWorkerReceiveData.IsBusy)
+            {
+                bkWorkerReceiveData.CancelAsync();
+            }
             frmEnterPassword.Show();
         }
     }
