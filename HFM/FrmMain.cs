@@ -15,9 +15,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
@@ -27,7 +29,8 @@ namespace HFM
     public partial class FrmMain : Form
     {
         #region 字段
-        
+
+        private bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;
         #endregion
 
         #region 实例
@@ -139,6 +142,18 @@ namespace HFM
                 Tsslbl_Status.Text = _commPort.Opened == false ? @"通信故障!" : @"通信正常!";
             }
         }
+        #endregion
+
+        #region 翻译
+
+        public void IsChineseOrEnglish(bool isenglish)
+        {
+            if (isenglish)
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            }
+        }
+
         #endregion
 
         #region 构造函数

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.MnsFunction = new System.Windows.Forms.MenuStrip();
             this.SystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StartRunningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,185 +55,147 @@
             // 
             // MnsFunction
             // 
+            resources.ApplyResources(this.MnsFunction, "MnsFunction");
             this.MnsFunction.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SystemToolStripMenuItem,
             this.SetUpToolStripMenuItem,
             this.MaintainToolStripMenuItem,
             this.RecordToolStripMenuItem,
             this.AboutToolStripMenuItem});
-            this.MnsFunction.Location = new System.Drawing.Point(0, 0);
             this.MnsFunction.Name = "MnsFunction";
-            this.MnsFunction.Size = new System.Drawing.Size(792, 28);
-            this.MnsFunction.TabIndex = 1;
-            this.MnsFunction.Text = "menuStrip1";
             // 
             // SystemToolStripMenuItem
             // 
+            resources.ApplyResources(this.SystemToolStripMenuItem, "SystemToolStripMenuItem");
             this.SystemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StartRunningToolStripMenuItem,
             this.SuperUserToolStripMenuItem,
             this.ChangePasswordToolStripMenuItem,
             this.RetreatSystemToolStripMenuItem});
-            this.SystemToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F);
             this.SystemToolStripMenuItem.Name = "SystemToolStripMenuItem";
-            this.SystemToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
-            this.SystemToolStripMenuItem.Text = "系统(S)";
             // 
             // StartRunningToolStripMenuItem
             // 
+            resources.ApplyResources(this.StartRunningToolStripMenuItem, "StartRunningToolStripMenuItem");
             this.StartRunningToolStripMenuItem.Name = "StartRunningToolStripMenuItem";
-            this.StartRunningToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.StartRunningToolStripMenuItem.Text = "开始运行";
             this.StartRunningToolStripMenuItem.Click += new System.EventHandler(this.StartRunningToolStripMenuItem_Click);
             // 
             // SuperUserToolStripMenuItem
             // 
+            resources.ApplyResources(this.SuperUserToolStripMenuItem, "SuperUserToolStripMenuItem");
             this.SuperUserToolStripMenuItem.Name = "SuperUserToolStripMenuItem";
-            this.SuperUserToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.SuperUserToolStripMenuItem.Text = "超级用户";
             this.SuperUserToolStripMenuItem.Click += new System.EventHandler(this.SuperUserToolStripMenuItem_Click);
             // 
             // ChangePasswordToolStripMenuItem
             // 
+            resources.ApplyResources(this.ChangePasswordToolStripMenuItem, "ChangePasswordToolStripMenuItem");
             this.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem";
-            this.ChangePasswordToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.ChangePasswordToolStripMenuItem.Text = "修改密码";
             this.ChangePasswordToolStripMenuItem.Click += new System.EventHandler(this.ChangePasswordToolStripMenuItem_Click);
             // 
             // RetreatSystemToolStripMenuItem
             // 
+            resources.ApplyResources(this.RetreatSystemToolStripMenuItem, "RetreatSystemToolStripMenuItem");
             this.RetreatSystemToolStripMenuItem.Name = "RetreatSystemToolStripMenuItem";
-            this.RetreatSystemToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.RetreatSystemToolStripMenuItem.Text = "退出系统";
             this.RetreatSystemToolStripMenuItem.Click += new System.EventHandler(this.RetreatSystemToolStripMenuItem_Click);
             // 
             // SetUpToolStripMenuItem
             // 
+            resources.ApplyResources(this.SetUpToolStripMenuItem, "SetUpToolStripMenuItem");
             this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ParameterSettingToolStripMenuItem});
-            this.SetUpToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F);
             this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
-            this.SetUpToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
-            this.SetUpToolStripMenuItem.Text = "设置(P)";
             // 
             // ParameterSettingToolStripMenuItem
             // 
+            resources.ApplyResources(this.ParameterSettingToolStripMenuItem, "ParameterSettingToolStripMenuItem");
             this.ParameterSettingToolStripMenuItem.Name = "ParameterSettingToolStripMenuItem";
-            this.ParameterSettingToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.ParameterSettingToolStripMenuItem.Text = "参数设置";
             this.ParameterSettingToolStripMenuItem.Click += new System.EventHandler(this.ParameterSettingToolStripMenuItem_Click);
             // 
             // MaintainToolStripMenuItem
             // 
+            resources.ApplyResources(this.MaintainToolStripMenuItem, "MaintainToolStripMenuItem");
             this.MaintainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CalibrationToolStripMenuItem,
             this.TestHardwareToolStripMenuItem});
-            this.MaintainToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F);
             this.MaintainToolStripMenuItem.Name = "MaintainToolStripMenuItem";
-            this.MaintainToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
-            this.MaintainToolStripMenuItem.Text = "维护(T)";
             // 
             // CalibrationToolStripMenuItem
             // 
+            resources.ApplyResources(this.CalibrationToolStripMenuItem, "CalibrationToolStripMenuItem");
             this.CalibrationToolStripMenuItem.Name = "CalibrationToolStripMenuItem";
-            this.CalibrationToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.CalibrationToolStripMenuItem.Text = "测试刻度";
             this.CalibrationToolStripMenuItem.Click += new System.EventHandler(this.CalibrationToolStripMenuItem_Click);
             // 
             // TestHardwareToolStripMenuItem
             // 
+            resources.ApplyResources(this.TestHardwareToolStripMenuItem, "TestHardwareToolStripMenuItem");
             this.TestHardwareToolStripMenuItem.Name = "TestHardwareToolStripMenuItem";
-            this.TestHardwareToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.TestHardwareToolStripMenuItem.Text = "硬件检测";
             this.TestHardwareToolStripMenuItem.Click += new System.EventHandler(this.TestHardwareToolStripMenuItem_Click);
             // 
             // RecordToolStripMenuItem
             // 
+            resources.ApplyResources(this.RecordToolStripMenuItem, "RecordToolStripMenuItem");
             this.RecordToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HistoricalRecordToolStripMenuItem});
-            this.RecordToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F);
             this.RecordToolStripMenuItem.Name = "RecordToolStripMenuItem";
-            this.RecordToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
-            this.RecordToolStripMenuItem.Text = "记录(R)";
             // 
             // HistoricalRecordToolStripMenuItem
             // 
+            resources.ApplyResources(this.HistoricalRecordToolStripMenuItem, "HistoricalRecordToolStripMenuItem");
             this.HistoricalRecordToolStripMenuItem.Name = "HistoricalRecordToolStripMenuItem";
-            this.HistoricalRecordToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.HistoricalRecordToolStripMenuItem.Text = "历史记录";
             this.HistoricalRecordToolStripMenuItem.Click += new System.EventHandler(this.HistoricalRecordToolStripMenuItem_Click);
             // 
             // AboutToolStripMenuItem
             // 
+            resources.ApplyResources(this.AboutToolStripMenuItem, "AboutToolStripMenuItem");
             this.AboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AboutHFMToolStripMenuItem});
-            this.AboutToolStripMenuItem.Font = new System.Drawing.Font("Arial Narrow", 12F);
             this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
-            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
-            this.AboutToolStripMenuItem.Text = "关于(A)";
             // 
             // AboutHFMToolStripMenuItem
             // 
+            resources.ApplyResources(this.AboutHFMToolStripMenuItem, "AboutHFMToolStripMenuItem");
             this.AboutHFMToolStripMenuItem.Name = "AboutHFMToolStripMenuItem";
-            this.AboutHFMToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
-            this.AboutHFMToolStripMenuItem.Text = "关于HFM";
             this.AboutHFMToolStripMenuItem.Click += new System.EventHandler(this.AboutHFMToolStripMenuItem_Click);
             // 
             // StsFoot
             // 
+            resources.ApplyResources(this.StsFoot, "StsFoot");
             this.StsFoot.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Tsslbl_Name,
             this.Tsslbl_Status,
             this.Tsslbl_Tcp,
             this.Tsslbl_NowTime});
-            this.StsFoot.Location = new System.Drawing.Point(0, 541);
             this.StsFoot.Name = "StsFoot";
-            this.StsFoot.Size = new System.Drawing.Size(792, 25);
-            this.StsFoot.TabIndex = 2;
-            this.StsFoot.Text = "statusStrip1";
             // 
             // Tsslbl_Name
             // 
-            this.Tsslbl_Name.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            resources.ApplyResources(this.Tsslbl_Name, "Tsslbl_Name");
             this.Tsslbl_Name.Name = "Tsslbl_Name";
-            this.Tsslbl_Name.Size = new System.Drawing.Size(152, 20);
-            this.Tsslbl_Name.Text = "HFM手脚污染监测仪|";
             // 
             // Tsslbl_Status
             // 
-            this.Tsslbl_Status.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            resources.ApplyResources(this.Tsslbl_Status, "Tsslbl_Status");
             this.Tsslbl_Status.Name = "Tsslbl_Status";
-            this.Tsslbl_Status.Size = new System.Drawing.Size(73, 20);
-            this.Tsslbl_Status.Text = "通讯状态";
             // 
             // Tsslbl_Tcp
             // 
-            this.Tsslbl_Tcp.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            resources.ApplyResources(this.Tsslbl_Tcp, "Tsslbl_Tcp");
             this.Tsslbl_Tcp.Name = "Tsslbl_Tcp";
-            this.Tsslbl_Tcp.Size = new System.Drawing.Size(105, 20);
-            this.Tsslbl_Tcp.Text = "网络连接状态";
             // 
             // Tsslbl_NowTime
             // 
-            this.Tsslbl_NowTime.AutoSize = false;
-            this.Tsslbl_NowTime.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            resources.ApplyResources(this.Tsslbl_NowTime, "Tsslbl_NowTime");
             this.Tsslbl_NowTime.Name = "Tsslbl_NowTime";
-            this.Tsslbl_NowTime.Size = new System.Drawing.Size(400, 20);
-            this.Tsslbl_NowTime.Text = "2020年3月27日 18点42分";
-            this.Tsslbl_NowTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 566);
             this.Controls.Add(this.StsFoot);
             this.Controls.Add(this.MnsFunction);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MnsFunction;
             this.Name = "FrmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HFM100 ";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.MnsFunction.ResumeLayout(false);

@@ -175,6 +175,12 @@
     <EmbeddedResource Include="FrmClothes.resx">
       <DependentUpon>FrmClothes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmHistory.en.resx">
+      <DependentUpon>FrmHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.en.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

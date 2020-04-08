@@ -59,7 +59,7 @@ namespace HFM
             /// <summary>
             /// 检测数据(英文)数据库查询所得
             /// </summary>
-            //IList<MeasureData> _measureDataEnglish = new MeasureData().GetData(true);
+            IList<MeasureData> _measureDataEnglish = new MeasureData().GetData(true);
             /// <summary>
             /// 检测数据(中文)数据库查询所得
             /// </summary>
@@ -67,19 +67,19 @@ namespace HFM
 
 
             DgvMeasure.Rows.Clear(); //清理Dgv数据表
-            //if (_systemParameter.IsEnglish)
-            //{
-            //    //遍历列表对象,取出数据按字段,添加到Dgv中
-            //    foreach (var measureData in _measureDataEnglish)
-            //    {
-            //        _measurArray[0] = measureData.MeasureDate.ToString();
-            //        _measurArray[1] = measureData.MeasureStatus;
-            //        _measurArray[2] = measureData.DetailedInfo;
-            //        _measurArray[3] = measureData.IsEnglish.ToString();
-            //        DgvMeasure.Rows.Add(_measurArray);
-            //    }
-            //}
-            //else
+            if (_systemParameter.IsEnglish)
+            {
+                //遍历列表对象,取出数据按字段,添加到Dgv中
+                foreach (var measureData in _measureDataEnglish)
+                {
+                    _measurArray[0] = measureData.MeasureDate.ToString();
+                    _measurArray[1] = measureData.MeasureStatus;
+                    _measurArray[2] = measureData.DetailedInfo;
+                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    DgvMeasure.Rows.Add(_measurArray);
+                }
+            }
+            else
             {
                 //遍历列表对象,取出数据按字段,添加到Dgv中
                 foreach (var measureData in _measureDataChinese)

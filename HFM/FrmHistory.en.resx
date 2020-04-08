@@ -117,70 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="TxtAlphaChannelName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtAlphaHBackground.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtAplhaLBackground.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtAlphaAlarm_1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtAlphaAlarm_2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtAlphaEfficiency.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtBetaChannelName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtBetaHBackground.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtBetaLBackground.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtBetaAlarm_1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtBetaAlarm_2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtBetaEfficiency.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferenceChanneName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferenceAlphaThreshold.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferenceBetaThreshold.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferencePresetHV.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferenceADCFactor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferenceDACFactor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferenceHVFactor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferenceWorkTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TxtMainPreferenceHVRatio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="backgroundWorker_Preference.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="MeasureDate.HeaderText" xml:space="preserve">
+    <value>Measuring time</value>
+  </data>
+  <data name="MeasureStatus.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="DetailedInfo.HeaderText" xml:space="preserve">
+    <value>Detail Information</value>
+  </data>
+  <data name="IsEnglish.HeaderText" xml:space="preserve">
+    <value>IsEnglish</value>
+  </data>
+  <data name="TabMeasure.Text" xml:space="preserve">
+    <value>Measurement Log</value>
+  </data>
+  <data name="BtnDeleteCalibration.Text" xml:space="preserve">
+    <value>Delete Record</value>
+  </data>
+  <data name="BtnDeriveCalibration.Text" xml:space="preserve">
+    <value>Export Data</value>
+  </data>
+  <data name="CalibrationTime.HeaderText" xml:space="preserve">
+    <value>Calibration time</value>
+  </data>
+  <data name="ChannelID.HeaderText" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="HighVoltage.HeaderText" xml:space="preserve">
+    <value>HV</value>
+  </data>
+  <data name="Threshold.HeaderText" xml:space="preserve">
+    <value>Threshold</value>
+  </data>
+  <data name="Efficiency.HeaderText" xml:space="preserve">
+    <value>Eff</value>
+  </data>
+  <data name="MDA.HeaderText" xml:space="preserve">
+    <value>MDA</value>
+  </data>
+  <data name="AlphaBetaPercent.HeaderText" xml:space="preserve">
+    <value>α(β)/β(α)\r</value>
+  </data>
+  <data name="TabCalibration.Text" xml:space="preserve">
+    <value>Calibration Log</value>
+  </data>
+  <data name="BtnDeleteError.Text" xml:space="preserve">
+    <value>Delete Record</value>
+  </data>
+  <data name="BtnDeriveError.Text" xml:space="preserve">
+    <value>Export Data</value>
+  </data>
+  <data name="ErrTime.HeaderText" xml:space="preserve">
+    <value>ErrTime</value>
+  </data>
+  <data name="Record.HeaderText" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="IsEnglishsError.HeaderText" xml:space="preserve">
+    <value>IsEnglish</value>
+  </data>
+  <data name="TabError.Text" xml:space="preserve">
+    <value>Fault Log</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>History record</value>
+  </data>
 </root>

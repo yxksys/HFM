@@ -117,10 +117,334 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="MnsFunction.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <data name="&gt;&gt;AboutToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TestHardwareToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StsFoot.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Tsslbl_NowTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="Tsslbl_NowTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 20</value>
+  </data>
+  <data name="Tsslbl_NowTime.Text" xml:space="preserve">
+    <value>2020年3月27日 18点42分</value>
+  </data>
+  <data name="StsFoot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 25</value>
+  </data>
+  <data name="&gt;&gt;RetreatSystemToolStripMenuItem.Name" xml:space="preserve">
+    <value>RetreatSystemToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmMain</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MnsFunction.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;StsFoot.Name" xml:space="preserve">
+    <value>StsFoot</value>
+  </data>
+  <data name="&gt;&gt;MnsFunction.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="HistoricalRecordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="MnsFunction.Text" xml:space="preserve">
+    <value>菜单</value>
+  </data>
+  <data name="HistoricalRecordToolStripMenuItem.Text" xml:space="preserve">
+    <value>历史记录</value>
+  </data>
+  <data name="CalibrationToolStripMenuItem.Text" xml:space="preserve">
+    <value>测试刻度</value>
+  </data>
+  <data name="&gt;&gt;ChangePasswordToolStripMenuItem.Name" xml:space="preserve">
+    <value>ChangePasswordToolStripMenuItem</value>
+  </data>
+  <data name="AboutHFMToolStripMenuItem.Text" xml:space="preserve">
+    <value>关于HFM</value>
+  </data>
+  <data name="AboutToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="&gt;&gt;HistoricalRecordToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tsslbl_Status.Name" xml:space="preserve">
+    <value>Tsslbl_Status</value>
+  </data>
+  <data name="&gt;&gt;StartRunningToolStripMenuItem.Name" xml:space="preserve">
+    <value>StartRunningToolStripMenuItem</value>
+  </data>
+  <data name="StartRunningToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="RecordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <data name="&gt;&gt;MnsFunction.Name" xml:space="preserve">
+    <value>MnsFunction</value>
+  </data>
+  <data name="&gt;&gt;AboutHFMToolStripMenuItem.Name" xml:space="preserve">
+    <value>AboutHFMToolStripMenuItem</value>
+  </data>
+  <data name="MaintainToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="&gt;&gt;ParameterSettingToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AboutHFMToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SystemToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;CalibrationToolStripMenuItem.Name" xml:space="preserve">
+    <value>CalibrationToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;MaintainToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ParameterSettingToolStripMenuItem.Text" xml:space="preserve">
+    <value>参数设置</value>
+  </data>
+  <data name="&gt;&gt;StsFoot.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;CalibrationToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SuperUserToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tsslbl_Tcp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 20</value>
+  </data>
+  <data name="MaintainToolStripMenuItem.Text" xml:space="preserve">
+    <value>维护(T)</value>
+  </data>
+  <data name="&gt;&gt;StsFoot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tsslbl_NowTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="Tsslbl_Name.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="&gt;&gt;RetreatSystemToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tsslbl_Name.Name" xml:space="preserve">
+    <value>Tsslbl_Name</value>
+  </data>
+  <data name="&gt;&gt;StsFoot.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="RetreatSystemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="Tsslbl_Status.Text" xml:space="preserve">
+    <value>通讯状态</value>
+  </data>
+  <data name="&gt;&gt;HistoricalRecordToolStripMenuItem.Name" xml:space="preserve">
+    <value>HistoricalRecordToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;RecordToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tsslbl_NowTime.Name" xml:space="preserve">
+    <value>Tsslbl_NowTime</value>
+  </data>
+  <data name="&gt;&gt;Tsslbl_Tcp.Name" xml:space="preserve">
+    <value>Tsslbl_Tcp</value>
+  </data>
+  <data name="StartRunningToolStripMenuItem.Text" xml:space="preserve">
+    <value>开始运行</value>
+  </data>
+  <data name="Tsslbl_Status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
+  </data>
+  <data name="SystemToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="&gt;&gt;StartRunningToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RecordToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="TestHardwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="Tsslbl_Status.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="AboutHFMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
+  </data>
+  <data name="&gt;&gt;SetUpToolStripMenuItem.Name" xml:space="preserve">
+    <value>SetUpToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;MnsFunction.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SuperUserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="Tsslbl_Tcp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="&gt;&gt;MnsFunction.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TestHardwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>硬件检测</value>
+  </data>
+  <data name="&gt;&gt;TestHardwareToolStripMenuItem.Name" xml:space="preserve">
+    <value>TestHardwareToolStripMenuItem</value>
+  </data>
+  <data name="SuperUserToolStripMenuItem.Text" xml:space="preserve">
+    <value>超级用户</value>
+  </data>
+  <data name="SystemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 24</value>
+  </data>
+  <data name="Tsslbl_Name.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 20</value>
+  </data>
+  <data name="&gt;&gt;RecordToolStripMenuItem.Name" xml:space="preserve">
+    <value>RecordToolStripMenuItem</value>
+  </data>
+  <data name="SetUpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="StsFoot.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ParameterSettingToolStripMenuItem.Name" xml:space="preserve">
+    <value>ParameterSettingToolStripMenuItem</value>
+  </data>
+  <data name="Tsslbl_NowTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;SystemToolStripMenuItem.Name" xml:space="preserve">
+    <value>SystemToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;Tsslbl_Tcp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SuperUserToolStripMenuItem.Name" xml:space="preserve">
+    <value>SuperUserToolStripMenuItem</value>
+  </data>
+  <data name="SetUpToolStripMenuItem.Text" xml:space="preserve">
+    <value>设置(P)</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>HFM100 </value>
+  </data>
+  <data name="ChangePasswordToolStripMenuItem.Text" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="StsFoot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 541</value>
+  </data>
+  <data name="&gt;&gt;Tsslbl_Name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Tsslbl_NowTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AboutToolStripMenuItem.Name" xml:space="preserve">
+    <value>AboutToolStripMenuItem</value>
+  </data>
+  <data name="MnsFunction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="RetreatSystemToolStripMenuItem.Text" xml:space="preserve">
+    <value>退出系统</value>
+  </data>
+  <data name="&gt;&gt;ChangePasswordToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 24</value>
+  </data>
+  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>关于(A)</value>
+  </data>
+  <data name="SystemToolStripMenuItem.Text" xml:space="preserve">
+    <value>系统(S)</value>
+  </data>
+  <data name="&gt;&gt;Tsslbl_Status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SetUpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 24</value>
+  </data>
+  <data name="Tsslbl_Name.Text" xml:space="preserve">
+    <value>HFM手脚污染监测仪|</value>
+  </data>
+  <data name="RecordToolStripMenuItem.Text" xml:space="preserve">
+    <value>记录(R)</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>792, 566</value>
+  </data>
+  <data name="ParameterSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CalibrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="&gt;&gt;SetUpToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MaintainToolStripMenuItem.Name" xml:space="preserve">
+    <value>MaintainToolStripMenuItem</value>
+  </data>
+  <data name="MnsFunction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 28</value>
+  </data>
+  <data name="MaintainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 24</value>
+  </data>
+  <data name="ChangePasswordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="Tsslbl_Tcp.Text" xml:space="preserve">
+    <value>网络连接状态</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="StsFoot.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>145, 17</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en</value>
+  </metadata>
+  <metadata name="MnsFunction.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>
