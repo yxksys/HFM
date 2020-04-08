@@ -86,8 +86,6 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmPreference_Load(object sender, EventArgs e)
         {
-            //打开端口
-            OpenPort();
             //线程支持异步取消
             backgroundWorker_Preference.WorkerSupportsCancellation = true;
             GetProferenceData();
@@ -580,6 +578,7 @@ namespace HFM
                         {
                             backgroundWorker_Preference.CancelAsync();
                             _bkworkTime = 0;
+                            _commPort.Close();
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -648,6 +647,7 @@ namespace HFM
                                     MessageBox.Show("数据已经下发!", "提示");
                                 }
                                 _messageType = MessageType.pRead;
+                                _commPort.Close();
                             }
                             //发送失败次数大于5次,提示错误并挂起线程
                             else
@@ -773,6 +773,14 @@ namespace HFM
             try
             {
                 commPort.Open();
+                if (_commPort.Opened)
+                {
+                    Tools.FormBottomPortStatus = true;
+                }
+                else
+                {
+                    Tools.FormBottomPortStatus = false;
+                }
             }
             catch
             {
@@ -1337,6 +1345,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
         {
+            OpenPort();
             //当前发送报文类型换成p写入
             _messageType = MessageType.pRead;
             
@@ -1369,6 +1378,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceWrite_Click(object sender, EventArgs e)
         {
+            OpenPort();
             #region 读取数据到列表
             for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++)
             {
