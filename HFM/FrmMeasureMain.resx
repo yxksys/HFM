@@ -1253,24 +1253,6 @@
   <data name="&gt;&gt;PicTimeBackground.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
-  <data name="LblLHB.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LblLHB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="LblLHB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 17</value>
-  </data>
-  <data name="LblLHB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 19</value>
-  </data>
-  <data name="LblLHB.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="LblLHB.Text" xml:space="preserve">
-    <value>0cps</value>
-  </data>
   <data name="&gt;&gt;LblLHB.Name" xml:space="preserve">
     <value>LblLHB</value>
   </data>
@@ -1303,6 +1285,36 @@
   </data>
   <data name="&gt;&gt;PnlLHB.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="LblLHB.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblLHB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="LblLHB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="LblLHB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 19</value>
+  </data>
+  <data name="LblLHB.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="LblLHB.Text" xml:space="preserve">
+    <value>0cps</value>
+  </data>
+  <data name="&gt;&gt;LblLHB.Name" xml:space="preserve">
+    <value>LblLHB</value>
+  </data>
+  <data name="&gt;&gt;LblLHB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblLHB.Parent" xml:space="preserve">
+    <value>PnlLHB</value>
+  </data>
+  <data name="&gt;&gt;LblLHB.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="PicLeftBackground.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>

@@ -19,9 +19,10 @@ namespace HFM
         private void Time_Welcome_cloes_Tick(object sender, System.EventArgs e)
         {
             Thread.Sleep(500);
-            FrmMain.frmMeasureMain.Show();
-            this.Hide();
-            Time_Welcome_cloes.Stop();
+            FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
+            frmMeasureMain.Show();
+            this.Dispose();
+            //Time_Welcome_cloes.Stop();
         }
 
         private void FrmWelcome_FormClosed(object sender, FormClosedEventArgs e)

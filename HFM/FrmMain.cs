@@ -214,7 +214,7 @@ namespace HFM
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMeasureMain=new FrmMeasureMain();
-            frmMeasureMain.ShowDialog();
+            frmMeasureMain.Show();
             this.Dispose();
         }
 
