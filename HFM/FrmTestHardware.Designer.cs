@@ -175,7 +175,7 @@
             this.LblBetacnt.AutoSize = true;
             this.LblBetacnt.Location = new System.Drawing.Point(627, 204);
             this.LblBetacnt.Name = "LblBetacnt";
-            this.LblBetacnt.Size = new System.Drawing.Size(62, 20);
+            this.LblBetacnt.Size = new System.Drawing.Size(67, 20);
             this.LblBetacnt.TabIndex = 16;
             this.LblBetacnt.Text = "单位:cnt";
             // 
@@ -184,7 +184,7 @@
             this.LblBetacps.AutoSize = true;
             this.LblBetacps.Location = new System.Drawing.Point(627, 163);
             this.LblBetacps.Name = "LblBetacps";
-            this.LblBetacps.Size = new System.Drawing.Size(67, 20);
+            this.LblBetacps.Size = new System.Drawing.Size(70, 20);
             this.LblBetacps.TabIndex = 15;
             this.LblBetacps.Text = "单位:cps";
             // 
@@ -193,7 +193,7 @@
             this.LblAlphacnt.AutoSize = true;
             this.LblAlphacnt.Location = new System.Drawing.Point(627, 125);
             this.LblAlphacnt.Name = "LblAlphacnt";
-            this.LblAlphacnt.Size = new System.Drawing.Size(62, 20);
+            this.LblAlphacnt.Size = new System.Drawing.Size(67, 20);
             this.LblAlphacnt.TabIndex = 14;
             this.LblAlphacnt.Text = "单位:cnt";
             // 
@@ -202,7 +202,7 @@
             this.LblAlphacps.AutoSize = true;
             this.LblAlphacps.Location = new System.Drawing.Point(627, 88);
             this.LblAlphacps.Name = "LblAlphacps";
-            this.LblAlphacps.Size = new System.Drawing.Size(67, 20);
+            this.LblAlphacps.Size = new System.Drawing.Size(70, 20);
             this.LblAlphacps.TabIndex = 13;
             this.LblAlphacps.Text = "单位:cps";
             // 
@@ -211,7 +211,7 @@
             this.LblV.AutoSize = true;
             this.LblV.Location = new System.Drawing.Point(627, 52);
             this.LblV.Name = "LblV";
-            this.LblV.Size = new System.Drawing.Size(54, 20);
+            this.LblV.Size = new System.Drawing.Size(56, 20);
             this.LblV.TabIndex = 12;
             this.LblV.Text = "单位:V";
             // 
@@ -336,7 +336,7 @@
             this.LblFriskercps.AutoSize = true;
             this.LblFriskercps.Location = new System.Drawing.Point(193, 30);
             this.LblFriskercps.Name = "LblFriskercps";
-            this.LblFriskercps.Size = new System.Drawing.Size(31, 20);
+            this.LblFriskercps.Size = new System.Drawing.Size(34, 20);
             this.LblFriskercps.TabIndex = 17;
             this.LblFriskercps.Text = "cps";
             // 
@@ -483,7 +483,7 @@
             this.Lblμs.AutoSize = true;
             this.Lblμs.Location = new System.Drawing.Point(439, 29);
             this.Lblμs.Name = "Lblμs";
-            this.Lblμs.Size = new System.Drawing.Size(23, 20);
+            this.Lblμs.Size = new System.Drawing.Size(26, 20);
             this.Lblμs.TabIndex = 27;
             this.Lblμs.Text = "μs";
             this.Lblμs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -582,12 +582,12 @@
             // LblTimeWork
             // 
             this.LblTimeWork.AutoSize = true;
-            this.LblTimeWork.Font = new System.Drawing.Font("Arial Narrow", 42F, System.Drawing.FontStyle.Bold);
+            this.LblTimeWork.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Bold);
             this.LblTimeWork.ForeColor = System.Drawing.Color.Lime;
             this.LblTimeWork.Location = new System.Drawing.Point(158, 440);
             this.LblTimeWork.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTimeWork.Name = "LblTimeWork";
-            this.LblTimeWork.Size = new System.Drawing.Size(370, 66);
+            this.LblTimeWork.Size = new System.Drawing.Size(370, 64);
             this.LblTimeWork.TabIndex = 38;
             this.LblTimeWork.Text = "测量剩余时间";
             // 
@@ -598,7 +598,7 @@
             // 
             // FrmTestHardware
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 516);
             this.ControlBox = false;
@@ -608,10 +608,12 @@
             this.Controls.Add(this.GrpSensorstate);
             this.Controls.Add(this.GrpFrisker);
             this.Controls.Add(this.GrpWork);
-            this.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmTestHardware";
             this.Text = "硬件检测";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmTestHardware_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmTestHardware_FormClosed);
             this.Load += new System.EventHandler(this.FrmTestHardware_Load);
             this.GrpWork.ResumeLayout(false);
             this.GrpWork.PerformLayout();

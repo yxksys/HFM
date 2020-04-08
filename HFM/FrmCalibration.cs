@@ -215,6 +215,8 @@ namespace HFM
                 }
             }
             #endregion
+
+            OpenPort();
         }
         #endregion
 
@@ -310,7 +312,7 @@ namespace HFM
         {
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
-            byte[] receiveBuffMessage = new byte[124];//接受的报文
+            byte[] receiveBuffMessage = null;//接受的报文
             byte[] buffMessage = new byte[62];//报文长度
             while (true)
             {
@@ -548,7 +550,7 @@ namespace HFM
             float area = _channel.ProbeArea;//探测面积
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
-            byte[] receiveBufferMessage = new byte[124]; //存储接收报文信息缓冲区
+            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
             IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                        
             if (e.UserState is byte[])
             {
@@ -1025,7 +1027,13 @@ namespace HFM
         private void TxtSFR_MouseClick(object sender, MouseEventArgs e)
         {
             FrmKeyIn.DelegatesKeyInTextBox(TxtSFR);
-        } 
+        }
         #endregion
+
+        private void FrmCalibration_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _commPort.Close();
+            bkWorkerReceiveData.CancelAsync();
+        }
     }
 }

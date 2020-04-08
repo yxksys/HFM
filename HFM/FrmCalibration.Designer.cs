@@ -396,6 +396,7 @@
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
             this.Text = "测试刻度";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCalibration_FormClosed);
             this.Load += new System.EventHandler(this.FrmCalibration_Load);
             this.TabCalibration.ResumeLayout(false);
             this.TabpageCalibration.ResumeLayout(false);
