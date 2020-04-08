@@ -341,7 +341,19 @@ namespace HFM
         }        
         private void FrmMeasureMain_Load(object sender, EventArgs e)
         {
-            BtnChinese.Enabled = false;
+            //启动判断中英文和对按钮的判断
+            if (isEnglish)
+            {
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+                BtnEnglish.Enabled = false;
+                BtnChinese.Enabled = true; 
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
+                BtnEnglish.Enabled = true;
+                BtnChinese.Enabled = false;
+            }
             smoothingData.team = new UInt32[TEAM_LENGTH];
             //获得工厂参数设置信息           
             factoryParameter.GetParameter();
@@ -2653,6 +2665,10 @@ namespace HFM
         private void BtnOption_Click(object sender, EventArgs e)
         {
             FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
+            if (bkWorkerReceiveData.IsBusy)
+            {
+                bkWorkerReceiveData.CancelAsync();
+            }
             frmEnterPassword.Show();
         }
     }

@@ -169,6 +169,12 @@
     <EmbeddedResource Include="FrmClothes.resx">
       <DependentUpon>FrmClothes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmHistory.en.resx">
+      <DependentUpon>FrmHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.en.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +213,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -294,6 +301,7 @@
     <Content Include="Audio\Chinese_frisker_In_place.wav" />
     <Content Include="Audio\Chinese_Clothing_contaminated.wav" />
     <Content Include="Audio\Chinese_Decontaminate_please.wav" />
+    <None Include="bin\Debug\Images\welcome.bmp" />
     <Content Include="Images\app.ico" />
     <Content Include="Images\clothes.png" />
     <Content Include="Images\LF.png" />

@@ -117,8 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="welcome" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Images\welcome.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MeasureDate.HeaderText" xml:space="preserve">
+    <value>Measuring time</value>
+  </data>
+  <data name="MeasureStatus.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="DetailedInfo.HeaderText" xml:space="preserve">
+    <value>Detail Information</value>
+  </data>
+  <data name="IsEnglish.HeaderText" xml:space="preserve">
+    <value>IsEnglish</value>
+  </data>
+  <data name="TabMeasure.Text" xml:space="preserve">
+    <value>Measurement Log</value>
+  </data>
+  <data name="BtnDeleteCalibration.Text" xml:space="preserve">
+    <value>Delete Record</value>
+  </data>
+  <data name="BtnDeriveCalibration.Text" xml:space="preserve">
+    <value>Export Data</value>
+  </data>
+  <data name="CalibrationTime.HeaderText" xml:space="preserve">
+    <value>Calibration time</value>
+  </data>
+  <data name="ChannelID.HeaderText" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="HighVoltage.HeaderText" xml:space="preserve">
+    <value>HV</value>
+  </data>
+  <data name="Threshold.HeaderText" xml:space="preserve">
+    <value>Threshold</value>
+  </data>
+  <data name="Efficiency.HeaderText" xml:space="preserve">
+    <value>Eff</value>
+  </data>
+  <data name="MDA.HeaderText" xml:space="preserve">
+    <value>MDA</value>
+  </data>
+  <data name="AlphaBetaPercent.HeaderText" xml:space="preserve">
+    <value>α(β)/β(α)\r</value>
+  </data>
+  <data name="TabCalibration.Text" xml:space="preserve">
+    <value>Calibration Log</value>
+  </data>
+  <data name="BtnDeleteError.Text" xml:space="preserve">
+    <value>Delete Record</value>
+  </data>
+  <data name="BtnDeriveError.Text" xml:space="preserve">
+    <value>Export Data</value>
+  </data>
+  <data name="ErrTime.HeaderText" xml:space="preserve">
+    <value>ErrTime</value>
+  </data>
+  <data name="Record.HeaderText" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="IsEnglishsError.HeaderText" xml:space="preserve">
+    <value>IsEnglish</value>
+  </data>
+  <data name="TabError.Text" xml:space="preserve">
+    <value>Fault Log</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>History record</value>
   </data>
 </root>
