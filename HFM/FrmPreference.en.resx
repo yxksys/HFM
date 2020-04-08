@@ -117,12 +117,152 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChkHand.Text" xml:space="preserve">
+    <value>Hand</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="RdoDoubleHand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 20</value>
+  </data>
+  <data name="RdoDoubleHand.Text" xml:space="preserve">
+    <value>DoubleHand</value>
+  </data>
+  <data name="RdoSingleHand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 20</value>
+  </data>
+  <data name="RdoSingleHand.Text" xml:space="preserve">
+    <value>SingleHand</value>
+  </data>
+  <data name="ChkClothes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 20</value>
+  </data>
+  <data name="ChkClothes.Text" xml:space="preserve">
+    <value>Frisker</value>
+  </data>
+  <data name="ChkFoot.Text" xml:space="preserve">
+    <value>Foot</value>
+  </data>
+  <data name="GrpPresence.Text" xml:space="preserve">
+    <value>Equipment configuration</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LblDeviceAddress.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblDeviceAddress.Text" xml:space="preserve">
+    <value>Device address</value>
+  </data>
+  <data name="ChkIsConnectedAuto.Text" xml:space="preserve">
+    <value>Automatic connection</value>
+  </data>
+  <data name="LblUnclideType.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="TxtPortNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>336, 71</value>
+  </data>
+  <data name="TxtPortNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 26</value>
+  </data>
+  <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 73</value>
+  </data>
+  <data name="LblPortNumber.Text" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="LblSoftName.Text" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="LblInstrumentNum.Text" xml:space="preserve">
+    <value>SN</value>
+  </data>
+  <data name="LblIPAddress.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblIPAddress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 73</value>
+  </data>
+  <data name="LblIPAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 16</value>
+  </data>
+  <data name="LblIPAddress.Text" xml:space="preserve">
+    <value>IP address</value>
+  </data>
+  <data name="LblSmoothingFactor.Text" xml:space="preserve">
+    <value>Smoothing factor</value>
+  </data>
+  <data name="GrpFacilityData.Text" xml:space="preserve">
+    <value>Factory Parameter</value>
+  </data>
+  <data name="BtnPreferenceNo.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BtnPreferenceOk.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TxtCloseProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 175</value>
+  </data>
+  <data name="TxtLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 133</value>
+  </data>
+  <data name="TxtRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 94</value>
+  </data>
+  <data name="TxtLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 52</value>
+  </data>
+  <data name="LblRightFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 138</value>
+  </data>
+  <data name="LblRightFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 21</value>
+  </data>
+  <data name="LblRightFootProbeArea.Text" xml:space="preserve">
+    <value>Right Foot</value>
+  </data>
+  <data name="LblRightFootProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LblRightOutProbeArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblRightOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 99</value>
+  </data>
+  <data name="LblRightOutProbeArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 21</value>
+  </data>
+  <data name="LblRightOutProbeArea.Text" xml:space="preserve">
+    <value>Right Hand Back</value>
+  </data>
+  <data name="LblRightOutProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="LblLeftOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>207, 57</value>
+  </data>
+  <data name="LblLeftOutProbeArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 21</value>
+  </data>
+  <data name="LblLeftOutProbeArea.Text" xml:space="preserve">
+    <value>Left Hand Back</value>
+  </data>
+  <data name="LblLeftOutProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
   <data name="LblClothesProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 178</value>
   </data>
   <data name="LblClothesProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
+  </data>
+  <data name="LblClothesProbeArea.Text" xml:space="preserve">
+    <value>Frisker</value>
+  </data>
+  <data name="LblClothesProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="LblLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 138</value>
@@ -130,17 +270,35 @@
   <data name="LblLeftFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
   </data>
+  <data name="LblLeftFootProbeArea.Text" xml:space="preserve">
+    <value>Left Foot</value>
+  </data>
+  <data name="LblLeftFootProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
   <data name="LblRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 99</value>
+    <value>3, 99</value>
   </data>
   <data name="LblRightInProbeArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
+    <value>98, 21</value>
+  </data>
+  <data name="LblRightInProbeArea.Text" xml:space="preserve">
+    <value>Right Hand Palm</value>
+  </data>
+  <data name="LblRightInProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="LblLeftInProbeArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="LblLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 57</value>
   </data>
   <data name="LblLeftInProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
+  </data>
+  <data name="LblLeftInProbeArea.Text" xml:space="preserve">
+    <value>Left Hand Palm</value>
   </data>
   <data name="LblLeftInProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -160,7 +318,6 @@
   <data name="LblBKGUpdate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="LblAlarmTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -230,14 +387,242 @@
   <data name="系统参数.Text" xml:space="preserve">
     <value>System Parameter</value>
   </data>
+  <data name="LblAlpha.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 21</value>
+  </data>
+  <data name="LblAlpha.Text" xml:space="preserve">
+    <value>Alpha Parameter</value>
+  </data>
+  <data name="TxtAlphaChannelName.HeaderText" xml:space="preserve">
+    <value>ChannelName</value>
+  </data>
+  <data name="TxtAlphaHBackground.HeaderText" xml:space="preserve">
+    <value>High Background</value>
+  </data>
+  <data name="TxtAplhaLBackground.HeaderText" xml:space="preserve">
+    <value>Low Background</value>
+  </data>
+  <data name="TxtAlphaAlarm_1.HeaderText" xml:space="preserve">
+    <value>Alarm Threshold</value>
+  </data>
+  <data name="TxtAlphaAlarm_2.HeaderText" xml:space="preserve">
+    <value>High Level Alarm</value>
+  </data>
+  <data name="TxtAlphaEfficiency.HeaderText" xml:space="preserve">
+    <value>Efficiency(%)</value>
+  </data>
+  <data name="BtnAlphaNo.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BtnAlphaOk.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
+    <value>Alpha nuclide selection</value>
+  </data>
   <data name="α参数.Text" xml:space="preserve">
     <value>Alpha Parameter</value>
+  </data>
+  <data name="LblBeta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 21</value>
+  </data>
+  <data name="LblBeta.Text" xml:space="preserve">
+    <value>Beta Parameter</value>
+  </data>
+  <data name="TxtBetaChannelName.HeaderText" xml:space="preserve">
+    <value>ChannelName</value>
+  </data>
+  <data name="TxtBetaHBackground.HeaderText" xml:space="preserve">
+    <value>High Background</value>
+  </data>
+  <data name="TxtBetaLBackground.HeaderText" xml:space="preserve">
+    <value>Low Background</value>
+  </data>
+  <data name="TxtBetaAlarm_1.HeaderText" xml:space="preserve">
+    <value>Alarm Threshold</value>
+  </data>
+  <data name="TxtBetaAlarm_2.HeaderText" xml:space="preserve">
+    <value>High Level Alarm</value>
+  </data>
+  <data name="TxtBetaEfficiency.HeaderText" xml:space="preserve">
+    <value>Efficiency(%)</value>
+  </data>
+  <data name="BtnBetaNo.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BtnBetaOk.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.Text" xml:space="preserve">
+    <value>Selection of β / γ nuclides</value>
   </data>
   <data name="β参数.Text" xml:space="preserve">
     <value>Beta Parameter</value>
   </data>
+  <data name="LblClothesBetaOrClothes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 16</value>
+  </data>
+  <data name="LblClothesBetaOrClothes.Text" xml:space="preserve">
+    <value>Beta / gamma nuclide</value>
+  </data>
+  <data name="LblClothesAlpha.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 16</value>
+  </data>
+  <data name="LblClothesAlpha.Text" xml:space="preserve">
+    <value>Alpha nuclide</value>
+  </data>
+  <data name="GrpClothesNuclideChoose.Text" xml:space="preserve">
+    <value>Nuclide selection</value>
+  </data>
+  <data name="LblClothOfflineTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 287</value>
+  </data>
+  <data name="LblClothOfflineTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 19</value>
+  </data>
+  <data name="LblClothOfflineTime.Text" xml:space="preserve">
+    <value>Offline time(s)</value>
+  </data>
+  <data name="LblClothOfflineTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="LblClothesEfficiency.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblClothesEfficiency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 237</value>
+  </data>
+  <data name="LblClothesEfficiency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 19</value>
+  </data>
+  <data name="LblClothesEfficiency.Text" xml:space="preserve">
+    <value>Efficiency(%)</value>
+  </data>
+  <data name="LblClothesEfficiency.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="LblClothesAlarm_2.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblClothesAlarm_2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 189</value>
+  </data>
+  <data name="LblClothesAlarm_2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 19</value>
+  </data>
+  <data name="LblClothesAlarm_2.Text" xml:space="preserve">
+    <value>High Level Alarm(cps)</value>
+  </data>
+  <data name="LblClothesAlarm_2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="LblClothesAlarm_1.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblClothesAlarm_1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 140</value>
+  </data>
+  <data name="LblClothesAlarm_1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 19</value>
+  </data>
+  <data name="LblClothesAlarm_1.Text" xml:space="preserve">
+    <value>Alarm Threshold(cps)</value>
+  </data>
+  <data name="LblClothesAlarm_1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="LblClothesLBackground.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblClothesLBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 95</value>
+  </data>
+  <data name="LblClothesLBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 19</value>
+  </data>
+  <data name="LblClothesLBackground.Text" xml:space="preserve">
+    <value>Low Background(cps)</value>
+  </data>
+  <data name="LblClothesLBackground.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="LblClothesHBackground.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblClothesHBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 51</value>
+  </data>
+  <data name="LblClothesHBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 19</value>
+  </data>
+  <data name="LblClothesHBackground.Text" xml:space="preserve">
+    <value>High Background(cps)</value>
+  </data>
+  <data name="LblClothesHBackground.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="GrpClothesData.Text" xml:space="preserve">
+    <value>Frisker Parameter</value>
+  </data>
   <data name="衣物探头.Text" xml:space="preserve">
     <value>Frisker Parameter</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 20</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Channel Parameter</value>
+  </data>
+  <data name="TxtMainPreferenceChanneName.HeaderText" xml:space="preserve">
+    <value>Channe</value>
+  </data>
+  <data name="TxtMainPreferenceAlphaThreshold.HeaderText" xml:space="preserve">
+    <value>αThreshold</value>
+  </data>
+  <data name="TxtMainPreferenceBetaThreshold.HeaderText" xml:space="preserve">
+    <value>βThreshold</value>
+  </data>
+  <data name="TxtMainPreferencePresetHV.HeaderText" xml:space="preserve">
+    <value>PresetHV</value>
+  </data>
+  <data name="TxtMainPreferenceADCFactor.HeaderText" xml:space="preserve">
+    <value>ADCFactor</value>
+  </data>
+  <data name="TxtMainPreferenceADCFactor.Width" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="TxtMainPreferenceDACFactor.HeaderText" xml:space="preserve">
+    <value>DACFactor</value>
+  </data>
+  <data name="TxtMainPreferenceDACFactor.Width" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="TxtMainPreferenceHVFactor.HeaderText" xml:space="preserve">
+    <value>HVFactor</value>
+  </data>
+  <data name="TxtMainPreferenceWorkTime.HeaderText" xml:space="preserve">
+    <value>WorkTime</value>
+  </data>
+  <data name="TxtMainPreferenceHVRatio.HeaderText" xml:space="preserve">
+    <value>HVRatio</value>
+  </data>
+  <data name="BtnMainPreferenceWrite.Text" xml:space="preserve">
+    <value>Write</value>
+  </data>
+  <data name="BtnMainPreferenceRead.Text" xml:space="preserve">
+    <value>Read</value>
+  </data>
+  <data name="BtnMainPreferenceSet.Text" xml:space="preserve">
+    <value>Set Default</value>
+  </data>
+  <data name="BtnMainPreferenceRetuen.Text" xml:space="preserve">
+    <value>Reset to Default</value>
   </data>
   <data name="工厂参数.Text" xml:space="preserve">
     <value>Channel Parameter</value>

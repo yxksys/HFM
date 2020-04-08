@@ -47,6 +47,8 @@
             this.ChkClothes = new System.Windows.Forms.CheckBox();
             this.ChkFoot = new System.Windows.Forms.CheckBox();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
+            this.TxtDeviceAddress = new System.Windows.Forms.TextBox();
+            this.LblDeviceAddress = new System.Windows.Forms.Label();
             this.ChkIsConnectedAuto = new System.Windows.Forms.CheckBox();
             this.CmbUnclideType = new System.Windows.Forms.ComboBox();
             this.LblUnclideType = new System.Windows.Forms.Label();
@@ -187,7 +189,6 @@
             this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
             this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -278,6 +279,8 @@
             // GrpFacilityData
             // 
             resources.ApplyResources(this.GrpFacilityData, "GrpFacilityData");
+            this.GrpFacilityData.Controls.Add(this.TxtDeviceAddress);
+            this.GrpFacilityData.Controls.Add(this.LblDeviceAddress);
             this.GrpFacilityData.Controls.Add(this.ChkIsConnectedAuto);
             this.GrpFacilityData.Controls.Add(this.CmbUnclideType);
             this.GrpFacilityData.Controls.Add(this.LblUnclideType);
@@ -296,6 +299,16 @@
             this.GrpFacilityData.Controls.Add(this.LblSmoothingFactor);
             this.GrpFacilityData.Name = "GrpFacilityData";
             this.GrpFacilityData.TabStop = false;
+            // 
+            // TxtDeviceAddress
+            // 
+            resources.ApplyResources(this.TxtDeviceAddress, "TxtDeviceAddress");
+            this.TxtDeviceAddress.Name = "TxtDeviceAddress";
+            // 
+            // LblDeviceAddress
+            // 
+            resources.ApplyResources(this.LblDeviceAddress, "LblDeviceAddress");
+            this.LblDeviceAddress.Name = "LblDeviceAddress";
             // 
             // ChkIsConnectedAuto
             // 
@@ -1385,6 +1398,7 @@
             this.GrpClothesData.ResumeLayout(false);
             this.GrpClothesData.PerformLayout();
             this.工厂参数.ResumeLayout(false);
+            this.工厂参数.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMainPreferenceSet)).EndInit();
             this.ResumeLayout(false);
 
@@ -1471,12 +1485,6 @@
         private System.Windows.Forms.DataGridView DgvMainPreferenceSet;
         private System.Windows.Forms.RadioButton RdoAlphaDefine2;
         private System.Windows.Forms.RadioButton RdoAlpha241;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
         private System.Windows.Forms.RadioButton RdoBeta204;
         private System.Windows.Forms.RadioButton RdoBetaDefine2;
         private System.Windows.Forms.RadioButton RdoBeta192;
@@ -1516,12 +1524,6 @@
         private System.Windows.Forms.Label LblClothOfflineTime;
         private System.Windows.Forms.Label LblAlpha;
         private System.Windows.Forms.Label LblBeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaChannelName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaHBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaLBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker_Preference;
         private System.Windows.Forms.CheckBox ChkIsConnectedAuto;
@@ -1532,7 +1534,18 @@
         private System.Windows.Forms.CheckBox ChkClothes;
         private System.Windows.Forms.CheckBox ChkFoot;
         private System.Windows.Forms.CheckBox ChkHand;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaHBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaLBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceChanneName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceAlphaThreshold;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceBetaThreshold;
@@ -1542,5 +1555,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVFactor;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceWorkTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVRatio;
+        private System.Windows.Forms.TextBox TxtDeviceAddress;
+        private System.Windows.Forms.Label LblDeviceAddress;
     }
 }
