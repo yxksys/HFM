@@ -35,7 +35,7 @@ namespace HFM.Components
         /// /添加故障数据
         /// </summary>
         private const string SQL_INSERT_ERRORDATA = "INSERT INTO HFM_ErrData (ErrTime,Record,IsEnglish,IsReported) " +
-                                                    "VALUES(@ErrTime,@Record,@IsEnglish )";
+                                                    "VALUES(@ErrTime,@Record,@IsEnglish,@IsReported )";
         /// <summary>
         /// 删除故障记录表中所有记录 
         /// </summary>

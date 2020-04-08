@@ -1642,7 +1642,13 @@ namespace HFM
         {
             FrmKeyIn.DelegatesKeyInTextBox(TxtClothOfflineTime);
         }
-        #endregion 
         #endregion
+
+        #endregion
+
+        private void FrmPreference_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            commPort.Close();
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
@@ -14,6 +15,7 @@ namespace HFM
 
     public partial class FrmEnterPassword : Form
     {
+        private FrmMeasureMain frmMeasureMain = null;
         #region 字段
         private string _value="";
         private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
@@ -21,8 +23,9 @@ namespace HFM
 
         #endregion
         #region 方法
-        public FrmEnterPassword()
+        public FrmEnterPassword(FrmMeasureMain frm)
         {
+            frmMeasureMain = frm;
             InitializeComponent();
         }
         #endregion 
@@ -43,12 +46,14 @@ namespace HFM
                 bool isOpened = false;
                 User.LandingUser = _user;
                 FrmMain frmMain=new FrmMain();
+                
+                
                 for (int i = 0; i < Application.OpenForms.Count; i++)
                 {
-                    if (frmMain.Name != Application.OpenForms[i].Text)
-                    {
-                        Application.OpenForms[i].Hide();
-                    }
+                    // if (frmMain.Name != Application.OpenForms[i].Text)
+                    // {
+                    //     Application.OpenForms[i].Hide();
+                    // }
                     if (frmMain.Name == Application.OpenForms[i].Text)          //若该窗体已被打开
                     {
                         frmMain.Activate();               //激活该窗体
@@ -63,6 +68,8 @@ namespace HFM
                 this.Close();
 
                 
+                FrmMain.frmMeasureMain.Hide();
+
                 if (_isEnglish)
                 {
                     MessageBox.Show("Login Successful!", "Success");

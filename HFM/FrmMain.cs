@@ -106,7 +106,8 @@ namespace HFM
                 //销毁其他不是要打开的窗口实例
                 if (formChild.Name != form.Name)
                 {
-                    form.Dispose();
+                    // form.Dispose();
+                    form.Close();
                 }
                 if (formChild.Name == form.Name)          //若该窗体已被打开
                 {
@@ -125,13 +126,13 @@ namespace HFM
                 formChild.WindowState = FormWindowState.Maximized;
                 formChild.Show();
             }
-
         }
         /// <summary>
         /// 窗口底部信息判断
         /// </summary>
         private void Tsslbl_Status_Text()
         {
+            
             if (_systemParameter.IsEnglish)
             {
                 Tsslbl_Status.Text = _commPort.Opened == false ? @"COM Fault!" : @"COM Connected!";
@@ -212,6 +213,7 @@ namespace HFM
         /// <param name="e"></param>
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmMeasureMain=new FrmMeasureMain();
             frmMeasureMain.ShowDialog();
             this.Dispose();
         }

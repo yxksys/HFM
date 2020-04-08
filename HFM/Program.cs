@@ -15,7 +15,7 @@ namespace HFM
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCalibration());
+            Application.Run(new FrmWelcome());
         }
         
     }
