@@ -145,6 +145,14 @@ namespace HFM
             try
             {
                 _commPort.Open();
+                if (_commPort.Opened)
+                {
+                    Tools.FormBottomPortStatus = true;
+                }
+                else
+                {
+                    Tools.FormBottomPortStatus = false;
+                }
             }
             catch
             {
@@ -657,7 +665,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnAlphaCheck_Click(object sender, EventArgs e)
         {
-            BtnCurency(HardwarePlatformState.AlphaCheck);
+            BtnCurency(HardwarePlatformState.BetaCheck);
         }
         /// <summary>
         /// Beta自检按钮
@@ -666,7 +674,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnBetaCheck_Click(object sender, EventArgs e)
         {
-            BtnCurency(HardwarePlatformState.BetaCheck);
+            BtnCurency(HardwarePlatformState.AlphaCheck);
         }
         /// <summary>
         /// 自检按钮
@@ -679,6 +687,11 @@ namespace HFM
         }
         #endregion
 
+        /// <summary>
+        /// 窗口关闭后,关闭线程,关闭端口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmTestHardware_FormClosed(object sender, FormClosedEventArgs e)
         {
             _commPort.Close();

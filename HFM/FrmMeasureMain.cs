@@ -2687,6 +2687,14 @@ namespace HFM
             commPort_Supervisory.Close();
             bkWorkerReceiveData.Dispose();
             bkWorkerReportStatus.Dispose();
+            if (bkWorkerReportStatus.IsBusy)
+            {
+                bkWorkerReportStatus.CancelAsync();
+            }
+            if (bkWorkerReceiveData.IsBusy)
+            {
+                bkWorkerReceiveData.CancelAsync();
+            }
         }
     }
 }

@@ -87,6 +87,11 @@ namespace HFM.Components
         /// 所属通道
         /// </summary>
         internal Channel Channel { get => _channel; set => _channel = value; }
+
+        public string ChannelName
+        {
+            get { return _channel.ChannelName; }
+        }
         #endregion
 
         #region 构造函数
@@ -105,7 +110,7 @@ namespace HFM.Components
         /// <param name="_hVFactor"></param>
         /// <param name="_hVRatio"></param>
         /// <param name="_workTime"></param>
-        public ChannelParameter(int _checkingID, float _alphaThreshold, float _betaThreshold, float _presetHV, float _aDCFactor, float _dACFactor, float _hVFactor, float _hVRatio, float _workTime)
+        public ChannelParameter(int _checkingID, float _alphaThreshold, float _betaThreshold, float _presetHV, float _aDCFactor, float _dACFactor, float _hVFactor, float _workTime, float _hVRatio )
         {
             this._checkingID = _checkingID;
             this._channel = (new Channel()).GetChannel(_checkingID);
@@ -115,8 +120,8 @@ namespace HFM.Components
             this._aDCFactor = _aDCFactor;
             this._dACFactor = _dACFactor;
             this._hVFactor = _hVFactor;
-            this._hVRatio = _hVRatio;
             this._workTime = _workTime;
+            this._hVRatio = _hVRatio;
         }
         #endregion
 
@@ -158,7 +163,7 @@ namespace HFM.Components
                     channelParameter.DACFactor = Convert.ToSingle(reader["DACFactor"]);
                     channelParameter.HVFactor = Convert.ToSingle(reader["HVFactor"]);
                     channelParameter.HVRatio = Convert.ToSingle(reader["HVRatio"]);
-                    channelParameter.WorkTime = Convert.ToSingle(reader["HVRatio"]);
+                    channelParameter.WorkTime = Convert.ToSingle(reader["WorkTime"]);
                     channelParameter.Channel = channel;
                     ICalibrationS.Add(channelParameter);
                 }

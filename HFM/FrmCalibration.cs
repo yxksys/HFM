@@ -122,6 +122,14 @@ namespace HFM
             try
             {
                 _commPort.Open();
+                if (_commPort.Opened)
+                {
+                    Tools.FormBottomPortStatus = true;
+                }
+                else
+                {
+                    Tools.FormBottomPortStatus = false;
+                }
             }
             catch
             {
@@ -1030,6 +1038,9 @@ namespace HFM
         }
         #endregion
 
+        /// <summary>
+        /// 窗口关闭后,关闭线程,关闭端口
+        /// </summary>
         private void FrmCalibration_FormClosed(object sender, FormClosedEventArgs e)
         {
             _commPort.Close();

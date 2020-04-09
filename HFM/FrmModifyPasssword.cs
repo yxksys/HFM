@@ -49,8 +49,8 @@ namespace HFM
         }
         #endregion
 
-        
 
+        private bool isEnglish = new Components.SystemParameter().GetParameter().IsEnglish;
         /// <summary>
         /// 确定
         /// </summary>
@@ -64,14 +64,29 @@ namespace HFM
             
             if (_user.Role==0)
             {
-                MessageBox.Show("密码错误", "提示");
+                if (isEnglish)
+                {
+                    MessageBox.Show("Wrong user name or password!", "Error");
+                }
+                else
+                {
+                    MessageBox.Show("用户名或密码错误！", "错误");
+                }
                 TxtOldPassword.Clear();
                 TxtOldPassword.Focus();
                 
             }
             else if (TxtNewPassword.Text!=TxtFinalPsaaword.Text)
             {
-                MessageBox.Show("两次密码不一致,请重新输入");
+                if (isEnglish)
+                {
+                    MessageBox.Show("Password does not match!", "Error");
+                }
+                else
+                {
+                    MessageBox.Show("新密码两次输入不一致！", "错误");
+                }
+                
                 TxtNewPassword.Clear();
                 TxtFinalPsaaword.Clear();
                 TxtNewPassword.Focus();
@@ -82,12 +97,27 @@ namespace HFM
                 _userpwd.UserName = _user.UserName;
                 _userpwd.PassWord = Tools.MD5Encrypt32(TxtNewPassword.Text);
                 _user.ChangePassWord(_userpwd);
-                MessageBox.Show("修改成功");
+                if (isEnglish)
+                {
+                    MessageBox.Show("Success! Please login with new password!","OK");
+                }
+                else
+                {
+                    MessageBox.Show("修改成功，请使用新密码登录！","成功");
+                }
                 this.Close();
             }
             else
             {
-                MessageBox.Show("修改失败!");
+                if (isEnglish)
+                {
+                    MessageBox.Show("Modification failed!");
+                }
+                else
+                {
+                    MessageBox.Show("修改失败!");
+                }
+                
             }
         }
 

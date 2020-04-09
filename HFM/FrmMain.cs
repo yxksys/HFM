@@ -115,7 +115,7 @@ namespace HFM
                     formChild.StartPosition = FormStartPosition.CenterParent;
                     formChild.WindowState = FormWindowState.Maximized;
                     isOpened = true;                    //设置子窗体的打开标记为true
-                    formChild.Dispose();                //销毁formChild实例
+                    formChild.Close();                //销毁formChild实例
                     break;
                 }
             }
@@ -132,30 +132,31 @@ namespace HFM
         /// </summary>
         private void Tsslbl_Status_Text()
         {
-            
-            if (_systemParameter.IsEnglish)
+            if (isEnglish)
             {
-                Tsslbl_Status.Text = _commPort.Opened == false ? @"COM Fault!" : @"COM Connected!";
+                if (Tools.FormBottomPortStatus==true)
+                {
+                    Tsslbl_Status.Text = @"COM Connected!";
+                }
+                else
+                {
+                    Tsslbl_Status.Text = @"COM Fault!";
+                }
             }
-
-            if (_systemParameter.IsEnglish == false)
+            else
             {
-                Tsslbl_Status.Text = _commPort.Opened == false ? @"通信故障!" : @"通信正常!";
+                if (Tools.FormBottomPortStatus == true)
+                {
+                    Tsslbl_Status.Text = @"通信正常";
+                }
+                else
+                {
+                    Tsslbl_Status.Text = @"通信故障";
+                }
             }
         }
         #endregion
 
-        #region 翻译
-
-        public void IsChineseOrEnglish(bool isenglish)
-        {
-            if (isenglish)
-            {
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
-            }
-        }
-
-        #endregion
 
         #region 构造函数
         public FrmMain()
@@ -192,7 +193,6 @@ namespace HFM
             catch (Exception exception)
             {
                 Tools.ErrorLog(exception.ToString());
-                throw;
             }
             
         } 
@@ -239,10 +239,13 @@ namespace HFM
             }
             else
             {
-                //开起维护密码窗体
-                FrmEnterPassword frmEnterPassword=new FrmEnterPassword();
-                frmEnterPassword.Show();
-                // FrmDisposeNormal(new FrmEnterPassword());
+                if (MessageBox.Show("是否重新登录？","提示",MessageBoxButtons.OKCancel)==DialogResult.OK)
+                {
+                    //开起维护密码窗体
+                    FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
+                    frmEnterPassword.Show();
+                }
+                
             }
         }
         /// <summary>

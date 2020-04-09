@@ -42,27 +42,33 @@ namespace HFM
             {
                 bool isOpened = false;
                 User.LandingUser = _user;
-                FrmMain frmMain=new FrmMain();
-                for (int i = 0; i < Application.OpenForms.Count; i++)
+                try
                 {
-                    if (frmMain.Name != Application.OpenForms[i].Text)
+                    FrmMain frmMain = new FrmMain();
+                    for (int i = 0; i < Application.OpenForms.Count; i++)
                     {
-                        Application.OpenForms[i].Close();
-                    }
-                    if (frmMain.Name == Application.OpenForms[i].Text)          //若该窗体已被打开
-                    {
-                        frmMain.Activate();  //激活该窗体
-                        isOpened = true;     //设置子窗体的打开标记为true
-                    }
-                }
-                
-                if (!isOpened) //若该窗体未打开,则显示该子窗体
-                {
-                    frmMain.Show();
-                }
-                this.Close();
+                        if (frmMain.Name == Application.OpenForms[i].Name)          //若该窗体已被打开
+                        {
+                            frmMain.Activate();  //激活该窗体
+                            isOpened = true;     //设置子窗体的打开标记为true
+                        }
+                        if (frmMain.Name != Application.OpenForms[i].Name)
+                        {
+                            Application.OpenForms[i].Close();
+                        }
 
-                
+                    }
+                    if (isOpened == false) //若该窗体未打开,则显示该子窗体
+                    {
+                        frmMain.Show();
+                    }
+                    this.Close();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    throw;
+                }
                 if (_isEnglish)
                 {
                     MessageBox.Show("Login Successful!", "Success");
