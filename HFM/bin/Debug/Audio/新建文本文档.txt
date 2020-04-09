@@ -1,0 +1,15 @@
+Decontaminate, please!E被测人员污染
+Updating background!E本底测量
+Background abnomalE本底异常
+faultE故障
+Start countingE开始测量
+No Contamination, please leave!E没有污染
+frisker In placeE衣物探头到位
+Clothing  contaminatedE衣物探头污染
+ReadyE仪器正常
+Self-checkingE仪器自检
+right hand in place, please measure againE右手红外到位
+right hand moved, please measure againE右手移动
+Self-checking faultE自检故障
+Left hand in place, please measure againE左手红外到位
+Left hand moved, please measure againE左手移动

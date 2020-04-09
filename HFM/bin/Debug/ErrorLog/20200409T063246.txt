@@ -1,0 +1,13 @@
+System.ComponentModel.Win32Exception (0x80004005): Error creating window handle.
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.get_WindowText()
+   at System.Windows.Forms.Control.set_CacheTextInternal(Boolean value)
+   at System.Windows.Forms.Control.PerformLayout(LayoutEventArgs args)
+   at System.Windows.Forms.Control.System.Windows.Forms.Layout.IArrangedElement.PerformLayout(IArrangedElement affectedElement, String affectedProperty)
+   at System.Windows.Forms.ToolStripItem.InvalidateItemLayout(String affectedProperty, Boolean invalidatePainting)
+   at System.Windows.Forms.ToolStripItem.OnTextChanged(EventArgs e)
+   at System.Windows.Forms.ToolStripStatusLabel.OnTextChanged(EventArgs e)
+   at System.Windows.Forms.ToolStripItem.set_Text(String value)
+   at HFM.FrmMain.TmrStatus_Elapsed(Object sender, ElapsedEventArgs e) in F:\项目\实项目\HFM\HFM\FrmMain.cs:line 189
