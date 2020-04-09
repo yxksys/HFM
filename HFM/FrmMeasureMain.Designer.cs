@@ -478,6 +478,7 @@
             this.Controls.Add(this.PicName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMeasureMain";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMeasureMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMeasureMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).EndInit();

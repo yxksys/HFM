@@ -145,6 +145,14 @@ namespace HFM
             try
             {
                 _commPort.Open();
+                if (_commPort.Opened)
+                {
+                    Tools.FormBottomPortStatus = true;
+                }
+                else
+                {
+                    Tools.FormBottomPortStatus = false;
+                }
             }
             catch
             {
@@ -575,14 +583,24 @@ namespace HFM
 
             }
 
-            DgvWork.Rows.Clear();
-            DgvWork.Rows.Insert(0, _hv);
-            DgvWork.Rows.Insert(1, _alphacps);
-            DgvWork.Rows.Insert(2, _alphacnt);
-            DgvWork.Rows.Insert(3, _betacps);
-            DgvWork.Rows.Insert(4, _betacnt);
-            DgvWork.Rows.Insert(5, _strat);
-            TxtFriskercount.Text = _frisker;
+            try
+            {
+                DgvWork.Rows.Clear();
+                DgvWork.Rows.Insert(0, _hv);
+                DgvWork.Rows.Insert(1, _alphacps);
+                DgvWork.Rows.Insert(2, _alphacnt);
+                DgvWork.Rows.Insert(3, _betacps);
+                DgvWork.Rows.Insert(4, _betacnt);
+                DgvWork.Rows.Insert(5, _strat);
+                TxtFriskercount.Text = _frisker;
+            }
+            catch (Exception exception)
+            {
+                bkWorkerReceiveData.CancelAsync();
+                Tools.ErrorLog(exception.ToString());
+                //throw;
+            }
+            
 
             int time = _measuringTime - e.ProgressPercentage;
             if (_isEnglish)
@@ -647,7 +665,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnAlphaCheck_Click(object sender, EventArgs e)
         {
-            BtnCurency(HardwarePlatformState.AlphaCheck);
+            BtnCurency(HardwarePlatformState.BetaCheck);
         }
         /// <summary>
         /// Beta自检按钮
@@ -656,7 +674,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnBetaCheck_Click(object sender, EventArgs e)
         {
-            BtnCurency(HardwarePlatformState.BetaCheck);
+            BtnCurency(HardwarePlatformState.AlphaCheck);
         }
         /// <summary>
         /// 自检按钮
@@ -668,5 +686,21 @@ namespace HFM
             BtnCurency(HardwarePlatformState.SelfTest);
         }
         #endregion
+
+        /// <summary>
+        /// 窗口关闭后,关闭线程,关闭端口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmTestHardware_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _commPort.Close();
+            bkWorkerReceiveData.CancelAsync();
+        }
+
+        private void FrmTestHardware_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bkWorkerReceiveData.CancelAsync();
+        }
     }
 }

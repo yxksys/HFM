@@ -340,8 +340,7 @@ namespace HFM
             errorData.AddData(errorData);
         }        
         private void FrmMeasureMain_Load(object sender, EventArgs e)
-        {
-            BtnChinese.Enabled = false;
+        {           
             smoothingData.team = new UInt32[TEAM_LENGTH];
             //获得工厂参数设置信息           
             factoryParameter.GetParameter();
@@ -363,6 +362,26 @@ namespace HFM
             Channel channel = new Channel();            
             channelS = channel.GetChannel();
             channelS.CopyTo(channelsAll,0);//将全部通道信息复制到channelsAll中
+            if (systemParameter.IsEnglish == true)
+            {
+                try
+                {                                    
+                    isEnglish = true;
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+                    this.BtnChinese.Enabled = true;
+                    this.BtnEnglish.Enabled = false;
+                    Tools.ApplyLanguageResource(this);
+                }
+                catch
+                {
+                    MessageBox.Show("Switch Fault，please try later");
+                }               
+            }  
+            else
+            {
+                this.BtnChinese.Enabled = false;
+                this.BtnEnglish.Enabled = true;
+            }
             //初始化显示界面
             DisplayInit();
             //实例化衣物探测界面
@@ -2618,8 +2637,9 @@ namespace HFM
                 isEnglish = false;
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
                 this.BtnEnglish.Enabled = true;
-                this.BtnChinese.Enabled = false;
+                this.BtnChinese.Enabled = false;                
                 Tools.ApplyLanguageResource(this);
+                DisplayInit();
             }
             catch
             {
@@ -2637,8 +2657,9 @@ namespace HFM
                 isEnglish = true;
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
                 this.BtnChinese.Enabled = true;
-                this.BtnEnglish.Enabled = false;
+                this.BtnEnglish.Enabled = false;                
                 Tools.ApplyLanguageResource(this);
+                DisplayInit();
             }
             catch
             {
@@ -2653,7 +2674,27 @@ namespace HFM
         private void BtnOption_Click(object sender, EventArgs e)
         {
             FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
-            frmEnterPassword.Show();
+            if (bkWorkerReceiveData.IsBusy)
+            {
+                bkWorkerReceiveData.CancelAsync();
+            }
+            frmEnterPassword.Show();            
+        }
+
+        private void FrmMeasureMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            commPort.Close();
+            commPort_Supervisory.Close();
+            bkWorkerReceiveData.Dispose();
+            bkWorkerReportStatus.Dispose();
+            if (bkWorkerReportStatus.IsBusy)
+            {
+                bkWorkerReportStatus.CancelAsync();
+            }
+            if (bkWorkerReceiveData.IsBusy)
+            {
+                bkWorkerReceiveData.CancelAsync();
+            }
         }
     }
 }

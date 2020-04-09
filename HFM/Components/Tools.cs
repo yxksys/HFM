@@ -397,5 +397,14 @@ namespace HFM.Components
             res.ApplyResources(form, "$form");
         }
         #endregion
+
+        #region 主窗体底部状态栏
+
+        /// <summary>
+        /// 主窗体底部状态栏--串口是否打开,通信是否正常  false:通信故障   true:通信正常
+        /// </summary>
+        public static bool FormBottomPortStatus = false;
+
+        #endregion
     }
 }

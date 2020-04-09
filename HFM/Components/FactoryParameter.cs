@@ -34,7 +34,7 @@ namespace HFM.Components
         private const string SQL_UPDATE_MAINPREFERENCE = "UPDATE HFM_MainPreference " +
                                                         "SET  InstrumentNum=@InstrumentNum, SoftName=@SoftName," +
                                                         " IPAddress=@IPAddress, PortNumber=@PortNumber, IsConnectedAuto=@IsConnectedAuto," +
-                                                        " MeasureType=@MeasureType, SmoothingFactor=@SmoothingFactor, IsDoubleProbe=@IsDoubleProbe" +
+                                                        " MeasureType=@MeasureType, SmoothingFactor=@SmoothingFactor, IsDoubleProbe=@IsDoubleProbe," +
                                                         "DeviceAddress=@DeviceAddress";
         #endregion
 
@@ -166,7 +166,7 @@ namespace HFM.Components
                 new OleDbParameter("MeasureType",OleDbType.VarChar,255),
                 new OleDbParameter("SmoothingFactor",OleDbType.VarChar,255),
                 new OleDbParameter("IsDoubleProbe",OleDbType.Boolean),
-                new OleDbParameter("DeviceAddress",OleDbType.VarChar,255),
+                new OleDbParameter("DeviceAddress",OleDbType.VarChar,255)
             };
             parms[0].Value = factoryParameter.InstrumentNum.ToString();
             parms[1].Value = factoryParameter.SoftName.ToString();

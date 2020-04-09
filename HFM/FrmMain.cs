@@ -15,9 +15,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
@@ -27,7 +29,8 @@ namespace HFM
     public partial class FrmMain : Form
     {
         #region 字段
-        
+
+        private bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;
         #endregion
 
         #region 实例
@@ -103,7 +106,8 @@ namespace HFM
                 //销毁其他不是要打开的窗口实例
                 if (formChild.Name != form.Name)
                 {
-                    form.Dispose();
+                    // form.Dispose();
+                    form.Close();
                 }
                 if (formChild.Name == form.Name)          //若该窗体已被打开
                 {
@@ -111,7 +115,7 @@ namespace HFM
                     formChild.StartPosition = FormStartPosition.CenterParent;
                     formChild.WindowState = FormWindowState.Maximized;
                     isOpened = true;                    //设置子窗体的打开标记为true
-                    formChild.Dispose();                //销毁formChild实例
+                    formChild.Close();                //销毁formChild实例
                     break;
                 }
             }
@@ -122,24 +126,37 @@ namespace HFM
                 formChild.WindowState = FormWindowState.Maximized;
                 formChild.Show();
             }
-
         }
         /// <summary>
         /// 窗口底部信息判断
         /// </summary>
         private void Tsslbl_Status_Text()
         {
-            if (_systemParameter.IsEnglish)
+            if (isEnglish)
             {
-                Tsslbl_Status.Text = _commPort.Opened == false ? @"COM Fault!" : @"COM Connected!";
+                if (Tools.FormBottomPortStatus==true)
+                {
+                    Tsslbl_Status.Text = @"COM Connected!";
+                }
+                else
+                {
+                    Tsslbl_Status.Text = @"COM Fault!";
+                }
             }
-
-            if (_systemParameter.IsEnglish == false)
+            else
             {
-                Tsslbl_Status.Text = _commPort.Opened == false ? @"通信故障!" : @"通信正常!";
+                if (Tools.FormBottomPortStatus == true)
+                {
+                    Tsslbl_Status.Text = @"通信正常";
+                }
+                else
+                {
+                    Tsslbl_Status.Text = @"通信故障";
+                }
             }
         }
         #endregion
+
 
         #region 构造函数
         public FrmMain()
@@ -176,7 +193,6 @@ namespace HFM
             catch (Exception exception)
             {
                 Tools.ErrorLog(exception.ToString());
-                throw;
             }
             
         } 
@@ -197,7 +213,8 @@ namespace HFM
         /// <param name="e"></param>
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMeasureMain.ShowDialog();
+            frmMeasureMain=new FrmMeasureMain();
+            frmMeasureMain.Show();
             this.Dispose();
         }
 
@@ -222,10 +239,13 @@ namespace HFM
             }
             else
             {
-                //开起维护密码窗体
-                FrmEnterPassword frmEnterPassword=new FrmEnterPassword();
-                frmEnterPassword.Show();
-                // FrmDisposeNormal(new FrmEnterPassword());
+                if (MessageBox.Show("是否重新登录？","提示",MessageBoxButtons.OKCancel)==DialogResult.OK)
+                {
+                    //开起维护密码窗体
+                    FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
+                    frmEnterPassword.Show();
+                }
+                
             }
         }
         /// <summary>

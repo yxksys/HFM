@@ -1680,7 +1680,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+    <value>CenterScreen</value>
   </data>
   <data name="&gt;&gt;bkWorkerReceiveData.Name" xml:space="preserve">
     <value>bkWorkerReceiveData</value>

@@ -122,6 +122,14 @@ namespace HFM
             try
             {
                 _commPort.Open();
+                if (_commPort.Opened)
+                {
+                    Tools.FormBottomPortStatus = true;
+                }
+                else
+                {
+                    Tools.FormBottomPortStatus = false;
+                }
             }
             catch
             {
@@ -215,6 +223,8 @@ namespace HFM
                 }
             }
             #endregion
+
+            OpenPort();
         }
         #endregion
 
@@ -310,7 +320,7 @@ namespace HFM
         {
             int errorNumber = 0; //下发自检报文出现错误计数器
             int delayTime = 200;//下发自检报文延时时间
-            byte[] receiveBuffMessage = new byte[124];//接受的报文
+            byte[] receiveBuffMessage = null;//接受的报文
             byte[] buffMessage = new byte[62];//报文长度
             while (true)
             {
@@ -1025,7 +1035,16 @@ namespace HFM
         private void TxtSFR_MouseClick(object sender, MouseEventArgs e)
         {
             FrmKeyIn.DelegatesKeyInTextBox(TxtSFR);
-        } 
+        }
         #endregion
+
+        /// <summary>
+        /// 窗口关闭后,关闭线程,关闭端口
+        /// </summary>
+        private void FrmCalibration_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _commPort.Close();
+            bkWorkerReceiveData.CancelAsync();
+        }
     }
 }
