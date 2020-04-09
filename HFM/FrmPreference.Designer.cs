@@ -1373,6 +1373,7 @@
             this.Controls.Add(this.TabPresence);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmPreference";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPreference_FormClosed);
             this.Load += new System.EventHandler(this.FrmPreference_Load);
             this.TabPresence.ResumeLayout(false);
             this.系统参数.ResumeLayout(false);

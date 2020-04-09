@@ -22,12 +22,11 @@ namespace HFM
             FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
             frmMeasureMain.Show();
             this.Dispose();
-            //Time_Welcome_cloes.Stop();
+            
         }
 
         private void FrmWelcome_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
             
         }
     }

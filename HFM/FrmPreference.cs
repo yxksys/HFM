@@ -86,6 +86,7 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmPreference_Load(object sender, EventArgs e)
         {
+            OpenPort();
             //线程支持异步取消
             backgroundWorker_Preference.WorkerSupportsCancellation = true;
             GetProferenceData();
@@ -578,7 +579,6 @@ namespace HFM
                         {
                             backgroundWorker_Preference.CancelAsync();
                             _bkworkTime = 0;
-                            _commPort.Close();
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -647,7 +647,6 @@ namespace HFM
                                     MessageBox.Show("数据已经下发!", "提示");
                                 }
                                 _messageType = MessageType.pRead;
-                                _commPort.Close();
                             }
                             //发送失败次数大于5次,提示错误并挂起线程
                             else
@@ -764,15 +763,15 @@ namespace HFM
         private void OpenPort()
         {
             //从配置文件获得当前串口配置
-            if (commPort.Opened == true)
+            if (_commPort.Opened)
             {
-                commPort.Close();
+                _commPort.Close();
             }
-            commPort.GetCommPortSet("commportSet");
+            _commPort.GetCommPortSet("commportSet");
             //打开串口
             try
             {
-                commPort.Open();
+                _commPort.Open();
                 if (_commPort.Opened)
                 {
                     Tools.FormBottomPortStatus = true;
@@ -784,7 +783,8 @@ namespace HFM
             }
             catch
             {
-                MessageBox.Show(@"端口打开错误！请检查通讯是否正常。");
+                _tools.PrompMessage(1);
+
             }
         }
 
@@ -1345,7 +1345,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
         {
-            OpenPort();
+            
             //当前发送报文类型换成p写入
             _messageType = MessageType.pRead;
             
@@ -1378,7 +1378,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceWrite_Click(object sender, EventArgs e)
         {
-            OpenPort();
+            
             #region 读取数据到列表
             for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++)
             {
