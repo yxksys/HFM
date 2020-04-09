@@ -87,6 +87,11 @@ namespace HFM.Components
         /// 所属通道
         /// </summary>
         internal Channel Channel { get => _channel; set => _channel = value; }
+
+        public string ChannelName
+        {
+            get { return _channel.ChannelName; }
+        }
         #endregion
 
         #region 构造函数

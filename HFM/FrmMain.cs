@@ -115,7 +115,7 @@ namespace HFM
                     formChild.StartPosition = FormStartPosition.CenterParent;
                     formChild.WindowState = FormWindowState.Maximized;
                     isOpened = true;                    //设置子窗体的打开标记为true
-                    formChild.Dispose();                //销毁formChild实例
+                    formChild.Close();                //销毁formChild实例
                     break;
                 }
             }
