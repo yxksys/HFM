@@ -63,7 +63,7 @@ namespace HFM
             /// <summary>
             /// 检测数据(中文)数据库查询所得
             /// </summary>
-            IList<MeasureData> _measureDataChinese = new MeasureData().GetData();
+            IList<MeasureData> _measureDataChinese = new MeasureData().GetData(false);
 
 
             DgvMeasure.Rows.Clear(); //清理Dgv数据表
@@ -120,7 +120,7 @@ namespace HFM
                     /// <summary>
                     /// 检测数据(中文)数据库查询所得
                     /// </summary>
-                    IList<MeasureData> _measureDataChinese = new MeasureData().GetData();
+                    IList<MeasureData> _measureDataChinese = new MeasureData().GetData(false);
                     if (_systemParameter.IsEnglish)
                     {
                         //遍历列表对象,取出数据按字段,添加到Dgv中

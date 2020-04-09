@@ -966,801 +966,6 @@
   <data name="&gt;&gt;BtnPreferenceOk.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;TxtRightFootProbeArea.Name" xml:space="preserve">
-    <value>TxtRightFootProbeArea</value>
-  </data>
-  <data name="&gt;&gt;TxtRightFootProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtRightFootProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;TxtRightFootProbeArea.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TxtRightOutProbeArea.Name" xml:space="preserve">
-    <value>TxtRightOutProbeArea</value>
-  </data>
-  <data name="&gt;&gt;TxtRightOutProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtRightOutProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;TxtRightOutProbeArea.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftOutProbeArea.Name" xml:space="preserve">
-    <value>TxtLeftOutProbeArea</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftOutProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftOutProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftOutProbeArea.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;TxtCloseProbeArea.Name" xml:space="preserve">
-    <value>TxtCloseProbeArea</value>
-  </data>
-  <data name="&gt;&gt;TxtCloseProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtCloseProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;TxtCloseProbeArea.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftFootProbeArea.Name" xml:space="preserve">
-    <value>TxtLeftFootProbeArea</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftFootProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftFootProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftFootProbeArea.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;TxtRightInProbeArea.Name" xml:space="preserve">
-    <value>TxtRightInProbeArea</value>
-  </data>
-  <data name="&gt;&gt;TxtRightInProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtRightInProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;TxtRightInProbeArea.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftInProbeArea.Name" xml:space="preserve">
-    <value>TxtLeftInProbeArea</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftInProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftInProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;TxtLeftInProbeArea.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;LblRightFootProbeArea.Name" xml:space="preserve">
-    <value>LblRightFootProbeArea</value>
-  </data>
-  <data name="&gt;&gt;LblRightFootProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRightFootProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;LblRightFootProbeArea.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;LblRightOutProbeArea.Name" xml:space="preserve">
-    <value>LblRightOutProbeArea</value>
-  </data>
-  <data name="&gt;&gt;LblRightOutProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRightOutProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;LblRightOutProbeArea.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;LblLeftOutProbeArea.Name" xml:space="preserve">
-    <value>LblLeftOutProbeArea</value>
-  </data>
-  <data name="&gt;&gt;LblLeftOutProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLeftOutProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;LblLeftOutProbeArea.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;LblClothesProbeArea.Name" xml:space="preserve">
-    <value>LblClothesProbeArea</value>
-  </data>
-  <data name="&gt;&gt;LblClothesProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothesProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;LblClothesProbeArea.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;LblLeftFootProbeArea.Name" xml:space="preserve">
-    <value>LblLeftFootProbeArea</value>
-  </data>
-  <data name="&gt;&gt;LblLeftFootProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLeftFootProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;LblLeftFootProbeArea.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;LblRightInProbeArea.Name" xml:space="preserve">
-    <value>LblRightInProbeArea</value>
-  </data>
-  <data name="&gt;&gt;LblRightInProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRightInProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;LblRightInProbeArea.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;LblLeftInProbeArea.Name" xml:space="preserve">
-    <value>LblLeftInProbeArea</value>
-  </data>
-  <data name="&gt;&gt;LblLeftInProbeArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLeftInProbeArea.Parent" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;LblLeftInProbeArea.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="GrpPreferenceArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 15pt, style=Bold</value>
-  </data>
-  <data name="GrpPreferenceArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>346, 6</value>
-  </data>
-  <data name="GrpPreferenceArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpPreferenceArea.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpPreferenceArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 249</value>
-  </data>
-  <data name="GrpPreferenceArea.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="GrpPreferenceArea.Text" xml:space="preserve">
-    <value>探测器面积/cm²</value>
-  </data>
-  <data name="&gt;&gt;GrpPreferenceArea.Name" xml:space="preserve">
-    <value>GrpPreferenceArea</value>
-  </data>
-  <data name="&gt;&gt;GrpPreferenceArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpPreferenceArea.Parent" xml:space="preserve">
-    <value>系统参数</value>
-  </data>
-  <data name="&gt;&gt;GrpPreferenceArea.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;TxtBKGUpdate.Name" xml:space="preserve">
-    <value>TxtBKGUpdate</value>
-  </data>
-  <data name="&gt;&gt;TxtBKGUpdate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtBKGUpdate.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;TxtBKGUpdate.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TxtAlarmTime.Name" xml:space="preserve">
-    <value>TxtAlarmTime</value>
-  </data>
-  <data name="&gt;&gt;TxtAlarmTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtAlarmTime.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;TxtAlarmTime.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;TxtMeasuringTime.Name" xml:space="preserve">
-    <value>TxtMeasuringTime</value>
-  </data>
-  <data name="&gt;&gt;TxtMeasuringTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtMeasuringTime.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;TxtMeasuringTime.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;TxtSmoothingTime.Name" xml:space="preserve">
-    <value>TxtSmoothingTime</value>
-  </data>
-  <data name="&gt;&gt;TxtSmoothingTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtSmoothingTime.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;TxtSmoothingTime.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;TxtSelfCheckTime.Name" xml:space="preserve">
-    <value>TxtSelfCheckTime</value>
-  </data>
-  <data name="&gt;&gt;TxtSelfCheckTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtSelfCheckTime.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;TxtSelfCheckTime.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;CmbMeasurementUnit.Name" xml:space="preserve">
-    <value>CmbMeasurementUnit</value>
-  </data>
-  <data name="&gt;&gt;CmbMeasurementUnit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CmbMeasurementUnit.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;CmbMeasurementUnit.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;LblBKGUpdate.Name" xml:space="preserve">
-    <value>LblBKGUpdate</value>
-  </data>
-  <data name="&gt;&gt;LblBKGUpdate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblBKGUpdate.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;LblBKGUpdate.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;LblAlarmTime.Name" xml:space="preserve">
-    <value>LblAlarmTime</value>
-  </data>
-  <data name="&gt;&gt;LblAlarmTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblAlarmTime.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;LblAlarmTime.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;LblMeasurementUnit.Name" xml:space="preserve">
-    <value>LblMeasurementUnit</value>
-  </data>
-  <data name="&gt;&gt;LblMeasurementUnit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblMeasurementUnit.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;LblMeasurementUnit.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;LblMeasuringTime.Name" xml:space="preserve">
-    <value>LblMeasuringTime</value>
-  </data>
-  <data name="&gt;&gt;LblMeasuringTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblMeasuringTime.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;LblMeasuringTime.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;LblSmoothingTime.Name" xml:space="preserve">
-    <value>LblSmoothingTime</value>
-  </data>
-  <data name="&gt;&gt;LblSmoothingTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblSmoothingTime.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;LblSmoothingTime.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;LblSelfCheckTime.Name" xml:space="preserve">
-    <value>LblSelfCheckTime</value>
-  </data>
-  <data name="&gt;&gt;LblSelfCheckTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblSelfCheckTime.Parent" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;LblSelfCheckTime.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="GrpPreferenceData.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 15pt, style=Bold</value>
-  </data>
-  <data name="GrpPreferenceData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 6</value>
-  </data>
-  <data name="GrpPreferenceData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpPreferenceData.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpPreferenceData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 249</value>
-  </data>
-  <data name="GrpPreferenceData.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="GrpPreferenceData.Text" xml:space="preserve">
-    <value>系统参数</value>
-  </data>
-  <data name="&gt;&gt;GrpPreferenceData.Name" xml:space="preserve">
-    <value>GrpPreferenceData</value>
-  </data>
-  <data name="&gt;&gt;GrpPreferenceData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpPreferenceData.Parent" xml:space="preserve">
-    <value>系统参数</value>
-  </data>
-  <data name="&gt;&gt;GrpPreferenceData.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="系统参数.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
-  </data>
-  <data name="系统参数.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="系统参数.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="系统参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 449</value>
-  </data>
-  <data name="系统参数.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="系统参数.Text" xml:space="preserve">
-    <value>系统参数</value>
-  </data>
-  <data name="&gt;&gt;系统参数.Name" xml:space="preserve">
-    <value>系统参数</value>
-  </data>
-  <data name="&gt;&gt;系统参数.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;系统参数.Parent" xml:space="preserve">
-    <value>TabPresence</value>
-  </data>
-  <data name="&gt;&gt;系统参数.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;LblAlpha.Name" xml:space="preserve">
-    <value>LblAlpha</value>
-  </data>
-  <data name="&gt;&gt;LblAlpha.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblAlpha.Parent" xml:space="preserve">
-    <value>α参数</value>
-  </data>
-  <data name="&gt;&gt;LblAlpha.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;DgvAlphaSet.Name" xml:space="preserve">
-    <value>DgvAlphaSet</value>
-  </data>
-  <data name="&gt;&gt;DgvAlphaSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DgvAlphaSet.Parent" xml:space="preserve">
-    <value>α参数</value>
-  </data>
-  <data name="&gt;&gt;DgvAlphaSet.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;BtnAlphaNo.Name" xml:space="preserve">
-    <value>BtnAlphaNo</value>
-  </data>
-  <data name="&gt;&gt;BtnAlphaNo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnAlphaNo.Parent" xml:space="preserve">
-    <value>α参数</value>
-  </data>
-  <data name="&gt;&gt;BtnAlphaNo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;BtnAlphaOk.Name" xml:space="preserve">
-    <value>BtnAlphaOk</value>
-  </data>
-  <data name="&gt;&gt;BtnAlphaOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnAlphaOk.Parent" xml:space="preserve">
-    <value>α参数</value>
-  </data>
-  <data name="&gt;&gt;BtnAlphaOk.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;GrpAlphaNuclideChoose.Name" xml:space="preserve">
-    <value>GrpAlphaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;GrpAlphaNuclideChoose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpAlphaNuclideChoose.Parent" xml:space="preserve">
-    <value>α参数</value>
-  </data>
-  <data name="&gt;&gt;GrpAlphaNuclideChoose.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="α参数.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
-  </data>
-  <data name="α参数.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
-  </data>
-  <data name="α参数.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="α参数.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="α参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 449</value>
-  </data>
-  <data name="α参数.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="α参数.Text" xml:space="preserve">
-    <value>α参数</value>
-  </data>
-  <data name="&gt;&gt;α参数.Name" xml:space="preserve">
-    <value>α参数</value>
-  </data>
-  <data name="&gt;&gt;α参数.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;α参数.Parent" xml:space="preserve">
-    <value>TabPresence</value>
-  </data>
-  <data name="&gt;&gt;α参数.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LblBeta.Name" xml:space="preserve">
-    <value>LblBeta</value>
-  </data>
-  <data name="&gt;&gt;LblBeta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblBeta.Parent" xml:space="preserve">
-    <value>β参数</value>
-  </data>
-  <data name="&gt;&gt;LblBeta.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;DgvBetaSet.Name" xml:space="preserve">
-    <value>DgvBetaSet</value>
-  </data>
-  <data name="&gt;&gt;DgvBetaSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DgvBetaSet.Parent" xml:space="preserve">
-    <value>β参数</value>
-  </data>
-  <data name="&gt;&gt;DgvBetaSet.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;BtnBetaNo.Name" xml:space="preserve">
-    <value>BtnBetaNo</value>
-  </data>
-  <data name="&gt;&gt;BtnBetaNo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnBetaNo.Parent" xml:space="preserve">
-    <value>β参数</value>
-  </data>
-  <data name="&gt;&gt;BtnBetaNo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;BtnBetaOk.Name" xml:space="preserve">
-    <value>BtnBetaOk</value>
-  </data>
-  <data name="&gt;&gt;BtnBetaOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnBetaOk.Parent" xml:space="preserve">
-    <value>β参数</value>
-  </data>
-  <data name="&gt;&gt;BtnBetaOk.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.Name" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.Parent" xml:space="preserve">
-    <value>β参数</value>
-  </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="β参数.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
-  </data>
-  <data name="β参数.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
-  </data>
-  <data name="β参数.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="β参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 449</value>
-  </data>
-  <data name="β参数.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="β参数.Text" xml:space="preserve">
-    <value>β参数</value>
-  </data>
-  <data name="&gt;&gt;β参数.Name" xml:space="preserve">
-    <value>β参数</value>
-  </data>
-  <data name="&gt;&gt;β参数.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;β参数.Parent" xml:space="preserve">
-    <value>TabPresence</value>
-  </data>
-  <data name="&gt;&gt;β参数.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;BtnClothesNo.Name" xml:space="preserve">
-    <value>BtnClothesNo</value>
-  </data>
-  <data name="&gt;&gt;BtnClothesNo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnClothesNo.Parent" xml:space="preserve">
-    <value>衣物探头</value>
-  </data>
-  <data name="&gt;&gt;BtnClothesNo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;BtnClothesOk.Name" xml:space="preserve">
-    <value>BtnClothesOk</value>
-  </data>
-  <data name="&gt;&gt;BtnClothesOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnClothesOk.Parent" xml:space="preserve">
-    <value>衣物探头</value>
-  </data>
-  <data name="&gt;&gt;BtnClothesOk.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesNuclideChoose.Name" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesNuclideChoose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesNuclideChoose.Parent" xml:space="preserve">
-    <value>衣物探头</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesNuclideChoose.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesData.Name" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesData.Parent" xml:space="preserve">
-    <value>衣物探头</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesData.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="衣物探头.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
-  </data>
-  <data name="衣物探头.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="衣物探头.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 449</value>
-  </data>
-  <data name="衣物探头.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="衣物探头.Text" xml:space="preserve">
-    <value>衣物探头</value>
-  </data>
-  <data name="&gt;&gt;衣物探头.Name" xml:space="preserve">
-    <value>衣物探头</value>
-  </data>
-  <data name="&gt;&gt;衣物探头.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;衣物探头.Parent" xml:space="preserve">
-    <value>TabPresence</value>
-  </data>
-  <data name="&gt;&gt;衣物探头.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>工厂参数</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;DgvMainPreferenceSet.Name" xml:space="preserve">
-    <value>DgvMainPreferenceSet</value>
-  </data>
-  <data name="&gt;&gt;DgvMainPreferenceSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DgvMainPreferenceSet.Parent" xml:space="preserve">
-    <value>工厂参数</value>
-  </data>
-  <data name="&gt;&gt;DgvMainPreferenceSet.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceWrite.Name" xml:space="preserve">
-    <value>BtnMainPreferenceWrite</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceWrite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceWrite.Parent" xml:space="preserve">
-    <value>工厂参数</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceWrite.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceRead.Name" xml:space="preserve">
-    <value>BtnMainPreferenceRead</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceRead.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceRead.Parent" xml:space="preserve">
-    <value>工厂参数</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceRead.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceSet.Name" xml:space="preserve">
-    <value>BtnMainPreferenceSet</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceSet.Parent" xml:space="preserve">
-    <value>工厂参数</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceSet.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceRetuen.Name" xml:space="preserve">
-    <value>BtnMainPreferenceRetuen</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceRetuen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceRetuen.Parent" xml:space="preserve">
-    <value>工厂参数</value>
-  </data>
-  <data name="&gt;&gt;BtnMainPreferenceRetuen.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="工厂参数.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
-  </data>
-  <data name="工厂参数.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
-  </data>
-  <data name="工厂参数.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="工厂参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 449</value>
-  </data>
-  <data name="工厂参数.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="工厂参数.Text" xml:space="preserve">
-    <value>道盒参数</value>
-  </data>
-  <data name="&gt;&gt;工厂参数.Name" xml:space="preserve">
-    <value>工厂参数</value>
-  </data>
-  <data name="&gt;&gt;工厂参数.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;工厂参数.Parent" xml:space="preserve">
-    <value>TabPresence</value>
-  </data>
-  <data name="&gt;&gt;工厂参数.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="TabPresence.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 15pt</value>
-  </data>
-  <data name="TabPresence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="TabPresence.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="TabPresence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 483</value>
-  </data>
-  <data name="TabPresence.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TabPresence.Name" xml:space="preserve">
-    <value>TabPresence</value>
-  </data>
-  <data name="&gt;&gt;TabPresence.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabPresence.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;TabPresence.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="TxtRightFootProbeArea.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
@@ -2202,6 +1407,39 @@
   <data name="&gt;&gt;LblLeftInProbeArea.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="GrpPreferenceArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 15pt, style=Bold</value>
+  </data>
+  <data name="GrpPreferenceArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>346, 6</value>
+  </data>
+  <data name="GrpPreferenceArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpPreferenceArea.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpPreferenceArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 249</value>
+  </data>
+  <data name="GrpPreferenceArea.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="GrpPreferenceArea.Text" xml:space="preserve">
+    <value>探测器面积/cm²</value>
+  </data>
+  <data name="&gt;&gt;GrpPreferenceArea.Name" xml:space="preserve">
+    <value>GrpPreferenceArea</value>
+  </data>
+  <data name="&gt;&gt;GrpPreferenceArea.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpPreferenceArea.Parent" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="&gt;&gt;GrpPreferenceArea.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="TxtBKGUpdate.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
@@ -2604,6 +1842,69 @@
   <data name="&gt;&gt;LblSelfCheckTime.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="GrpPreferenceData.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 15pt, style=Bold</value>
+  </data>
+  <data name="GrpPreferenceData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 6</value>
+  </data>
+  <data name="GrpPreferenceData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpPreferenceData.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpPreferenceData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 249</value>
+  </data>
+  <data name="GrpPreferenceData.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GrpPreferenceData.Text" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="&gt;&gt;GrpPreferenceData.Name" xml:space="preserve">
+    <value>GrpPreferenceData</value>
+  </data>
+  <data name="&gt;&gt;GrpPreferenceData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpPreferenceData.Parent" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="&gt;&gt;GrpPreferenceData.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="系统参数.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 30</value>
+  </data>
+  <data name="系统参数.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="系统参数.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="系统参数.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 449</value>
+  </data>
+  <data name="系统参数.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="系统参数.Text" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="&gt;&gt;系统参数.Name" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="&gt;&gt;系统参数.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;系统参数.Parent" xml:space="preserve">
+    <value>TabPresence</value>
+  </data>
+  <data name="&gt;&gt;系统参数.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="LblAlpha.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 15pt, style=Bold</value>
   </data>
@@ -2774,111 +2075,6 @@
   </data>
   <data name="&gt;&gt;BtnAlphaOk.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;RdoAlphaDefine2.Name" xml:space="preserve">
-    <value>RdoAlphaDefine2</value>
-  </data>
-  <data name="&gt;&gt;RdoAlphaDefine2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoAlphaDefine2.Parent" xml:space="preserve">
-    <value>GrpAlphaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoAlphaDefine2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha241.Name" xml:space="preserve">
-    <value>RdoAlpha241</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha241.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha241.Parent" xml:space="preserve">
-    <value>GrpAlphaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha241.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;RdoAlphaDefine1.Name" xml:space="preserve">
-    <value>RdoAlphaDefine1</value>
-  </data>
-  <data name="&gt;&gt;RdoAlphaDefine1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoAlphaDefine1.Parent" xml:space="preserve">
-    <value>GrpAlphaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoAlphaDefine1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha238.Name" xml:space="preserve">
-    <value>RdoAlpha238</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha238.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha238.Parent" xml:space="preserve">
-    <value>GrpAlphaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha238.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha239.Name" xml:space="preserve">
-    <value>RdoAlpha239</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha239.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha239.Parent" xml:space="preserve">
-    <value>GrpAlphaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha239.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha235.Name" xml:space="preserve">
-    <value>RdoAlpha235</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha235.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha235.Parent" xml:space="preserve">
-    <value>GrpAlphaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoAlpha235.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="GrpAlphaNuclideChoose.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 15pt, style=Bold</value>
-  </data>
-  <data name="GrpAlphaNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 312</value>
-  </data>
-  <data name="GrpAlphaNuclideChoose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpAlphaNuclideChoose.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpAlphaNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>313, 120</value>
-  </data>
-  <data name="GrpAlphaNuclideChoose.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
-    <value>α核素选择</value>
-  </data>
-  <data name="&gt;&gt;GrpAlphaNuclideChoose.Name" xml:space="preserve">
-    <value>GrpAlphaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;GrpAlphaNuclideChoose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpAlphaNuclideChoose.Parent" xml:space="preserve">
-    <value>α参数</value>
-  </data>
-  <data name="&gt;&gt;GrpAlphaNuclideChoose.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="RdoAlphaDefine2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3078,6 +2274,72 @@
   <data name="&gt;&gt;RdoAlpha235.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="GrpAlphaNuclideChoose.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 15pt, style=Bold</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 312</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 120</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
+    <value>α核素选择</value>
+  </data>
+  <data name="&gt;&gt;GrpAlphaNuclideChoose.Name" xml:space="preserve">
+    <value>GrpAlphaNuclideChoose</value>
+  </data>
+  <data name="&gt;&gt;GrpAlphaNuclideChoose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpAlphaNuclideChoose.Parent" xml:space="preserve">
+    <value>α参数</value>
+  </data>
+  <data name="&gt;&gt;GrpAlphaNuclideChoose.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="α参数.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="α参数.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 30</value>
+  </data>
+  <data name="α参数.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="α参数.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="α参数.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 449</value>
+  </data>
+  <data name="α参数.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="α参数.Text" xml:space="preserve">
+    <value>α参数</value>
+  </data>
+  <data name="&gt;&gt;α参数.Name" xml:space="preserve">
+    <value>α参数</value>
+  </data>
+  <data name="&gt;&gt;α参数.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;α参数.Parent" xml:space="preserve">
+    <value>TabPresence</value>
+  </data>
+  <data name="&gt;&gt;α参数.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="LblBeta.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 15pt, style=Bold</value>
   </data>
@@ -3254,183 +2516,6 @@
   </data>
   <data name="&gt;&gt;BtnBetaOk.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;RdoBetaDefine2.Name" xml:space="preserve">
-    <value>RdoBetaDefine2</value>
-  </data>
-  <data name="&gt;&gt;RdoBetaDefine2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBetaDefine2.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBetaDefine2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta192.Name" xml:space="preserve">
-    <value>RdoBeta192</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta192.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta192.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta192.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta90.Name" xml:space="preserve">
-    <value>RdoBeta90</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta90.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta90.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta90.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta36.Name" xml:space="preserve">
-    <value>RdoBeta36</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta36.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta36.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta36.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;RdoBetaDefine1.Name" xml:space="preserve">
-    <value>RdoBetaDefine1</value>
-  </data>
-  <data name="&gt;&gt;RdoBetaDefine1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBetaDefine1.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBetaDefine1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta137.Name" xml:space="preserve">
-    <value>RdoBeta137</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta137.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta137.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta137.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta60.Name" xml:space="preserve">
-    <value>RdoBeta60</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta60.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta60.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta60.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta32.Name" xml:space="preserve">
-    <value>RdoBeta32</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta32.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta32.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta32.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta204.Name" xml:space="preserve">
-    <value>RdoBeta204</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta204.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta204.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta204.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta131.Name" xml:space="preserve">
-    <value>RdoBeta131</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta131.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta131.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta131.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta58.Name" xml:space="preserve">
-    <value>RdoBeta58</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta58.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta58.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta58.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta14.Name" xml:space="preserve">
-    <value>RdoBeta14</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta14.Parent" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoBeta14.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="GrpBetaNuclideChoose.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 15pt, style=Bold</value>
-  </data>
-  <data name="GrpBetaNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 314</value>
-  </data>
-  <data name="GrpBetaNuclideChoose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpBetaNuclideChoose.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpBetaNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>392, 127</value>
-  </data>
-  <data name="GrpBetaNuclideChoose.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="GrpBetaNuclideChoose.Text" xml:space="preserve">
-    <value>β/γ核素选择</value>
-  </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.Name" xml:space="preserve">
-    <value>GrpBetaNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.Parent" xml:space="preserve">
-    <value>β参数</value>
-  </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="RdoBetaDefine2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3828,6 +2913,69 @@
   <data name="&gt;&gt;RdoBeta14.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="GrpBetaNuclideChoose.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 15pt, style=Bold</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 314</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 127</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.Text" xml:space="preserve">
+    <value>β/γ核素选择</value>
+  </data>
+  <data name="&gt;&gt;GrpBetaNuclideChoose.Name" xml:space="preserve">
+    <value>GrpBetaNuclideChoose</value>
+  </data>
+  <data name="&gt;&gt;GrpBetaNuclideChoose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpBetaNuclideChoose.Parent" xml:space="preserve">
+    <value>β参数</value>
+  </data>
+  <data name="&gt;&gt;GrpBetaNuclideChoose.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="β参数.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="β参数.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 30</value>
+  </data>
+  <data name="β参数.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="β参数.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 449</value>
+  </data>
+  <data name="β参数.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="β参数.Text" xml:space="preserve">
+    <value>β参数</value>
+  </data>
+  <data name="&gt;&gt;β参数.Name" xml:space="preserve">
+    <value>β参数</value>
+  </data>
+  <data name="&gt;&gt;β参数.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;β参数.Parent" xml:space="preserve">
+    <value>TabPresence</value>
+  </data>
+  <data name="&gt;&gt;β参数.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="BtnClothesNo.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 15pt, style=Bold</value>
   </data>
@@ -3887,255 +3035,6 @@
   </data>
   <data name="&gt;&gt;BtnClothesOk.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBetaDefine1.Name" xml:space="preserve">
-    <value>RdoClothesBetaDefine1</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBetaDefine1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBetaDefine1.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBetaDefine1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta192.Name" xml:space="preserve">
-    <value>RdoClothesBeta192</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta192.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta192.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta192.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta90.Name" xml:space="preserve">
-    <value>RdoClothesBeta90</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta90.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta90.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta90.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta36.Name" xml:space="preserve">
-    <value>RdoClothesBeta36</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta36.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta36.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta36.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta137.Name" xml:space="preserve">
-    <value>RdoClothesBeta137</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta137.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta137.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta137.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta60.Name" xml:space="preserve">
-    <value>RdoClothesBeta60</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta60.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta60.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta60.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta32.Name" xml:space="preserve">
-    <value>RdoClothesBeta32</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta32.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta32.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta32.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta204.Name" xml:space="preserve">
-    <value>RdoClothesBeta204</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta204.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta204.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta204.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta131.Name" xml:space="preserve">
-    <value>RdoClothesBeta131</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta131.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta131.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta131.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta58.Name" xml:space="preserve">
-    <value>RdoClothesBeta58</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta58.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta58.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta58.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta14.Name" xml:space="preserve">
-    <value>RdoClothesBeta14</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta14.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesBeta14.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlphaDefine1.Name" xml:space="preserve">
-    <value>RdoClothesAlphaDefine1</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlphaDefine1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlphaDefine1.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlphaDefine1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha241.Name" xml:space="preserve">
-    <value>RdoClothesAlpha241</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha241.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha241.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha241.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha238.Name" xml:space="preserve">
-    <value>RdoClothesAlpha238</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha238.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha238.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha238.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha239.Name" xml:space="preserve">
-    <value>RdoClothesAlpha239</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha239.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha239.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha239.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha235.Name" xml:space="preserve">
-    <value>RdoClothesAlpha235</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha235.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha235.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;RdoClothesAlpha235.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;LblClothesBetaOrClothes.Name" xml:space="preserve">
-    <value>LblClothesBetaOrClothes</value>
-  </data>
-  <data name="&gt;&gt;LblClothesBetaOrClothes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothesBetaOrClothes.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;LblClothesBetaOrClothes.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlpha.Name" xml:space="preserve">
-    <value>LblClothesAlpha</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlpha.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlpha.Parent" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlpha.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="GrpClothesNuclideChoose.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 15pt, style=Bold</value>
-  </data>
-  <data name="GrpClothesNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 23</value>
-  </data>
-  <data name="GrpClothesNuclideChoose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpClothesNuclideChoose.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="GrpClothesNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 356</value>
-  </data>
-  <data name="GrpClothesNuclideChoose.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="GrpClothesNuclideChoose.Text" xml:space="preserve">
-    <value>核素选择</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesNuclideChoose.Name" xml:space="preserve">
-    <value>GrpClothesNuclideChoose</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesNuclideChoose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesNuclideChoose.Parent" xml:space="preserve">
-    <value>衣物探头</value>
-  </data>
-  <data name="&gt;&gt;GrpClothesNuclideChoose.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="RdoClothesBetaDefine1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4731,182 +3630,38 @@
   <data name="&gt;&gt;LblClothesAlpha.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="&gt;&gt;TxtClothOfflineTime.Name" xml:space="preserve">
-    <value>TxtClothOfflineTime</value>
-  </data>
-  <data name="&gt;&gt;TxtClothOfflineTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtClothOfflineTime.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;TxtClothOfflineTime.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;LblClothOfflineTime.Name" xml:space="preserve">
-    <value>LblClothOfflineTime</value>
-  </data>
-  <data name="&gt;&gt;LblClothOfflineTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothOfflineTime.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;LblClothOfflineTime.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesEfficiency.Name" xml:space="preserve">
-    <value>TxtClothesEfficiency</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesEfficiency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesEfficiency.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesEfficiency.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesAlarm_2.Name" xml:space="preserve">
-    <value>TxtClothesAlarm_2</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesAlarm_2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesAlarm_2.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesAlarm_2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesAlarm_1.Name" xml:space="preserve">
-    <value>TxtClothesAlarm_1</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesAlarm_1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesAlarm_1.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesAlarm_1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesLBackground.Name" xml:space="preserve">
-    <value>TxtClothesLBackground</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesLBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesLBackground.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesLBackground.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesHBackground.Name" xml:space="preserve">
-    <value>TxtClothesHBackground</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesHBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesHBackground.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesHBackground.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;LblClothesEfficiency.Name" xml:space="preserve">
-    <value>LblClothesEfficiency</value>
-  </data>
-  <data name="&gt;&gt;LblClothesEfficiency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothesEfficiency.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;LblClothesEfficiency.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlarm_2.Name" xml:space="preserve">
-    <value>LblClothesAlarm_2</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlarm_2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlarm_2.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlarm_2.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlarm_1.Name" xml:space="preserve">
-    <value>LblClothesAlarm_1</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlarm_1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlarm_1.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;LblClothesAlarm_1.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;LblClothesLBackground.Name" xml:space="preserve">
-    <value>LblClothesLBackground</value>
-  </data>
-  <data name="&gt;&gt;LblClothesLBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothesLBackground.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;LblClothesLBackground.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;LblClothesHBackground.Name" xml:space="preserve">
-    <value>LblClothesHBackground</value>
-  </data>
-  <data name="&gt;&gt;LblClothesHBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblClothesHBackground.Parent" xml:space="preserve">
-    <value>GrpClothesData</value>
-  </data>
-  <data name="&gt;&gt;LblClothesHBackground.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="GrpClothesData.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="GrpClothesNuclideChoose.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 15pt, style=Bold</value>
   </data>
-  <data name="GrpClothesData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 23</value>
+  <data name="GrpClothesNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 23</value>
   </data>
-  <data name="GrpClothesData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="GrpClothesNuclideChoose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="GrpClothesData.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="GrpClothesNuclideChoose.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="GrpClothesData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 356</value>
+  <data name="GrpClothesNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 356</value>
   </data>
-  <data name="GrpClothesData.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="GrpClothesNuclideChoose.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="GrpClothesData.Text" xml:space="preserve">
-    <value>衣物探头</value>
+  <data name="GrpClothesNuclideChoose.Text" xml:space="preserve">
+    <value>核素选择</value>
   </data>
-  <data name="&gt;&gt;GrpClothesData.Name" xml:space="preserve">
-    <value>GrpClothesData</value>
+  <data name="&gt;&gt;GrpClothesNuclideChoose.Name" xml:space="preserve">
+    <value>GrpClothesNuclideChoose</value>
   </data>
-  <data name="&gt;&gt;GrpClothesData.Type" xml:space="preserve">
+  <data name="&gt;&gt;GrpClothesNuclideChoose.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;GrpClothesData.Parent" xml:space="preserve">
+  <data name="&gt;&gt;GrpClothesNuclideChoose.Parent" xml:space="preserve">
     <value>衣物探头</value>
   </data>
-  <data name="&gt;&gt;GrpClothesData.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;GrpClothesNuclideChoose.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="TxtClothOfflineTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -5304,6 +4059,66 @@
   <data name="&gt;&gt;LblClothesHBackground.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="GrpClothesData.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 15pt, style=Bold</value>
+  </data>
+  <data name="GrpClothesData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="GrpClothesData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpClothesData.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="GrpClothesData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>340, 356</value>
+  </data>
+  <data name="GrpClothesData.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GrpClothesData.Text" xml:space="preserve">
+    <value>衣物探头</value>
+  </data>
+  <data name="&gt;&gt;GrpClothesData.Name" xml:space="preserve">
+    <value>GrpClothesData</value>
+  </data>
+  <data name="&gt;&gt;GrpClothesData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpClothesData.Parent" xml:space="preserve">
+    <value>衣物探头</value>
+  </data>
+  <data name="&gt;&gt;GrpClothesData.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="衣物探头.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 30</value>
+  </data>
+  <data name="衣物探头.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="衣物探头.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 449</value>
+  </data>
+  <data name="衣物探头.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="衣物探头.Text" xml:space="preserve">
+    <value>衣物探头</value>
+  </data>
+  <data name="&gt;&gt;衣物探头.Name" xml:space="preserve">
+    <value>衣物探头</value>
+  </data>
+  <data name="&gt;&gt;衣物探头.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;衣物探头.Parent" xml:space="preserve">
+    <value>TabPresence</value>
+  </data>
+  <data name="&gt;&gt;衣物探头.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 15pt, style=Bold</value>
   </data>
@@ -5564,6 +4379,63 @@
   </data>
   <data name="&gt;&gt;BtnMainPreferenceRetuen.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="工厂参数.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="工厂参数.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 30</value>
+  </data>
+  <data name="工厂参数.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="工厂参数.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 449</value>
+  </data>
+  <data name="工厂参数.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="工厂参数.Text" xml:space="preserve">
+    <value>道盒参数</value>
+  </data>
+  <data name="&gt;&gt;工厂参数.Name" xml:space="preserve">
+    <value>工厂参数</value>
+  </data>
+  <data name="&gt;&gt;工厂参数.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;工厂参数.Parent" xml:space="preserve">
+    <value>TabPresence</value>
+  </data>
+  <data name="&gt;&gt;工厂参数.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TabPresence.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 15pt</value>
+  </data>
+  <data name="TabPresence.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="TabPresence.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="TabPresence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 483</value>
+  </data>
+  <data name="TabPresence.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;TabPresence.Name" xml:space="preserve">
+    <value>TabPresence</value>
+  </data>
+  <data name="&gt;&gt;TabPresence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabPresence.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TabPresence.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="backgroundWorker_Preference.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

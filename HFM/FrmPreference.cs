@@ -665,7 +665,6 @@ namespace HFM
                                 {
                                     MessageBox.Show("数据已经下发!", "提示");
                                 }
-                                _messageType = MessageType.PRead;
                             }
                             //发送失败次数大于5次,提示错误并挂起线程
                             else
@@ -1373,12 +1372,6 @@ namespace HFM
             //判断串口是否打开
             if (_commPort.Opened == true)
             {
-                StatusStrip statusStrip = (StatusStrip)this.MdiParent.Controls["StsFoot"];
-                if(statusStrip != null)
-                {
-                    statusStrip.Text = "通信正常";
-                }
-
                 //判断线程是否运行
                 if (backgroundWorker_Preference.IsBusy == false)
                 {
