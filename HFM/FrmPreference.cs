@@ -95,6 +95,14 @@ namespace HFM
             //线程支持报告进度
             backgroundWorker_Preference.WorkerReportsProgress = true;
             GetProferenceData();
+            //权限判断
+            if (User.LandingUser.Role!=1)
+            {
+                GrpPresence.Visible = false;
+                GrpFacilityData.Visible = false;
+                TabPresence.TabPages[1].Parent = null;
+                TabPresence.TabPages[3].Parent = null;
+            }
         }
         /// <summary>
         /// 页面切换
