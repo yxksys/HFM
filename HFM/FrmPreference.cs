@@ -500,29 +500,31 @@ namespace HFM
         /// </summary>
         private void GetMainProferenceData()
         {
-            IList<ChannelParameter> channelParameters = new List<ChannelParameter>();//获得道盒参数
-            channelParameters = channelParameter.GetParameter();
+            IList<ChannelParameter> channelParameters = new List<ChannelParameter>();//获得道盒参数            
+            channelParameters = channelParameter.GetParameter();            
+            DgvMainPreferenceSet.DataSource = channelParameters;
+            
             //清除所有行(因为每次切换页面都会增加相应的行)
             // for (int i = 0; i < DgvMainPreferenceSet.Rows.Count; i++)
             // {
             //     DgvMainPreferenceSet.Rows.Remove(DgvMainPreferenceSet.Rows[i]);
             //     i--;
             // }
-            DgvMainPreferenceSet.Rows.Clear();
-            //选出所有设备
-            for (int i = 0; i < channelParameters.Count; i++)
-            {
-                int index = this.DgvMainPreferenceSet.Rows.Add();
-                DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
-                DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
-                DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
-                DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
-                DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
-                DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
-                DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
-                DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
-                DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
-            }
+            //DgvMainPreferenceSet.Rows.Clear();
+            ////选出所有设备
+            //for (int i = 0; i < channelParameters.Count; i++)
+            //{
+            //    int index = this.DgvMainPreferenceSet.Rows.Add();
+            //    DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
+            //    DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
+            //    DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
+            //    DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
+            //    DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
+            //    DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
+            //    DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
+            //    DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
+            //    DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
+            //}
 
         }
        
@@ -1657,6 +1659,6 @@ namespace HFM
         private void FrmPreference_FormClosed(object sender, FormClosedEventArgs e)
         {
             commPort.Close();
-        }
+        }        
     }
 }
