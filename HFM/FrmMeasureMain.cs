@@ -1549,7 +1549,6 @@ namespace HFM
                     calculatedMeasureDataS[i].Alpha += list[0].Alpha;
                     calculatedMeasureDataS[i].Beta += list[0].Beta;
                     calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
-                    DisplayMeasureData(calculatedMeasureDataS, systemParameter.MeasurementUnit);//yxk,修改,清零
                 }
 
                 //进行语音提示
