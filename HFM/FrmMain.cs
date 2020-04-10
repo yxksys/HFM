@@ -215,7 +215,7 @@ namespace HFM
         {
             frmMeasureMain=new FrmMeasureMain();
             frmMeasureMain.Show();
-            this.Close();
+            this.Dispose();
         }
 
         /// <summary>

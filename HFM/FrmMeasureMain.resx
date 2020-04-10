@@ -1259,11 +1259,14 @@
   <data name="LblLHB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
+  <data name="LblLHB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt, style=Bold</value>
+  </data>
   <data name="LblLHB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 20</value>
   </data>
   <data name="LblLHB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 19</value>
+    <value>44, 16</value>
   </data>
   <data name="LblLHB.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -1394,11 +1397,14 @@
   <data name="LblRHB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
+  <data name="LblRHB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt, style=Bold</value>
+  </data>
   <data name="LblRHB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 20</value>
   </data>
   <data name="LblRHB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 19</value>
+    <value>44, 16</value>
   </data>
   <data name="LblRHB.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -1445,11 +1451,14 @@
   <data name="LblLHP.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
+  <data name="LblLHP.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt, style=Bold</value>
+  </data>
   <data name="LblLHP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 20</value>
   </data>
   <data name="LblLHP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 19</value>
+    <value>44, 16</value>
   </data>
   <data name="LblLHP.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -1496,11 +1505,14 @@
   <data name="LblRHP.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
+  <data name="LblRHP.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt, style=Bold</value>
+  </data>
   <data name="LblRHP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 20</value>
   </data>
   <data name="LblRHP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 19</value>
+    <value>44, 16</value>
   </data>
   <data name="LblRHP.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
