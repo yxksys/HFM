@@ -2271,7 +2271,7 @@ namespace HFM
                             LblShowStutas.Text = "仪器故障";
                         }
                     }
-                    TxtShowResult.Text += calculatedMeasureDataS[i].Channel.ChannelName + errRecord + "\r\n";
+                    TxtShowResult.Text = calculatedMeasureDataS[i].Channel.ChannelName + errRecord + "\r\n";//yxk,修改重复出现故障提示信息的  +=改成=
                     //对应通道名字文本框背景色显示为ERROR
                     if (calculatedMeasureDataS[i].Channel.ChannelID != 7)//衣物探头除外
                     {
