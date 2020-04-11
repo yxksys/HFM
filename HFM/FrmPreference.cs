@@ -205,6 +205,7 @@ namespace HFM
                     //根据channelID来修改数据
                     ((TextBox)a[probeParameters[i].ProbeChannel.ChannelID - 1]).Enabled = true;
                     ((Label)label[probeParameters[i].ProbeChannel.ChannelID - 1]).Enabled = true;
+                    
                 }
                 else
                 {
@@ -214,7 +215,7 @@ namespace HFM
                 }
             }
             //未启用则数据修改只能对左手进行
-            if (factoryParameter.IsDoubleProbe==true)
+            if (factoryParameter.IsDoubleProbe!=true)
             {
                 //使外手心同步与内手心
                 ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
@@ -753,6 +754,10 @@ namespace HFM
                     //DgvMainPreferenceSet.Rows.Clear();
                     //解析报文
                     _channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
+                    if (_channelParameters.Count==8)
+                    {
+                        _channelParameters.RemoveAt(7);
+                    }
                     //foreach (var itemParameter in _channelParameters)
                     //{
                     //    //显示内容
@@ -775,6 +780,7 @@ namespace HFM
             catch (Exception EX_NAME)
             {
                 Tools.ErrorLog(EX_NAME.ToString());
+                throw;
             }
         }
         /// <summary>
@@ -1372,6 +1378,11 @@ namespace HFM
             //判断串口是否打开
             if (_commPort.Opened == true)
             {
+                if (backgroundWorker_Preference.IsBusy==true)
+                {
+                    backgroundWorker_Preference.CancelAsync();
+                    Thread.Sleep(100);
+                }
                 //判断线程是否运行
                 if (backgroundWorker_Preference.IsBusy == false)
                 {
