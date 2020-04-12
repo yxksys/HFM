@@ -665,7 +665,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnAlphaCheck_Click(object sender, EventArgs e)
         {
-            BtnCurency(HardwarePlatformState.BetaCheck);
+            BtnCurency(HardwarePlatformState.AlphaCheck);
         }
         /// <summary>
         /// Beta自检按钮
@@ -674,7 +674,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnBetaCheck_Click(object sender, EventArgs e)
         {
-            BtnCurency(HardwarePlatformState.AlphaCheck);
+            BtnCurency(HardwarePlatformState.BetaCheck);
         }
         /// <summary>
         /// 自检按钮

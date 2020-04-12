@@ -333,15 +333,15 @@ namespace HFM.Components
                             //按照报文格式，分别取出本通道测量数值，从当前报文第一个数据索引开始，连续读取15个字节数据进行解析
                             int channelID = Convert.ToInt32(message[channelHeadIndex]);//通道ID一个字节
 
-                            float alpha = Convert.ToSingle(message[channelHeadIndex + 1]);
-                            alpha += Convert.ToSingle(message[channelHeadIndex + 2]) * 256;
-                            alpha += Convert.ToSingle(message[channelHeadIndex + 3]) * 256 * 256;
-                            alpha += Convert.ToSingle(message[channelHeadIndex + 4]) * 256 * 256 * 256;//Alpha计数值四个字节,由低位向高位
+                            float beta = Convert.ToSingle(message[channelHeadIndex + 1]);
+                            beta += Convert.ToSingle(message[channelHeadIndex + 2]) * 256;
+                            beta += Convert.ToSingle(message[channelHeadIndex + 3]) * 256 * 256;
+                            beta += Convert.ToSingle(message[channelHeadIndex + 4]) * 256 * 256 * 256;//Alpha计数值四个字节,由低位向高位
 
-                            float beta = Convert.ToSingle(message[channelHeadIndex + 5]);
-                            beta += Convert.ToSingle(message[channelHeadIndex + 6]) * 256;
-                            beta += Convert.ToSingle(message[channelHeadIndex + 7]) * 256 * 256;
-                            beta += Convert.ToSingle(message[channelHeadIndex + 8]) * 256 * 256 * 256;//Beta计数值四个字节,由低位向高位
+                            float alpha = Convert.ToSingle(message[channelHeadIndex + 5]);
+                            alpha += Convert.ToSingle(message[channelHeadIndex + 6]) * 256;
+                            alpha += Convert.ToSingle(message[channelHeadIndex + 7]) * 256 * 256;
+                            alpha += Convert.ToSingle(message[channelHeadIndex + 8]) * 256 * 256 * 256;//Beta计数值四个字节,由低位向高位
 
                             float analogV = Convert.ToSingle(message[channelHeadIndex + 9]) * 256;
                             analogV += Convert.ToSingle(message[channelHeadIndex + 10]);//模拟电压值两个字节
