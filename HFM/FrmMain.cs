@@ -93,6 +93,24 @@ namespace HFM
             }
 
         }
+        public void FrmDispose(Form formChild)
+        {
+
+            bool isOpened = false;                      //定义子窗体打开标记,默认位false
+            foreach (Form form in this.MdiChildren)     //循环MDI中的所有子窗体
+            {
+                //销毁其他不是要打开的窗口实例
+                if (formChild.Name != form.Name)
+                {
+                    form.Close();
+                }                
+            }
+            if (!isOpened)                              //若该窗体未打开,则显示该子窗体
+            {                
+                formChild.Show();
+            }
+
+        }
         /// <summary>
         /// 禁止子窗体被重复打开(打开窗体为最大化)
         /// </summary>
@@ -213,8 +231,8 @@ namespace HFM
         /// <param name="e"></param>
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMeasureMain=new FrmMeasureMain();
-            frmMeasureMain.Show();
+            Tsslbl_NowTime.Dispose();
+            FrmDispose(new FrmMeasureMain());
             this.Dispose();
         }
 

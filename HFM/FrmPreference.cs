@@ -629,7 +629,9 @@ namespace HFM
 
                     #region P写入指令下发
                     case MessageType.PSet:
+                        //道盒1-4通道解析原数据
                         IList<ChannelParameter> _first_setChannelP = new List<ChannelParameter>();
+                        //道盒5-7通道解析原数据
                         IList<ChannelParameter> _second_setChanelP = new List<ChannelParameter>();
                         int i = 0;
                         //把当前的高压阈值修改的数据对象添加到列表中
@@ -645,11 +647,15 @@ namespace HFM
                             }
                             i++;
                         }
+                        //道盒5-7通道列表加一个空对象,(3个对象解析会报错,必须四个为一组解析)
+                        _second_setChanelP.Add(new ChannelParameter() { CheckingID = 0, ADCFactor = 0, AlphaThreshold = 0, BetaThreshold = 0, Channel = null, DACFactor = 0, HVFactor = 0, HVRatio = 0, PresetHV = 0, WorkTime = 0 });
 
                         // _second_setChanelP.RemoveAt(3);
                         // _second_setChanelP.Add(_setChannelParameter);
                         //生成报文
+                        //道盒1-4通道解析完成的数据
                         byte[] buffMessagePset1 = Message.BuildMessage(_first_setChannelP);
+                        //道盒5-7通道解析完成的数据,
                         byte[] buffMessagePset2 = Message.BuildMessage(_second_setChanelP);
                         //成功则关闭线程
                         try
