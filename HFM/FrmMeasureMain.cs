@@ -15,7 +15,12 @@ using HFM.Components;
 namespace HFM
 {
     public partial class FrmMeasureMain : Form
-    {       
+    {
+        string appPath = null;
+        int messageBufferLength = 0;
+        byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
+        System.Timers.Timer TmrDispTime = null;//显示系统时间、控制控件状态颜色异步Timer对象
+        IList<MeasureData> measureDataS = null;//检测数据接收列表缓冲区
         bool isEnglish = false;//当前语言，默认中文
         //监测时间
         int checkTime = 0;
@@ -38,7 +43,7 @@ namespace HFM
         /// </summary>
         int clothesStatus = 0;//衣物探头状态。0：衣物探头还未被拿起，1：衣物探头已经被拿起
         int[] lastInfraredStatus = new int[3];//记录上一个数据包红外状态，分别为“左手、右手、衣物”，本底测量中，如果本次红外到位而上次不到位则进行语音播报，如果上次红外到位本次也红外到位，则不需要重复播报提示
-        bool isSelfCheckSended = false;
+        bool isSelfCheckSended = false;//自检指令是否已经下发标志，因为在一个自检周期内，自检指令只需下发一次
         bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
         string pollutionRecord = null;//记录测量污染详细数据
         string pollutionRecord_E = null;//记录测量污染详细数据(英文)        
@@ -67,8 +72,8 @@ namespace HFM
             OperatingContaminated=64
         }
         byte deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
-        const int BASE_DATA = 1000;       
-        DateTime stateTimeStart = DateTime.Now;//系统当前运行状态的开始计时变量        
+        const int BASE_DATA = 1000;  
+        DateTime stateTimeStart;//系统当前运行状态的开始计时变量        
         //创建音频播放对象
         System.Media.SoundPlayer player = new System.Media.SoundPlayer();
         CommPort commPort = new CommPort();//监测端口
@@ -278,23 +283,11 @@ namespace HFM
                         //Label控件显示测量值
                         label.Text = "α" + measureData.Alpha.ToString("F1") + unit;
                         break;
-                    case "β":                        
-                        ////找到通道测量值显示区域对应的PictureBox，其名字为Pic+通道英文名
-                        //pictureBox = (PictureBox)(this.Controls[string.Format("Pic{0}", measureData.Channel.ChannelName_English)]);
-                        ////找到通道测量值显示区域对应的Panel，其名字为：Pnl+通道英文名
-                        //panel = (Panel)(pictureBox.Controls[string.Format("Pnl{0}", measureData.Channel.ChannelName_English)]);
-                        ////找到通道测量值显示Label控件，其名字为：Lbl+通道英文名
-                        //label= (Label)(panel.Controls[string.Format("Lbl{0}", measureData.Channel.ChannelName_English)]);
+                    case "β":                                               
                         //Label控件显示测量值
                         label.Text = "β" + measureData.Beta.ToString("F1") + unit;                        
                         break;
-                    case "α/β":
-                        ////找到通道测量值显示区域对应的PictureBox，其名字为Pic+通道英文名
-                        //pictureBox = (PictureBox)(this.Controls[string.Format("Pic{0}", measureData.Channel.ChannelName_English)]);
-                        ////找到通道测量值显示区域对应的Panel，其名字为：Pnl+通道英文名
-                        //panel = (Panel)(pictureBox.Controls[string.Format("Pnl{0}", measureData.Channel.ChannelName_English)]);
-                        ////找到通道测量值显示Label控件，其名字为：Lbl+通道英文名
-                        //label = (Label)(panel.Controls[string.Format("Lbl{0}", measureData.Channel.ChannelName_English)]);
+                    case "α/β":                        
                         //Label控件显示测量值
                         label.Text = "α" + measureData.Alpha.ToString("F1") + unit+ "\r\nβ" + measureData.Beta.ToString() + unit;
                         break;
@@ -340,7 +333,11 @@ namespace HFM
             errorData.AddData(errorData);
         }        
         private void FrmMeasureMain_Load(object sender, EventArgs e)
-        {           
+        {
+            System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
+            appPath = Application.StartupPath;
+            messageBufferLength = 62; //最短报文长度                        
+            measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                                                            
             smoothingData.team = new UInt32[TEAM_LENGTH];
             //获得工厂参数设置信息           
             factoryParameter.GetParameter();
@@ -382,6 +379,10 @@ namespace HFM
                 this.BtnChinese.Enabled = false;
                 this.BtnEnglish.Enabled = true;
             }
+            TmrDispTime = new System.Timers.Timer();
+            TmrDispTime.Interval = 500;
+            TmrDispTime.Elapsed += TmrDispTime_Tick;
+            TmrDispTime.Enabled = true;
             //初始化显示界面
             DisplayInit();
             //实例化衣物探测界面
@@ -631,10 +632,10 @@ namespace HFM
                     }
                     //下发成功，置报文已经发送标志
                     isSelfCheckSended = true;
-                    //延时100毫秒
-                    Thread.Sleep(100);
+                    //延时2000毫秒
+                    Thread.Sleep(2000);
                     //启动自检计时 
-                    //stateTimeStart = System.DateTime.Now.AddSeconds(-3);
+                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
                 }
                 //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
@@ -664,11 +665,7 @@ namespace HFM
         }
 
         private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {            
-            string appPath = Application.StartupPath;
-            int messageBufferLength = 62; //最短报文长度            
-            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
-            IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                                                            
+        {                        
             if (e.UserState is byte[])
             {
                 receiveBufferMessage = (byte[])e.UserState;
@@ -677,9 +674,7 @@ namespace HFM
             if ((DateTime.Now - alarmTimeStart).Seconds >= alarmTimeSet)
             {
                 deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
-            }
-            ////更新当前显示时间
-            //LblTime.Text = DateTime.Now.ToLongTimeString();           
+            }                    
             //接收报文数据为空
             if (receiveBufferMessage.Length < messageBufferLength)
             {
@@ -957,9 +952,7 @@ namespace HFM
                             LblRight.Text = "右手到位";
                         }
                     }
-                }
-                //当前运行状态设置为“仪器自检”
-                platformState = PlatformState.SelfTest;
+                }                
                 if (isEnglish)
                 {
                     LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
@@ -976,9 +969,11 @@ namespace HFM
                     //IOThread.Suspend();
                     player.SoundLocation = appPath + "\\Audio\\Chinese_Self_checking.wav";
                 }
-                player.Play();
-                stateTimeStart = System.DateTime.Now.AddSeconds(1);
-                //Thread.Sleep(1000);
+                player.PlaySync();
+                //当前运行状态设置为“仪器自检”
+                platformState = PlatformState.SelfTest;
+                //stateTimeStart = System.DateTime.Now.AddSeconds(2);
+                //label1.Text += stateTimeStart.ToString();
                 return;
             }
             //如果当前运行状态为“仪器自检”
@@ -988,7 +983,11 @@ namespace HFM
                 //获得当前系统参数设置中的的自检时间并赋值给stateTimeSet
                 stateTimeSet=systemParameter.SelfCheckTime;               
                 //更新剩余时间：系统自检设置时间-已经用时
-                stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
+                if(stateTimeStart.Year<DateTime.Now.Year)//说明还未开始计时
+                {
+                    return;
+                }
+                stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;                
                 //更新当前系统运行状态剩余时间
                 LblTimeRemain.Text = stateTimeRemain < 0 ? "0" : stateTimeRemain.ToString();                
                 for (int i = 0; i < channelS.Count; i++) //遍历全部启用的检测通道
@@ -1010,7 +1009,7 @@ namespace HFM
                     //判断红外状态，在手部状态区域进行相应提示
                     if (calculatedMeasureDataS[i].InfraredStatus == 1)//红外到位
                     {
-                        //左手
+                        //左手到位
                         if (calculatedMeasureDataS[i].Channel.ChannelID == 1 || calculatedMeasureDataS[i].Channel.ChannelID ==2)
                         {
                             if (isEnglish)
@@ -1023,7 +1022,7 @@ namespace HFM
                             }
                             PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
                         }
-                        //右手
+                        //右手到位
                         if((calculatedMeasureDataS[i].Channel.ChannelID == 3 || calculatedMeasureDataS[i].Channel.ChannelID ==4))
                         {
                             if (isEnglish)
@@ -1039,7 +1038,7 @@ namespace HFM
                     }
                     else//红外不到位
                     {
-                        //左手
+                        //左手不到位
                         if (calculatedMeasureDataS[i].Channel.ChannelID ==1 || calculatedMeasureDataS[i].Channel.ChannelID ==2)
                         {
                             if (isEnglish)
@@ -1052,7 +1051,7 @@ namespace HFM
                             }
                             PicLeftBackground.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                         }
-                        //右手
+                        //右手不到位
                         if ((calculatedMeasureDataS[i].Channel.ChannelID == 3 || calculatedMeasureDataS[i].Channel.ChannelID ==4))
                         {
                             if (isEnglish)
@@ -1354,6 +1353,8 @@ namespace HFM
                         AddErrorData(errRecordS);                        
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
+                        stateTimeStart = new DateTime(1900, 01, 01);//重新初始化开始计时对象
+                        isSelfCheckSended = false;//置是否已经下发自检指令标志为false（需重新下发自检指令）
                         platformState = PlatformState.ReadyToRun;                        
                     }
                     return;
@@ -1381,7 +1382,7 @@ namespace HFM
                                 isFirstBackGround = false;
                             }
                             //手部红外状态到位标志置false，说明手部不到位
-                            isHandInfraredStatus = false;
+                        isHandInfraredStatus = false;
                         //继续计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
                         //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）                                       
                         calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
@@ -2134,7 +2135,9 @@ namespace HFM
             bool isCheck = true;
             //故障记录字符串
             string errRecord = null;//中文
-            string errRecord_E = null;//英文            
+            string errRecord_E = null;//英文  
+            string errRecordOfChannel = null;
+            string errRecordOfChannel_E = null;          
             for (int i = 0; i < channelS.Count; i++)//遍历全部启用通道
             {                
                 if(calculatedMeasureDataS[i].Channel.ChannelID==7)//对衣物探头不做判断
@@ -2149,8 +2152,8 @@ namespace HFM
                 if (calculatedMeasureDataS[i].HV< channelParameterNow[0].PresetHV * (1 - PlatForm.ErrorRange.HV_ERROR) || calculatedMeasureDataS[i].HV > channelParameterNow[0].PresetHV * (1 + PlatForm.ErrorRange.HV_ERROR))
                 {
                     //高压故障,将故障信息添加到errRecord字符串
-                    errRecord += string.Format("高压故障,设置值:{0}V,实测值:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
-                    errRecord_E += string.Format("HV Fault,Preset:{0}V,Actual:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
+                    errRecordOfChannel += string.Format("高压故障,设置值:{0}V,实测值:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
+                    errRecordOfChannel_E += string.Format("HV Fault,Preset:{0}V,Actual:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
                     //设置isCheck为false
                     isCheck = false;
                 }
@@ -2177,24 +2180,24 @@ namespace HFM
                     if (factoryParameter.MeasureType != "β")
                     {
                         //对Alpha本底值(BASE_DATA)进行判断，如果故障提示“α线路故障”同时将故障信息添加到errRecord字符串，isCheck = false;
-                        if(calculatedMeasureDataS[i].Alpha< channelParameterNow[0].AlphaThreshold* (1-PlatForm.ErrorRange.BASE_ERROR)||calculatedMeasureDataS[i].Alpha> channelParameterNow[0].AlphaThreshold* (1+PlatForm.ErrorRange.BASE_ERROR))
+                        if(calculatedMeasureDataS[i].Alpha< BASE_DATA * (1-PlatForm.ErrorRange.BASE_ERROR)||calculatedMeasureDataS[i].Alpha> BASE_DATA * (1+PlatForm.ErrorRange.BASE_ERROR))
                         {
                             //将故障信息添加到error字符串
-                            errRecord += string.Format("α电子线路故障;");
-                            errRecord_E += string.Format("Alpha Channel Fault;");
+                            errRecordOfChannel += string.Format("α电子线路故障;");
+                            errRecordOfChannel_E += string.Format("Alpha Channel Fault;");
                             //设置isCheck为false
                             isCheck = false;
                         }
                     }
                     if (factoryParameter.MeasureType != "α")
                     {
-                        if (calculatedMeasureDataS[i].Beta < 1000 * (1 - PlatForm.ErrorRange.BASE_ERROR) || calculatedMeasureDataS[i].Beta > 1000 * (1 + PlatForm.ErrorRange.BASE_ERROR))
+                        if (calculatedMeasureDataS[i].Beta < BASE_DATA * (1 - PlatForm.ErrorRange.BASE_ERROR) || calculatedMeasureDataS[i].Beta > BASE_DATA * (1 + PlatForm.ErrorRange.BASE_ERROR))
                             //对Beta本底值(BASE_DATA)进行判断，如果故障提示“β线路故障”同时将故障信息添加到errRecord字符串,isCheck = false;
                            // if (calculatedMeasureDataS[i].Beta < channelParameterNow[0].BetaThreshold * (1 - PlatForm.ErrorRange.BASE_ERROR) || calculatedMeasureDataS[i].Beta > channelParameterNow[0].BetaThreshold * (1 + PlatForm.ErrorRange.BASE_ERROR))
                         {
                             //将故障信息添加到error字符串
-                            errRecord += string.Format("β电子线路故障;");
-                            errRecord_E+= string.Format("Beta Channel Fault;");
+                            errRecordOfChannel += string.Format("β电子线路故障;");
+                            errRecordOfChannel_E += string.Format("Beta Channel Fault;");
                             //设置isCheck为false
                             isCheck = false;
                         }
@@ -2203,8 +2206,8 @@ namespace HFM
                     if (calculatedMeasureDataS[i].InfraredStatus == 1)//红外状态到位
                     {
                         //红外故障,将故障信息添加到errRecord字符串
-                        errRecord += string.Format("红外故障;");
-                        errRecord_E += string.Format("Sensor fault;");
+                        errRecordOfChannel += string.Format("红外故障;");
+                        errRecordOfChannel_E += string.Format("Sensor fault;");
                         isCheck = false;
                     }                                
                 }
@@ -2220,15 +2223,15 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Alpha < probeParameterNow[0].LBackground) //超过当前通道的本底下限
                         {
                             //该通道channelS[i].ChannelName的本底下限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecord += string.Format("α本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(),calculatedMeasureDataS[i].Alpha.ToString());
-                            errRecord_E += string.Format("αLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel += string.Format("α本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(),calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel_E += string.Format("αLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
                             isCheck = false;
                         }
                         if (calculatedMeasureDataS[i].Alpha >= probeParameterNow[0].HBackground)//超过当前通道的本底上限
                         {
                             //该通道channelS[i].ChannelName本底上限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecord += string.Format("α本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
-                            errRecord_E += string.Format("αHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel += string.Format("α本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel_E += string.Format("αHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
                             isCheck = false;
                         }
                     }
@@ -2241,21 +2244,21 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Beta < probeParameterNow[0].LBackground)//超过当前通道的本底下限
                         {
                             //该通道channelS[i].ChannelName本底下限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecord += string.Format("β本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
-                            errRecord_E += string.Format("βLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel += string.Format("β本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel_E += string.Format("βLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
                             isCheck = false;
                         }
                         if (calculatedMeasureDataS[i].Beta >= probeParameterNow[0].HBackground)//超过当前通道的本底上限
                         {
                             //该通道channelS[i].ChannelName本底上限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecord += string.Format("β本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
-                            errRecord_E += string.Format("βHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel += string.Format("β本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel_E += string.Format("βHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
                             isCheck = false;
                         }
                     }
                 }
                 //根据是否检测通过设置该通道的背景颜色                
-                if (errRecord != null)//故障信息不为空
+                if (errRecordOfChannel != null)//故障信息不为空
                 {
                     //显示故障信息,故障点为：calculatedMeasureDataS[i].Channel.ChannelName
                     PicShowStatus.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
@@ -2270,7 +2273,14 @@ namespace HFM
                             LblShowStutas.Text = "仪器故障";
                         }
                     }
-                    TxtShowResult.Text = calculatedMeasureDataS[i].Channel.ChannelName + errRecord + "\r\n";//yxk,修改重复出现故障提示信息的  +=改成=
+                    if (isEnglish != true)
+                    {
+                        TxtShowResult.Text += calculatedMeasureDataS[i].Channel.ChannelName + errRecordOfChannel + "\r\n";
+                    }
+                    else
+                    {
+                        TxtShowResult.Text += calculatedMeasureDataS[i].Channel.ChannelName_English + errRecordOfChannel_E + "\r\n";
+                    }
                     //对应通道名字文本框背景色显示为ERROR
                     if (calculatedMeasureDataS[i].Channel.ChannelID != 7)//衣物探头除外
                     {
@@ -2299,7 +2309,11 @@ namespace HFM
                         ((TextBox)(this.Controls[string.Format("Txt{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)])).BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
                     }
                 }
+                errRecord += errRecordOfChannel;//将当前通道错误记录添加到整体错误记录字符串
+                errRecord_E += errRecordOfChannel_E;                
             }
+            errRecordOfChannel = null;//清空当前通道错误记录字符串
+            errRecordOfChannel_E = null;
             if (isCheck == false)//未通过
             {
                 string[] errRecordS = new string[2];
@@ -2678,6 +2692,7 @@ namespace HFM
 
         private void BtnOption_Click(object sender, EventArgs e)
         {
+            TmrDispTime.Enabled = false;
             FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
             if (bkWorkerReceiveData.IsBusy)
             {
@@ -2700,6 +2715,15 @@ namespace HFM
             {
                 bkWorkerReceiveData.CancelAsync();
             }
+        }
+
+        private void BtExit_Click(object sender, EventArgs e)
+        {
+            this.bkWorkerReceiveData.CancelAsync();
+            this.bkWorkerReportStatus.CancelAsync();
+            this.TmrDispTime.Enabled = false;
+            this.commPort.Close();
+            Application.Exit();
         }
     }
 }

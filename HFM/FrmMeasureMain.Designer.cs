@@ -78,8 +78,9 @@
             this.PnlRF = new System.Windows.Forms.Panel();
             this.LblLF = new System.Windows.Forms.Label();
             this.PnlLF = new System.Windows.Forms.Panel();
-            this.TmrDispTime = new System.Windows.Forms.Timer(this.components);
+            this.TmrDispTime1 = new System.Windows.Forms.Timer(this.components);
             this.PnlFrisker = new System.Windows.Forms.Panel();
+            this.BtExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicSN)).BeginInit();
@@ -306,11 +307,13 @@
             // bkWorkerReceiveData
             // 
             this.bkWorkerReceiveData.WorkerReportsProgress = true;
+            this.bkWorkerReceiveData.WorkerSupportsCancellation = true;
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReceiveData_ProgressChanged);
             // 
             // bkWorkerReportStatus
             // 
+            this.bkWorkerReportStatus.WorkerSupportsCancellation = true;
             this.bkWorkerReportStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWorkerReportStatus_DoWork);
             this.bkWorkerReportStatus.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkWorkerReportStatus_ProgressChanged);
             // 
@@ -419,11 +422,9 @@
             resources.ApplyResources(this.PnlLF, "PnlLF");
             this.PnlLF.Name = "PnlLF";
             // 
-            // TmrDispTime
+            // TmrDispTime1
             // 
-            this.TmrDispTime.Enabled = true;
-            this.TmrDispTime.Interval = 1000;
-            this.TmrDispTime.Tick += new System.EventHandler(this.TmrDispTime_Tick);
+            this.TmrDispTime1.Interval = 1000;
             // 
             // PnlFrisker
             // 
@@ -432,10 +433,18 @@
             resources.ApplyResources(this.PnlFrisker, "PnlFrisker");
             this.PnlFrisker.Name = "PnlFrisker";
             // 
+            // BtExit
+            // 
+            resources.ApplyResources(this.BtExit, "BtExit");
+            this.BtExit.Name = "BtExit";
+            this.BtExit.UseVisualStyleBackColor = true;
+            this.BtExit.Click += new System.EventHandler(this.BtExit_Click);
+            // 
             // FrmMeasureMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.BtExit);
             this.Controls.Add(this.PnlFrisker);
             this.Controls.Add(this.PnlRF);
             this.Controls.Add(this.PnlLF);
@@ -564,7 +573,8 @@
         private System.Windows.Forms.Panel PnlRF;
         private System.Windows.Forms.Label LblLF;
         private System.Windows.Forms.Panel PnlLF;
-        private System.Windows.Forms.Timer TmrDispTime;
+        private System.Windows.Forms.Timer TmrDispTime1;
         private System.Windows.Forms.Panel PnlFrisker;
+        private System.Windows.Forms.Button BtExit;
     }
 }
