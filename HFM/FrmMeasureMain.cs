@@ -1283,6 +1283,7 @@ namespace HFM
                         }
                     }                    
                 }
+                DisplayMeasureData(calculatedMeasureDataS,systemParameter.MeasurementUnit);
                 //之前测量被中断过，需要重新显示提示信息
                 if (isReDisplay== true)
                 {
@@ -1380,7 +1381,7 @@ namespace HFM
                                 isFirstBackGround = false;
                             }
                             //手部红外状态到位标志置false，说明手部不到位
-                            isHandInfraredStatus = false;
+                        isHandInfraredStatus = false;
                         //继续计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
                         //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）                                       
                         calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
@@ -1388,6 +1389,7 @@ namespace HFM
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;                       
                     }
                 }
+                DisplayMeasureData(calculatedMeasureDataS, systemParameter.MeasurementUnit);
                 //所有通道手部红外状态全部到位
                 if (isHandInfraredStatus == true)
                 {
@@ -1456,6 +1458,7 @@ namespace HFM
                             calculatedMeasureDataS[i].Alpha = 0;
                             calculatedMeasureDataS[i].Beta = 0;
                         }
+                        DisplayMeasureData(calculatedMeasureDataS, systemParameter.MeasurementUnit);
                     }
                     else//本底检测未通过
                     {
@@ -2130,7 +2133,9 @@ namespace HFM
             bool isCheck = true;
             //故障记录字符串
             string errRecord = null;//中文
-            string errRecord_E = null;//英文            
+            string errRecord_E = null;//英文  
+            string errRecordOfChannel = null;
+            string errRecordOfChannel_E = null;          
             for (int i = 0; i < channelS.Count; i++)//遍历全部启用通道
             {                
                 if(calculatedMeasureDataS[i].Channel.ChannelID==7)//对衣物探头不做判断
@@ -2145,8 +2150,8 @@ namespace HFM
                 if (calculatedMeasureDataS[i].HV< channelParameterNow[0].PresetHV * (1 - PlatForm.ErrorRange.HV_ERROR) || calculatedMeasureDataS[i].HV > channelParameterNow[0].PresetHV * (1 + PlatForm.ErrorRange.HV_ERROR))
                 {
                     //高压故障,将故障信息添加到errRecord字符串
-                    errRecord += string.Format("高压故障,设置值:{0}V,实测值:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
-                    errRecord_E += string.Format("HV Fault,Preset:{0}V,Actual:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
+                    errRecordOfChannel += string.Format("高压故障,设置值:{0}V,实测值:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
+                    errRecordOfChannel_E += string.Format("HV Fault,Preset:{0}V,Actual:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
                     //设置isCheck为false
                     isCheck = false;
                 }
@@ -2176,8 +2181,8 @@ namespace HFM
                         if(calculatedMeasureDataS[i].Alpha< channelParameterNow[0].AlphaThreshold* (1-PlatForm.ErrorRange.BASE_ERROR)||calculatedMeasureDataS[i].Alpha> channelParameterNow[0].AlphaThreshold* (1+PlatForm.ErrorRange.BASE_ERROR))
                         {
                             //将故障信息添加到error字符串
-                            errRecord += string.Format("α电子线路故障;");
-                            errRecord_E += string.Format("Alpha Channel Fault;");
+                            errRecordOfChannel += string.Format("α电子线路故障;");
+                            errRecordOfChannel_E += string.Format("Alpha Channel Fault;");
                             //设置isCheck为false
                             isCheck = false;
                         }
@@ -2188,8 +2193,8 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Beta < channelParameterNow[0].BetaThreshold * (1 - PlatForm.ErrorRange.BASE_ERROR) || calculatedMeasureDataS[i].Beta > channelParameterNow[0].BetaThreshold * (1 + PlatForm.ErrorRange.BASE_ERROR))
                         {
                             //将故障信息添加到error字符串
-                            errRecord += string.Format("β电子线路故障;");
-                            errRecord_E+= string.Format("Beta Channel Fault;");
+                            errRecordOfChannel += string.Format("β电子线路故障;");
+                            errRecordOfChannel_E += string.Format("Beta Channel Fault;");
                             //设置isCheck为false
                             isCheck = false;
                         }
@@ -2198,8 +2203,8 @@ namespace HFM
                     if (calculatedMeasureDataS[i].InfraredStatus == 1)//红外状态到位
                     {
                         //红外故障,将故障信息添加到errRecord字符串
-                        errRecord += string.Format("红外故障;");
-                        errRecord_E += string.Format("Sensor fault;");
+                        errRecordOfChannel += string.Format("红外故障;");
+                        errRecordOfChannel_E += string.Format("Sensor fault;");
                         isCheck = false;
                     }                                
                 }
@@ -2215,15 +2220,15 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Alpha < probeParameterNow[0].LBackground) //超过当前通道的本底下限
                         {
                             //该通道channelS[i].ChannelName的本底下限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecord += string.Format("α本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(),calculatedMeasureDataS[i].Alpha.ToString());
-                            errRecord_E += string.Format("αLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel += string.Format("α本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(),calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel_E += string.Format("αLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
                             isCheck = false;
                         }
                         if (calculatedMeasureDataS[i].Alpha >= probeParameterNow[0].HBackground)//超过当前通道的本底上限
                         {
                             //该通道channelS[i].ChannelName本底上限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecord += string.Format("α本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
-                            errRecord_E += string.Format("αHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel += string.Format("α本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel_E += string.Format("αHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
                             isCheck = false;
                         }
                     }
@@ -2236,21 +2241,21 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Beta < probeParameterNow[0].LBackground)//超过当前通道的本底下限
                         {
                             //该通道channelS[i].ChannelName本底下限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecord += string.Format("β本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
-                            errRecord_E += string.Format("βLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel += string.Format("β本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel_E += string.Format("βLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
                             isCheck = false;
                         }
                         if (calculatedMeasureDataS[i].Beta >= probeParameterNow[0].HBackground)//超过当前通道的本底上限
                         {
                             //该通道channelS[i].ChannelName本底上限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecord += string.Format("β本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
-                            errRecord_E += string.Format("βHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel += string.Format("β本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel_E += string.Format("βHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
                             isCheck = false;
                         }
                     }
                 }
                 //根据是否检测通过设置该通道的背景颜色                
-                if (errRecord != null)//故障信息不为空
+                if (errRecordOfChannel != null)//故障信息不为空
                 {
                     //显示故障信息,故障点为：calculatedMeasureDataS[i].Channel.ChannelName
                     PicShowStatus.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
@@ -2265,7 +2270,14 @@ namespace HFM
                             LblShowStutas.Text = "仪器故障";
                         }
                     }
-                    TxtShowResult.Text += calculatedMeasureDataS[i].Channel.ChannelName + errRecord + "\r\n";
+                    if (isEnglish != true)
+                    {
+                        TxtShowResult.Text = calculatedMeasureDataS[i].Channel.ChannelName + errRecordOfChannel + "\r\n";
+                    }
+                    else
+                    {
+                        TxtShowResult.Text = calculatedMeasureDataS[i].Channel.ChannelName_English + errRecordOfChannel_E + "\r\n";
+                    }
                     //对应通道名字文本框背景色显示为ERROR
                     if (calculatedMeasureDataS[i].Channel.ChannelID != 7)//衣物探头除外
                     {
@@ -2294,6 +2306,10 @@ namespace HFM
                         ((TextBox)(this.Controls[string.Format("Txt{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)])).BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
                     }
                 }
+                errRecord += errRecordOfChannel;//将当前通道错误记录添加到整体错误记录字符串
+                errRecord_E += errRecordOfChannel_E;
+                errRecordOfChannel = null;//清空当前通道错误记录字符串
+                errRecordOfChannel_E = null;
             }
             if (isCheck == false)//未通过
             {
