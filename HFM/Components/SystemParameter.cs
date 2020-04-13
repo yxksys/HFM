@@ -222,22 +222,7 @@ namespace HFM.Components
         /// </summary>
         /// <returns></returns>
         public void ClearMeasuredCount()
-        {
-            ////从数据库中查询检查次数
-            //OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MAINPREFERENCE);
-            ////实例化系统参数对象
-            //SystemParameter systemParameter = new SystemParameter();
-            //while (reader.Read())
-            //{
-            //    systemParameter.MeasuredCount = Convert.ToInt32(reader["MeasuredCount"].ToString() == "" ? "0" : reader["MeasuredCount"].ToString());
-            //}
-            ////判断检查次数不为0则执行
-            //if (systemParameter.MeasuredCount != 0)
-            //{
-                ////次数
-                //int count = 0;
-
-                //构造查询参数
+        {            
                 OleDbParameter[] parms = new OleDbParameter[]
                 {
                     new OleDbParameter("MeasuredCount",OleDbType.VarChar,255),

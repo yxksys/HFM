@@ -2128,7 +2128,7 @@
     <value>29</value>
   </data>
   <data name="RdoAlpha241.Text" xml:space="preserve">
-    <value>Am_241</value>
+    <value>Am-241</value>
   </data>
   <data name="&gt;&gt;RdoAlpha241.Name" xml:space="preserve">
     <value>RdoAlpha241</value>
@@ -2194,7 +2194,7 @@
     <value>27</value>
   </data>
   <data name="RdoAlpha238.Text" xml:space="preserve">
-    <value>Pu_238</value>
+    <value>Pu-238</value>
   </data>
   <data name="&gt;&gt;RdoAlpha238.Name" xml:space="preserve">
     <value>RdoAlpha238</value>
@@ -2227,7 +2227,7 @@
     <value>26</value>
   </data>
   <data name="RdoAlpha239.Text" xml:space="preserve">
-    <value>Pu_239</value>
+    <value>Pu-239</value>
   </data>
   <data name="&gt;&gt;RdoAlpha239.Name" xml:space="preserve">
     <value>RdoAlpha239</value>
@@ -2260,7 +2260,7 @@
     <value>25</value>
   </data>
   <data name="RdoAlpha235.Text" xml:space="preserve">
-    <value>U_235</value>
+    <value>U-235</value>
   </data>
   <data name="&gt;&gt;RdoAlpha235.Name" xml:space="preserve">
     <value>RdoAlpha235</value>
@@ -2569,7 +2569,7 @@
     <value>35</value>
   </data>
   <data name="RdoBeta192.Text" xml:space="preserve">
-    <value>Ir_192</value>
+    <value>Ir-192</value>
   </data>
   <data name="&gt;&gt;RdoBeta192.Name" xml:space="preserve">
     <value>RdoBeta192</value>
@@ -2602,7 +2602,7 @@
     <value>34</value>
   </data>
   <data name="RdoBeta90.Text" xml:space="preserve">
-    <value>Sr_90</value>
+    <value>Sr-90</value>
   </data>
   <data name="&gt;&gt;RdoBeta90.Name" xml:space="preserve">
     <value>RdoBeta90</value>
@@ -2635,7 +2635,7 @@
     <value>33</value>
   </data>
   <data name="RdoBeta36.Text" xml:space="preserve">
-    <value>Cl_36</value>
+    <value>Cl-36</value>
   </data>
   <data name="&gt;&gt;RdoBeta36.Name" xml:space="preserve">
     <value>RdoBeta36</value>
@@ -2701,7 +2701,7 @@
     <value>31</value>
   </data>
   <data name="RdoBeta137.Text" xml:space="preserve">
-    <value>Cs_137</value>
+    <value>Cs-137</value>
   </data>
   <data name="&gt;&gt;RdoBeta137.Name" xml:space="preserve">
     <value>RdoBeta137</value>
@@ -2734,7 +2734,7 @@
     <value>30</value>
   </data>
   <data name="RdoBeta60.Text" xml:space="preserve">
-    <value>Co_60</value>
+    <value>Co-60</value>
   </data>
   <data name="&gt;&gt;RdoBeta60.Name" xml:space="preserve">
     <value>RdoBeta60</value>
@@ -2767,7 +2767,7 @@
     <value>29</value>
   </data>
   <data name="RdoBeta32.Text" xml:space="preserve">
-    <value>P_32</value>
+    <value>P-32</value>
   </data>
   <data name="&gt;&gt;RdoBeta32.Name" xml:space="preserve">
     <value>RdoBeta32</value>
@@ -2800,7 +2800,7 @@
     <value>28</value>
   </data>
   <data name="RdoBeta204.Text" xml:space="preserve">
-    <value>Tl_204</value>
+    <value>Tl-204</value>
   </data>
   <data name="&gt;&gt;RdoBeta204.Name" xml:space="preserve">
     <value>RdoBeta204</value>
@@ -2833,7 +2833,7 @@
     <value>27</value>
   </data>
   <data name="RdoBeta131.Text" xml:space="preserve">
-    <value>l_131</value>
+    <value>l-131</value>
   </data>
   <data name="&gt;&gt;RdoBeta131.Name" xml:space="preserve">
     <value>RdoBeta131</value>
@@ -2866,7 +2866,7 @@
     <value>26</value>
   </data>
   <data name="RdoBeta58.Text" xml:space="preserve">
-    <value>Co_58</value>
+    <value>Co-58</value>
   </data>
   <data name="&gt;&gt;RdoBeta58.Name" xml:space="preserve">
     <value>RdoBeta58</value>
@@ -2899,7 +2899,7 @@
     <value>25</value>
   </data>
   <data name="RdoBeta14.Text" xml:space="preserve">
-    <value>C_14</value>
+    <value>C-14</value>
   </data>
   <data name="&gt;&gt;RdoBeta14.Name" xml:space="preserve">
     <value>RdoBeta14</value>

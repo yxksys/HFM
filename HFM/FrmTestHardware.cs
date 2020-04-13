@@ -26,6 +26,7 @@ namespace HFM
     public partial class FrmTestHardware : Form
     {
         #region 基本变量、实例
+        IList<Channel> channelS = new List<Channel>();//当前可使用的检测通道,即全部启用的监测通道
         //实例化串口
         private CommPort _commPort = new CommPort();
         /// <summary>
@@ -168,7 +169,9 @@ namespace HFM
                 }
             }
             #endregion
-
+            //获得通道信息
+            Channel channel = new Channel();
+            channelS = channel.GetChannel();            
             if (bkWorkerReceiveData.IsBusy == false)
             {
                 //开启异步线程
@@ -522,6 +525,10 @@ namespace HFM
             //赋值alpha和Beta总计数并且判断赋值通道状态
             for (i = 0; i < 6; i++)
             {
+                if(channelS[i].IsEnabled==false)
+                {
+                    continue;
+                }
                 //alpha总计数
                 _alphacnt[i] = Convert.ToString(Convert.ToInt32(_alphacnt[i]) + Convert.ToInt32(_alphacps[i]));
                 //beta总计数
@@ -665,7 +672,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnAlphaCheck_Click(object sender, EventArgs e)
         {
-            BtnCurency(HardwarePlatformState.BetaCheck);
+            BtnCurency(HardwarePlatformState.AlphaCheck);
         }
         /// <summary>
         /// Beta自检按钮
@@ -674,7 +681,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnBetaCheck_Click(object sender, EventArgs e)
         {
-            BtnCurency(HardwarePlatformState.AlphaCheck);
+            BtnCurency(HardwarePlatformState.BetaCheck);
         }
         /// <summary>
         /// 自检按钮
@@ -695,6 +702,7 @@ namespace HFM
         private void FrmTestHardware_FormClosed(object sender, FormClosedEventArgs e)
         {
             _commPort.Close();
+            Thread.Sleep(1000);
             bkWorkerReceiveData.CancelAsync();
         }
 

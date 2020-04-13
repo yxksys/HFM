@@ -1,2 +1,0 @@
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 HFM.FrmCalibration.BkWorkerReceiveData_ProgressChanged(Object sender, ProgressChangedEventArgs e) 位置 F:\项目\实项目\HFM\HFM\FrmCalibration.cs:行号 560
