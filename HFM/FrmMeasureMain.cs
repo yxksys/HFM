@@ -16,23 +16,31 @@ namespace HFM
 {
     public partial class FrmMeasureMain : Form
     {
-        string appPath = null;
-        int messageBufferLength = 0;
+        string listS = "";
+        string timetemp = "";
+        const int BASE_DATA = 1000;//标准本底值
+        const int FONT_SIZE_E = 28;//检测状态显示区域英文字体大小
+        const int FONT_SIZE = 48;//检测状态显示区域中午字体大小
+        const int TEAM_LENGTH = 240;//
+        //泊松参数
+        const double POISSONUA_2 = 1.658;
+        const double POISSONUA = 2.5758;
+        const double POISSONUA2_4 = 0.676;
+        const int LONGTIME = 60;
+        string appPath = null;//应用系统安装路径
+        int messageBufferLength = 0;//串口接收数据缓冲区大小
         byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
         System.Timers.Timer TmrDispTime = null;//显示系统时间、控制控件状态颜色异步Timer对象
         IList<MeasureData> measureDataS = null;//检测数据接收列表缓冲区
-        bool isEnglish = false;//当前语言，默认中文
-        //监测时间
-        int checkTime = 0;
-        //系统报警时间长度设置
-        int alarmTimeSet = 0;
-        //系统报警时间计时
-        DateTime alarmTimeStart = DateTime.Now;
+        bool isEnglish = false;//当前语言，默认中文        
+        int checkTime = 0;//监测时间       
+        int alarmTimeSet = 0; //系统报警时间长度设置        
+        DateTime alarmTimeStart = DateTime.Now;//系统报警时间计时
         int stateTimeSet = 0;//系统当前运行状态的检测时间设置
         int stateTimeRemain = 0;//系统当前运行状态剩余时间
         int errNumber = 0; //报文接收出现错误计数器   
         int throwDataCount = 0;//准备检测阶段预读取数据扔掉次数
-        int clothesTimeCount = 0;//衣物离线时间计数器，每秒计数一次
+        int clothesTimeCount = 0;//衣物离线时间计数器，每秒计数一次        
         /// <summary>
         /// clothesStatus配合衣物探头红外状态来进行判断
         /// 衣物探头红外状态-clothesStatus：
@@ -46,9 +54,8 @@ namespace HFM
         bool isSelfCheckSended = false;//自检指令是否已经下发标志，因为在一个自检周期内，自检指令只需下发一次
         bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
         string pollutionRecord = null;//记录测量污染详细数据
-        string pollutionRecord_E = null;//记录测量污染详细数据(英文)        
-        //衣物探测界面
-        FrmClothes frmClothes = null;
+        string pollutionRecord_E = null;//记录测量污染详细数据(英文)                
+        FrmClothes frmClothes = null;//衣物探测界面
         //运行状态枚举类型
         enum PlatformState
         {
@@ -71,11 +78,9 @@ namespace HFM
             OperatingFaulted=32,
             OperatingContaminated=64
         }
-        byte deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
-        const int BASE_DATA = 1000;  
-        DateTime stateTimeStart;//系统当前运行状态的开始计时变量        
-        //创建音频播放对象
-        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
+        byte deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);//设备当前状态        
+        DateTime stateTimeStart;//系统当前运行状态的开始计时变量                
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer();//创建音频播放对象
         CommPort commPort = new CommPort();//监测端口
         CommPort commPort_Supervisory = new CommPort();//和管理机通信端口
         Thread IOThread = null;
@@ -84,8 +89,7 @@ namespace HFM
         int alarmCountOfClothes = 0;//衣物检测报警次数
         string clotheseNuclideUsed = "U_235";//衣物检测核素选择,默认U_235
         string alphaNuclideUsed = "U_235";//Alpha核素选择，默认U_235
-        string betaNuclideUsed = "U_235";//Beta核素选择，默认U_235
-        //float clotheseEfficiency = 0;//衣物检测探测效率    
+        string betaNuclideUsed = "U_235";//Beta核素选择，默认U_235          
         FactoryParameter factoryParameter = new FactoryParameter();//工厂参数        
         Components.SystemParameter systemParameter = new Components.SystemParameter();//系统参数
         Channel[] channelsAll=new Channel[7];//全部通道
@@ -94,8 +98,7 @@ namespace HFM
         IList<MeasureData> calculatedMeasureDataS = new List<MeasureData>();//存储各个通道最终计算检测值的列表
         IList<EfficiencyParameter> efficiencyParameterS = new List<EfficiencyParameter>();//存储探测效率参数列表
         IList<ProbeParameter> probeParameterS = new List<ProbeParameter>();//存储探测参数的列表  
-        IList<ChannelParameter> channelParameterS = new List<ChannelParameter>();//存储道盒参数列表
-        const int TEAM_LENGTH= 240;
+        IList<ChannelParameter> channelParameterS = new List<ChannelParameter>();//存储道盒参数列表        
         struct SMOOTHINGDATA
         {
             //平滑数组            
@@ -159,11 +162,7 @@ namespace HFM
                                              4,20,4,21,5,22,6,24,6,25,
                                              7,26,8,28,8,29,9,30,10,31,
                                             11,33,11,34,12,35,13,36,14,38 };//泊松表2
-        int[] cycleLength = new int[8] { 16, 25, 36, 49, 64, 81, 100, 121 };
-        const double POISSONUA_2 = 1.658;
-        const double POISSONUA = 2.5758;
-        const double POISSONUA2_4 = 0.676;
-        const int LONGTIME = 60;
+        int[] cycleLength = new int[8] { 16, 25, 36, 49, 64, 81, 100, 121 };       
         //int handTestCount=0;//手部检测计数器。由于单探测器时，手心手背必须分两次进行检测，用来手心、手背检测计数。
         bool isHandTested = false;//手部检测是否完成标志，由于单探测器时，手心手背必须分两次进行检测，手部第一次检测完成后，根据该标志进行线语音提示，然后进该标志置为true
         public FrmMeasureMain()
@@ -652,11 +651,11 @@ namespace HFM
                     //延时
                     if (platformState == PlatformState.SelfTest && isSelfCheckSended == false)
                     {
-                        Thread.Sleep(900-delayTime);
+                        Thread.Sleep(800- errorNumber* delayTime);
                     }
                     else
                     {
-                        Thread.Sleep(900);
+                        Thread.Sleep(800);
                     }
                     //触发向主线程返回下位机上传数据事件
                     worker.ReportProgress(1, receiveBuffMessage);
@@ -665,7 +664,8 @@ namespace HFM
         }
 
         private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {                        
+        {
+            timetemp += DateTime.Now.Second+";";
             if (e.UserState is byte[])
             {
                 receiveBufferMessage = (byte[])e.UserState;
@@ -754,7 +754,7 @@ namespace HFM
                             //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
                             IList<EfficiencyParameter> efficiencyParameterNow= efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "C" && efficiencyParameter.Channel.ChannelID == 7 && efficiencyParameter.NuclideName == clotheseNuclideUsed).ToList();
                             //根据系统参数中设置的检测单位，对减去本底值后的测量值进行单位变换并在衣物探测界面中进行显示
-                            float converedData = UnitConver(smoothedDataOfClothes, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, measureDataS[6].Channel.ProbeArea);
+                            float converedData = Tools.UnitConvertCPSTo(smoothedDataOfClothes, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, measureDataS[6].Channel.ProbeArea);
                             frmClothes.TxtMeasureValue.Text = string.Format("{0}{1}", converedData.ToString("F1"), systemParameter.MeasurementUnit);
                             #region 如果减去本底值后的测量值大于一级报警，说明有污染  
                             ////获得当前衣物检测通道的探测参数
@@ -955,14 +955,14 @@ namespace HFM
                 }                
                 if (isEnglish)
                 {
-                    LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                    LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                     LblShowStutas.Text = "Self-checking";
                     TxtShowResult.Text += "Self-checking\r\n";                    
                     player.SoundLocation = appPath + "\\Audio\\English_Self_checking.wav";
                 }
                 else
                 {
-                    LblShowStutas.Font = new Font("宋体", 48,FontStyle.Bold);
+                    LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                     LblShowStutas.Text = "仪器自检";
                     TxtShowResult.Text += "仪器自检\r\n";
                     //IOThread.Start("SelfTest");                
@@ -972,14 +972,12 @@ namespace HFM
                 player.PlaySync();
                 //当前运行状态设置为“仪器自检”
                 platformState = PlatformState.SelfTest;
-                //stateTimeStart = System.DateTime.Now.AddSeconds(2);
-                //label1.Text += stateTimeStart.ToString();
+                //stateTimeStart = System.DateTime.Now.AddSeconds(2);                
                 return;
             }
             //如果当前运行状态为“仪器自检”
             if (platformState == PlatformState.SelfTest)
-            {
-                //textBox1.Text += platformState.ToString();
+            {                
                 //获得当前系统参数设置中的的自检时间并赋值给stateTimeSet
                 stateTimeSet=systemParameter.SelfCheckTime;               
                 //更新剩余时间：系统自检设置时间-已经用时
@@ -1089,7 +1087,7 @@ namespace HFM
                         //系统状态显示区域显示本底测量
                         if (isEnglish)
                         {
-                            LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                             LblShowStutas.Text = "Updating Background";
                             //测试结果区域显示本底测量
                             TxtShowResult.Text += "Updating Background\r\n";
@@ -1098,7 +1096,7 @@ namespace HFM
                         }
                         else
                         {
-                            LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                             LblShowStutas.Text = "本底测量";
                             //测试结果区域显示本底测量
                             TxtShowResult.Text += "本底测量\r\n";
@@ -1123,7 +1121,6 @@ namespace HFM
                             player.SoundLocation = appPath + "\\Audio\\Chinese_Self-checking_fault.wav";
                         }
                         player.PlaySync();
-                        //Thread.Sleep(3000);
                         //测量数据存储全部清零
                         for (int i = 0; i < channelS.Count; i++)
                         {
@@ -1172,6 +1169,7 @@ namespace HFM
                                 //系统状态显示区域显示测量中断
                                 if (isEnglish)
                                 {
+                                    LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                                     LblShowStutas.Text = "Interrupted";
                                     //测量结果显示区域显示左手到位重新测量
                                     TxtShowResult.Text += "Left hand in place,Please measure again!\r\n";
@@ -1179,6 +1177,7 @@ namespace HFM
                                 }
                                 else
                                 {
+                                    LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                                     LblShowStutas.Text = "测量中断";
                                     //测量结果显示区域显示左手到位重新测量
                                     TxtShowResult.Text += "左手到位，重新测量\r\n";
@@ -1199,6 +1198,7 @@ namespace HFM
                                 //系统状态显示区域显示测量中断
                                 if (isEnglish)
                                 {
+                                    LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                                     LblShowStutas.Text = "Interrupted";
                                     //测量结果显示区域显示左手到位重新测量
                                     TxtShowResult.Text += "Right hand in place,Please measure again!\r\n";
@@ -1206,6 +1206,7 @@ namespace HFM
                                 }
                                 else
                                 {
+                                    LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                                     LblShowStutas.Text = "测量中断";
                                     //测量结果显示区域显示右手到位重新测量
                                     TxtShowResult.Text += "右手手到位，重新测量\r\n";
@@ -1228,6 +1229,7 @@ namespace HFM
                                 //系统状态显示区域显示测量中断
                                 if (isEnglish)
                                 {
+                                    LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                                     LblShowStutas.Text = "Interrupted";
                                     //测量结果显示区域显示左手到位重新测量
                                     TxtShowResult.Text += "Frisker in place,Please measure again!\r\n";
@@ -1235,6 +1237,7 @@ namespace HFM
                                 }
                                 else
                                 {
+                                    LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                                     LblShowStutas.Text = "测量中断";
                                     //测量结果显示区域显示衣物探头到位重新测量
                                     TxtShowResult.Text += "衣物探头到位，重新测量\r\n";
@@ -1282,18 +1285,18 @@ namespace HFM
                         }
                     }                    
                 }
-                DisplayMeasureData(calculatedMeasureDataS,systemParameter.MeasurementUnit);//yxk,修改,显示数据
+                DisplayMeasureData(calculatedMeasureDataS,"cps");//yxk,修改,显示数据
                 //之前测量被中断过，需要重新显示提示信息
                 if (isReDisplay== true)
                 {
                     if (isEnglish)
                     {
-                        LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                        LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                         LblShowStutas.Text = "Updating Background";
                     }
                     else
                     {
-                        LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                        LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                         LblShowStutas.Text = "本底测量";
                     }
                     //重新启动本底测量（本底测量时间重新开始计时）
@@ -1313,6 +1316,7 @@ namespace HFM
                         //系统状态显示区域显示等待测量
                         if (isEnglish)
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                             LblShowStutas.Text = "Ready";
                             //测试结果区域显示仪器正常等待测量
                             TxtShowResult.Text += "Ready\r\n";
@@ -1321,6 +1325,7 @@ namespace HFM
                         }
                         else
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                             LblShowStutas.Text = "等待测量";
                             //测试结果区域显示仪器正常等待测量
                             TxtShowResult.Text += "仪器正常 等待测量\r\n";
@@ -1331,7 +1336,8 @@ namespace HFM
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //系统参数中，将上次本底测量后已测量人数清零                        
-                        systemParameter.ClearMeasuredCount();                       
+                        systemParameter.ClearMeasuredCount();
+                        systemParameter.MeasuredCount = 0;
                         for (int i = 0; i < channelS.Count; i++)
                         {
                             //将最终的本底计算结果保存，以用于检测时对测量结果进行校正
@@ -1363,7 +1369,11 @@ namespace HFM
             }
             //运行状态为等待测量
             if (platformState == PlatformState.ReadyToMeasure)
-            {                                
+            {
+                //剩余时间显示为检测时间设定值
+                LblTimeRemain.Text = systemParameter.MeasuringTime.ToString();
+                MeasureData conversionData = new MeasureData();
+                IList<MeasureData> conversionDataS = new List<MeasureData>();
                 //所有手部红外到位标志，默认全部到位
                 bool isHandInfraredStatus = true;                
                 for (int i = 0; i < channelS.Count; i++)
@@ -1388,9 +1398,18 @@ namespace HFM
                         calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
                         calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1); ;
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
-                    }
-                }
-                DisplayMeasureData(calculatedMeasureDataS,systemParameter.MeasurementUnit);//yxk,修改,显示数据
+                        //获得当前系统参数设置中的测量单位                                                
+                        //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
+                        IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
+                        conversionData.Alpha = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                        efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "β" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == betaNuclideUsed).ToList();
+                        conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                        conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                        //将单位转换后的测量数据添加进IList列表
+                        conversionDataS.Add(conversionData);
+                    }                    
+                }                               
+                DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);//yxk,修改,显示数据
                 //所有通道手部红外状态全部到位
                 if (isHandInfraredStatus == true)
                 {
@@ -1398,6 +1417,7 @@ namespace HFM
                     if(isEnglish)
                     {
                         //系统状态显示区域显示开始测量
+                        LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                         LblShowStutas.Text = "Start counting";
                         //测试结果区域显示开始测量
                         TxtShowResult.Text += "Start counting\r\n";
@@ -1406,6 +1426,7 @@ namespace HFM
                     else
                     {
                         //系统状态显示区域显示开始测量
+                        LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                         LblShowStutas.Text = "开始测量";
                         //测试结果区域显示开始测量
                         TxtShowResult.Text += "开始测量\r\n";
@@ -1431,11 +1452,12 @@ namespace HFM
                     {
                         calculatedMeasureDataS[i].Alpha = 0;
                         calculatedMeasureDataS[i].Beta = 0;
-                    }
+                    }                                        
+                    DisplayMeasureData(calculatedMeasureDataS, systemParameter.MeasurementUnit);//yxk,修改,清零
                     //将运行状态修改为“开始测量”
-                    platformState = PlatformState.Measuring;
+                    platformState = PlatformState.Measuring;                                    
                     //重新启动计时，为开始测量及时准备
-                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    stateTimeStart = System.DateTime.Now;
                     return;
                 }
                 //本底测量时间到，进行本底判断
@@ -1459,7 +1481,7 @@ namespace HFM
                             calculatedMeasureDataS[i].Alpha = 0;
                             calculatedMeasureDataS[i].Beta = 0;
                         }
-                        DisplayMeasureData(calculatedMeasureDataS,systemParameter.MeasurementUnit);//yxk,修改,清零
+                        DisplayMeasureData(calculatedMeasureDataS,"cps");//yxk,修改,清零
                     }
                     else//本底检测未通过
                     {
@@ -1478,12 +1500,11 @@ namespace HFM
             }
             //运行状态为开始测量
             if (platformState == PlatformState.Measuring)
-            {                
-                //textBox1.Text += platformState.ToString();               
+            {                                           
                 MeasureData conversionData = new MeasureData();
                 IList<MeasureData> conversionDataS=new List<MeasureData>();
                 //获得当前系统参数设置中的的测量时间并赋值给stateTimeSet
-                stateTimeSet = systemParameter.MeasuringTime;                    
+                stateTimeSet = systemParameter.MeasuringTime;
                 //在系统界面中显示正在测量倒计时时间（s）:系统设置测量时间-已经用时
                 stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
                 LblTimeRemain.Text = stateTimeRemain < 0 ? "0" : stateTimeRemain.ToString();                
@@ -1531,11 +1552,13 @@ namespace HFM
                             if(isEnglish)
                             {
                                 //切换到等待测量阶段，进行必要的显示
+                                LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                                 LblShowStutas.Text = "Ready";
                             }
                             else
                             {
                                 //切换到等待测量阶段，进行必要的显示
+                                LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                                 LblShowStutas.Text = "等待测量";
                             }
                             //Thread.Sleep(2000);
@@ -1549,13 +1572,13 @@ namespace HFM
                     //计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)进行累加：                    
                     calculatedMeasureDataS[i].Alpha += list[0].Alpha;
                     calculatedMeasureDataS[i].Beta += list[0].Beta;
+                    listS += list[0].Beta.ToString() + ";";
                     calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                 }
-
                 //进行语音提示
                 player.SoundLocation = appPath + "\\Audio\\dida1.wav";
                 player.Play();
-                if (stateTimeRemain == 1)
+                if (stateTimeRemain == 0)
                 {
                     player.SoundLocation = appPath + "\\Audio\\dida2.wav";
                     player.Play();
@@ -1565,7 +1588,7 @@ namespace HFM
                 {
                     PictureBox pictureBox;
                     Panel panel;
-                    Label label;                    
+                    Label label;
                     //计算每个通道的计数平均值,然后减去本底值
                     for (int i = 0; i < calculatedMeasureDataS.Count; i++)
                     {
@@ -1578,16 +1601,7 @@ namespace HFM
                         //找到通道测量值显示区域对应的Panel，其名字为：Pnl+通道英文名
                         panel = (Panel)(pictureBox.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                         //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名
-                        label = (Label)(panel.Controls[string.Format("Lbl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                        //获得当前系统参数设置中的测量单位                                                
-                        //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
-                        IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
-                        conversionData.Alpha = UnitConver(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency,calculatedMeasureDataS[i].Channel.ProbeArea);                        
-                        efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "β" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == betaNuclideUsed).ToList();
-                        conversionData.Beta = UnitConver(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency,calculatedMeasureDataS[i].Channel.ProbeArea);
-                        conversionData.Channel = calculatedMeasureDataS[i].Channel;
-                        //将单位转换后的测量数据添加进IList列表
-                        conversionDataS.Add(conversionData);
+                        label = (Label)(panel.Controls[string.Format("Lbl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);                        
                         calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha / stateTimeSet - baseData[i].Alpha;
                         if (calculatedMeasureDataS[i].Alpha < 0)
                         {
@@ -1632,19 +1646,33 @@ namespace HFM
                             {
                                 label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
                             }
-                        }                        
+                        }
+                        //获得当前系统参数设置中的测量单位                                                
+                        //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
+                        IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
+                        conversionData.Alpha = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                        efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "β" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == betaNuclideUsed).ToList();
+                        conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                        conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                        //将单位转换后的测量数据添加进IList列表
+                        conversionDataS.Add(conversionData);
                     }
                     //按照系统参数单位要求显示最终测量结果,级显示单位转换后的conversionDataS列表值
                     DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);
                     if (pollutionRecord == null)//说明本次测量无污染
                     {
-                        if(factoryParameter.IsDoubleProbe==false)//单探测器检测，则探测器接到手心/手背一个道盒，所以手心手背的检测需分两次进行
+                        //将本次测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次测量时计算做准备
+                        for (int j = 0; j < channelS.Count; j++)
+                        {
+                            calculatedMeasureDataS[j].Alpha = 0;
+                            calculatedMeasureDataS[j].Beta = 0;
+                        }
+                        if (factoryParameter.IsDoubleProbe==false)//单探测器检测，则探测器接到手心/手背一个道盒，所以手心手背的检测需分两次进行
                         {
                             //当前为手手部第一次检测完成
                             if(isHandTested==false)//说明手部第一次检测刚刚完成
                             {
-                                isHandTested = true;//设置手部检测完成标志为true
-                                LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                                isHandTested = true;//设置手部检测完成标志为true                               
                                 //语音提示翻转手掌进行检测
                                 if (isEnglish)
                                 {                                                                       
@@ -1655,15 +1683,17 @@ namespace HFM
                                 {                                                                       
                                     player.SoundLocation = appPath + "\\Audio\\Chinese_Please_Flip_Palm_for_Measuring.wav";
                                 }
-                                player.PlaySync();     
-                                if(isEnglish)
+                                player.PlaySync();                                
+                                if (isEnglish)
                                 {
+                                    LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                                     LblShowStutas.Text = "Ready";
                                     //测试结果区域显示等待测量
                                     TxtShowResult.Text += "Ready\r\n";
                                 }
                                 else
                                 {
+                                    LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                                     LblShowStutas.Text = "等待测量";
                                     //测试结果区域显示等待测量
                                     TxtShowResult.Text += "等待测量\r\n";
@@ -1690,12 +1720,14 @@ namespace HFM
                         //设备状态区域显示无污染
                         if (isEnglish)
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                             LblShowStutas.Text = "No Contamination";                            
                             //测量结果显示区域提示没有污染，请进行衣物测量
                             TxtShowResult.Text += "No Contamination,Please measure the clothing!\r\n";
                         }
                         else
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                             LblShowStutas.Text = "无污染";                            
                             //测量结果显示区域提示没有污染，请进行衣物测量
                             TxtShowResult.Text += "没有污染，请进行衣物测量\r\n";
@@ -1710,6 +1742,7 @@ namespace HFM
                         // 设备状态区域显示人员污染
                         if (isEnglish)
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                             LblShowStutas.Text = "Contaminated";
                             //测量结果显示区域提示被测人员污染，请去污
                             TxtShowResult.Text += "Decontaminate, please!\r\n";
@@ -1718,6 +1751,7 @@ namespace HFM
                         }
                         else
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                             LblShowStutas.Text = "人员污染";
                             //测量结果显示区域提示被测人员污染，请去污
                             TxtShowResult.Text += "被测人员污染，请去污！\r\n";
@@ -1776,7 +1810,7 @@ namespace HFM
                 {                   
                     //如果测量人数大于系统设置的强制本底次数则，转到“本底测量”状态
                     if (systemParameter.MeasuredCount >= systemParameter.BkgUpdate) 
-                    {
+                    {                        
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         // 运行状态标志设置为“本底测量”
@@ -1790,7 +1824,7 @@ namespace HFM
                         //系统状态显示区域显示本底测量
                         if (isEnglish)
                         {
-                            LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                             LblShowStutas.Text = "Updating Background";
                             //测试结果区域显示本底测量
                             TxtShowResult.Text += "Updating Background\r\n";
@@ -1799,7 +1833,7 @@ namespace HFM
                         }
                         else
                         {
-                            LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                             LblShowStutas.Text = "本底测量";
                             //测试结果区域显示本底测量
                             TxtShowResult.Text += "本底测量\r\n";
@@ -1817,7 +1851,7 @@ namespace HFM
                         //系统状态显示区域显示等待测量
                         if (isEnglish)
                         {
-                            LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                             LblShowStutas.Text = "Ready";
                             //测试结果区域显示等待测量
                             TxtShowResult.Text += "Ready\r\n";
@@ -1826,7 +1860,7 @@ namespace HFM
                         }
                         else
                         {
-                            LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                             LblShowStutas.Text = "等待测量";
                             //测试结果区域显示等待测量
                             TxtShowResult.Text += "等待测量\r\n";
@@ -1834,6 +1868,12 @@ namespace HFM
                             player.SoundLocation = appPath + "\\Audio\\Chinese_Ready.wav";
                         }
                         player.PlaySync();
+                        //将本次测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次测量时计算做准备
+                        for (int j = 0; j < channelS.Count; j++)
+                        {
+                            calculatedMeasureDataS[j].Alpha = 0;
+                            calculatedMeasureDataS[j].Beta = 0;
+                        }
                         //Thread.Sleep(3000);
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);                        
@@ -1858,7 +1898,7 @@ namespace HFM
                     //系统状态显示区域显示本底测量
                     if (isEnglish)
                     {
-                        LblShowStutas.Font = new Font("宋体", 28, FontStyle.Bold);
+                        LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                         LblShowStutas.Text = "Updating Background";
                         //测试结果区域显示本底测量
                         TxtShowResult.Text += "Updating Background\r\n";
@@ -1867,7 +1907,7 @@ namespace HFM
                     }
                     else
                     {
-                        LblShowStutas.Font = new Font("宋体", 48, FontStyle.Bold);
+                        LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                         LblShowStutas.Text = "本底测量";
                         //测试结果区域显示本底测量
                         TxtShowResult.Text += "本底测量\r\n";
@@ -2266,10 +2306,12 @@ namespace HFM
                     {
                         if (isEnglish)
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                             LblShowStutas.Text = "Fault";
                         }
                         else
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                             LblShowStutas.Text = "仪器故障";
                         }
                     }
@@ -2296,10 +2338,12 @@ namespace HFM
                         //设备状态区域文字提示“仪器正常”
                         if (isEnglish)
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
                             LblShowStutas.Text = "Ready";
                         }
                         else
                         {
+                            LblShowStutas.Font = new Font("宋体", FONT_SIZE, FontStyle.Bold);
                             LblShowStutas.Text = "仪器正常";
                         }
                     }
@@ -2325,45 +2369,7 @@ namespace HFM
             {
                 return null;
             }
-        }
-        /// <summary>
-        /// 测量数据单位换算，将cps单位数据data换算为目标单位后返回
-        /// </summary>
-        /// <param name="data">需换算的测量数据值(cps)</param>
-        /// <param name="unit">要换算的目标单位</param>
-        /// <param name="efficiency">探测效率</param>
-        /// <param name="proberArea">探测面积</param>
-        /// <returns>目标单位值</returns>
-        private float UnitConver(float data, string unit,float efficiency,float proberArea)
-        {
-            float convertedData=0;
-            //将data（单位为cps）换算为目标单位unit后返回
-            switch (unit)
-            {
-                case "cps":
-                    convertedData = data;
-                    break;
-                case "cpm": //最终测量计数平均值(cpm) = 60 * 计算平均值(cps)
-                    convertedData = 60 * data;
-                    break;
-                case "Bq"://最终测量计数平均值(Bq) = 200 * 计算平均值(cps) /探测效率
-                    convertedData = 200 * data /efficiency;
-                    break;
-                case "Bq/cm2"://最终测量计数平均值(Bq/cm2) = 200 * 计算平均值(cps) /探测效率/该通道测量面积
-                    convertedData = 200 * data / efficiency / proberArea;
-                    break;
-                case "KBq/cm2"://KBq/cm2:最终测量计数平均值(KBq/cm2) = 200 * 计算平均值(cps) /探测效率/ 该通道测量面积/1000
-                    convertedData = 200 * data / efficiency / proberArea / 1000;
-                    break;
-                case "dpm"://dpm:最终测量计数平均值(dpm) = 12000 * 计算平均值(cps)/探测效率
-                    convertedData = 12000 * data / efficiency;
-                    break;
-                case "nCi"://nCi : 最终测量计数平均值(nCi) = 200 * 计算平均值(cps)/探测效率*0.027
-                    convertedData =Convert.ToSingle(200 * data / efficiency * 0.027);
-                    break;
-            }                                                                       
-            return convertedData;
-        }
+        }        
         private void bkWorkerReportStatus_DoWork(object sender, DoWorkEventArgs e)
         {
             //如果没有取消异步线程
