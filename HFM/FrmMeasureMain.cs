@@ -732,8 +732,8 @@ namespace HFM
                             //重新开始衣物离线时间计数
                             clothesTimeCount = 0;
                             if(frmClothes.IsDisposed)//如果窗体已经被释放，则重新创建
-                            {
-                                frmClothes = new FrmClothes();                               
+                            {                                
+                                frmClothes = new FrmClothes(isEnglish);                               
                             }
                             //设置窗体进度条状态
                             frmClothes.loadingCircle.Active = true;

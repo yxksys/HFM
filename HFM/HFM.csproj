@@ -163,6 +163,9 @@
     <EmbeddedResource Include="FrmCalibration.resx">
       <DependentUpon>FrmCalibration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmClothes.en.resx">
+      <DependentUpon>FrmClothes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEnterPassword.resx">
       <DependentUpon>FrmEnterPassword.cs</DependentUpon>
     </EmbeddedResource>
