@@ -1621,22 +1621,22 @@
     <value>cps</value>
   </data>
   <data name="CmbMeasurementUnit.Items1" xml:space="preserve">
-    <value>Bp/cm</value>
-  </data>
-  <data name="CmbMeasurementUnit.Items2" xml:space="preserve">
-    <value>Bp</value>
-  </data>
-  <data name="CmbMeasurementUnit.Items3" xml:space="preserve">
-    <value>dpm</value>
-  </data>
-  <data name="CmbMeasurementUnit.Items4" xml:space="preserve">
-    <value>nCi</value>
-  </data>
-  <data name="CmbMeasurementUnit.Items5" xml:space="preserve">
     <value>cpm</value>
   </data>
+  <data name="CmbMeasurementUnit.Items2" xml:space="preserve">
+    <value>Bq</value>
+  </data>
+  <data name="CmbMeasurementUnit.Items3" xml:space="preserve">
+    <value>Bq/cm2</value>
+  </data>
+  <data name="CmbMeasurementUnit.Items4" xml:space="preserve">
+    <value>KBq/cm2</value>
+  </data>
+  <data name="CmbMeasurementUnit.Items5" xml:space="preserve">
+    <value>dpm</value>
+  </data>
   <data name="CmbMeasurementUnit.Items6" xml:space="preserve">
-    <value>kBq/cm</value>
+    <value>nCi</value>
   </data>
   <data name="CmbMeasurementUnit.Location" type="System.Drawing.Point, System.Drawing">
     <value>139, 132</value>

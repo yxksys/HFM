@@ -448,13 +448,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
+        "OwnerKey" = "8:_907630F08B4A494DB00BC1C7AE2DE7B3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_907630F08B4A494DB00BC1C7AE2DE7B3"
+        "OwnerKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -475,6 +475,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -491,6 +507,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -2074,7 +2098,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HFM.v1.0"
         "ProductCode" = "8:{982FEBAD-9AE6-41F0-ADBC-DFDF251AB9EC}"
-        "PackageCode" = "8:{FC8B8377-D0C2-42A7-AF42-FB1BEFF70D88}"
+        "PackageCode" = "8:{AA09532D-5AE8-40FD-A5FB-CC2914F17657}"
         "UpgradeCode" = "8:{E5DED200-49C6-461D-BC4D-557359A3ACF3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
