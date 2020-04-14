@@ -1253,39 +1253,6 @@
   <data name="&gt;&gt;PicTimeBackground.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
-  <data name="&gt;&gt;LblLHB.Name" xml:space="preserve">
-    <value>LblLHB</value>
-  </data>
-  <data name="&gt;&gt;LblLHB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHB.Parent" xml:space="preserve">
-    <value>PnlLHB</value>
-  </data>
-  <data name="&gt;&gt;LblLHB.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PnlLHB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 198</value>
-  </data>
-  <data name="PnlLHB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 40</value>
-  </data>
-  <data name="PnlLHB.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="&gt;&gt;PnlLHB.Name" xml:space="preserve">
-    <value>PnlLHB</value>
-  </data>
-  <data name="&gt;&gt;PnlLHB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlLHB.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PnlLHB.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="LblLHB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1318,6 +1285,27 @@
   </data>
   <data name="&gt;&gt;LblLHB.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="PnlLHB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 198</value>
+  </data>
+  <data name="PnlLHB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 40</value>
+  </data>
+  <data name="PnlLHB.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="&gt;&gt;PnlLHB.Name" xml:space="preserve">
+    <value>PnlLHB</value>
+  </data>
+  <data name="&gt;&gt;PnlLHB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlLHB.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PnlLHB.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="PicLeftBackground.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
