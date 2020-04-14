@@ -278,6 +278,8 @@ namespace HFM
 
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得α参数
             probeParameters = probeParameter.GetParameter("α");
+            //列表按id排序
+            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
 
             #region 核素选择
 
@@ -318,16 +320,14 @@ namespace HFM
             }
 
             #region α参数
-            //清除所有行(因为每次切换页面都会增加相应的行)
-            for (int i = 0; i < DgvAlphaSet.Rows.Count; i++)
-            {
-                DgvAlphaSet.Rows.Remove(DgvAlphaSet.Rows[i]);
-                i--;
-            }
-
+            
+            DgvAlphaSet.Rows.Clear();
             if (_isEnglish == true)
             {
-
+                //污染警报标题加测量单位名称
+                DgvBetaSet.Columns[3].HeaderText = $"Alarm Threshold({system.MeasurementUnit})";
+                //高阶警报标题加测量单位名称
+                DgvBetaSet.Columns[4].HeaderText = $"High Level Alarm({system.MeasurementUnit})";
             }
             else
             {
@@ -340,13 +340,20 @@ namespace HFM
             for (int i = 0; i < probeParameters.Count; i++)
             {
                 //设备启用且核素类型为α并除去衣物参数
-                if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "α" &&probeParameters[i].ProbeChannel.ChannelID != 7)
+                if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "α" && probeParameters[i].ProbeChannel.ChannelID != 7)
                 {
                     int index = this.DgvAlphaSet.Rows.Add();
-                    DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    if (_isEnglish)
+                    {
+                        DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName_English;
+                    }
+                    else
+                    {
+                        DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    }
                     DgvAlphaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
                     DgvAlphaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
-                    
+
                     //污染警报根据系统测量参数中设定的测量单位显示数值
                     DgvAlphaSet.Rows[index].Cells[3].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
                     //高阶警报根据系统测量参数中设定的测量单位显示数值
@@ -358,6 +365,7 @@ namespace HFM
                 {
                 }
             }
+            
             #endregion
 
         }
@@ -368,6 +376,8 @@ namespace HFM
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得β参数
             probeParameters = probeParameter.GetParameter("β");
+            //列表按id排序
+            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
 
             #region 核素选择
 
@@ -419,7 +429,10 @@ namespace HFM
             DgvBetaSet.Rows.Clear();
             if (_isEnglish == true)
             {
-
+                //污染警报标题加测量单位名称
+                DgvBetaSet.Columns[3].HeaderText = $"Alarm Threshold({system.MeasurementUnit})";
+                //高阶警报标题加测量单位名称
+                DgvBetaSet.Columns[4].HeaderText = $"High Level Alarm({system.MeasurementUnit})";
             }
             else
             {
@@ -437,7 +450,14 @@ namespace HFM
                 if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "β" && probeParameters[i].ProbeChannel.ChannelID != 7)
                 {
                     int index = this.DgvBetaSet.Rows.Add();
-                    DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    if (_isEnglish)
+                    {
+                        DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName_English;
+                    }
+                    else
+                    {
+                        DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    }
                     DgvBetaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
                     DgvBetaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
                     DgvBetaSet.Rows[index].Cells[3].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
@@ -448,10 +468,9 @@ namespace HFM
                 else
                 {
                 }
-
-                #endregion
-            
             }
+            #endregion
+
         }
         /// <summary>
         /// 获得衣物参数
