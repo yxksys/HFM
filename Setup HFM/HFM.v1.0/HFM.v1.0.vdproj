@@ -267,6 +267,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_55D0ADBBB7D244E18466D8DA31A2106D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_57E2828E70ED474AA7F437C07E6A774A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -292,12 +298,6 @@
         "Entry"
         {
         "MsmKey" = "8:_64FAB28A29F94EDF8E096DC06121D81C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_65096FE33BD34EF2B4C3C58CBAD4D695"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1728,6 +1728,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_55D0ADBBB7D244E18466D8DA31A2106D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=0.0.0.0, Culture=en, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_55D0ADBBB7D244E18466D8DA31A2106D"
+                    {
+                    "Name" = "8:HFM.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\en\\HFM.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4CB3C72AE4084B8E89C47871F0099A4A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_57E2828E70ED474AA7F437C07E6A774A"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_Seven.wav"
@@ -1814,37 +1845,6 @@
             "TargetName" = "8:E开始测量.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_65096FE33BD34EF2B4C3C58CBAD4D695"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=0.0.0.0, Culture=en, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_65096FE33BD34EF2B4C3C58CBAD4D695"
-                    {
-                    "Name" = "8:HFM.resources.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\en\\HFM.resources.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4CB3C72AE4084B8E89C47871F0099A4A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2126,6 +2126,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_88FFCD42B9D272125D25DAC391D83C73"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -3557,7 +3562,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HFM.v1.0"
         "ProductCode" = "8:{982FEBAD-9AE6-41F0-ADBC-DFDF251AB9EC}"
-        "PackageCode" = "8:{AA09532D-5AE8-40FD-A5FB-CC2914F17657}"
+        "PackageCode" = "8:{FE6A28C4-7C51-41B4-8A27-B3A1D0495D3F}"
         "UpgradeCode" = "8:{E5DED200-49C6-461D-BC4D-557359A3ACF3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -4090,34 +4095,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_70F01FDC9FFA4EE1AB0777E0910A9D09"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Symbols"
-            "OutputProjectGuid" = "8:{5FEB8CFF-15E5-4AA7-B5D9-19270FADB955}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_907630F08B4A494DB00BC1C7AE2DE7B3"
             {
             "SourcePath" = "8:..\\..\\HFM\\obj\\Debug\\HFM.exe"
@@ -4140,34 +4117,6 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{5FEB8CFF-15E5-4AA7-B5D9-19270FADB955}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B03E138827AB42318C753BEA7DF68C04"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
             "OutputProjectGuid" = "8:{5FEB8CFF-15E5-4AA7-B5D9-19270FADB955}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"

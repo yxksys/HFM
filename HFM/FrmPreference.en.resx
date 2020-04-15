@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="系统参数.Text" xml:space="preserve">
+    <value>System Parameter</value>
+  </data>
+  <data name="α参数.Text" xml:space="preserve">
+    <value>Alpha Parameter</value>
+  </data>
+  <data name="β参数.Text" xml:space="preserve">
+    <value>Beta Parameter</value>
+  </data>
+  <data name="衣物探头.Text" xml:space="preserve">
+    <value>Frisker Parameter</value>
+  </data>
+  <data name="工厂参数.Text" xml:space="preserve">
+    <value>Channel Parameter</value>
+  </data>
+  <data name="COM.Text" xml:space="preserve">
+    <value>Port configuration</value>
+  </data>
+  <data name="GrpPresence.Text" xml:space="preserve">
+    <value>Equipment configuration</value>
+  </data>
   <data name="ChkHand.Text" xml:space="preserve">
     <value>Hand</value>
   </data>
@@ -142,33 +163,11 @@
   <data name="ChkFoot.Text" xml:space="preserve">
     <value>Foot</value>
   </data>
-  <data name="GrpPresence.Text" xml:space="preserve">
-    <value>Equipment configuration</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LblDeviceAddress.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="LblDeviceAddress.Text" xml:space="preserve">
-    <value>Device address</value>
-  </data>
-  <data name="ChkIsConnectedAuto.Text" xml:space="preserve">
-    <value>Automatic connection</value>
+  <data name="GrpFacilityData.Text" xml:space="preserve">
+    <value>Factory Parameter</value>
   </data>
   <data name="LblUnclideType.Text" xml:space="preserve">
     <value>Type</value>
-  </data>
-  <data name="TxtPortNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 71</value>
-  </data>
-  <data name="TxtPortNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 26</value>
-  </data>
-  <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 73</value>
-  </data>
-  <data name="LblPortNumber.Text" xml:space="preserve">
-    <value>Port</value>
   </data>
   <data name="LblSoftName.Text" xml:space="preserve">
     <value>Model</value>
@@ -176,29 +175,17 @@
   <data name="LblInstrumentNum.Text" xml:space="preserve">
     <value>SN</value>
   </data>
-  <data name="LblIPAddress.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LblIPAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 73</value>
-  </data>
-  <data name="LblIPAddress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 16</value>
-  </data>
-  <data name="LblIPAddress.Text" xml:space="preserve">
-    <value>IP address</value>
-  </data>
   <data name="LblSmoothingFactor.Text" xml:space="preserve">
     <value>Smoothing factor</value>
-  </data>
-  <data name="GrpFacilityData.Text" xml:space="preserve">
-    <value>Factory Parameter</value>
   </data>
   <data name="BtnPreferenceNo.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="BtnPreferenceOk.Text" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="GrpPreferenceArea.Text" xml:space="preserve">
+    <value>Probe Area /cm²</value>
   </data>
   <data name="TxtCloseProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 175</value>
@@ -303,8 +290,8 @@
   <data name="LblLeftInProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="GrpPreferenceArea.Text" xml:space="preserve">
-    <value>Probe Area /cm²</value>
+  <data name="GrpPreferenceData.Text" xml:space="preserve">
+    <value>System Parameter</value>
   </data>
   <data name="LblBKGUpdate.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 202</value>
@@ -381,12 +368,6 @@
   <data name="LblSelfCheckTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="GrpPreferenceData.Text" xml:space="preserve">
-    <value>System Parameter</value>
-  </data>
-  <data name="系统参数.Text" xml:space="preserve">
-    <value>System Parameter</value>
-  </data>
   <data name="LblAlpha.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 21</value>
   </data>
@@ -419,9 +400,6 @@
   </data>
   <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
     <value>Alpha nuclide selection</value>
-  </data>
-  <data name="α参数.Text" xml:space="preserve">
-    <value>Alpha Parameter</value>
   </data>
   <data name="LblBeta.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 21</value>
@@ -456,8 +434,8 @@
   <data name="GrpBetaNuclideChoose.Text" xml:space="preserve">
     <value>Selection of β / γ nuclides</value>
   </data>
-  <data name="β参数.Text" xml:space="preserve">
-    <value>Beta Parameter</value>
+  <data name="GrpClothesNuclideChoose.Text" xml:space="preserve">
+    <value>Nuclide selection</value>
   </data>
   <data name="LblClothesBetaOrClothes.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 16</value>
@@ -471,8 +449,8 @@
   <data name="LblClothesAlpha.Text" xml:space="preserve">
     <value>Alpha nuclide</value>
   </data>
-  <data name="GrpClothesNuclideChoose.Text" xml:space="preserve">
-    <value>Nuclide selection</value>
+  <data name="GrpClothesData.Text" xml:space="preserve">
+    <value>Frisker Parameter</value>
   </data>
   <data name="LblClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>-1, 287</value>
@@ -546,12 +524,7 @@
   <data name="LblClothesHBackground.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="GrpClothesData.Text" xml:space="preserve">
-    <value>Frisker Parameter</value>
-  </data>
-  <data name="衣物探头.Text" xml:space="preserve">
-    <value>Frisker Parameter</value>
-  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -606,7 +579,220 @@
   <data name="BtnMainPreferenceRetuen.Text" xml:space="preserve">
     <value>Reset to Default</value>
   </data>
-  <data name="工厂参数.Text" xml:space="preserve">
-    <value>Channel Parameter</value>
+  <data name="GrpcommportSetOfReport.Text" xml:space="preserve">
+    <value>Report status port configuration</value>
+  </data>
+  <data name="TxtcommportSetOfReportParity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 102</value>
+  </data>
+  <data name="TxtcommportSetOfReportStopBits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 55</value>
+  </data>
+  <data name="TxtcommportSetOfReportDataBits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 154</value>
+  </data>
+  <data name="TxtcommportSetOfReportBaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 102</value>
+  </data>
+  <data name="TxtcommportSetOfReportPortNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 56</value>
+  </data>
+  <data name="LabcommportSetOfReportParity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LabcommportSetOfReportParity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="LabcommportSetOfReportParity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabcommportSetOfReportParity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 16</value>
+  </data>
+  <data name="LabcommportSetOfReportParity.Text" xml:space="preserve">
+    <value>Parity</value>
+  </data>
+  <data name="LabcommportSetOfReportStopBits.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LabcommportSetOfReportStopBits.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="LabcommportSetOfReportStopBits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabcommportSetOfReportStopBits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="LabcommportSetOfReportStopBits.Text" xml:space="preserve">
+    <value>StopBits</value>
+  </data>
+  <data name="LabcommportSetOfReportDataBits.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LabcommportSetOfReportDataBits.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="LabcommportSetOfReportDataBits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabcommportSetOfReportDataBits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="LabcommportSetOfReportDataBits.Text" xml:space="preserve">
+    <value>DataBits</value>
+  </data>
+  <data name="LabcommportSetOfReportBaudRate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LabcommportSetOfReportBaudRate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="LabcommportSetOfReportBaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabcommportSetOfReportBaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="LabcommportSetOfReportBaudRate.Text" xml:space="preserve">
+    <value>BaudRate</value>
+  </data>
+  <data name="LabcommportSetOfReportPortNum.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LabcommportSetOfReportPortNum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="LabcommportSetOfReportPortNum.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LabcommportSetOfReportPortNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 58</value>
+  </data>
+  <data name="LabcommportSetOfReportPortNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 16</value>
+  </data>
+  <data name="LabcommportSetOfReportPortNum.Text" xml:space="preserve">
+    <value>PortNum</value>
+  </data>
+  <data name="GrpcommportSet.Text" xml:space="preserve">
+    <value>Control board port configuration</value>
+  </data>
+  <data name="TxtcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 106</value>
+  </data>
+  <data name="TxtcommportSetStopBits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 53</value>
+  </data>
+  <data name="TxtcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 157</value>
+  </data>
+  <data name="TxtcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 102</value>
+  </data>
+  <data name="TxtcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 54</value>
+  </data>
+  <data name="LabcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 112</value>
+  </data>
+  <data name="LabcommportSetParity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 16</value>
+  </data>
+  <data name="LabcommportSetParity.Text" xml:space="preserve">
+    <value>Parity</value>
+  </data>
+  <data name="LabcommportSetStopBits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 56</value>
+  </data>
+  <data name="LabcommportSetStopBits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="LabcommportSetStopBits.Text" xml:space="preserve">
+    <value>StopBits</value>
+  </data>
+  <data name="LabcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 160</value>
+  </data>
+  <data name="LabcommportSetDataBits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="LabcommportSetDataBits.Text" xml:space="preserve">
+    <value>DataBits</value>
+  </data>
+  <data name="LabcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 109</value>
+  </data>
+  <data name="LabcommportSetBaudRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="LabcommportSetBaudRate.Text" xml:space="preserve">
+    <value>BaudRate</value>
+  </data>
+  <data name="LabcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 56</value>
+  </data>
+  <data name="LabcommportSetPortNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 16</value>
+  </data>
+  <data name="LabcommportSetPortNum.Text" xml:space="preserve">
+    <value>PortNum</value>
+  </data>
+  <data name="BtnPorRestoreDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BtnPorSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="LblDeviceAddress.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblDeviceAddress.Text" xml:space="preserve">
+    <value>Device address</value>
+  </data>
+  <data name="ChkIsConnectedAuto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>432, 50</value>
+  </data>
+  <data name="ChkIsConnectedAuto.Text" xml:space="preserve">
+    <value>Automatic connection</value>
+  </data>
+  <data name="TxtPortNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>336, 48</value>
+  </data>
+  <data name="TxtPortNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 26</value>
+  </data>
+  <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 53</value>
+  </data>
+  <data name="LblPortNumber.Text" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="TxtIPAddressFour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>241, 48</value>
+  </data>
+  <data name="TxtIPAddressThree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 48</value>
+  </data>
+  <data name="TxtIPAddressTwo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 48</value>
+  </data>
+  <data name="TxtIPAddressOne.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 48</value>
+  </data>
+  <data name="LblIPAddress.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblIPAddress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 53</value>
+  </data>
+  <data name="LblIPAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 16</value>
+  </data>
+  <data name="LblIPAddress.Text" xml:space="preserve">
+    <value>IP address</value>
   </data>
 </root>

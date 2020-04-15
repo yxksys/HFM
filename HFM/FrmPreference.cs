@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Collections;
+using System.Configuration;
 using HFM.Components;
 using System.Threading;
 using Message = HFM.Components.Message;
@@ -69,6 +70,54 @@ namespace HFM
         /// 读取数据
         /// </summary>
         private IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
+
+        #region 端口字符串创建
+        /// <summary>
+        /// 端口字符串创建
+        /// </summary>
+        /// <param name="comportSet">0:commportSet   1:commportSetOfReport</param>
+        /// <param name="portNum">端口</param>
+        /// <param name="baudRate">波特率</param>
+        /// <param name="dataBits">数据位</param>
+        /// <param name="stopBits">停止位</param>
+        /// <param name="parity">校验</param>
+        /// <returns></returns>
+        private string StringComport(int comportSet, string portNum, string baudRate, string dataBits, string stopBits, string parity)
+        {
+            string _parity;
+            switch (parity)
+            {
+                case "0":
+                    _parity = "无";
+                    break;
+                case "1":
+                    _parity = "奇";
+                    break;
+                case "2":
+                    _parity = "偶";
+                    break;
+                case "3":
+                    _parity = "标志";
+                    break;
+                case "4":
+                    _parity = "空格";
+                    break;
+                default:
+                    _parity = "无";
+                    break;
+            }
+
+            if (comportSet == 1)
+            {
+                return $"PortNum=COM{portNum};BaudRate={baudRate};DataBits={dataBits};Parity={_parity};StopBits={stopBits},IsEnabled=false";
+            }
+            else
+            {
+                return $"PortNum=COM{portNum};BaudRate={baudRate};DataBits={dataBits};Parity={_parity};StopBits={stopBits}";
+            }
+
+            #endregion
+        }
         #endregion
 
 
@@ -129,6 +178,9 @@ namespace HFM
                 case 4:
                     GetMainProferenceData();
                     break;
+                case 5:
+                    GetPortConfiguration();
+                    break;
                 default:
                     MessageBox.Show("选择有误，请重新选择");
                     break;
@@ -158,22 +210,16 @@ namespace HFM
             #endregion
 
             #region 工厂参数
+            //平滑因子
             TxtSmoothingFactor.Text = factoryParameter.SmoothingFactor.ToString();
+            //仪器编号
             TxtInstrumentNum.Text = factoryParameter.InstrumentNum.ToString();
+            //软件名称
             TxtSoftName.Text = factoryParameter.SoftName;
-            TxtPortNumber.Text = factoryParameter.PortNumber;
-
-            string[] k = factoryParameter.IpAddress.Split('.');//分割地址
-            TxtIPAddressOne.Text = k[0];
-            TxtIPAddressTwo.Text = k[1];
-            TxtIPAddressThree.Text = k[2];
-            TxtIPAddressFour.Text = k[3];
-
-            TxtPortNumber.Text = factoryParameter.PortNumber;
-            ChkIsConnectedAuto.Checked = factoryParameter.IsConnectedAuto;
+            //探测类型
             CmbUnclideType.Text = factoryParameter.MeasureType;
-            TxtPortNumber.Text = factoryParameter.PortNumber;
-            TxtDeviceAddress.Text = factoryParameter.DeviceAddress;
+
+
             #endregion
 
             #region 探测面积
@@ -587,8 +633,49 @@ namespace HFM
             //}
 
         }
-       
+        /// <summary>
+        /// 获得端口配置参数(数据库,配置文件)
+        /// </summary>
+        private void GetPortConfiguration()
+        {
+            #region 网络配置
+            //查询数据库工厂参数(网络配置信息在工厂参数中)
+            factoryParameter.GetParameter();
+            //IP地址
+            string[] k = factoryParameter.IpAddress.Split('.');//分割地址
+            TxtIPAddressOne.Text = k[0];
+            TxtIPAddressTwo.Text = k[1];
+            TxtIPAddressThree.Text = k[2];
+            TxtIPAddressFour.Text = k[3];
+            //通信端口
+            TxtPortNumber.Text = factoryParameter.PortNumber;
+            //是否自动连接
+            ChkIsConnectedAuto.Checked = factoryParameter.IsConnectedAuto;
+            //设备地址
+            TxtDeviceAddress.Text = factoryParameter.DeviceAddress;
+
+            #endregion
+
+            #region 端口配置
+            CommPort commPort = new CommPort();
+            commPort.GetCommPortSet("commportSet");
+            TxtcommportSetPortNum.Text = commPort.PortNum.ToString();
+            TxtcommportSetBaudRate.Text = commPort.BaudRate.ToString();
+            TxtcommportSetDataBits.Text = commPort.ByteSize.ToString();
+            TxtcommportSetStopBits.Text= commPort.StopBits.ToString();
+            TxtcommportSetParity.Text = commPort.Parity.ToString();
+            commPort.GetCommPortSet("commportSetOfReport");
+            TxtcommportSetOfReportPortNum.Text = commPort.PortNum.ToString();
+            TxtcommportSetOfReportBaudRate.Text = commPort.BaudRate.ToString();
+            TxtcommportSetOfReportDataBits.Text = commPort.ByteSize.ToString();
+            TxtcommportSetOfReportStopBits.Text = commPort.StopBits.ToString();
+            TxtcommportSetOfReportParity.Text = commPort.Parity.ToString();
+
+
+            #endregion
+        }
         #endregion
+        
 
         #region 串口通信
         /// <summary>
@@ -918,16 +1005,13 @@ namespace HFM
             #endregion
 
             #region 工厂参数
-            FactoryParameter factoryParameterBtn = new FactoryParameter();//获得仪器设备信息参数
+            FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
             factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
             factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
             factoryParameterBtn.SoftName = TxtSoftName.Text;
-            factoryParameterBtn.PortNumber = TxtPortNumber.Text;
-            factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+            
             factoryParameterBtn.MeasureType = CmbUnclideType.Text;
-            factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
-                                         + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
-            factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
+            
             #endregion
 
             #region 设备配置
@@ -1540,8 +1624,90 @@ namespace HFM
 
         #endregion
 
-       #endregion
-        
+        #region 端口配置
+        /// <summary>
+        /// 端口配置确定按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPorSave_Click(object sender, EventArgs e)
+        {
+            string _commportSetString = StringComport(0, TxtcommportSetPortNum.Text, TxtcommportSetBaudRate.Text,
+                TxtcommportSetDataBits.Text, TxtcommportSetStopBits.Text, TxtcommportSetParity.Text);
+            string _commportSetOfReportSetString = StringComport(1, TxtcommportSetOfReportPortNum.Text, TxtcommportSetOfReportBaudRate.Text,
+                TxtcommportSetOfReportDataBits.Text, TxtcommportSetOfReportStopBits.Text, TxtcommportSetOfReportParity.Text);
+            Configuration config =
+                ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["commportSet"].Value = _commportSetString;
+            config.AppSettings.Settings["commportSetOfReport"].Value = _commportSetOfReportSetString;
+            //保存
+            config.Save();
+
+
+            //网络保存
+            FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
+            //IP地址
+            factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
+                                            + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
+            //设备地址
+            factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
+            //通信端口
+            factoryParameterBtn.PortNumber = TxtPortNumber.Text;
+            //是否自动连接
+            factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+            factoryParameterBtn.SetParameter(factoryParameterBtn);
+            if (_isEnglish)
+            {
+                if (MessageBox.Show("Restart the program to apply the new configuration!", "Reminder", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    Application.Restart();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("重新启动程序以应用新配置！", "提醒", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    Application.Restart();
+                }
+            }
+
+        }
+        /// <summary>
+        /// 端口配置恢复配置按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPorRestoreDefault_Click(object sender, EventArgs e)
+        {
+            TxtcommportSetPortNum.Text = "1";
+            TxtcommportSetBaudRate.Text = "115200";
+            TxtcommportSetDataBits.Text = "8";
+            TxtcommportSetStopBits.Text = "1";
+            TxtcommportSetParity.Text = "0";
+            
+            TxtcommportSetOfReportPortNum.Text = "3";
+            TxtcommportSetOfReportBaudRate.Text = "115200";
+            TxtcommportSetOfReportDataBits.Text = "8";
+            TxtcommportSetOfReportStopBits.Text = "1";
+            TxtcommportSetOfReportParity.Text = "0";
+            //TxtcommportSet.Text = "PortNum=COM1;BaudRate=115200;DataBits=8;Parity=无;StopBits=1";
+            //TxtcommportSetOfReport.Text = "PortNum=COM1;BaudRate=115200;DataBits=8;Parit=无;StopBits=1;IsEnabled=false";
+        }
+        /// <summary>
+        /// 端口配置取消按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            GetPortConfiguration();
+        }
+
+
+        #endregion
+
+        #endregion
+
         #region 数字键盘
         #region alpha,beta,道盒参数标签页Dgv,数字键盘
         /// <summary>
@@ -1751,10 +1917,15 @@ namespace HFM
         #endregion
 
         #endregion
-
+        /// <summary>
+        /// 窗口关闭事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmPreference_FormClosed(object sender, FormClosedEventArgs e)
         {
             _commPort.Close();
         }
+        
     }
 }
