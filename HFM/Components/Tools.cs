@@ -406,5 +406,86 @@ namespace HFM.Components
         public static bool FormBottomPortStatus = false;
 
         #endregion
+
+        #region 测量单位换算
+        /// <summary>
+        /// 测量数据单位换算，将cps单位数据data换算为目标单位后返回
+        /// </summary>
+        /// <param name="data">需换算的测量数据值(cps)</param>
+        /// <param name="unit">要换算的目标单位</param>
+        /// <param name="efficiency">探测效率</param>
+        /// <param name="proberArea">探测面积</param>
+        /// <returns>目标单位值</returns>
+        public static float UnitConvertCPSTo(float data, string unit, float efficiency, float proberArea)
+        {
+            float convertedData = 0;
+            //将data（单位为cps）换算为目标单位unit后返回
+            switch (unit)
+            {
+                case "cps":
+                    convertedData = data;
+                    break;
+                case "cpm": //最终测量计数平均值(cpm) = 60 * 计算平均值(cps)
+                    convertedData = 60 * data;
+                    break;
+                case "Bq"://最终测量计数平均值(Bq) = 200 * 计算平均值(cps) /探测效率
+                    convertedData = 200 * data / efficiency;
+                    break;
+                case "Bq/cm2"://最终测量计数平均值(Bq/cm2) = 200 * 计算平均值(cps) /探测效率/该通道测量面积
+                    convertedData = 200 * data / efficiency / proberArea;
+                    break;
+                case "KBq/cm2"://KBq/cm2:最终测量计数平均值(KBq/cm2) = 200 * 计算平均值(cps) /探测效率/ 该通道测量面积/1000
+                    convertedData = 200 * data / efficiency / proberArea / 1000;
+                    break;
+                case "dpm"://dpm:最终测量计数平均值(dpm) = 12000 * 计算平均值(cps)/探测效率
+                    convertedData = 12000 * data / efficiency;
+                    break;
+                case "nCi"://nCi : 最终测量计数平均值(nCi) = 200 * 计算平均值(cps)/探测效率*0.027
+                    convertedData = Convert.ToSingle(200 * data / efficiency * 0.027);
+                    break;
+            }
+            return convertedData;
+        }
+        /// <summary>
+        /// 测量数据单位换算，将其它单位(unit)数据data换算为cps单位后返回
+        /// </summary>
+        /// <param name="data">需转换的数据</param>
+        /// <param name="unit">需转换的数据单位</param>
+        /// <param name="efficiency">探测效率</param>
+        /// <param name="proberArea">探测面积</param>
+        /// <returns></returns>
+        public static float UnitConvertToCPS(float data, string unit, float efficiency, float proberArea)
+        {
+            float convertedData = 0;
+            //将data（单位为unit）换算为目标单位cps后返回
+            switch (unit)
+            {
+                case "cps":
+                    convertedData = data;
+                    break;
+                case "cpm": //最终测量计数平均值(cpm) = 60 * 计算平均值(cps)
+                    convertedData = data / 60;
+                    break;
+                case "Bq"://最终测量计数平均值(Bq) = 200 * 计算平均值(cps) /探测效率
+                    convertedData = data * efficiency / 200;
+                    break;
+                case "Bq/cm2"://最终测量计数平均值(Bq/cm2) = 200 * 计算平均值(cps) /探测效率/该通道测量面积
+                    convertedData = 200 * data / efficiency / proberArea;
+                    break;
+                case "KBq/cm2"://KBq/cm2:最终测量计数平均值(KBq/cm2) = 200 * 计算平均值(cps) /探测效率/ 该通道测量面积/1000
+                    convertedData = data * efficiency * proberArea * 1000 / 200;
+                    break;
+                case "dpm"://dpm:最终测量计数平均值(dpm) = 12000 * 计算平均值(cps)/探测效率
+                    convertedData = data * efficiency / 12000;
+                    break;
+                case "nCi"://nCi : 最终测量计数平均值(nCi) = 200 * 计算平均值(cps)/探测效率*0.027
+                    //convertedData = Convert.ToSingle(200 * data / efficiency * 0.027);
+                    convertedData = Convert.ToSingle(data * efficiency / 0.027 / 200);
+                    break;
+            }
+
+            return convertedData;
+        } 
+        #endregion
     }
 }

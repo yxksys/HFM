@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HFM.Components;
+using System.Threading;
+using System.Globalization;
 
 namespace HFM
 {
@@ -17,7 +19,20 @@ namespace HFM
         {
             InitializeComponent();
         }
-
+        public FrmClothes(bool isEnglish)
+        {
+            if(isEnglish)
+            {
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+                Tools.ApplyLanguageResource(this);
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
+                Tools.ApplyLanguageResource(this);
+            }                        
+            InitializeComponent();
+        }
         private void FrmClothes_Load(object sender, EventArgs e)
         {
             loadingCircle.OuterCircleRadius = 20;

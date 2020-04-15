@@ -163,6 +163,9 @@
     <EmbeddedResource Include="FrmCalibration.resx">
       <DependentUpon>FrmCalibration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmClothes.en.resx">
+      <DependentUpon>FrmClothes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEnterPassword.resx">
       <DependentUpon>FrmEnterPassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +224,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="bin\Debug\Audio\ReadMe（名称对应内容）.text" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -253,11 +257,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <Content Include="Audio\Chinese_Background_measure.wav" />
+    <Content Include="Audio\Chinese_frisker_In_place_measure_again.wav" />
+    <Content Include="Audio\Chinese_HB_Measured_.wav" />
+    <Content Include="Audio\Chinese_NoContamination_please_frisker.wav" />
     <Content Include="Audio\Chinese_NoContamination_please_leave.wav" />
     <Content Include="Audio\Chinese_One.wav" />
+    <Content Include="Audio\Chinese_Please_Flip_Palm_for_Measuring.wav" />
     <Content Include="Audio\Chinese_Ten.wav" />
     <Content Include="Audio\Chinese_Two.wav" />
+    <Content Include="Audio\English_No Contamination_please_leave.wav" />
     <Content Include="Audio\English_NoContamination_please_frisker.wav" />
+    <Content Include="Audio\English_please_flip_palm_for_measuring.wav" />
     <Content Include="Audio\English_Ten.wav" />
     <Content Include="Audio\English_One.wav" />
     <Content Include="Audio\English_Two.wav" />
@@ -307,7 +318,134 @@
     <Content Include="Audio\Chinese_frisker_In_place.wav" />
     <Content Include="Audio\Chinese_Clothing_contaminated.wav" />
     <Content Include="Audio\Chinese_Decontaminate_please.wav" />
-    <None Include="bin\Debug\Images\welcome.bmp" />
+    <Content Include="bin\Debug\Images\welcome.bmp" />
+    <Content Include="bin\Debug\Audio\1.wav" />
+    <Content Include="bin\Debug\Audio\10.wav" />
+    <Content Include="bin\Debug\Audio\2.wav" />
+    <Content Include="bin\Debug\Audio\20.wav" />
+    <Content Include="bin\Debug\Audio\21.wav" />
+    <Content Include="bin\Debug\Audio\22.wav" />
+    <Content Include="bin\Debug\Audio\23.wav" />
+    <Content Include="bin\Debug\Audio\24.wav" />
+    <Content Include="bin\Debug\Audio\25.wav" />
+    <Content Include="bin\Debug\Audio\26.wav" />
+    <Content Include="bin\Debug\Audio\27.wav" />
+    <Content Include="bin\Debug\Audio\28.wav" />
+    <Content Include="bin\Debug\Audio\29.wav" />
+    <Content Include="bin\Debug\Audio\3.wav" />
+    <Content Include="bin\Debug\Audio\4.wav" />
+    <Content Include="bin\Debug\Audio\5.wav" />
+    <Content Include="bin\Debug\Audio\6.wav" />
+    <Content Include="bin\Debug\Audio\7.wav" />
+    <Content Include="bin\Debug\Audio\8.wav" />
+    <Content Include="bin\Debug\Audio\9.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Background_abnomal.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Background_measure.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Clothing_contaminated.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Decontaminate_please.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Eight.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_fault.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Five.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Four.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_frisker_In_place.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_frisker_In_place_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Left_hand_in_place_please_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Left_hand_moved_please_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Nine.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_No Contamination_please_frisker.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_No Contamination_please_leave.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_NoContamination_please_frisker.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_NoContamination_please_leave.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_One.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Please_Flip_Palm_for_Measuring.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Ready.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_right_hand_in_place_please_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_right_hand_moved_please_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Self-checking_fault.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Self_checking.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Seven.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Six.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Start_counting.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Ten.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Three.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Two.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_Updating_background.wav" />
+    <Content Include="bin\Debug\Audio\dida1.wav" />
+    <Content Include="bin\Debug\Audio\dida2.wav" />
+    <Content Include="bin\Debug\Audio\English_Background_abnomal.wav" />
+    <Content Include="bin\Debug\Audio\English_Clothing_contaminated.wav" />
+    <Content Include="bin\Debug\Audio\English_Decontaminate_please.wav" />
+    <Content Include="bin\Debug\Audio\English_Eight.wav" />
+    <Content Include="bin\Debug\Audio\English_fault.wav" />
+    <Content Include="bin\Debug\Audio\English_Five.wav" />
+    <Content Include="bin\Debug\Audio\English_Four.wav" />
+    <Content Include="bin\Debug\Audio\English_frisker_In_place.wav" />
+    <Content Include="bin\Debug\Audio\English_Left_hand_in_place_please_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\English_Left_hand_moved_please_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\English_Nine.wav" />
+    <Content Include="bin\Debug\Audio\English_No Contamination_please_leave.wav" />
+    <Content Include="bin\Debug\Audio\English_NoContamination_please_frisker.wav" />
+    <Content Include="bin\Debug\Audio\English_One.wav" />
+    <Content Include="bin\Debug\Audio\English_Please_Flip_Palm_for_Measuring.wav" />
+    <Content Include="bin\Debug\Audio\English_Ready.wav" />
+    <Content Include="bin\Debug\Audio\English_right_hand_in_place_please_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\English_right_hand_moved_please_measure_again.wav" />
+    <Content Include="bin\Debug\Audio\English_Self-checking_fault.wav" />
+    <Content Include="bin\Debug\Audio\English_Self_checking.wav" />
+    <Content Include="bin\Debug\Audio\English_Seven.wav" />
+    <Content Include="bin\Debug\Audio\English_Six.wav" />
+    <Content Include="bin\Debug\Audio\English_Start_counting.wav" />
+    <Content Include="bin\Debug\Audio\English_Ten.wav" />
+    <Content Include="bin\Debug\Audio\English_Three.wav" />
+    <Content Include="bin\Debug\Audio\English_Two.wav" />
+    <Content Include="bin\Debug\Audio\English_Updating_background.wav" />
+    <Content Include="bin\Debug\Audio\E仪器正常.wav" />
+    <Content Include="bin\Debug\Audio\E仪器自检.wav" />
+    <Content Include="bin\Debug\Audio\E右手移动.wav" />
+    <Content Include="bin\Debug\Audio\E右手红外到位.wav" />
+    <Content Include="bin\Debug\Audio\E左手移动.wav" />
+    <Content Include="bin\Debug\Audio\E左手红外到位.wav" />
+    <Content Include="bin\Debug\Audio\E开始测量.wav" />
+    <Content Include="bin\Debug\Audio\E故障.wav" />
+    <Content Include="bin\Debug\Audio\E本底异常.wav" />
+    <Content Include="bin\Debug\Audio\E本底测量.wav" />
+    <Content Include="bin\Debug\Audio\E没有污染.wav" />
+    <Content Include="bin\Debug\Audio\E自检故障.wav" />
+    <Content Include="bin\Debug\Audio\E衣物探头到位.wav" />
+    <Content Include="bin\Debug\Audio\E衣物探头污染.wav" />
+    <Content Include="bin\Debug\Audio\仪器正常.wav" />
+    <Content Include="bin\Debug\Audio\仪器自检.wav" />
+    <Content Include="bin\Debug\Audio\右手移动.wav" />
+    <Content Include="bin\Debug\Audio\右手红外到位.wav" />
+    <Content Include="bin\Debug\Audio\左手移动.wav" />
+    <Content Include="bin\Debug\Audio\左手红外到位.wav" />
+    <Content Include="bin\Debug\Audio\开始测量.wav" />
+    <Content Include="bin\Debug\Audio\故障.wav" />
+    <Content Include="bin\Debug\Audio\新建文本文档.txt" />
+    <Content Include="bin\Debug\Audio\本底异常.wav" />
+    <Content Include="bin\Debug\Audio\没有污染.wav" />
+    <Content Include="bin\Debug\Audio\自检故障.wav" />
+    <Content Include="bin\Debug\Audio\衣物探头到位.wav" />
+    <Content Include="bin\Debug\Audio\衣物探头污染.wav" />
+    <Content Include="bin\Debug\Audio\衣物没有污染.wav" />
+    <Content Include="bin\Debug\Audio\被测人员污染.wav" />
+    <Content Include="bin\Debug\CalibrationLog\20200312T210937.txt" />
+    <Content Include="bin\Debug\CalibrationLog\20200312T211832.txt" />
+    <Content Include="bin\Debug\en\HFM.resources.dll" />
+    <Content Include="bin\Debug\ErrorLog\20200412T211150.txt" />
+    <Content Include="bin\Debug\HFM.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Debug\Images\app.ico" />
+    <Content Include="bin\Debug\Images\clothes.png" />
+    <Content Include="bin\Debug\Images\LF.png" />
+    <Content Include="bin\Debug\Images\LHB.png" />
+    <Content Include="bin\Debug\Images\LHP.png" />
+    <Content Include="bin\Debug\Images\logo.ico" />
+    <Content Include="bin\Debug\Images\logo.png" />
+    <Content Include="bin\Debug\Images\RF.png" />
+    <Content Include="bin\Debug\Images\RHB.png" />
+    <Content Include="bin\Debug\Images\RHP.png" />
     <Content Include="Images\app.ico" />
     <Content Include="Images\clothes.png" />
     <Content Include="Images\LF.png" />

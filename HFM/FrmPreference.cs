@@ -278,6 +278,8 @@ namespace HFM
 
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得α参数
             probeParameters = probeParameter.GetParameter("α");
+            //列表按id排序
+            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
 
             #region 核素选择
 
@@ -318,25 +320,44 @@ namespace HFM
             }
 
             #region α参数
-            //清除所有行(因为每次切换页面都会增加相应的行)
-            for (int i = 0; i < DgvAlphaSet.Rows.Count; i++)
-            {
-                DgvAlphaSet.Rows.Remove(DgvAlphaSet.Rows[i]);
-                i--;
-            }
             
+            DgvAlphaSet.Rows.Clear();
+            if (_isEnglish == true)
+            {
+                //污染警报标题加测量单位名称
+                DgvBetaSet.Columns[3].HeaderText = $"Alarm Threshold({system.MeasurementUnit})";
+                //高阶警报标题加测量单位名称
+                DgvBetaSet.Columns[4].HeaderText = $"High Level Alarm({system.MeasurementUnit})";
+            }
+            else
+            {
+                //污染警报标题加测量单位名称
+                DgvAlphaSet.Columns[3].HeaderText = $"污染警报({system.MeasurementUnit})";
+                //高阶警报标题加测量单位名称
+                DgvAlphaSet.Columns[4].HeaderText = $"高阶警报({system.MeasurementUnit})";
+            }
             //选出启用的设备
             for (int i = 0; i < probeParameters.Count; i++)
             {
                 //设备启用且核素类型为α并除去衣物参数
-                if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "α" &&probeParameters[i].ProbeChannel.ChannelID != 7)
+                if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "α" && probeParameters[i].ProbeChannel.ChannelID != 7)
                 {
                     int index = this.DgvAlphaSet.Rows.Add();
-                    DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    if (_isEnglish)
+                    {
+                        DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName_English;
+                    }
+                    else
+                    {
+                        DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    }
                     DgvAlphaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
                     DgvAlphaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
-                    DgvAlphaSet.Rows[index].Cells[3].Value = probeParameters[i].Alarm_1;
-                    DgvAlphaSet.Rows[index].Cells[4].Value = probeParameters[i].Alarm_2;
+
+                    //污染警报根据系统测量参数中设定的测量单位显示数值
+                    DgvAlphaSet.Rows[index].Cells[3].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
+                    //高阶警报根据系统测量参数中设定的测量单位显示数值
+                    DgvAlphaSet.Rows[index].Cells[4].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
                     DgvAlphaSet.Rows[index].Cells[5].Value = probeParameters[i].Efficiency;
                 }
                 //设备未启用(暂时不显示)
@@ -344,6 +365,7 @@ namespace HFM
                 {
                 }
             }
+            
             #endregion
 
         }
@@ -354,6 +376,8 @@ namespace HFM
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得β参数
             probeParameters = probeParameter.GetParameter("β");
+            //列表按id排序
+            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
 
             #region 核素选择
 
@@ -401,14 +425,23 @@ namespace HFM
 
 
             #region β参数
-
-            //清除所有行(因为每次切换页面都会增加相应的行)
-            // for (int i = 0; i < DgvBetaSet.Rows.Count; i++)
-            // {
-            //     DgvBetaSet.Rows.Remove(DgvBetaSet.Rows[i]);
-            //     i--;
-            // }
+            //清空列表
             DgvBetaSet.Rows.Clear();
+            if (_isEnglish == true)
+            {
+                //污染警报标题加测量单位名称
+                DgvBetaSet.Columns[3].HeaderText = $"Alarm Threshold({system.MeasurementUnit})";
+                //高阶警报标题加测量单位名称
+                DgvBetaSet.Columns[4].HeaderText = $"High Level Alarm({system.MeasurementUnit})";
+            }
+            else
+            {
+                //污染警报标题加测量单位名称
+                DgvBetaSet.Columns[3].HeaderText = $"污染警报({system.MeasurementUnit})";
+                //高阶警报标题加测量单位名称
+                DgvBetaSet.Columns[4].HeaderText = $"高阶警报({system.MeasurementUnit})";
+            }
+            
 
             //选出启用的设备
             for (int i = 0; i < probeParameters.Count; i++)
@@ -417,21 +450,27 @@ namespace HFM
                 if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "β" && probeParameters[i].ProbeChannel.ChannelID != 7)
                 {
                     int index = this.DgvBetaSet.Rows.Add();
-                    DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    if (_isEnglish)
+                    {
+                        DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName_English;
+                    }
+                    else
+                    {
+                        DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
+                    }
                     DgvBetaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
                     DgvBetaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
-                    DgvBetaSet.Rows[index].Cells[3].Value = probeParameters[i].Alarm_1;
-                    DgvBetaSet.Rows[index].Cells[4].Value = probeParameters[i].Alarm_2;
+                    DgvBetaSet.Rows[index].Cells[3].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
+                    DgvBetaSet.Rows[index].Cells[4].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
                     DgvBetaSet.Rows[index].Cells[5].Value = probeParameters[i].Efficiency;
                 }
                 //设备未启用(暂时不显示)
                 else
                 {
                 }
-
-                #endregion
-            
             }
+            #endregion
+
         }
         /// <summary>
         /// 获得衣物参数
@@ -439,7 +478,7 @@ namespace HFM
         private void GetClothesData()
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得C参数
-            probeParameters = probeParameter.GetParameter();
+            probeParameters = probeParameter.GetParameter("c");
 
             #region 核素选择
 
@@ -484,25 +523,31 @@ namespace HFM
             for (int i = 0; i < efficiency.Count; i++)
             {
                 //根据channelID来匹配
-                for (int j = 0; j < probeParameters.Count; j++)
+
+                if (probeParameters[0].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
                 {
-                    if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
-                    {
-                        probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
-                        probeParameter.SetParameter(probeParameters[j]);//保存到数据库
-                        probeParameter = probeParameters[j];
-                    }
+                    probeParameters[0].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
+                    probeParameter.SetParameter(probeParameters[0]);//保存到数据库
+                    probeParameter = probeParameters[0];
                 }
+
             }
 
             #region 衣物探头
 
+            //system = system.GetParameter();//获得衣物离线自检时间
+            //TxtClothesHBackground.Text = probeParameter.HBackground.ToString();
+            //TxtClothesLBackground.Text = probeParameter.LBackground.ToString();
+            //TxtClothesAlarm_1.Text = probeParameter.Alarm_1.ToString();
+            //TxtClothesAlarm_2.Text = probeParameter.Alarm_2.ToString();
+            //TxtClothesEfficiency.Text = probeParameter.Efficiency.ToString();
+            //TxtClothOfflineTime.Text = system.ClothOfflineTime.ToString();
             system = system.GetParameter();//获得衣物离线自检时间
-            TxtClothesHBackground.Text = probeParameter.HBackground.ToString();
-            TxtClothesLBackground.Text = probeParameter.LBackground.ToString();
-            TxtClothesAlarm_1.Text = probeParameter.Alarm_1.ToString();
-            TxtClothesAlarm_2.Text = probeParameter.Alarm_2.ToString();
-            TxtClothesEfficiency.Text = probeParameter.Efficiency.ToString();
+            TxtClothesHBackground.Text = probeParameters[0].HBackground.ToString();
+            TxtClothesLBackground.Text = probeParameters[0].LBackground.ToString();
+            TxtClothesAlarm_1.Text = probeParameters[0].Alarm_1.ToString();
+            TxtClothesAlarm_2.Text = probeParameters[0].Alarm_2.ToString();
+            TxtClothesEfficiency.Text = probeParameters[0].Efficiency.ToString();
             TxtClothOfflineTime.Text = system.ClothOfflineTime.ToString();
 
             #endregion
@@ -1022,6 +1067,8 @@ namespace HFM
             IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
             for (int i = 0; i < DgvAlphaSet.RowCount; i++)
             {
+                float alarm_1= Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);//污染警报
+                float alarm_2 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[4].Value);//高阶警报
                 ProbeParameter p = new ProbeParameter();
                 HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
                 efficiency.Channel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
@@ -1035,8 +1082,12 @@ namespace HFM
                 p.ProbeType = "闪烁体";
                 p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
                 p.LBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[2].Value);
-                p.Alarm_1 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);
-                p.Alarm_2 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[4].Value);
+                //按测量单位转换成cps
+                p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
+                    p.ProbeChannel.ProbeArea);
+                //按测量单位转换成cps
+                p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
+                    p.ProbeChannel.ProbeArea);
                 p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
                 probeParameters.Add(p);
             }
@@ -1118,6 +1169,8 @@ namespace HFM
             IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
             for (int i = 0; i < DgvBetaSet.RowCount; i++)
             {
+                float alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);//污染警报
+                float alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);//高阶警报
                 ProbeParameter p = new ProbeParameter();
                 HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
                 efficiency.Channel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
@@ -1131,8 +1184,12 @@ namespace HFM
                 p.ProbeType = "闪烁体";
                 p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
                 p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
-                p.Alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);
-                p.Alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);
+                //按测量单位转换成cps
+                p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
+                    p.ProbeChannel.ProbeArea);
+                //按测量单位转换成cps
+                p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
+                    p.ProbeChannel.ProbeArea);
                 p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
                 probeParameters.Add(p);
             }
@@ -1256,7 +1313,7 @@ namespace HFM
             #endregion
 
             #region 更新数据库
-            if (new Nuclide().SetClothesNuclideUser(nuclidename) && new Components.EfficiencyParameter().SetParameter(effciency) && new ProbeParameter().SetParameter(probeParameter))
+            if (nuclide.SetClothesNuclideUser(nuclidename) && efficiencyParameter.SetParameter(effciency) && probeParameter.SetParameter(probeParameter))
             {
                 MessageBox.Show("更新成功");
             }
