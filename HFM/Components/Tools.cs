@@ -467,19 +467,19 @@ namespace HFM.Components
                     convertedData = data / 60;
                     break;
                 case "Bq"://最终测量计数平均值(Bq) = 200 * 计算平均值(cps) /探测效率
-                    convertedData = data * efficiency / 200;
+                    convertedData = data / efficiency * 200;
                     break;
                 case "Bq/cm2"://最终测量计数平均值(Bq/cm2) = 200 * 计算平均值(cps) /探测效率/该通道测量面积
-                    convertedData = 200 * data / efficiency / proberArea;
+                    //convertedData = 200 * data / efficiency / proberArea;
+                    convertedData = proberArea* efficiency* data/ 200;
                     break;
                 case "KBq/cm2"://KBq/cm2:最终测量计数平均值(KBq/cm2) = 200 * 计算平均值(cps) /探测效率/ 该通道测量面积/1000
-                    convertedData = data * efficiency * proberArea * 1000 / 200;
+                    convertedData = 1000 * proberArea * efficiency * data / 200;
                     break;
                 case "dpm"://dpm:最终测量计数平均值(dpm) = 12000 * 计算平均值(cps)/探测效率
-                    convertedData = data * efficiency / 12000;
+                    convertedData = efficiency * data / 12000;
                     break;
                 case "nCi"://nCi : 最终测量计数平均值(nCi) = 200 * 计算平均值(cps)/探测效率*0.027
-                    //convertedData = Convert.ToSingle(200 * data / efficiency * 0.027);
                     convertedData = Convert.ToSingle(data * efficiency / 0.027 / 200);
                     break;
             }
