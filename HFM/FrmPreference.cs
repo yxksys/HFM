@@ -478,7 +478,7 @@ namespace HFM
         private void GetClothesData()
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得C参数
-            probeParameters = probeParameter.GetParameter();
+            probeParameters = probeParameter.GetParameter("c");
 
             #region 核素选择
 
@@ -523,25 +523,31 @@ namespace HFM
             for (int i = 0; i < efficiency.Count; i++)
             {
                 //根据channelID来匹配
-                for (int j = 0; j < probeParameters.Count; j++)
+
+                if (probeParameters[0].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
                 {
-                    if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
-                    {
-                        probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
-                        probeParameter.SetParameter(probeParameters[j]);//保存到数据库
-                        probeParameter = probeParameters[j];
-                    }
+                    probeParameters[0].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
+                    probeParameter.SetParameter(probeParameters[0]);//保存到数据库
+                    probeParameter = probeParameters[0];
                 }
+
             }
 
             #region 衣物探头
 
+            //system = system.GetParameter();//获得衣物离线自检时间
+            //TxtClothesHBackground.Text = probeParameter.HBackground.ToString();
+            //TxtClothesLBackground.Text = probeParameter.LBackground.ToString();
+            //TxtClothesAlarm_1.Text = probeParameter.Alarm_1.ToString();
+            //TxtClothesAlarm_2.Text = probeParameter.Alarm_2.ToString();
+            //TxtClothesEfficiency.Text = probeParameter.Efficiency.ToString();
+            //TxtClothOfflineTime.Text = system.ClothOfflineTime.ToString();
             system = system.GetParameter();//获得衣物离线自检时间
-            TxtClothesHBackground.Text = probeParameter.HBackground.ToString();
-            TxtClothesLBackground.Text = probeParameter.LBackground.ToString();
-            TxtClothesAlarm_1.Text = probeParameter.Alarm_1.ToString();
-            TxtClothesAlarm_2.Text = probeParameter.Alarm_2.ToString();
-            TxtClothesEfficiency.Text = probeParameter.Efficiency.ToString();
+            TxtClothesHBackground.Text = probeParameters[0].HBackground.ToString();
+            TxtClothesLBackground.Text = probeParameters[0].LBackground.ToString();
+            TxtClothesAlarm_1.Text = probeParameters[0].Alarm_1.ToString();
+            TxtClothesAlarm_2.Text = probeParameters[0].Alarm_2.ToString();
+            TxtClothesEfficiency.Text = probeParameters[0].Efficiency.ToString();
             TxtClothOfflineTime.Text = system.ClothOfflineTime.ToString();
 
             #endregion
@@ -1307,7 +1313,7 @@ namespace HFM
             #endregion
 
             #region 更新数据库
-            if (new Nuclide().SetClothesNuclideUser(nuclidename) && new Components.EfficiencyParameter().SetParameter(effciency) && new ProbeParameter().SetParameter(probeParameter))
+            if (nuclide.SetClothesNuclideUser(nuclidename) && efficiencyParameter.SetParameter(effciency) && probeParameter.SetParameter(probeParameter))
             {
                 MessageBox.Show("更新成功");
             }
