@@ -874,7 +874,7 @@ namespace HFM
                         #endregion
                     }
                     //对衣物探头测量数据进行平滑处理
-                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Alpha);
+                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);
                     if (platformState == PlatformState.BackGrouneMeasure || platformState == PlatformState.Measuring)
                     {
                         //将当前平滑处理后的检测值作为本底值

@@ -381,6 +381,44 @@ namespace HFM.Components
             return this;
         }
 
+
+        public string[] GetCommPortSetForParameter(string key)
+        {
+            string portSetString = System.Configuration.ConfigurationManager.AppSettings[key].ToString();
+            string[] portSetArray = portSetString.Split(';');
+            HexCon hexCon = new HexCon();
+            for (int i = 0; i < portSetArray.Length; i++)
+            {
+                if (portSetArray[i].Length != 0)
+                {
+                    switch (portSetArray[i].Split('=')[0].ToString())
+                    {
+                        case "PortNum":
+                            portSetArray[i] = portSetArray[i].Split('=')[1].ToString();
+                            break;
+                        case "BaudRate":
+                            portSetArray[i] = portSetArray[i].Split('=')[1].ToString();
+                            break;
+                        case "DataBits":
+                            portSetArray[i] = portSetArray[i].Split('=')[1].ToString();
+                            break;
+                        case "Parity":
+                            portSetArray[i] = portSetArray[i].Split('=')[1].ToString();
+                            break;
+                        case "StopBits":
+                            portSetArray[i] = portSetArray[i].Split('=')[1].ToString();
+                            break;
+                        case "IsEnabled":
+                            portSetArray[i] = portSetArray[i].Split('=')[1].ToString();
+                            break;
+                    }
+                   
+                }
+            }
+            this.ReadTimeout = 100;
+            return portSetArray;
+        }
+
         #endregion
 
         #region 清空串口缓冲区数据

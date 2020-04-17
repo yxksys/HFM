@@ -4074,11 +4074,74 @@
   <data name="&gt;&gt;工厂参数.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="CmbIsEnabled.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="CmbIsEnabled.Items" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="CmbIsEnabled.Items1" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="CmbIsEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>273, 146</value>
+  </data>
+  <data name="CmbIsEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 24</value>
+  </data>
+  <data name="CmbIsEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="CmbIsEnabled.Text" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="&gt;&gt;CmbIsEnabled.Name" xml:space="preserve">
+    <value>CmbIsEnabled</value>
+  </data>
+  <data name="&gt;&gt;CmbIsEnabled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CmbIsEnabled.Parent" xml:space="preserve">
+    <value>GrpcommportSetOfReport</value>
+  </data>
+  <data name="&gt;&gt;CmbIsEnabled.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 149</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>是否启用</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>GrpcommportSetOfReport</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="TxtcommportSetOfReportParity.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
   <data name="TxtcommportSetOfReportParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 94</value>
+    <value>273, 94</value>
   </data>
   <data name="TxtcommportSetOfReportParity.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 26</value>
@@ -4096,13 +4159,13 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;TxtcommportSetOfReportParity.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="TxtcommportSetOfReportStopBits.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
   <data name="TxtcommportSetOfReportStopBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 42</value>
+    <value>273, 40</value>
   </data>
   <data name="TxtcommportSetOfReportStopBits.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 26</value>
@@ -4120,7 +4183,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;TxtcommportSetOfReportStopBits.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="TxtcommportSetOfReportDataBits.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -4144,7 +4207,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;TxtcommportSetOfReportDataBits.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="TxtcommportSetOfReportBaudRate.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -4168,7 +4231,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;TxtcommportSetOfReportBaudRate.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="TxtcommportSetOfReportPortNum.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -4192,7 +4255,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;TxtcommportSetOfReportPortNum.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="LabcommportSetOfReportParity.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -4219,7 +4282,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;LabcommportSetOfReportParity.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -4246,7 +4309,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;LabcommportSetOfReportStopBits.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -4273,7 +4336,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;LabcommportSetOfReportDataBits.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -4300,7 +4363,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;LabcommportSetOfReportBaudRate.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -4327,7 +4390,7 @@
     <value>GrpcommportSetOfReport</value>
   </data>
   <data name="&gt;&gt;LabcommportSetOfReportPortNum.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="GrpcommportSetOfReport.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 15pt, style=Bold</value>

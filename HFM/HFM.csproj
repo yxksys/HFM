@@ -318,6 +318,7 @@
     <Content Include="Audio\Chinese_frisker_In_place.wav" />
     <Content Include="Audio\Chinese_Clothing_contaminated.wav" />
     <Content Include="Audio\Chinese_Decontaminate_please.wav" />
+    <Content Include="bin\Debug\Audio\Chinese_HB_Measured_.wav" />
     <Content Include="bin\Debug\Images\welcome.bmp" />
     <Content Include="bin\Debug\Audio\1.wav" />
     <Content Include="bin\Debug\Audio\10.wav" />

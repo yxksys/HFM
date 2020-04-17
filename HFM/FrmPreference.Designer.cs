@@ -217,6 +217,8 @@
             this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
             this.LblIPAddress = new System.Windows.Forms.Label();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CmbIsEnabled = new System.Windows.Forms.ComboBox();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -1348,6 +1350,8 @@
             // 
             // GrpcommportSetOfReport
             // 
+            this.GrpcommportSetOfReport.Controls.Add(this.CmbIsEnabled);
+            this.GrpcommportSetOfReport.Controls.Add(this.label2);
             this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportParity);
             this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportStopBits);
             this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportDataBits);
@@ -1570,6 +1574,20 @@
             // 
             this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
             this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // CmbIsEnabled
+            // 
+            resources.ApplyResources(this.CmbIsEnabled, "CmbIsEnabled");
+            this.CmbIsEnabled.FormattingEnabled = true;
+            this.CmbIsEnabled.Items.AddRange(new object[] {
+            resources.GetString("CmbIsEnabled.Items"),
+            resources.GetString("CmbIsEnabled.Items1")});
+            this.CmbIsEnabled.Name = "CmbIsEnabled";
             // 
             // FrmPreference
             // 
@@ -1800,5 +1818,7 @@
         private System.Windows.Forms.TextBox TxtcommportSetPortNum;
         private System.Windows.Forms.TextBox TxtcommportSetOfReportParity;
         private System.Windows.Forms.TextBox TxtcommportSetParity;
+        private System.Windows.Forms.ComboBox CmbIsEnabled;
+        private System.Windows.Forms.Label label2;
     }
 }

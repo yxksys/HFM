@@ -82,38 +82,17 @@ namespace HFM
         /// <param name="stopBits">停止位</param>
         /// <param name="parity">校验</param>
         /// <returns></returns>
-        private string StringComport(int comportSet, string portNum, string baudRate, string dataBits, string stopBits, string parity)
+        private string StringComport(int comportSet, string portNum, string baudRate, string dataBits, string stopBits, string parity,string isEnabled)
         {
-            string _parity;
-            switch (parity)
-            {
-                case "0":
-                    _parity = "无";
-                    break;
-                case "1":
-                    _parity = "奇";
-                    break;
-                case "2":
-                    _parity = "偶";
-                    break;
-                case "3":
-                    _parity = "标志";
-                    break;
-                case "4":
-                    _parity = "空格";
-                    break;
-                default:
-                    _parity = "无";
-                    break;
-            }
+            isEnabled=isEnabled == "是" ? "true" : "false";
 
             if (comportSet == 1)
             {
-                return $"PortNum=COM{portNum};BaudRate={baudRate};DataBits={dataBits};Parity={_parity};StopBits={stopBits},IsEnabled=false";
+                return $"PortNum=COM{portNum};BaudRate={baudRate};DataBits={dataBits};Parity={parity};StopBits={stopBits};IsEnabled={isEnabled}";
             }
             else
             {
-                return $"PortNum=COM{portNum};BaudRate={baudRate};DataBits={dataBits};Parity={_parity};StopBits={stopBits}";
+                return $"PortNum=COM{portNum};BaudRate={baudRate};DataBits={dataBits};Parity={parity};StopBits={stopBits}";
             }
 
             #endregion
@@ -658,18 +637,20 @@ namespace HFM
 
             #region 端口配置
             CommPort commPort = new CommPort();
-            commPort.GetCommPortSet("commportSet");
-            TxtcommportSetPortNum.Text = commPort.PortNum.ToString();
-            TxtcommportSetBaudRate.Text = commPort.BaudRate.ToString();
-            TxtcommportSetDataBits.Text = commPort.ByteSize.ToString();
-            TxtcommportSetStopBits.Text= commPort.StopBits.ToString();
-            TxtcommportSetParity.Text = commPort.Parity.ToString();
-            commPort.GetCommPortSet("commportSetOfReport");
-            TxtcommportSetOfReportPortNum.Text = commPort.PortNum.ToString();
-            TxtcommportSetOfReportBaudRate.Text = commPort.BaudRate.ToString();
-            TxtcommportSetOfReportDataBits.Text = commPort.ByteSize.ToString();
-            TxtcommportSetOfReportStopBits.Text = commPort.StopBits.ToString();
-            TxtcommportSetOfReportParity.Text = commPort.Parity.ToString();
+            string[] commportSet=new string[6];
+            commportSet = commPort.GetCommPortSetForParameter("commportSet");
+            TxtcommportSetPortNum.Text = commportSet[0];
+            TxtcommportSetBaudRate.Text = commportSet[1];
+            TxtcommportSetDataBits.Text = commportSet[2];
+            TxtcommportSetStopBits.Text= commportSet[3];
+            TxtcommportSetParity.Text = commportSet[4];
+            commportSet=commPort.GetCommPortSetForParameter("commportSetOfReport");
+            TxtcommportSetOfReportPortNum.Text = commportSet[0];
+            TxtcommportSetOfReportBaudRate.Text = commportSet[1];
+            TxtcommportSetOfReportDataBits.Text = commportSet[2];
+            TxtcommportSetOfReportStopBits.Text = commportSet[3];
+            TxtcommportSetOfReportParity.Text = commportSet[4];
+            CmbIsEnabled.SelectedIndex = commportSet[5]=="true"?0:1;
 
 
             #endregion
@@ -780,7 +761,7 @@ namespace HFM
                             i++;
                         }
                         //道盒5-7通道列表加一个空对象,(3个对象解析会报错,必须四个为一组解析)
-                        _second_setChanelP.Add(new ChannelParameter() { CheckingID = 0, ADCFactor = 0, AlphaThreshold = 0, BetaThreshold = 0, Channel = null, DACFactor = 0, HVFactor = 0, HVRatio = 0, PresetHV = 0, WorkTime = 0 });
+                        _second_setChanelP.Add(_first_setChannelP[0]);
 
                         // _second_setChanelP.RemoveAt(3);
                         // _second_setChanelP.Add(_setChannelParameter);
@@ -1552,53 +1533,53 @@ namespace HFM
         {
             //_channelParameters.Clear();
             #region 读取数据到列表
-            //for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++)
-            //{
-            //    ChannelParameter channelParameter = new ChannelParameter();
-            //    channelParameter.Channel = new Channel();
-            //    channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
-            //    channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
-            //    channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
-            //    channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
-            //    channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
-            //    channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
-            //    channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
-            //    channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
-            //    channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
-            //    _channelParameters.Add(channelParameter);
-            //}
-            ////获得channelID
-            //for (int i = 0; i < _channelParameters.Count; i++)
-            //{
-            //    if (_channelParameters[i].Channel.ChannelName == "左手心")
-            //    {
-            //        _channelParameters[i].Channel.ChannelID = 1;
-            //    }
-            //    if (_channelParameters[i].Channel.ChannelName == "左手背")
-            //    {
-            //        _channelParameters[i].Channel.ChannelID = 2;
-            //    }
-            //    if (_channelParameters[i].Channel.ChannelName == "右手心")
-            //    {
-            //        _channelParameters[i].Channel.ChannelID = 3;
-            //    }
-            //    if (_channelParameters[i].Channel.ChannelName == "右手背")
-            //    {
-            //        _channelParameters[i].Channel.ChannelID = 4;
-            //    }
-            //    if (_channelParameters[i].Channel.ChannelName == "左脚")
-            //    {
-            //        _channelParameters[i].Channel.ChannelID = 5;
-            //    }
-            //    if (_channelParameters[i].Channel.ChannelName == "右脚")
-            //    {
-            //        _channelParameters[i].Channel.ChannelID = 6;
-            //    }
-            //    if (_channelParameters[i].Channel.ChannelName == "衣物探头")
-            //    {
-            //        _channelParameters[i].Channel.ChannelID = 7;
-            //    }
-            //}
+            for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++)
+            {
+                ChannelParameter channelParameter = new ChannelParameter();
+                channelParameter.Channel = new Channel();
+                channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
+                channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
+                channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
+                channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
+                channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
+                channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
+                channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
+                channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
+                channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
+                _channelParameters.Add(channelParameter);
+            }
+            //获得channelID
+            for (int i = 0; i < _channelParameters.Count; i++)
+            {
+                if (_channelParameters[i].Channel.ChannelName == "左手心")
+                {
+                    _channelParameters[i].Channel.ChannelID = 1;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "左手背")
+                {
+                    _channelParameters[i].Channel.ChannelID = 2;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "右手心")
+                {
+                    _channelParameters[i].Channel.ChannelID = 3;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "右手背")
+                {
+                    _channelParameters[i].Channel.ChannelID = 4;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "左脚")
+                {
+                    _channelParameters[i].Channel.ChannelID = 5;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "右脚")
+                {
+                    _channelParameters[i].Channel.ChannelID = 6;
+                }
+                if (_channelParameters[i].Channel.ChannelName == "衣物探头")
+                {
+                    _channelParameters[i].Channel.ChannelID = 7;
+                }
+            }
             #endregion
 
             //当前发送报文类型换成p写入
@@ -1633,9 +1614,9 @@ namespace HFM
         private void BtnPorSave_Click(object sender, EventArgs e)
         {
             string _commportSetString = StringComport(0, TxtcommportSetPortNum.Text, TxtcommportSetBaudRate.Text,
-                TxtcommportSetDataBits.Text, TxtcommportSetStopBits.Text, TxtcommportSetParity.Text);
+                TxtcommportSetDataBits.Text, TxtcommportSetStopBits.Text, TxtcommportSetParity.Text,"是");
             string _commportSetOfReportSetString = StringComport(1, TxtcommportSetOfReportPortNum.Text, TxtcommportSetOfReportBaudRate.Text,
-                TxtcommportSetOfReportDataBits.Text, TxtcommportSetOfReportStopBits.Text, TxtcommportSetOfReportParity.Text);
+                TxtcommportSetOfReportDataBits.Text, TxtcommportSetOfReportStopBits.Text, TxtcommportSetOfReportParity.Text,CmbIsEnabled.Text);
             Configuration config =
                 ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings["commportSet"].Value = _commportSetString;
@@ -1679,17 +1660,18 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnPorRestoreDefault_Click(object sender, EventArgs e)
         {
-            TxtcommportSetPortNum.Text = "1";
+            TxtcommportSetPortNum.Text = "COM3";
             TxtcommportSetBaudRate.Text = "115200";
             TxtcommportSetDataBits.Text = "8";
             TxtcommportSetStopBits.Text = "1";
-            TxtcommportSetParity.Text = "0";
+            TxtcommportSetParity.Text = "无";
             
-            TxtcommportSetOfReportPortNum.Text = "3";
+            TxtcommportSetOfReportPortNum.Text = "COM3";
             TxtcommportSetOfReportBaudRate.Text = "115200";
             TxtcommportSetOfReportDataBits.Text = "8";
             TxtcommportSetOfReportStopBits.Text = "1";
-            TxtcommportSetOfReportParity.Text = "0";
+            TxtcommportSetOfReportParity.Text = "无";
+            CmbIsEnabled.SelectedIndex = 0;
             //TxtcommportSet.Text = "PortNum=COM1;BaudRate=115200;DataBits=8;Parity=无;StopBits=1";
             //TxtcommportSetOfReport.Text = "PortNum=COM1;BaudRate=115200;DataBits=8;Parit=无;StopBits=1;IsEnabled=false";
         }

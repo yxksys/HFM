@@ -503,7 +503,7 @@ namespace HFM
                     _infraredStatus[i] = item.InfraredStatus;
                     if (_platformState == HardwarePlatformState.AlphaCheck)
                     {
-                        _frisker = Convert.ToString(item.Alpha);
+                        _frisker = Convert.ToString(item.Beta);
                     }
                     else if (_platformState == HardwarePlatformState.BetaCheck)
                     {
@@ -511,7 +511,7 @@ namespace HFM
                     }
                     else
                     {
-                        _frisker = Convert.ToString(item.Alpha);
+                        _frisker = Convert.ToString(item.Beta);
                     }
                     break;
                 }
@@ -527,6 +527,15 @@ namespace HFM
             {
                 if(channelS[i].IsEnabled==false)
                 {
+                    if (_isEnglish)
+                    {
+
+                        _strat[i] = "Not enabled";
+                    }
+                    else
+                    {
+                        _strat[i] = "未启用";
+                    }
                     continue;
                 }
                 //alpha总计数
