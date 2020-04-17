@@ -2354,10 +2354,10 @@ namespace HFM
                     }
                 }
                 errRecord += errRecordOfChannel;//将当前通道错误记录添加到整体错误记录字符串
-                errRecord_E += errRecordOfChannel_E;                
-            }
-            errRecordOfChannel = null;//清空当前通道错误记录字符串
-            errRecordOfChannel_E = null;
+                errRecord_E += errRecordOfChannel_E;
+                errRecordOfChannel = null;//清空当前通道错误记录字符串
+                errRecordOfChannel_E = null;
+            }            
             if (isCheck == false)//未通过
             {
                 string[] errRecordS = new string[2];
