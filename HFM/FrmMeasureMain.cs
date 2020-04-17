@@ -874,7 +874,7 @@ namespace HFM
                         #endregion
                     }
                     //对衣物探头测量数据进行平滑处理
-                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Alpha);
+                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);
                     if (platformState == PlatformState.BackGrouneMeasure || platformState == PlatformState.Measuring)
                     {
                         //将当前平滑处理后的检测值作为本底值
@@ -2354,10 +2354,10 @@ namespace HFM
                     }
                 }
                 errRecord += errRecordOfChannel;//将当前通道错误记录添加到整体错误记录字符串
-                errRecord_E += errRecordOfChannel_E;                
-            }
-            errRecordOfChannel = null;//清空当前通道错误记录字符串
-            errRecordOfChannel_E = null;
+                errRecord_E += errRecordOfChannel_E;
+                errRecordOfChannel = null;//清空当前通道错误记录字符串
+                errRecordOfChannel_E = null;
+            }            
             if (isCheck == false)//未通过
             {
                 string[] errRecordS = new string[2];
