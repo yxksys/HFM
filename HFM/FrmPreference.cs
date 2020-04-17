@@ -130,6 +130,7 @@ namespace HFM
                 GrpFacilityData.Visible = false;
                 TabPresence.TabPages[1].Parent = null;
                 TabPresence.TabPages[3].Parent = null;
+                TabPresence.TabPages[3].Parent = null;
             }
         }
         /// <summary>
@@ -139,6 +140,22 @@ namespace HFM
         /// <param name="e"></param>
         private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (User.LandingUser.Role==2)
+            {
+                switch (TabPresence.SelectedIndex)
+                {
+                    case 0:
+                        GetProferenceData();
+                        break;
+                    case 1:
+                        GetBetaData();
+                        break;
+                    case 2:
+                        GetClothesData();
+                        break;
+                    
+                }
+            }
             //根据页面索引更新当前页面值
             switch (TabPresence.SelectedIndex)
             {
@@ -710,6 +727,14 @@ namespace HFM
                         {
                             backgroundWorker_Preference.CancelAsync();
                             _bkworkTime = 0;
+                            if (_isEnglish)
+                            {
+                                MessageBox.Show("Read over.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("读取完成.");
+                            }
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
