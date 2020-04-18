@@ -511,8 +511,8 @@ namespace HFM.Components
             //串口已打开            
             int NumBytes;
             HexCon hexcon = new HexCon();
-            NumBytes = 200;
-            byte[] RecBuf = new byte[200];
+            NumBytes = 124;
+            byte[] RecBuf = new byte[124];
             //获得当前系统时间
             System.DateTime Start_Time = new System.DateTime();
             Start_Time = System.DateTime.Now;
