@@ -2126,11 +2126,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_88FFCD42B9D272125D25DAC391D83C73"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -3458,7 +3453,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_35ABF44552084F3CA8861171BD54DAA6"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder][ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -3562,7 +3557,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HFM.v1.0"
         "ProductCode" = "8:{982FEBAD-9AE6-41F0-ADBC-DFDF251AB9EC}"
-        "PackageCode" = "8:{FE6A28C4-7C51-41B4-8A27-B3A1D0495D3F}"
+        "PackageCode" = "8:{FA191EEB-5AED-4E9B-BE8D-C081B8212BC5}"
         "UpgradeCode" = "8:{E5DED200-49C6-461D-BC4D-557359A3ACF3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
