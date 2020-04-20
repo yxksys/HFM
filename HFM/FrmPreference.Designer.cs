@@ -38,6 +38,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpPresence = new System.Windows.Forms.GroupBox();
@@ -47,23 +48,13 @@
             this.ChkClothes = new System.Windows.Forms.CheckBox();
             this.ChkFoot = new System.Windows.Forms.CheckBox();
             this.GrpFacilityData = new System.Windows.Forms.GroupBox();
-            this.TxtDeviceAddress = new System.Windows.Forms.TextBox();
-            this.LblDeviceAddress = new System.Windows.Forms.Label();
-            this.ChkIsConnectedAuto = new System.Windows.Forms.CheckBox();
             this.CmbUnclideType = new System.Windows.Forms.ComboBox();
             this.LblUnclideType = new System.Windows.Forms.Label();
-            this.TxtPortNumber = new System.Windows.Forms.TextBox();
-            this.LblPortNumber = new System.Windows.Forms.Label();
-            this.TxtIPAddressFour = new System.Windows.Forms.TextBox();
-            this.TxtIPAddressThree = new System.Windows.Forms.TextBox();
-            this.TxtIPAddressTwo = new System.Windows.Forms.TextBox();
-            this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
             this.TxtSoftName = new System.Windows.Forms.TextBox();
             this.LblSoftName = new System.Windows.Forms.Label();
             this.TxtInstrumentNum = new System.Windows.Forms.TextBox();
             this.LblInstrumentNum = new System.Windows.Forms.Label();
             this.TxtSmoothingFactor = new System.Windows.Forms.TextBox();
-            this.LblIPAddress = new System.Windows.Forms.Label();
             this.LblSmoothingFactor = new System.Windows.Forms.Label();
             this.BtnPreferenceNo = new System.Windows.Forms.Button();
             this.BtnPreferenceOk = new System.Windows.Forms.Button();
@@ -188,7 +179,46 @@
             this.BtnMainPreferenceRead = new System.Windows.Forms.Button();
             this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
             this.BtnMainPreferenceRetuen = new System.Windows.Forms.Button();
+            this.COM = new System.Windows.Forms.TabPage();
+            this.GrpcommportSetOfReport = new System.Windows.Forms.GroupBox();
+            this.TxtcommportSetOfReportParity = new System.Windows.Forms.TextBox();
+            this.TxtcommportSetOfReportStopBits = new System.Windows.Forms.TextBox();
+            this.TxtcommportSetOfReportDataBits = new System.Windows.Forms.TextBox();
+            this.TxtcommportSetOfReportBaudRate = new System.Windows.Forms.TextBox();
+            this.TxtcommportSetOfReportPortNum = new System.Windows.Forms.TextBox();
+            this.LabcommportSetOfReportParity = new System.Windows.Forms.Label();
+            this.LabcommportSetOfReportStopBits = new System.Windows.Forms.Label();
+            this.LabcommportSetOfReportDataBits = new System.Windows.Forms.Label();
+            this.LabcommportSetOfReportBaudRate = new System.Windows.Forms.Label();
+            this.LabcommportSetOfReportPortNum = new System.Windows.Forms.Label();
+            this.GrpcommportSet = new System.Windows.Forms.GroupBox();
+            this.TxtcommportSetParity = new System.Windows.Forms.TextBox();
+            this.TxtcommportSetStopBits = new System.Windows.Forms.TextBox();
+            this.TxtcommportSetDataBits = new System.Windows.Forms.TextBox();
+            this.TxtcommportSetBaudRate = new System.Windows.Forms.TextBox();
+            this.TxtcommportSetPortNum = new System.Windows.Forms.TextBox();
+            this.LabcommportSetParity = new System.Windows.Forms.Label();
+            this.LabcommportSetStopBits = new System.Windows.Forms.Label();
+            this.LabcommportSetDataBits = new System.Windows.Forms.Label();
+            this.LabcommportSetBaudRate = new System.Windows.Forms.Label();
+            this.LabcommportSetPortNum = new System.Windows.Forms.Label();
+            this.BtnPorRestoreDefault = new System.Windows.Forms.Button();
+            this.BtnCancel = new System.Windows.Forms.Button();
+            this.BtnPorSave = new System.Windows.Forms.Button();
+            this.GrpInternet = new System.Windows.Forms.GroupBox();
+            this.TxtDeviceAddress = new System.Windows.Forms.TextBox();
+            this.LblDeviceAddress = new System.Windows.Forms.Label();
+            this.ChkIsConnectedAuto = new System.Windows.Forms.CheckBox();
+            this.TxtPortNumber = new System.Windows.Forms.TextBox();
+            this.LblPortNumber = new System.Windows.Forms.Label();
+            this.TxtIPAddressFour = new System.Windows.Forms.TextBox();
+            this.TxtIPAddressThree = new System.Windows.Forms.TextBox();
+            this.TxtIPAddressTwo = new System.Windows.Forms.TextBox();
+            this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
+            this.LblIPAddress = new System.Windows.Forms.Label();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CmbIsEnabled = new System.Windows.Forms.ComboBox();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -206,6 +236,10 @@
             this.GrpClothesData.SuspendLayout();
             this.工厂参数.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMainPreferenceSet)).BeginInit();
+            this.COM.SuspendLayout();
+            this.GrpcommportSetOfReport.SuspendLayout();
+            this.GrpcommportSet.SuspendLayout();
+            this.GrpInternet.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabPresence
@@ -215,6 +249,7 @@
             this.TabPresence.Controls.Add(this.β参数);
             this.TabPresence.Controls.Add(this.衣物探头);
             this.TabPresence.Controls.Add(this.工厂参数);
+            this.TabPresence.Controls.Add(this.COM);
             this.TabPresence.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.TabPresence, "TabPresence");
             this.TabPresence.Name = "TabPresence";
@@ -278,43 +313,17 @@
             // 
             // GrpFacilityData
             // 
-            this.GrpFacilityData.Controls.Add(this.TxtDeviceAddress);
-            this.GrpFacilityData.Controls.Add(this.LblDeviceAddress);
-            this.GrpFacilityData.Controls.Add(this.ChkIsConnectedAuto);
             this.GrpFacilityData.Controls.Add(this.CmbUnclideType);
             this.GrpFacilityData.Controls.Add(this.LblUnclideType);
-            this.GrpFacilityData.Controls.Add(this.TxtPortNumber);
-            this.GrpFacilityData.Controls.Add(this.LblPortNumber);
-            this.GrpFacilityData.Controls.Add(this.TxtIPAddressFour);
-            this.GrpFacilityData.Controls.Add(this.TxtIPAddressThree);
-            this.GrpFacilityData.Controls.Add(this.TxtIPAddressTwo);
-            this.GrpFacilityData.Controls.Add(this.TxtIPAddressOne);
             this.GrpFacilityData.Controls.Add(this.TxtSoftName);
             this.GrpFacilityData.Controls.Add(this.LblSoftName);
             this.GrpFacilityData.Controls.Add(this.TxtInstrumentNum);
             this.GrpFacilityData.Controls.Add(this.LblInstrumentNum);
             this.GrpFacilityData.Controls.Add(this.TxtSmoothingFactor);
-            this.GrpFacilityData.Controls.Add(this.LblIPAddress);
             this.GrpFacilityData.Controls.Add(this.LblSmoothingFactor);
             resources.ApplyResources(this.GrpFacilityData, "GrpFacilityData");
             this.GrpFacilityData.Name = "GrpFacilityData";
             this.GrpFacilityData.TabStop = false;
-            // 
-            // TxtDeviceAddress
-            // 
-            resources.ApplyResources(this.TxtDeviceAddress, "TxtDeviceAddress");
-            this.TxtDeviceAddress.Name = "TxtDeviceAddress";
-            // 
-            // LblDeviceAddress
-            // 
-            resources.ApplyResources(this.LblDeviceAddress, "LblDeviceAddress");
-            this.LblDeviceAddress.Name = "LblDeviceAddress";
-            // 
-            // ChkIsConnectedAuto
-            // 
-            resources.ApplyResources(this.ChkIsConnectedAuto, "ChkIsConnectedAuto");
-            this.ChkIsConnectedAuto.Name = "ChkIsConnectedAuto";
-            this.ChkIsConnectedAuto.UseVisualStyleBackColor = true;
             // 
             // CmbUnclideType
             // 
@@ -333,36 +342,6 @@
             // 
             resources.ApplyResources(this.LblUnclideType, "LblUnclideType");
             this.LblUnclideType.Name = "LblUnclideType";
-            // 
-            // TxtPortNumber
-            // 
-            resources.ApplyResources(this.TxtPortNumber, "TxtPortNumber");
-            this.TxtPortNumber.Name = "TxtPortNumber";
-            // 
-            // LblPortNumber
-            // 
-            resources.ApplyResources(this.LblPortNumber, "LblPortNumber");
-            this.LblPortNumber.Name = "LblPortNumber";
-            // 
-            // TxtIPAddressFour
-            // 
-            resources.ApplyResources(this.TxtIPAddressFour, "TxtIPAddressFour");
-            this.TxtIPAddressFour.Name = "TxtIPAddressFour";
-            // 
-            // TxtIPAddressThree
-            // 
-            resources.ApplyResources(this.TxtIPAddressThree, "TxtIPAddressThree");
-            this.TxtIPAddressThree.Name = "TxtIPAddressThree";
-            // 
-            // TxtIPAddressTwo
-            // 
-            resources.ApplyResources(this.TxtIPAddressTwo, "TxtIPAddressTwo");
-            this.TxtIPAddressTwo.Name = "TxtIPAddressTwo";
-            // 
-            // TxtIPAddressOne
-            // 
-            resources.ApplyResources(this.TxtIPAddressOne, "TxtIPAddressOne");
-            this.TxtIPAddressOne.Name = "TxtIPAddressOne";
             // 
             // TxtSoftName
             // 
@@ -389,11 +368,6 @@
             resources.ApplyResources(this.TxtSmoothingFactor, "TxtSmoothingFactor");
             this.TxtSmoothingFactor.Name = "TxtSmoothingFactor";
             this.TxtSmoothingFactor.Enter += new System.EventHandler(this.TxtSmoothingFactor_Enter);
-            // 
-            // LblIPAddress
-            // 
-            resources.ApplyResources(this.LblIPAddress, "LblIPAddress");
-            this.LblIPAddress.Name = "LblIPAddress";
             // 
             // LblSmoothingFactor
             // 
@@ -649,12 +623,14 @@
             resources.ApplyResources(this.DgvAlphaSet, "DgvAlphaSet");
             this.DgvAlphaSet.Name = "DgvAlphaSet";
             this.DgvAlphaSet.RowHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DgvAlphaSet.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvAlphaSet.RowTemplate.Height = 27;
             this.DgvAlphaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAlphaSet_CellClick);
             // 
             // TxtAlphaChannelName
             // 
-            this.TxtAlphaChannelName.DataPropertyName = "ChannelName";
+            this.TxtAlphaChannelName.DataPropertyName = "ProbeChannel.ChannelName";
             resources.ApplyResources(this.TxtAlphaChannelName, "TxtAlphaChannelName");
             this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
             // 
@@ -776,17 +752,17 @@
             // 
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
-            this.DgvBetaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
+            this.DgvBetaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -796,25 +772,25 @@
             this.TxtBetaAlarm_2,
             this.TxtBetaEfficiency});
             this.DgvBetaSet.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvBetaSet.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvBetaSet.DefaultCellStyle = dataGridViewCellStyle6;
             this.DgvBetaSet.EnableHeadersVisualStyles = false;
             resources.ApplyResources(this.DgvBetaSet, "DgvBetaSet");
             this.DgvBetaSet.Name = "DgvBetaSet";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DgvBetaSet.RowHeadersVisible = false;
             this.DgvBetaSet.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DgvBetaSet.RowTemplate.Height = 27;
@@ -1247,16 +1223,16 @@
             // 
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
             this.DgvMainPreferenceSet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Silver;
-            this.DgvMainPreferenceSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Silver;
+            this.DgvMainPreferenceSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(this.DgvMainPreferenceSet, "DgvMainPreferenceSet");
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1278,8 +1254,8 @@
             // TxtMainPreferenceChanneName
             // 
             this.TxtMainPreferenceChanneName.DataPropertyName = "ChannelName";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TxtMainPreferenceChanneName.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TxtMainPreferenceChanneName.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(this.TxtMainPreferenceChanneName, "TxtMainPreferenceChanneName");
             this.TxtMainPreferenceChanneName.Name = "TxtMainPreferenceChanneName";
             // 
@@ -1360,10 +1336,258 @@
             this.BtnMainPreferenceRetuen.UseVisualStyleBackColor = true;
             this.BtnMainPreferenceRetuen.Click += new System.EventHandler(this.BtnMainPreferenceRetuen_Click);
             // 
+            // COM
+            // 
+            this.COM.Controls.Add(this.GrpcommportSetOfReport);
+            this.COM.Controls.Add(this.GrpcommportSet);
+            this.COM.Controls.Add(this.BtnPorRestoreDefault);
+            this.COM.Controls.Add(this.BtnCancel);
+            this.COM.Controls.Add(this.BtnPorSave);
+            this.COM.Controls.Add(this.GrpInternet);
+            resources.ApplyResources(this.COM, "COM");
+            this.COM.Name = "COM";
+            this.COM.UseVisualStyleBackColor = true;
+            // 
+            // GrpcommportSetOfReport
+            // 
+            this.GrpcommportSetOfReport.Controls.Add(this.CmbIsEnabled);
+            this.GrpcommportSetOfReport.Controls.Add(this.label2);
+            this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportParity);
+            this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportStopBits);
+            this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportDataBits);
+            this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportBaudRate);
+            this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportPortNum);
+            this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportParity);
+            this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportStopBits);
+            this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportDataBits);
+            this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportBaudRate);
+            this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportPortNum);
+            resources.ApplyResources(this.GrpcommportSetOfReport, "GrpcommportSetOfReport");
+            this.GrpcommportSetOfReport.Name = "GrpcommportSetOfReport";
+            this.GrpcommportSetOfReport.TabStop = false;
+            // 
+            // TxtcommportSetOfReportParity
+            // 
+            resources.ApplyResources(this.TxtcommportSetOfReportParity, "TxtcommportSetOfReportParity");
+            this.TxtcommportSetOfReportParity.Name = "TxtcommportSetOfReportParity";
+            // 
+            // TxtcommportSetOfReportStopBits
+            // 
+            resources.ApplyResources(this.TxtcommportSetOfReportStopBits, "TxtcommportSetOfReportStopBits");
+            this.TxtcommportSetOfReportStopBits.Name = "TxtcommportSetOfReportStopBits";
+            // 
+            // TxtcommportSetOfReportDataBits
+            // 
+            resources.ApplyResources(this.TxtcommportSetOfReportDataBits, "TxtcommportSetOfReportDataBits");
+            this.TxtcommportSetOfReportDataBits.Name = "TxtcommportSetOfReportDataBits";
+            // 
+            // TxtcommportSetOfReportBaudRate
+            // 
+            resources.ApplyResources(this.TxtcommportSetOfReportBaudRate, "TxtcommportSetOfReportBaudRate");
+            this.TxtcommportSetOfReportBaudRate.Name = "TxtcommportSetOfReportBaudRate";
+            // 
+            // TxtcommportSetOfReportPortNum
+            // 
+            resources.ApplyResources(this.TxtcommportSetOfReportPortNum, "TxtcommportSetOfReportPortNum");
+            this.TxtcommportSetOfReportPortNum.Name = "TxtcommportSetOfReportPortNum";
+            // 
+            // LabcommportSetOfReportParity
+            // 
+            resources.ApplyResources(this.LabcommportSetOfReportParity, "LabcommportSetOfReportParity");
+            this.LabcommportSetOfReportParity.Name = "LabcommportSetOfReportParity";
+            // 
+            // LabcommportSetOfReportStopBits
+            // 
+            resources.ApplyResources(this.LabcommportSetOfReportStopBits, "LabcommportSetOfReportStopBits");
+            this.LabcommportSetOfReportStopBits.Name = "LabcommportSetOfReportStopBits";
+            // 
+            // LabcommportSetOfReportDataBits
+            // 
+            resources.ApplyResources(this.LabcommportSetOfReportDataBits, "LabcommportSetOfReportDataBits");
+            this.LabcommportSetOfReportDataBits.Name = "LabcommportSetOfReportDataBits";
+            // 
+            // LabcommportSetOfReportBaudRate
+            // 
+            resources.ApplyResources(this.LabcommportSetOfReportBaudRate, "LabcommportSetOfReportBaudRate");
+            this.LabcommportSetOfReportBaudRate.Name = "LabcommportSetOfReportBaudRate";
+            // 
+            // LabcommportSetOfReportPortNum
+            // 
+            resources.ApplyResources(this.LabcommportSetOfReportPortNum, "LabcommportSetOfReportPortNum");
+            this.LabcommportSetOfReportPortNum.Name = "LabcommportSetOfReportPortNum";
+            // 
+            // GrpcommportSet
+            // 
+            this.GrpcommportSet.Controls.Add(this.TxtcommportSetParity);
+            this.GrpcommportSet.Controls.Add(this.TxtcommportSetStopBits);
+            this.GrpcommportSet.Controls.Add(this.TxtcommportSetDataBits);
+            this.GrpcommportSet.Controls.Add(this.TxtcommportSetBaudRate);
+            this.GrpcommportSet.Controls.Add(this.TxtcommportSetPortNum);
+            this.GrpcommportSet.Controls.Add(this.LabcommportSetParity);
+            this.GrpcommportSet.Controls.Add(this.LabcommportSetStopBits);
+            this.GrpcommportSet.Controls.Add(this.LabcommportSetDataBits);
+            this.GrpcommportSet.Controls.Add(this.LabcommportSetBaudRate);
+            this.GrpcommportSet.Controls.Add(this.LabcommportSetPortNum);
+            resources.ApplyResources(this.GrpcommportSet, "GrpcommportSet");
+            this.GrpcommportSet.Name = "GrpcommportSet";
+            this.GrpcommportSet.TabStop = false;
+            // 
+            // TxtcommportSetParity
+            // 
+            resources.ApplyResources(this.TxtcommportSetParity, "TxtcommportSetParity");
+            this.TxtcommportSetParity.Name = "TxtcommportSetParity";
+            // 
+            // TxtcommportSetStopBits
+            // 
+            resources.ApplyResources(this.TxtcommportSetStopBits, "TxtcommportSetStopBits");
+            this.TxtcommportSetStopBits.Name = "TxtcommportSetStopBits";
+            // 
+            // TxtcommportSetDataBits
+            // 
+            resources.ApplyResources(this.TxtcommportSetDataBits, "TxtcommportSetDataBits");
+            this.TxtcommportSetDataBits.Name = "TxtcommportSetDataBits";
+            // 
+            // TxtcommportSetBaudRate
+            // 
+            resources.ApplyResources(this.TxtcommportSetBaudRate, "TxtcommportSetBaudRate");
+            this.TxtcommportSetBaudRate.Name = "TxtcommportSetBaudRate";
+            // 
+            // TxtcommportSetPortNum
+            // 
+            resources.ApplyResources(this.TxtcommportSetPortNum, "TxtcommportSetPortNum");
+            this.TxtcommportSetPortNum.Name = "TxtcommportSetPortNum";
+            // 
+            // LabcommportSetParity
+            // 
+            resources.ApplyResources(this.LabcommportSetParity, "LabcommportSetParity");
+            this.LabcommportSetParity.Name = "LabcommportSetParity";
+            // 
+            // LabcommportSetStopBits
+            // 
+            resources.ApplyResources(this.LabcommportSetStopBits, "LabcommportSetStopBits");
+            this.LabcommportSetStopBits.Name = "LabcommportSetStopBits";
+            // 
+            // LabcommportSetDataBits
+            // 
+            resources.ApplyResources(this.LabcommportSetDataBits, "LabcommportSetDataBits");
+            this.LabcommportSetDataBits.Name = "LabcommportSetDataBits";
+            // 
+            // LabcommportSetBaudRate
+            // 
+            resources.ApplyResources(this.LabcommportSetBaudRate, "LabcommportSetBaudRate");
+            this.LabcommportSetBaudRate.Name = "LabcommportSetBaudRate";
+            // 
+            // LabcommportSetPortNum
+            // 
+            resources.ApplyResources(this.LabcommportSetPortNum, "LabcommportSetPortNum");
+            this.LabcommportSetPortNum.Name = "LabcommportSetPortNum";
+            // 
+            // BtnPorRestoreDefault
+            // 
+            resources.ApplyResources(this.BtnPorRestoreDefault, "BtnPorRestoreDefault");
+            this.BtnPorRestoreDefault.Name = "BtnPorRestoreDefault";
+            this.BtnPorRestoreDefault.UseVisualStyleBackColor = true;
+            this.BtnPorRestoreDefault.Click += new System.EventHandler(this.BtnPorRestoreDefault_Click);
+            // 
+            // BtnCancel
+            // 
+            resources.ApplyResources(this.BtnCancel, "BtnCancel");
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.UseVisualStyleBackColor = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // 
+            // BtnPorSave
+            // 
+            resources.ApplyResources(this.BtnPorSave, "BtnPorSave");
+            this.BtnPorSave.Name = "BtnPorSave";
+            this.BtnPorSave.UseVisualStyleBackColor = true;
+            this.BtnPorSave.Click += new System.EventHandler(this.BtnPorSave_Click);
+            // 
+            // GrpInternet
+            // 
+            this.GrpInternet.Controls.Add(this.TxtDeviceAddress);
+            this.GrpInternet.Controls.Add(this.LblDeviceAddress);
+            this.GrpInternet.Controls.Add(this.ChkIsConnectedAuto);
+            this.GrpInternet.Controls.Add(this.TxtPortNumber);
+            this.GrpInternet.Controls.Add(this.LblPortNumber);
+            this.GrpInternet.Controls.Add(this.TxtIPAddressFour);
+            this.GrpInternet.Controls.Add(this.TxtIPAddressThree);
+            this.GrpInternet.Controls.Add(this.TxtIPAddressTwo);
+            this.GrpInternet.Controls.Add(this.TxtIPAddressOne);
+            this.GrpInternet.Controls.Add(this.LblIPAddress);
+            resources.ApplyResources(this.GrpInternet, "GrpInternet");
+            this.GrpInternet.Name = "GrpInternet";
+            this.GrpInternet.TabStop = false;
+            // 
+            // TxtDeviceAddress
+            // 
+            resources.ApplyResources(this.TxtDeviceAddress, "TxtDeviceAddress");
+            this.TxtDeviceAddress.Name = "TxtDeviceAddress";
+            // 
+            // LblDeviceAddress
+            // 
+            resources.ApplyResources(this.LblDeviceAddress, "LblDeviceAddress");
+            this.LblDeviceAddress.Name = "LblDeviceAddress";
+            // 
+            // ChkIsConnectedAuto
+            // 
+            resources.ApplyResources(this.ChkIsConnectedAuto, "ChkIsConnectedAuto");
+            this.ChkIsConnectedAuto.Name = "ChkIsConnectedAuto";
+            this.ChkIsConnectedAuto.UseVisualStyleBackColor = true;
+            // 
+            // TxtPortNumber
+            // 
+            resources.ApplyResources(this.TxtPortNumber, "TxtPortNumber");
+            this.TxtPortNumber.Name = "TxtPortNumber";
+            // 
+            // LblPortNumber
+            // 
+            resources.ApplyResources(this.LblPortNumber, "LblPortNumber");
+            this.LblPortNumber.Name = "LblPortNumber";
+            // 
+            // TxtIPAddressFour
+            // 
+            resources.ApplyResources(this.TxtIPAddressFour, "TxtIPAddressFour");
+            this.TxtIPAddressFour.Name = "TxtIPAddressFour";
+            // 
+            // TxtIPAddressThree
+            // 
+            resources.ApplyResources(this.TxtIPAddressThree, "TxtIPAddressThree");
+            this.TxtIPAddressThree.Name = "TxtIPAddressThree";
+            // 
+            // TxtIPAddressTwo
+            // 
+            resources.ApplyResources(this.TxtIPAddressTwo, "TxtIPAddressTwo");
+            this.TxtIPAddressTwo.Name = "TxtIPAddressTwo";
+            // 
+            // TxtIPAddressOne
+            // 
+            resources.ApplyResources(this.TxtIPAddressOne, "TxtIPAddressOne");
+            this.TxtIPAddressOne.Name = "TxtIPAddressOne";
+            // 
+            // LblIPAddress
+            // 
+            resources.ApplyResources(this.LblIPAddress, "LblIPAddress");
+            this.LblIPAddress.Name = "LblIPAddress";
+            // 
             // backgroundWorker_Preference
             // 
             this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
             this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // CmbIsEnabled
+            // 
+            resources.ApplyResources(this.CmbIsEnabled, "CmbIsEnabled");
+            this.CmbIsEnabled.FormattingEnabled = true;
+            this.CmbIsEnabled.Items.AddRange(new object[] {
+            resources.GetString("CmbIsEnabled.Items"),
+            resources.GetString("CmbIsEnabled.Items1")});
+            this.CmbIsEnabled.Name = "CmbIsEnabled";
             // 
             // FrmPreference
             // 
@@ -1403,6 +1627,13 @@
             this.GrpClothesData.PerformLayout();
             this.工厂参数.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvMainPreferenceSet)).EndInit();
+            this.COM.ResumeLayout(false);
+            this.GrpcommportSetOfReport.ResumeLayout(false);
+            this.GrpcommportSetOfReport.PerformLayout();
+            this.GrpcommportSet.ResumeLayout(false);
+            this.GrpcommportSet.PerformLayout();
+            this.GrpInternet.ResumeLayout(false);
+            this.GrpInternet.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1445,21 +1676,14 @@
         private System.Windows.Forms.TextBox TxtRightOutProbeArea;
         private System.Windows.Forms.TextBox TxtLeftOutProbeArea;
         private System.Windows.Forms.TextBox TxtCloseProbeArea;
-        private System.Windows.Forms.Label LblIPAddress;
         private System.Windows.Forms.Label LblSmoothingFactor;
         private System.Windows.Forms.TextBox TxtSmoothingFactor;
-        private System.Windows.Forms.TextBox TxtIPAddressThree;
-        private System.Windows.Forms.TextBox TxtIPAddressTwo;
-        private System.Windows.Forms.TextBox TxtIPAddressOne;
         private System.Windows.Forms.TextBox TxtSoftName;
         private System.Windows.Forms.Label LblSoftName;
         private System.Windows.Forms.TextBox TxtInstrumentNum;
         private System.Windows.Forms.Label LblInstrumentNum;
-        private System.Windows.Forms.TextBox TxtIPAddressFour;
         private System.Windows.Forms.ComboBox CmbUnclideType;
         private System.Windows.Forms.Label LblUnclideType;
-        private System.Windows.Forms.TextBox TxtPortNumber;
-        private System.Windows.Forms.Label LblPortNumber;
         private System.Windows.Forms.GroupBox GrpAlphaNuclideChoose;
         private System.Windows.Forms.Button BtnAlphaNo;
         private System.Windows.Forms.Button BtnAlphaOk;
@@ -1528,7 +1752,6 @@
         private System.Windows.Forms.Label LblBeta;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker_Preference;
-        private System.Windows.Forms.CheckBox ChkIsConnectedAuto;
         private System.Windows.Forms.DataGridView DgvBetaSet;
         private System.Windows.Forms.GroupBox GrpPresence;
         private System.Windows.Forms.RadioButton RdoDoubleHand;
@@ -1536,20 +1759,19 @@
         private System.Windows.Forms.CheckBox ChkClothes;
         private System.Windows.Forms.CheckBox ChkFoot;
         private System.Windows.Forms.CheckBox ChkHand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaChannelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaHBackground;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaLBackground;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
-        private System.Windows.Forms.TextBox TxtDeviceAddress;
-        private System.Windows.Forms.Label LblDeviceAddress;
+        private System.Windows.Forms.TabPage α参数;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceChanneName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceAlphaThreshold;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceBetaThreshold;
@@ -1559,6 +1781,44 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVFactor;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceWorkTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVRatio;
-        private System.Windows.Forms.TabPage α参数;
+        private System.Windows.Forms.TabPage COM;
+        private System.Windows.Forms.Button BtnCancel;
+        private System.Windows.Forms.Button BtnPorSave;
+        private System.Windows.Forms.GroupBox GrpInternet;
+        private System.Windows.Forms.TextBox TxtDeviceAddress;
+        private System.Windows.Forms.Label LblDeviceAddress;
+        private System.Windows.Forms.CheckBox ChkIsConnectedAuto;
+        private System.Windows.Forms.TextBox TxtPortNumber;
+        private System.Windows.Forms.Label LblPortNumber;
+        private System.Windows.Forms.TextBox TxtIPAddressFour;
+        private System.Windows.Forms.TextBox TxtIPAddressThree;
+        private System.Windows.Forms.TextBox TxtIPAddressTwo;
+        private System.Windows.Forms.TextBox TxtIPAddressOne;
+        private System.Windows.Forms.Label LblIPAddress;
+        private System.Windows.Forms.Button BtnPorRestoreDefault;
+        private System.Windows.Forms.GroupBox GrpcommportSetOfReport;
+        private System.Windows.Forms.GroupBox GrpcommportSet;
+        private System.Windows.Forms.Label LabcommportSetParity;
+        private System.Windows.Forms.Label LabcommportSetStopBits;
+        private System.Windows.Forms.Label LabcommportSetDataBits;
+        private System.Windows.Forms.Label LabcommportSetBaudRate;
+        private System.Windows.Forms.Label LabcommportSetPortNum;
+        private System.Windows.Forms.TextBox TxtcommportSetOfReportStopBits;
+        private System.Windows.Forms.TextBox TxtcommportSetOfReportDataBits;
+        private System.Windows.Forms.TextBox TxtcommportSetOfReportBaudRate;
+        private System.Windows.Forms.TextBox TxtcommportSetOfReportPortNum;
+        private System.Windows.Forms.Label LabcommportSetOfReportParity;
+        private System.Windows.Forms.Label LabcommportSetOfReportStopBits;
+        private System.Windows.Forms.Label LabcommportSetOfReportDataBits;
+        private System.Windows.Forms.Label LabcommportSetOfReportBaudRate;
+        private System.Windows.Forms.Label LabcommportSetOfReportPortNum;
+        private System.Windows.Forms.TextBox TxtcommportSetStopBits;
+        private System.Windows.Forms.TextBox TxtcommportSetDataBits;
+        private System.Windows.Forms.TextBox TxtcommportSetBaudRate;
+        private System.Windows.Forms.TextBox TxtcommportSetPortNum;
+        private System.Windows.Forms.TextBox TxtcommportSetOfReportParity;
+        private System.Windows.Forms.TextBox TxtcommportSetParity;
+        private System.Windows.Forms.ComboBox CmbIsEnabled;
+        private System.Windows.Forms.Label label2;
     }
 }
