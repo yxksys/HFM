@@ -33,12 +33,6 @@
             this.GrpCalibration = new System.Windows.Forms.GroupBox();
             this.Lbl__time = new System.Windows.Forms.Label();
             this.DgvInformation = new System.Windows.Forms.DataGridView();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Channel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Alpha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Beta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TxtSFR = new System.Windows.Forms.TextBox();
             this.LblSFR = new System.Windows.Forms.Label();
             this.BtnCalibrate = new System.Windows.Forms.Button();
@@ -61,6 +55,12 @@
             this.LblMeasuringTime = new System.Windows.Forms.Label();
             this.LblChannelSelection = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Channel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Area = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alpha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Beta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabCalibration.SuspendLayout();
             this.TabpageCalibration.SuspendLayout();
             this.GrpCalibration.SuspendLayout();
@@ -146,45 +146,6 @@
             this.DgvInformation.RowTemplate.Height = 23;
             this.DgvInformation.Size = new System.Drawing.Size(690, 673);
             this.DgvInformation.TabIndex = 21;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "状态";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 150;
-            // 
-            // Channel
-            // 
-            this.Channel.HeaderText = "通道";
-            this.Channel.Name = "Channel";
-            this.Channel.ReadOnly = true;
-            this.Channel.Width = 130;
-            // 
-            // Area
-            // 
-            this.Area.HeaderText = "面积(cm2)";
-            this.Area.Name = "Area";
-            this.Area.ReadOnly = true;
-            // 
-            // Alpha
-            // 
-            this.Alpha.HeaderText = "α计数";
-            this.Alpha.Name = "Alpha";
-            this.Alpha.ReadOnly = true;
-            // 
-            // Beta
-            // 
-            this.Beta.HeaderText = "β计数";
-            this.Beta.Name = "Beta";
-            this.Beta.ReadOnly = true;
-            // 
-            // HV
-            // 
-            this.HV.HeaderText = "高压（V）";
-            this.HV.Name = "HV";
-            this.HV.ReadOnly = true;
-            this.HV.Width = 110;
             // 
             // TxtSFR
             // 
@@ -374,9 +335,9 @@
             // 
             // LblChannelSelection
             // 
-            this.LblChannelSelection.Location = new System.Drawing.Point(0, 28);
+            this.LblChannelSelection.Location = new System.Drawing.Point(2, 28);
             this.LblChannelSelection.Name = "LblChannelSelection";
-            this.LblChannelSelection.Size = new System.Drawing.Size(116, 18);
+            this.LblChannelSelection.Size = new System.Drawing.Size(110, 18);
             this.LblChannelSelection.TabIndex = 0;
             this.LblChannelSelection.Text = "通道选择";
             this.LblChannelSelection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -385,6 +346,48 @@
             // 
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BkWorkerReceiveData_ProgressChanged);
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "状态";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 130;
+            // 
+            // Channel
+            // 
+            this.Channel.HeaderText = "通道";
+            this.Channel.Name = "Channel";
+            this.Channel.ReadOnly = true;
+            this.Channel.Width = 120;
+            // 
+            // Area
+            // 
+            this.Area.HeaderText = "面积(cm2)";
+            this.Area.Name = "Area";
+            this.Area.ReadOnly = true;
+            this.Area.Width = 110;
+            // 
+            // Alpha
+            // 
+            this.Alpha.HeaderText = "α计数(cps)";
+            this.Alpha.Name = "Alpha";
+            this.Alpha.ReadOnly = true;
+            this.Alpha.Width = 110;
+            // 
+            // Beta
+            // 
+            this.Beta.HeaderText = "β计数(cps)";
+            this.Beta.Name = "Beta";
+            this.Beta.ReadOnly = true;
+            this.Beta.Width = 110;
+            // 
+            // HV
+            // 
+            this.HV.HeaderText = "高压（V）";
+            this.HV.Name = "HV";
+            this.HV.ReadOnly = true;
+            this.HV.Width = 110;
             // 
             // FrmCalibration
             // 
@@ -415,12 +418,6 @@
         private System.Windows.Forms.GroupBox GrpCalibration;
         private System.Windows.Forms.Label Lbl__time;
         private System.Windows.Forms.DataGridView DgvInformation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Area;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HV;
         public System.Windows.Forms.TextBox TxtSFR;
         private System.Windows.Forms.Label LblSFR;
         private System.Windows.Forms.Button BtnCalibrate;
@@ -442,5 +439,11 @@
         private System.Windows.Forms.Label LblResult;
         private System.Windows.Forms.Label LblMeasuringTime;
         private System.Windows.Forms.Label LblChannelSelection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Channel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Area;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HV;
     }
 }

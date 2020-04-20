@@ -1377,7 +1377,7 @@ namespace HFM
             Components.SystemParameter systemParameter = new Components.SystemParameter();
             systemParameter.GetParameter();//或当当前数据
             systemParameter.ClothOfflineTime = Convert.ToInt32(TxtClothOfflineTime.Text);
-
+            systemParameter.SetParameter(systemParameter);
             ProbeParameter probeParameter = new ProbeParameter();//更新衣物参数
             Components.EfficiencyParameter effciency = new Components.EfficiencyParameter(); //更新效率
             effciency.Channel = new Channel().GetChannel(7);
