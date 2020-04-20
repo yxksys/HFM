@@ -117,75 +117,99 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="系统参数.Text" xml:space="preserve">
-    <value>System Parameter</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ChkHand.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
-  <data name="α参数.Text" xml:space="preserve">
-    <value>Alpha Parameter</value>
-  </data>
-  <data name="β参数.Text" xml:space="preserve">
-    <value>Beta Parameter</value>
-  </data>
-  <data name="衣物探头.Text" xml:space="preserve">
-    <value>Frisker Parameter</value>
-  </data>
-  <data name="工厂参数.Text" xml:space="preserve">
-    <value>Channel Parameter</value>
-  </data>
-  <data name="COM.Text" xml:space="preserve">
-    <value>Port configuration</value>
-  </data>
-  <data name="GrpPresence.Text" xml:space="preserve">
-    <value>Equipment configuration</value>
+  <data name="ChkHand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 23</value>
   </data>
   <data name="ChkHand.Text" xml:space="preserve">
     <value>Hand</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="RdoDoubleHand.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="RdoDoubleHand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 20</value>
+    <value>107, 23</value>
   </data>
   <data name="RdoDoubleHand.Text" xml:space="preserve">
     <value>DoubleHand</value>
   </data>
+  <data name="RdoSingleHand.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="RdoSingleHand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 20</value>
+    <value>100, 23</value>
   </data>
   <data name="RdoSingleHand.Text" xml:space="preserve">
     <value>SingleHand</value>
   </data>
+  <data name="ChkClothes.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="ChkClothes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 20</value>
+    <value>71, 23</value>
   </data>
   <data name="ChkClothes.Text" xml:space="preserve">
     <value>Frisker</value>
   </data>
+  <data name="ChkFoot.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="ChkFoot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
   <data name="ChkFoot.Text" xml:space="preserve">
     <value>Foot</value>
   </data>
-  <data name="GrpFacilityData.Text" xml:space="preserve">
-    <value>Factory Parameter</value>
+  <data name="GrpPresence.Text" xml:space="preserve">
+    <value>Equipment configuration</value>
+  </data>
+  <data name="LblUnclideType.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblUnclideType.Text" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="LblSoftName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LblSoftName.Text" xml:space="preserve">
     <value>Model</value>
+  </data>
+  <data name="LblInstrumentNum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="LblInstrumentNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 41</value>
+  </data>
+  <data name="LblInstrumentNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 21</value>
   </data>
   <data name="LblInstrumentNum.Text" xml:space="preserve">
     <value>SN</value>
   </data>
+  <data name="TxtSmoothingFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 39</value>
+  </data>
+  <data name="LblSmoothingFactor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="LblSmoothingFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 21</value>
+  </data>
   <data name="LblSmoothingFactor.Text" xml:space="preserve">
     <value>Smoothing factor</value>
+  </data>
+  <data name="GrpFacilityData.Text" xml:space="preserve">
+    <value>Factory Parameter</value>
   </data>
   <data name="BtnPreferenceNo.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="BtnPreferenceOk.Text" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="GrpPreferenceArea.Text" xml:space="preserve">
-    <value>Probe Area /cm²</value>
   </data>
   <data name="TxtCloseProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 175</value>
@@ -199,6 +223,9 @@
   <data name="TxtLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 52</value>
   </data>
+  <data name="LblRightFootProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LblRightFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 138</value>
   </data>
@@ -210,6 +237,9 @@
   </data>
   <data name="LblRightFootProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
+  </data>
+  <data name="LblRightOutProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="LblRightOutProbeArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -227,6 +257,9 @@
   <data name="LblRightOutProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblLeftOutProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LblLeftOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>207, 57</value>
   </data>
@@ -238,6 +271,9 @@
   </data>
   <data name="LblLeftOutProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
+  </data>
+  <data name="LblClothesProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblClothesProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 178</value>
@@ -251,6 +287,9 @@
   <data name="LblClothesProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblLeftFootProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LblLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 138</value>
   </data>
@@ -263,6 +302,9 @@
   <data name="LblLeftFootProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblRightInProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LblRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 99</value>
   </data>
@@ -274,6 +316,9 @@
   </data>
   <data name="LblRightInProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
+  </data>
+  <data name="LblLeftInProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblLeftInProbeArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -290,8 +335,8 @@
   <data name="LblLeftInProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="GrpPreferenceData.Text" xml:space="preserve">
-    <value>System Parameter</value>
+  <data name="GrpPreferenceArea.Text" xml:space="preserve">
+    <value>Probe Area /cm²</value>
   </data>
   <data name="LblBKGUpdate.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 202</value>
@@ -368,6 +413,12 @@
   <data name="LblSelfCheckTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="GrpPreferenceData.Text" xml:space="preserve">
+    <value>System Parameter</value>
+  </data>
+  <data name="系统参数.Text" xml:space="preserve">
+    <value>System Parameter</value>
+  </data>
   <data name="LblAlpha.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 21</value>
   </data>
@@ -400,6 +451,9 @@
   </data>
   <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
     <value>Alpha nuclide selection</value>
+  </data>
+  <data name="α参数.Text" xml:space="preserve">
+    <value>Alpha Parameter</value>
   </data>
   <data name="LblBeta.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 21</value>
@@ -434,23 +488,125 @@
   <data name="GrpBetaNuclideChoose.Text" xml:space="preserve">
     <value>Selection of β / γ nuclides</value>
   </data>
-  <data name="GrpClothesNuclideChoose.Text" xml:space="preserve">
-    <value>Nuclide selection</value>
+  <data name="β参数.Text" xml:space="preserve">
+    <value>Beta Parameter</value>
+  </data>
+  <data name="RdoClothesBetaDefine1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBetaDefine1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 23</value>
+  </data>
+  <data name="RdoClothesBeta192.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta192.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 23</value>
+  </data>
+  <data name="RdoClothesBeta90.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 23</value>
+  </data>
+  <data name="RdoClothesBeta36.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta36.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 23</value>
+  </data>
+  <data name="RdoClothesBeta137.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta137.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 23</value>
+  </data>
+  <data name="RdoClothesBeta60.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta60.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 23</value>
+  </data>
+  <data name="RdoClothesBeta32.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 23</value>
+  </data>
+  <data name="RdoClothesBeta204.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta204.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 23</value>
+  </data>
+  <data name="RdoClothesBeta131.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta131.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 23</value>
+  </data>
+  <data name="RdoClothesBeta58.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta58.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 23</value>
+  </data>
+  <data name="RdoClothesBeta14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesBeta14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 23</value>
+  </data>
+  <data name="RdoClothesAlphaDefine1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesAlphaDefine1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 23</value>
+  </data>
+  <data name="RdoClothesAlpha241.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesAlpha241.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 23</value>
+  </data>
+  <data name="RdoClothesAlpha238.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesAlpha238.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 23</value>
+  </data>
+  <data name="RdoClothesAlpha239.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesAlpha239.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 23</value>
+  </data>
+  <data name="RdoClothesAlpha235.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoClothesAlpha235.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 23</value>
+  </data>
+  <data name="LblClothesBetaOrClothes.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblClothesBetaOrClothes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 16</value>
+    <value>154, 19</value>
   </data>
   <data name="LblClothesBetaOrClothes.Text" xml:space="preserve">
     <value>Beta / gamma nuclide</value>
   </data>
+  <data name="LblClothesAlpha.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LblClothesAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 16</value>
+    <value>97, 19</value>
   </data>
   <data name="LblClothesAlpha.Text" xml:space="preserve">
     <value>Alpha nuclide</value>
   </data>
-  <data name="GrpClothesData.Text" xml:space="preserve">
-    <value>Frisker Parameter</value>
+  <data name="GrpClothesNuclideChoose.Text" xml:space="preserve">
+    <value>Nuclide selection</value>
   </data>
   <data name="LblClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>-1, 287</value>
@@ -524,6 +680,12 @@
   <data name="LblClothesHBackground.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="GrpClothesData.Text" xml:space="preserve">
+    <value>Frisker Parameter</value>
+  </data>
+  <data name="衣物探头.Text" xml:space="preserve">
+    <value>Frisker Parameter</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -579,8 +741,20 @@
   <data name="BtnMainPreferenceRetuen.Text" xml:space="preserve">
     <value>Reset to Default</value>
   </data>
-  <data name="GrpcommportSetOfReport.Text" xml:space="preserve">
-    <value>Report status port configuration</value>
+  <data name="工厂参数.Text" xml:space="preserve">
+    <value>Channel Parameter</value>
+  </data>
+  <data name="CmbIsEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>273, 152</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 154</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>IsEnabled</value>
   </data>
   <data name="TxtcommportSetOfReportParity.Location" type="System.Drawing.Point, System.Drawing">
     <value>263, 102</value>
@@ -601,13 +775,16 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportParity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportParity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="LabcommportSetOfReportParity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>199, 108</value>
+  </data>
   <data name="LabcommportSetOfReportParity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 16</value>
+    <value>47, 19</value>
   </data>
   <data name="LabcommportSetOfReportParity.Text" xml:space="preserve">
     <value>Parity</value>
@@ -616,13 +793,16 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="LabcommportSetOfReportStopBits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 57</value>
+  </data>
   <data name="LabcommportSetOfReportStopBits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>61, 19</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.Text" xml:space="preserve">
     <value>StopBits</value>
@@ -631,13 +811,13 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>64, 19</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.Text" xml:space="preserve">
     <value>DataBits</value>
@@ -646,13 +826,13 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>72, 19</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.Text" xml:space="preserve">
     <value>BaudRate</value>
@@ -661,7 +841,7 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -670,13 +850,13 @@
     <value>30, 58</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 16</value>
+    <value>67, 19</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Text" xml:space="preserve">
     <value>PortNum</value>
   </data>
-  <data name="GrpcommportSet.Text" xml:space="preserve">
-    <value>Control board port configuration</value>
+  <data name="GrpcommportSetOfReport.Text" xml:space="preserve">
+    <value>Report status port configuration</value>
   </data>
   <data name="TxtcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 106</value>
@@ -693,50 +873,68 @@
   <data name="TxtcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 54</value>
   </data>
+  <data name="LabcommportSetParity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LabcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 112</value>
   </data>
   <data name="LabcommportSetParity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 16</value>
+    <value>47, 19</value>
   </data>
   <data name="LabcommportSetParity.Text" xml:space="preserve">
     <value>Parity</value>
+  </data>
+  <data name="LabcommportSetStopBits.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetStopBits.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 56</value>
   </data>
   <data name="LabcommportSetStopBits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>61, 19</value>
   </data>
   <data name="LabcommportSetStopBits.Text" xml:space="preserve">
     <value>StopBits</value>
+  </data>
+  <data name="LabcommportSetDataBits.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 160</value>
   </data>
   <data name="LabcommportSetDataBits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>64, 19</value>
   </data>
   <data name="LabcommportSetDataBits.Text" xml:space="preserve">
     <value>DataBits</value>
+  </data>
+  <data name="LabcommportSetBaudRate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 109</value>
   </data>
   <data name="LabcommportSetBaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>72, 19</value>
   </data>
   <data name="LabcommportSetBaudRate.Text" xml:space="preserve">
     <value>BaudRate</value>
+  </data>
+  <data name="LabcommportSetPortNum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 56</value>
   </data>
   <data name="LabcommportSetPortNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 16</value>
+    <value>67, 19</value>
   </data>
   <data name="LabcommportSetPortNum.Text" xml:space="preserve">
     <value>PortNum</value>
+  </data>
+  <data name="GrpcommportSet.Text" xml:space="preserve">
+    <value>Control board port configuration</value>
   </data>
   <data name="BtnPorRestoreDefault.Text" xml:space="preserve">
     <value>Default</value>
@@ -750,8 +948,14 @@
   <data name="LblDeviceAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="LblDeviceAddress.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LblDeviceAddress.Text" xml:space="preserve">
     <value>Device address</value>
+  </data>
+  <data name="ChkIsConnectedAuto.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="ChkIsConnectedAuto.Location" type="System.Drawing.Point, System.Drawing">
     <value>432, 50</value>
@@ -764,6 +968,9 @@
   </data>
   <data name="TxtPortNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 26</value>
+  </data>
+  <data name="LblPortNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 53</value>
@@ -786,13 +993,22 @@
   <data name="LblIPAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="LblIPAddress.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
+  </data>
   <data name="LblIPAddress.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 53</value>
   </data>
   <data name="LblIPAddress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 16</value>
+    <value>75, 19</value>
   </data>
   <data name="LblIPAddress.Text" xml:space="preserve">
     <value>IP address</value>
+  </data>
+  <data name="GrpInternet.Text" xml:space="preserve">
+    <value>Tcp/IP Configuration</value>
+  </data>
+  <data name="COM.Text" xml:space="preserve">
+    <value>Port configuration</value>
   </data>
 </root>

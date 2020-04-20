@@ -88,11 +88,11 @@ namespace HFM
 
             if (comportSet == 1)
             {
-                return $"PortNum=COM{portNum};BaudRate={baudRate};DataBits={dataBits};Parity={parity};StopBits={stopBits};IsEnabled={isEnabled}";
+                return $"PortNum={portNum};BaudRate={baudRate};DataBits={dataBits};Parity={parity};StopBits={stopBits};IsEnabled={isEnabled}";
             }
             else
             {
-                return $"PortNum=COM{portNum};BaudRate={baudRate};DataBits={dataBits};Parity={parity};StopBits={stopBits}";
+                return $"PortNum={portNum};BaudRate={baudRate};DataBits={dataBits};Parity={parity};StopBits={stopBits}";
             }
 
             #endregion
@@ -130,6 +130,7 @@ namespace HFM
                 GrpFacilityData.Visible = false;
                 TabPresence.TabPages[1].Parent = null;
                 TabPresence.TabPages[3].Parent = null;
+                TabPresence.TabPages[3].Parent = null;
             }
         }
         /// <summary>
@@ -139,6 +140,22 @@ namespace HFM
         /// <param name="e"></param>
         private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (User.LandingUser.Role==2)
+            {
+                switch (TabPresence.SelectedIndex)
+                {
+                    case 0:
+                        GetProferenceData();
+                        break;
+                    case 1:
+                        GetBetaData();
+                        break;
+                    case 2:
+                        GetClothesData();
+                        break;
+                    
+                }
+            }
             //根据页面索引更新当前页面值
             switch (TabPresence.SelectedIndex)
             {
@@ -194,7 +211,7 @@ namespace HFM
             //仪器编号
             TxtInstrumentNum.Text = factoryParameter.InstrumentNum.ToString();
             //软件名称
-            TxtSoftName.Text = factoryParameter.SoftName;
+            CmbSoftName.Text = factoryParameter.SoftName;
             //探测类型
             CmbUnclideType.Text = factoryParameter.MeasureType;
 
@@ -642,14 +659,14 @@ namespace HFM
             TxtcommportSetPortNum.Text = commportSet[0];
             TxtcommportSetBaudRate.Text = commportSet[1];
             TxtcommportSetDataBits.Text = commportSet[2];
-            TxtcommportSetStopBits.Text= commportSet[3];
-            TxtcommportSetParity.Text = commportSet[4];
+            TxtcommportSetStopBits.Text= commportSet[4];
+            TxtcommportSetParity.Text = commportSet[3];
             commportSet=commPort.GetCommPortSetForParameter("commportSetOfReport");
             TxtcommportSetOfReportPortNum.Text = commportSet[0];
             TxtcommportSetOfReportBaudRate.Text = commportSet[1];
             TxtcommportSetOfReportDataBits.Text = commportSet[2];
-            TxtcommportSetOfReportStopBits.Text = commportSet[3];
-            TxtcommportSetOfReportParity.Text = commportSet[4];
+            TxtcommportSetOfReportStopBits.Text = commportSet[4];
+            TxtcommportSetOfReportParity.Text = commportSet[3];
             CmbIsEnabled.SelectedIndex = commportSet[5]=="true"?0:1;
 
 
@@ -710,6 +727,14 @@ namespace HFM
                         {
                             backgroundWorker_Preference.CancelAsync();
                             _bkworkTime = 0;
+                            if (_isEnglish)
+                            {
+                                MessageBox.Show("Read over.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("读取完成.");
+                            }
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -989,7 +1014,7 @@ namespace HFM
             FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
             factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
             factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
-            factoryParameterBtn.SoftName = TxtSoftName.Text;
+            factoryParameterBtn.SoftName = CmbSoftName.Text;
             
             factoryParameterBtn.MeasureType = CmbUnclideType.Text;
             
@@ -1352,7 +1377,7 @@ namespace HFM
             Components.SystemParameter systemParameter = new Components.SystemParameter();
             systemParameter.GetParameter();//或当当前数据
             systemParameter.ClothOfflineTime = Convert.ToInt32(TxtClothOfflineTime.Text);
-
+            systemParameter.SetParameter(systemParameter);
             ProbeParameter probeParameter = new ProbeParameter();//更新衣物参数
             Components.EfficiencyParameter effciency = new Components.EfficiencyParameter(); //更新效率
             effciency.Channel = new Channel().GetChannel(7);

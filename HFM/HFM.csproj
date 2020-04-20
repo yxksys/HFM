@@ -49,6 +49,15 @@
   <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -172,6 +181,9 @@
     <EmbeddedResource Include="FrmClothes.resx">
       <DependentUpon>FrmClothes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmHelp.en.resx">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmHistory.en.resx">
       <DependentUpon>FrmHistory.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +237,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="bin\Debug\Audio\ReadMe（名称对应内容）.text" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
