@@ -864,15 +864,8 @@ namespace HFM
                         //测量结果
                         TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}；{_isStandardize}";
                         
-                        
-                       
                     }
                 }
-
-                
-                Lbl__time.Text = _measuringTime.ToString()+"----"+_measuringCount;
-                
-                
             }
         }
         #endregion

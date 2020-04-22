@@ -89,12 +89,6 @@
             this.α参数 = new System.Windows.Forms.TabPage();
             this.LblAlpha = new System.Windows.Forms.Label();
             this.DgvAlphaSet = new System.Windows.Forms.DataGridView();
-            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnAlphaNo = new System.Windows.Forms.Button();
             this.BtnAlphaOk = new System.Windows.Forms.Button();
             this.GrpAlphaNuclideChoose = new System.Windows.Forms.GroupBox();
@@ -219,6 +213,12 @@
             this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
             this.LblIPAddress = new System.Windows.Forms.Label();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -244,7 +244,6 @@
             // 
             // TabPresence
             // 
-            resources.ApplyResources(this.TabPresence, "TabPresence");
             this.TabPresence.Controls.Add(this.系统参数);
             this.TabPresence.Controls.Add(this.α参数);
             this.TabPresence.Controls.Add(this.β参数);
@@ -252,30 +251,31 @@
             this.TabPresence.Controls.Add(this.工厂参数);
             this.TabPresence.Controls.Add(this.COM);
             this.TabPresence.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.TabPresence, "TabPresence");
             this.TabPresence.Name = "TabPresence";
             this.TabPresence.SelectedIndex = 0;
             this.TabPresence.SelectedIndexChanged += new System.EventHandler(this.TabPresence_SelectedIndexChanged);
             // 
             // 系统参数
             // 
-            resources.ApplyResources(this.系统参数, "系统参数");
             this.系统参数.Controls.Add(this.GrpPresence);
             this.系统参数.Controls.Add(this.GrpFacilityData);
             this.系统参数.Controls.Add(this.BtnPreferenceNo);
             this.系统参数.Controls.Add(this.BtnPreferenceOk);
             this.系统参数.Controls.Add(this.GrpPreferenceArea);
             this.系统参数.Controls.Add(this.GrpPreferenceData);
+            resources.ApplyResources(this.系统参数, "系统参数");
             this.系统参数.Name = "系统参数";
             this.系统参数.UseVisualStyleBackColor = true;
             // 
             // GrpPresence
             // 
-            resources.ApplyResources(this.GrpPresence, "GrpPresence");
             this.GrpPresence.Controls.Add(this.ChkHand);
             this.GrpPresence.Controls.Add(this.RdoDoubleHand);
             this.GrpPresence.Controls.Add(this.RdoSingleHand);
             this.GrpPresence.Controls.Add(this.ChkClothes);
             this.GrpPresence.Controls.Add(this.ChkFoot);
+            resources.ApplyResources(this.GrpPresence, "GrpPresence");
             this.GrpPresence.Name = "GrpPresence";
             this.GrpPresence.TabStop = false;
             // 
@@ -313,7 +313,6 @@
             // 
             // GrpFacilityData
             // 
-            resources.ApplyResources(this.GrpFacilityData, "GrpFacilityData");
             this.GrpFacilityData.Controls.Add(this.CmbSoftName);
             this.GrpFacilityData.Controls.Add(this.CmbUnclideType);
             this.GrpFacilityData.Controls.Add(this.LblUnclideType);
@@ -322,6 +321,7 @@
             this.GrpFacilityData.Controls.Add(this.LblInstrumentNum);
             this.GrpFacilityData.Controls.Add(this.TxtSmoothingFactor);
             this.GrpFacilityData.Controls.Add(this.LblSmoothingFactor);
+            resources.ApplyResources(this.GrpFacilityData, "GrpFacilityData");
             this.GrpFacilityData.Name = "GrpFacilityData";
             this.GrpFacilityData.TabStop = false;
             // 
@@ -335,10 +335,10 @@
             // 
             // CmbUnclideType
             // 
-            resources.ApplyResources(this.CmbUnclideType, "CmbUnclideType");
             this.CmbUnclideType.AccessibleRole = System.Windows.Forms.AccessibleRole.Slider;
             this.CmbUnclideType.AllowDrop = true;
             this.CmbUnclideType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.CmbUnclideType, "CmbUnclideType");
             this.CmbUnclideType.FormattingEnabled = true;
             this.CmbUnclideType.Items.AddRange(new object[] {
             resources.GetString("CmbUnclideType.Items"),
@@ -393,7 +393,6 @@
             // 
             // GrpPreferenceArea
             // 
-            resources.ApplyResources(this.GrpPreferenceArea, "GrpPreferenceArea");
             this.GrpPreferenceArea.Controls.Add(this.TxtRightFootProbeArea);
             this.GrpPreferenceArea.Controls.Add(this.TxtRightOutProbeArea);
             this.GrpPreferenceArea.Controls.Add(this.TxtLeftOutProbeArea);
@@ -408,6 +407,7 @@
             this.GrpPreferenceArea.Controls.Add(this.LblLeftFootProbeArea);
             this.GrpPreferenceArea.Controls.Add(this.LblRightInProbeArea);
             this.GrpPreferenceArea.Controls.Add(this.LblLeftInProbeArea);
+            resources.ApplyResources(this.GrpPreferenceArea, "GrpPreferenceArea");
             this.GrpPreferenceArea.Name = "GrpPreferenceArea";
             this.GrpPreferenceArea.TabStop = false;
             // 
@@ -490,7 +490,6 @@
             // 
             // GrpPreferenceData
             // 
-            resources.ApplyResources(this.GrpPreferenceData, "GrpPreferenceData");
             this.GrpPreferenceData.Controls.Add(this.TxtBKGUpdate);
             this.GrpPreferenceData.Controls.Add(this.TxtAlarmTime);
             this.GrpPreferenceData.Controls.Add(this.TxtMeasuringTime);
@@ -503,6 +502,7 @@
             this.GrpPreferenceData.Controls.Add(this.LblMeasuringTime);
             this.GrpPreferenceData.Controls.Add(this.LblSmoothingTime);
             this.GrpPreferenceData.Controls.Add(this.LblSelfCheckTime);
+            resources.ApplyResources(this.GrpPreferenceData, "GrpPreferenceData");
             this.GrpPreferenceData.Name = "GrpPreferenceData";
             this.GrpPreferenceData.TabStop = false;
             // 
@@ -538,8 +538,8 @@
             // 
             // CmbMeasurementUnit
             // 
-            resources.ApplyResources(this.CmbMeasurementUnit, "CmbMeasurementUnit");
             this.CmbMeasurementUnit.AllowDrop = true;
+            resources.ApplyResources(this.CmbMeasurementUnit, "CmbMeasurementUnit");
             this.CmbMeasurementUnit.DropDownHeight = 95;
             this.CmbMeasurementUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbMeasurementUnit.FormattingEnabled = true;
@@ -585,12 +585,12 @@
             // 
             // α参数
             // 
-            resources.ApplyResources(this.α参数, "α参数");
             this.α参数.Controls.Add(this.LblAlpha);
             this.α参数.Controls.Add(this.DgvAlphaSet);
             this.α参数.Controls.Add(this.BtnAlphaNo);
             this.α参数.Controls.Add(this.BtnAlphaOk);
             this.α参数.Controls.Add(this.GrpAlphaNuclideChoose);
+            resources.ApplyResources(this.α参数, "α参数");
             this.α参数.Name = "α参数";
             this.α参数.UseVisualStyleBackColor = true;
             // 
@@ -601,7 +601,6 @@
             // 
             // DgvAlphaSet
             // 
-            resources.ApplyResources(this.DgvAlphaSet, "DgvAlphaSet");
             this.DgvAlphaSet.AllowUserToAddRows = false;
             this.DgvAlphaSet.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
@@ -624,48 +623,13 @@
             this.TxtAlphaAlarm_2,
             this.TxtAlphaEfficiency});
             this.DgvAlphaSet.EnableHeadersVisualStyles = false;
+            resources.ApplyResources(this.DgvAlphaSet, "DgvAlphaSet");
             this.DgvAlphaSet.Name = "DgvAlphaSet";
             this.DgvAlphaSet.RowHeadersVisible = false;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.DgvAlphaSet.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvAlphaSet.RowTemplate.Height = 27;
             this.DgvAlphaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAlphaSet_CellClick);
-            // 
-            // TxtAlphaChannelName
-            // 
-            this.TxtAlphaChannelName.DataPropertyName = "ProbeChannel.ChannelName";
-            resources.ApplyResources(this.TxtAlphaChannelName, "TxtAlphaChannelName");
-            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
-            // 
-            // TxtAlphaHBackground
-            // 
-            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
-            resources.ApplyResources(this.TxtAlphaHBackground, "TxtAlphaHBackground");
-            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
-            // 
-            // TxtAplhaLBackground
-            // 
-            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
-            resources.ApplyResources(this.TxtAplhaLBackground, "TxtAplhaLBackground");
-            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
-            // 
-            // TxtAlphaAlarm_1
-            // 
-            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
-            resources.ApplyResources(this.TxtAlphaAlarm_1, "TxtAlphaAlarm_1");
-            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
-            // 
-            // TxtAlphaAlarm_2
-            // 
-            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
-            resources.ApplyResources(this.TxtAlphaAlarm_2, "TxtAlphaAlarm_2");
-            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
-            // 
-            // TxtAlphaEfficiency
-            // 
-            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
-            resources.ApplyResources(this.TxtAlphaEfficiency, "TxtAlphaEfficiency");
-            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
             // 
             // BtnAlphaNo
             // 
@@ -683,13 +647,13 @@
             // 
             // GrpAlphaNuclideChoose
             // 
-            resources.ApplyResources(this.GrpAlphaNuclideChoose, "GrpAlphaNuclideChoose");
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlphaDefine2);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha241);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlphaDefine1);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha238);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha239);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha235);
+            resources.ApplyResources(this.GrpAlphaNuclideChoose, "GrpAlphaNuclideChoose");
             this.GrpAlphaNuclideChoose.Name = "GrpAlphaNuclideChoose";
             this.GrpAlphaNuclideChoose.TabStop = false;
             // 
@@ -737,12 +701,12 @@
             // 
             // β参数
             // 
-            resources.ApplyResources(this.β参数, "β参数");
             this.β参数.Controls.Add(this.LblBeta);
             this.β参数.Controls.Add(this.DgvBetaSet);
             this.β参数.Controls.Add(this.BtnBetaNo);
             this.β参数.Controls.Add(this.BtnBetaOk);
             this.β参数.Controls.Add(this.GrpBetaNuclideChoose);
+            resources.ApplyResources(this.β参数, "β参数");
             this.β参数.Name = "β参数";
             this.β参数.UseVisualStyleBackColor = true;
             // 
@@ -753,7 +717,6 @@
             // 
             // DgvBetaSet
             // 
-            resources.ApplyResources(this.DgvBetaSet, "DgvBetaSet");
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.AllowUserToDeleteRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
@@ -785,6 +748,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvBetaSet.DefaultCellStyle = dataGridViewCellStyle6;
             this.DgvBetaSet.EnableHeadersVisualStyles = false;
+            resources.ApplyResources(this.DgvBetaSet, "DgvBetaSet");
             this.DgvBetaSet.Name = "DgvBetaSet";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -851,7 +815,6 @@
             // 
             // GrpBetaNuclideChoose
             // 
-            resources.ApplyResources(this.GrpBetaNuclideChoose, "GrpBetaNuclideChoose");
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBetaDefine2);
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta192);
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta90);
@@ -864,6 +827,7 @@
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta131);
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta58);
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta14);
+            resources.ApplyResources(this.GrpBetaNuclideChoose, "GrpBetaNuclideChoose");
             this.GrpBetaNuclideChoose.Name = "GrpBetaNuclideChoose";
             this.GrpBetaNuclideChoose.TabStop = false;
             // 
@@ -953,11 +917,11 @@
             // 
             // 衣物探头
             // 
-            resources.ApplyResources(this.衣物探头, "衣物探头");
             this.衣物探头.Controls.Add(this.BtnClothesNo);
             this.衣物探头.Controls.Add(this.BtnClothesOk);
             this.衣物探头.Controls.Add(this.GrpClothesNuclideChoose);
             this.衣物探头.Controls.Add(this.GrpClothesData);
+            resources.ApplyResources(this.衣物探头, "衣物探头");
             this.衣物探头.Name = "衣物探头";
             this.衣物探头.UseVisualStyleBackColor = true;
             // 
@@ -977,7 +941,6 @@
             // 
             // GrpClothesNuclideChoose
             // 
-            resources.ApplyResources(this.GrpClothesNuclideChoose, "GrpClothesNuclideChoose");
             this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBetaDefine1);
             this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta192);
             this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta90);
@@ -996,6 +959,7 @@
             this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesAlpha235);
             this.GrpClothesNuclideChoose.Controls.Add(this.LblClothesBetaOrClothes);
             this.GrpClothesNuclideChoose.Controls.Add(this.LblClothesAlpha);
+            resources.ApplyResources(this.GrpClothesNuclideChoose, "GrpClothesNuclideChoose");
             this.GrpClothesNuclideChoose.Name = "GrpClothesNuclideChoose";
             this.GrpClothesNuclideChoose.TabStop = false;
             // 
@@ -1123,7 +1087,6 @@
             // 
             // GrpClothesData
             // 
-            resources.ApplyResources(this.GrpClothesData, "GrpClothesData");
             this.GrpClothesData.Controls.Add(this.TxtClothOfflineTime);
             this.GrpClothesData.Controls.Add(this.LblClothOfflineTime);
             this.GrpClothesData.Controls.Add(this.TxtClothesEfficiency);
@@ -1136,6 +1099,7 @@
             this.GrpClothesData.Controls.Add(this.LblClothesAlarm_1);
             this.GrpClothesData.Controls.Add(this.LblClothesLBackground);
             this.GrpClothesData.Controls.Add(this.LblClothesHBackground);
+            resources.ApplyResources(this.GrpClothesData, "GrpClothesData");
             this.GrpClothesData.Name = "GrpClothesData";
             this.GrpClothesData.TabStop = false;
             // 
@@ -1207,13 +1171,13 @@
             // 
             // 工厂参数
             // 
-            resources.ApplyResources(this.工厂参数, "工厂参数");
             this.工厂参数.Controls.Add(this.label1);
             this.工厂参数.Controls.Add(this.DgvMainPreferenceSet);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceWrite);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceRead);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceSet);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceRetuen);
+            resources.ApplyResources(this.工厂参数, "工厂参数");
             this.工厂参数.Name = "工厂参数";
             this.工厂参数.UseVisualStyleBackColor = true;
             // 
@@ -1224,7 +1188,6 @@
             // 
             // DgvMainPreferenceSet
             // 
-            resources.ApplyResources(this.DgvMainPreferenceSet, "DgvMainPreferenceSet");
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
             this.DgvMainPreferenceSet.AllowUserToDeleteRows = false;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.Silver;
@@ -1237,6 +1200,7 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(this.DgvMainPreferenceSet, "DgvMainPreferenceSet");
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -1341,19 +1305,18 @@
             // 
             // COM
             // 
-            resources.ApplyResources(this.COM, "COM");
             this.COM.Controls.Add(this.GrpcommportSetOfReport);
             this.COM.Controls.Add(this.GrpcommportSet);
             this.COM.Controls.Add(this.BtnPorRestoreDefault);
             this.COM.Controls.Add(this.BtnCancel);
             this.COM.Controls.Add(this.BtnPorSave);
             this.COM.Controls.Add(this.GrpInternet);
+            resources.ApplyResources(this.COM, "COM");
             this.COM.Name = "COM";
             this.COM.UseVisualStyleBackColor = true;
             // 
             // GrpcommportSetOfReport
             // 
-            resources.ApplyResources(this.GrpcommportSetOfReport, "GrpcommportSetOfReport");
             this.GrpcommportSetOfReport.Controls.Add(this.CmbIsEnabled);
             this.GrpcommportSetOfReport.Controls.Add(this.label2);
             this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportParity);
@@ -1366,6 +1329,7 @@
             this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportDataBits);
             this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportBaudRate);
             this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportPortNum);
+            resources.ApplyResources(this.GrpcommportSetOfReport, "GrpcommportSetOfReport");
             this.GrpcommportSetOfReport.Name = "GrpcommportSetOfReport";
             this.GrpcommportSetOfReport.TabStop = false;
             // 
@@ -1435,7 +1399,6 @@
             // 
             // GrpcommportSet
             // 
-            resources.ApplyResources(this.GrpcommportSet, "GrpcommportSet");
             this.GrpcommportSet.Controls.Add(this.TxtcommportSetParity);
             this.GrpcommportSet.Controls.Add(this.TxtcommportSetStopBits);
             this.GrpcommportSet.Controls.Add(this.TxtcommportSetDataBits);
@@ -1446,6 +1409,7 @@
             this.GrpcommportSet.Controls.Add(this.LabcommportSetDataBits);
             this.GrpcommportSet.Controls.Add(this.LabcommportSetBaudRate);
             this.GrpcommportSet.Controls.Add(this.LabcommportSetPortNum);
+            resources.ApplyResources(this.GrpcommportSet, "GrpcommportSet");
             this.GrpcommportSet.Name = "GrpcommportSet";
             this.GrpcommportSet.TabStop = false;
             // 
@@ -1522,7 +1486,6 @@
             // 
             // GrpInternet
             // 
-            resources.ApplyResources(this.GrpInternet, "GrpInternet");
             this.GrpInternet.Controls.Add(this.TxtDeviceAddress);
             this.GrpInternet.Controls.Add(this.LblDeviceAddress);
             this.GrpInternet.Controls.Add(this.ChkIsConnectedAuto);
@@ -1533,6 +1496,7 @@
             this.GrpInternet.Controls.Add(this.TxtIPAddressTwo);
             this.GrpInternet.Controls.Add(this.TxtIPAddressOne);
             this.GrpInternet.Controls.Add(this.LblIPAddress);
+            resources.ApplyResources(this.GrpInternet, "GrpInternet");
             this.GrpInternet.Name = "GrpInternet";
             this.GrpInternet.TabStop = false;
             // 
@@ -1592,6 +1556,42 @@
             this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
             this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
             // 
+            // TxtAlphaChannelName
+            // 
+            this.TxtAlphaChannelName.DataPropertyName = "ProbeChannel.ChannelName";
+            resources.ApplyResources(this.TxtAlphaChannelName, "TxtAlphaChannelName");
+            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
+            // 
+            // TxtAlphaHBackground
+            // 
+            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
+            resources.ApplyResources(this.TxtAlphaHBackground, "TxtAlphaHBackground");
+            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
+            // 
+            // TxtAplhaLBackground
+            // 
+            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
+            resources.ApplyResources(this.TxtAplhaLBackground, "TxtAplhaLBackground");
+            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
+            // 
+            // TxtAlphaAlarm_1
+            // 
+            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
+            resources.ApplyResources(this.TxtAlphaAlarm_1, "TxtAlphaAlarm_1");
+            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
+            // 
+            // TxtAlphaAlarm_2
+            // 
+            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
+            resources.ApplyResources(this.TxtAlphaAlarm_2, "TxtAlphaAlarm_2");
+            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
+            // 
+            // TxtAlphaEfficiency
+            // 
+            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
+            resources.ApplyResources(this.TxtAlphaEfficiency, "TxtAlphaEfficiency");
+            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
+            // 
             // FrmPreference
             // 
             resources.ApplyResources(this, "$this");
@@ -1629,7 +1629,6 @@
             this.GrpClothesData.ResumeLayout(false);
             this.GrpClothesData.PerformLayout();
             this.工厂参数.ResumeLayout(false);
-            this.工厂参数.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMainPreferenceSet)).EndInit();
             this.COM.ResumeLayout(false);
             this.GrpcommportSetOfReport.ResumeLayout(false);
@@ -1769,12 +1768,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
         private System.Windows.Forms.TabPage α参数;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceChanneName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceAlphaThreshold;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceBetaThreshold;
@@ -1824,5 +1817,11 @@
         private System.Windows.Forms.ComboBox CmbIsEnabled;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox CmbSoftName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
     }
 }

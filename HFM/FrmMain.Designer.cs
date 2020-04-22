@@ -55,116 +55,116 @@
             // 
             // MnsFunction
             // 
-            resources.ApplyResources(this.MnsFunction, "MnsFunction");
             this.MnsFunction.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SystemToolStripMenuItem,
             this.SetUpToolStripMenuItem,
             this.MaintainToolStripMenuItem,
             this.RecordToolStripMenuItem,
             this.AboutToolStripMenuItem});
+            resources.ApplyResources(this.MnsFunction, "MnsFunction");
             this.MnsFunction.Name = "MnsFunction";
             // 
             // SystemToolStripMenuItem
             // 
-            resources.ApplyResources(this.SystemToolStripMenuItem, "SystemToolStripMenuItem");
             this.SystemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StartRunningToolStripMenuItem,
             this.SuperUserToolStripMenuItem,
             this.ChangePasswordToolStripMenuItem,
             this.RetreatSystemToolStripMenuItem});
+            resources.ApplyResources(this.SystemToolStripMenuItem, "SystemToolStripMenuItem");
             this.SystemToolStripMenuItem.Name = "SystemToolStripMenuItem";
             // 
             // StartRunningToolStripMenuItem
             // 
-            resources.ApplyResources(this.StartRunningToolStripMenuItem, "StartRunningToolStripMenuItem");
             this.StartRunningToolStripMenuItem.Name = "StartRunningToolStripMenuItem";
+            resources.ApplyResources(this.StartRunningToolStripMenuItem, "StartRunningToolStripMenuItem");
             this.StartRunningToolStripMenuItem.Click += new System.EventHandler(this.StartRunningToolStripMenuItem_Click);
             // 
             // SuperUserToolStripMenuItem
             // 
-            resources.ApplyResources(this.SuperUserToolStripMenuItem, "SuperUserToolStripMenuItem");
             this.SuperUserToolStripMenuItem.Name = "SuperUserToolStripMenuItem";
+            resources.ApplyResources(this.SuperUserToolStripMenuItem, "SuperUserToolStripMenuItem");
             this.SuperUserToolStripMenuItem.Click += new System.EventHandler(this.SuperUserToolStripMenuItem_Click);
             // 
             // ChangePasswordToolStripMenuItem
             // 
-            resources.ApplyResources(this.ChangePasswordToolStripMenuItem, "ChangePasswordToolStripMenuItem");
             this.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem";
+            resources.ApplyResources(this.ChangePasswordToolStripMenuItem, "ChangePasswordToolStripMenuItem");
             this.ChangePasswordToolStripMenuItem.Click += new System.EventHandler(this.ChangePasswordToolStripMenuItem_Click);
             // 
             // RetreatSystemToolStripMenuItem
             // 
-            resources.ApplyResources(this.RetreatSystemToolStripMenuItem, "RetreatSystemToolStripMenuItem");
             this.RetreatSystemToolStripMenuItem.Name = "RetreatSystemToolStripMenuItem";
+            resources.ApplyResources(this.RetreatSystemToolStripMenuItem, "RetreatSystemToolStripMenuItem");
             this.RetreatSystemToolStripMenuItem.Click += new System.EventHandler(this.RetreatSystemToolStripMenuItem_Click);
             // 
             // SetUpToolStripMenuItem
             // 
-            resources.ApplyResources(this.SetUpToolStripMenuItem, "SetUpToolStripMenuItem");
             this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ParameterSettingToolStripMenuItem});
+            resources.ApplyResources(this.SetUpToolStripMenuItem, "SetUpToolStripMenuItem");
             this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
             // 
             // ParameterSettingToolStripMenuItem
             // 
-            resources.ApplyResources(this.ParameterSettingToolStripMenuItem, "ParameterSettingToolStripMenuItem");
             this.ParameterSettingToolStripMenuItem.Name = "ParameterSettingToolStripMenuItem";
+            resources.ApplyResources(this.ParameterSettingToolStripMenuItem, "ParameterSettingToolStripMenuItem");
             this.ParameterSettingToolStripMenuItem.Click += new System.EventHandler(this.ParameterSettingToolStripMenuItem_Click);
             // 
             // MaintainToolStripMenuItem
             // 
-            resources.ApplyResources(this.MaintainToolStripMenuItem, "MaintainToolStripMenuItem");
             this.MaintainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CalibrationToolStripMenuItem,
             this.TestHardwareToolStripMenuItem});
+            resources.ApplyResources(this.MaintainToolStripMenuItem, "MaintainToolStripMenuItem");
             this.MaintainToolStripMenuItem.Name = "MaintainToolStripMenuItem";
             // 
             // CalibrationToolStripMenuItem
             // 
-            resources.ApplyResources(this.CalibrationToolStripMenuItem, "CalibrationToolStripMenuItem");
             this.CalibrationToolStripMenuItem.Name = "CalibrationToolStripMenuItem";
+            resources.ApplyResources(this.CalibrationToolStripMenuItem, "CalibrationToolStripMenuItem");
             this.CalibrationToolStripMenuItem.Click += new System.EventHandler(this.CalibrationToolStripMenuItem_Click);
             // 
             // TestHardwareToolStripMenuItem
             // 
-            resources.ApplyResources(this.TestHardwareToolStripMenuItem, "TestHardwareToolStripMenuItem");
             this.TestHardwareToolStripMenuItem.Name = "TestHardwareToolStripMenuItem";
+            resources.ApplyResources(this.TestHardwareToolStripMenuItem, "TestHardwareToolStripMenuItem");
             this.TestHardwareToolStripMenuItem.Click += new System.EventHandler(this.TestHardwareToolStripMenuItem_Click);
             // 
             // RecordToolStripMenuItem
             // 
-            resources.ApplyResources(this.RecordToolStripMenuItem, "RecordToolStripMenuItem");
             this.RecordToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.HistoricalRecordToolStripMenuItem});
+            resources.ApplyResources(this.RecordToolStripMenuItem, "RecordToolStripMenuItem");
             this.RecordToolStripMenuItem.Name = "RecordToolStripMenuItem";
             // 
             // HistoricalRecordToolStripMenuItem
             // 
-            resources.ApplyResources(this.HistoricalRecordToolStripMenuItem, "HistoricalRecordToolStripMenuItem");
             this.HistoricalRecordToolStripMenuItem.Name = "HistoricalRecordToolStripMenuItem";
+            resources.ApplyResources(this.HistoricalRecordToolStripMenuItem, "HistoricalRecordToolStripMenuItem");
             this.HistoricalRecordToolStripMenuItem.Click += new System.EventHandler(this.HistoricalRecordToolStripMenuItem_Click);
             // 
             // AboutToolStripMenuItem
             // 
-            resources.ApplyResources(this.AboutToolStripMenuItem, "AboutToolStripMenuItem");
             this.AboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AboutHFMToolStripMenuItem});
+            resources.ApplyResources(this.AboutToolStripMenuItem, "AboutToolStripMenuItem");
             this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
             // 
             // AboutHFMToolStripMenuItem
             // 
-            resources.ApplyResources(this.AboutHFMToolStripMenuItem, "AboutHFMToolStripMenuItem");
             this.AboutHFMToolStripMenuItem.Name = "AboutHFMToolStripMenuItem";
+            resources.ApplyResources(this.AboutHFMToolStripMenuItem, "AboutHFMToolStripMenuItem");
             this.AboutHFMToolStripMenuItem.Click += new System.EventHandler(this.AboutHFMToolStripMenuItem_Click);
             // 
             // StsFoot
             // 
-            resources.ApplyResources(this.StsFoot, "StsFoot");
             this.StsFoot.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Tsslbl_Name,
             this.Tsslbl_Status,
             this.Tsslbl_Tcp,
             this.Tsslbl_NowTime});
+            resources.ApplyResources(this.StsFoot, "StsFoot");
             this.StsFoot.Name = "StsFoot";
             // 
             // Tsslbl_Name

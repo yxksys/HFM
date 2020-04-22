@@ -719,5 +719,26 @@ namespace HFM
         {
             bkWorkerReceiveData.CancelAsync();
         }
+
+        #region 数字键盘显示
+        /// <summary>
+        /// 计数
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtCheckCount_MouseClick(object sender, MouseEventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtCheckCount);
+        }
+        /// <summary>
+        /// 脉宽
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtPWidth_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtPWidth);
+        } 
+        #endregion
     }
 }
