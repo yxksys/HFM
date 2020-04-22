@@ -46,6 +46,10 @@ namespace HFM.Components
         /// 查询ID小于measureDataID的所有监测数据记录的IsReported值
         /// </summary>
         private const string SQL_SELECT_MEASUREDATA_BY_ISREPORTED = "SELECT IsReported FROM HFM_MeasureData WHERE MeasureID<@measureDataID";
+        /// <summary>
+        /// 删除表数据
+        /// </summary>
+        private const string SQL_DELETE_MEASUREDATA = "DELETE FROM HFM_MeasureData";
         #endregion
 
         #region 字段属性
@@ -284,6 +288,19 @@ namespace HFM.Components
             }
             return true;
         }
+        #endregion
+
+        #region 删除表数据
+
+        /// <summary>
+        /// 删除表中数据信息
+        /// </summary>
+        /// <returns></returns>
+        public int DeleteData()
+        {
+            return DbHelperAccess.ExecuteSql(SQL_DELETE_MEASUREDATA);
+        }
+
         #endregion
     }
 }

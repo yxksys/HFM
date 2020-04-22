@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BtnDeleteMeasure.Text" xml:space="preserve">
+    <value>Delete Record</value>
+  </data>
+  <data name="BtnDeriveMeasure.Text" xml:space="preserve">
+    <value>Export Data</value>
+  </data>
   <data name="MeasureDate.HeaderText" xml:space="preserve">
     <value>Measuring time</value>
   </data>
