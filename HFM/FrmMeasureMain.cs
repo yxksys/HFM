@@ -449,7 +449,7 @@ namespace HFM
                 else
                 {
                     MessageBox.Show("监测端口打开错误！请检查通讯是否正常。");
-                    TxtShowResult.Text = "串口打开失败";
+                    TxtShowResult.Text = "监测串口打开失败";
                 }
                 return;
             }
@@ -647,7 +647,14 @@ namespace HFM
                     Thread.Sleep(100);
                     //读取串口回传数据并赋值给receiveBuffMessage
                     byte[] receiveBuffMessage = new byte[124];
-                    receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
+                    try
+                    {
+                        receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
+                    }
+                    catch
+                    {
+                        TxtShowResult.Text += "监测测端口通信错误！\r\n";
+                    }
                     //延时
                     if (platformState == PlatformState.SelfTest && isSelfCheckSended == false)
                     {
@@ -2397,7 +2404,14 @@ namespace HFM
                 }
                 //读取串口回传数据并赋值给receiveBuffMessage
                 byte[] receiveBuffMessage = new byte[20];
-                receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory);
+                try
+                {
+                    receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory);
+                }
+                catch
+                {
+                    TxtShowResult.Text += "管理机端口通信错误！\r\n";
+                }
                 //延时
                 Thread.Sleep(1000);
                 //触发向主线程返回下位机上传数据事件
@@ -2649,11 +2663,7 @@ namespace HFM
                         }
                         break;
                 }
-            }
-            //更新剩余时间：系统自检设置时间-已经用时
-            //stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
-            ////更新当前系统运行状态剩余时间
-            //LblTimeRemain.Text = stateTimeRemain.ToString();
+            }            
         }
 
         private void BtnChinese_Click(object sender, EventArgs e)
@@ -2712,10 +2722,6 @@ namespace HFM
 
         private void FrmMeasureMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            commPort.Close();
-            commPort_Supervisory.Close();
-            bkWorkerReceiveData.Dispose();
-            bkWorkerReportStatus.Dispose();
             if (bkWorkerReportStatus.IsBusy)
             {
                 bkWorkerReportStatus.CancelAsync();
@@ -2724,12 +2730,34 @@ namespace HFM
             {
                 bkWorkerReceiveData.CancelAsync();
             }
+            bkWorkerReceiveData.Dispose();
+            bkWorkerReportStatus.Dispose();
+            this.TmrDispTime.Enabled = false;
+            if (this.commPort.Opened == true)
+            {
+                this.commPort.Close();
+                Thread.Sleep(200);
+            }
+
+            if (this.commPort_Supervisory.Opened == true)
+            {
+                this.commPort_Supervisory.Close();
+                Thread.Sleep(200);
+            }            
         }
 
         private void BtExit_Click(object sender, EventArgs e)
         {
-            this.bkWorkerReceiveData.CancelAsync();
-            this.bkWorkerReportStatus.CancelAsync();
+            if (bkWorkerReportStatus.IsBusy)
+            {
+                bkWorkerReportStatus.CancelAsync();
+            }
+            if (bkWorkerReceiveData.IsBusy)
+            {
+                bkWorkerReceiveData.CancelAsync();
+            }
+            bkWorkerReceiveData.Dispose();
+            bkWorkerReportStatus.Dispose();
             this.TmrDispTime.Enabled = false;
             if (this.commPort.Opened == true)
             {
