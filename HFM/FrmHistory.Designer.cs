@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHistory));
             this.TabHistory = new System.Windows.Forms.TabControl();
             this.TabMeasure = new System.Windows.Forms.TabPage();
+            this.BtnDeleteMeasure = new System.Windows.Forms.Button();
+            this.BtnDeriveMeasure = new System.Windows.Forms.Button();
             this.DgvMeasure = new System.Windows.Forms.DataGridView();
             this.MeasureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MeasureStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,8 +79,24 @@
             // 
             resources.ApplyResources(this.TabMeasure, "TabMeasure");
             this.TabMeasure.BackColor = System.Drawing.SystemColors.Control;
+            this.TabMeasure.Controls.Add(this.BtnDeleteMeasure);
+            this.TabMeasure.Controls.Add(this.BtnDeriveMeasure);
             this.TabMeasure.Controls.Add(this.DgvMeasure);
             this.TabMeasure.Name = "TabMeasure";
+            // 
+            // BtnDeleteMeasure
+            // 
+            resources.ApplyResources(this.BtnDeleteMeasure, "BtnDeleteMeasure");
+            this.BtnDeleteMeasure.Name = "BtnDeleteMeasure";
+            this.BtnDeleteMeasure.UseVisualStyleBackColor = true;
+            this.BtnDeleteMeasure.Click += new System.EventHandler(this.BtnDeleteMeasure_Click);
+            // 
+            // BtnDeriveMeasure
+            // 
+            resources.ApplyResources(this.BtnDeriveMeasure, "BtnDeriveMeasure");
+            this.BtnDeriveMeasure.Name = "BtnDeriveMeasure";
+            this.BtnDeriveMeasure.UseVisualStyleBackColor = true;
+            this.BtnDeriveMeasure.Click += new System.EventHandler(this.BtnDeriveMeasure_Click);
             // 
             // DgvMeasure
             // 
@@ -288,10 +306,6 @@
         private System.Windows.Forms.Button BtnDeriveCalibration;
         private System.Windows.Forms.Button BtnDeleteError;
         private System.Windows.Forms.Button BtnDeriveError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MeasureDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MeasureStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DetailedInfo;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglish;
         private System.Windows.Forms.DataGridViewTextBoxColumn CalibrationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChannelID;
         private System.Windows.Forms.DataGridViewTextBoxColumn HighVoltage;
@@ -299,8 +313,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Efficiency;
         private System.Windows.Forms.DataGridViewTextBoxColumn MDA;
         private System.Windows.Forms.DataGridViewTextBoxColumn AlphaBetaPercent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MeasureDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MeasureStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DetailedInfo;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglish;
         private System.Windows.Forms.DataGridViewTextBoxColumn ErrTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Record;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglishsError;
+        private System.Windows.Forms.Button BtnDeleteMeasure;
+        private System.Windows.Forms.Button BtnDeriveMeasure;
     }
 }

@@ -1382,7 +1382,7 @@ namespace HFM
                     //所以，需要从measureDataS中找到对应通道的监测数据通过平滑计算后赋值给calculatedMeasureDataS
                     //从解析的7个通道的measureDataS监测数据中找到当前通道的测量数据
                     List<MeasureData> list = measureDataS.Where(measureData => measureData.Channel.ChannelID == channelS[i].ChannelID).ToList();
-                    if (list[0].Channel.ChannelID>=1&& list[0].Channel.ChannelID<=4 && list[0].InfraredStatus == 0)//当前通道为手部脚步通道且红外不到位
+                    if (list[0].Channel.ChannelID>=1&& list[0].Channel.ChannelID<=6 && list[0].InfraredStatus == 0)//当前通道为手部脚步通道且红外不到位
                     {                        
                             //第一次判断红外状态
                             if (isFirstBackGround == true)
@@ -1407,9 +1407,10 @@ namespace HFM
                         conversionData.Channel = calculatedMeasureDataS[i].Channel;
                         //将单位转换后的测量数据添加进IList列表
                         conversionDataS.Add(conversionData);
+
                     }                    
                 }                               
-                DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);//yxk,修改,显示数据
+                //DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);//yxk,修改,实时显示数据
                 //所有通道手部红外状态全部到位
                 if (isHandInfraredStatus == true)
                 {
@@ -1469,6 +1470,7 @@ namespace HFM
                     //本底测量判断
                     if (errRecordS == null)//本底检测通过
                     {
+                        DisplayMeasureData(calculatedMeasureDataS, "cps");//yxk,修改显示当前本底值
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //下次如果还进行本底计算，则需重新计时，所以置标志为True
@@ -1478,10 +1480,9 @@ namespace HFM
                             //将最终的本底计算结果保存，以用于检测时对测量结果进行校正
                             baseData.Add(calculatedMeasureDataS[i]);
                             //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次计算做准备
-                            calculatedMeasureDataS[i].Alpha = 0;
-                            calculatedMeasureDataS[i].Beta = 0;
+                            //calculatedMeasureDataS[i].Alpha = 0;
+                            //calculatedMeasureDataS[i].Beta = 0;
                         }
-                        DisplayMeasureData(calculatedMeasureDataS,"cps");//yxk,修改,清零
                     }
                     else//本底检测未通过
                     {
@@ -2173,6 +2174,7 @@ namespace HFM
         {
             //自检是否通过标志，默认true
             bool isCheck = true;
+            bool isSelfCheckFault = false;//仪器自检是否出现故障标志
             //故障记录字符串
             string errRecord = null;//中文
             string errRecord_E = null;//英文  
@@ -2304,6 +2306,7 @@ namespace HFM
                     PicShowStatus.BackColor = PlatForm.ColorStatus.CORLOR_ERROR;
                     if (platformState == PlatformState.SelfTest)
                     {
+                        isSelfCheckFault = true;//当前通道自检故障标志
                         if (isEnglish)
                         {
                             LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
@@ -2333,7 +2336,7 @@ namespace HFM
                 {
                     //设备状态区域背景色显示为NORMAL
                     PicShowStatus.BackColor = PlatForm.ColorStatus.CORLOR_NORMAL;
-                    if (platformState == PlatformState.SelfTest)
+                    if (platformState == PlatformState.SelfTest&& isSelfCheckFault==false)
                     {
                         //设备状态区域文字提示“仪器正常”
                         if (isEnglish)
@@ -2728,7 +2731,17 @@ namespace HFM
             this.bkWorkerReceiveData.CancelAsync();
             this.bkWorkerReportStatus.CancelAsync();
             this.TmrDispTime.Enabled = false;
-            this.commPort.Close();
+            if (this.commPort.Opened == true)
+            {
+                this.commPort.Close();
+                Thread.Sleep(200);
+            }
+
+            if (this.commPort_Supervisory.Opened == true)
+            {
+                this.commPort_Supervisory.Close();
+                Thread.Sleep(200);
+            }
             Application.Exit();
         }
     }

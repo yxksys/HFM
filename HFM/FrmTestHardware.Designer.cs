@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTestHardware));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GrpWork = new System.Windows.Forms.GroupBox();
             this.DgvWork = new System.Windows.Forms.DataGridView();
-            this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblBetacnt = new System.Windows.Forms.Label();
             this.LblBetacps = new System.Windows.Forms.Label();
             this.LblAlphacnt = new System.Windows.Forms.Label();
@@ -80,6 +81,12 @@
             this.LblSelfcount = new System.Windows.Forms.Label();
             this.LblTimeWork = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
+            this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GrpWork.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvWork)).BeginInit();
             this.GrpFrisker.SuspendLayout();
@@ -90,6 +97,7 @@
             // 
             // GrpWork
             // 
+            resources.ApplyResources(this.GrpWork, "GrpWork");
             this.GrpWork.Controls.Add(this.DgvWork);
             this.GrpWork.Controls.Add(this.LblBetacnt);
             this.GrpWork.Controls.Add(this.LblBetacps);
@@ -108,15 +116,13 @@
             this.GrpWork.Controls.Add(this.LblαTotalcnt);
             this.GrpWork.Controls.Add(this.Lblαcountrate);
             this.GrpWork.Controls.Add(this.LblHighVoltage);
-            this.GrpWork.Location = new System.Drawing.Point(12, 12);
             this.GrpWork.Name = "GrpWork";
-            this.GrpWork.Size = new System.Drawing.Size(728, 269);
-            this.GrpWork.TabIndex = 33;
             this.GrpWork.TabStop = false;
             // 
             // DgvWork
             // 
             this.DgvWork.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DgvWork.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvWork.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvWork.ColumnHeadersVisible = false;
             this.DgvWork.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -126,238 +132,121 @@
             this.RHB,
             this.LF,
             this.RF});
-            this.DgvWork.Location = new System.Drawing.Point(130, 52);
+            resources.ApplyResources(this.DgvWork, "DgvWork");
             this.DgvWork.Name = "DgvWork";
             this.DgvWork.RowHeadersVisible = false;
             this.DgvWork.RowTemplate.Height = 35;
-            this.DgvWork.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.DgvWork.Size = new System.Drawing.Size(491, 210);
-            this.DgvWork.TabIndex = 17;
-            // 
-            // LHP
-            // 
-            this.LHP.HeaderText = "LHP";
-            this.LHP.Name = "LHP";
-            this.LHP.Width = 82;
-            // 
-            // LHB
-            // 
-            this.LHB.HeaderText = "LHB";
-            this.LHB.Name = "LHB";
-            this.LHB.Width = 82;
-            // 
-            // RHP
-            // 
-            this.RHP.HeaderText = "RHP";
-            this.RHP.Name = "RHP";
-            this.RHP.Width = 82;
-            // 
-            // RHB
-            // 
-            this.RHB.HeaderText = "RHB";
-            this.RHB.Name = "RHB";
-            this.RHB.Width = 82;
-            // 
-            // LF
-            // 
-            this.LF.HeaderText = "LF";
-            this.LF.Name = "LF";
-            this.LF.Width = 80;
-            // 
-            // RF
-            // 
-            this.RF.HeaderText = "RF";
-            this.RF.Name = "RF";
-            this.RF.Width = 80;
             // 
             // LblBetacnt
             // 
-            this.LblBetacnt.AutoSize = true;
-            this.LblBetacnt.Location = new System.Drawing.Point(627, 204);
+            resources.ApplyResources(this.LblBetacnt, "LblBetacnt");
             this.LblBetacnt.Name = "LblBetacnt";
-            this.LblBetacnt.Size = new System.Drawing.Size(67, 20);
-            this.LblBetacnt.TabIndex = 16;
-            this.LblBetacnt.Text = "单位:cnt";
             // 
             // LblBetacps
             // 
-            this.LblBetacps.AutoSize = true;
-            this.LblBetacps.Location = new System.Drawing.Point(627, 163);
+            resources.ApplyResources(this.LblBetacps, "LblBetacps");
             this.LblBetacps.Name = "LblBetacps";
-            this.LblBetacps.Size = new System.Drawing.Size(70, 20);
-            this.LblBetacps.TabIndex = 15;
-            this.LblBetacps.Text = "单位:cps";
             // 
             // LblAlphacnt
             // 
-            this.LblAlphacnt.AutoSize = true;
-            this.LblAlphacnt.Location = new System.Drawing.Point(627, 125);
+            resources.ApplyResources(this.LblAlphacnt, "LblAlphacnt");
             this.LblAlphacnt.Name = "LblAlphacnt";
-            this.LblAlphacnt.Size = new System.Drawing.Size(67, 20);
-            this.LblAlphacnt.TabIndex = 14;
-            this.LblAlphacnt.Text = "单位:cnt";
             // 
             // LblAlphacps
             // 
-            this.LblAlphacps.AutoSize = true;
-            this.LblAlphacps.Location = new System.Drawing.Point(627, 88);
+            resources.ApplyResources(this.LblAlphacps, "LblAlphacps");
             this.LblAlphacps.Name = "LblAlphacps";
-            this.LblAlphacps.Size = new System.Drawing.Size(70, 20);
-            this.LblAlphacps.TabIndex = 13;
-            this.LblAlphacps.Text = "单位:cps";
             // 
             // LblV
             // 
-            this.LblV.AutoSize = true;
-            this.LblV.Location = new System.Drawing.Point(627, 52);
+            resources.ApplyResources(this.LblV, "LblV");
             this.LblV.Name = "LblV";
-            this.LblV.Size = new System.Drawing.Size(56, 20);
-            this.LblV.TabIndex = 12;
-            this.LblV.Text = "单位:V";
             // 
             // LblRF
             // 
-            this.LblRF.Location = new System.Drawing.Point(556, 22);
+            resources.ApplyResources(this.LblRF, "LblRF");
             this.LblRF.Name = "LblRF";
-            this.LblRF.Size = new System.Drawing.Size(41, 20);
-            this.LblRF.TabIndex = 11;
-            this.LblRF.Text = "右脚";
             // 
             // LblLF
             // 
-            this.LblLF.Location = new System.Drawing.Point(487, 22);
+            resources.ApplyResources(this.LblLF, "LblLF");
             this.LblLF.Name = "LblLF";
-            this.LblLF.Size = new System.Drawing.Size(41, 20);
-            this.LblLF.TabIndex = 10;
-            this.LblLF.Text = "左脚";
             // 
             // LblRHB
             // 
-            this.LblRHB.Location = new System.Drawing.Point(393, 22);
+            resources.ApplyResources(this.LblRHB, "LblRHB");
             this.LblRHB.Name = "LblRHB";
-            this.LblRHB.Size = new System.Drawing.Size(57, 20);
-            this.LblRHB.TabIndex = 9;
-            this.LblRHB.Text = "右手背";
             // 
             // LblRHP
             // 
-            this.LblRHP.Location = new System.Drawing.Point(305, 22);
+            resources.ApplyResources(this.LblRHP, "LblRHP");
             this.LblRHP.Name = "LblRHP";
-            this.LblRHP.Size = new System.Drawing.Size(57, 20);
-            this.LblRHP.TabIndex = 8;
-            this.LblRHP.Text = "右手心";
             // 
             // LblLHB
             // 
-            this.LblLHB.Location = new System.Drawing.Point(220, 22);
+            resources.ApplyResources(this.LblLHB, "LblLHB");
             this.LblLHB.Name = "LblLHB";
-            this.LblLHB.Size = new System.Drawing.Size(57, 20);
-            this.LblLHB.TabIndex = 7;
-            this.LblLHB.Text = "左手背";
             // 
             // LblLHP
             // 
-            this.LblLHP.Location = new System.Drawing.Point(138, 22);
+            resources.ApplyResources(this.LblLHP, "LblLHP");
             this.LblLHP.Name = "LblLHP";
-            this.LblLHP.Size = new System.Drawing.Size(57, 20);
-            this.LblLHP.TabIndex = 6;
-            this.LblLHP.Text = "左手心";
             // 
             // LblStatus
             // 
-            this.LblStatus.Location = new System.Drawing.Point(14, 243);
+            resources.ApplyResources(this.LblStatus, "LblStatus");
             this.LblStatus.Name = "LblStatus";
-            this.LblStatus.Size = new System.Drawing.Size(87, 19);
-            this.LblStatus.TabIndex = 5;
-            this.LblStatus.Text = "工作状态";
-            this.LblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblβTotalcnt
             // 
-            this.LblβTotalcnt.Location = new System.Drawing.Point(16, 204);
+            resources.ApplyResources(this.LblβTotalcnt, "LblβTotalcnt");
             this.LblβTotalcnt.Name = "LblβTotalcnt";
-            this.LblβTotalcnt.Size = new System.Drawing.Size(87, 19);
-            this.LblβTotalcnt.TabIndex = 4;
-            this.LblβTotalcnt.Text = "β总计数";
-            this.LblβTotalcnt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Lblβcountrate
             // 
-            this.Lblβcountrate.Location = new System.Drawing.Point(14, 164);
+            resources.ApplyResources(this.Lblβcountrate, "Lblβcountrate");
             this.Lblβcountrate.Name = "Lblβcountrate";
-            this.Lblβcountrate.Size = new System.Drawing.Size(87, 19);
-            this.Lblβcountrate.TabIndex = 3;
-            this.Lblβcountrate.Text = "β计数率";
-            this.Lblβcountrate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblαTotalcnt
             // 
-            this.LblαTotalcnt.Location = new System.Drawing.Point(14, 126);
+            resources.ApplyResources(this.LblαTotalcnt, "LblαTotalcnt");
             this.LblαTotalcnt.Name = "LblαTotalcnt";
-            this.LblαTotalcnt.Size = new System.Drawing.Size(87, 19);
-            this.LblαTotalcnt.TabIndex = 2;
-            this.LblαTotalcnt.Text = "α总计数";
-            this.LblαTotalcnt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Lblαcountrate
             // 
-            this.Lblαcountrate.Location = new System.Drawing.Point(13, 88);
+            resources.ApplyResources(this.Lblαcountrate, "Lblαcountrate");
             this.Lblαcountrate.Name = "Lblαcountrate";
-            this.Lblαcountrate.Size = new System.Drawing.Size(92, 18);
-            this.Lblαcountrate.TabIndex = 1;
-            this.Lblαcountrate.Text = "α计数率";
-            this.Lblαcountrate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblHighVoltage
             // 
-            this.LblHighVoltage.Location = new System.Drawing.Point(16, 52);
+            resources.ApplyResources(this.LblHighVoltage, "LblHighVoltage");
             this.LblHighVoltage.Name = "LblHighVoltage";
-            this.LblHighVoltage.Size = new System.Drawing.Size(87, 19);
-            this.LblHighVoltage.TabIndex = 0;
-            this.LblHighVoltage.Text = "探头高压";
-            this.LblHighVoltage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // GrpFrisker
             // 
             this.GrpFrisker.Controls.Add(this.LblFriskercps);
             this.GrpFrisker.Controls.Add(this.TxtFriskercount);
             this.GrpFrisker.Controls.Add(this.LblFriskercount);
-            this.GrpFrisker.Location = new System.Drawing.Point(12, 288);
-            this.GrpFrisker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            resources.ApplyResources(this.GrpFrisker, "GrpFrisker");
             this.GrpFrisker.Name = "GrpFrisker";
-            this.GrpFrisker.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.GrpFrisker.Size = new System.Drawing.Size(231, 70);
-            this.GrpFrisker.TabIndex = 34;
             this.GrpFrisker.TabStop = false;
-            this.GrpFrisker.Text = "衣物探头";
             // 
             // LblFriskercps
             // 
-            this.LblFriskercps.AutoSize = true;
-            this.LblFriskercps.Location = new System.Drawing.Point(193, 30);
+            resources.ApplyResources(this.LblFriskercps, "LblFriskercps");
             this.LblFriskercps.Name = "LblFriskercps";
-            this.LblFriskercps.Size = new System.Drawing.Size(34, 20);
-            this.LblFriskercps.TabIndex = 17;
-            this.LblFriskercps.Text = "cps";
             // 
             // TxtFriskercount
             // 
             this.TxtFriskercount.BackColor = System.Drawing.SystemColors.Control;
-            this.TxtFriskercount.Location = new System.Drawing.Point(102, 28);
+            resources.ApplyResources(this.TxtFriskercount, "TxtFriskercount");
             this.TxtFriskercount.Name = "TxtFriskercount";
             this.TxtFriskercount.ReadOnly = true;
-            this.TxtFriskercount.Size = new System.Drawing.Size(86, 26);
-            this.TxtFriskercount.TabIndex = 18;
-            this.TxtFriskercount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // LblFriskercount
             // 
-            this.LblFriskercount.Location = new System.Drawing.Point(28, 31);
+            resources.ApplyResources(this.LblFriskercount, "LblFriskercount");
             this.LblFriskercount.Name = "LblFriskercount";
-            this.LblFriskercount.Size = new System.Drawing.Size(66, 19);
-            this.LblFriskercount.TabIndex = 17;
-            this.LblFriskercount.Text = "计数";
-            this.LblFriskercount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // GrpSensorstate
             // 
@@ -367,95 +256,65 @@
             this.GrpSensorstate.Controls.Add(this.LblRHandState);
             this.GrpSensorstate.Controls.Add(this.TxtLHandState);
             this.GrpSensorstate.Controls.Add(this.LblLHandState);
-            this.GrpSensorstate.Location = new System.Drawing.Point(249, 288);
+            resources.ApplyResources(this.GrpSensorstate, "GrpSensorstate");
             this.GrpSensorstate.Name = "GrpSensorstate";
-            this.GrpSensorstate.Size = new System.Drawing.Size(491, 70);
-            this.GrpSensorstate.TabIndex = 35;
             this.GrpSensorstate.TabStop = false;
-            this.GrpSensorstate.Text = "红外状态";
             // 
             // TxtFriskerState
             // 
             this.TxtFriskerState.BackColor = System.Drawing.Color.Orange;
-            this.TxtFriskerState.Location = new System.Drawing.Point(385, 31);
+            resources.ApplyResources(this.TxtFriskerState, "TxtFriskerState");
             this.TxtFriskerState.Name = "TxtFriskerState";
             this.TxtFriskerState.ReadOnly = true;
-            this.TxtFriskerState.Size = new System.Drawing.Size(72, 26);
-            this.TxtFriskerState.TabIndex = 23;
             // 
             // LblFriskerState
             // 
-            this.LblFriskerState.AutoSize = true;
-            this.LblFriskerState.Location = new System.Drawing.Point(330, 31);
+            resources.ApplyResources(this.LblFriskerState, "LblFriskerState");
             this.LblFriskerState.Name = "LblFriskerState";
-            this.LblFriskerState.Size = new System.Drawing.Size(41, 20);
-            this.LblFriskerState.TabIndex = 22;
-            this.LblFriskerState.Text = "衣物";
             // 
             // TxtRHandState
             // 
             this.TxtRHandState.BackColor = System.Drawing.Color.Orange;
-            this.TxtRHandState.Location = new System.Drawing.Point(224, 31);
+            resources.ApplyResources(this.TxtRHandState, "TxtRHandState");
             this.TxtRHandState.Name = "TxtRHandState";
             this.TxtRHandState.ReadOnly = true;
-            this.TxtRHandState.Size = new System.Drawing.Size(72, 26);
-            this.TxtRHandState.TabIndex = 21;
             // 
             // LblRHandState
             // 
-            this.LblRHandState.AutoSize = true;
-            this.LblRHandState.Location = new System.Drawing.Point(172, 31);
+            resources.ApplyResources(this.LblRHandState, "LblRHandState");
             this.LblRHandState.Name = "LblRHandState";
-            this.LblRHandState.Size = new System.Drawing.Size(41, 20);
-            this.LblRHandState.TabIndex = 20;
-            this.LblRHandState.Text = "右手";
             // 
             // TxtLHandState
             // 
             this.TxtLHandState.BackColor = System.Drawing.Color.Orange;
-            this.TxtLHandState.Location = new System.Drawing.Point(71, 31);
+            resources.ApplyResources(this.TxtLHandState, "TxtLHandState");
             this.TxtLHandState.Name = "TxtLHandState";
             this.TxtLHandState.ReadOnly = true;
-            this.TxtLHandState.Size = new System.Drawing.Size(72, 26);
-            this.TxtLHandState.TabIndex = 19;
             // 
             // LblLHandState
             // 
-            this.LblLHandState.AutoSize = true;
-            this.LblLHandState.Location = new System.Drawing.Point(21, 31);
+            resources.ApplyResources(this.LblLHandState, "LblLHandState");
             this.LblLHandState.Name = "LblLHandState";
-            this.LblLHandState.Size = new System.Drawing.Size(41, 20);
-            this.LblLHandState.TabIndex = 17;
-            this.LblLHandState.Text = "左手";
             // 
             // GrpDetectorSelfTest
             // 
             this.GrpDetectorSelfTest.Controls.Add(this.BtnBetaCheck);
             this.GrpDetectorSelfTest.Controls.Add(this.BtnAlphaCheck);
-            this.GrpDetectorSelfTest.Location = new System.Drawing.Point(12, 366);
+            resources.ApplyResources(this.GrpDetectorSelfTest, "GrpDetectorSelfTest");
             this.GrpDetectorSelfTest.Name = "GrpDetectorSelfTest";
-            this.GrpDetectorSelfTest.Size = new System.Drawing.Size(195, 70);
-            this.GrpDetectorSelfTest.TabIndex = 36;
             this.GrpDetectorSelfTest.TabStop = false;
-            this.GrpDetectorSelfTest.Text = "探头自检";
             // 
             // BtnBetaCheck
             // 
-            this.BtnBetaCheck.Location = new System.Drawing.Point(114, 19);
+            resources.ApplyResources(this.BtnBetaCheck, "BtnBetaCheck");
             this.BtnBetaCheck.Name = "BtnBetaCheck";
-            this.BtnBetaCheck.Size = new System.Drawing.Size(75, 39);
-            this.BtnBetaCheck.TabIndex = 1;
-            this.BtnBetaCheck.Text = "β自检";
             this.BtnBetaCheck.UseVisualStyleBackColor = true;
             this.BtnBetaCheck.Click += new System.EventHandler(this.BtnBetaCheck_Click);
             // 
             // BtnAlphaCheck
             // 
-            this.BtnAlphaCheck.Location = new System.Drawing.Point(20, 21);
+            resources.ApplyResources(this.BtnAlphaCheck, "BtnAlphaCheck");
             this.BtnAlphaCheck.Name = "BtnAlphaCheck";
-            this.BtnAlphaCheck.Size = new System.Drawing.Size(75, 39);
-            this.BtnAlphaCheck.TabIndex = 0;
-            this.BtnAlphaCheck.Text = "α自检";
             this.BtnAlphaCheck.UseVisualStyleBackColor = true;
             this.BtnAlphaCheck.Click += new System.EventHandler(this.BtnAlphaCheck_Click);
             // 
@@ -471,136 +330,131 @@
             this.GrpSelfTestParameter.Controls.Add(this.LblPulse);
             this.GrpSelfTestParameter.Controls.Add(this.TxtCheckCount);
             this.GrpSelfTestParameter.Controls.Add(this.LblSelfcount);
-            this.GrpSelfTestParameter.Location = new System.Drawing.Point(213, 366);
+            resources.ApplyResources(this.GrpSelfTestParameter, "GrpSelfTestParameter");
             this.GrpSelfTestParameter.Name = "GrpSelfTestParameter";
-            this.GrpSelfTestParameter.Size = new System.Drawing.Size(527, 70);
-            this.GrpSelfTestParameter.TabIndex = 37;
             this.GrpSelfTestParameter.TabStop = false;
-            this.GrpSelfTestParameter.Text = "自检参数";
             // 
             // Lblμs
             // 
-            this.Lblμs.AutoSize = true;
-            this.Lblμs.Location = new System.Drawing.Point(439, 29);
+            resources.ApplyResources(this.Lblμs, "Lblμs");
             this.Lblμs.Name = "Lblμs";
-            this.Lblμs.Size = new System.Drawing.Size(26, 20);
-            this.Lblμs.TabIndex = 27;
-            this.Lblμs.Text = "μs";
-            this.Lblμs.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BtnSelfCheck
             // 
-            this.BtnSelfCheck.Location = new System.Drawing.Point(468, 18);
+            resources.ApplyResources(this.BtnSelfCheck, "BtnSelfCheck");
             this.BtnSelfCheck.Name = "BtnSelfCheck";
-            this.BtnSelfCheck.Size = new System.Drawing.Size(53, 39);
-            this.BtnSelfCheck.TabIndex = 2;
-            this.BtnSelfCheck.Text = "自检";
             this.BtnSelfCheck.UseVisualStyleBackColor = true;
             this.BtnSelfCheck.Click += new System.EventHandler(this.BtnSelfCheck_Click);
             // 
             // TxtPWidth
             // 
-            this.TxtPWidth.Location = new System.Drawing.Point(405, 25);
+            resources.ApplyResources(this.TxtPWidth, "TxtPWidth");
             this.TxtPWidth.Name = "TxtPWidth";
-            this.TxtPWidth.Size = new System.Drawing.Size(32, 26);
-            this.TxtPWidth.TabIndex = 26;
-            this.TxtPWidth.Text = "3";
+            this.TxtPWidth.Enter += new System.EventHandler(this.TxtPWidth_Enter);
             // 
             // CmbControl
             // 
             this.CmbControl.DropDownWidth = 44;
             this.CmbControl.FormattingEnabled = true;
             this.CmbControl.Items.AddRange(new object[] {
-            "L(低)",
-            "H(高)"});
-            this.CmbControl.Location = new System.Drawing.Point(305, 23);
+            resources.GetString("CmbControl.Items"),
+            resources.GetString("CmbControl.Items1")});
+            resources.ApplyResources(this.CmbControl, "CmbControl");
             this.CmbControl.Name = "CmbControl";
-            this.CmbControl.Size = new System.Drawing.Size(44, 28);
-            this.CmbControl.TabIndex = 25;
-            this.CmbControl.Text = "低";
             // 
             // LblPWidth
             // 
-            this.LblPWidth.AutoSize = true;
-            this.LblPWidth.Location = new System.Drawing.Point(355, 30);
+            resources.ApplyResources(this.LblPWidth, "LblPWidth");
             this.LblPWidth.Name = "LblPWidth";
-            this.LblPWidth.Size = new System.Drawing.Size(41, 20);
-            this.LblPWidth.TabIndex = 24;
-            this.LblPWidth.Text = "脉宽";
-            this.LblPWidth.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblControl
             // 
-            this.LblControl.AutoSize = true;
-            this.LblControl.Location = new System.Drawing.Point(246, 30);
+            resources.ApplyResources(this.LblControl, "LblControl");
             this.LblControl.Name = "LblControl";
-            this.LblControl.Size = new System.Drawing.Size(41, 20);
-            this.LblControl.TabIndex = 23;
-            this.LblControl.Text = "控制";
-            this.LblControl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CmbPulse
             // 
             this.CmbPulse.DropDownWidth = 44;
             this.CmbPulse.FormattingEnabled = true;
             this.CmbPulse.Items.AddRange(new object[] {
-            "L(低)",
-            "H(高)"});
-            this.CmbPulse.Location = new System.Drawing.Point(196, 24);
+            resources.GetString("CmbPulse.Items"),
+            resources.GetString("CmbPulse.Items1")});
+            resources.ApplyResources(this.CmbPulse, "CmbPulse");
             this.CmbPulse.Name = "CmbPulse";
-            this.CmbPulse.Size = new System.Drawing.Size(44, 28);
-            this.CmbPulse.TabIndex = 22;
-            this.CmbPulse.Text = "低";
             // 
             // LblPulse
             // 
-            this.LblPulse.AutoSize = true;
-            this.LblPulse.Location = new System.Drawing.Point(145, 31);
+            resources.ApplyResources(this.LblPulse, "LblPulse");
             this.LblPulse.Name = "LblPulse";
-            this.LblPulse.Size = new System.Drawing.Size(41, 20);
-            this.LblPulse.TabIndex = 21;
-            this.LblPulse.Text = "脉冲";
-            this.LblPulse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TxtCheckCount
             // 
-            this.TxtCheckCount.Location = new System.Drawing.Point(93, 25);
+            resources.ApplyResources(this.TxtCheckCount, "TxtCheckCount");
             this.TxtCheckCount.Name = "TxtCheckCount";
-            this.TxtCheckCount.Size = new System.Drawing.Size(46, 26);
-            this.TxtCheckCount.TabIndex = 20;
-            this.TxtCheckCount.Text = "1000";
+            this.TxtCheckCount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtCheckCount_MouseClick);
             // 
             // LblSelfcount
             // 
-            this.LblSelfcount.Location = new System.Drawing.Point(13, 30);
+            resources.ApplyResources(this.LblSelfcount, "LblSelfcount");
             this.LblSelfcount.Name = "LblSelfcount";
-            this.LblSelfcount.Size = new System.Drawing.Size(74, 20);
-            this.LblSelfcount.TabIndex = 19;
-            this.LblSelfcount.Text = "计数";
-            this.LblSelfcount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblTimeWork
             // 
-            this.LblTimeWork.AutoSize = true;
-            this.LblTimeWork.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Bold);
+            resources.ApplyResources(this.LblTimeWork, "LblTimeWork");
             this.LblTimeWork.ForeColor = System.Drawing.Color.Lime;
-            this.LblTimeWork.Location = new System.Drawing.Point(158, 440);
-            this.LblTimeWork.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTimeWork.Name = "LblTimeWork";
-            this.LblTimeWork.Size = new System.Drawing.Size(370, 64);
-            this.LblTimeWork.TabIndex = 38;
-            this.LblTimeWork.Text = "测量剩余时间";
             // 
             // bkWorkerReceiveData
             // 
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BkWorkerReceiveData_ProgressChanged);
             // 
+            // LHP
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 15F);
+            this.LHP.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.LHP, "LHP");
+            this.LHP.Name = "LHP";
+            // 
+            // LHB
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 15F);
+            this.LHB.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.LHB, "LHB");
+            this.LHB.Name = "LHB";
+            // 
+            // RHP
+            // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 15F);
+            this.RHP.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.RHP, "RHP");
+            this.RHP.Name = "RHP";
+            // 
+            // RHB
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 15F);
+            this.RHB.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.RHB, "RHB");
+            this.RHB.Name = "RHB";
+            // 
+            // LF
+            // 
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 15F);
+            this.LF.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.LF, "LF");
+            this.LF.Name = "LF";
+            // 
+            // RF
+            // 
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 15F);
+            this.RF.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.RF, "RF");
+            this.RF.Name = "RF";
+            // 
             // FrmTestHardware
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 516);
             this.ControlBox = false;
             this.Controls.Add(this.LblTimeWork);
             this.Controls.Add(this.GrpSelfTestParameter);
@@ -608,10 +462,7 @@
             this.Controls.Add(this.GrpSensorstate);
             this.Controls.Add(this.GrpFrisker);
             this.Controls.Add(this.GrpWork);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmTestHardware";
-            this.Text = "硬件检测";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmTestHardware_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmTestHardware_FormClosed);
             this.Load += new System.EventHandler(this.FrmTestHardware_Load);
@@ -677,12 +528,12 @@
         private System.Windows.Forms.Label Lblμs;
         private System.Windows.Forms.Label LblTimeWork;
         private System.Windows.Forms.DataGridView DgvWork;
+        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
         private System.Windows.Forms.DataGridViewTextBoxColumn LHP;
         private System.Windows.Forms.DataGridViewTextBoxColumn LHB;
         private System.Windows.Forms.DataGridViewTextBoxColumn RHP;
         private System.Windows.Forms.DataGridViewTextBoxColumn RHB;
         private System.Windows.Forms.DataGridViewTextBoxColumn LF;
         private System.Windows.Forms.DataGridViewTextBoxColumn RF;
-        private System.ComponentModel.BackgroundWorker bkWorkerReceiveData;
     }
 }

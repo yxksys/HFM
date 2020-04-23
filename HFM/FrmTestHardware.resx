@@ -117,43 +117,1375 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GrpWork.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <metadata name="LHP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="LHP.HeaderText" xml:space="preserve">
+    <value>LHP</value>
+  </data>
+  <data name="LHP.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
   <metadata name="LHB.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="LHB.HeaderText" xml:space="preserve">
+    <value>LHB</value>
+  </data>
+  <data name="LHB.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
   <metadata name="RHP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="RHP.HeaderText" xml:space="preserve">
+    <value>RHP</value>
+  </data>
+  <data name="RHP.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
   <metadata name="RHB.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="RHB.HeaderText" xml:space="preserve">
+    <value>RHB</value>
+  </data>
+  <data name="RHB.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
   <metadata name="LF.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="LF.HeaderText" xml:space="preserve">
+    <value>LF</value>
+  </data>
+  <data name="LF.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
   <metadata name="RF.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="LHP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="RF.HeaderText" xml:space="preserve">
+    <value>RF</value>
+  </data>
+  <data name="RF.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="DgvWork.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 78</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DgvWork.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="DgvWork.Size" type="System.Drawing.Size, System.Drawing">
+    <value>692, 213</value>
+  </data>
+  <data name="DgvWork.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;DgvWork.Name" xml:space="preserve">
+    <value>DgvWork</value>
+  </data>
+  <data name="&gt;&gt;DgvWork.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DgvWork.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;DgvWork.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblBetacnt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="LHB.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="LblBetacnt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>865, 257</value>
+  </data>
+  <data name="LblBetacnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 25</value>
+  </data>
+  <data name="LblBetacnt.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="LblBetacnt.Text" xml:space="preserve">
+    <value>单位:cnt</value>
+  </data>
+  <data name="&gt;&gt;LblBetacnt.Name" xml:space="preserve">
+    <value>LblBetacnt</value>
+  </data>
+  <data name="&gt;&gt;LblBetacnt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblBetacnt.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblBetacnt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LblBetacps.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="RHP.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="LblBetacps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>865, 214</value>
+  </data>
+  <data name="LblBetacps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 25</value>
+  </data>
+  <data name="LblBetacps.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="LblBetacps.Text" xml:space="preserve">
+    <value>单位:cps</value>
+  </data>
+  <data name="&gt;&gt;LblBetacps.Name" xml:space="preserve">
+    <value>LblBetacps</value>
+  </data>
+  <data name="&gt;&gt;LblBetacps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblBetacps.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblBetacps.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LblAlphacnt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="RHB.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="LblAlphacnt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>865, 171</value>
+  </data>
+  <data name="LblAlphacnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 25</value>
+  </data>
+  <data name="LblAlphacnt.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="LblAlphacnt.Text" xml:space="preserve">
+    <value>单位:cnt</value>
+  </data>
+  <data name="&gt;&gt;LblAlphacnt.Name" xml:space="preserve">
+    <value>LblAlphacnt</value>
+  </data>
+  <data name="&gt;&gt;LblAlphacnt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblAlphacnt.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblAlphacnt.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="LblAlphacps.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="LF.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="LblAlphacps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>865, 128</value>
+  </data>
+  <data name="LblAlphacps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 25</value>
+  </data>
+  <data name="LblAlphacps.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="LblAlphacps.Text" xml:space="preserve">
+    <value>单位:cps</value>
+  </data>
+  <data name="&gt;&gt;LblAlphacps.Name" xml:space="preserve">
+    <value>LblAlphacps</value>
+  </data>
+  <data name="&gt;&gt;LblAlphacps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblAlphacps.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblAlphacps.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="LblV.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="RF.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="LblV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>865, 85</value>
+  </data>
+  <data name="LblV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 25</value>
+  </data>
+  <data name="LblV.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="LblV.Text" xml:space="preserve">
+    <value>单位:V</value>
+  </data>
+  <data name="&gt;&gt;LblV.Name" xml:space="preserve">
+    <value>LblV</value>
+  </data>
+  <data name="&gt;&gt;LblV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblV.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblV.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="LblRF.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
+  <data name="LblRF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="LblRF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>752, 28</value>
+  </data>
+  <data name="LblRF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 26</value>
+  </data>
+  <data name="LblRF.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="LblRF.Text" xml:space="preserve">
+    <value>右脚</value>
+  </data>
+  <data name="&gt;&gt;LblRF.Name" xml:space="preserve">
+    <value>LblRF</value>
+  </data>
+  <data name="&gt;&gt;LblRF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblRF.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblRF.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="LblLF.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblLF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="LblLF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>647, 28</value>
+  </data>
+  <data name="LblLF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 26</value>
+  </data>
+  <data name="LblLF.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="LblLF.Text" xml:space="preserve">
+    <value>左脚</value>
+  </data>
+  <data name="&gt;&gt;LblLF.Name" xml:space="preserve">
+    <value>LblLF</value>
+  </data>
+  <data name="&gt;&gt;LblLF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblLF.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblLF.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="LblRHB.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblRHB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="LblRHB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>527, 28</value>
+  </data>
+  <data name="LblRHB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 26</value>
+  </data>
+  <data name="LblRHB.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="LblRHB.Text" xml:space="preserve">
+    <value>右手背</value>
+  </data>
+  <data name="&gt;&gt;LblRHB.Name" xml:space="preserve">
+    <value>LblRHB</value>
+  </data>
+  <data name="&gt;&gt;LblRHB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblRHB.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblRHB.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="LblRHP.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblRHP.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="LblRHP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>408, 28</value>
+  </data>
+  <data name="LblRHP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 26</value>
+  </data>
+  <data name="LblRHP.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="LblRHP.Text" xml:space="preserve">
+    <value>右手心</value>
+  </data>
+  <data name="&gt;&gt;LblRHP.Name" xml:space="preserve">
+    <value>LblRHP</value>
+  </data>
+  <data name="&gt;&gt;LblRHP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblRHP.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblRHP.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="LblLHB.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblLHB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="LblLHB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 28</value>
+  </data>
+  <data name="LblLHB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 26</value>
+  </data>
+  <data name="LblLHB.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="LblLHB.Text" xml:space="preserve">
+    <value>左手背</value>
+  </data>
+  <data name="&gt;&gt;LblLHB.Name" xml:space="preserve">
+    <value>LblLHB</value>
+  </data>
+  <data name="&gt;&gt;LblLHB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblLHB.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblLHB.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="LblLHP.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblLHP.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="LblLHP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 28</value>
+  </data>
+  <data name="LblLHP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 26</value>
+  </data>
+  <data name="LblLHP.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="LblLHP.Text" xml:space="preserve">
+    <value>左手心</value>
+  </data>
+  <data name="&gt;&gt;LblLHP.Name" xml:space="preserve">
+    <value>LblLHP</value>
+  </data>
+  <data name="&gt;&gt;LblLHP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblLHP.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblLHP.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="LblStatus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 259</value>
+  </data>
+  <data name="LblStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 25</value>
+  </data>
+  <data name="LblStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="LblStatus.Text" xml:space="preserve">
+    <value>工作状态</value>
+  </data>
+  <data name="LblStatus.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblStatus.Name" xml:space="preserve">
+    <value>LblStatus</value>
+  </data>
+  <data name="&gt;&gt;LblStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblStatus.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblStatus.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="LblβTotalcnt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblβTotalcnt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 224</value>
+  </data>
+  <data name="LblβTotalcnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 25</value>
+  </data>
+  <data name="LblβTotalcnt.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="LblβTotalcnt.Text" xml:space="preserve">
+    <value>β总计数</value>
+  </data>
+  <data name="LblβTotalcnt.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblβTotalcnt.Name" xml:space="preserve">
+    <value>LblβTotalcnt</value>
+  </data>
+  <data name="&gt;&gt;LblβTotalcnt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblβTotalcnt.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblβTotalcnt.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="Lblβcountrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lblβcountrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 189</value>
+  </data>
+  <data name="Lblβcountrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 25</value>
+  </data>
+  <data name="Lblβcountrate.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="Lblβcountrate.Text" xml:space="preserve">
+    <value>β计数率</value>
+  </data>
+  <data name="Lblβcountrate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;Lblβcountrate.Name" xml:space="preserve">
+    <value>Lblβcountrate</value>
+  </data>
+  <data name="&gt;&gt;Lblβcountrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lblβcountrate.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;Lblβcountrate.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="LblαTotalcnt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblαTotalcnt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 154</value>
+  </data>
+  <data name="LblαTotalcnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 25</value>
+  </data>
+  <data name="LblαTotalcnt.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="LblαTotalcnt.Text" xml:space="preserve">
+    <value>α总计数</value>
+  </data>
+  <data name="LblαTotalcnt.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblαTotalcnt.Name" xml:space="preserve">
+    <value>LblαTotalcnt</value>
+  </data>
+  <data name="&gt;&gt;LblαTotalcnt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblαTotalcnt.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblαTotalcnt.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="Lblαcountrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lblαcountrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 119</value>
+  </data>
+  <data name="Lblαcountrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 25</value>
+  </data>
+  <data name="Lblαcountrate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Lblαcountrate.Text" xml:space="preserve">
+    <value>α计数率</value>
+  </data>
+  <data name="Lblαcountrate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;Lblαcountrate.Name" xml:space="preserve">
+    <value>Lblαcountrate</value>
+  </data>
+  <data name="&gt;&gt;Lblαcountrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lblαcountrate.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;Lblαcountrate.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="LblHighVoltage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 84</value>
+  </data>
+  <data name="LblHighVoltage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 25</value>
+  </data>
+  <data name="LblHighVoltage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="LblHighVoltage.Text" xml:space="preserve">
+    <value>探头高压</value>
+  </data>
+  <data name="LblHighVoltage.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblHighVoltage.Name" xml:space="preserve">
+    <value>LblHighVoltage</value>
+  </data>
+  <data name="&gt;&gt;LblHighVoltage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblHighVoltage.Parent" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;LblHighVoltage.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="GrpWork.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
+  </data>
+  <data name="GrpWork.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 7</value>
+  </data>
+  <data name="GrpWork.Size" type="System.Drawing.Size, System.Drawing">
+    <value>970, 333</value>
+  </data>
+  <data name="GrpWork.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;GrpWork.Name" xml:space="preserve">
+    <value>GrpWork</value>
+  </data>
+  <data name="&gt;&gt;GrpWork.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpWork.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GrpWork.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="LblFriskercps.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblFriskercps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 43</value>
+  </data>
+  <data name="LblFriskercps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 25</value>
+  </data>
+  <data name="LblFriskercps.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="LblFriskercps.Text" xml:space="preserve">
+    <value>cps</value>
+  </data>
+  <data name="&gt;&gt;LblFriskercps.Name" xml:space="preserve">
+    <value>LblFriskercps</value>
+  </data>
+  <data name="&gt;&gt;LblFriskercps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblFriskercps.Parent" xml:space="preserve">
+    <value>GrpFrisker</value>
+  </data>
+  <data name="&gt;&gt;LblFriskercps.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TxtFriskercount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 42</value>
+  </data>
+  <data name="TxtFriskercount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 30</value>
+  </data>
+  <data name="TxtFriskercount.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="TxtFriskercount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;TxtFriskercount.Name" xml:space="preserve">
+    <value>TxtFriskercount</value>
+  </data>
+  <data name="&gt;&gt;TxtFriskercount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtFriskercount.Parent" xml:space="preserve">
+    <value>GrpFrisker</value>
+  </data>
+  <data name="&gt;&gt;TxtFriskercount.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LblFriskercount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblFriskercount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 44</value>
+  </data>
+  <data name="LblFriskercount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 25</value>
+  </data>
+  <data name="LblFriskercount.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="LblFriskercount.Text" xml:space="preserve">
+    <value>计数</value>
+  </data>
+  <data name="LblFriskercount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblFriskercount.Name" xml:space="preserve">
+    <value>LblFriskercount</value>
+  </data>
+  <data name="&gt;&gt;LblFriskercount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblFriskercount.Parent" xml:space="preserve">
+    <value>GrpFrisker</value>
+  </data>
+  <data name="&gt;&gt;LblFriskercount.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GrpFrisker.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
+  </data>
+  <data name="GrpFrisker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 364</value>
+  </data>
+  <data name="GrpFrisker.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="GrpFrisker.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="GrpFrisker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 87</value>
+  </data>
+  <data name="GrpFrisker.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="GrpFrisker.Text" xml:space="preserve">
+    <value>衣物探头</value>
+  </data>
+  <data name="&gt;&gt;GrpFrisker.Name" xml:space="preserve">
+    <value>GrpFrisker</value>
+  </data>
+  <data name="&gt;&gt;GrpFrisker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpFrisker.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GrpFrisker.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TxtFriskerState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>385, 39</value>
+  </data>
+  <data name="TxtFriskerState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 30</value>
+  </data>
+  <data name="TxtFriskerState.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;TxtFriskerState.Name" xml:space="preserve">
+    <value>TxtFriskerState</value>
+  </data>
+  <data name="&gt;&gt;TxtFriskerState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtFriskerState.Parent" xml:space="preserve">
+    <value>GrpSensorstate</value>
+  </data>
+  <data name="&gt;&gt;TxtFriskerState.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblFriskerState.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblFriskerState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>330, 39</value>
+  </data>
+  <data name="LblFriskerState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 25</value>
+  </data>
+  <data name="LblFriskerState.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="LblFriskerState.Text" xml:space="preserve">
+    <value>衣物</value>
+  </data>
+  <data name="&gt;&gt;LblFriskerState.Name" xml:space="preserve">
+    <value>LblFriskerState</value>
+  </data>
+  <data name="&gt;&gt;LblFriskerState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblFriskerState.Parent" xml:space="preserve">
+    <value>GrpSensorstate</value>
+  </data>
+  <data name="&gt;&gt;LblFriskerState.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TxtRHandState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 39</value>
+  </data>
+  <data name="TxtRHandState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 30</value>
+  </data>
+  <data name="TxtRHandState.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;TxtRHandState.Name" xml:space="preserve">
+    <value>TxtRHandState</value>
+  </data>
+  <data name="&gt;&gt;TxtRHandState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtRHandState.Parent" xml:space="preserve">
+    <value>GrpSensorstate</value>
+  </data>
+  <data name="&gt;&gt;TxtRHandState.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LblRHandState.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblRHandState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 39</value>
+  </data>
+  <data name="LblRHandState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 25</value>
+  </data>
+  <data name="LblRHandState.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="LblRHandState.Text" xml:space="preserve">
+    <value>右手</value>
+  </data>
+  <data name="&gt;&gt;LblRHandState.Name" xml:space="preserve">
+    <value>LblRHandState</value>
+  </data>
+  <data name="&gt;&gt;LblRHandState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblRHandState.Parent" xml:space="preserve">
+    <value>GrpSensorstate</value>
+  </data>
+  <data name="&gt;&gt;LblRHandState.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TxtLHandState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 39</value>
+  </data>
+  <data name="TxtLHandState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 30</value>
+  </data>
+  <data name="TxtLHandState.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;TxtLHandState.Name" xml:space="preserve">
+    <value>TxtLHandState</value>
+  </data>
+  <data name="&gt;&gt;TxtLHandState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtLHandState.Parent" xml:space="preserve">
+    <value>GrpSensorstate</value>
+  </data>
+  <data name="&gt;&gt;TxtLHandState.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="LblLHandState.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblLHandState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 39</value>
+  </data>
+  <data name="LblLHandState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 25</value>
+  </data>
+  <data name="LblLHandState.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="LblLHandState.Text" xml:space="preserve">
+    <value>左手</value>
+  </data>
+  <data name="&gt;&gt;LblLHandState.Name" xml:space="preserve">
+    <value>LblLHandState</value>
+  </data>
+  <data name="&gt;&gt;LblLHandState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblLHandState.Parent" xml:space="preserve">
+    <value>GrpSensorstate</value>
+  </data>
+  <data name="&gt;&gt;LblLHandState.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="GrpSensorstate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
+  </data>
+  <data name="GrpSensorstate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>499, 364</value>
+  </data>
+  <data name="GrpSensorstate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>483, 87</value>
+  </data>
+  <data name="GrpSensorstate.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="GrpSensorstate.Text" xml:space="preserve">
+    <value>红外状态</value>
+  </data>
+  <data name="&gt;&gt;GrpSensorstate.Name" xml:space="preserve">
+    <value>GrpSensorstate</value>
+  </data>
+  <data name="&gt;&gt;GrpSensorstate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpSensorstate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GrpSensorstate.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="BtnBetaCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 36</value>
+  </data>
+  <data name="BtnBetaCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 39</value>
+  </data>
+  <data name="BtnBetaCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="BtnBetaCheck.Text" xml:space="preserve">
+    <value>β自检</value>
+  </data>
+  <data name="&gt;&gt;BtnBetaCheck.Name" xml:space="preserve">
+    <value>BtnBetaCheck</value>
+  </data>
+  <data name="&gt;&gt;BtnBetaCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnBetaCheck.Parent" xml:space="preserve">
+    <value>GrpDetectorSelfTest</value>
+  </data>
+  <data name="&gt;&gt;BtnBetaCheck.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnAlphaCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 36</value>
+  </data>
+  <data name="BtnAlphaCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 39</value>
+  </data>
+  <data name="BtnAlphaCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="BtnAlphaCheck.Text" xml:space="preserve">
+    <value>α自检</value>
+  </data>
+  <data name="&gt;&gt;BtnAlphaCheck.Name" xml:space="preserve">
+    <value>BtnAlphaCheck</value>
+  </data>
+  <data name="&gt;&gt;BtnAlphaCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnAlphaCheck.Parent" xml:space="preserve">
+    <value>GrpDetectorSelfTest</value>
+  </data>
+  <data name="&gt;&gt;BtnAlphaCheck.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="GrpDetectorSelfTest.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
+  </data>
+  <data name="GrpDetectorSelfTest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 364</value>
+  </data>
+  <data name="GrpDetectorSelfTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 87</value>
+  </data>
+  <data name="GrpDetectorSelfTest.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="GrpDetectorSelfTest.Text" xml:space="preserve">
+    <value>探头自检</value>
+  </data>
+  <data name="&gt;&gt;GrpDetectorSelfTest.Name" xml:space="preserve">
+    <value>GrpDetectorSelfTest</value>
+  </data>
+  <data name="&gt;&gt;GrpDetectorSelfTest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpDetectorSelfTest.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GrpDetectorSelfTest.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Lblμs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lblμs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>760, 40</value>
+  </data>
+  <data name="Lblμs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 26</value>
+  </data>
+  <data name="Lblμs.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="Lblμs.Text" xml:space="preserve">
+    <value>μs</value>
+  </data>
+  <data name="Lblμs.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;Lblμs.Name" xml:space="preserve">
+    <value>Lblμs</value>
+  </data>
+  <data name="&gt;&gt;Lblμs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lblμs.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;Lblμs.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnSelfCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>863, 30</value>
+  </data>
+  <data name="BtnSelfCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 39</value>
+  </data>
+  <data name="BtnSelfCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="BtnSelfCheck.Text" xml:space="preserve">
+    <value>自检</value>
+  </data>
+  <data name="&gt;&gt;BtnSelfCheck.Name" xml:space="preserve">
+    <value>BtnSelfCheck</value>
+  </data>
+  <data name="&gt;&gt;BtnSelfCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnSelfCheck.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;BtnSelfCheck.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TxtPWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>724, 38</value>
+  </data>
+  <data name="TxtPWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="TxtPWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="TxtPWidth.Text" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;TxtPWidth.Name" xml:space="preserve">
+    <value>TxtPWidth</value>
+  </data>
+  <data name="&gt;&gt;TxtPWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtPWidth.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;TxtPWidth.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CmbControl.Items" xml:space="preserve">
+    <value>L(低)</value>
+  </data>
+  <data name="CmbControl.Items1" xml:space="preserve">
+    <value>H(高)</value>
+  </data>
+  <data name="CmbControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>530, 36</value>
+  </data>
+  <data name="CmbControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 33</value>
+  </data>
+  <data name="CmbControl.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="CmbControl.Text" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="&gt;&gt;CmbControl.Name" xml:space="preserve">
+    <value>CmbControl</value>
+  </data>
+  <data name="&gt;&gt;CmbControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CmbControl.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;CmbControl.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="LblPWidth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblPWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>649, 42</value>
+  </data>
+  <data name="LblPWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 26</value>
+  </data>
+  <data name="LblPWidth.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="LblPWidth.Text" xml:space="preserve">
+    <value>脉宽</value>
+  </data>
+  <data name="LblPWidth.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblPWidth.Name" xml:space="preserve">
+    <value>LblPWidth</value>
+  </data>
+  <data name="&gt;&gt;LblPWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblPWidth.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;LblPWidth.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="LblControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>459, 40</value>
+  </data>
+  <data name="LblControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 26</value>
+  </data>
+  <data name="LblControl.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="LblControl.Text" xml:space="preserve">
+    <value>控制</value>
+  </data>
+  <data name="LblControl.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblControl.Name" xml:space="preserve">
+    <value>LblControl</value>
+  </data>
+  <data name="&gt;&gt;LblControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblControl.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;LblControl.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="CmbPulse.Items" xml:space="preserve">
+    <value>L(低)</value>
+  </data>
+  <data name="CmbPulse.Items1" xml:space="preserve">
+    <value>H(高)</value>
+  </data>
+  <data name="CmbPulse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>336, 37</value>
+  </data>
+  <data name="CmbPulse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 33</value>
+  </data>
+  <data name="CmbPulse.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="CmbPulse.Text" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="&gt;&gt;CmbPulse.Name" xml:space="preserve">
+    <value>CmbPulse</value>
+  </data>
+  <data name="&gt;&gt;CmbPulse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CmbPulse.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;CmbPulse.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="LblPulse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblPulse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 39</value>
+  </data>
+  <data name="LblPulse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 26</value>
+  </data>
+  <data name="LblPulse.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="LblPulse.Text" xml:space="preserve">
+    <value>脉冲</value>
+  </data>
+  <data name="LblPulse.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblPulse.Name" xml:space="preserve">
+    <value>LblPulse</value>
+  </data>
+  <data name="&gt;&gt;LblPulse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblPulse.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;LblPulse.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="TxtCheckCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 38</value>
+  </data>
+  <data name="TxtCheckCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 32</value>
+  </data>
+  <data name="TxtCheckCount.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="TxtCheckCount.Text" xml:space="preserve">
+    <value>1000</value>
+  </data>
+  <data name="&gt;&gt;TxtCheckCount.Name" xml:space="preserve">
+    <value>TxtCheckCount</value>
+  </data>
+  <data name="&gt;&gt;TxtCheckCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtCheckCount.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;TxtCheckCount.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="LblSelfcount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblSelfcount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 40</value>
+  </data>
+  <data name="LblSelfcount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 26</value>
+  </data>
+  <data name="LblSelfcount.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="LblSelfcount.Text" xml:space="preserve">
+    <value>计数</value>
+  </data>
+  <data name="LblSelfcount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblSelfcount.Name" xml:space="preserve">
+    <value>LblSelfcount</value>
+  </data>
+  <data name="&gt;&gt;LblSelfcount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblSelfcount.Parent" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;LblSelfcount.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="GrpSelfTestParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16pt</value>
+  </data>
+  <data name="GrpSelfTestParameter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 469</value>
+  </data>
+  <data name="GrpSelfTestParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>970, 93</value>
+  </data>
+  <data name="GrpSelfTestParameter.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="GrpSelfTestParameter.Text" xml:space="preserve">
+    <value>自检参数</value>
+  </data>
+  <data name="&gt;&gt;GrpSelfTestParameter.Name" xml:space="preserve">
+    <value>GrpSelfTestParameter</value>
+  </data>
+  <data name="&gt;&gt;GrpSelfTestParameter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpSelfTestParameter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GrpSelfTestParameter.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LblTimeWork.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblTimeWork.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 42pt, style=Bold</value>
+  </data>
+  <data name="LblTimeWork.Location" type="System.Drawing.Point, System.Drawing">
+    <value>261, 575</value>
+  </data>
+  <data name="LblTimeWork.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="LblTimeWork.Size" type="System.Drawing.Size, System.Drawing">
+    <value>370, 64</value>
+  </data>
+  <data name="LblTimeWork.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="LblTimeWork.Text" xml:space="preserve">
+    <value>测量剩余时间</value>
+  </data>
+  <data name="&gt;&gt;LblTimeWork.Name" xml:space="preserve">
+    <value>LblTimeWork</value>
+  </data>
+  <data name="&gt;&gt;LblTimeWork.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblTimeWork.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LblTimeWork.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="bkWorkerReceiveData.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>9, 20</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1008, 729</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>硬件检测</value>
+  </data>
+  <data name="&gt;&gt;bkWorkerReceiveData.Name" xml:space="preserve">
+    <value>bkWorkerReceiveData</value>
+  </data>
+  <data name="&gt;&gt;bkWorkerReceiveData.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LHP.Name" xml:space="preserve">
+    <value>LHP</value>
+  </data>
+  <data name="&gt;&gt;LHP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LHB.Name" xml:space="preserve">
+    <value>LHB</value>
+  </data>
+  <data name="&gt;&gt;LHB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RHP.Name" xml:space="preserve">
+    <value>RHP</value>
+  </data>
+  <data name="&gt;&gt;RHP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RHB.Name" xml:space="preserve">
+    <value>RHB</value>
+  </data>
+  <data name="&gt;&gt;RHB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LF.Name" xml:space="preserve">
+    <value>LF</value>
+  </data>
+  <data name="&gt;&gt;LF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RF.Name" xml:space="preserve">
+    <value>RF</value>
+  </data>
+  <data name="&gt;&gt;RF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmTestHardware</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
