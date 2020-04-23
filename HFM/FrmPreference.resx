@@ -143,6 +143,9 @@
   <data name="&gt;&gt;GrpClothesNuclideChoose.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ChkIsConnectedAuto.Name" xml:space="preserve">
+    <value>ChkIsConnectedAuto</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="TabPresence.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -234,9 +237,6 @@
   <data name="&gt;&gt;TxtBetaHBackground.Name" xml:space="preserve">
     <value>TxtBetaHBackground</value>
   </data>
-  <data name="LblBeta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 21</value>
-  </data>
   <data name="LblClothesLBackground.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 19</value>
   </data>
@@ -291,6 +291,9 @@
   <data name="GrpClothesNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
     <value>526, 23</value>
   </data>
+  <data name="&gt;&gt;RdoClothesAlpha241.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="TxtClothesAlarm_2.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -308,6 +311,9 @@
   </data>
   <data name="DgvMainPreferenceSet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
+  </data>
+  <data name="CmbMeasurementUnit.Items5" xml:space="preserve">
+    <value>dpm</value>
   </data>
   <data name="LblRightInProbeArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -600,9 +606,6 @@
   <data name="RdoAlphaDefine1.Location" type="System.Drawing.Point, System.Drawing">
     <value>302, 52</value>
   </data>
-  <data name="LblClothesHBackground.Text" xml:space="preserve">
-    <value>本底上限(cps)</value>
-  </data>
   <data name="&gt;&gt;RdoClothesAlpha241.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
@@ -641,9 +644,6 @@
   </data>
   <data name="&gt;&gt;BtnPorRestoreDefault.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;LblMeasurementUnit.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="GrpBetaNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
     <value>617, 186</value>
@@ -774,17 +774,14 @@
   <data name="RdoDoubleHand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;LblClothesHBackground.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="LblUnclideType.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
   <data name="RdoAlpha239.Location" type="System.Drawing.Point, System.Drawing">
     <value>167, 52</value>
-  </data>
-  <data name="LblClothOfflineTime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
   </data>
   <data name="&gt;&gt;TxtBetaHBackground.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -852,9 +849,6 @@
   <data name="LblClothesProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 277</value>
   </data>
-  <data name="GrpPreferenceArea.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
   <data name="&gt;&gt;BtnBetaOk.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
@@ -905,6 +899,9 @@
   </data>
   <data name="TxtClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>214, 443</value>
+  </data>
+  <data name="RdoClothesAlphaDefine1.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
   </data>
   <data name="TxtLeftInProbeArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -966,9 +963,6 @@
   <data name="BtnBetaNo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;LabcommportSetDataBits.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;TxtLeftFootProbeArea.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -983,9 +977,6 @@
   </data>
   <data name="RdoClothesBeta131.Text" xml:space="preserve">
     <value>I-131</value>
-  </data>
-  <data name="&gt;&gt;TxtcommportSetPortNum.Parent" xml:space="preserve">
-    <value>GrpcommportSet</value>
   </data>
   <data name="RdoClothesBeta14.Text" xml:space="preserve">
     <value>C-14</value>
@@ -1131,8 +1122,8 @@
   <data name="&gt;&gt;RdoBeta204.Parent" xml:space="preserve">
     <value>GrpBetaNuclideChoose</value>
   </data>
-  <data name="LblIPAddress.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
+  <data name="BtnClothesOk.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;LblMeasuringTime.Name" xml:space="preserve">
     <value>LblMeasuringTime</value>
@@ -1143,8 +1134,8 @@
   <data name="RdoClothesBeta192.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="TxtLeftInProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+  <data name="TxtcommportSetOfReportParity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 26</value>
   </data>
   <data name="&gt;&gt;TxtSmoothingFactor.Parent" xml:space="preserve">
     <value>GrpFacilityData</value>
@@ -1152,8 +1143,8 @@
   <data name="LabcommportSetBaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;ChkHand.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="RdoClothesBeta90.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;TxtSmoothingFactor.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1229,6 +1220,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1008, 729</value>
+  </data>
+  <data name="TxtLeftOutProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
   </data>
   <data name="RdoAlpha235.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1335,8 +1329,8 @@
   <data name="&gt;&gt;LblClothOfflineTime.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="RdoClothesAlpha241.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
+  <data name="GrpPreferenceArea.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="&gt;&gt;CmbUnclideType.Parent" xml:space="preserve">
     <value>GrpFacilityData</value>
@@ -1362,8 +1356,8 @@
   <data name="&gt;&gt;LblIPAddress.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RdoBetaDefine1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="TxtCloseProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
   </data>
   <data name="&gt;&gt;LblClothesEfficiency.Name" xml:space="preserve">
     <value>LblClothesEfficiency</value>
@@ -1383,8 +1377,8 @@
   <data name="TxtAlphaChannelName.Width" type="System.Int32, mscorlib">
     <value>170</value>
   </data>
-  <data name="RdoClothesAlphaDefine1.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
+  <data name="&gt;&gt;GrpBetaNuclideChoose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ChkHand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1488,6 +1482,9 @@
   <data name="LblLeftFootProbeArea.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
   </data>
+  <data name="RdoBeta58.Text" xml:space="preserve">
+    <value>Co-58</value>
+  </data>
   <data name="&gt;&gt;TxtSmoothingTime.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1497,11 +1494,11 @@
   <data name="&gt;&gt;LblInstrumentNum.Parent" xml:space="preserve">
     <value>GrpFacilityData</value>
   </data>
-  <data name="BtnClothesOk.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="TxtAlphaAlarm_2.Width" type="System.Int32, mscorlib">
     <value>150</value>
+  </data>
+  <data name="RdoBeta32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
   </data>
   <data name="RdoAlpha241.Text" xml:space="preserve">
     <value>Am-241</value>
@@ -1577,9 +1574,6 @@
   </data>
   <data name="RdoAlpha238.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
-  </data>
-  <data name="&gt;&gt;RdoSingleHand.Parent" xml:space="preserve">
-    <value>GrpPresence</value>
   </data>
   <data name="RdoAlpha241.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 20</value>
@@ -1791,8 +1785,8 @@
   <data name="RdoBeta192.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
   </data>
-  <data name="LblAlarmTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 26</value>
+  <data name="ChkHand.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;RdoClothesBeta204.Parent" xml:space="preserve">
     <value>GrpClothesNuclideChoose</value>
@@ -1811,6 +1805,9 @@
   </data>
   <data name="BtnPorRestoreDefault.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 56</value>
+  </data>
+  <data name="&gt;&gt;RdoClothesBeta36.Name" xml:space="preserve">
+    <value>RdoClothesBeta36</value>
   </data>
   <data name="RdoClothesBeta14.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 20</value>
@@ -1860,8 +1857,8 @@
   <data name="&gt;&gt;RdoClothesBeta204.Name" xml:space="preserve">
     <value>RdoClothesBeta204</value>
   </data>
-  <data name="&gt;&gt;LblSmoothingFactor.Parent" xml:space="preserve">
-    <value>GrpFacilityData</value>
+  <data name="LblClothesHBackground.Text" xml:space="preserve">
+    <value>本底上限(cps)</value>
   </data>
   <data name="TxtClothesLBackground.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1974,9 +1971,6 @@
   <data name="DgvBetaSet.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
-  <data name="&gt;&gt;GrpBetaNuclideChoose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="LblRightFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 21</value>
   </data>
@@ -1988,9 +1982,6 @@
   </data>
   <data name="GrpFacilityData.Size" type="System.Drawing.Size, System.Drawing">
     <value>974, 123</value>
-  </data>
-  <data name="LblClothesLBackground.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 2, 0</value>
   </data>
   <data name="TxtLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 65</value>
@@ -2154,9 +2145,6 @@
   <data name="&gt;&gt;DgvBetaSet.Name" xml:space="preserve">
     <value>DgvBetaSet</value>
   </data>
-  <data name="RdoClothesBeta90.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="RdoClothesBeta192.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
@@ -2199,8 +2187,8 @@
   <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>316, 55</value>
   </data>
-  <data name="CmbMeasurementUnit.Items5" xml:space="preserve">
-    <value>dpm</value>
+  <data name="LblBeta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 21</value>
   </data>
   <data name="CmbMeasurementUnit.Items4" xml:space="preserve">
     <value>KBq/cm2</value>
@@ -2240,9 +2228,6 @@
   </data>
   <data name="TabPresence.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 15pt</value>
-  </data>
-  <data name="&gt;&gt;LblSmoothingFactor.Name" xml:space="preserve">
-    <value>LblSmoothingFactor</value>
   </data>
   <data name="&gt;&gt;TxtReportingTime.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2349,8 +2334,8 @@
   <data name="&gt;&gt;RdoClothesBeta58.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LblBKGUpdate.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="&gt;&gt;TxtcommportSetPortNum.Parent" xml:space="preserve">
+    <value>GrpcommportSet</value>
   </data>
   <data name="GrpcommportSetOfReport.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 15pt, style=Bold</value>
@@ -2429,6 +2414,9 @@
   </data>
   <data name="&gt;&gt;LabcommportSetOfReportBaudRate.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="RdoClothesBetaDefine1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 20</value>
   </data>
   <data name="&gt;&gt;CmbUnclideType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2514,6 +2502,9 @@
   <data name="TxtBetaLBackground.HeaderText" xml:space="preserve">
     <value>本底下限(cps)</value>
   </data>
+  <data name="&gt;&gt;LblClothesBetaOrClothes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;TxtClothOfflineTime.Parent" xml:space="preserve">
     <value>GrpClothesData</value>
   </data>
@@ -2561,6 +2552,9 @@
   </data>
   <data name="LblPortNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;LblPortNumber.Parent" xml:space="preserve">
+    <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;RdoAlpha239.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2784,6 +2778,9 @@
   <data name="&gt;&gt;RdoClothesBeta131.Parent" xml:space="preserve">
     <value>GrpClothesNuclideChoose</value>
   </data>
+  <data name="RdoClothesAlpha241.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
   <data name="TxtRightOutProbeArea.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
@@ -2952,9 +2949,6 @@
   <data name="GrpClothesNuclideChoose.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="TxtcommportSetOfReportParity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 26</value>
-  </data>
   <data name="RdoAlphaDefine2.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
@@ -3114,8 +3108,8 @@
   <data name="&gt;&gt;衣物探头.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="RdoBeta32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 20</value>
+  <data name="LblClothesLBackground.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="LblUnclideType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -3270,8 +3264,8 @@
   <data name="TxtLeftOutProbeArea.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="TxtLeftOutProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+  <data name="&gt;&gt;RdoBetaDefine1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RdoClothesBeta60.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3504,6 +3498,9 @@
   <data name="TxtClothesLBackground.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
+  <data name="TxtIPAddressOne.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="RdoClothesBeta32.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 273</value>
   </data>
@@ -3533,6 +3530,9 @@
   </data>
   <data name="GrpPresence.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="LblSmoothingFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
   </data>
   <data name="GrpPreferenceArea.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 20pt, style=Bold</value>
@@ -3590,9 +3590,6 @@
   </data>
   <data name="&gt;&gt;TxtIPAddressOne.Parent" xml:space="preserve">
     <value>GrpInternet</value>
-  </data>
-  <data name="&gt;&gt;TxtcommportSetOfReportBaudRate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TxtAplhaLBackground.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3653,9 +3650,6 @@
   </data>
   <data name="TxtcommportSetOfReportBaudRate.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
-  </data>
-  <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
-    <value>α核素选择</value>
   </data>
   <data name="LblSmoothingTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 26</value>
@@ -3732,8 +3726,8 @@
   <data name="BtnPreferenceNo.Text" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="LblSmoothingFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+  <data name="LblIPAddress.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="&gt;&gt;TxtClothesLBackground.Name" xml:space="preserve">
     <value>TxtClothesLBackground</value>
@@ -3750,8 +3744,8 @@
   <data name="RdoClothesAlpha238.Text" xml:space="preserve">
     <value>Pu-238</value>
   </data>
-  <data name="&gt;&gt;LblPortNumber.Parent" xml:space="preserve">
-    <value>GrpInternet</value>
+  <data name="&gt;&gt;TxtcommportSetOfReportBaudRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TxtCloseProbeArea.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -3942,9 +3936,6 @@
   <data name="&gt;&gt;LblClothesBetaOrClothes.Name" xml:space="preserve">
     <value>LblClothesBetaOrClothes</value>
   </data>
-  <data name="TxtCloseProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
-  </data>
   <data name="BtnMainPreferenceWrite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -4002,14 +3993,14 @@
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="&gt;&gt;LblClothesBetaOrClothes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;TxtClothesLBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TxtLeftInProbeArea.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
   </data>
   <data name="TxtBetaEfficiency.HeaderText" xml:space="preserve">
     <value>探测效率(%)</value>
-  </data>
-  <data name="&gt;&gt;TxtClothesLBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BtnAlphaOk.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -4077,8 +4068,8 @@
   <data name="TxtReportingTime.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="BtnMainPreferenceWrite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt, style=Bold</value>
+  <data name="&gt;&gt;LblSmoothingFactor.Parent" xml:space="preserve">
+    <value>GrpFacilityData</value>
   </data>
   <data name="TxtIPAddressOne.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -4272,8 +4263,8 @@
   <data name="&gt;&gt;α参数.Name" xml:space="preserve">
     <value>α参数</value>
   </data>
-  <data name="RdoClothesBetaDefine1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 20</value>
+  <data name="&gt;&gt;LblSmoothingFactor.Name" xml:space="preserve">
+    <value>LblSmoothingFactor</value>
   </data>
   <data name="LblRightOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>256, 141</value>
@@ -4296,8 +4287,8 @@
   <data name="TxtMainPreferenceHVFactor.Width" type="System.Int32, mscorlib">
     <value>102</value>
   </data>
-  <data name="RdoBeta137.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+  <data name="LblBKGUpdate.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;RdoClothesBeta192.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4308,8 +4299,8 @@
   <data name="衣物探头.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="RdoBeta58.Text" xml:space="preserve">
-    <value>Co-58</value>
+  <data name="&gt;&gt;LblMeasurementUnit.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="衣物探头.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -4458,6 +4449,12 @@
   <data name="GrpInternet.Text" xml:space="preserve">
     <value>网络配置</value>
   </data>
+  <data name="&gt;&gt;GrpPreferenceData.Parent" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="RdoBeta137.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
   <data name="&gt;&gt;LabcommportSetStopBits.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -4530,8 +4527,11 @@
   <data name="&gt;&gt;TxtReportingTime.Parent" xml:space="preserve">
     <value>GrpInternet</value>
   </data>
-  <data name="&gt;&gt;GrpPreferenceData.Parent" xml:space="preserve">
-    <value>系统参数</value>
+  <data name="&gt;&gt;ChkHand.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;CmbMeasurementUnit.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="RdoClothesBeta131.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -4545,8 +4545,8 @@
   <data name="&gt;&gt;RdoClothesBeta60.Parent" xml:space="preserve">
     <value>GrpClothesNuclideChoose</value>
   </data>
-  <data name="TxtIPAddressOne.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="CmbUnclideType.ItemHeight" type="System.Int32, mscorlib">
+    <value>16</value>
   </data>
   <data name="RdoAlphaDefine2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4827,8 +4827,8 @@
   <data name="&gt;&gt;TxtIPAddressFour.Name" xml:space="preserve">
     <value>TxtIPAddressFour</value>
   </data>
-  <data name="&gt;&gt;CmbMeasurementUnit.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;RdoBeta137.Parent" xml:space="preserve">
     <value>GrpBetaNuclideChoose</value>
@@ -4845,8 +4845,8 @@
   <data name="&gt;&gt;LblDeviceAddress.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;RdoClothesAlpha241.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="TxtBetaEfficiency.Width" type="System.Int32, mscorlib">
+    <value>154</value>
   </data>
   <data name="BtnPorRestoreDefault.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -4971,8 +4971,8 @@
   <data name="RdoClothesAlpha238.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 20</value>
   </data>
-  <data name="&gt;&gt;ChkIsConnectedAuto.Name" xml:space="preserve">
-    <value>ChkIsConnectedAuto</value>
+  <data name="&gt;&gt;RdoSingleHand.Parent" xml:space="preserve">
+    <value>GrpPresence</value>
   </data>
   <data name="&gt;&gt;TxtLeftOutProbeArea.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5013,8 +5013,8 @@
   <data name="TxtAlphaChannelName.HeaderText" xml:space="preserve">
     <value>通道名称</value>
   </data>
-  <data name="&gt;&gt;LblClothesHBackground.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="LblAlarmTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 26</value>
   </data>
   <data name="GrpFacilityData.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -5055,8 +5055,8 @@
   <data name="&gt;&gt;LblIPAddress.Name" xml:space="preserve">
     <value>LblIPAddress</value>
   </data>
-  <data name="&gt;&gt;LabcommportSetOfReportStopBits.Name" xml:space="preserve">
-    <value>LabcommportSetOfReportStopBits</value>
+  <data name="&gt;&gt;LabcommportSetDataBits.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LblInstrumentNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -5229,8 +5229,8 @@
   <data name="&gt;&gt;RdoAlphaDefine2.Name" xml:space="preserve">
     <value>RdoAlphaDefine2</value>
   </data>
-  <data name="ChkHand.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="LblClothOfflineTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 139</value>
@@ -5253,11 +5253,11 @@
   <data name="&gt;&gt;TxtcommportSetDataBits.Name" xml:space="preserve">
     <value>TxtcommportSetDataBits</value>
   </data>
-  <data name="CmbUnclideType.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="&gt;&gt;LabcommportSetOfReportStopBits.Name" xml:space="preserve">
+    <value>LabcommportSetOfReportStopBits</value>
   </data>
-  <data name="TxtBetaEfficiency.Width" type="System.Int32, mscorlib">
-    <value>154</value>
+  <data name="BtnMainPreferenceWrite.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt, style=Bold</value>
   </data>
   <data name="LblClothesAlpha.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -5316,8 +5316,8 @@
   <data name="LblUnclideType.Text" xml:space="preserve">
     <value>类型</value>
   </data>
-  <data name="&gt;&gt;RdoClothesBeta36.Name" xml:space="preserve">
-    <value>RdoClothesBeta36</value>
+  <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
+    <value>α核素选择</value>
   </data>
   <data name="GrpClothesData.Size" type="System.Drawing.Size, System.Drawing">
     <value>452, 557</value>
