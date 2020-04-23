@@ -191,8 +191,8 @@ namespace HFM
                 DgvInformation.Columns[0].HeaderText = @"Status"; //状态
                 DgvInformation.Columns[1].HeaderText = @"Channel"; //通道
                 DgvInformation.Columns[2].HeaderText = @"Area"; //面积
-                DgvInformation.Columns[3].HeaderText = @"αCounts"; //α计数
-                DgvInformation.Columns[4].HeaderText = @"βCounts"; //β计数
+                DgvInformation.Columns[3].HeaderText = @"αCounts(cps)"; //α计数
+                DgvInformation.Columns[4].HeaderText = @"βCounts(cps)"; //β计数
                 DgvInformation.Columns[5].HeaderText = @"HV"; //高压
             }
 
@@ -655,8 +655,8 @@ namespace HFM
                     }
                     _addInformation[1] = CmbChannelSelection.Text;
                     _addInformation[2] = area.ToString();
-                    _addInformation[3] = ((_alphacps / Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
-                    _addInformation[4] = ((_betacps / Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
+                    _addInformation[3] = (String.Format("{0:f2}",(_alphacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
+                    _addInformation[4] = (String.Format("{0:f2}", (_betacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
                     _addInformation[5] = _hv.ToString();
                     _measuringTime--;
                     if (_measuringTime == 0)
@@ -706,8 +706,8 @@ namespace HFM
                     _addInformation[0] = "带源测量";
                     _addInformation[1] = CmbChannelSelection.Text;
                     _addInformation[2] = area.ToString();
-                    _addInformation[3] = ((_alphacps /Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
-                    _addInformation[4] = ((_betacps /Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
+                    _addInformation[3] = (String.Format("{0:f2}", (_alphacps /Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
+                    _addInformation[4] = (String.Format("{0:f2}", (_betacps /Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
                     _addInformation[5] = _hv.ToString();
                     _measuringTime--;
                     if (_measuringTime == 0)
