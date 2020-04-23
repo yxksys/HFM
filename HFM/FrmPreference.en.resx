@@ -615,11 +615,17 @@
   <data name="DgvBetaSet.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>None</value>
   </data>
+  <data name="BtnBetaNo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
   <data name="BtnBetaNo.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 70</value>
   </data>
   <data name="BtnBetaNo.Text" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="BtnBetaOk.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
   </data>
   <data name="BtnBetaOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 66</value>
@@ -708,6 +714,9 @@
   <data name="RdoBeta204.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 24</value>
   </data>
+  <data name="RdoBeta204.Text" xml:space="preserve">
+    <value>Tl-240</value>
+  </data>
   <data name="RdoBeta131.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -715,7 +724,10 @@
     <value>335, 62</value>
   </data>
   <data name="RdoBeta131.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 24</value>
+    <value>64, 24</value>
+  </data>
+  <data name="RdoBeta131.Text" xml:space="preserve">
+    <value>I-131</value>
   </data>
   <data name="RdoBeta58.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
