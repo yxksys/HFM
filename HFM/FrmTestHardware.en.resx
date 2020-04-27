@@ -117,76 +117,117 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BtnDeleteMeasure.Text" xml:space="preserve">
-    <value>Delete Record</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LblStatus.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="BtnDeriveMeasure.Text" xml:space="preserve">
-    <value>Export Data</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LblStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 259</value>
   </data>
-  <data name="MeasureDate.HeaderText" xml:space="preserve">
-    <value>Measuring time</value>
+  <data name="LblStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
   </data>
-  <data name="MeasureStatus.HeaderText" xml:space="preserve">
-    <value>Status</value>
+  <data name="LblβTotalcnt.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="DetailedInfo.HeaderText" xml:space="preserve">
-    <value>Detail Information</value>
+  <data name="LblβTotalcnt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 224</value>
   </data>
-  <data name="IsEnglish.HeaderText" xml:space="preserve">
-    <value>IsEnglish</value>
+  <data name="LblβTotalcnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
   </data>
-  <data name="TabMeasure.Text" xml:space="preserve">
-    <value>Measurement Log</value>
+  <data name="Lblβcountrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="BtnDeleteCalibration.Text" xml:space="preserve">
-    <value>Delete Record</value>
+  <data name="Lblβcountrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 189</value>
   </data>
-  <data name="BtnDeriveCalibration.Text" xml:space="preserve">
-    <value>Export Data</value>
+  <data name="Lblβcountrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
   </data>
-  <data name="CalibrationTime.HeaderText" xml:space="preserve">
-    <value>Calibration time</value>
+  <data name="LblαTotalcnt.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="ChannelID.HeaderText" xml:space="preserve">
-    <value>Channel</value>
+  <data name="LblαTotalcnt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 154</value>
   </data>
-  <data name="HighVoltage.HeaderText" xml:space="preserve">
-    <value>HV</value>
+  <data name="LblαTotalcnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
   </data>
-  <data name="Threshold.HeaderText" xml:space="preserve">
-    <value>Threshold</value>
+  <data name="Lblαcountrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="Efficiency.HeaderText" xml:space="preserve">
-    <value>Eff</value>
+  <data name="Lblαcountrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 119</value>
   </data>
-  <data name="MDA.HeaderText" xml:space="preserve">
-    <value>MDA</value>
+  <data name="Lblαcountrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
   </data>
-  <data name="AlphaBetaPercent.HeaderText" xml:space="preserve">
-    <value>α(β)/β(α)\r</value>
+  <data name="LblHighVoltage.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="TabCalibration.Text" xml:space="preserve">
-    <value>Calibration Log</value>
+  <data name="LblHighVoltage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 84</value>
   </data>
-  <data name="BtnDeleteError.Text" xml:space="preserve">
-    <value>Delete Record</value>
+  <data name="LblHighVoltage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
   </data>
-  <data name="BtnDeriveError.Text" xml:space="preserve">
-    <value>Export Data</value>
+  <data name="LblFriskercount.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="ErrTime.HeaderText" xml:space="preserve">
-    <value>ErrTime</value>
+  <data name="LblFriskercount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 44</value>
   </data>
-  <data name="Record.HeaderText" xml:space="preserve">
-    <value>Record</value>
+  <data name="LblFriskercount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 25</value>
   </data>
-  <data name="IsEnglishsError.HeaderText" xml:space="preserve">
-    <value>IsEnglish</value>
+  <data name="TxtFriskerState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>391, 39</value>
   </data>
-  <data name="TabError.Text" xml:space="preserve">
-    <value>Fault Log</value>
+  <data name="LblFriskerState.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>History record</value>
+  <data name="LblFriskerState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>326, 42</value>
+  </data>
+  <data name="LblFriskerState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 25</value>
+  </data>
+  <data name="TxtRHandState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>230, 39</value>
+  </data>
+  <data name="LblRHandState.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblRHandState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 42</value>
+  </data>
+  <data name="LblRHandState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 25</value>
+  </data>
+  <data name="TxtLHandState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>77, 39</value>
+  </data>
+  <data name="LblLHandState.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblLHandState.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 42</value>
+  </data>
+  <data name="LblLHandState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 25</value>
+  </data>
+  <data name="BtnSelfCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>863, 33</value>
+  </data>
+  <data name="LblPWidth.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblPWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>627, 42</value>
+  </data>
+  <data name="LblPWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 26</value>
   </data>
 </root>

@@ -121,6 +121,9 @@
   <data name="ChkHand.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
   </data>
+  <data name="ChkHand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 51</value>
+  </data>
   <data name="ChkHand.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 23</value>
   </data>
@@ -129,6 +132,9 @@
   </data>
   <data name="RdoDoubleHand.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="RdoDoubleHand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>317, 50</value>
   </data>
   <data name="RdoDoubleHand.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 23</value>
@@ -139,6 +145,9 @@
   <data name="RdoSingleHand.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
   </data>
+  <data name="RdoSingleHand.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 50</value>
+  </data>
   <data name="RdoSingleHand.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
   </data>
@@ -147,6 +156,9 @@
   </data>
   <data name="ChkClothes.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="ChkClothes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>566, 51</value>
   </data>
   <data name="ChkClothes.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 23</value>
@@ -157,6 +169,9 @@
   <data name="ChkFoot.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
   </data>
+  <data name="ChkFoot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>457, 51</value>
+  </data>
   <data name="ChkFoot.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 23</value>
   </data>
@@ -166,8 +181,17 @@
   <data name="GrpPresence.Text" xml:space="preserve">
     <value>Equipment configuration</value>
   </data>
+  <data name="CmbSoftName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>550, 56</value>
+  </data>
+  <data name="CmbUnclideType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>836, 56</value>
+  </data>
   <data name="LblUnclideType.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="LblUnclideType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>795, 59</value>
   </data>
   <data name="LblUnclideType.Text" xml:space="preserve">
     <value>Type</value>
@@ -175,14 +199,20 @@
   <data name="LblSoftName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
   </data>
+  <data name="LblSoftName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>450, 59</value>
+  </data>
   <data name="LblSoftName.Text" xml:space="preserve">
     <value>Model</value>
+  </data>
+  <data name="TxtInstrumentNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 54</value>
   </data>
   <data name="LblInstrumentNum.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblInstrumentNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 41</value>
+    <value>252, 59</value>
   </data>
   <data name="LblInstrumentNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 21</value>
@@ -191,10 +221,13 @@
     <value>SN</value>
   </data>
   <data name="TxtSmoothingFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 39</value>
+    <value>127, 54</value>
   </data>
   <data name="LblSmoothingFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="LblSmoothingFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 59</value>
   </data>
   <data name="LblSmoothingFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 21</value>
@@ -211,14 +244,23 @@
   <data name="BtnPreferenceOk.Text" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="TxtRightFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 214</value>
+  </data>
+  <data name="TxtRightOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 133</value>
+  </data>
+  <data name="TxtLeftOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 52</value>
+  </data>
   <data name="TxtCloseProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 175</value>
+    <value>120, 295</value>
   </data>
   <data name="TxtLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 133</value>
+    <value>121, 214</value>
   </data>
   <data name="TxtRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 94</value>
+    <value>121, 133</value>
   </data>
   <data name="TxtLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 52</value>
@@ -227,7 +269,7 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblRightFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 138</value>
+    <value>231, 217</value>
   </data>
   <data name="LblRightFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 21</value>
@@ -246,7 +288,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblRightOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 99</value>
+    <value>231, 137</value>
   </data>
   <data name="LblRightOutProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 21</value>
@@ -261,7 +303,7 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblLeftOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 57</value>
+    <value>235, 57</value>
   </data>
   <data name="LblLeftOutProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -276,7 +318,7 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblClothesProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 178</value>
+    <value>16, 297</value>
   </data>
   <data name="LblClothesProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -291,7 +333,7 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 138</value>
+    <value>16, 217</value>
   </data>
   <data name="LblLeftFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -306,7 +348,7 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 99</value>
+    <value>3, 137</value>
   </data>
   <data name="LblRightInProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 21</value>
@@ -339,7 +381,7 @@
     <value>Probe Area /cm²</value>
   </data>
   <data name="LblBKGUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 202</value>
+    <value>52, 290</value>
   </data>
   <data name="LblBKGUpdate.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -354,7 +396,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblAlarmTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 169</value>
+    <value>52, 241</value>
   </data>
   <data name="LblAlarmTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -366,7 +408,7 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblMeasurementUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 136</value>
+    <value>52, 192</value>
   </data>
   <data name="LblMeasurementUnit.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -378,7 +420,7 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblMeasuringTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 104</value>
+    <value>52, 144</value>
   </data>
   <data name="LblMeasuringTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -390,7 +432,7 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblSmoothingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 73</value>
+    <value>52, 97</value>
   </data>
   <data name="LblSmoothingTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -402,7 +444,7 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblSelfCheckTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 39</value>
+    <value>52, 47</value>
   </data>
   <data name="LblSelfCheckTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -428,20 +470,39 @@
   <data name="TxtAlphaChannelName.HeaderText" xml:space="preserve">
     <value>ChannelName</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TxtAlphaChannelName.Width" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
   <data name="TxtAlphaHBackground.HeaderText" xml:space="preserve">
     <value>High Background</value>
+  </data>
+  <data name="TxtAlphaHBackground.Width" type="System.Int32, mscorlib">
+    <value>154</value>
   </data>
   <data name="TxtAplhaLBackground.HeaderText" xml:space="preserve">
     <value>Low Background</value>
   </data>
+  <data name="TxtAplhaLBackground.Width" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
   <data name="TxtAlphaAlarm_1.HeaderText" xml:space="preserve">
     <value>Alarm Threshold</value>
+  </data>
+  <data name="TxtAlphaAlarm_1.Width" type="System.Int32, mscorlib">
+    <value>154</value>
   </data>
   <data name="TxtAlphaAlarm_2.HeaderText" xml:space="preserve">
     <value>High Level Alarm</value>
   </data>
+  <data name="TxtAlphaAlarm_2.Width" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
   <data name="TxtAlphaEfficiency.HeaderText" xml:space="preserve">
     <value>Efficiency(%)</value>
+  </data>
+  <data name="TxtAlphaEfficiency.Width" type="System.Int32, mscorlib">
+    <value>147</value>
   </data>
   <data name="BtnAlphaNo.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -476,14 +537,65 @@
   <data name="TxtBetaAlarm_2.HeaderText" xml:space="preserve">
     <value>High Level Alarm</value>
   </data>
+  <data name="TxtBetaAlarm_2.Width" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
   <data name="TxtBetaEfficiency.HeaderText" xml:space="preserve">
     <value>Efficiency(%)</value>
+  </data>
+  <data name="TxtBetaEfficiency.Width" type="System.Int32, mscorlib">
+    <value>147</value>
+  </data>
+  <data name="DgvBetaSet.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="BtnBetaNo.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="BtnBetaOk.Text" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="RdoBetaDefine2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 174</value>
+  </data>
+  <data name="RdoBeta192.Location" type="System.Drawing.Point, System.Drawing">
+    <value>335, 174</value>
+  </data>
+  <data name="RdoBeta90.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 174</value>
+  </data>
+  <data name="RdoBeta36.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 174</value>
+  </data>
+  <data name="RdoBetaDefine1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 118</value>
+  </data>
+  <data name="RdoBeta137.Location" type="System.Drawing.Point, System.Drawing">
+    <value>335, 118</value>
+  </data>
+  <data name="RdoBeta60.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 118</value>
+  </data>
+  <data name="RdoBeta32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 118</value>
+  </data>
+  <data name="RdoBeta204.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 62</value>
+  </data>
+  <data name="RdoBeta131.Location" type="System.Drawing.Point, System.Drawing">
+    <value>335, 62</value>
+  </data>
+  <data name="RdoBeta58.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 62</value>
+  </data>
+  <data name="RdoBeta14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 62</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 342</value>
+  </data>
+  <data name="GrpBetaNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>617, 245</value>
   </data>
   <data name="GrpBetaNuclideChoose.Text" xml:space="preserve">
     <value>Selection of β / γ nuclides</value>
@@ -608,8 +720,11 @@
   <data name="GrpClothesNuclideChoose.Text" xml:space="preserve">
     <value>Nuclide selection</value>
   </data>
+  <data name="TxtClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 454</value>
+  </data>
   <data name="LblClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 287</value>
+    <value>51, 456</value>
   </data>
   <data name="LblClothOfflineTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 19</value>
@@ -620,8 +735,23 @@
   <data name="LblClothOfflineTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="TxtClothesEfficiency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 371</value>
+  </data>
+  <data name="TxtClothesAlarm_2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 292</value>
+  </data>
+  <data name="TxtClothesAlarm_1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 211</value>
+  </data>
+  <data name="TxtClothesLBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 134</value>
+  </data>
+  <data name="TxtClothesHBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 55</value>
+  </data>
   <data name="LblClothesEfficiency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 237</value>
+    <value>51, 374</value>
   </data>
   <data name="LblClothesEfficiency.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 19</value>
@@ -633,7 +763,7 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblClothesAlarm_2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 189</value>
+    <value>51, 294</value>
   </data>
   <data name="LblClothesAlarm_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 19</value>
@@ -645,7 +775,7 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblClothesAlarm_1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 140</value>
+    <value>51, 213</value>
   </data>
   <data name="LblClothesAlarm_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 19</value>
@@ -657,7 +787,7 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblClothesLBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 95</value>
+    <value>51, 136</value>
   </data>
   <data name="LblClothesLBackground.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 19</value>
@@ -669,7 +799,7 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblClothesHBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 51</value>
+    <value>51, 60</value>
   </data>
   <data name="LblClothesHBackground.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 19</value>
@@ -686,7 +816,6 @@
   <data name="衣物探头.Text" xml:space="preserve">
     <value>Frisker Parameter</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -695,6 +824,9 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Channel Parameter</value>
+  </data>
+  <data name="DgvMainPreferenceSet.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>37</value>
   </data>
   <data name="TxtMainPreferenceChanneName.HeaderText" xml:space="preserve">
     <value>Channe</value>
@@ -711,14 +843,8 @@
   <data name="TxtMainPreferenceADCFactor.HeaderText" xml:space="preserve">
     <value>ADCFactor</value>
   </data>
-  <data name="TxtMainPreferenceADCFactor.Width" type="System.Int32, mscorlib">
-    <value>82</value>
-  </data>
   <data name="TxtMainPreferenceDACFactor.HeaderText" xml:space="preserve">
     <value>DACFactor</value>
-  </data>
-  <data name="TxtMainPreferenceDACFactor.Width" type="System.Int32, mscorlib">
-    <value>82</value>
   </data>
   <data name="TxtMainPreferenceHVFactor.HeaderText" xml:space="preserve">
     <value>HVFactor</value>
@@ -745,31 +871,31 @@
     <value>Channel Parameter</value>
   </data>
   <data name="CmbIsEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 152</value>
+    <value>266, 232</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 154</value>
+    <value>196, 234</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>IsEnabled</value>
   </data>
   <data name="TxtcommportSetOfReportParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 102</value>
+    <value>266, 142</value>
   </data>
   <data name="TxtcommportSetOfReportStopBits.Location" type="System.Drawing.Point, System.Drawing">
     <value>266, 55</value>
   </data>
   <data name="TxtcommportSetOfReportDataBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 154</value>
+    <value>100, 230</value>
   </data>
   <data name="TxtcommportSetOfReportBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 102</value>
+    <value>100, 138</value>
   </data>
   <data name="TxtcommportSetOfReportPortNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 56</value>
+    <value>100, 56</value>
   </data>
   <data name="LabcommportSetOfReportParity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -781,7 +907,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabcommportSetOfReportParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 108</value>
+    <value>199, 148</value>
   </data>
   <data name="LabcommportSetOfReportParity.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 19</value>
@@ -816,6 +942,9 @@
   <data name="LabcommportSetOfReportDataBits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="LabcommportSetOfReportDataBits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 232</value>
+  </data>
   <data name="LabcommportSetOfReportDataBits.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 19</value>
   </data>
@@ -830,6 +959,9 @@
   </data>
   <data name="LabcommportSetOfReportBaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="LabcommportSetOfReportBaudRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 140</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 19</value>
@@ -847,7 +979,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 58</value>
+    <value>21, 58</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 19</value>
@@ -859,25 +991,25 @@
     <value>Report status port configuration</value>
   </data>
   <data name="TxtcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 106</value>
+    <value>257, 134</value>
   </data>
   <data name="TxtcommportSetStopBits.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 53</value>
   </data>
   <data name="TxtcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 157</value>
+    <value>96, 221</value>
   </data>
   <data name="TxtcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 102</value>
+    <value>96, 134</value>
   </data>
   <data name="TxtcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 54</value>
+    <value>96, 54</value>
   </data>
   <data name="LabcommportSetParity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 112</value>
+    <value>190, 138</value>
   </data>
   <data name="LabcommportSetParity.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 19</value>
@@ -901,7 +1033,7 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 160</value>
+    <value>21, 224</value>
   </data>
   <data name="LabcommportSetDataBits.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 19</value>
@@ -913,7 +1045,7 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LabcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 109</value>
+    <value>21, 141</value>
   </data>
   <data name="LabcommportSetBaudRate.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 19</value>
@@ -945,11 +1077,29 @@
   <data name="BtnPorSave.Text" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="TxtReportingTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>842, 50</value>
+  </data>
+  <data name="LabReportingTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>722, 54</value>
+  </data>
+  <data name="LabReportingTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 16</value>
+  </data>
+  <data name="LabReportingTime.Text" xml:space="preserve">
+    <value>Reporting Time</value>
+  </data>
+  <data name="TxtDeviceAddress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>606, 49</value>
+  </data>
   <data name="LblDeviceAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="LblDeviceAddress.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri Light, 12pt</value>
+  </data>
+  <data name="LblDeviceAddress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>549, 54</value>
   </data>
   <data name="LblDeviceAddress.Text" xml:space="preserve">
     <value>Device address</value>
@@ -958,13 +1108,16 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="ChkIsConnectedAuto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>432, 50</value>
+    <value>435, 54</value>
+  </data>
+  <data name="ChkIsConnectedAuto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 25</value>
   </data>
   <data name="ChkIsConnectedAuto.Text" xml:space="preserve">
     <value>Automatic connection</value>
   </data>
   <data name="TxtPortNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 48</value>
+    <value>374, 51</value>
   </data>
   <data name="TxtPortNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 26</value>
@@ -973,22 +1126,22 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 53</value>
+    <value>331, 56</value>
   </data>
   <data name="LblPortNumber.Text" xml:space="preserve">
     <value>Port</value>
   </data>
   <data name="TxtIPAddressFour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 48</value>
+    <value>279, 51</value>
   </data>
   <data name="TxtIPAddressThree.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 48</value>
+    <value>228, 51</value>
   </data>
   <data name="TxtIPAddressTwo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 48</value>
+    <value>178, 51</value>
   </data>
   <data name="TxtIPAddressOne.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 48</value>
+    <value>128, 51</value>
   </data>
   <data name="LblIPAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -997,7 +1150,7 @@
     <value>Calibri Light, 12pt</value>
   </data>
   <data name="LblIPAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 53</value>
+    <value>42, 56</value>
   </data>
   <data name="LblIPAddress.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 19</value>

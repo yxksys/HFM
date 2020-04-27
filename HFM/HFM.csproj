@@ -205,6 +205,9 @@
     <EmbeddedResource Include="FrmPreference.en.resx">
       <DependentUpon>FrmPreference.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmTestHardware.en.resx">
+      <DependentUpon>FrmTestHardware.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTestHardware.resx">
       <DependentUpon>FrmTestHardware.cs</DependentUpon>
     </EmbeddedResource>

@@ -26,7 +26,7 @@ namespace HFM.Components
         /// 查询字段：仪器编号、软件名称、IP地址、通信端口、是否自动连接、探测类型、平滑因子、手部是否双探测器
         /// </summary>
         private const string SQL_SELECT_MAINPREFERENCE = "SELECT   InstrumentNum, SoftName, IPAddress, PortNumber," +
-                                                        " IsConnectedAuto, MeasureType, SmoothingFactor, IsDoubleProbe, DeviceAddress " +
+                                                        " IsConnectedAuto, MeasureType, SmoothingFactor, IsDoubleProbe, DeviceAddress,ReportingTime " +
                                                         " FROM HFM_MainPreference";
         /// <summary>
         /// 更新字段：仪器编号、软件名称、IP地址、通信端口、是否自动连接、探测类型、平滑因子、手部是否双探测器
@@ -35,7 +35,7 @@ namespace HFM.Components
                                                         "SET  InstrumentNum=@InstrumentNum, SoftName=@SoftName," +
                                                         " IPAddress=@IPAddress, PortNumber=@PortNumber, IsConnectedAuto=@IsConnectedAuto," +
                                                         " MeasureType=@MeasureType, SmoothingFactor=@SmoothingFactor, IsDoubleProbe=@IsDoubleProbe," +
-                                                        "DeviceAddress=@DeviceAddress";
+                                                        "DeviceAddress=@DeviceAddress,ReportingTime=@ReportingTime";
         #endregion
 
         #region 属性
@@ -48,6 +48,7 @@ namespace HFM.Components
         private float _smoothingFactor;//平滑因子
         private bool _isDoubleProbe;//手部是否双探测器
         private string _deviceAddress;//设备地址
+        private string _reportingTime;//上报时间间隔
 
 
         /// <summary>
@@ -90,7 +91,10 @@ namespace HFM.Components
             get => _deviceAddress;
             set => _deviceAddress = value;
         }
-
+        /// <summary>
+        /// 上报时间间隔
+        /// </summary>
+        public string ReportingTime { get=>_reportingTime; set=>_reportingTime=value; }
         #endregion
         #region 构造函数
         public FactoryParameter()
@@ -142,6 +146,7 @@ namespace HFM.Components
                     this.SmoothingFactor = Convert.ToSingle(reader["SmoothingFactor"].ToString() == "" ? "0" : reader["SmoothingFactor"].ToString());
                     this.IsDoubleProbe = Convert.ToBoolean(reader["IsDoubleProbe"].ToString());
                     this.DeviceAddress = Convert.ToString(reader["DeviceAddress"].ToString());
+                    this.ReportingTime = Convert.ToString(reader["ReportingTime"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
@@ -166,7 +171,8 @@ namespace HFM.Components
                 new OleDbParameter("MeasureType",OleDbType.VarChar,255),
                 new OleDbParameter("SmoothingFactor",OleDbType.VarChar,255),
                 new OleDbParameter("IsDoubleProbe",OleDbType.Boolean),
-                new OleDbParameter("DeviceAddress",OleDbType.VarChar,255)
+                new OleDbParameter("DeviceAddress",OleDbType.VarChar,255),
+                new OleDbParameter("ReportingTime",OleDbType.VarChar,255)
             };
             parms[0].Value = factoryParameter.InstrumentNum.ToString();
             parms[1].Value = factoryParameter.SoftName.ToString();
@@ -177,6 +183,7 @@ namespace HFM.Components
             parms[6].Value = factoryParameter.SmoothingFactor.ToString();
             parms[7].Value = factoryParameter.IsDoubleProbe;
             parms[8].Value = factoryParameter.DeviceAddress.ToString();
+            parms[9].Value = factoryParameter.ReportingTime.ToString();
             //执行更新语句
             if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE,parms) != 0)
             {

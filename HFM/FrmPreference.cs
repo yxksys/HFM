@@ -133,6 +133,7 @@ namespace HFM
                 TabPresence.TabPages[3].Parent = null;
             }
         }
+        #region 页面切换
         /// <summary>
         /// 页面切换
         /// </summary>
@@ -140,7 +141,7 @@ namespace HFM
         /// <param name="e"></param>
         private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (User.LandingUser.Role==2)
+            if (User.LandingUser.Role == 2)
             {
                 switch (TabPresence.SelectedIndex)
                 {
@@ -153,7 +154,7 @@ namespace HFM
                     case 2:
                         GetClothesData();
                         break;
-                    
+
                 }
             }
             //根据页面索引更新当前页面值
@@ -182,7 +183,8 @@ namespace HFM
                     break;
             }
 
-        }
+        } 
+        #endregion
 
         #region 获得数据库数据并显示出来
         /// <summary>
@@ -649,7 +651,8 @@ namespace HFM
             ChkIsConnectedAuto.Checked = factoryParameter.IsConnectedAuto;
             //设备地址
             TxtDeviceAddress.Text = factoryParameter.DeviceAddress;
-
+            //上报时间间隔
+            TxtReportingTime.Text = factoryParameter.ReportingTime;
             #endregion
 
             #region 端口配置
@@ -1661,6 +1664,8 @@ namespace HFM
             factoryParameterBtn.PortNumber = TxtPortNumber.Text;
             //是否自动连接
             factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+            //上报时间间隔
+            factoryParameterBtn.ReportingTime = TxtReportingTime.Text;
             factoryParameterBtn.SetParameter(factoryParameterBtn);
             if (_isEnglish)
             {

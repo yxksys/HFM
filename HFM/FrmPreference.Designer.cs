@@ -89,12 +89,6 @@
             this.α参数 = new System.Windows.Forms.TabPage();
             this.LblAlpha = new System.Windows.Forms.Label();
             this.DgvAlphaSet = new System.Windows.Forms.DataGridView();
-            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnAlphaNo = new System.Windows.Forms.Button();
             this.BtnAlphaOk = new System.Windows.Forms.Button();
             this.GrpAlphaNuclideChoose = new System.Windows.Forms.GroupBox();
@@ -107,12 +101,6 @@
             this.β参数 = new System.Windows.Forms.TabPage();
             this.LblBeta = new System.Windows.Forms.Label();
             this.DgvBetaSet = new System.Windows.Forms.DataGridView();
-            this.TxtBetaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtBetaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnBetaNo = new System.Windows.Forms.Button();
             this.BtnBetaOk = new System.Windows.Forms.Button();
             this.GrpBetaNuclideChoose = new System.Windows.Forms.GroupBox();
@@ -166,15 +154,6 @@
             this.工厂参数 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.DgvMainPreferenceSet = new System.Windows.Forms.DataGridView();
-            this.TxtMainPreferenceChanneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMainPreferenceAlphaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMainPreferenceBetaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMainPreferencePresetHV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMainPreferenceADCFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMainPreferenceDACFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMainPreferenceHVFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMainPreferenceWorkTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMainPreferenceHVRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnMainPreferenceWrite = new System.Windows.Forms.Button();
             this.BtnMainPreferenceRead = new System.Windows.Forms.Button();
             this.BtnMainPreferenceSet = new System.Windows.Forms.Button();
@@ -208,6 +187,8 @@
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnPorSave = new System.Windows.Forms.Button();
             this.GrpInternet = new System.Windows.Forms.GroupBox();
+            this.TxtReportingTime = new System.Windows.Forms.TextBox();
+            this.LabReportingTime = new System.Windows.Forms.Label();
             this.TxtDeviceAddress = new System.Windows.Forms.TextBox();
             this.LblDeviceAddress = new System.Windows.Forms.Label();
             this.ChkIsConnectedAuto = new System.Windows.Forms.CheckBox();
@@ -219,6 +200,27 @@
             this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
             this.LblIPAddress = new System.Windows.Forms.Label();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtBetaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceChanneName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceAlphaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceBetaThreshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferencePresetHV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceADCFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceDACFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceHVFactor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceWorkTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtMainPreferenceHVRatio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -631,42 +633,6 @@
             this.DgvAlphaSet.RowTemplate.Height = 27;
             this.DgvAlphaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAlphaSet_CellClick);
             // 
-            // TxtAlphaChannelName
-            // 
-            this.TxtAlphaChannelName.DataPropertyName = "ProbeChannel.ChannelName";
-            resources.ApplyResources(this.TxtAlphaChannelName, "TxtAlphaChannelName");
-            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
-            // 
-            // TxtAlphaHBackground
-            // 
-            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
-            resources.ApplyResources(this.TxtAlphaHBackground, "TxtAlphaHBackground");
-            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
-            // 
-            // TxtAplhaLBackground
-            // 
-            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
-            resources.ApplyResources(this.TxtAplhaLBackground, "TxtAplhaLBackground");
-            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
-            // 
-            // TxtAlphaAlarm_1
-            // 
-            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
-            resources.ApplyResources(this.TxtAlphaAlarm_1, "TxtAlphaAlarm_1");
-            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
-            // 
-            // TxtAlphaAlarm_2
-            // 
-            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
-            resources.ApplyResources(this.TxtAlphaAlarm_2, "TxtAlphaAlarm_2");
-            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
-            // 
-            // TxtAlphaEfficiency
-            // 
-            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
-            resources.ApplyResources(this.TxtAlphaEfficiency, "TxtAlphaEfficiency");
-            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
-            // 
             // BtnAlphaNo
             // 
             resources.ApplyResources(this.BtnAlphaNo, "BtnAlphaNo");
@@ -758,7 +724,6 @@
             this.DgvBetaSet.AllowUserToDeleteRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
             this.DgvBetaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.DgvBetaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
@@ -798,42 +763,6 @@
             this.DgvBetaSet.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DgvBetaSet.RowTemplate.Height = 27;
             this.DgvBetaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBetaSet_CellClick);
-            // 
-            // TxtBetaChannelName
-            // 
-            this.TxtBetaChannelName.DataPropertyName = "ChannelName";
-            resources.ApplyResources(this.TxtBetaChannelName, "TxtBetaChannelName");
-            this.TxtBetaChannelName.Name = "TxtBetaChannelName";
-            // 
-            // TxtBetaHBackground
-            // 
-            this.TxtBetaHBackground.DataPropertyName = "HBackground";
-            resources.ApplyResources(this.TxtBetaHBackground, "TxtBetaHBackground");
-            this.TxtBetaHBackground.Name = "TxtBetaHBackground";
-            // 
-            // TxtBetaLBackground
-            // 
-            this.TxtBetaLBackground.DataPropertyName = "LBackground";
-            resources.ApplyResources(this.TxtBetaLBackground, "TxtBetaLBackground");
-            this.TxtBetaLBackground.Name = "TxtBetaLBackground";
-            // 
-            // TxtBetaAlarm_1
-            // 
-            this.TxtBetaAlarm_1.DataPropertyName = "Alarm_1";
-            resources.ApplyResources(this.TxtBetaAlarm_1, "TxtBetaAlarm_1");
-            this.TxtBetaAlarm_1.Name = "TxtBetaAlarm_1";
-            // 
-            // TxtBetaAlarm_2
-            // 
-            this.TxtBetaAlarm_2.DataPropertyName = "Alarm_2";
-            resources.ApplyResources(this.TxtBetaAlarm_2, "TxtBetaAlarm_2");
-            this.TxtBetaAlarm_2.Name = "TxtBetaAlarm_2";
-            // 
-            // TxtBetaEfficiency
-            // 
-            this.TxtBetaEfficiency.DataPropertyName = "Efficiency";
-            resources.ApplyResources(this.TxtBetaEfficiency, "TxtBetaEfficiency");
-            this.TxtBetaEfficiency.Name = "TxtBetaEfficiency";
             // 
             // BtnBetaNo
             // 
@@ -1254,63 +1183,6 @@
             this.DgvMainPreferenceSet.RowTemplate.Height = 27;
             this.DgvMainPreferenceSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMainPreferenceSet_CellClick);
             // 
-            // TxtMainPreferenceChanneName
-            // 
-            this.TxtMainPreferenceChanneName.DataPropertyName = "ChannelName";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TxtMainPreferenceChanneName.DefaultCellStyle = dataGridViewCellStyle10;
-            resources.ApplyResources(this.TxtMainPreferenceChanneName, "TxtMainPreferenceChanneName");
-            this.TxtMainPreferenceChanneName.Name = "TxtMainPreferenceChanneName";
-            // 
-            // TxtMainPreferenceAlphaThreshold
-            // 
-            this.TxtMainPreferenceAlphaThreshold.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TxtMainPreferenceAlphaThreshold.DataPropertyName = "AlphaThreshold";
-            resources.ApplyResources(this.TxtMainPreferenceAlphaThreshold, "TxtMainPreferenceAlphaThreshold");
-            this.TxtMainPreferenceAlphaThreshold.Name = "TxtMainPreferenceAlphaThreshold";
-            // 
-            // TxtMainPreferenceBetaThreshold
-            // 
-            this.TxtMainPreferenceBetaThreshold.DataPropertyName = "BetaThreshold";
-            resources.ApplyResources(this.TxtMainPreferenceBetaThreshold, "TxtMainPreferenceBetaThreshold");
-            this.TxtMainPreferenceBetaThreshold.Name = "TxtMainPreferenceBetaThreshold";
-            // 
-            // TxtMainPreferencePresetHV
-            // 
-            this.TxtMainPreferencePresetHV.DataPropertyName = "PresetHV";
-            resources.ApplyResources(this.TxtMainPreferencePresetHV, "TxtMainPreferencePresetHV");
-            this.TxtMainPreferencePresetHV.Name = "TxtMainPreferencePresetHV";
-            // 
-            // TxtMainPreferenceADCFactor
-            // 
-            this.TxtMainPreferenceADCFactor.DataPropertyName = "ADCFactor";
-            resources.ApplyResources(this.TxtMainPreferenceADCFactor, "TxtMainPreferenceADCFactor");
-            this.TxtMainPreferenceADCFactor.Name = "TxtMainPreferenceADCFactor";
-            // 
-            // TxtMainPreferenceDACFactor
-            // 
-            this.TxtMainPreferenceDACFactor.DataPropertyName = "DACFactor";
-            resources.ApplyResources(this.TxtMainPreferenceDACFactor, "TxtMainPreferenceDACFactor");
-            this.TxtMainPreferenceDACFactor.Name = "TxtMainPreferenceDACFactor";
-            // 
-            // TxtMainPreferenceHVFactor
-            // 
-            this.TxtMainPreferenceHVFactor.DataPropertyName = "HVFactor";
-            resources.ApplyResources(this.TxtMainPreferenceHVFactor, "TxtMainPreferenceHVFactor");
-            this.TxtMainPreferenceHVFactor.Name = "TxtMainPreferenceHVFactor";
-            // 
-            // TxtMainPreferenceWorkTime
-            // 
-            this.TxtMainPreferenceWorkTime.DataPropertyName = "WorkTime";
-            resources.ApplyResources(this.TxtMainPreferenceWorkTime, "TxtMainPreferenceWorkTime");
-            this.TxtMainPreferenceWorkTime.Name = "TxtMainPreferenceWorkTime";
-            // 
-            // TxtMainPreferenceHVRatio
-            // 
-            this.TxtMainPreferenceHVRatio.DataPropertyName = "HVRatio";
-            resources.ApplyResources(this.TxtMainPreferenceHVRatio, "TxtMainPreferenceHVRatio");
-            this.TxtMainPreferenceHVRatio.Name = "TxtMainPreferenceHVRatio";
-            // 
             // BtnMainPreferenceWrite
             // 
             resources.ApplyResources(this.BtnMainPreferenceWrite, "BtnMainPreferenceWrite");
@@ -1523,6 +1395,8 @@
             // GrpInternet
             // 
             resources.ApplyResources(this.GrpInternet, "GrpInternet");
+            this.GrpInternet.Controls.Add(this.TxtReportingTime);
+            this.GrpInternet.Controls.Add(this.LabReportingTime);
             this.GrpInternet.Controls.Add(this.TxtDeviceAddress);
             this.GrpInternet.Controls.Add(this.LblDeviceAddress);
             this.GrpInternet.Controls.Add(this.ChkIsConnectedAuto);
@@ -1535,6 +1409,16 @@
             this.GrpInternet.Controls.Add(this.LblIPAddress);
             this.GrpInternet.Name = "GrpInternet";
             this.GrpInternet.TabStop = false;
+            // 
+            // TxtReportingTime
+            // 
+            resources.ApplyResources(this.TxtReportingTime, "TxtReportingTime");
+            this.TxtReportingTime.Name = "TxtReportingTime";
+            // 
+            // LabReportingTime
+            // 
+            resources.ApplyResources(this.LabReportingTime, "LabReportingTime");
+            this.LabReportingTime.Name = "LabReportingTime";
             // 
             // TxtDeviceAddress
             // 
@@ -1591,6 +1475,135 @@
             // 
             this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
             this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
+            // 
+            // TxtAlphaChannelName
+            // 
+            this.TxtAlphaChannelName.DataPropertyName = "ProbeChannel.ChannelName";
+            resources.ApplyResources(this.TxtAlphaChannelName, "TxtAlphaChannelName");
+            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
+            // 
+            // TxtAlphaHBackground
+            // 
+            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
+            resources.ApplyResources(this.TxtAlphaHBackground, "TxtAlphaHBackground");
+            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
+            // 
+            // TxtAplhaLBackground
+            // 
+            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
+            resources.ApplyResources(this.TxtAplhaLBackground, "TxtAplhaLBackground");
+            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
+            // 
+            // TxtAlphaAlarm_1
+            // 
+            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
+            resources.ApplyResources(this.TxtAlphaAlarm_1, "TxtAlphaAlarm_1");
+            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
+            // 
+            // TxtAlphaAlarm_2
+            // 
+            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
+            resources.ApplyResources(this.TxtAlphaAlarm_2, "TxtAlphaAlarm_2");
+            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
+            // 
+            // TxtAlphaEfficiency
+            // 
+            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
+            resources.ApplyResources(this.TxtAlphaEfficiency, "TxtAlphaEfficiency");
+            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
+            // 
+            // TxtBetaChannelName
+            // 
+            this.TxtBetaChannelName.DataPropertyName = "ChannelName";
+            resources.ApplyResources(this.TxtBetaChannelName, "TxtBetaChannelName");
+            this.TxtBetaChannelName.Name = "TxtBetaChannelName";
+            // 
+            // TxtBetaHBackground
+            // 
+            this.TxtBetaHBackground.DataPropertyName = "HBackground";
+            resources.ApplyResources(this.TxtBetaHBackground, "TxtBetaHBackground");
+            this.TxtBetaHBackground.Name = "TxtBetaHBackground";
+            // 
+            // TxtBetaLBackground
+            // 
+            this.TxtBetaLBackground.DataPropertyName = "LBackground";
+            resources.ApplyResources(this.TxtBetaLBackground, "TxtBetaLBackground");
+            this.TxtBetaLBackground.Name = "TxtBetaLBackground";
+            // 
+            // TxtBetaAlarm_1
+            // 
+            this.TxtBetaAlarm_1.DataPropertyName = "Alarm_1";
+            resources.ApplyResources(this.TxtBetaAlarm_1, "TxtBetaAlarm_1");
+            this.TxtBetaAlarm_1.Name = "TxtBetaAlarm_1";
+            // 
+            // TxtBetaAlarm_2
+            // 
+            this.TxtBetaAlarm_2.DataPropertyName = "Alarm_2";
+            resources.ApplyResources(this.TxtBetaAlarm_2, "TxtBetaAlarm_2");
+            this.TxtBetaAlarm_2.Name = "TxtBetaAlarm_2";
+            // 
+            // TxtBetaEfficiency
+            // 
+            this.TxtBetaEfficiency.DataPropertyName = "Efficiency";
+            resources.ApplyResources(this.TxtBetaEfficiency, "TxtBetaEfficiency");
+            this.TxtBetaEfficiency.Name = "TxtBetaEfficiency";
+            // 
+            // TxtMainPreferenceChanneName
+            // 
+            this.TxtMainPreferenceChanneName.DataPropertyName = "ChannelName";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TxtMainPreferenceChanneName.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(this.TxtMainPreferenceChanneName, "TxtMainPreferenceChanneName");
+            this.TxtMainPreferenceChanneName.Name = "TxtMainPreferenceChanneName";
+            // 
+            // TxtMainPreferenceAlphaThreshold
+            // 
+            this.TxtMainPreferenceAlphaThreshold.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TxtMainPreferenceAlphaThreshold.DataPropertyName = "AlphaThreshold";
+            resources.ApplyResources(this.TxtMainPreferenceAlphaThreshold, "TxtMainPreferenceAlphaThreshold");
+            this.TxtMainPreferenceAlphaThreshold.Name = "TxtMainPreferenceAlphaThreshold";
+            // 
+            // TxtMainPreferenceBetaThreshold
+            // 
+            this.TxtMainPreferenceBetaThreshold.DataPropertyName = "BetaThreshold";
+            resources.ApplyResources(this.TxtMainPreferenceBetaThreshold, "TxtMainPreferenceBetaThreshold");
+            this.TxtMainPreferenceBetaThreshold.Name = "TxtMainPreferenceBetaThreshold";
+            // 
+            // TxtMainPreferencePresetHV
+            // 
+            this.TxtMainPreferencePresetHV.DataPropertyName = "PresetHV";
+            resources.ApplyResources(this.TxtMainPreferencePresetHV, "TxtMainPreferencePresetHV");
+            this.TxtMainPreferencePresetHV.Name = "TxtMainPreferencePresetHV";
+            // 
+            // TxtMainPreferenceADCFactor
+            // 
+            this.TxtMainPreferenceADCFactor.DataPropertyName = "ADCFactor";
+            resources.ApplyResources(this.TxtMainPreferenceADCFactor, "TxtMainPreferenceADCFactor");
+            this.TxtMainPreferenceADCFactor.Name = "TxtMainPreferenceADCFactor";
+            // 
+            // TxtMainPreferenceDACFactor
+            // 
+            this.TxtMainPreferenceDACFactor.DataPropertyName = "DACFactor";
+            resources.ApplyResources(this.TxtMainPreferenceDACFactor, "TxtMainPreferenceDACFactor");
+            this.TxtMainPreferenceDACFactor.Name = "TxtMainPreferenceDACFactor";
+            // 
+            // TxtMainPreferenceHVFactor
+            // 
+            this.TxtMainPreferenceHVFactor.DataPropertyName = "HVFactor";
+            resources.ApplyResources(this.TxtMainPreferenceHVFactor, "TxtMainPreferenceHVFactor");
+            this.TxtMainPreferenceHVFactor.Name = "TxtMainPreferenceHVFactor";
+            // 
+            // TxtMainPreferenceWorkTime
+            // 
+            this.TxtMainPreferenceWorkTime.DataPropertyName = "WorkTime";
+            resources.ApplyResources(this.TxtMainPreferenceWorkTime, "TxtMainPreferenceWorkTime");
+            this.TxtMainPreferenceWorkTime.Name = "TxtMainPreferenceWorkTime";
+            // 
+            // TxtMainPreferenceHVRatio
+            // 
+            this.TxtMainPreferenceHVRatio.DataPropertyName = "HVRatio";
+            resources.ApplyResources(this.TxtMainPreferenceHVRatio, "TxtMainPreferenceHVRatio");
+            this.TxtMainPreferenceHVRatio.Name = "TxtMainPreferenceHVRatio";
             // 
             // FrmPreference
             // 
@@ -1762,28 +1775,7 @@
         private System.Windows.Forms.CheckBox ChkClothes;
         private System.Windows.Forms.CheckBox ChkFoot;
         private System.Windows.Forms.CheckBox ChkHand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaChannelName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaHBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaLBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
         private System.Windows.Forms.TabPage α参数;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceChanneName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceAlphaThreshold;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceBetaThreshold;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferencePresetHV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceADCFactor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceDACFactor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVFactor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceWorkTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVRatio;
         private System.Windows.Forms.TabPage COM;
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Button BtnPorSave;
@@ -1824,5 +1816,28 @@
         private System.Windows.Forms.ComboBox CmbIsEnabled;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox CmbSoftName;
+        private System.Windows.Forms.Label LabReportingTime;
+        private System.Windows.Forms.TextBox TxtReportingTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaHBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAplhaLBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaChannelName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaHBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaLBackground;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaAlarm_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtBetaEfficiency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceChanneName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceAlphaThreshold;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceBetaThreshold;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferencePresetHV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceADCFactor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceDACFactor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVFactor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceWorkTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TxtMainPreferenceHVRatio;
     }
 }
