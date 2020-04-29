@@ -3599,7 +3599,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HFM.v1.0"
         "ProductCode" = "8:{982FEBAD-9AE6-41F0-ADBC-DFDF251AB9EC}"
-        "PackageCode" = "8:{030F3B8C-18D7-49EC-B5C6-434AF5EE44B7}"
+        "PackageCode" = "8:{21283B6D-2859-42A7-A55D-CAEA478361AC}"
         "UpgradeCode" = "8:{E5DED200-49C6-461D-BC4D-557359A3ACF3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

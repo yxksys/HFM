@@ -1715,6 +1715,11 @@ namespace HFM
             {
                 if (MessageBox.Show("Restart the program to apply the new configuration!", "Reminder", MessageBoxButtons.OK) == DialogResult.OK)
                 {
+                    _commPort.Close();
+                    if (backgroundWorker_Preference.IsBusy == true)
+                    {
+                        backgroundWorker_Preference.Dispose();
+                    }
                     Application.Restart();
                 }
             }
@@ -1722,6 +1727,11 @@ namespace HFM
             {
                 if (MessageBox.Show("重新启动程序以应用新配置！", "提醒", MessageBoxButtons.OK) == DialogResult.OK)
                 {
+                    _commPort.Close();
+                    if (backgroundWorker_Preference.IsBusy == true)
+                    {
+                        backgroundWorker_Preference.Dispose();
+                    }
                     Application.Restart();
                 }
             }
@@ -1980,6 +1990,10 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmPreference_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (backgroundWorker_Preference.IsBusy == true)
+            {
+                backgroundWorker_Preference.Dispose();
+            }
             _commPort.Close();
         }
         
