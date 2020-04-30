@@ -389,7 +389,7 @@ namespace HFM
                     }
                     if (channel.ChannelID == 7 && measureDataS.Count>0&& measureDataS[6].InfraredStatus ==0)//衣物
                     {
-                        PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\FriskerBK_NotInPlace.jpg");
+                        PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\FriskerBK_InPlace.jpg");
                         ////通道状态图片
                         PicStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\Frisker_NotInPlace.png");
                         //通道状态标签
@@ -400,9 +400,7 @@ namespace HFM
                     //通道标题标签
                     LblTitle[channel.ChannelID - 1].Enabled = true;
                     LblTitle[channel.ChannelID - 1].ForeColor = PlatForm.ColorStatus.COLOR_BKENABLED;
-                    LblTitle[channel.ChannelID - 1].BackColor = Color.Transparent;
-                    //通道状态图片
-                    PicStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + string.Format("\\Images\\{0}_NotInPlace.png", channel.ChannelName_English));
+                    LblTitle[channel.ChannelID - 1].BackColor = Color.Transparent;                    
                     //通道测量值标签
                     if (channel.ChannelID == 7)
                     {
@@ -415,6 +413,8 @@ namespace HFM
                     }
                     if (channel.ChannelID != 7)
                     {
+                        //通道状态图片
+                        PicStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + string.Format("\\Images\\{0}_NotInPlace.png", channel.ChannelName_English));
                         //通道状态标签
                         LblStatus[channel.ChannelID - 1].BackColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
                         LblStatus[channel.ChannelID - 1].ForeColor = PlatForm.ColorStatus.CORLOR_FRNOTINPLACE;
@@ -443,9 +443,7 @@ namespace HFM
                     }                    
                     //通道标题标签
                     LblTitle[channel.ChannelID - 1].Enabled = true;
-                    LblTitle[channel.ChannelID - 1].ForeColor = PlatForm.ColorStatus.COLOR_BKENABLED;
-                    //通道状态图片
-                    PicStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + string.Format("\\Images\\{0}_InPlace.png", channel.ChannelName_English));
+                    LblTitle[channel.ChannelID - 1].ForeColor = PlatForm.ColorStatus.COLOR_BKENABLED;                    
                     //通道测量值标签
                     if (channel.ChannelID == 7)
                     {
@@ -458,6 +456,8 @@ namespace HFM
                     }
                     if (channel.ChannelID != 7)
                     {
+                        //通道状态图片
+                        PicStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + string.Format("\\Images\\{0}_InPlace.png", channel.ChannelName_English));
                         //通道状态标签
                         LblStatus[channel.ChannelID - 1].BackColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
                         LblStatus[channel.ChannelID - 1].ForeColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
@@ -920,11 +920,7 @@ namespace HFM
                 //衣物探头已经被拿起（红外状态为到位)
                 if (measureDataS[6].InfraredStatus == 1)
                 {
-                    //设置衣物探测区域状态图片为到位
-                    PicFrisker.Image = Image.FromFile(appPath + "\\Images\\Frisker_InPlace.png");
-                    //设置衣物探测区域状态标签为已到位
-                    LblFriskerStatus.BackColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
-                    LblFriskerStatus.ForeColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                    ChannelDisplayControl(measureDataS[6].Channel, 2);                    
                     //衣物探头已经被拿起（不是刚被拿起）
                     smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);                                        
                     //如果当前状态为等待测量或开始测量则,说明衣物探测界面已经加载
@@ -975,13 +971,13 @@ namespace HFM
                                 if (smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2)
                                 {
                                     frmClothes.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
-                                    frmClothes.PrgClothAlarm_2.Value = 100;
+                                    frmClothes.PrgClothAlarm_2.Value = frmClothes.PrgClothAlarm_2.Maximum;
                                 }
                                 else
                                 {
                                     //大于一级报警，衣物探测界面测量结果显示文本框背景色设置为ALATM1
                                     frmClothes.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
-                                    frmClothes.PrgClothAlarm_1.Value = 100;
+                                    frmClothes.PrgClothAlarm_1.Value = frmClothes.PrgClothAlarm_1.Maximum;
                                 }
                                 //衣物探测界面进度条设置为100%
                                 //frmClothes.PrgClothAlarm_1.Value = 100;
@@ -1024,6 +1020,9 @@ namespace HFM
                                     measureData.AddData(measureData);
                                     //启动报警计时
                                     alarmTimeStart = System.DateTime.Now.AddSeconds(1);
+                                    //当前运行状态设置为“检测结束”
+                                    platformState = PlatformState.Result;
+                                    return;
                                 }
                             }
                             #endregion
@@ -1051,11 +1050,12 @@ namespace HFM
                 //衣物探头红外未到位
                 if (measureDataS[6].InfraredStatus == 0)
                 {
-                    //设置衣物探测区域状态图片为到位
-                    PicFrisker.Image = Image.FromFile(appPath + "\\Images\\Frisker_NotInPlace.png");
-                    //设置衣物探测区域状态标签为已到位
-                    LblFriskerStatus.BackColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
-                    LblFriskerStatus.ForeColor = PlatForm.ColorStatus.CORLOR_FRNOTINPLACE;
+                    ChannelDisplayControl(measureDataS[6].Channel, 1);
+                    ////设置衣物探测区域状态图片为到位
+                    //PicFrisker.Image = Image.FromFile(appPath + "\\Images\\Frisker_NotInPlace.png");
+                    ////设置衣物探测区域状态标签为已到位
+                    //LblFriskerStatus.BackColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                    //LblFriskerStatus.ForeColor = PlatForm.ColorStatus.CORLOR_FRNOTINPLACE;
                     //衣物探测结果显示区域背景色设置为正常
                     LblFriskerB.BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
                     //衣物探测结果显示区域显示当前衣物探测值为0cps
@@ -1080,7 +1080,8 @@ namespace HFM
                             PnlNoContamination.BackColor = Color.Transparent;
                             PnlNoContamination.BackgroundImage = null;
                             PnlBackground.BackgroundImage = Image.FromFile(appPath+ "\\Images\\progress.jpg");
-                            //重置衣物探测实践次数
+                            LblBackground.BringToFront();
+                            //重置衣物探测实际次数
                             clothesTimeCount = 0;
                             //监测结果显示区域显示“仪器本底测量”
                             if (isEnglish)
@@ -1095,9 +1096,11 @@ namespace HFM
                                 player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
                             }
                             player.PlaySync();
-                            //Thread.Sleep(1000);
+                            //Thread.Sleep(1000);                            
                             //将当前系统状态设置为本底测量
                             platformState = PlatformState.BackGrouneMeasure;
+                            //重新设置本底测量开始时间
+                            stateTimeStart = System.DateTime.Now.AddSeconds(1);
                             return;
                         }
                         return;
@@ -1200,12 +1203,16 @@ namespace HFM
             //如果当前运行状态为“仪器自检”
             if (platformState == PlatformState.SelfTest)
             {
+                //取消本底测量状态图片
+                PnlBackground.BackgroundImage = null;
                 string[] errRecordS = new string[2];
                 if (errRecordS == null)//无自检故障信息时设置背景为正常状态背景
                 {
                     //仪器自检状态标签设置为当前状态图片
                     PnlSelfCheck.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
-                }                
+                    LblCheck.BringToFront();
+                }
+                LblTimeRemain.Parent = PnlSelfCheck;
                 LblTimeRemain.Location = new Point(112,0);//控制剩余时间标签显示位置
                 //获得当前系统参数设置中的的自检时间并赋值给stateTimeSet
                 stateTimeSet =systemParameter.SelfCheckTime;               
@@ -1371,8 +1378,14 @@ namespace HFM
             {
                 //取消仪器自检状态标签设置
                 PnlSelfCheck.BackgroundImage = null;
+                //取消等待测量状态标签设置
+                PnlReady.BackgroundImage = null;
+                PnlNoContamination.BackgroundImage = null;
+                PnlContaminated.BackgroundImage = null;
+                PnlMeasuring.BackgroundImage = null;
                 //本底测量状态标签设置为当前状态图片
                 PnlBackground.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
+                LblBackground.BringToFront();
                 LblTimeRemain.Parent = PnlBackground;//控制剩余时间标签显示位置
                 LblTimeRemain.BringToFront();
                 bool isReDisplay = false; //是否需要重新显示"本底测量"提示信息,默认false
@@ -1614,6 +1627,7 @@ namespace HFM
                 PnlContaminated.BackgroundImage = null;
                 //等待测量状态标签设置为当前状态图片
                 PnlReady.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
+                LblReady.BringToFront();
                 LblTimeRemain.Parent = PnlReady;//控制剩余时间标签显示位置
                 LblTimeRemain.BringToFront();
                 //获得当前系统参数设置中的的测量时间并赋值给stateTimeSet
@@ -1624,7 +1638,12 @@ namespace HFM
                 MeasureData conversionData = new MeasureData();
                 IList<MeasureData> conversionDataS = new List<MeasureData>();
                 //所有手部红外到位标志，默认全部到位
-                bool isHandInfraredStatus = true;                
+                bool isHandInfraredStatus = true;  
+                //只有衣物检测被启用
+                if(channelS.Count==1 && channelS[0].ChannelID==7)
+                {
+                    isHandInfraredStatus = false;
+                }
                 for (int i = 0; i < channelS.Count; i++)
                 {
                     //因为measureDataS中是从报文协议中解析的全部7个通道的监测数据，但是calculatedMeasureDataS只是存储当前在用的通道信息

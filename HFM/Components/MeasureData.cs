@@ -36,7 +36,7 @@ namespace HFM.Components
         /// 添加监测数据
         /// </summary>
         private const string SQL_INSERT_MEASUREDATA = "INSERT INTO HFM_MeasureData(MeasureDate,MeasureStatus,DetailedInfo,IsEnglish,IsReported) " +
-                                                     "VALUES(@MeasureDate,@MeasureStatus,@DetailedInfo,@IsEnglish)";
+                                                     "VALUES(@MeasureDate,@MeasureStatus,@DetailedInfo,@IsEnglish,@IsReported)";
         /// <summary>
         /// 查询最新一条监测记录
         /// </summary>

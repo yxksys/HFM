@@ -547,6 +547,7 @@
             // 
             // PnlSelfCheck
             // 
+            this.PnlSelfCheck.BackColor = System.Drawing.Color.Transparent;
             this.PnlSelfCheck.BackgroundImage = global::HFM.Properties.Resources.progress;
             this.PnlSelfCheck.Controls.Add(this.LblTimeRemain);
             this.PnlSelfCheck.Controls.Add(this.LblCheck);
