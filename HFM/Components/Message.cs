@@ -399,7 +399,6 @@ namespace HFM.Components
                             {
                                 measureDataS[4].InfraredStatus = 1;
                             }
-
                             if ((infraredStatus & 2) == 0)
                             {
                                 measureDataS[5].InfraredStatus = 1;

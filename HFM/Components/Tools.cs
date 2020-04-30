@@ -20,6 +20,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using HFM.Components;
+using System.Collections.Generic;
+
 namespace HFM.Components
 {
 	/// <summary>
@@ -27,6 +29,7 @@ namespace HFM.Components
 	/// </summary>
 	public class Tools
 	{
+        static List<Control> controls = new List<Control>();
 		#region 将DataReader 转为 DataTable
 		/// <summary>
 		/// 将DataReader 转为 DataTable
@@ -388,7 +391,8 @@ namespace HFM.Components
         public static void ApplyLanguageResource(Form form)
         {
             System.ComponentModel.ComponentResourceManager res = new System.ComponentModel.ComponentResourceManager(form.GetType());
-            foreach (Control ctl in form.Controls)
+            GetControls(form);
+            foreach (Control ctl in controls)
             {
                 res.ApplyResources(ctl, ctl.Name);
             }
@@ -485,7 +489,24 @@ namespace HFM.Components
             }
 
             return convertedData;
-        } 
+        }
+        #endregion
+
+        #region 获得窗体中所有控件
+        private static List<Control> GetControls(Control fatherControl)
+        {
+            Control.ControlCollection sonControls = fatherControl.Controls;
+            //遍历所有控件
+            foreach(Control control in sonControls)
+            {
+                controls.Add(control);
+                if(control.Controls!=null)
+                {
+                    GetControls(control);
+                }
+            }
+            return controls;
+        }
         #endregion
     }
 }
