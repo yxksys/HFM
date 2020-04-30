@@ -23,14 +23,19 @@ namespace HFM.Components
     {
         public struct ColorStatus
         {
-            public static Color CORLOR_NORMAL = Color.FromArgb(128, 255, 128);//绿色
+            public static Color CORLOR_BKINPLACE = Color.FromArgb(1, 90, 170);//红外到位背景色蓝色
+            public static Color CORLOR_FRNORMAL = Color.White;//通用前景色白色
+            public static Color CORLOR_BKNOTINPLACE = Color.FromArgb(161,185,196);//红外不到位背景色
+            public static Color CORLOR_FRNOTINPLACE = Color.FromArgb(246,127,27);//红外不到位前景色
             public static Color COLOC_PINGBI = Color.FromArgb(64,64,64);
-            public static Color COLOR_STATUS = Color.Lime;
+            public static Color COLOR_STATUS = Color.LightBlue;
             public static Color COLOR_STOP = Color.Gray;
             public static Color CORLOR_ERROR = Color.Orange;
-            public static Color COLOR_ALARM_1 = Color.Orange;
+            public static Color COLOR_ALARM_1 = Color.FromArgb(200,120,95);
             public static Color COLOR_ALARM_2 = Color.Red;
             public static Color COLOR_SYSTEM = SystemColors.Control;
+            public static Color COLOR_BKENABLED = Color.FromArgb(1, 90, 170);//通道启用背景色蓝色
+            public static Color COLOR_BKDISABLED = Color.FromArgb(142, 167, 178);//通道未启用背景色
         } 
         public struct ErrorRange
         {
