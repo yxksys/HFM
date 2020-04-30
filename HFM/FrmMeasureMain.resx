@@ -2007,27 +2007,6 @@
   <data name="&gt;&gt;PicLogo.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="LblContaminated.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 18pt, style=Italic</value>
-  </data>
-  <data name="LblContaminated.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="LblContaminated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 15</value>
-  </data>
-  <data name="LblContaminated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 47</value>
-  </data>
-  <data name="LblContaminated.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="LblContaminated.Text" xml:space="preserve">
-    <value>人员污染</value>
-  </data>
-  <data name="LblContaminated.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
   <data name="&gt;&gt;LblContaminated.Name" xml:space="preserve">
     <value>LblContaminated</value>
   </data>
@@ -2060,27 +2039,6 @@
   </data>
   <data name="&gt;&gt;PnlContaminated.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="LblNoContamination.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 18pt, style=Italic</value>
-  </data>
-  <data name="LblNoContamination.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="LblNoContamination.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 15</value>
-  </data>
-  <data name="LblNoContamination.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 47</value>
-  </data>
-  <data name="LblNoContamination.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="LblNoContamination.Text" xml:space="preserve">
-    <value>无污染</value>
-  </data>
-  <data name="LblNoContamination.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;LblNoContamination.Name" xml:space="preserve">
     <value>LblNoContamination</value>
@@ -2321,6 +2279,72 @@
   </data>
   <data name="&gt;&gt;PnlProgress.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="LblContaminated.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 18pt, style=Italic</value>
+  </data>
+  <data name="LblContaminated.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblContaminated.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 15</value>
+  </data>
+  <data name="LblContaminated.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 47</value>
+  </data>
+  <data name="LblContaminated.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="LblContaminated.Text" xml:space="preserve">
+    <value>人员污染</value>
+  </data>
+  <data name="LblContaminated.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;LblContaminated.Name" xml:space="preserve">
+    <value>LblContaminated</value>
+  </data>
+  <data name="&gt;&gt;LblContaminated.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblContaminated.Parent" xml:space="preserve">
+    <value>PnlContaminated</value>
+  </data>
+  <data name="&gt;&gt;LblContaminated.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblNoContamination.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 18pt, style=Italic</value>
+  </data>
+  <data name="LblNoContamination.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblNoContamination.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 15</value>
+  </data>
+  <data name="LblNoContamination.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 47</value>
+  </data>
+  <data name="LblNoContamination.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="LblNoContamination.Text" xml:space="preserve">
+    <value>无污染</value>
+  </data>
+  <data name="LblNoContamination.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;LblNoContamination.Name" xml:space="preserve">
+    <value>LblNoContamination</value>
+  </data>
+  <data name="&gt;&gt;LblNoContamination.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblNoContamination.Parent" xml:space="preserve">
+    <value>PnlNoContamination</value>
+  </data>
+  <data name="&gt;&gt;LblNoContamination.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="LblMeasuring.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 18pt, style=Italic</value>
