@@ -344,6 +344,9 @@ namespace HFM
                         {
                             bkWorkerReceiveData.CancelAsync();
                             _bkworkTime = 0;
+                            //按钮可以使用
+                            BtnCalibrate.Enabled = true;
+                            BtnSet.Enabled = true;
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -891,7 +894,9 @@ namespace HFM
                         }
                         //测量结果
                         TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}；";
-                        
+                        //使刻度按钮可以使用
+                        BtnCalibrate.Enabled = true;
+                        BtnSet.Enabled = true;
                     }
                 }
             }
@@ -964,8 +969,10 @@ namespace HFM
                 _tools.PrompMessage(2);
                 return;
             }
-            
-            
+            //点击刻度和设置后使按钮不可用
+            BtnCalibrate.Enabled = false;
+            BtnSet.Enabled = false;
+
         }
         #endregion
 
@@ -1034,7 +1041,9 @@ namespace HFM
                     bkWorkerReceiveData.RunWorkerAsync();
                 }
             }
-            
+            //点击刻度和设置后使按钮不可用
+            BtnCalibrate.Enabled = false;
+            BtnSet.Enabled = false;
         }
 
 
