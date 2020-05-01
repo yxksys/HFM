@@ -328,22 +328,24 @@ namespace HFM.Components
                         case "IsEnabled":
                             this.IsEnabled = portSetArray[i].Split('=')[1].ToString().ToLower() == "true" ? true : false; 
                             break;
-                    }                     
-                    switch (portNum.ToUpper())
-                    {
-                        case "COM1":
-                            this.PortNum = 1;
-                            break;
-                        case "COM2":
-                            this.PortNum = 2;
-                            break;
-                        case "COM3":
-                            this.PortNum = 3;
-                            break;
-                        case "COM4":
-                            this.PortNum = 4;
-                            break;
                     }
+                    
+                    this.PortNum = int.Parse(portNum.Substring(3));
+                    //switch (portNum.ToUpper())
+                    //{
+                    //    case "COM1":
+                    //        this.PortNum = 1;
+                    //        break;
+                    //    case "COM2":
+                    //        this.PortNum = 2;
+                    //        break;
+                    //    case "COM3":
+                    //        this.PortNum = 3;
+                    //        break;
+                    //    case "COM4":
+                    //        this.PortNum = 4;
+                    //        break;
+                    //}
                     switch (parity)
                     {
                         case "нч":

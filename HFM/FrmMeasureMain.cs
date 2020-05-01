@@ -81,8 +81,8 @@ namespace HFM
         enum DeviceStatus 
         {
             OperatingNormally=16,
-            OperatingFaulted=32,
-            OperatingContaminated=64
+            OperatingFaulted=64,
+            OperatingContaminated=32
         }
         byte deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);//设备当前状态        
         DateTime stateTimeStart;//系统当前运行状态的开始计时变量                
@@ -405,11 +405,14 @@ namespace HFM
                     if (channel.ChannelID == 7)
                     {
                         LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                        LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
                     }
                     else
                     {
                         LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
                         LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                        LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                        LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
                     }
                     if (channel.ChannelID != 7)
                     {
@@ -634,6 +637,7 @@ namespace HFM
             }
             //从配置文件获得当前监测串口配置
             commPort.GetCommPortSet("commportSet");
+            //commPort.PortNum = 6;
             //打开监测通信串口
             try
             {
@@ -1387,7 +1391,7 @@ namespace HFM
                 PnlBackground.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
                 LblBackground.BringToFront();
                 LblTimeRemain.Parent = PnlBackground;//控制剩余时间标签显示位置
-                LblTimeRemain.BringToFront();
+                LblTimeRemain.BringToFront();               
                 bool isReDisplay = false; //是否需要重新显示"本底测量"提示信息,默认false
                 //textBox1.Text += platformState.ToString();
                 //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
@@ -1590,7 +1594,9 @@ namespace HFM
                         for (int i = 0; i < channelS.Count; i++)
                         {
                             //将最终的本底计算结果保存，以用于检测时对测量结果进行校正
-                            baseData.Add(calculatedMeasureDataS[i]);
+                            MeasureData baseDataTemp = new MeasureData();
+                            Tools.Clone(calculatedMeasureDataS[i], baseDataTemp);
+                            baseData.Add(baseDataTemp);
                             //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为测量时计算做准备
                             calculatedMeasureDataS[i].Alpha = 0;
                             calculatedMeasureDataS[i].Beta = 0;
@@ -1674,7 +1680,10 @@ namespace HFM
                         conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
                         conversionData.Channel = calculatedMeasureDataS[i].Channel;
                         //将单位转换后的测量数据添加进IList列表
-                        conversionDataS.Add(conversionData);
+                        MeasureData conversionDataTemp = new MeasureData();
+                        Tools.Clone(conversionData, conversionDataTemp);
+                        Tools.Clone(conversionData.Channel, conversionDataTemp.Channel = new Channel());
+                        conversionDataS.Add(conversionDataTemp);
 
                     }                      
                 }                               
@@ -1739,7 +1748,7 @@ namespace HFM
                         for (int i = 0; i < channelS.Count; i++)
                         {
                             //将最终的本底计算结果保存，以用于检测时对测量结果进行校正
-                            baseData.Add(calculatedMeasureDataS[i]);
+                            Tools.Clone(calculatedMeasureDataS[i], baseData[i]);
                             //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次计算做准备
                             //calculatedMeasureDataS[i].Alpha = 0;
                             //calculatedMeasureDataS[i].Beta = 0;
@@ -1893,7 +1902,7 @@ namespace HFM
                         {
                             //将当前通道Beta测量污染信息添加进pollutionRecord字符串
                             pollutionRecord += string.Format("{0}:β值{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName,calculatedMeasureDataS[i].Beta);
-                            pollutionRecord_E += string.Format("{0}:Beta Value}{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName_English,calculatedMeasureDataS[i].Beta);
+                            pollutionRecord_E += string.Format("{0}:Beta Value{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName_English,calculatedMeasureDataS[i].Beta);
                             //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
                             Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                             label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
@@ -1915,10 +1924,14 @@ namespace HFM
                         conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
                         conversionData.Channel = calculatedMeasureDataS[i].Channel;
                         //将单位转换后的测量数据添加进IList列表
-                        conversionDataS.Add(conversionData);
+                        MeasureData conversionDataTemp = new MeasureData();
+                       
+                        Tools.Clone(conversionData, conversionDataTemp);
+                        Tools.Clone(conversionData.Channel, conversionDataTemp.Channel=new Channel());
+                        conversionDataS.Add(conversionDataTemp);
                     }
-                    //按照系统参数单位要求显示最终测量结果,级显示单位转换后的conversionDataS列表值
-                    DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);
+                    ////按照系统参数单位要求显示最终测量结果,级显示单位转换后的conversionDataS列表值
+                    //DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);
                     if (pollutionRecord == null)//说明本次测量无污染
                     {
                         //将本次测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次测量时计算做准备
@@ -2030,6 +2043,8 @@ namespace HFM
                         //启动报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
+                    //按照系统参数单位要求显示最终测量结果,级显示单位转换后的conversionDataS列表值
+                    DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);
                     //本次检测完成，设置手部监测标志为false，为下一个人检测做准备
                     isHandTested = false;
                     //更新本底测量次数（+1）                    
@@ -2161,6 +2176,20 @@ namespace HFM
                         player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
                     }
                     player.PlaySync();
+                    //测量值显示标签背景恢复为默认状态（如果检查结果为人员污染，则会将测量值显示标签背景色变为污染报警，所以需要恢复）
+                    for (int i = 0; i < channelS.Count;i++)
+                    {
+                        //通道测量值标签
+                        if (channelS[i].ChannelID == 7)
+                        {
+                            LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White ;
+                        }
+                        else
+                        {
+                            LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                            LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = Color.White;
+                        }
+                    }
                     //启动本底测量计时 
                     stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     //Thread.Sleep(1000);
@@ -2762,12 +2791,12 @@ namespace HFM
                     //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
                     if((measureData==null||measureData.IsReported==true) && errorData.IsReported==false)
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02);//0x02:仪器故障
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x04);//0x04:仪器故障
                     }
                     //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
                     if(measureData.IsReported==false && (errorData.IsReported==true||errorData==null))
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x02:仪器污染
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x02);//0x02:仪器污染
                     }
                     //监测数据和故障数据都未上报，则将最近的状态进行上报，更新两条记录为已上报
                     if (measureData.IsReported == false && errorData.IsReported == false)
@@ -2775,12 +2804,12 @@ namespace HFM
                         if (measureData.MeasureDate > errorData.ErrTime)//最近一次记录为MeasureData，说明是状态为污染（因为只有污染状态才会记录，正常不记录）
                         {
                             //生成上报管理机的监测仪测试状态(污染)报文                    
-                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x04);//仪器状态为污染
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x02);//仪器状态为污染
                         }
                         else
                         {
                             //生成上报管理机的监测仪测试状态（故障）报文                    
-                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),errorData.ErrTime, 0x02);//仪器状态为故障
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),errorData.ErrTime, 0x04);//仪器状态为故障
                         }
                     }
                     //向管理机上报仪器检测状态

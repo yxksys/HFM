@@ -508,5 +508,21 @@ namespace HFM.Components
             return controls;
         }
         #endregion
+        #region 两个对象之间进行拷贝
+        public static void Clone(object objSource,object objDetection)
+        {
+            Type typeSource = objSource.GetType();
+            Type typeDetection = objDetection.GetType();
+            if(typeSource.Equals(typeDetection))
+            {
+                foreach(System.Reflection.PropertyInfo p in typeSource.GetProperties())
+                {
+                    System.Reflection.PropertyInfo p1=typeDetection.GetProperty(p.Name.ToString());
+                    p1.SetValue(objDetection, p.GetValue(objSource));
+                }
+            }
+        }
+        #endregion
+
     }
 }

@@ -284,19 +284,28 @@ namespace HFM
             if (channellList[0].IsEnabled && channellList[1].IsEnabled)
             {
                 ChkHand.Checked = true;//手部
-                RdoDoubleHand.Checked = true;//双探测器
+                
             }
             else if (channellList[0].IsEnabled && channellList[1].IsEnabled==false)
             {
                 ChkHand.Checked = true;//手部
-                RdoSingleHand.Checked = true;//单探测器
+                
+            }
+            //判断单双探测器
+            if (factoryParameter.IsDoubleProbe==true)
+            {
+                RdoDoubleHand.Checked = true;//双探测器
             }
             else
             {
-                ChkHand.Checked = false;
-                RdoSingleHand.Checked = false;
-                RdoDoubleHand.Checked = false;
+                RdoSingleHand.Checked = true;//单探测器
             }
+            //else
+            //{
+            //    ChkHand.Checked = false;
+            //    RdoSingleHand.Checked = false;
+            //    RdoDoubleHand.Checked = false;
+            //}
             //判断是否启用脚步
             if (channellList[4].IsEnabled &&channellList[5].IsEnabled)
             {
@@ -369,7 +378,7 @@ namespace HFM
             //}
 
             #region α参数
-            
+
             DgvAlphaSet.Rows.Clear();
             if (_isEnglish == true)
             {
@@ -1037,28 +1046,29 @@ namespace HFM
             //手部启用
             if (ChkHand.Checked)
             {
-                //启用双探头
-                if (RdoSingleHand.Checked)
-                {
-                    channelBtnOk.SetEnabledByID(1, true);
-                    channelBtnOk.SetEnabledByID(2, false);
-                    channelBtnOk.SetEnabledByID(3, true);
-                    channelBtnOk.SetEnabledByID(4, false);
-                    //单探测器
-                    factoryParameterBtn.IsDoubleProbe = false;
-                }
-                else if(RdoDoubleHand.Checked)
-                {
-                    //根据类型全部启用首部探测器
-                    channelBtnOk.SetEnabledByType(0, true);
-                    //双探测器
-                    factoryParameterBtn.IsDoubleProbe = true;
-                    
-                }
+                channelBtnOk.SetEnabledByType(0, true);
             }
             else
             {
                 channelBtnOk.SetEnabledByType(0, false);
+            }
+            //启用单双探测器
+            if (RdoSingleHand.Checked)
+            {
+                //channelBtnOk.SetEnabledByID(1, true);
+                //channelBtnOk.SetEnabledByID(2, false);
+                //channelBtnOk.SetEnabledByID(3, true);
+                //channelBtnOk.SetEnabledByID(4, false);
+                //单探测器
+                factoryParameterBtn.IsDoubleProbe = false;
+            }
+            else if (RdoDoubleHand.Checked)
+            {
+                ////根据类型全部启用首部探测器
+                //channelBtnOk.SetEnabledByType(0, true);
+                //双探测器
+                factoryParameterBtn.IsDoubleProbe = true;
+
             }
             #endregion
 
