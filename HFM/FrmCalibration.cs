@@ -344,9 +344,7 @@ namespace HFM
                         {
                             bkWorkerReceiveData.CancelAsync();
                             _bkworkTime = 0;
-                            //按钮可以使用
-                            BtnCalibrate.Enabled = true;
-                            BtnSet.Enabled = true;
+                            
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -354,7 +352,11 @@ namespace HFM
                             
                             //延时
                             Thread.Sleep(100);
-                            receiveBuffMessage = Message.ReceiveMessage(_commPort);
+                            receiveBuffMessage = Message.ReceiveMessage(_commPort);  
+                            if(receiveBuffMessage.Length>0&&receiveBuffMessage[0].ToString()!="80")//由于下位机一直上传C指令，下发P指令后有可能读回的数据还是C指令，所以将其扔掉直到读回的是P指令为止                            
+                            {
+                                continue;
+                            }
                             //延时
                             Thread.Sleep(200);
                             //触发向主线程返回下位机上传数据事件
@@ -625,6 +627,7 @@ namespace HFM
                         Txtβ.Text = itemParameter.BetaThreshold.ToString();
                         //当前通道道盒参数
                         _setChannelParameter = itemParameter;
+                        
                     }
                 }
             }
@@ -733,7 +736,14 @@ namespace HFM
                 }
                 if (_sclaeState==true)
                 {
-                    _addInformation[0] = "带源测量";
+                    if (_isEnglish)
+                    {
+                        _addInformation[0] = "Radioactive source";
+                    }
+                    else
+                    {
+                        _addInformation[0] = "带源测量";
+                    }                    
                     _addInformation[1] = CmbChannelSelection.Text;
                     _addInformation[2] = area.ToString();
                     _addInformation[3] = (String.Format("{0:f2}", (_alphacps /Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
@@ -827,16 +837,21 @@ namespace HFM
                         }
                         //串道比计算
                         Calibration calibration_AlphaBetaPercent = new Calibration();
-                        if (_alphacnt>0)
+                        if (_alphacnt>0 || _betacnt>0)
                         {
-                            //alpha 串道计数
-                            calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
+                            if (_efficiencyList.First(x => x.NuclideType == "α").NuclideName == CmbNuclideSelect.Text)
+                            {
+                                //alpha 串道计数
+                                calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
+                            }
+                            else
+                            {
+                                //beta 串道计数
+                                calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
+                            }
+                            
                         }
-                        else if(_betacnt>0)
-                        {
-                            //beta 串道计数
-                            calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
-                        }
+                        
 
                         if (calibration_AlphaBetaPercent.AlphaBetaPercent<=0)
                         {
@@ -887,13 +902,13 @@ namespace HFM
                                         }
                                         sw.WriteLine("");
                                     }
-                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}；");
+                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}%；");
                                     sw.Close();
                                 }
                             }
                         }
                         //测量结果
-                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}；";
+                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent:f2}%；";
                         //使刻度按钮可以使用
                         BtnCalibrate.Enabled = true;
                         BtnSet.Enabled = true;
@@ -969,9 +984,12 @@ namespace HFM
                 _tools.PrompMessage(2);
                 return;
             }
-            //点击刻度和设置后使按钮不可用
-            BtnCalibrate.Enabled = false;
-            BtnSet.Enabled = false;
+            ////点击刻度和设置后使按钮不可用
+            //BtnCalibrate.Enabled = false;
+            //BtnSet.Enabled = false;
+            ////按钮可以使用
+            //BtnCalibrate.Enabled = true;
+            //BtnSet.Enabled = true;
 
         }
         #endregion
@@ -1025,7 +1043,11 @@ namespace HFM
             _measuringTime = Convert.ToInt32(TxtMeasuringTime.Text);//测量时间
             _measuringCount = Convert.ToInt16(TxtCount.Text);//测量次数
             _messageType = MessageType.CRead;
-            if (MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示")==DialogResult.OK)
+            if (_isEnglish)
+            {
+
+            }
+            if (_isEnglish==true?MessageBox.Show(@"Please enter the emissivity!", "Message") ==DialogResult.OK: MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示") == DialogResult.OK)
             {
                 //刻度时清理上一次的读数
                 _alphacps = 0;
@@ -1091,6 +1113,7 @@ namespace HFM
         {
             _commPort.Close();
             bkWorkerReceiveData.CancelAsync();
+            Thread.Sleep(200);
         }
     }
 }

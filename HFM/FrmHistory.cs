@@ -116,7 +116,15 @@ namespace HFM
             foreach (var calibration in _calibrations)
             {
                 _calibrationArray[0] = calibration.CalibrationTime.ToString();
-                _calibrationArray[1] = calibration.Channel.ChannelID.ToString();
+                //_calibrationArray[1] = calibration.Channel.ChannelID.ToString();
+                if (_systemParameter.IsEnglish)
+                {
+                    _calibrationArray[1] = calibration.Channel.ChannelName_English.ToString();
+                }
+                else
+                {
+                    _calibrationArray[1] = calibration.Channel.ChannelName.ToString();
+                }
                 _calibrationArray[2] = calibration.HighVoltage.ToString();
                 _calibrationArray[3] = calibration.Threshold;
                 _calibrationArray[4] = calibration.Efficiency.ToString();

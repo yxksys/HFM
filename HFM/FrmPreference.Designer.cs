@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPreference));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpPresence = new System.Windows.Forms.GroupBox();
@@ -246,7 +246,6 @@
             // 
             // TabPresence
             // 
-            resources.ApplyResources(this.TabPresence, "TabPresence");
             this.TabPresence.Controls.Add(this.系统参数);
             this.TabPresence.Controls.Add(this.α参数);
             this.TabPresence.Controls.Add(this.β参数);
@@ -254,30 +253,31 @@
             this.TabPresence.Controls.Add(this.工厂参数);
             this.TabPresence.Controls.Add(this.COM);
             this.TabPresence.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.TabPresence, "TabPresence");
             this.TabPresence.Name = "TabPresence";
             this.TabPresence.SelectedIndex = 0;
             this.TabPresence.SelectedIndexChanged += new System.EventHandler(this.TabPresence_SelectedIndexChanged);
             // 
             // 系统参数
             // 
-            resources.ApplyResources(this.系统参数, "系统参数");
             this.系统参数.Controls.Add(this.GrpPresence);
             this.系统参数.Controls.Add(this.GrpFacilityData);
             this.系统参数.Controls.Add(this.BtnPreferenceNo);
             this.系统参数.Controls.Add(this.BtnPreferenceOk);
             this.系统参数.Controls.Add(this.GrpPreferenceArea);
             this.系统参数.Controls.Add(this.GrpPreferenceData);
+            resources.ApplyResources(this.系统参数, "系统参数");
             this.系统参数.Name = "系统参数";
             this.系统参数.UseVisualStyleBackColor = true;
             // 
             // GrpPresence
             // 
-            resources.ApplyResources(this.GrpPresence, "GrpPresence");
             this.GrpPresence.Controls.Add(this.ChkHand);
             this.GrpPresence.Controls.Add(this.RdoDoubleHand);
             this.GrpPresence.Controls.Add(this.RdoSingleHand);
             this.GrpPresence.Controls.Add(this.ChkClothes);
             this.GrpPresence.Controls.Add(this.ChkFoot);
+            resources.ApplyResources(this.GrpPresence, "GrpPresence");
             this.GrpPresence.Name = "GrpPresence";
             this.GrpPresence.TabStop = false;
             // 
@@ -315,7 +315,6 @@
             // 
             // GrpFacilityData
             // 
-            resources.ApplyResources(this.GrpFacilityData, "GrpFacilityData");
             this.GrpFacilityData.Controls.Add(this.CmbSoftName);
             this.GrpFacilityData.Controls.Add(this.CmbUnclideType);
             this.GrpFacilityData.Controls.Add(this.LblUnclideType);
@@ -324,6 +323,7 @@
             this.GrpFacilityData.Controls.Add(this.LblInstrumentNum);
             this.GrpFacilityData.Controls.Add(this.TxtSmoothingFactor);
             this.GrpFacilityData.Controls.Add(this.LblSmoothingFactor);
+            resources.ApplyResources(this.GrpFacilityData, "GrpFacilityData");
             this.GrpFacilityData.Name = "GrpFacilityData";
             this.GrpFacilityData.TabStop = false;
             // 
@@ -337,10 +337,10 @@
             // 
             // CmbUnclideType
             // 
-            resources.ApplyResources(this.CmbUnclideType, "CmbUnclideType");
             this.CmbUnclideType.AccessibleRole = System.Windows.Forms.AccessibleRole.Slider;
             this.CmbUnclideType.AllowDrop = true;
             this.CmbUnclideType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.CmbUnclideType, "CmbUnclideType");
             this.CmbUnclideType.FormattingEnabled = true;
             this.CmbUnclideType.Items.AddRange(new object[] {
             resources.GetString("CmbUnclideType.Items"),
@@ -395,7 +395,6 @@
             // 
             // GrpPreferenceArea
             // 
-            resources.ApplyResources(this.GrpPreferenceArea, "GrpPreferenceArea");
             this.GrpPreferenceArea.Controls.Add(this.TxtRightFootProbeArea);
             this.GrpPreferenceArea.Controls.Add(this.TxtRightOutProbeArea);
             this.GrpPreferenceArea.Controls.Add(this.TxtLeftOutProbeArea);
@@ -410,6 +409,7 @@
             this.GrpPreferenceArea.Controls.Add(this.LblLeftFootProbeArea);
             this.GrpPreferenceArea.Controls.Add(this.LblRightInProbeArea);
             this.GrpPreferenceArea.Controls.Add(this.LblLeftInProbeArea);
+            resources.ApplyResources(this.GrpPreferenceArea, "GrpPreferenceArea");
             this.GrpPreferenceArea.Name = "GrpPreferenceArea";
             this.GrpPreferenceArea.TabStop = false;
             // 
@@ -492,7 +492,6 @@
             // 
             // GrpPreferenceData
             // 
-            resources.ApplyResources(this.GrpPreferenceData, "GrpPreferenceData");
             this.GrpPreferenceData.Controls.Add(this.TxtBKGUpdate);
             this.GrpPreferenceData.Controls.Add(this.TxtAlarmTime);
             this.GrpPreferenceData.Controls.Add(this.TxtMeasuringTime);
@@ -505,6 +504,7 @@
             this.GrpPreferenceData.Controls.Add(this.LblMeasuringTime);
             this.GrpPreferenceData.Controls.Add(this.LblSmoothingTime);
             this.GrpPreferenceData.Controls.Add(this.LblSelfCheckTime);
+            resources.ApplyResources(this.GrpPreferenceData, "GrpPreferenceData");
             this.GrpPreferenceData.Name = "GrpPreferenceData";
             this.GrpPreferenceData.TabStop = false;
             // 
@@ -540,8 +540,8 @@
             // 
             // CmbMeasurementUnit
             // 
-            resources.ApplyResources(this.CmbMeasurementUnit, "CmbMeasurementUnit");
             this.CmbMeasurementUnit.AllowDrop = true;
+            resources.ApplyResources(this.CmbMeasurementUnit, "CmbMeasurementUnit");
             this.CmbMeasurementUnit.DropDownHeight = 95;
             this.CmbMeasurementUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbMeasurementUnit.FormattingEnabled = true;
@@ -587,12 +587,12 @@
             // 
             // α参数
             // 
-            resources.ApplyResources(this.α参数, "α参数");
             this.α参数.Controls.Add(this.LblAlpha);
             this.α参数.Controls.Add(this.DgvAlphaSet);
             this.α参数.Controls.Add(this.BtnAlphaNo);
             this.α参数.Controls.Add(this.BtnAlphaOk);
             this.α参数.Controls.Add(this.GrpAlphaNuclideChoose);
+            resources.ApplyResources(this.α参数, "α参数");
             this.α参数.Name = "α参数";
             this.α参数.UseVisualStyleBackColor = true;
             // 
@@ -603,20 +603,19 @@
             // 
             // DgvAlphaSet
             // 
-            resources.ApplyResources(this.DgvAlphaSet, "DgvAlphaSet");
             this.DgvAlphaSet.AllowUserToAddRows = false;
             this.DgvAlphaSet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.DgvAlphaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.Silver;
+            this.DgvAlphaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -626,10 +625,11 @@
             this.TxtAlphaAlarm_2,
             this.TxtAlphaEfficiency});
             this.DgvAlphaSet.EnableHeadersVisualStyles = false;
+            resources.ApplyResources(this.DgvAlphaSet, "DgvAlphaSet");
             this.DgvAlphaSet.Name = "DgvAlphaSet";
             this.DgvAlphaSet.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DgvAlphaSet.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DgvAlphaSet.RowsDefaultCellStyle = dataGridViewCellStyle27;
             this.DgvAlphaSet.RowTemplate.Height = 27;
             this.DgvAlphaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAlphaSet_CellClick);
             // 
@@ -685,13 +685,13 @@
             // 
             // GrpAlphaNuclideChoose
             // 
-            resources.ApplyResources(this.GrpAlphaNuclideChoose, "GrpAlphaNuclideChoose");
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlphaDefine2);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha241);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlphaDefine1);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha238);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha239);
             this.GrpAlphaNuclideChoose.Controls.Add(this.RdoAlpha235);
+            resources.ApplyResources(this.GrpAlphaNuclideChoose, "GrpAlphaNuclideChoose");
             this.GrpAlphaNuclideChoose.Name = "GrpAlphaNuclideChoose";
             this.GrpAlphaNuclideChoose.TabStop = false;
             // 
@@ -739,12 +739,12 @@
             // 
             // β参数
             // 
-            resources.ApplyResources(this.β参数, "β参数");
             this.β参数.Controls.Add(this.LblBeta);
             this.β参数.Controls.Add(this.DgvBetaSet);
             this.β参数.Controls.Add(this.BtnBetaNo);
             this.β参数.Controls.Add(this.BtnBetaOk);
             this.β参数.Controls.Add(this.GrpBetaNuclideChoose);
+            resources.ApplyResources(this.β参数, "β参数");
             this.β参数.Name = "β参数";
             this.β参数.UseVisualStyleBackColor = true;
             // 
@@ -755,19 +755,18 @@
             // 
             // DgvBetaSet
             // 
-            resources.ApplyResources(this.DgvBetaSet, "DgvBetaSet");
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
-            this.DgvBetaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Silver;
+            this.DgvBetaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -777,24 +776,25 @@
             this.TxtBetaAlarm_2,
             this.TxtBetaEfficiency});
             this.DgvBetaSet.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvBetaSet.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvBetaSet.DefaultCellStyle = dataGridViewCellStyle23;
             this.DgvBetaSet.EnableHeadersVisualStyles = false;
+            resources.ApplyResources(this.DgvBetaSet, "DgvBetaSet");
             this.DgvBetaSet.Name = "DgvBetaSet";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.DgvBetaSet.RowHeadersVisible = false;
             this.DgvBetaSet.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DgvBetaSet.RowTemplate.Height = 27;
@@ -852,7 +852,6 @@
             // 
             // GrpBetaNuclideChoose
             // 
-            resources.ApplyResources(this.GrpBetaNuclideChoose, "GrpBetaNuclideChoose");
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBetaDefine2);
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta192);
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta90);
@@ -865,6 +864,7 @@
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta131);
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta58);
             this.GrpBetaNuclideChoose.Controls.Add(this.RdoBeta14);
+            resources.ApplyResources(this.GrpBetaNuclideChoose, "GrpBetaNuclideChoose");
             this.GrpBetaNuclideChoose.Name = "GrpBetaNuclideChoose";
             this.GrpBetaNuclideChoose.TabStop = false;
             // 
@@ -874,6 +874,7 @@
             this.RdoBetaDefine2.Name = "RdoBetaDefine2";
             this.RdoBetaDefine2.TabStop = true;
             this.RdoBetaDefine2.UseVisualStyleBackColor = true;
+            this.RdoBetaDefine2.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta192
             // 
@@ -881,6 +882,7 @@
             this.RdoBeta192.Name = "RdoBeta192";
             this.RdoBeta192.TabStop = true;
             this.RdoBeta192.UseVisualStyleBackColor = true;
+            this.RdoBeta192.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta90
             // 
@@ -888,6 +890,7 @@
             this.RdoBeta90.Name = "RdoBeta90";
             this.RdoBeta90.TabStop = true;
             this.RdoBeta90.UseVisualStyleBackColor = true;
+            this.RdoBeta90.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta36
             // 
@@ -895,6 +898,7 @@
             this.RdoBeta36.Name = "RdoBeta36";
             this.RdoBeta36.TabStop = true;
             this.RdoBeta36.UseVisualStyleBackColor = true;
+            this.RdoBeta36.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBetaDefine1
             // 
@@ -902,6 +906,7 @@
             this.RdoBetaDefine1.Name = "RdoBetaDefine1";
             this.RdoBetaDefine1.TabStop = true;
             this.RdoBetaDefine1.UseVisualStyleBackColor = true;
+            this.RdoBetaDefine1.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta137
             // 
@@ -909,6 +914,7 @@
             this.RdoBeta137.Name = "RdoBeta137";
             this.RdoBeta137.TabStop = true;
             this.RdoBeta137.UseVisualStyleBackColor = true;
+            this.RdoBeta137.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta60
             // 
@@ -916,6 +922,7 @@
             this.RdoBeta60.Name = "RdoBeta60";
             this.RdoBeta60.TabStop = true;
             this.RdoBeta60.UseVisualStyleBackColor = true;
+            this.RdoBeta60.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta32
             // 
@@ -923,6 +930,7 @@
             this.RdoBeta32.Name = "RdoBeta32";
             this.RdoBeta32.TabStop = true;
             this.RdoBeta32.UseVisualStyleBackColor = true;
+            this.RdoBeta32.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta204
             // 
@@ -930,6 +938,7 @@
             this.RdoBeta204.Name = "RdoBeta204";
             this.RdoBeta204.TabStop = true;
             this.RdoBeta204.UseVisualStyleBackColor = true;
+            this.RdoBeta204.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta131
             // 
@@ -937,6 +946,7 @@
             this.RdoBeta131.Name = "RdoBeta131";
             this.RdoBeta131.TabStop = true;
             this.RdoBeta131.UseVisualStyleBackColor = true;
+            this.RdoBeta131.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta58
             // 
@@ -944,6 +954,7 @@
             this.RdoBeta58.Name = "RdoBeta58";
             this.RdoBeta58.TabStop = true;
             this.RdoBeta58.UseVisualStyleBackColor = true;
+            this.RdoBeta58.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta14
             // 
@@ -951,14 +962,15 @@
             this.RdoBeta14.Name = "RdoBeta14";
             this.RdoBeta14.TabStop = true;
             this.RdoBeta14.UseVisualStyleBackColor = true;
+            this.RdoBeta14.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // 衣物探头
             // 
-            resources.ApplyResources(this.衣物探头, "衣物探头");
             this.衣物探头.Controls.Add(this.BtnClothesNo);
             this.衣物探头.Controls.Add(this.BtnClothesOk);
             this.衣物探头.Controls.Add(this.GrpClothesNuclideChoose);
             this.衣物探头.Controls.Add(this.GrpClothesData);
+            resources.ApplyResources(this.衣物探头, "衣物探头");
             this.衣物探头.Name = "衣物探头";
             this.衣物探头.UseVisualStyleBackColor = true;
             // 
@@ -978,7 +990,6 @@
             // 
             // GrpClothesNuclideChoose
             // 
-            resources.ApplyResources(this.GrpClothesNuclideChoose, "GrpClothesNuclideChoose");
             this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBetaDefine1);
             this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta192);
             this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesBeta90);
@@ -997,6 +1008,7 @@
             this.GrpClothesNuclideChoose.Controls.Add(this.RdoClothesAlpha235);
             this.GrpClothesNuclideChoose.Controls.Add(this.LblClothesBetaOrClothes);
             this.GrpClothesNuclideChoose.Controls.Add(this.LblClothesAlpha);
+            resources.ApplyResources(this.GrpClothesNuclideChoose, "GrpClothesNuclideChoose");
             this.GrpClothesNuclideChoose.Name = "GrpClothesNuclideChoose";
             this.GrpClothesNuclideChoose.TabStop = false;
             // 
@@ -1124,7 +1136,6 @@
             // 
             // GrpClothesData
             // 
-            resources.ApplyResources(this.GrpClothesData, "GrpClothesData");
             this.GrpClothesData.Controls.Add(this.TxtClothOfflineTime);
             this.GrpClothesData.Controls.Add(this.LblClothOfflineTime);
             this.GrpClothesData.Controls.Add(this.TxtClothesEfficiency);
@@ -1137,6 +1148,7 @@
             this.GrpClothesData.Controls.Add(this.LblClothesAlarm_1);
             this.GrpClothesData.Controls.Add(this.LblClothesLBackground);
             this.GrpClothesData.Controls.Add(this.LblClothesHBackground);
+            resources.ApplyResources(this.GrpClothesData, "GrpClothesData");
             this.GrpClothesData.Name = "GrpClothesData";
             this.GrpClothesData.TabStop = false;
             // 
@@ -1208,13 +1220,13 @@
             // 
             // 工厂参数
             // 
-            resources.ApplyResources(this.工厂参数, "工厂参数");
             this.工厂参数.Controls.Add(this.label1);
             this.工厂参数.Controls.Add(this.DgvMainPreferenceSet);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceWrite);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceRead);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceSet);
             this.工厂参数.Controls.Add(this.BtnMainPreferenceRetuen);
+            resources.ApplyResources(this.工厂参数, "工厂参数");
             this.工厂参数.Name = "工厂参数";
             this.工厂参数.UseVisualStyleBackColor = true;
             // 
@@ -1225,19 +1237,19 @@
             // 
             // DgvMainPreferenceSet
             // 
-            resources.ApplyResources(this.DgvMainPreferenceSet, "DgvMainPreferenceSet");
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
             this.DgvMainPreferenceSet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Silver;
-            this.DgvMainPreferenceSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.Silver;
+            this.DgvMainPreferenceSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            resources.ApplyResources(this.DgvMainPreferenceSet, "DgvMainPreferenceSet");
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtMainPreferenceChanneName,
@@ -1258,8 +1270,8 @@
             // TxtMainPreferenceChanneName
             // 
             this.TxtMainPreferenceChanneName.DataPropertyName = "ChannelName";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TxtMainPreferenceChanneName.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TxtMainPreferenceChanneName.DefaultCellStyle = dataGridViewCellStyle30;
             resources.ApplyResources(this.TxtMainPreferenceChanneName, "TxtMainPreferenceChanneName");
             this.TxtMainPreferenceChanneName.Name = "TxtMainPreferenceChanneName";
             // 
@@ -1342,19 +1354,18 @@
             // 
             // COM
             // 
-            resources.ApplyResources(this.COM, "COM");
             this.COM.Controls.Add(this.GrpcommportSetOfReport);
             this.COM.Controls.Add(this.GrpcommportSet);
             this.COM.Controls.Add(this.BtnPorRestoreDefault);
             this.COM.Controls.Add(this.BtnCancel);
             this.COM.Controls.Add(this.BtnPorSave);
             this.COM.Controls.Add(this.GrpInternet);
+            resources.ApplyResources(this.COM, "COM");
             this.COM.Name = "COM";
             this.COM.UseVisualStyleBackColor = true;
             // 
             // GrpcommportSetOfReport
             // 
-            resources.ApplyResources(this.GrpcommportSetOfReport, "GrpcommportSetOfReport");
             this.GrpcommportSetOfReport.Controls.Add(this.CmbIsEnabled);
             this.GrpcommportSetOfReport.Controls.Add(this.label2);
             this.GrpcommportSetOfReport.Controls.Add(this.TxtcommportSetOfReportParity);
@@ -1367,6 +1378,7 @@
             this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportDataBits);
             this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportBaudRate);
             this.GrpcommportSetOfReport.Controls.Add(this.LabcommportSetOfReportPortNum);
+            resources.ApplyResources(this.GrpcommportSetOfReport, "GrpcommportSetOfReport");
             this.GrpcommportSetOfReport.Name = "GrpcommportSetOfReport";
             this.GrpcommportSetOfReport.TabStop = false;
             // 
@@ -1436,7 +1448,6 @@
             // 
             // GrpcommportSet
             // 
-            resources.ApplyResources(this.GrpcommportSet, "GrpcommportSet");
             this.GrpcommportSet.Controls.Add(this.TxtcommportSetParity);
             this.GrpcommportSet.Controls.Add(this.TxtcommportSetStopBits);
             this.GrpcommportSet.Controls.Add(this.TxtcommportSetDataBits);
@@ -1447,6 +1458,7 @@
             this.GrpcommportSet.Controls.Add(this.LabcommportSetDataBits);
             this.GrpcommportSet.Controls.Add(this.LabcommportSetBaudRate);
             this.GrpcommportSet.Controls.Add(this.LabcommportSetPortNum);
+            resources.ApplyResources(this.GrpcommportSet, "GrpcommportSet");
             this.GrpcommportSet.Name = "GrpcommportSet";
             this.GrpcommportSet.TabStop = false;
             // 
@@ -1523,7 +1535,6 @@
             // 
             // GrpInternet
             // 
-            resources.ApplyResources(this.GrpInternet, "GrpInternet");
             this.GrpInternet.Controls.Add(this.TxtReportingTime);
             this.GrpInternet.Controls.Add(this.LabReportingTime);
             this.GrpInternet.Controls.Add(this.TxtDeviceAddress);
@@ -1536,6 +1547,7 @@
             this.GrpInternet.Controls.Add(this.TxtIPAddressTwo);
             this.GrpInternet.Controls.Add(this.TxtIPAddressOne);
             this.GrpInternet.Controls.Add(this.LblIPAddress);
+            resources.ApplyResources(this.GrpInternet, "GrpInternet");
             this.GrpInternet.Name = "GrpInternet";
             this.GrpInternet.TabStop = false;
             // 
@@ -1642,7 +1654,6 @@
             this.GrpClothesData.ResumeLayout(false);
             this.GrpClothesData.PerformLayout();
             this.工厂参数.ResumeLayout(false);
-            this.工厂参数.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMainPreferenceSet)).EndInit();
             this.COM.ResumeLayout(false);
             this.GrpcommportSetOfReport.ResumeLayout(false);

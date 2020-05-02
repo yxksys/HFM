@@ -58,6 +58,7 @@ namespace HFM
         int clothesStatus = 0;//衣物探头状态。0：衣物探头还未被拿起，1：衣物探头已经被拿起
         int[] lastInfraredStatus = new int[3];//记录上一个数据包红外状态，分别为“左手、右手、衣物”，本底测量中，如果本次红外到位而上次不到位则进行语音播报，如果上次红外到位本次也红外到位，则不需要重复播报提示
         bool isSelfCheckSended = false;//自检指令是否已经下发标志，因为在一个自检周期内，自检指令只需下发一次
+        bool isBetaCommandToSend = false;//Beta自检指令是否应该下发，在α/β自检时，先下发α自检指令，自检时间到一半时再下发β自检指令
         bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
         string pollutionRecord = null;//记录测量污染详细数据
         string pollutionRecord_E = null;//记录测量污染详细数据(英文)                
@@ -409,10 +410,30 @@ namespace HFM
                     }
                     else
                     {
-                        LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
-                        LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
-                        LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
-                        LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                        switch(factoryParameter.MeasureType)
+                        {
+                            case "α":
+                                LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = false;
+                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                break;
+                            case "β":
+                                LblValue[(channel.ChannelID - 1) * 2].Enabled = false;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                break;
+                            case "α/β":
+                                LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                break;
+
+                        }                        
                     }
                     if (channel.ChannelID != 7)
                     {
@@ -479,6 +500,10 @@ namespace HFM
             Label label = null;           
             foreach (MeasureData measureData in measureDataS)
             {
+                if(measureData.Channel.ChannelName==null)
+                {
+                    return;
+                }
                 //找到通道测量值显示区域对应的PictureBox，其名字为Pic+通道英文名
                 //pictureBox = (PictureBox)(this.Controls[string.Format("Pic{0}", measureData.Channel.ChannelName_English)]);
                 //找到通道测量值显示区域对应的Panel，其名字为：Pnl+通道英文名
@@ -791,42 +816,48 @@ namespace HFM
                             //isSelfCheckSended = true;                            
                             break;
                         case "α/β":
-                            //先下发Alpha自检指令
-                            //生成Alpha自检指令报文，包含参数：自检时间/2-2 
-                            messageDate = Components.Message.BuildMessage(0, checkTime / 2 - 2);
-                            //下发Alpha自检指令，如果不成功则：
-                            if (Components.Message.SendMessage(messageDate, commPort) != true)
+                            if (isBetaCommandToSend == false)
                             {
-                                //错误计数器errorNumber+1
-                                errorNumber++;
-                                //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
-                                if (errorNumber > 5)
+                                //先下发Alpha自检指令
+                                //生成Alpha自检指令报文，包含参数：自检时间/2-2 
+                                messageDate = Components.Message.BuildMessage(0, checkTime / 2 - 2);
+                                //下发Alpha自检指令，如果不成功则：
+                                if (Components.Message.SendMessage(messageDate, commPort) != true)
                                 {
-                                    worker.ReportProgress(1, null);
-                                }
-                                else
-                                {
-                                    System.Threading.Thread.Sleep(delayTime);
-                                    continue;
+                                    //错误计数器errorNumber+1
+                                    errorNumber++;
+                                    //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                                    if (errorNumber > 5)
+                                    {
+                                        worker.ReportProgress(1, null);
+                                    }
+                                    else
+                                    {
+                                        System.Threading.Thread.Sleep(delayTime);
+                                        continue;
+                                    }
                                 }
                             }
-                            //后下发Beta自检指令
-                            //生成Beta自检指令报文，包含参数：自检时间/2-2
-                            messageDate = Components.Message.BuildMessage(1, checkTime / 2 - 2);
-                            //下发Beta自检指令,如果不成功则
-                            if (Components.Message.SendMessage(messageDate, commPort) != true)
+                            else
                             {
-                                //错误计数器errorNumber+1
-                                errorNumber++;
-                                //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
-                                if (errorNumber > 5)
+                                //后下发Beta自检指令
+                                //生成Beta自检指令报文，包含参数：自检时间/2-2
+                                messageDate = Components.Message.BuildMessage(1, checkTime / 2 - 2);
+                                //下发Beta自检指令,如果不成功则
+                                if (Components.Message.SendMessage(messageDate, commPort) != true)
                                 {
-                                    worker.ReportProgress(1, null);
-                                }
-                                else
-                                {
-                                    System.Threading.Thread.Sleep(delayTime);
-                                    continue;
+                                    //错误计数器errorNumber+1
+                                    errorNumber++;
+                                    //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                                    if (errorNumber > 5)
+                                    {
+                                        worker.ReportProgress(1, null);
+                                    }
+                                    else
+                                    {
+                                        System.Threading.Thread.Sleep(delayTime);
+                                        continue;
+                                    }
                                 }
                             }
                             ////下发成功，置报文已经发送标志
@@ -836,9 +867,12 @@ namespace HFM
                     //下发成功，置报文已经发送标志
                     isSelfCheckSended = true;
                     //延时2000毫秒
-                    Thread.Sleep(2000);
+                    Thread.Sleep(300);
                     //启动自检计时 
-                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    if (isBetaCommandToSend == false)//如果时Alpha/Beta自检，Beta自检指令需要下发时不需要重新设置开始时间
+                    {
+                        stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    }
                 }
                 //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
@@ -1015,6 +1049,7 @@ namespace HFM
                                     MeasureData measureData = new MeasureData();
                                     measureData.MeasureDate = DateTime.Now;
                                     measureData.MeasureStatus = "污染";
+                                    string temp = converedData.ToString("F1");
                                     measureData.DetailedInfo = string.Format("衣物探头{0}{1}", converedData.ToString("F1"), systemParameter.MeasurementUnit);
                                     measureData.IsEnglish = false;
                                     measureData.AddData(measureData);
@@ -1304,7 +1339,13 @@ namespace HFM
                     }
                 }
                 //界面中对应通道显示当前测量值
-                DisplayMeasureData(calculatedMeasureDataS,"cps");
+                DisplayMeasureData(measureDataS,"cps");
+                //如果是α/β自检且自检时间是否到自检时间的一半
+                if(factoryParameter.MeasureType== "α/β"&& stateTimeRemain== stateTimeSet/2+2)
+                {
+                    isSelfCheckSended = false;
+                    isBetaCommandToSend = true;
+                }
                 //自检时间到
                 if (stateTimeRemain < 0)
                 {                                      
@@ -1312,8 +1353,16 @@ namespace HFM
                     if (errRecordS == null)//自检通过
                     {
                         //恢复当前标签文字提示（自检过程中可能有故障提示，所以自检通过后需要重新恢复）
-                        LblCheck.Font = new Font("微软雅黑", FONT_SIZE, FontStyle.Italic);
-                        LblCheck.Text = "仪器自检";
+                        if (isEnglish==false)
+                        {
+                            LblCheck.Font = new Font("微软雅黑", FONT_SIZE, FontStyle.Italic);
+                            LblCheck.Text = "仪器自检";
+                        }
+                        else
+                        {
+                            LblCheck.Font = new Font("微软雅黑", FONT_SIZE_E, FontStyle.Italic);
+                            LblCheck.Text = "Self-Checking";
+                        }
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         // 运行状态标志设置为“本底测量”
@@ -1368,6 +1417,7 @@ namespace HFM
                             calculatedMeasureDataS[i].Beta = 0;
                         }
                         isSelfCheckSended = false;
+                        isBetaCommandToSend = false;
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                         //重新启动自检计时
@@ -1388,10 +1438,11 @@ namespace HFM
                 PnlContaminated.BackgroundImage = null;
                 PnlMeasuring.BackgroundImage = null;
                 //本底测量状态标签设置为当前状态图片
-                PnlBackground.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
+                PnlBackground.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");                
+                LblTimeRemain.Parent = PnlBackground;//控制剩余时间标签显示位置                                
                 LblBackground.BringToFront();
-                LblTimeRemain.Parent = PnlBackground;//控制剩余时间标签显示位置
-                LblTimeRemain.BringToFront();               
+                LblTimeRemain.BringToFront();
+                LblTimeRemain.BackColor = Color.Transparent;
                 bool isReDisplay = false; //是否需要重新显示"本底测量"提示信息,默认false
                 //textBox1.Text += platformState.ToString();
                 //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
@@ -1618,6 +1669,7 @@ namespace HFM
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                         stateTimeStart = new DateTime(1900, 01, 01);//重新初始化开始计时对象
                         isSelfCheckSended = false;//置是否已经下发自检指令标志为false（需重新下发自检指令）
+                        isBetaCommandToSend = false;//
                         platformState = PlatformState.ReadyToRun;                        
                     }
                     return;
@@ -1876,8 +1928,8 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_1 || calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2)
                         {
                             //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
-                            pollutionRecord += string.Format("{0}:α值{1}cps;", calculatedMeasureDataS[i].Channel.ChannelName,calculatedMeasureDataS[i].Alpha);
-                            pollutionRecord_E += string.Format("{0}:Alpha Value{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName_English,calculatedMeasureDataS[i].Alpha);
+                            pollutionRecord += string.Format("{0}:α值{1}cps;", calculatedMeasureDataS[i].Channel.ChannelName,calculatedMeasureDataS[i].Alpha.ToString("F1"));
+                            pollutionRecord_E += string.Format("{0}:Alpha Value{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName_English,calculatedMeasureDataS[i].Alpha.ToString("F1"));
                             //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
                             Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                             label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
@@ -1901,8 +1953,8 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_1 || calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_2)
                         {
                             //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                            pollutionRecord += string.Format("{0}:β值{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName,calculatedMeasureDataS[i].Beta);
-                            pollutionRecord_E += string.Format("{0}:Beta Value{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName_English,calculatedMeasureDataS[i].Beta);
+                            pollutionRecord += string.Format("{0}:β值{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName,calculatedMeasureDataS[i].Beta.ToString("F1"));
+                            pollutionRecord_E += string.Format("{0}:Beta Value{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName_English,calculatedMeasureDataS[i].Beta.ToString("F1"));
                             //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
                             Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                             label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
@@ -2468,8 +2520,8 @@ namespace HFM
                 if (calculatedMeasureDataS[i].HV< channelParameterNow[0].PresetHV * (1 - PlatForm.ErrorRange.HV_ERROR) || calculatedMeasureDataS[i].HV > channelParameterNow[0].PresetHV * (1 + PlatForm.ErrorRange.HV_ERROR))
                 {
                     //高压故障,将故障信息添加到errRecord字符串
-                    errRecordOfChannel += string.Format("高压故障,设置值:{0}V,实测值:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
-                    errRecordOfChannel_E += string.Format("HV Fault,Preset:{0}V,Actual:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
+                    errRecordOfChannel += string.Format("{0}高压故障,设置值:{1}V,实测值:{2}V;", calculatedMeasureDataS[i].Channel.ChannelName,channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
+                    errRecordOfChannel_E += string.Format("{0}HV Fault,Preset:{1}V,Actual:{2}V;",calculatedMeasureDataS[i].Channel.ChannelName_English,channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
                     //设置isCheck为false
                     isCheck = false;
                 }
@@ -2499,8 +2551,8 @@ namespace HFM
                         if(calculatedMeasureDataS[i].Alpha< BASE_DATA * (1-PlatForm.ErrorRange.BASE_ERROR)||calculatedMeasureDataS[i].Alpha> BASE_DATA * (1+PlatForm.ErrorRange.BASE_ERROR))
                         {
                             //将故障信息添加到error字符串
-                            errRecordOfChannel += string.Format("α电子线路故障;");
-                            errRecordOfChannel_E += string.Format("Alpha Channel Fault;");
+                            errRecordOfChannel += string.Format("{0}α电子线路故障;",calculatedMeasureDataS[i].Channel.ChannelName);
+                            errRecordOfChannel_E += string.Format("{0}Alpha Channel Fault;", calculatedMeasureDataS[i].Channel.ChannelName_English);
                             //设置isCheck为false
                             isCheck = false;
                         }
@@ -2512,8 +2564,8 @@ namespace HFM
                            // if (calculatedMeasureDataS[i].Beta < channelParameterNow[0].BetaThreshold * (1 - PlatForm.ErrorRange.BASE_ERROR) || calculatedMeasureDataS[i].Beta > channelParameterNow[0].BetaThreshold * (1 + PlatForm.ErrorRange.BASE_ERROR))
                         {
                             //将故障信息添加到error字符串
-                            errRecordOfChannel += string.Format("β电子线路故障;");
-                            errRecordOfChannel_E += string.Format("Beta Channel Fault;");
+                            errRecordOfChannel += string.Format("{0}β电子线路故障;", calculatedMeasureDataS[i].Channel.ChannelName);
+                            errRecordOfChannel_E += string.Format("{0}Beta Channel Fault;", calculatedMeasureDataS[i].Channel.ChannelName_English);
                             //设置isCheck为false
                             isCheck = false;
                         }
@@ -2522,8 +2574,8 @@ namespace HFM
                     if (calculatedMeasureDataS[i].InfraredStatus == 1)//红外状态到位
                     {
                         //红外故障,将故障信息添加到errRecord字符串
-                        errRecordOfChannel += string.Format("红外故障;");
-                        errRecordOfChannel_E += string.Format("Sensor fault;");
+                        errRecordOfChannel += string.Format("{0}红外故障;", calculatedMeasureDataS[i].Channel.ChannelName);
+                        errRecordOfChannel_E += string.Format("{0}Sensor fault;", calculatedMeasureDataS[i].Channel.ChannelName_English);
                         isCheck = false;
                     }                                
                 }
@@ -2539,15 +2591,15 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Alpha < probeParameterNow[0].LBackground) //超过当前通道的本底下限
                         {
                             //该通道channelS[i].ChannelName的本底下限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecordOfChannel += string.Format("α本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(),calculatedMeasureDataS[i].Alpha.ToString());
-                            errRecordOfChannel_E += string.Format("αLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel += string.Format("{0}α本底下限值:{1}cps,当前本底值:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName, probeParameterNow[0].LBackground.ToString(),calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel_E += string.Format("{0} α Low Background Threshold{1}cps,Actual Background:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName_English, probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
                             isCheck = false;
                         }
                         if (calculatedMeasureDataS[i].Alpha >= probeParameterNow[0].HBackground)//超过当前通道的本底上限
                         {
                             //该通道channelS[i].ChannelName本底上限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecordOfChannel += string.Format("α本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
-                            errRecordOfChannel_E += string.Format("αHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel += string.Format("{0}α本底上限值:{1}cps,当前本底值:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName, probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel_E += string.Format("{0} α High Background Threshold{1}cps,Actual Background:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName_English, probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
                             isCheck = false;
                         }
                     }
@@ -2560,15 +2612,15 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Beta < probeParameterNow[0].LBackground)//超过当前通道的本底下限
                         {
                             //该通道channelS[i].ChannelName本底下限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecordOfChannel += string.Format("β本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
-                            errRecordOfChannel_E += string.Format("βLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel += string.Format("{0} β本底下限值:{1}cps,当前本底值:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName, probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel_E += string.Format("{0} β Low Background Threshold{1}cps,Actual Background:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName_English, probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
                             isCheck = false;
                         }
                         if (calculatedMeasureDataS[i].Beta >= probeParameterNow[0].HBackground)//超过当前通道的本底上限
                         {
                             //该通道channelS[i].ChannelName本底上限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecordOfChannel += string.Format("β本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
-                            errRecordOfChannel_E += string.Format("βHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel += string.Format("{0}β本底上限值:{1}cps,当前本底值:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName, probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel_E += string.Format("{0} β High Background Threshold{1}cps,Actual Background:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName_English, probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
                             isCheck = false;
                         }
                     }
@@ -2791,12 +2843,12 @@ namespace HFM
                     //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
                     if((measureData==null||measureData.IsReported==true) && errorData.IsReported==false)
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x04);//0x04:仪器故障
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02);//0x02:仪器故障
                     }
                     //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
                     if(measureData.IsReported==false && (errorData.IsReported==true||errorData==null))
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x02);//0x02:仪器污染
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x04:仪器污染
                     }
                     //监测数据和故障数据都未上报，则将最近的状态进行上报，更新两条记录为已上报
                     if (measureData.IsReported == false && errorData.IsReported == false)
@@ -2804,12 +2856,12 @@ namespace HFM
                         if (measureData.MeasureDate > errorData.ErrTime)//最近一次记录为MeasureData，说明是状态为污染（因为只有污染状态才会记录，正常不记录）
                         {
                             //生成上报管理机的监测仪测试状态(污染)报文                    
-                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x02);//仪器状态为污染
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x04);//仪器状态为污染
                         }
                         else
                         {
                             //生成上报管理机的监测仪测试状态（故障）报文                    
-                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),errorData.ErrTime, 0x04);//仪器状态为故障
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),errorData.ErrTime, 0x02);//仪器状态为故障
                         }
                     }
                     //向管理机上报仪器检测状态
@@ -2971,13 +3023,17 @@ namespace HFM
             if (bkWorkerReportStatus.IsBusy)
             {
                 bkWorkerReportStatus.CancelAsync();
+                Thread.Sleep(200);
             }
             if (bkWorkerReceiveData.IsBusy)
             {
                 bkWorkerReceiveData.CancelAsync();
-            }
-            bkWorkerReceiveData.Dispose();
+                Thread.Sleep(200);
+            }            
             bkWorkerReportStatus.Dispose();
+            Thread.Sleep(200);
+            bkWorkerReceiveData.Dispose();
+            Thread.Sleep(200);
             this.TmrDispTime.Enabled = false;
             if (this.commPort.Opened == true)
             {
@@ -2989,7 +3045,7 @@ namespace HFM
                 this.commPort_Supervisory.Close();
                 Thread.Sleep(200);
             }
-            frmEnterPassword.Show();            
+            frmEnterPassword.ShowDialog();            
         }
 
         private void FrmMeasureMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -2997,10 +3053,12 @@ namespace HFM
             if (bkWorkerReportStatus.IsBusy)
             {
                 bkWorkerReportStatus.CancelAsync();
+                Thread.Sleep(200);
             }
             if (bkWorkerReceiveData.IsBusy)
             {
                 bkWorkerReceiveData.CancelAsync();
+                Thread.Sleep(200);
             }
             bkWorkerReceiveData.Dispose();
             bkWorkerReportStatus.Dispose();
@@ -3022,10 +3080,12 @@ namespace HFM
             if (bkWorkerReportStatus.IsBusy)
             {
                 bkWorkerReportStatus.CancelAsync();
+                Thread.Sleep(200);
             }
             if (bkWorkerReceiveData.IsBusy)
             {
                 bkWorkerReceiveData.CancelAsync();
+                Thread.Sleep(200);
             }
             bkWorkerReceiveData.Dispose();
             bkWorkerReportStatus.Dispose();

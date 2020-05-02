@@ -60,14 +60,19 @@ namespace HFM
             SelfTest = 3
         }
 
+        int _rubbishDataOfSelfCheckNum = 5;
         /// <summary>
-        /// 运行状态标志
+        /// 运行状态标志下发数据
         /// </summary>
         private HardwarePlatformState _platformState;
         /// <summary>
+        /// 运行状态标志检测数据使用
+        /// </summary>
+        private HardwarePlatformState _platTestState;
+        /// <summary>
         /// 系统数据库中读取的测量时间
         /// </summary>
-        private int _sqltime = (new Components.SystemParameter().GetParameter().MeasuringTime) <= 1 ? 10 : (new Components.SystemParameter().GetParameter().MeasuringTime);
+        private int _sqltime = 10; //(new Components.SystemParameter().GetParameter().MeasuringTime) <= 1 ? 10 : (new Components.SystemParameter().GetParameter().MeasuringTime);
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -439,10 +444,12 @@ namespace HFM
         /// </summary>
         private void DgvArrayClear()
         {
+            Array.Clear(_hv, 0, 6);
             Array.Clear(_alphacps, 0, 6);
             Array.Clear(_betacps, 0, 6);
             Array.Clear(_betacnt, 0, 6);
             Array.Clear(_alphacnt, 0, 6);
+            Array.Clear(_strat, 0, 6);
         }
         #endregion
 
@@ -450,6 +457,7 @@ namespace HFM
         //异步线程读取串口数据后的ReportProgress事件响应
         private void BkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            _rubbishDataOfSelfCheckNum++;
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
             byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
@@ -490,7 +498,10 @@ namespace HFM
                 //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
                 measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
             }
-
+            if(_rubbishDataOfSelfCheckNum<5&& (measureDataS[0].HV>1000)) //measureDataS[0].Alpha < 100 || measureDataS[0].Beta < 100 ||
+            {
+                return;
+            }
             #region 从监测存储到的measureDataS数据中解析到界面数值
             //临时变量
             int i = 0;
@@ -681,6 +692,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnAlphaCheck_Click(object sender, EventArgs e)
         {
+            DgvArrayClear();
+            _rubbishDataOfSelfCheckNum = 0;
             BtnCurency(HardwarePlatformState.AlphaCheck);
         }
         /// <summary>
@@ -690,6 +703,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnBetaCheck_Click(object sender, EventArgs e)
         {
+            DgvArrayClear();
+            _rubbishDataOfSelfCheckNum = 0;
             BtnCurency(HardwarePlatformState.BetaCheck);
         }
         /// <summary>
@@ -699,6 +714,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnSelfCheck_Click(object sender, EventArgs e)
         {
+            DgvArrayClear();
+            _rubbishDataOfSelfCheckNum = 0;
             BtnCurency(HardwarePlatformState.SelfTest);
         }
         #endregion
@@ -713,6 +730,8 @@ namespace HFM
             _commPort.Close();
             Thread.Sleep(1000);
             bkWorkerReceiveData.CancelAsync();
+            bkWorkerReceiveData.Dispose();
+            Thread.Sleep(200);
         }
 
         private void FrmTestHardware_FormClosing(object sender, FormClosingEventArgs e)

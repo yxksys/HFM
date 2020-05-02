@@ -1018,13 +1018,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
+        "OwnerKey" = "8:_CF2A72A8E0B34F8B913AAAD8E7D2E598"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CF2A72A8E0B34F8B913AAAD8E7D2E598"
+        "OwnerKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1049,14 +1049,14 @@
             {
             "Enabled" = "11:TRUE"
             "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
+            "PrerequisitesLocation" = "2:2"
             "Url" = "8:"
-            "ComponentsUrl" = "8:"
+            "ComponentsUrl" = "8:C:\\Users\\11817\\Documents"
                 "Items"
                 {
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 和 x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.6.1"
                     }
                 }
@@ -4732,7 +4732,7 @@
             "Target" = "8:_CF2A72A8E0B34F8B913AAAD8E7D2E598"
             "Folder" = "8:_DF8CC310BF59498EA50CFF9D731FEC05"
             "WorkingFolder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
-            "Icon" = "8:"
+            "Icon" = "8:_587EF14F152E46139791AD32EC95DA39"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C3E0DDABAC7D472FA00993305A15AEFC"
@@ -4760,7 +4760,7 @@
             "Target" = "8:_CF2A72A8E0B34F8B913AAAD8E7D2E598"
             "Folder" = "8:_536F6B34A3334FD9AE83BB4629EB46EC"
             "WorkingFolder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
-            "Icon" = "8:"
+            "Icon" = "8:_B6D52A6E4CF242828AE648A2FBA9A305"
             "Feature" = "8:"
             }
         }

@@ -187,6 +187,9 @@
     <EmbeddedResource Include="FrmHistory.en.resx">
       <DependentUpon>FrmHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmKeyIn.en.resx">
+      <DependentUpon>FrmKeyIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.en.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

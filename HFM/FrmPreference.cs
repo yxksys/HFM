@@ -2006,6 +2006,40 @@ namespace HFM
             }
             _commPort.Close();
         }
-        
+
+        /// <summary>
+        /// 单选按钮通用点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdoBeta_CheckedChanged(object sender, EventArgs e)
+        {
+            #region β核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> button = new List<RadioButton>();//核素选择数组
+            button.Add(RdoBeta14);
+            button.Add(RdoBeta58);
+            button.Add(RdoBeta131);
+            button.Add(RdoBeta204);
+            button.Add(RdoBeta32);
+            button.Add(RdoBeta60);
+            button.Add(RdoBeta137);
+            button.Add(RdoBetaDefine1);
+            button.Add(RdoBeta36);
+            button.Add(RdoBeta90);
+            button.Add(RdoBeta192);
+            button.Add(RdoBetaDefine2);
+            for (int i = 0; i < button.Count; i++)
+            {
+                if (button[i].Checked)
+                {
+                    nuclidename = button[i].Text;
+                    break;
+                }
+            }
+            nuclide.SetBetaNuclideUser(nuclidename);
+            GetBetaData();
+            #endregion
+        }
     }
 }

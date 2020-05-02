@@ -35,7 +35,7 @@ namespace HFM.Components
             public static Color COLOR_ALARM_2 = Color.Red;
             public static Color COLOR_SYSTEM = SystemColors.Control;
             public static Color COLOR_BKENABLED = Color.FromArgb(1, 90, 170);//通道启用背景色蓝色
-            public static Color COLOR_BKDISABLED = Color.FromArgb(142, 167, 178);//通道未启用背景色
+            public static Color COLOR_BKDISABLED = Color.DarkGray; //Color.FromArgb(142, 167, 178);//通道未启用背景色
         } 
         public struct ErrorRange
         {

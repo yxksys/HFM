@@ -352,7 +352,7 @@ namespace HFM
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.ExitThread();
         }
     }
 }
