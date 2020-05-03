@@ -214,14 +214,12 @@ namespace HFM
         {
             //线程计时等于测量时间
             if (_bkworkTime == _measuringTime)
-            {
-                //总计数清空
-                DgvArrayClear();
+            {                
                 //异步初始化为0
                 _bkworkTime = 0;
-
-
                 _measuringTime = _sqltime + 1;
+                //总计数清空
+                DgvArrayClear();
             }
             _platformState = HardwarePlatformState.Default;
             _bkworkTime = _bkworkTime + 1;
@@ -502,10 +500,10 @@ namespace HFM
                 //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
                 measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
             }
-            if(_rubbishDataOfSelfCheckNum<5&& (measureDataS[0].HV>1000)) //measureDataS[0].Alpha < 100 || measureDataS[0].Beta < 100 ||
-            {
-                return;
-            }
+            //if(_rubbishDataOfSelfCheckNum<5&& (measureDataS[0].HV>1000)) //measureDataS[0].Alpha < 100 || measureDataS[0].Beta < 100 ||
+            //{
+            //    return;
+            //}
             #region 从监测存储到的measureDataS数据中解析到界面数值
             //临时变量
             int i = 0;
@@ -542,8 +540,8 @@ namespace HFM
             {
                 if (channelS[i].IsEnabled == false)
                 {
-                    DgvWork.Columns[i].DefaultCellStyle.ForeColor = Color.AntiqueWhite; //前景颜色改变
-                    DgvWork.Columns[i].DefaultCellStyle.BackColor = Color.DarkGray;     //背景颜色改变
+                    //DgvWork.Columns[i].DefaultCellStyle.ForeColor = Color.AntiqueWhite; //前景颜色改变
+                    //DgvWork.Columns[i].DefaultCellStyle.BackColor = Color.DarkGray;     //背景颜色改变
                     _hv[i] = "";            //未启用的通道信息清空
                     _alphacps[i] = "";      //未启用的通道信息清空
                     _alphacnt[i] = "";      //未启用的通道信息清空
