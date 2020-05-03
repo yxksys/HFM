@@ -861,9 +861,9 @@ namespace HFM
                         //向刻度数据表添加信息
                         Calibration calibration = new Calibration
                         {
-                            Efficiency = _eff,//效率
-                            MDA = _resultMda,
-                            AlphaBetaPercent = calibration_AlphaBetaPercent.AlphaBetaPercent,//串道比
+                            Efficiency = _eff > 0 ?Convert.ToSingle( _eff.ToString("0.000")) : 0,//效率
+                            MDA = _resultMda > 0 ?Convert.ToSingle( _resultMda.ToString("0.000")):0,
+                            AlphaBetaPercent =Convert.ToSingle( calibration_AlphaBetaPercent.AlphaBetaPercent.ToString("0.00")),//串道比
                             CalibrationTime = DateTime.Now,
                             Channel = _changedEfficiency.Channel,
                             HighVoltage = _setChannelParameter.PresetHV,
