@@ -219,7 +219,7 @@ namespace HFM
         #region 启动加载
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
+            
         }
         #endregion
 
@@ -353,6 +353,19 @@ namespace HFM
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.ExitThread();
+        }
+
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+
+                if (this.Name != Application.OpenForms[i].Name)
+                {
+                    Application.OpenForms[i].Dispose();
+                }
+
+            }
         }
     }
 }

@@ -3020,32 +3020,82 @@ namespace HFM
         private void BtnOption_Click(object sender, EventArgs e)
         {            
             FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
-            if (bkWorkerReportStatus.IsBusy)
+            //if (bkWorkerReportStatus.IsBusy)
+            //{
+            //    bkWorkerReportStatus.CancelAsync();
+            //    Thread.Sleep(200);
+            //}
+            //if (bkWorkerReceiveData.IsBusy)
+            //{
+            //    bkWorkerReceiveData.CancelAsync();
+            //    Thread.Sleep(200);
+            //}            
+            //bkWorkerReportStatus.Dispose();
+            //Thread.Sleep(200);
+            //bkWorkerReceiveData.Dispose();
+            //Thread.Sleep(200);
+            //this.TmrDispTime.Enabled = false;
+            //if (this.commPort.Opened == true)
+            //{
+            //    this.commPort.Close();
+            //    Thread.Sleep(200);
+            //}
+            //if (this.commPort_Supervisory.Opened == true)
+            //{
+            //    this.commPort_Supervisory.Close();
+            //    Thread.Sleep(200);
+            //}
+            if (frmEnterPassword.ShowDialog()==DialogResult.OK)
             {
-                bkWorkerReportStatus.CancelAsync();
+                bool isOpened = false;
+
+                if (bkWorkerReportStatus.IsBusy)
+                {
+                    bkWorkerReportStatus.CancelAsync();
+                    Thread.Sleep(200);
+                }
+                if (bkWorkerReceiveData.IsBusy)
+                {
+                    bkWorkerReceiveData.CancelAsync();
+                    Thread.Sleep(200);
+                }
+                bkWorkerReportStatus.Dispose();
                 Thread.Sleep(200);
+                bkWorkerReceiveData.Dispose();
+                Thread.Sleep(200);
+                this.TmrDispTime.Enabled = false;
+                if (this.commPort.Opened == true)
+                {
+                    this.commPort.Close();
+                    Thread.Sleep(200);
+                }
+                if (this.commPort_Supervisory.Opened == true)
+                {
+                    this.commPort_Supervisory.Close();
+                    Thread.Sleep(200);
+                }
+                #region 打开窗体操作
+                FrmMain frmMain = new FrmMain();
+                frmMain.Show();
+                //try
+                //{
+                //    FrmMain frmMain = new FrmMain();
+                //}
+                //catch (Exception exception)
+                //{
+                //    Console.WriteLine(exception);
+                //    throw;
+                //}
+                //if (isEnglish)
+                //{
+                //    MessageBox.Show("Login Successful!", "Success");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("用户登录成功！", "成功");
+                //}
+                #endregion
             }
-            if (bkWorkerReceiveData.IsBusy)
-            {
-                bkWorkerReceiveData.CancelAsync();
-                Thread.Sleep(200);
-            }            
-            bkWorkerReportStatus.Dispose();
-            Thread.Sleep(200);
-            bkWorkerReceiveData.Dispose();
-            Thread.Sleep(200);
-            this.TmrDispTime.Enabled = false;
-            if (this.commPort.Opened == true)
-            {
-                this.commPort.Close();
-                Thread.Sleep(200);
-            }
-            if (this.commPort_Supervisory.Opened == true)
-            {
-                this.commPort_Supervisory.Close();
-                Thread.Sleep(200);
-            }
-            frmEnterPassword.ShowDialog();            
         }
 
         private void FrmMeasureMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -3122,6 +3172,20 @@ namespace HFM
                     this.Text = "英文";
                 }
                 Tools.ApplyLanguageResource(this);
+                //在界面中将启用通道（通道处于启用状态同时探测面积不为0）的控件Enabled有效，其它通道（通道未启用或探测面积为0）的控件Enabled无效；                       
+                for (int i = 0; i < channelsAll.Count(); i++)
+                {
+                    if (channelsAll[i].IsEnabled == true && channelsAll[i].ProbeArea != 0)//通道被启用且探测面积不为0
+                    {
+                        //界面中相关通道控件Enabled设置为true，背景色设置为正常
+                        ChannelDisplayControl(channelsAll[i], 1);
+                    }
+                    else
+                    {
+                        //界面中相关通道控件Enabled属性设置为false，背景色设置为屏蔽
+                        ChannelDisplayControl(channelsAll[i], 0);
+                    }
+                }
                 DisplayInit();
             }
             catch

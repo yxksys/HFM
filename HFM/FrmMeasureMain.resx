@@ -126,41 +126,7 @@
   <metadata name="TmrDispTime1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>385, 17</value>
   </metadata>
-  <data name="&gt;&gt;LblLeft.Name" xml:space="preserve">
-    <value>LblLeft</value>
-  </data>
-  <data name="&gt;&gt;LblLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLeft.Parent" xml:space="preserve">
-    <value>PnlLUnfulfillment</value>
-  </data>
-  <data name="&gt;&gt;LblLeft.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="PnlLUnfulfillment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 446</value>
-  </data>
-  <data name="PnlLUnfulfillment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 57</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PnlLUnfulfillment.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="&gt;&gt;PnlLUnfulfillment.Name" xml:space="preserve">
-    <value>PnlLUnfulfillment</value>
-  </data>
-  <data name="&gt;&gt;PnlLUnfulfillment.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlLUnfulfillment.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PnlLUnfulfillment.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="LblLeft.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 24pt, style=Bold</value>
   </data>
@@ -174,6 +140,7 @@
   <data name="LblLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 52</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="LblLeft.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -194,6 +161,27 @@
   </data>
   <data name="&gt;&gt;LblLeft.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="PnlLUnfulfillment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 446</value>
+  </data>
+  <data name="PnlLUnfulfillment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 57</value>
+  </data>
+  <data name="PnlLUnfulfillment.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;PnlLUnfulfillment.Name" xml:space="preserve">
+    <value>PnlLUnfulfillment</value>
+  </data>
+  <data name="&gt;&gt;PnlLUnfulfillment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlLUnfulfillment.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PnlLUnfulfillment.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="LblFriskerStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>黑体, 12pt</value>
@@ -294,39 +282,6 @@
   <data name="&gt;&gt;LblFriskerB.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;PicFrisker.Name" xml:space="preserve">
-    <value>PicFrisker</value>
-  </data>
-  <data name="&gt;&gt;PicFrisker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PicFrisker.Parent" xml:space="preserve">
-    <value>PnlFrisker</value>
-  </data>
-  <data name="&gt;&gt;PicFrisker.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="PnlFrisker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>642, 446</value>
-  </data>
-  <data name="PnlFrisker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 263</value>
-  </data>
-  <data name="PnlFrisker.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="&gt;&gt;PnlFrisker.Name" xml:space="preserve">
-    <value>PnlFrisker</value>
-  </data>
-  <data name="&gt;&gt;PnlFrisker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlFrisker.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PnlFrisker.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="PicFrisker.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAYAAABRRIOnAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -380,6 +335,27 @@
   </data>
   <data name="&gt;&gt;PicFrisker.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="PnlFrisker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>642, 446</value>
+  </data>
+  <data name="PnlFrisker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>360, 263</value>
+  </data>
+  <data name="PnlFrisker.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="&gt;&gt;PnlFrisker.Name" xml:space="preserve">
+    <value>PnlFrisker</value>
+  </data>
+  <data name="&gt;&gt;PnlFrisker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlFrisker.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PnlFrisker.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="TxtShowResult.Font" type="System.Drawing.Font, System.Drawing">
     <value>黑体, 16pt</value>
@@ -545,87 +521,6 @@
   </data>
   <data name="&gt;&gt;LblName.ZOrder" xml:space="preserve">
     <value>15</value>
-  </data>
-  <data name="&gt;&gt;LblLHPStatus.Name" xml:space="preserve">
-    <value>LblLHPStatus</value>
-  </data>
-  <data name="&gt;&gt;LblLHPStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHPStatus.Parent" xml:space="preserve">
-    <value>PnlLHP</value>
-  </data>
-  <data name="&gt;&gt;LblLHPStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PicLHP.Name" xml:space="preserve">
-    <value>PicLHP</value>
-  </data>
-  <data name="&gt;&gt;PicLHP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PicLHP.Parent" xml:space="preserve">
-    <value>PnlLHP</value>
-  </data>
-  <data name="&gt;&gt;PicLHP.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LblLHPB.Name" xml:space="preserve">
-    <value>LblLHPB</value>
-  </data>
-  <data name="&gt;&gt;LblLHPB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHPB.Parent" xml:space="preserve">
-    <value>PnlLHP</value>
-  </data>
-  <data name="&gt;&gt;LblLHPB.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;LblLHPA.Name" xml:space="preserve">
-    <value>LblLHPA</value>
-  </data>
-  <data name="&gt;&gt;LblLHPA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHPA.Parent" xml:space="preserve">
-    <value>PnlLHP</value>
-  </data>
-  <data name="&gt;&gt;LblLHPA.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;LblLHP.Name" xml:space="preserve">
-    <value>LblLHP</value>
-  </data>
-  <data name="&gt;&gt;LblLHP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHP.Parent" xml:space="preserve">
-    <value>PnlLHP</value>
-  </data>
-  <data name="&gt;&gt;LblLHP.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="PnlLHP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 316</value>
-  </data>
-  <data name="PnlLHP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 121</value>
-  </data>
-  <data name="PnlLHP.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="&gt;&gt;PnlLHP.Name" xml:space="preserve">
-    <value>PnlLHP</value>
-  </data>
-  <data name="&gt;&gt;PnlLHP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlLHP.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PnlLHP.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="LblLHPStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>黑体, 10pt</value>
@@ -814,86 +709,26 @@
   <data name="&gt;&gt;LblLHP.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;LblRHPStatus.Name" xml:space="preserve">
-    <value>LblRHPStatus</value>
+  <data name="PnlLHP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 316</value>
   </data>
-  <data name="&gt;&gt;LblRHPStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRHPStatus.Parent" xml:space="preserve">
-    <value>PnlRHP</value>
-  </data>
-  <data name="&gt;&gt;LblRHPStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PicRHP.Name" xml:space="preserve">
-    <value>PicRHP</value>
-  </data>
-  <data name="&gt;&gt;PicRHP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PicRHP.Parent" xml:space="preserve">
-    <value>PnlRHP</value>
-  </data>
-  <data name="&gt;&gt;PicRHP.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LblRHPB.Name" xml:space="preserve">
-    <value>LblRHPB</value>
-  </data>
-  <data name="&gt;&gt;LblRHPB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRHPB.Parent" xml:space="preserve">
-    <value>PnlRHP</value>
-  </data>
-  <data name="&gt;&gt;LblRHPB.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;LblRHPA.Name" xml:space="preserve">
-    <value>LblRHPA</value>
-  </data>
-  <data name="&gt;&gt;LblRHPA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRHPA.Parent" xml:space="preserve">
-    <value>PnlRHP</value>
-  </data>
-  <data name="&gt;&gt;LblRHPA.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;LblRHP.Name" xml:space="preserve">
-    <value>LblRHP</value>
-  </data>
-  <data name="&gt;&gt;LblRHP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRHP.Parent" xml:space="preserve">
-    <value>PnlRHP</value>
-  </data>
-  <data name="&gt;&gt;LblRHP.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="PnlRHP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>330, 316</value>
-  </data>
-  <data name="PnlRHP.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="PnlLHP.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 121</value>
   </data>
-  <data name="PnlRHP.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
+  <data name="PnlLHP.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
   </data>
-  <data name="&gt;&gt;PnlRHP.Name" xml:space="preserve">
-    <value>PnlRHP</value>
+  <data name="&gt;&gt;PnlLHP.Name" xml:space="preserve">
+    <value>PnlLHP</value>
   </data>
-  <data name="&gt;&gt;PnlRHP.Type" xml:space="preserve">
+  <data name="&gt;&gt;PnlLHP.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PnlRHP.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PnlLHP.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PnlRHP.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;PnlLHP.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="LblRHPStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>黑体, 10pt</value>
@@ -1088,89 +923,29 @@
   <data name="&gt;&gt;LblRHP.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="PnlLF.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
+  <data name="PnlRHP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>330, 316</value>
   </data>
-  <data name="&gt;&gt;LblLFStatus.Name" xml:space="preserve">
-    <value>LblLFStatus</value>
+  <data name="PnlRHP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 121</value>
   </data>
-  <data name="&gt;&gt;LblLFStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="PnlRHP.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
   </data>
-  <data name="&gt;&gt;LblLFStatus.Parent" xml:space="preserve">
-    <value>PnlLF</value>
+  <data name="&gt;&gt;PnlRHP.Name" xml:space="preserve">
+    <value>PnlRHP</value>
   </data>
-  <data name="&gt;&gt;LblLFStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PicLF.Name" xml:space="preserve">
-    <value>PicLF</value>
-  </data>
-  <data name="&gt;&gt;PicLF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PicLF.Parent" xml:space="preserve">
-    <value>PnlLF</value>
-  </data>
-  <data name="&gt;&gt;PicLF.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LblLFB.Name" xml:space="preserve">
-    <value>LblLFB</value>
-  </data>
-  <data name="&gt;&gt;LblLFB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLFB.Parent" xml:space="preserve">
-    <value>PnlLF</value>
-  </data>
-  <data name="&gt;&gt;LblLFB.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;LblLFA.Name" xml:space="preserve">
-    <value>LblLFA</value>
-  </data>
-  <data name="&gt;&gt;LblLFA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLFA.Parent" xml:space="preserve">
-    <value>PnlLF</value>
-  </data>
-  <data name="&gt;&gt;LblLFA.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;LblLF.Name" xml:space="preserve">
-    <value>LblLF</value>
-  </data>
-  <data name="&gt;&gt;LblLF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLF.Parent" xml:space="preserve">
-    <value>PnlLF</value>
-  </data>
-  <data name="&gt;&gt;LblLF.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="PnlLF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>642, 186</value>
-  </data>
-  <data name="PnlLF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 121</value>
-  </data>
-  <data name="PnlLF.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="&gt;&gt;PnlLF.Name" xml:space="preserve">
-    <value>PnlLF</value>
-  </data>
-  <data name="&gt;&gt;PnlLF.Type" xml:space="preserve">
+  <data name="&gt;&gt;PnlRHP.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PnlLF.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PnlRHP.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PnlLF.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;PnlRHP.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="PnlLF.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="LblLFStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>黑体, 10pt</value>
@@ -1361,86 +1136,26 @@
   <data name="&gt;&gt;LblLF.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;LblRHBStatus.Name" xml:space="preserve">
-    <value>LblRHBStatus</value>
+  <data name="PnlLF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>642, 186</value>
   </data>
-  <data name="&gt;&gt;LblRHBStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="PnlLF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>360, 121</value>
   </data>
-  <data name="&gt;&gt;LblRHBStatus.Parent" xml:space="preserve">
-    <value>PnlRHB</value>
+  <data name="PnlLF.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
   </data>
-  <data name="&gt;&gt;LblRHBStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;PnlLF.Name" xml:space="preserve">
+    <value>PnlLF</value>
   </data>
-  <data name="&gt;&gt;PicRHB.Name" xml:space="preserve">
-    <value>PicRHB</value>
-  </data>
-  <data name="&gt;&gt;PicRHB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PicRHB.Parent" xml:space="preserve">
-    <value>PnlRHB</value>
-  </data>
-  <data name="&gt;&gt;PicRHB.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LblRHBB.Name" xml:space="preserve">
-    <value>LblRHBB</value>
-  </data>
-  <data name="&gt;&gt;LblRHBB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRHBB.Parent" xml:space="preserve">
-    <value>PnlRHB</value>
-  </data>
-  <data name="&gt;&gt;LblRHBB.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;LblRHBA.Name" xml:space="preserve">
-    <value>LblRHBA</value>
-  </data>
-  <data name="&gt;&gt;LblRHBA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRHBA.Parent" xml:space="preserve">
-    <value>PnlRHB</value>
-  </data>
-  <data name="&gt;&gt;LblRHBA.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;LblRHB.Name" xml:space="preserve">
-    <value>LblRHB</value>
-  </data>
-  <data name="&gt;&gt;LblRHB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRHB.Parent" xml:space="preserve">
-    <value>PnlRHB</value>
-  </data>
-  <data name="&gt;&gt;LblRHB.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="PnlRHB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>330, 186</value>
-  </data>
-  <data name="PnlRHB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 121</value>
-  </data>
-  <data name="PnlRHB.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="&gt;&gt;PnlRHB.Name" xml:space="preserve">
-    <value>PnlRHB</value>
-  </data>
-  <data name="&gt;&gt;PnlRHB.Type" xml:space="preserve">
+  <data name="&gt;&gt;PnlLF.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PnlRHB.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PnlLF.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PnlRHB.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;PnlLF.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="LblRHBStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>黑体, 10pt</value>
@@ -1652,6 +1367,27 @@
   <data name="&gt;&gt;LblRHB.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="PnlRHB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>330, 186</value>
+  </data>
+  <data name="PnlRHB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 121</value>
+  </data>
+  <data name="PnlRHB.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="&gt;&gt;PnlRHB.Name" xml:space="preserve">
+    <value>PnlRHB</value>
+  </data>
+  <data name="&gt;&gt;PnlRHB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlRHB.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PnlRHB.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="BtnLanguage.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -1673,9 +1409,6 @@
   <data name="BtnLanguage.Text" xml:space="preserve">
     <value>English</value>
   </data>
-  <data name="BtnLanguage.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;BtnLanguage.Name" xml:space="preserve">
     <value>BtnLanguage</value>
   </data>
@@ -1687,87 +1420,6 @@
   </data>
   <data name="&gt;&gt;BtnLanguage.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="&gt;&gt;LblLHBStatus.Name" xml:space="preserve">
-    <value>LblLHBStatus</value>
-  </data>
-  <data name="&gt;&gt;LblLHBStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHBStatus.Parent" xml:space="preserve">
-    <value>PnlLHB</value>
-  </data>
-  <data name="&gt;&gt;LblLHBStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PicLHB.Name" xml:space="preserve">
-    <value>PicLHB</value>
-  </data>
-  <data name="&gt;&gt;PicLHB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PicLHB.Parent" xml:space="preserve">
-    <value>PnlLHB</value>
-  </data>
-  <data name="&gt;&gt;PicLHB.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LblLHBB.Name" xml:space="preserve">
-    <value>LblLHBB</value>
-  </data>
-  <data name="&gt;&gt;LblLHBB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHBB.Parent" xml:space="preserve">
-    <value>PnlLHB</value>
-  </data>
-  <data name="&gt;&gt;LblLHBB.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;LblLHBA.Name" xml:space="preserve">
-    <value>LblLHBA</value>
-  </data>
-  <data name="&gt;&gt;LblLHBA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHBA.Parent" xml:space="preserve">
-    <value>PnlLHB</value>
-  </data>
-  <data name="&gt;&gt;LblLHBA.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;LblLHB.Name" xml:space="preserve">
-    <value>LblLHB</value>
-  </data>
-  <data name="&gt;&gt;LblLHB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblLHB.Parent" xml:space="preserve">
-    <value>PnlLHB</value>
-  </data>
-  <data name="&gt;&gt;LblLHB.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="PnlLHB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 186</value>
-  </data>
-  <data name="PnlLHB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 121</value>
-  </data>
-  <data name="PnlLHB.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="&gt;&gt;PnlLHB.Name" xml:space="preserve">
-    <value>PnlLHB</value>
-  </data>
-  <data name="&gt;&gt;PnlLHB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlLHB.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PnlLHB.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="LblLHBStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>黑体, 10pt</value>
@@ -1983,6 +1635,27 @@
   <data name="&gt;&gt;LblLHB.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="PnlLHB.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 186</value>
+  </data>
+  <data name="PnlLHB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 121</value>
+  </data>
+  <data name="PnlLHB.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;PnlLHB.Name" xml:space="preserve">
+    <value>PnlLHB</value>
+  </data>
+  <data name="&gt;&gt;PnlLHB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlLHB.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PnlLHB.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="PicLogo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -2009,132 +1682,6 @@
   </data>
   <data name="&gt;&gt;PicLogo.ZOrder" xml:space="preserve">
     <value>7</value>
-  </data>
-  <data name="&gt;&gt;PnlContaminated.Name" xml:space="preserve">
-    <value>PnlContaminated</value>
-  </data>
-  <data name="&gt;&gt;PnlContaminated.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlContaminated.Parent" xml:space="preserve">
-    <value>PnlProgress</value>
-  </data>
-  <data name="&gt;&gt;PnlContaminated.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PnlNoContamination.Name" xml:space="preserve">
-    <value>PnlNoContamination</value>
-  </data>
-  <data name="&gt;&gt;PnlNoContamination.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlNoContamination.Parent" xml:space="preserve">
-    <value>PnlProgress</value>
-  </data>
-  <data name="&gt;&gt;PnlNoContamination.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PnlMeasuring.Name" xml:space="preserve">
-    <value>PnlMeasuring</value>
-  </data>
-  <data name="&gt;&gt;PnlMeasuring.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlMeasuring.Parent" xml:space="preserve">
-    <value>PnlProgress</value>
-  </data>
-  <data name="&gt;&gt;PnlMeasuring.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;PnlReady.Name" xml:space="preserve">
-    <value>PnlReady</value>
-  </data>
-  <data name="&gt;&gt;PnlReady.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlReady.Parent" xml:space="preserve">
-    <value>PnlProgress</value>
-  </data>
-  <data name="&gt;&gt;PnlReady.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;PnlBackground.Name" xml:space="preserve">
-    <value>PnlBackground</value>
-  </data>
-  <data name="&gt;&gt;PnlBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlBackground.Parent" xml:space="preserve">
-    <value>PnlProgress</value>
-  </data>
-  <data name="&gt;&gt;PnlBackground.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;PnlSelfCheck.Name" xml:space="preserve">
-    <value>PnlSelfCheck</value>
-  </data>
-  <data name="&gt;&gt;PnlSelfCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlSelfCheck.Parent" xml:space="preserve">
-    <value>PnlProgress</value>
-  </data>
-  <data name="&gt;&gt;PnlSelfCheck.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="PnlProgress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 90</value>
-  </data>
-  <data name="PnlProgress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1024, 77</value>
-  </data>
-  <data name="PnlProgress.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
-  </data>
-  <data name="&gt;&gt;PnlProgress.Name" xml:space="preserve">
-    <value>PnlProgress</value>
-  </data>
-  <data name="&gt;&gt;PnlProgress.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlProgress.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PnlProgress.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;LblContaminated.Name" xml:space="preserve">
-    <value>LblContaminated</value>
-  </data>
-  <data name="&gt;&gt;LblContaminated.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblContaminated.Parent" xml:space="preserve">
-    <value>PnlContaminated</value>
-  </data>
-  <data name="&gt;&gt;LblContaminated.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PnlContaminated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>853, 0</value>
-  </data>
-  <data name="PnlContaminated.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 77</value>
-  </data>
-  <data name="PnlContaminated.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="&gt;&gt;PnlContaminated.Name" xml:space="preserve">
-    <value>PnlContaminated</value>
-  </data>
-  <data name="&gt;&gt;PnlContaminated.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlContaminated.Parent" xml:space="preserve">
-    <value>PnlProgress</value>
-  </data>
-  <data name="&gt;&gt;PnlContaminated.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="LblContaminated.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 18pt, style=Italic</value>
@@ -2169,38 +1716,26 @@
   <data name="&gt;&gt;LblContaminated.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;LblNoContamination.Name" xml:space="preserve">
-    <value>LblNoContamination</value>
+  <data name="PnlContaminated.Location" type="System.Drawing.Point, System.Drawing">
+    <value>853, 0</value>
   </data>
-  <data name="&gt;&gt;LblNoContamination.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblNoContamination.Parent" xml:space="preserve">
-    <value>PnlNoContamination</value>
-  </data>
-  <data name="&gt;&gt;LblNoContamination.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PnlNoContamination.Location" type="System.Drawing.Point, System.Drawing">
-    <value>682, 0</value>
-  </data>
-  <data name="PnlNoContamination.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="PnlContaminated.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 77</value>
   </data>
-  <data name="PnlNoContamination.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+  <data name="PnlContaminated.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
   </data>
-  <data name="&gt;&gt;PnlNoContamination.Name" xml:space="preserve">
-    <value>PnlNoContamination</value>
+  <data name="&gt;&gt;PnlContaminated.Name" xml:space="preserve">
+    <value>PnlContaminated</value>
   </data>
-  <data name="&gt;&gt;PnlNoContamination.Type" xml:space="preserve">
+  <data name="&gt;&gt;PnlContaminated.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PnlNoContamination.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PnlContaminated.Parent" xml:space="preserve">
     <value>PnlProgress</value>
   </data>
-  <data name="&gt;&gt;PnlNoContamination.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;PnlContaminated.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="LblNoContamination.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 18pt, style=Italic</value>
@@ -2235,38 +1770,26 @@
   <data name="&gt;&gt;LblNoContamination.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;LblMeasuring.Name" xml:space="preserve">
-    <value>LblMeasuring</value>
+  <data name="PnlNoContamination.Location" type="System.Drawing.Point, System.Drawing">
+    <value>682, 0</value>
   </data>
-  <data name="&gt;&gt;LblMeasuring.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblMeasuring.Parent" xml:space="preserve">
-    <value>PnlMeasuring</value>
-  </data>
-  <data name="&gt;&gt;LblMeasuring.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PnlMeasuring.Location" type="System.Drawing.Point, System.Drawing">
-    <value>514, 1</value>
-  </data>
-  <data name="PnlMeasuring.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="PnlNoContamination.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 77</value>
   </data>
-  <data name="PnlMeasuring.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+  <data name="PnlNoContamination.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
-  <data name="&gt;&gt;PnlMeasuring.Name" xml:space="preserve">
-    <value>PnlMeasuring</value>
+  <data name="&gt;&gt;PnlNoContamination.Name" xml:space="preserve">
+    <value>PnlNoContamination</value>
   </data>
-  <data name="&gt;&gt;PnlMeasuring.Type" xml:space="preserve">
+  <data name="&gt;&gt;PnlNoContamination.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PnlMeasuring.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PnlNoContamination.Parent" xml:space="preserve">
     <value>PnlProgress</value>
   </data>
-  <data name="&gt;&gt;PnlMeasuring.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;PnlNoContamination.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="LblMeasuring.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 18pt, style=Italic</value>
@@ -2301,38 +1824,26 @@
   <data name="&gt;&gt;LblMeasuring.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;LblReady.Name" xml:space="preserve">
-    <value>LblReady</value>
+  <data name="PnlMeasuring.Location" type="System.Drawing.Point, System.Drawing">
+    <value>514, 1</value>
   </data>
-  <data name="&gt;&gt;LblReady.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblReady.Parent" xml:space="preserve">
-    <value>PnlReady</value>
-  </data>
-  <data name="&gt;&gt;LblReady.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PnlReady.Location" type="System.Drawing.Point, System.Drawing">
-    <value>343, 1</value>
-  </data>
-  <data name="PnlReady.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="PnlMeasuring.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 77</value>
   </data>
-  <data name="PnlReady.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+  <data name="PnlMeasuring.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
   </data>
-  <data name="&gt;&gt;PnlReady.Name" xml:space="preserve">
-    <value>PnlReady</value>
+  <data name="&gt;&gt;PnlMeasuring.Name" xml:space="preserve">
+    <value>PnlMeasuring</value>
   </data>
-  <data name="&gt;&gt;PnlReady.Type" xml:space="preserve">
+  <data name="&gt;&gt;PnlMeasuring.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PnlReady.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PnlMeasuring.Parent" xml:space="preserve">
     <value>PnlProgress</value>
   </data>
-  <data name="&gt;&gt;PnlReady.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;PnlMeasuring.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="LblReady.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 18pt, style=Italic</value>
@@ -2367,38 +1878,26 @@
   <data name="&gt;&gt;LblReady.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;LblBackground.Name" xml:space="preserve">
-    <value>LblBackground</value>
+  <data name="PnlReady.Location" type="System.Drawing.Point, System.Drawing">
+    <value>343, 1</value>
   </data>
-  <data name="&gt;&gt;LblBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblBackground.Parent" xml:space="preserve">
-    <value>PnlBackground</value>
-  </data>
-  <data name="&gt;&gt;LblBackground.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PnlBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 1</value>
-  </data>
-  <data name="PnlBackground.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="PnlReady.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 77</value>
   </data>
-  <data name="PnlBackground.TabIndex" type="System.Int32, mscorlib">
+  <data name="PnlReady.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
-  <data name="&gt;&gt;PnlBackground.Name" xml:space="preserve">
-    <value>PnlBackground</value>
+  <data name="&gt;&gt;PnlReady.Name" xml:space="preserve">
+    <value>PnlReady</value>
   </data>
-  <data name="&gt;&gt;PnlBackground.Type" xml:space="preserve">
+  <data name="&gt;&gt;PnlReady.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PnlBackground.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PnlReady.Parent" xml:space="preserve">
     <value>PnlProgress</value>
   </data>
-  <data name="&gt;&gt;PnlBackground.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;PnlReady.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="LblBackground.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 18pt, style=Italic</value>
@@ -2433,50 +1932,26 @@
   <data name="&gt;&gt;LblBackground.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;LblTimeRemain.Name" xml:space="preserve">
-    <value>LblTimeRemain</value>
+  <data name="PnlBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 1</value>
   </data>
-  <data name="&gt;&gt;LblTimeRemain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblTimeRemain.Parent" xml:space="preserve">
-    <value>PnlSelfCheck</value>
-  </data>
-  <data name="&gt;&gt;LblTimeRemain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;LblCheck.Name" xml:space="preserve">
-    <value>LblCheck</value>
-  </data>
-  <data name="&gt;&gt;LblCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblCheck.Parent" xml:space="preserve">
-    <value>PnlSelfCheck</value>
-  </data>
-  <data name="&gt;&gt;LblCheck.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="PnlSelfCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1</value>
-  </data>
-  <data name="PnlSelfCheck.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="PnlBackground.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 77</value>
   </data>
-  <data name="PnlSelfCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+  <data name="PnlBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
   </data>
-  <data name="&gt;&gt;PnlSelfCheck.Name" xml:space="preserve">
-    <value>PnlSelfCheck</value>
+  <data name="&gt;&gt;PnlBackground.Name" xml:space="preserve">
+    <value>PnlBackground</value>
   </data>
-  <data name="&gt;&gt;PnlSelfCheck.Type" xml:space="preserve">
+  <data name="&gt;&gt;PnlBackground.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PnlSelfCheck.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PnlBackground.Parent" xml:space="preserve">
     <value>PnlProgress</value>
   </data>
-  <data name="&gt;&gt;PnlSelfCheck.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;PnlBackground.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="LblTimeRemain.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 14.25pt</value>
@@ -2543,6 +2018,48 @@
   </data>
   <data name="&gt;&gt;LblCheck.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="PnlSelfCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1</value>
+  </data>
+  <data name="PnlSelfCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 77</value>
+  </data>
+  <data name="PnlSelfCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="&gt;&gt;PnlSelfCheck.Name" xml:space="preserve">
+    <value>PnlSelfCheck</value>
+  </data>
+  <data name="&gt;&gt;PnlSelfCheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlSelfCheck.Parent" xml:space="preserve">
+    <value>PnlProgress</value>
+  </data>
+  <data name="&gt;&gt;PnlSelfCheck.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="PnlProgress.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 90</value>
+  </data>
+  <data name="PnlProgress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1024, 77</value>
+  </data>
+  <data name="PnlProgress.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="&gt;&gt;PnlProgress.Name" xml:space="preserve">
+    <value>PnlProgress</value>
+  </data>
+  <data name="&gt;&gt;PnlProgress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlProgress.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PnlProgress.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="PnlRUnfulfillment.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2670,39 +2187,6 @@
         QtrUmtP9Xl0Nf92c3/yoTf8AMvvsf0t/wK/45fT6+0v+fpVTr//Z
 </value>
   </data>
-  <data name="&gt;&gt;LblRight.Name" xml:space="preserve">
-    <value>LblRight</value>
-  </data>
-  <data name="&gt;&gt;LblRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRight.Parent" xml:space="preserve">
-    <value>PnlRUnfulfillment</value>
-  </data>
-  <data name="&gt;&gt;LblRight.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PnlRUnfulfillment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>330, 446</value>
-  </data>
-  <data name="PnlRUnfulfillment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 57</value>
-  </data>
-  <data name="PnlRUnfulfillment.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
-  </data>
-  <data name="&gt;&gt;PnlRUnfulfillment.Name" xml:space="preserve">
-    <value>PnlRUnfulfillment</value>
-  </data>
-  <data name="&gt;&gt;PnlRUnfulfillment.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlRUnfulfillment.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PnlRUnfulfillment.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="LblRight.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 24pt, style=Bold</value>
   </data>
@@ -2736,6 +2220,27 @@
   <data name="&gt;&gt;LblRight.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="PnlRUnfulfillment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>330, 446</value>
+  </data>
+  <data name="PnlRUnfulfillment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 57</value>
+  </data>
+  <data name="PnlRUnfulfillment.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="&gt;&gt;PnlRUnfulfillment.Name" xml:space="preserve">
+    <value>PnlRUnfulfillment</value>
+  </data>
+  <data name="&gt;&gt;PnlRUnfulfillment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlRUnfulfillment.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PnlRUnfulfillment.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="BtnOption.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -2768,87 +2273,6 @@
   </data>
   <data name="&gt;&gt;BtnOption.ZOrder" xml:space="preserve">
     <value>16</value>
-  </data>
-  <data name="&gt;&gt;LblRFStatus.Name" xml:space="preserve">
-    <value>LblRFStatus</value>
-  </data>
-  <data name="&gt;&gt;LblRFStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRFStatus.Parent" xml:space="preserve">
-    <value>PnlRF</value>
-  </data>
-  <data name="&gt;&gt;LblRFStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PicRF.Name" xml:space="preserve">
-    <value>PicRF</value>
-  </data>
-  <data name="&gt;&gt;PicRF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PicRF.Parent" xml:space="preserve">
-    <value>PnlRF</value>
-  </data>
-  <data name="&gt;&gt;PicRF.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LblRFB.Name" xml:space="preserve">
-    <value>LblRFB</value>
-  </data>
-  <data name="&gt;&gt;LblRFB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRFB.Parent" xml:space="preserve">
-    <value>PnlRF</value>
-  </data>
-  <data name="&gt;&gt;LblRFB.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;LblRFA.Name" xml:space="preserve">
-    <value>LblRFA</value>
-  </data>
-  <data name="&gt;&gt;LblRFA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRFA.Parent" xml:space="preserve">
-    <value>PnlRF</value>
-  </data>
-  <data name="&gt;&gt;LblRFA.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;LblRF.Name" xml:space="preserve">
-    <value>LblRF</value>
-  </data>
-  <data name="&gt;&gt;LblRF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LblRF.Parent" xml:space="preserve">
-    <value>PnlRF</value>
-  </data>
-  <data name="&gt;&gt;LblRF.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="PnlRF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>642, 316</value>
-  </data>
-  <data name="PnlRF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 121</value>
-  </data>
-  <data name="PnlRF.TabIndex" type="System.Int32, mscorlib">
-    <value>64</value>
-  </data>
-  <data name="&gt;&gt;PnlRF.Name" xml:space="preserve">
-    <value>PnlRF</value>
-  </data>
-  <data name="&gt;&gt;PnlRF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PnlRF.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PnlRF.ZOrder" xml:space="preserve">
-    <value>17</value>
   </data>
   <data name="LblRFStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>黑体, 10pt</value>
@@ -3038,6 +2462,27 @@
   </data>
   <data name="&gt;&gt;LblRF.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="PnlRF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>642, 316</value>
+  </data>
+  <data name="PnlRF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>360, 121</value>
+  </data>
+  <data name="PnlRF.TabIndex" type="System.Int32, mscorlib">
+    <value>64</value>
+  </data>
+  <data name="&gt;&gt;PnlRF.Name" xml:space="preserve">
+    <value>PnlRF</value>
+  </data>
+  <data name="&gt;&gt;PnlRF.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PnlRF.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PnlRF.ZOrder" xml:space="preserve">
+    <value>17</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

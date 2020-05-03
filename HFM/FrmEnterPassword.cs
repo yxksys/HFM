@@ -40,43 +40,47 @@ namespace HFM
             //判断对象的角色，超级管理员和普通用户都可以登陆成功
             if (_user.Role == 1||_user.Role==2)
             {
-                bool isOpened = false;
+                //bool isOpened = false;
                 User.LandingUser = _user;
-                try
-                {
-                    FrmMain frmMain = new FrmMain();
-                    for (int i = 0; i < Application.OpenForms.Count; i++)
-                    {
-                        if (frmMain.Name == Application.OpenForms[i].Name)          //若该窗体已被打开
-                        {
-                            frmMain.Activate();  //激活该窗体
-                            isOpened = true;     //设置子窗体的打开标记为true
-                        }
-                        if (frmMain.Name != Application.OpenForms[i].Name)
-                        {
-                            Application.OpenForms[i].Close();
-                        }
+                this.DialogResult = DialogResult.OK;
 
-                    }
-                    if (isOpened == false) //若该窗体未打开,则显示该子窗体
-                    {
-                        frmMain.Show();
-                    }
-                    this.Close();
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                    throw;
-                }
-                if (_isEnglish)
-                {
-                    MessageBox.Show("Login Successful!", "Success");
-                }
-                else
-                {
-                    MessageBox.Show("用户登录成功！", "成功");
-                }
+                #region 打开窗体操作
+                //try
+                //{
+                //    FrmMain frmMain = new FrmMain();
+                //    for (int i = 0; i < Application.OpenForms.Count; i++)
+                //    {
+                //        if (frmMain.Name == Application.OpenForms[i].Name)          //若该窗体已被打开
+                //        {
+                //            frmMain.Activate();  //激活该窗体
+                //            isOpened = true;     //设置子窗体的打开标记为true
+                //        }
+                //        if (frmMain.Name != Application.OpenForms[i].Name)
+                //        {
+                //            Application.OpenForms[i].Close();
+                //        }
+
+                //    }
+                //    if (isOpened == false) //若该窗体未打开,则显示该子窗体
+                //    {
+                //        frmMain.Show();
+                //    }
+                //    this.Close();
+                //}
+                //catch (Exception exception)
+                //{
+                //    Console.WriteLine(exception);
+                //    throw;
+                //}
+                //if (_isEnglish)
+                //{
+                //    MessageBox.Show("Login Successful!", "Success");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("用户登录成功！", "成功");
+                //} 
+                #endregion
             }
             else
             {
