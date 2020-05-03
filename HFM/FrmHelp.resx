@@ -117,154 +117,154 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;LblName.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LblNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="LblName.Text" xml:space="preserve">
-    <value>仪器名称：HFM100手脚表面污染监测仪</value>
-  </data>
-  <data name="LblNumber.Text" xml:space="preserve">
-    <value>联系方式：0351-2202150  2203549</value>
-  </data>
-  <data name="&gt;&gt;LblNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="LblNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 186</value>
+  <data name="LblName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 14.25pt</value>
   </data>
   <data name="LblName.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 86</value>
   </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LblName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 0</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>640, 366</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FrmHelp</value>
+  <data name="LblName.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
   </data>
   <data name="LblName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LblName.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="LblName.Text" xml:space="preserve">
+    <value>仪器名称：HFM100手脚表面污染监测仪</value>
+  </data>
+  <data name="LblName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;LblName.Name" xml:space="preserve">
+    <value>LblName</value>
+  </data>
+  <data name="&gt;&gt;LblName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LblName.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="LblVersions.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 14.25pt</value>
+  </data>
+  <data name="LblVersions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 136</value>
+  </data>
+  <data name="LblVersions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 0</value>
+  </data>
+  <data name="LblVersions.Size" type="System.Drawing.Size, System.Drawing">
     <value>521, 23</value>
   </data>
   <data name="LblVersions.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LblVersions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 5, 0</value>
+  <data name="LblVersions.Text" xml:space="preserve">
+    <value>软件版本：</value>
   </data>
-  <data name="&gt;&gt;LblNumber.Name" xml:space="preserve">
-    <value>LblNumber</value>
+  <data name="&gt;&gt;LblVersions.Name" xml:space="preserve">
+    <value>LblVersions</value>
   </data>
   <data name="&gt;&gt;LblVersions.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="LblVersions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 136</value>
-  </data>
   <data name="&gt;&gt;LblVersions.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="LblNumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 5, 0</value>
-  </data>
-  <data name="LblNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 14.25pt</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="&gt;&gt;LblNumber.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>版权所有（C） 山西中辐核仪器有限责任公司</value>
   </data>
   <data name="&gt;&gt;LblVersions.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="LblNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 14.25pt</value>
   </data>
-  <data name="&gt;&gt;LblName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="LblNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 186</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 23</value>
-  </data>
-  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="LblNumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 5, 0</value>
   </data>
   <data name="LblNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>521, 23</value>
   </data>
-  <data name="LblVersions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 23</value>
+  <data name="LblNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="LblName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="LblNumber.Text" xml:space="preserve">
+    <value>联系方式：0351-2202150  2203549</value>
   </data>
-  <data name="LblName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 14.25pt</value>
+  <data name="&gt;&gt;LblNumber.Name" xml:space="preserve">
+    <value>LblNumber</value>
   </data>
-  <data name="LblName.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="&gt;&gt;LblName.Name" xml:space="preserve">
-    <value>LblName</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 236</value>
-  </data>
-  <data name="&gt;&gt;LblName.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;LblVersions.Name" xml:space="preserve">
-    <value>LblVersions</value>
-  </data>
-  <data name="LblVersions.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 14.25pt</value>
+  <data name="&gt;&gt;LblNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LblNumber.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="LblName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 5, 0</value>
+  <data name="&gt;&gt;LblNumber.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="LblVersions.Text" xml:space="preserve">
-    <value>软件版本：</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="LblCopyright.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 14.25pt</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>关于</value>
+  <data name="LblCopyright.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 236</value>
   </data>
-  <data name="LblName.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="LblCopyright.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 0</value>
+  </data>
+  <data name="LblCopyright.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 23</value>
+  </data>
+  <data name="LblCopyright.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="LblCopyright.Text" xml:space="preserve">
+    <value>版权所有（C） 山西中辐核仪器有限责任公司</value>
+  </data>
+  <data name="&gt;&gt;LblCopyright.Name" xml:space="preserve">
+    <value>LblCopyright</value>
+  </data>
+  <data name="&gt;&gt;LblCopyright.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblCopyright.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LblCopyright.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>640, 366</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmHelp</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

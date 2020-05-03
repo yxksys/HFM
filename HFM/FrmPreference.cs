@@ -65,7 +65,7 @@ namespace HFM
         /// </summary>
         private MessageType _messageType;
 
-
+        
         /// <summary>
         /// 读取数据
         /// </summary>
@@ -335,9 +335,7 @@ namespace HFM
         {
 
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得α参数
-            probeParameters = probeParameter.GetParameter("α");
-            //列表按id排序
-            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
+            
 
             #region 核素选择
 
@@ -363,19 +361,18 @@ namespace HFM
 
             #endregion
 
-            ////把当前所选核素效率保存到ProbeParameter当前效率数据库中
-            //for (int i = 0; i < efficiency.Count; i++)
-            //{
-            //    //根据channelID来匹配
-            //    for (int j = 0; j < probeParameters.Count; j++)
-            //    {
-            //        if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
-            //        {
-            //            probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
-            //            probeParameter.SetParameter(probeParameters[j]);//保存到数据库
-            //        }
-            //    }
-            //}
+            //按核素名称检索效率值
+            var eff = efficiency.First(x => x.NuclideName == nowNuclideName).Efficiency;
+            //获得所有Alpha系统参数(各类型的本底上限等参数)
+            probeParameters = probeParameter.GetParameter("α");
+            //把当前显示的效率值更换到该核素的效率值
+            foreach (var item in probeParameters)
+            {
+                item.Efficiency = eff;
+            }
+                       
+            //列表按id排序
+            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
 
             #region α参数
 
@@ -433,9 +430,7 @@ namespace HFM
         private void GetBetaData()
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得β参数
-            probeParameters = probeParameter.GetParameter("β");
-            //列表按id排序
-            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
+            
 
             #region 核素选择
 
@@ -467,10 +462,10 @@ namespace HFM
 
             #endregion
 
-            ////把当前所选核素效率保存到ProbeParameter当前效率数据库中
+            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
             //for (int i = 0; i < efficiency.Count; i++)
             //{
-            //    //根据channelID来匹配
+            //    根据channelID来匹配
             //    for (int j = 0; j < probeParameters.Count; j++)
             //    {
             //        if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
@@ -481,7 +476,17 @@ namespace HFM
             //    }
             //}
 
-
+            //按核素名称检索效率值
+            var eff= efficiency.First(x=>x.NuclideName==nowNuclideName).Efficiency;
+            //获得所有beta系统参数(各类型的本底上限等参数)
+            probeParameters = probeParameter.GetParameter("β");
+            //把当前显示的效率值更换到该核素的效率值
+            foreach (var item in probeParameters)
+            {
+                item.Efficiency = eff;
+            }
+            //列表按id排序
+            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
             #region β参数
             //清空列表
             DgvBetaSet.Rows.Clear();
@@ -1114,11 +1119,27 @@ namespace HFM
             }
             if (system.SetParameter(system) && factoryParameterBtn.SetParameter(factoryParameterBtn))
             {
-                MessageBox.Show("更新成功");
+                if (_isEnglish)
+                {
+                    MessageBox.Show("Update successful");
+                }
+                else
+                {
+                    MessageBox.Show("更新成功");
+                }
+                
             }
             else
             {
-                MessageBox.Show("更新失败");
+                if (_isEnglish)
+                {
+                    MessageBox.Show("Update failed");
+                }
+                else
+                {
+                    MessageBox.Show("更新失败");
+                }
+                
                 return;
             }
 
@@ -1376,8 +1397,6 @@ namespace HFM
             //重新获得数据库数据
             GetBetaData();
         }
-
-
         #endregion
 
         #region 衣物探头界面
@@ -1993,6 +2012,95 @@ namespace HFM
         #endregion
 
         #endregion
+        
+
+        #region 单选按钮通用选择事件
+        /// <summary>
+        /// beta单选按钮通用点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdoBeta_CheckedChanged(object sender, EventArgs e)
+        {
+            #region β核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> buttonBeta = new List<RadioButton>();//核素选择数组
+            buttonBeta.Add(RdoBeta14);
+            buttonBeta.Add(RdoBeta58);
+            buttonBeta.Add(RdoBeta131);
+            buttonBeta.Add(RdoBeta204);
+            buttonBeta.Add(RdoBeta32);
+            buttonBeta.Add(RdoBeta60);
+            buttonBeta.Add(RdoBeta137);
+            buttonBeta.Add(RdoBetaDefine1);
+            buttonBeta.Add(RdoBeta36);
+            buttonBeta.Add(RdoBeta90);
+            buttonBeta.Add(RdoBeta192);
+            buttonBeta.Add(RdoBetaDefine2);
+            for (int i = 0; i < buttonBeta.Count; i++)
+            {
+                if (buttonBeta[i].Checked)
+                {
+                    nuclidename = buttonBeta[i].Text;
+                    break;
+                }
+            }
+            nuclide.SetBetaNuclideUser(nuclidename);
+            GetBetaData();
+            #endregion
+        }
+        /// <summary>
+        /// Alpha单选按钮通用点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdoAlpha_CheckedChanged(object sender, EventArgs e)
+        {
+            #region 核素选择
+
+            //获得当前核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> buttonAlpha = new List<RadioButton>();//核素选择数组
+            buttonAlpha.Add(RdoAlpha235);
+            buttonAlpha.Add(RdoAlpha239);
+            buttonAlpha.Add(RdoAlphaDefine1);
+            buttonAlpha.Add(RdoAlpha238);
+            buttonAlpha.Add(RdoAlpha241);
+            buttonAlpha.Add(RdoAlphaDefine2);
+            for (int i = 0; i < buttonAlpha.Count; i++)
+            {
+                if (buttonAlpha[i].Checked)
+                {
+                    nuclidename = buttonAlpha[i].Text;
+                    break;
+                }
+            }
+            nuclide.SetAlphaNuclideUser(nuclidename);
+            GetAlphaData();
+            #endregion
+        }
+        #endregion
+
+
+        #region 软件名称
+        /// <summary>
+        /// 软件名称下拉列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmbSoftName_DropDown(object sender, EventArgs e)
+        {
+            CmbSoftName.Items.Clear();
+            CmbSoftName.Items.Add("HFM100手脚表面污染监测仪");
+            CmbSoftName.Items.Add("HFM100TS手脚表面污染监测仪");
+            CmbSoftName.Items.Add("HM100手部表面污染监测仪");
+            CmbSoftName.Items.Add("HM100TS手部表面污染监测仪");
+            CmbSoftName.Items.Add("CRM100壁挂式污染监测仪");
+            CmbSoftName.Items.Add("FM100脚部表面污染监测仪");
+        }
+        #endregion
+
+        #region 窗口关闭事件
         /// <summary>
         /// 窗口关闭事件
         /// </summary>
@@ -2005,41 +2113,7 @@ namespace HFM
                 backgroundWorker_Preference.Dispose();
             }
             _commPort.Close();
-        }
-
-        /// <summary>
-        /// 单选按钮通用点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RdoBeta_CheckedChanged(object sender, EventArgs e)
-        {
-            #region β核素选择
-            string nuclidename = "";//修改核素选择
-            IList<RadioButton> button = new List<RadioButton>();//核素选择数组
-            button.Add(RdoBeta14);
-            button.Add(RdoBeta58);
-            button.Add(RdoBeta131);
-            button.Add(RdoBeta204);
-            button.Add(RdoBeta32);
-            button.Add(RdoBeta60);
-            button.Add(RdoBeta137);
-            button.Add(RdoBetaDefine1);
-            button.Add(RdoBeta36);
-            button.Add(RdoBeta90);
-            button.Add(RdoBeta192);
-            button.Add(RdoBetaDefine2);
-            for (int i = 0; i < button.Count; i++)
-            {
-                if (button[i].Checked)
-                {
-                    nuclidename = button[i].Text;
-                    break;
-                }
-            }
-            nuclide.SetBetaNuclideUser(nuclidename);
-            GetBetaData();
-            #endregion
-        }
+        } 
+        #endregion
     }
 }

@@ -1106,6 +1106,7 @@ namespace HFM
         }
         #endregion
 
+        #region 窗口关闭后
         /// <summary>
         /// 窗口关闭后,关闭线程,关闭端口
         /// </summary>
@@ -1114,6 +1115,7 @@ namespace HFM
             _commPort.Close();
             bkWorkerReceiveData.CancelAsync();
             Thread.Sleep(200);
-        }
+        } 
+        #endregion
     }
 }
