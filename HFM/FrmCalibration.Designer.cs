@@ -346,6 +346,7 @@
             this.TxtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.TxtResult.Location = new System.Drawing.Point(157, 108);
             this.TxtResult.Name = "TxtResult";
+            this.TxtResult.ReadOnly = true;
             this.TxtResult.Size = new System.Drawing.Size(806, 29);
             this.TxtResult.TabIndex = 5;
             // 

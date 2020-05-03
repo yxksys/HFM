@@ -243,6 +243,10 @@ namespace HFM
 
             while (true)
             {
+                if (bkWorkerReceiveData.IsBusy==false)
+                {
+                    return receiveBuffMessage;
+                }
                 #region Alpha、beta、自检下发指令
                 //请求进程中断读取数据
                 if (bkworker.CancellationPending)

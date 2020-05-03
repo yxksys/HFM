@@ -766,8 +766,8 @@ namespace HFM
                         bkWorkerReceiveData.CancelAsync();
                         _alphaNr = (_alphacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text))); ;//带源总计数的平均值
                         _betaNr = (_betacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)));//带源总计数的平均值
-                        _effAlpha =((_alphaNr - _alphaNb) / Convert.ToSingle(TxtSFR.Text));//Alpha效率
-                        _effBeta = ((_betaNr - _betaNb) / Convert.ToSingle(TxtSFR.Text));//Beta效率
+                        _effAlpha =(((_alphaNr - _alphaNb)<0?0:(_alphaNr - _alphaNb) )/ Convert.ToSingle(TxtSFR.Text));//Alpha效率
+                        _effBeta = (((_betaNr - _betaNb)<0?0:(_betaNr - _betaNb) ) / Convert.ToSingle(TxtSFR.Text));//Beta效率
                         _eff = _effAlpha > _effBeta ? _effAlpha*100 : _effBeta*100;//效率取Alpha或Beta的最大值
                         if (_eff>0)
                         {

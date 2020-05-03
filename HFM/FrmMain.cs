@@ -344,7 +344,7 @@ namespace HFM
         private void AboutHFMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //开启关于窗体
-            FrmDisposeNormal(new FrmHelp());
+            FrmDisposeMax(new FrmHelp());
         }
 
 

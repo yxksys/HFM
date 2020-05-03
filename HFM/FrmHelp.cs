@@ -13,6 +13,7 @@ namespace HFM
 {
     public partial class FrmHelp : Form
     {
+        private CommPort _commPort = new CommPort();
         public FrmHelp()
         {
             InitializeComponent();
@@ -20,6 +21,16 @@ namespace HFM
             Components.SystemParameter systemParameter = new Components.SystemParameter().GetParameter();
             //工厂参数对象(包含软件仪器名称)
             FactoryParameter factoryParameter = new FactoryParameter().GetParameter();
+
+            //从配置文件获得当前串口配置
+            if (_commPort.Opened == true)
+            {
+                _commPort.Close();
+            }
+
+            
+
+            
 
             if (systemParameter.IsEnglish==false)
             {
@@ -43,6 +54,16 @@ namespace HFM
                 //版权所有
                 LblCopyright.Text = "Copyright (c) Shanxi Zhongfu Nuclear Instruments Co., Ltd";
             }
+        }
+        
+        /// <summary>
+        /// 关闭窗口事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmHelp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
         }
     }
 }

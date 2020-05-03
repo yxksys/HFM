@@ -59,13 +59,14 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.LblCopyright);
-            this.Controls.Add(this.LblNumber);
-            this.Controls.Add(this.LblVersions);
             this.Controls.Add(this.LblName);
+            this.Controls.Add(this.LblCopyright);
+            this.Controls.Add(this.LblVersions);
+            this.Controls.Add(this.LblNumber);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmHelp";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHelp_FormClosed);
             this.ResumeLayout(false);
 
         }

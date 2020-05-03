@@ -119,10 +119,10 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LblName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 14.25pt</value>
+    <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
   <data name="LblName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 86</value>
+    <value>171, 151</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="LblName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -154,13 +154,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LblName.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="LblVersions.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 14.25pt</value>
+    <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
   <data name="LblVersions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 136</value>
+    <value>171, 198</value>
   </data>
   <data name="LblVersions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 5, 0</value>
@@ -187,10 +187,10 @@
     <value>2</value>
   </data>
   <data name="LblNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 14.25pt</value>
+    <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
   <data name="LblNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 186</value>
+    <value>171, 245</value>
   </data>
   <data name="LblNumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 5, 0</value>
@@ -214,13 +214,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LblNumber.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="LblCopyright.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 14.25pt</value>
+    <value>Microsoft Sans Serif, 14.25pt</value>
   </data>
   <data name="LblCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 236</value>
+    <value>171, 292</value>
   </data>
   <data name="LblCopyright.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 5, 0</value>
@@ -244,7 +244,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LblCopyright.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -253,7 +253,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>640, 366</value>
+    <value>784, 561</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
