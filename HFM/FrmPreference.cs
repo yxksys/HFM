@@ -76,6 +76,7 @@ namespace HFM
         private IList<Channel> Channels = new Channel().GetChannel();
 
         #endregion
+
         #region 端口字符串创建
         /// <summary>
         /// 端口字符串创建
@@ -129,14 +130,36 @@ namespace HFM
             backgroundWorker_Preference.WorkerReportsProgress = true;
             GetProferenceData();
             //权限判断
-            if (User.LandingUser.Role!=1)
-            {
-                GrpPresence.Visible = false;
-                GrpFacilityData.Visible = false;
-                TabPresence.TabPages[1].Parent = null;
-                TabPresence.TabPages[3].Parent = null;
-                TabPresence.TabPages[3].Parent = null;
+            if (User.LandingUser.Role != 1)
+            { 
+                switch (factoryParameter.GetParameter().MeasureType)
+                {
+                    case "α":
+                        GrpPresence.Visible = false;
+                        GrpFacilityData.Visible = false;
+                        TabPresence.TabPages[2].Parent = null;
+                        TabPresence.TabPages[3].Parent = null;
+                        TabPresence.TabPages[3].Parent = null;
+                        break;
+                    case "β":
+                        GrpPresence.Visible = false;
+                        GrpFacilityData.Visible = false;
+                        TabPresence.TabPages[1].Parent = null;
+                        TabPresence.TabPages[3].Parent = null;
+                        TabPresence.TabPages[3].Parent = null;
+                        break;
+                    case "α/β":
+                        GrpPresence.Visible = false;
+                        GrpFacilityData.Visible = false;
+                        //TabPresence.TabPages[1].Parent = null;
+                        TabPresence.TabPages[4].Parent = null;
+                        TabPresence.TabPages[4].Parent = null;
+                        break;
+                    default:
+                        break;
+                }
             }
+            
         }
         #region 页面切换
         /// <summary>
@@ -146,46 +169,88 @@ namespace HFM
         /// <param name="e"></param>
         private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (User.LandingUser.Role == 2)
+            if (User.LandingUser.Role != 1)
             {
+                switch (factoryParameter.GetParameter().MeasureType)
+                {
+                    case "α":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetAlphaData();
+                                break;
+                            case 2:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    case "β":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetBetaData();
+                                break;
+                            case 2:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    case "α/β":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetAlphaData();
+                                break;
+                            case 2:
+                                GetBetaData();
+                                break;
+                            case 3:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            else
+            {
+                //根据页面索引更新当前页面值
                 switch (TabPresence.SelectedIndex)
                 {
                     case 0:
                         GetProferenceData();
                         break;
                     case 1:
-                        GetBetaData();
+                        GetAlphaData();
                         break;
                     case 2:
+                        GetBetaData();
+                        break;
+                    case 3:
                         GetClothesData();
                         break;
-
+                    case 4:
+                        GetMainProferenceData();
+                        break;
+                    case 5:
+                        GetPortConfiguration();
+                        break;
+                    default:
+                        MessageBox.Show("选择有误，请重新选择");
+                        break;
                 }
-            }
-            //根据页面索引更新当前页面值
-            switch (TabPresence.SelectedIndex)
-            {
-                case 0:
-                    GetProferenceData();
-                    break;
-                case 1:
-                    GetAlphaData();
-                    break;
-                case 2:
-                    GetBetaData();
-                    break;
-                case 3:
-                    GetClothesData();
-                    break;
-                case 4:
-                    GetMainProferenceData();
-                    break;
-                case 5:
-                    GetPortConfiguration();
-                    break;
-                default:
-                    MessageBox.Show("选择有误，请重新选择");
-                    break;
+
             }
 
         } 

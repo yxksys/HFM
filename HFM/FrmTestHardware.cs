@@ -540,12 +540,20 @@ namespace HFM
             //赋值alpha和Beta总计数并且判断赋值通道状态
             for (i = 0; i < 6; i++)
             {
-                if(channelS[i].IsEnabled==false)
+                if (channelS[i].IsEnabled == false)
                 {
+                    DgvWork.Columns[i].DefaultCellStyle.ForeColor = Color.AntiqueWhite; //前景颜色改变
+                    DgvWork.Columns[i].DefaultCellStyle.BackColor = Color.DarkGray;     //背景颜色改变
+                    _hv[i] = "";            //未启用的通道信息清空
+                    _alphacps[i] = "";      //未启用的通道信息清空
+                    _alphacnt[i] = "";      //未启用的通道信息清空
+                    _betacps[i] = "";       //未启用的通道信息清空
+                    _betacnt[i] = "";       //未启用的通道信息清空
+
                     if (_isEnglish)
                     {
 
-                        _strat[i] = "Not enabled";
+                        _strat[i] = "NotEnabled";
                     }
                     else
                     {
