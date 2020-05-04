@@ -1831,7 +1831,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnPorRestoreDefault_Click(object sender, EventArgs e)
         {
-            TxtcommportSetPortNum.Text = "COM3";
+            TxtcommportSetPortNum.Text = "COM5";
             TxtcommportSetBaudRate.Text = "115200";
             TxtcommportSetDataBits.Text = "8";
             TxtcommportSetStopBits.Text = "1";
