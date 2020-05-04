@@ -2,7 +2,7 @@
  * ________________________________________________________________________________ 
  *
  *  描述：参数设置窗体
- *  作者：邢家宁
+ *  作者：杨旭锴 邢家宁
  *  版本：
  *  创建时间：2020年2月25日
  *  类名：参数设置
@@ -74,6 +74,14 @@ namespace HFM
         /// 获取全部通道信息
         /// </summary>
         private IList<Channel> Channels = new Channel().GetChannel();
+        //通讯类型
+        enum MessageType
+        {
+            PSet,// P写入类型
+            PRead,// P读取类型
+        }
+        private MessageType messageType;
+
 
         #endregion
 
@@ -104,18 +112,8 @@ namespace HFM
             
         }
         #endregion
-
-
-        //通讯类型
-        enum MessageType
-        {
-            PSet,// P写入类型
-            PRead,// P读取类型
-        }
-        private MessageType messageType;
-
-
-
+        
+        #region 加载界面
         /// <summary>
         /// 加载参数(初始化)
         /// </summary>
@@ -131,7 +129,7 @@ namespace HFM
             GetProferenceData();
             //权限判断
             if (User.LandingUser.Role != 1)
-            { 
+            {
                 switch (factoryParameter.GetParameter().MeasureType)
                 {
                     case "α":
@@ -159,8 +157,10 @@ namespace HFM
                         break;
                 }
             }
-            
-        }
+
+        } 
+        #endregion
+
         #region 页面切换
         /// <summary>
         /// 页面切换
@@ -527,20 +527,6 @@ namespace HFM
 
             #endregion
 
-            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
-            //for (int i = 0; i < efficiency.Count; i++)
-            //{
-            //    根据channelID来匹配
-            //    for (int j = 0; j < probeParameters.Count; j++)
-            //    {
-            //        if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
-            //        {
-            //            probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
-            //            probeParameter.SetParameter(probeParameters[j]);//保存到数据库
-            //        }
-            //    }
-            //}
-
             //按核素名称检索效率值
             var eff= efficiency.First(x=>x.NuclideName==nowNuclideName).Efficiency;
             //获得所有beta系统参数(各类型的本底上限等参数)
@@ -647,20 +633,28 @@ namespace HFM
 
             #endregion
 
-            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
-            for (int i = 0; i < efficiency.Count; i++)
+            ////把当前所选核素效率保存到ProbeParameter当前效率数据库中
+            //for (int i = 0; i < efficiency.Count; i++)
+            //{
+            //    //根据channelID来匹配
+
+            //    if (probeParameters[0].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
+            //    {
+            //        probeParameters[0].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
+            //        probeParameter.SetParameter(probeParameters[0]);//保存到数据库
+            //        probeParameter = probeParameters[0];
+            //    }
+
+            //}
+            //按核素名称检索效率值
+            var eff = efficiency.First(x => x.NuclideName == nowNuclideName).Efficiency;
+            //获得所有beta系统参数(各类型的本底上限等参数)
+            probeParameters = probeParameter.GetParameter("c");
+            //把当前显示的效率值更换到该核素的效率值
+            foreach (var item in probeParameters)
             {
-                //根据channelID来匹配
-
-                if (probeParameters[0].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
-                {
-                    probeParameters[0].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
-                    probeParameter.SetParameter(probeParameters[0]);//保存到数据库
-                    probeParameter = probeParameters[0];
-                }
-
+                item.Efficiency = eff;
             }
-
             #region 衣物探头
 
             //system = system.GetParameter();//获得衣物离线自检时间
@@ -763,7 +757,6 @@ namespace HFM
         }
         #endregion
         
-
         #region 串口通信
         /// <summary>
         /// 异步线程DoWork事件响应
@@ -2078,7 +2071,6 @@ namespace HFM
 
         #endregion
         
-
         #region 单选按钮通用选择事件
         /// <summary>
         /// beta单选按钮通用点击事件
@@ -2144,8 +2136,52 @@ namespace HFM
             GetAlphaData();
             #endregion
         }
-        #endregion
 
+        /// <summary>
+        /// 衣物单选按钮通用点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdoClothes_CheckedChanged(object sender, EventArgs e)
+        {
+            #region 核素选择
+
+            //获得当前核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> buttonFrisker = new List<RadioButton>();//核素选择数组
+            #region 添加核素
+            //α核素
+            buttonFrisker.Add(RdoClothesAlpha235);
+            buttonFrisker.Add(RdoClothesAlpha238);
+            buttonFrisker.Add(RdoClothesAlpha239);
+            buttonFrisker.Add(RdoClothesAlpha241);
+            buttonFrisker.Add(RdoClothesAlphaDefine1);
+            //β核素
+            buttonFrisker.Add(RdoClothesBeta14);
+            buttonFrisker.Add(RdoClothesBeta32);
+            buttonFrisker.Add(RdoClothesBeta36);
+            buttonFrisker.Add(RdoClothesBeta58);
+            buttonFrisker.Add(RdoClothesBeta60);
+            buttonFrisker.Add(RdoClothesBeta90);
+            buttonFrisker.Add(RdoClothesBeta131);
+            buttonFrisker.Add(RdoClothesBeta137);
+            buttonFrisker.Add(RdoClothesBeta192);
+            buttonFrisker.Add(RdoClothesBeta204);
+            buttonFrisker.Add(RdoClothesBetaDefine1);
+            #endregion
+            for (int i = 0; i < buttonFrisker.Count; i++)
+            {
+                if (buttonFrisker[i].Checked)
+                {
+                    nuclidename = buttonFrisker[i].Text;
+                    break;
+                }
+            }
+            nuclide.SetClothesNuclideUser(nuclidename);
+            GetClothesData();
+            #endregion
+        }
+        #endregion
 
         #region 软件名称
         /// <summary>
