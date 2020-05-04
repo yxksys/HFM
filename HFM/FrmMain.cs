@@ -260,8 +260,9 @@ namespace HFM
                 if (MessageBox.Show("是否重新登录？","提示",MessageBoxButtons.OKCancel)==DialogResult.OK)
                 {
                     //开起维护密码窗体
-                    FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
-                    frmEnterPassword.Show();
+                    //FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
+                    //frmEnterPassword.Show();
+                    FrmDisposeNormal(new FrmEnterPassword());
                 }
                 
             }
