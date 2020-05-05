@@ -63,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_15CC005ABD5F459CAC6C69F587F8E481"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1652542E79C84200B2D4D349A1873017"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -262,12 +268,6 @@
         "Entry"
         {
         "MsmKey" = "8:_63BCD33D30124207B706EF271A01F3C0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_649ADF03BFA54C818B9ED9740BD75831"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -483,12 +483,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B6D52A6E4CF242828AE648A2FBA9A305"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BA49FC0F2E054B7B8847EC3EB13E8CAE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -502,12 +496,6 @@
         "Entry"
         {
         "MsmKey" = "8:_C1209E9899BF4810A12FEE333DFFFE45"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C124494710674744B5EA540662C8CED5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -615,12 +603,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E7FC8CF16F0F4BD1A276E1F575A28957"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E84073B931524274848DFF51C1466157"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -663,13 +645,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F07BF68DB4354B28A5FB2B6A0168336E"
+        "MsmKey" = "8:_F16568FAD83A4448BE97F1E71699330F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F16568FAD83A4448BE97F1E71699330F"
+        "MsmKey" = "8:_F551EA4EA026451AB82552D072F81E93"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -957,6 +939,37 @@
             "TargetName" = "8:Chinese_right_hand_in_place_please_measure_again.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_15CC005ABD5F459CAC6C69F587F8E481"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=0.0.0.0, Culture=en, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_15CC005ABD5F459CAC6C69F587F8E481"
+                    {
+                    "Name" = "8:HFM.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\en\\HFM.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7119D8F0BFAC4BD6A84A4AAC9D16E7BA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1637,37 +1650,6 @@
             "TargetName" = "8:Fault_progress.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_649ADF03BFA54C818B9ED9740BD75831"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=0.0.0.0, Culture=en, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_649ADF03BFA54C818B9ED9740BD75831"
-                    {
-                    "Name" = "8:HFM.resources.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\en\\HFM.resources.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_7119D8F0BFAC4BD6A84A4AAC9D16E7BA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2393,26 +2375,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B6D52A6E4CF242828AE648A2FBA9A305"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Images\\app.ico"
-            "TargetName" = "8:app.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BA49FC0F2E054B7B8847EC3EB13E8CAE"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_NoContamination_please_frisker.wav"
@@ -2459,26 +2421,6 @@
             "TargetName" = "8:English_Nine.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C124494710674744B5EA540662C8CED5"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\HFM.accdb"
-            "TargetName" = "8:HFM.accdb"
-            "Tag" = "8:"
-            "Folder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2813,26 +2755,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E7FC8CF16F0F4BD1A276E1F575A28957"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Images\\logo.ico"
-            "TargetName" = "8:logo.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E84073B931524274848DFF51C1466157"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_frisker_In_place.wav"
@@ -2973,10 +2895,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F07BF68DB4354B28A5FB2B6A0168336E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F16568FAD83A4448BE97F1E71699330F"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\logo.png"
-            "TargetName" = "8:logo.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\clothes.jpg"
+            "TargetName" = "8:clothes.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2993,12 +2915,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F16568FAD83A4448BE97F1E71699330F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F551EA4EA026451AB82552D072F81E93"
             {
-            "SourcePath" = "8:..\\..\\HFM\\Images\\clothes.jpg"
-            "TargetName" = "8:clothes.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\HFM.accdb"
+            "TargetName" = "8:HFM.accdb"
             "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Folder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3256,7 +3178,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HFM.v1.0"
         "ProductCode" = "8:{982FEBAD-9AE6-41F0-ADBC-DFDF251AB9EC}"
-        "PackageCode" = "8:{21283B6D-2859-42A7-A55D-CAEA478361AC}"
+        "PackageCode" = "8:{74BE03EB-6B70-4F3D-BB73-784EBFA36D68}"
         "UpgradeCode" = "8:{E5DED200-49C6-461D-BC4D-557359A3ACF3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

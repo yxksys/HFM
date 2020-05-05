@@ -471,7 +471,9 @@ namespace HFM.Components
                     convertedData = data / 60;
                     break;
                 case "Bq"://最终测量计数平均值(Bq) = 200 * 计算平均值(cps) /探测效率
-                    convertedData = data / efficiency * 200;
+                    convertedData = data * efficiency / 200;
+                    
+                    //convertedData = 200 * data / efficiency;//cps 转bq
                     break;
                 case "Bq/cm2"://最终测量计数平均值(Bq/cm2) = 200 * 计算平均值(cps) /探测效率/该通道测量面积
                     //convertedData = 200 * data / efficiency / proberArea;

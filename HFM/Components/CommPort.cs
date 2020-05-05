@@ -45,6 +45,9 @@ namespace HFM.Components
 		//win32 api constants 
 		private const uint GENERIC_READ = 0x80000000; 
 		private const uint GENERIC_WRITE = 0x40000000;
+        private const uint FILE_SHARE_READ = 0x00000001;
+        private const uint FILE_SHARE_WRITE = 0x00000002;
+        private const uint FILE_FLAG_OVERLAPPED = 0x40000000;
 		
 		private const int OPEN_EXISTING = 3;       
 		private const int INVALID_HANDLE_value = -1; 
@@ -181,7 +184,7 @@ namespace HFM.Components
 				// OPEN THE COMM PORT. 
 
        
-				hComm = CreateFile("COM" + PortNum ,GENERIC_READ | GENERIC_WRITE,0, 0,OPEN_EXISTING,0,0); 
+				hComm = CreateFile("COM" + PortNum ,GENERIC_READ | GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE, 0,OPEN_EXISTING,0,0); 
        
 				// IF THE PORT CANNOT BE OPENED, BAIL OUT. 
 				if(hComm == INVALID_HANDLE_value)  

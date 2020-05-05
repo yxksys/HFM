@@ -661,8 +661,14 @@ namespace HFM
                         _betacps += item.Beta;//单次/时间的累加和
                         _alphacnt = _alphacnt + item.Alpha;//类型内计数累加
                         _betacnt = _betacnt + item.Beta;//类型内计数累加
-                        _hv = item.HV;//高压
-                        
+                        if (_channel.ChannelID==7)
+                        {
+                            _hv = 500;
+                        }
+                        else
+                        {
+                            _hv = item.HV;//高压
+                        }
                     }
                 }
                 
@@ -1002,6 +1008,8 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnCalibrate_Click(object sender, EventArgs e)
         {
+            DgvInformation.Rows.Clear();
+            TxtResult.Text = "";
             throwDataCount = 0;
             //刻度时清理上一次的读数
             _alphacps = 0;

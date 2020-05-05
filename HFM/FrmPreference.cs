@@ -406,7 +406,7 @@ namespace HFM
 
             //获得当前核素选择
             string nowNuclideName = nuclide.GetAlphaNuclideUser();//获得当前α核素名称
-            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();            
             efficiency = efficiencyParameter.GetParameter("α", nowNuclideName);//获得当前核素效率
             IList<RadioButton> button = new List<RadioButton>();//核素选择数组
             button.Add(RdoAlpha235);
@@ -433,7 +433,8 @@ namespace HFM
             //把当前显示的效率值更换到该核素的效率值
             foreach (var item in probeParameters)
             {
-                item.Efficiency = eff;
+                //根据通道id赋值当前效率值
+                item.Efficiency = efficiency.First(x => x.Channel.ChannelID == item.ProbeChannel.ChannelID).Efficiency;
             }
                        
             //列表按id排序
@@ -501,7 +502,8 @@ namespace HFM
 
             //获得当前核素选择
             string nowNuclideName = nuclide.GetBetaNuclideUser();//获得当前β核素名称
-            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            //IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            IList<EfficiencyParameter> efficiency = new EfficiencyParameter().GetParameter();
             efficiency = efficiencyParameter.GetParameter("β", nowNuclideName);//获得当前核素效率
             IList<RadioButton> button = new List<RadioButton>();//核素选择数组
             button.Add(RdoBeta14);
@@ -528,13 +530,13 @@ namespace HFM
             #endregion
 
             //按核素名称检索效率值
-            var eff= efficiency.First(x=>x.NuclideName==nowNuclideName).Efficiency;
+            //efficiency = efficiency.Where(x=>x.NuclideName==nowNuclideName).ToList;
             //获得所有beta系统参数(各类型的本底上限等参数)
             probeParameters = probeParameter.GetParameter("β");
             //把当前显示的效率值更换到该核素的效率值
             foreach (var item in probeParameters)
             {
-                item.Efficiency = eff;
+                item.Efficiency = efficiency.First(x=>x.Channel.ChannelID==item.ProbeChannel.ChannelID).Efficiency;
             }
             //列表按id排序
             probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
@@ -2212,8 +2214,10 @@ namespace HFM
             if (backgroundWorker_Preference.IsBusy == true)
             {
                 backgroundWorker_Preference.Dispose();
+                Thread.Sleep(200);
             }
             _commPort.Close();
+            Thread.Sleep(200);
         } 
         #endregion
     }

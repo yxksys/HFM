@@ -73,7 +73,7 @@ namespace HFM
                 //销毁其他不是要打开的窗口实例
                 if (formChild.Name != form.Name)
                 {
-                    form.Dispose();
+                    form.Close();
                 }
                 if (formChild.Name == form.Name)          //若该窗体已被打开
                 {
@@ -81,7 +81,7 @@ namespace HFM
                     formChild.StartPosition = FormStartPosition.CenterParent;
                     formChild.WindowState = FormWindowState.Normal;
                     isOpened = true;                    //设置子窗体的打开标记为true
-                    formChild.Dispose();                //销毁formChild实例
+                    formChild.Close();                //销毁formChild实例
                     break;
                 }
             }
@@ -91,6 +91,34 @@ namespace HFM
                 formChild.MdiParent = this;
                 formChild.Show();
             }
+
+
+            //bool isOpened = false;                      //定义子窗体打开标记,默认位false
+            //foreach (Form form in this.MdiChildren)     //循环MDI中的所有子窗体
+            //{
+            //    //销毁其他不是要打开的窗口实例
+            //    if (formChild.Name != form.Name)
+            //    {
+            //        // form.Dispose();
+            //        form.Close();
+            //    }
+            //    if (formChild.Name == form.Name)          //若该窗体已被打开
+            //    {
+            //        formChild.Activate();               //激活该窗体
+            //        formChild.StartPosition = FormStartPosition.CenterParent;
+            //        formChild.WindowState = FormWindowState.Normal;
+            //        isOpened = true;                    //设置子窗体的打开标记为true
+            //        formChild.Close();                //销毁formChild实例
+            //        break;
+            //    }
+            //}
+
+            //if (!isOpened)                              //若该窗体未打开,则显示该子窗体
+            //{
+            //    formChild.MdiParent = this;
+            //    formChild.WindowState = FormWindowState.Maximized;
+            //    formChild.Show();
+            //}
 
         }
         public void FrmDispose(Form formChild)
@@ -225,12 +253,22 @@ namespace HFM
 
         #region 系统
         /// <summary>
-        /// 运行
+        /// 开始运行
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //关闭其他子窗体
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+
+                if (this.Name != Application.OpenForms[i].Name)
+                {
+                    Application.OpenForms[i].Close();
+                }
+
+            }
             Tsslbl_NowTime.Dispose();
             FrmDispose(new FrmMeasureMain());
             this.Dispose();
@@ -243,6 +281,16 @@ namespace HFM
         /// <param name="e"></param>
         private void SuperUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //关闭其他子窗体
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+
+                if (this.Name != Application.OpenForms[i].Name)
+                {
+                    Application.OpenForms[i].Close();
+                }
+
+            }
             /* 判断当前是否是超级用户
              * 是:弹出提示框,让用户选择退出当前用户状态
              * 否:弹出维护密码窗体
@@ -250,21 +298,22 @@ namespace HFM
             if (User.LandingUser.Role ==1 )
             {
                 //提示框
-                if (MessageBox.Show("是否退出当前用户?", "提示", MessageBoxButtons.OKCancel)==DialogResult.OK)
+                if (MessageBox.Show("是否退出当前用户?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     User.LandingUser = User.LandingUser.GetUser(3);
                 }
             }
             else
             {
-                if (MessageBox.Show("是否重新登录？","提示",MessageBoxButtons.OKCancel)==DialogResult.OK)
+                if (MessageBox.Show("是否重新登录？", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     //开起维护密码窗体
                     //FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
                     //frmEnterPassword.Show();
                     FrmDisposeNormal(new FrmEnterPassword());
+                    //FrmDisposeMax(new FrmEnterPassword());
                 }
-                
+
             }
         }
         /// <summary>
@@ -274,6 +323,16 @@ namespace HFM
         /// <param name="e"></param>
         private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //关闭其他子窗体
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+
+                if (this.Name != Application.OpenForms[i].Name)
+                {
+                    Application.OpenForms[i].Close();
+                }
+
+            }
             FrmDisposeNormal(new FrmModifyPasssword());
         }
         /// <summary>
@@ -355,7 +414,11 @@ namespace HFM
         {
             Application.ExitThread();
         }
-
+        /// <summary>
+        /// 启动加载首次处理事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmMain_Shown(object sender, EventArgs e)
         {
             for (int i = 0; i < Application.OpenForms.Count; i++)
