@@ -1056,7 +1056,7 @@ namespace HFM
         {
             #region 系统参数
             //首先获得默认参数,通过对原始数据赋值来实现更新
-            HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();
+            HFM.Components.SystemParameter system = new HFM.Components.SystemParameter().GetParameter();
             //system = system.GetParameter();
             system.SelfCheckTime = int.Parse(TxtSelfCheckTime.Text);
             system.SmoothingTime = Convert.ToInt32(TxtSmoothingTime.Text);
