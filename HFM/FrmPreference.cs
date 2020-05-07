@@ -1300,7 +1300,7 @@ namespace HFM
             if (nuclide.SetAlphaNuclideUser(nuclidename))
             {
                 isUpDatanuclidename = true; //更新成功核素名称
-                if (isUpDatanuclidename=true)
+                if (isUpDatanuclidename==true)
                 {
                     if (_isEnglish)
                     {
@@ -1419,7 +1419,7 @@ namespace HFM
             if (nuclide.SetBetaNuclideUser(nuclidename))
             {
                 isUpDatanuclidename = true; //更新成功核素名称
-                if (isUpDatanuclidename = true)
+                if (isUpDatanuclidename == true)
                 {
                     if (_isEnglish)
                     {
