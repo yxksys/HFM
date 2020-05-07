@@ -241,7 +241,7 @@
             // 
             this.LblLHPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             resources.ApplyResources(this.LblLHPStatus, "LblLHPStatus");
-            this.LblLHPStatus.ForeColor = System.Drawing.Color.White;
+            this.LblLHPStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblLHPStatus.Name = "LblLHPStatus";
             // 
             // PicLHP
@@ -286,7 +286,7 @@
             // 
             this.LblRHPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             resources.ApplyResources(this.LblRHPStatus, "LblRHPStatus");
-            this.LblRHPStatus.ForeColor = System.Drawing.Color.White;
+            this.LblRHPStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblRHPStatus.Name = "LblRHPStatus";
             // 
             // PicRHP
@@ -374,9 +374,9 @@
             // 
             // LblRHBStatus
             // 
-            this.LblRHBStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
+            this.LblRHBStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             resources.ApplyResources(this.LblRHBStatus, "LblRHBStatus");
-            this.LblRHBStatus.ForeColor = System.Drawing.Color.White;
+            this.LblRHBStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblRHBStatus.Name = "LblRHBStatus";
             // 
             // PicRHB
@@ -605,9 +605,9 @@
             // 
             // LblRFStatus
             // 
-            this.LblRFStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
+            this.LblRFStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             resources.ApplyResources(this.LblRFStatus, "LblRFStatus");
-            this.LblRFStatus.ForeColor = System.Drawing.Color.White;
+            this.LblRFStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblRFStatus.Name = "LblRFStatus";
             // 
             // PicRF

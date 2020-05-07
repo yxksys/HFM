@@ -2,7 +2,7 @@
  * ________________________________________________________________________________ 
  *
  *  描述：参数设置窗体
- *  作者：邢家宁
+ *  作者：杨旭锴 邢家宁
  *  版本：
  *  创建时间：2020年2月25日
  *  类名：参数设置
@@ -65,11 +65,25 @@ namespace HFM
         /// </summary>
         private MessageType _messageType;
 
-
+        
         /// <summary>
         /// 读取数据
         /// </summary>
         private IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
+        /// <summary>
+        /// 获取全部通道信息
+        /// </summary>
+        private IList<Channel> Channels = new Channel().GetChannel();
+        //通讯类型
+        enum MessageType
+        {
+            PSet,// P写入类型
+            PRead,// P读取类型
+        }
+        private MessageType messageType;
+
+
+        #endregion
 
         #region 端口字符串创建
         /// <summary>
@@ -95,21 +109,11 @@ namespace HFM
                 return $"PortNum={portNum};BaudRate={baudRate};DataBits={dataBits};Parity={parity};StopBits={stopBits}";
             }
 
-            #endregion
+            
         }
         #endregion
-
-
-        //通讯类型
-        enum MessageType
-        {
-            PSet,// P写入类型
-            PRead,// P读取类型
-        }
-        private MessageType messageType;
-
-
-
+        
+        #region 加载界面
         /// <summary>
         /// 加载参数(初始化)
         /// </summary>
@@ -124,15 +128,39 @@ namespace HFM
             backgroundWorker_Preference.WorkerReportsProgress = true;
             GetProferenceData();
             //权限判断
-            if (User.LandingUser.Role!=1)
+            if (User.LandingUser.Role != 1)
             {
-                GrpPresence.Visible = false;
-                GrpFacilityData.Visible = false;
-                TabPresence.TabPages[1].Parent = null;
-                TabPresence.TabPages[3].Parent = null;
-                TabPresence.TabPages[3].Parent = null;
+                switch (factoryParameter.GetParameter().MeasureType)
+                {
+                    case "α":
+                        GrpPresence.Visible = false;
+                        GrpFacilityData.Visible = false;
+                        TabPresence.TabPages[2].Parent = null;
+                        TabPresence.TabPages[3].Parent = null;
+                        TabPresence.TabPages[3].Parent = null;
+                        break;
+                    case "β":
+                        GrpPresence.Visible = false;
+                        GrpFacilityData.Visible = false;
+                        TabPresence.TabPages[1].Parent = null;
+                        TabPresence.TabPages[3].Parent = null;
+                        TabPresence.TabPages[3].Parent = null;
+                        break;
+                    case "α/β":
+                        GrpPresence.Visible = false;
+                        GrpFacilityData.Visible = false;
+                        //TabPresence.TabPages[1].Parent = null;
+                        TabPresence.TabPages[4].Parent = null;
+                        TabPresence.TabPages[4].Parent = null;
+                        break;
+                    default:
+                        break;
+                }
             }
-        }
+
+        } 
+        #endregion
+
         #region 页面切换
         /// <summary>
         /// 页面切换
@@ -141,46 +169,88 @@ namespace HFM
         /// <param name="e"></param>
         private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (User.LandingUser.Role == 2)
+            if (User.LandingUser.Role != 1)
             {
+                switch (factoryParameter.GetParameter().MeasureType)
+                {
+                    case "α":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetAlphaData();
+                                break;
+                            case 2:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    case "β":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetBetaData();
+                                break;
+                            case 2:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    case "α/β":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetAlphaData();
+                                break;
+                            case 2:
+                                GetBetaData();
+                                break;
+                            case 3:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            else
+            {
+                //根据页面索引更新当前页面值
                 switch (TabPresence.SelectedIndex)
                 {
                     case 0:
                         GetProferenceData();
                         break;
                     case 1:
-                        GetBetaData();
+                        GetAlphaData();
                         break;
                     case 2:
+                        GetBetaData();
+                        break;
+                    case 3:
                         GetClothesData();
                         break;
-
+                    case 4:
+                        GetMainProferenceData();
+                        break;
+                    case 5:
+                        GetPortConfiguration();
+                        break;
+                    default:
+                        MessageBox.Show("选择有误，请重新选择");
+                        break;
                 }
-            }
-            //根据页面索引更新当前页面值
-            switch (TabPresence.SelectedIndex)
-            {
-                case 0:
-                    GetProferenceData();
-                    break;
-                case 1:
-                    GetAlphaData();
-                    break;
-                case 2:
-                    GetBetaData();
-                    break;
-                case 3:
-                    GetClothesData();
-                    break;
-                case 4:
-                    GetMainProferenceData();
-                    break;
-                case 5:
-                    GetPortConfiguration();
-                    break;
-                default:
-                    MessageBox.Show("选择有误，请重新选择");
-                    break;
+
             }
 
         } 
@@ -279,19 +349,28 @@ namespace HFM
             if (channellList[0].IsEnabled && channellList[1].IsEnabled)
             {
                 ChkHand.Checked = true;//手部
-                RdoDoubleHand.Checked = true;//双探测器
+                
             }
             else if (channellList[0].IsEnabled && channellList[1].IsEnabled==false)
             {
                 ChkHand.Checked = true;//手部
-                RdoSingleHand.Checked = true;//单探测器
+                
+            }
+            //判断单双探测器
+            if (factoryParameter.IsDoubleProbe==true)
+            {
+                RdoDoubleHand.Checked = true;//双探测器
             }
             else
             {
-                ChkHand.Checked = false;
-                RdoSingleHand.Checked = false;
-                RdoDoubleHand.Checked = false;
+                RdoSingleHand.Checked = true;//单探测器
             }
+            //else
+            //{
+            //    ChkHand.Checked = false;
+            //    RdoSingleHand.Checked = false;
+            //    RdoDoubleHand.Checked = false;
+            //}
             //判断是否启用脚步
             if (channellList[4].IsEnabled &&channellList[5].IsEnabled)
             {
@@ -321,15 +400,13 @@ namespace HFM
         {
 
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得α参数
-            probeParameters = probeParameter.GetParameter("α");
-            //列表按id排序
-            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
+            
 
             #region 核素选择
 
             //获得当前核素选择
             string nowNuclideName = nuclide.GetAlphaNuclideUser();//获得当前α核素名称
-            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();            
             efficiency = efficiencyParameter.GetParameter("α", nowNuclideName);//获得当前核素效率
             IList<RadioButton> button = new List<RadioButton>();//核素选择数组
             button.Add(RdoAlpha235);
@@ -349,22 +426,22 @@ namespace HFM
 
             #endregion
 
-            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
-            for (int i = 0; i < efficiency.Count; i++)
+            //按核素名称检索效率值
+            var eff = efficiency.First(x => x.NuclideName == nowNuclideName).Efficiency;
+            //获得所有Alpha系统参数(各类型的本底上限等参数)
+            probeParameters = probeParameter.GetParameter("α");
+            //把当前显示的效率值更换到该核素的效率值
+            foreach (var item in probeParameters)
             {
-                //根据channelID来匹配
-                for (int j = 0; j < probeParameters.Count; j++)
-                {
-                    if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
-                    {
-                        probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
-                        probeParameter.SetParameter(probeParameters[j]);//保存到数据库
-                    }
-                }
+                //根据通道id赋值当前效率值
+                item.Efficiency = efficiency.First(x => x.Channel.ChannelID == item.ProbeChannel.ChannelID).Efficiency;
             }
+                       
+            //列表按id排序
+            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
 
             #region α参数
-            
+
             DgvAlphaSet.Rows.Clear();
             if (_isEnglish == true)
             {
@@ -419,15 +496,14 @@ namespace HFM
         private void GetBetaData()
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得β参数
-            probeParameters = probeParameter.GetParameter("β");
-            //列表按id排序
-            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
+            
 
             #region 核素选择
 
             //获得当前核素选择
             string nowNuclideName = nuclide.GetBetaNuclideUser();//获得当前β核素名称
-            IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            //IList<EfficiencyParameter> efficiency = new List<EfficiencyParameter>();
+            IList<EfficiencyParameter> efficiency = new EfficiencyParameter().GetParameter();
             efficiency = efficiencyParameter.GetParameter("β", nowNuclideName);//获得当前核素效率
             IList<RadioButton> button = new List<RadioButton>();//核素选择数组
             button.Add(RdoBeta14);
@@ -453,21 +529,17 @@ namespace HFM
 
             #endregion
 
-            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
-            for (int i = 0; i < efficiency.Count; i++)
+            //按核素名称检索效率值
+            //efficiency = efficiency.Where(x=>x.NuclideName==nowNuclideName).ToList;
+            //获得所有beta系统参数(各类型的本底上限等参数)
+            probeParameters = probeParameter.GetParameter("β");
+            //把当前显示的效率值更换到该核素的效率值
+            foreach (var item in probeParameters)
             {
-                //根据channelID来匹配
-                for (int j = 0; j < probeParameters.Count; j++)
-                {
-                    if (probeParameters[j].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
-                    {
-                        probeParameters[j].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
-                        probeParameter.SetParameter(probeParameters[j]);//保存到数据库
-                    }
-                }
+                item.Efficiency = efficiency.First(x=>x.Channel.ChannelID==item.ProbeChannel.ChannelID).Efficiency;
             }
-
-
+            //列表按id排序
+            probeParameters = probeParameters.OrderBy(o => o.PreferenceID).ToList();
             #region β参数
             //清空列表
             DgvBetaSet.Rows.Clear();
@@ -563,20 +635,28 @@ namespace HFM
 
             #endregion
 
-            //把当前所选核素效率保存到ProbeParameter当前效率数据库中
-            for (int i = 0; i < efficiency.Count; i++)
+            ////把当前所选核素效率保存到ProbeParameter当前效率数据库中
+            //for (int i = 0; i < efficiency.Count; i++)
+            //{
+            //    //根据channelID来匹配
+
+            //    if (probeParameters[0].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
+            //    {
+            //        probeParameters[0].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
+            //        probeParameter.SetParameter(probeParameters[0]);//保存到数据库
+            //        probeParameter = probeParameters[0];
+            //    }
+
+            //}
+            //按核素名称检索效率值
+            var eff = efficiency.First(x => x.NuclideName == nowNuclideName).Efficiency;
+            //获得所有beta系统参数(各类型的本底上限等参数)
+            probeParameters = probeParameter.GetParameter("c");
+            //把当前显示的效率值更换到该核素的效率值
+            foreach (var item in probeParameters)
             {
-                //根据channelID来匹配
-
-                if (probeParameters[0].ProbeChannel.ChannelID == efficiency[i].Channel.ChannelID)
-                {
-                    probeParameters[0].Efficiency = efficiency[i].Efficiency;//把得到效率传送给当前效率
-                    probeParameter.SetParameter(probeParameters[0]);//保存到数据库
-                    probeParameter = probeParameters[0];
-                }
-
+                item.Efficiency = eff;
             }
-
             #region 衣物探头
 
             //system = system.GetParameter();//获得衣物离线自检时间
@@ -605,30 +685,32 @@ namespace HFM
             IList<ChannelParameter> channelParameters = new List<ChannelParameter>();//获得道盒参数
             channelParameters = channelParameter.GetParameter();
             //DgvMainPreferenceSet.Columns[0].DataPropertyName = Channel.ChannelName;
-            DgvMainPreferenceSet.AutoGenerateColumns = false;
-            DgvMainPreferenceSet.DataSource = channelParameters;
+            //DgvMainPreferenceSet.AutoGenerateColumns = false;
+            //DgvMainPreferenceSet.DataSource = channelParameters;
 
-            //清除所有行(因为每次切换页面都会增加相应的行)
-            // for (int i = 0; i < DgvMainPreferenceSet.Rows.Count; i++)
-            // {
-            //     DgvMainPreferenceSet.Rows.Remove(DgvMainPreferenceSet.Rows[i]);
-            //     i--;
-            // }
-            //DgvMainPreferenceSet.Rows.Clear();
-            ////选出所有设备
-            //for (int i = 0; i < channelParameters.Count; i++)
-            //{
-            //    int index = this.DgvMainPreferenceSet.Rows.Add();
-            //    DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
-            //    DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
-            //    DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
-            //    DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
-            //    DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
-            //    DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
-            //    DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
-            //    DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
-            //    DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
-            //}
+
+            DgvMainPreferenceSet.Rows.Clear();
+            //选出所有设备
+            for (int i = 0; i < channelParameters.Count; i++)
+            {
+                int index = this.DgvMainPreferenceSet.Rows.Add();
+                if (_isEnglish)
+                {
+                    DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName_English;
+                }
+                else
+                {
+                    DgvMainPreferenceSet.Rows[index].Cells[0].Value = channelParameters[i].Channel.ChannelName;
+                }
+                DgvMainPreferenceSet.Rows[index].Cells[1].Value = channelParameters[i].AlphaThreshold;
+                DgvMainPreferenceSet.Rows[index].Cells[2].Value = channelParameters[i].BetaThreshold;
+                DgvMainPreferenceSet.Rows[index].Cells[3].Value = channelParameters[i].PresetHV;
+                DgvMainPreferenceSet.Rows[index].Cells[4].Value = channelParameters[i].ADCFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[5].Value = channelParameters[i].DACFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[6].Value = channelParameters[i].HVFactor;
+                DgvMainPreferenceSet.Rows[index].Cells[7].Value = channelParameters[i].WorkTime;
+                DgvMainPreferenceSet.Rows[index].Cells[8].Value = channelParameters[i].HVRatio;
+            }
 
         }
         /// <summary>
@@ -677,7 +759,6 @@ namespace HFM
         }
         #endregion
         
-
         #region 串口通信
         /// <summary>
         /// 异步线程DoWork事件响应
@@ -975,7 +1056,7 @@ namespace HFM
         {
             #region 系统参数
             //首先获得默认参数,通过对原始数据赋值来实现更新
-            HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();
+            HFM.Components.SystemParameter system = new HFM.Components.SystemParameter().GetParameter();
             //system = system.GetParameter();
             system.SelfCheckTime = int.Parse(TxtSelfCheckTime.Text);
             system.SmoothingTime = Convert.ToInt32(TxtSmoothingTime.Text);
@@ -1030,28 +1111,29 @@ namespace HFM
             //手部启用
             if (ChkHand.Checked)
             {
-                //启用双探头
-                if (RdoSingleHand.Checked)
-                {
-                    channelBtnOk.SetEnabledByID(1, true);
-                    channelBtnOk.SetEnabledByID(2, false);
-                    channelBtnOk.SetEnabledByID(3, true);
-                    channelBtnOk.SetEnabledByID(4, false);
-                    //单探测器
-                    factoryParameterBtn.IsDoubleProbe = false;
-                }
-                else if(RdoDoubleHand.Checked)
-                {
-                    //根据类型全部启用首部探测器
-                    channelBtnOk.SetEnabledByType(0, true);
-                    //双探测器
-                    factoryParameterBtn.IsDoubleProbe = true;
-                    
-                }
+                channelBtnOk.SetEnabledByType(0, true);
             }
             else
             {
                 channelBtnOk.SetEnabledByType(0, false);
+            }
+            //启用单双探测器
+            if (RdoSingleHand.Checked)
+            {
+                //channelBtnOk.SetEnabledByID(1, true);
+                //channelBtnOk.SetEnabledByID(2, false);
+                //channelBtnOk.SetEnabledByID(3, true);
+                //channelBtnOk.SetEnabledByID(4, false);
+                //单探测器
+                factoryParameterBtn.IsDoubleProbe = false;
+            }
+            else if (RdoDoubleHand.Checked)
+            {
+                ////根据类型全部启用首部探测器
+                //channelBtnOk.SetEnabledByType(0, true);
+                //双探测器
+                factoryParameterBtn.IsDoubleProbe = true;
+
             }
             #endregion
 
@@ -1097,11 +1179,27 @@ namespace HFM
             }
             if (system.SetParameter(system) && factoryParameterBtn.SetParameter(factoryParameterBtn))
             {
-                MessageBox.Show("更新成功");
+                if (_isEnglish)
+                {
+                    MessageBox.Show("Update successful");
+                }
+                else
+                {
+                    MessageBox.Show("更新成功");
+                }
+                
             }
             else
             {
-                MessageBox.Show("更新失败");
+                if (_isEnglish)
+                {
+                    MessageBox.Show("Update failed");
+                }
+                else
+                {
+                    MessageBox.Show("更新失败");
+                }
+                
                 return;
             }
 
@@ -1134,7 +1232,6 @@ namespace HFM
         private void BtnAlphaOk_Click(object sender, EventArgs e)
         {
             //注：α参数和α核素选择顺序不可互换
-
             #region α核素选择
             string nuclidename = "";//修改核素选择
             IList<RadioButton> button = new List<RadioButton>();//核素选择数组
@@ -1152,25 +1249,30 @@ namespace HFM
                     break;
                 }
             }
-            
+
             #endregion
 
             #region α参数
+            int setDataCount = 0;//更新成功的信息条数
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//更新α参数
-            IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
+            IList<EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
+            ProbeParameter p = new ProbeParameter();
+            EfficiencyParameter efficiency = new EfficiencyParameter();
             for (int i = 0; i < DgvAlphaSet.RowCount; i++)
             {
-                float alarm_1= Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);//污染警报
+                float alarm_1 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);//污染警报
                 float alarm_2 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[4].Value);//高阶警报
-                ProbeParameter p = new ProbeParameter();
-                HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
-                efficiency.Channel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+
+
+                //efficiency.Channel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                efficiency.Channel = Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
                 efficiency.NuclideType = "α";
                 efficiency.NuclideName = nuclidename;
                 efficiency.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
-                efficiencyParameters.Add(efficiency);
+                //efficiencyParameters.Add(efficiency);
 
-                p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                p.ProbeChannel= Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
                 p.NuclideType = "α";
                 p.ProbeType = "闪烁体";
                 p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
@@ -1182,32 +1284,46 @@ namespace HFM
                 p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
                     p.ProbeChannel.ProbeArea);
                 p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
-                probeParameters.Add(p);
+                //probeParameters.Add(p);
+                if (efficiency.SetParameter(efficiency)==true && p.SetParameter(p)==true)
+                {
+                    setDataCount++;
+                }
             }
             #endregion
 
             #region 更新数据库
-            for (int i = 0; i < probeParameters.Count; i++)
+            
+            bool isUpDatanuclidename = false;//是否更新成功核素名称
+            string upDate="";
+            
+            if (nuclide.SetAlphaNuclideUser(nuclidename))
             {
-                bool k = new ProbeParameter().SetParameter(probeParameters[i]);
-                bool l = new HFM.Components.EfficiencyParameter().SetParameter(efficiencyParameters[i]);
-                if (k && l)
+                isUpDatanuclidename = true; //更新成功核素名称
+                if (isUpDatanuclidename=true)
                 {
-                }
-                else
-                {
-                    MessageBox.Show("更新失败");
-                    return;
+                    if (_isEnglish)
+                    {
+                        upDate = $"Currently selected nuclides are:{nuclidename}";
+                    }
+                    else
+                    {
+                        upDate = $"当前选择核素为:{nuclidename}";
+                    }
                 }
             }
-            if (new Nuclide().SetAlphaNuclideUser(nuclidename))
+            if (_isEnglish)
             {
-                MessageBox.Show("更新成功");
+                MessageBox.Show($"{setDataCount} update completed {upDate}");
             }
             else
             {
-                MessageBox.Show("更新失败");
+                MessageBox.Show($"更新完成{setDataCount}条信息 {upDate}");
             }
+            #endregion
+
+            #region 更新数据后重新读取数据
+            GetAlphaData();
             #endregion
         }
         /// <summary>
@@ -1258,58 +1374,77 @@ namespace HFM
             #endregion
 
             #region β参数
+            int setDataCount = 0;//更新成功的信息条数
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//更新β参数
             IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
+            ProbeParameter p = new ProbeParameter();
+            HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
             for (int i = 0; i < DgvBetaSet.RowCount; i++)
             {
                 float alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);//污染警报
                 float alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);//高阶警报
-                ProbeParameter p = new ProbeParameter();
-                HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
-                efficiency.Channel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                var listChannels= Channels.First(x => x.ChannelName == DgvBetaSet.Rows[i].Cells[0].Value.ToString()|| x.ChannelName_English== DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                //efficiency.Channel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                efficiency.Channel = listChannels;
                 efficiency.NuclideType = "β";
                 efficiency.NuclideName = nuclidename;
                 efficiency.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
-                efficiencyParameters.Add(efficiency);
+                //efficiencyParameters.Add(efficiency);
 
-                p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                //p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                p.ProbeChannel = listChannels;
                 p.NuclideType = "β";
                 p.ProbeType = "闪烁体";
                 p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
                 p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
                 //按测量单位转换成cps
-                p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
-                    p.ProbeChannel.ProbeArea);
+                p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,p.ProbeChannel.ProbeArea);
                 //按测量单位转换成cps
-                p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
-                    p.ProbeChannel.ProbeArea);
+                p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,p.ProbeChannel.ProbeArea);
                 p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
-                probeParameters.Add(p);
+                //probeParameters.Add(p);
+                if (efficiency.SetParameter(efficiency)&&p.SetParameter(p))
+                {
+                    setDataCount++;
+                }
             }
             #endregion
 
             #region 更新数据库
-            for (int i = 0; i < probeParameters.Count; i++)
+           
+            
+            bool isUpDatanuclidename = false;//是否更新成功核素名称
+            string upDate = "";
+            
+            if (nuclide.SetBetaNuclideUser(nuclidename))
             {
-                bool k = new ProbeParameter().SetParameter(probeParameters[i]);
-                bool l = new HFM.Components.EfficiencyParameter().SetParameter(efficiencyParameters[i]);
-                if (k || l)
+                isUpDatanuclidename = true; //更新成功核素名称
+                if (isUpDatanuclidename = true)
                 {
-                }
-                else
-                {
-                    MessageBox.Show("更新失败");
-                    return;
+                    if (_isEnglish)
+                    {
+                        upDate = $"Currently selected nuclides are:{nuclidename}";
+                    }
+                    else
+                    {
+                        upDate = $"当前选择核素为:{nuclidename}";
+                    }
                 }
             }
-            if (new Nuclide().SetBetaNuclideUser(nuclidename))
+            if (_isEnglish)
             {
-                MessageBox.Show("更新成功");
+                MessageBox.Show($"{setDataCount} update completed {upDate}");
             }
             else
             {
-                MessageBox.Show("更新失败");
+                MessageBox.Show($"更新完成{setDataCount}条信息 {upDate}");
             }
+            #endregion
+
+            #region 更新数据后重新读取数据
+
+            GetBetaData();
+
             #endregion
         }
         /// <summary>
@@ -1322,8 +1457,6 @@ namespace HFM
             //重新获得数据库数据
             GetBetaData();
         }
-
-
         #endregion
 
         #region 衣物探头界面
@@ -1671,6 +1804,11 @@ namespace HFM
             {
                 if (MessageBox.Show("Restart the program to apply the new configuration!", "Reminder", MessageBoxButtons.OK) == DialogResult.OK)
                 {
+                    _commPort.Close();
+                    if (backgroundWorker_Preference.IsBusy == true)
+                    {
+                        backgroundWorker_Preference.Dispose();
+                    }
                     Application.Restart();
                 }
             }
@@ -1678,6 +1816,11 @@ namespace HFM
             {
                 if (MessageBox.Show("重新启动程序以应用新配置！", "提醒", MessageBoxButtons.OK) == DialogResult.OK)
                 {
+                    _commPort.Close();
+                    if (backgroundWorker_Preference.IsBusy == true)
+                    {
+                        backgroundWorker_Preference.Dispose();
+                    }
                     Application.Restart();
                 }
             }
@@ -1690,7 +1833,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnPorRestoreDefault_Click(object sender, EventArgs e)
         {
-            TxtcommportSetPortNum.Text = "COM3";
+            TxtcommportSetPortNum.Text = "COM5";
             TxtcommportSetBaudRate.Text = "115200";
             TxtcommportSetDataBits.Text = "8";
             TxtcommportSetStopBits.Text = "1";
@@ -1929,6 +2072,138 @@ namespace HFM
         #endregion
 
         #endregion
+        
+        #region 单选按钮通用选择事件
+        /// <summary>
+        /// beta单选按钮通用点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdoBeta_CheckedChanged(object sender, EventArgs e)
+        {
+            #region β核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> buttonBeta = new List<RadioButton>();//核素选择数组
+            buttonBeta.Add(RdoBeta14);
+            buttonBeta.Add(RdoBeta58);
+            buttonBeta.Add(RdoBeta131);
+            buttonBeta.Add(RdoBeta204);
+            buttonBeta.Add(RdoBeta32);
+            buttonBeta.Add(RdoBeta60);
+            buttonBeta.Add(RdoBeta137);
+            buttonBeta.Add(RdoBetaDefine1);
+            buttonBeta.Add(RdoBeta36);
+            buttonBeta.Add(RdoBeta90);
+            buttonBeta.Add(RdoBeta192);
+            buttonBeta.Add(RdoBetaDefine2);
+            for (int i = 0; i < buttonBeta.Count; i++)
+            {
+                if (buttonBeta[i].Checked)
+                {
+                    nuclidename = buttonBeta[i].Text;
+                    break;
+                }
+            }
+            nuclide.SetBetaNuclideUser(nuclidename);
+            GetBetaData();
+            #endregion
+        }
+        /// <summary>
+        /// Alpha单选按钮通用点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdoAlpha_CheckedChanged(object sender, EventArgs e)
+        {
+            #region 核素选择
+
+            //获得当前核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> buttonAlpha = new List<RadioButton>();//核素选择数组
+            buttonAlpha.Add(RdoAlpha235);
+            buttonAlpha.Add(RdoAlpha239);
+            buttonAlpha.Add(RdoAlphaDefine1);
+            buttonAlpha.Add(RdoAlpha238);
+            buttonAlpha.Add(RdoAlpha241);
+            buttonAlpha.Add(RdoAlphaDefine2);
+            for (int i = 0; i < buttonAlpha.Count; i++)
+            {
+                if (buttonAlpha[i].Checked)
+                {
+                    nuclidename = buttonAlpha[i].Text;
+                    break;
+                }
+            }
+            nuclide.SetAlphaNuclideUser(nuclidename);
+            GetAlphaData();
+            #endregion
+        }
+
+        /// <summary>
+        /// 衣物单选按钮通用点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdoClothes_CheckedChanged(object sender, EventArgs e)
+        {
+            #region 核素选择
+
+            //获得当前核素选择
+            string nuclidename = "";//修改核素选择
+            IList<RadioButton> buttonFrisker = new List<RadioButton>();//核素选择数组
+            #region 添加核素
+            //α核素
+            buttonFrisker.Add(RdoClothesAlpha235);
+            buttonFrisker.Add(RdoClothesAlpha238);
+            buttonFrisker.Add(RdoClothesAlpha239);
+            buttonFrisker.Add(RdoClothesAlpha241);
+            buttonFrisker.Add(RdoClothesAlphaDefine1);
+            //β核素
+            buttonFrisker.Add(RdoClothesBeta14);
+            buttonFrisker.Add(RdoClothesBeta32);
+            buttonFrisker.Add(RdoClothesBeta36);
+            buttonFrisker.Add(RdoClothesBeta58);
+            buttonFrisker.Add(RdoClothesBeta60);
+            buttonFrisker.Add(RdoClothesBeta90);
+            buttonFrisker.Add(RdoClothesBeta131);
+            buttonFrisker.Add(RdoClothesBeta137);
+            buttonFrisker.Add(RdoClothesBeta192);
+            buttonFrisker.Add(RdoClothesBeta204);
+            buttonFrisker.Add(RdoClothesBetaDefine1);
+            #endregion
+            for (int i = 0; i < buttonFrisker.Count; i++)
+            {
+                if (buttonFrisker[i].Checked)
+                {
+                    nuclidename = buttonFrisker[i].Text;
+                    break;
+                }
+            }
+            nuclide.SetClothesNuclideUser(nuclidename);
+            GetClothesData();
+            #endregion
+        }
+        #endregion
+
+        #region 软件名称
+        /// <summary>
+        /// 软件名称下拉列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmbSoftName_DropDown(object sender, EventArgs e)
+        {
+            CmbSoftName.Items.Clear();
+            CmbSoftName.Items.Add("HFM100手脚表面污染监测仪");
+            CmbSoftName.Items.Add("HFM100TS手脚表面污染监测仪");
+            CmbSoftName.Items.Add("HM100手部表面污染监测仪");
+            CmbSoftName.Items.Add("HM100TS手部表面污染监测仪");
+            CmbSoftName.Items.Add("CRM100壁挂式污染监测仪");
+            CmbSoftName.Items.Add("FM100脚部表面污染监测仪");
+        }
+        #endregion
+
+        #region 窗口关闭事件
         /// <summary>
         /// 窗口关闭事件
         /// </summary>
@@ -1936,8 +2211,14 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmPreference_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (backgroundWorker_Preference.IsBusy == true)
+            {
+                backgroundWorker_Preference.Dispose();
+                Thread.Sleep(200);
+            }
             _commPort.Close();
-        }
-        
+            Thread.Sleep(200);
+        } 
+        #endregion
     }
 }

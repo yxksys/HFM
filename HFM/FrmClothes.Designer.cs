@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClothes));
             this.Txt = new System.Windows.Forms.Label();
-            this.LblBackground = new System.Windows.Forms.Label();
+            this.LblBackground_Clothes = new System.Windows.Forms.Label();
             this.LblMeasure = new System.Windows.Forms.Label();
             this.TxtBackgroundValue = new System.Windows.Forms.TextBox();
             this.TxtMeasureValue = new System.Windows.Forms.TextBox();
@@ -46,11 +46,11 @@
             resources.ApplyResources(this.Txt, "Txt");
             this.Txt.Name = "Txt";
             // 
-            // LblBackground
+            // LblBackground_Clothes
             // 
-            resources.ApplyResources(this.LblBackground, "LblBackground");
-            this.LblBackground.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LblBackground.Name = "LblBackground";
+            resources.ApplyResources(this.LblBackground_Clothes, "LblBackground_Clothes");
+            this.LblBackground_Clothes.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LblBackground_Clothes.Name = "LblBackground_Clothes";
             // 
             // LblMeasure
             // 
@@ -74,11 +74,11 @@
             // 
             // loadingCircle
             // 
-            resources.ApplyResources(this.loadingCircle, "loadingCircle");
             this.loadingCircle.Active = false;
             this.loadingCircle.BackColor = System.Drawing.Color.Transparent;
             this.loadingCircle.Color = System.Drawing.Color.Orange;
             this.loadingCircle.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircle, "loadingCircle");
             this.loadingCircle.Name = "loadingCircle";
             this.loadingCircle.NumberSpoke = 12;
             this.loadingCircle.OuterCircleRadius = 11;
@@ -122,7 +122,7 @@
             this.Controls.Add(this.TxtMeasureValue);
             this.Controls.Add(this.TxtBackgroundValue);
             this.Controls.Add(this.LblMeasure);
-            this.Controls.Add(this.LblBackground);
+            this.Controls.Add(this.LblBackground_Clothes);
             this.Controls.Add(this.Txt);
             this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.MaximizeBox = false;
@@ -138,7 +138,7 @@
         #endregion
 
         private System.Windows.Forms.Label Txt;
-        private System.Windows.Forms.Label LblBackground;
+        private System.Windows.Forms.Label LblBackground_Clothes;
         private System.Windows.Forms.Label LblMeasure;
         public System.Windows.Forms.TextBox TxtBackgroundValue;
         public System.Windows.Forms.TextBox TxtMeasureValue;

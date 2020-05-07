@@ -75,7 +75,7 @@
             this.TabCalibration.Location = new System.Drawing.Point(0, 0);
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(991, 900);
+            this.TabCalibration.Size = new System.Drawing.Size(1008, 900);
             this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
@@ -85,7 +85,7 @@
             this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
             this.TabpageCalibration.Name = "TabpageCalibration";
             this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(983, 867);
+            this.TabpageCalibration.Size = new System.Drawing.Size(1000, 867);
             this.TabpageCalibration.TabIndex = 0;
             this.TabpageCalibration.Text = "仪器刻度";
             // 
@@ -346,6 +346,7 @@
             this.TxtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.TxtResult.Location = new System.Drawing.Point(157, 108);
             this.TxtResult.Name = "TxtResult";
+            this.TxtResult.ReadOnly = true;
             this.TxtResult.Size = new System.Drawing.Size(806, 29);
             this.TxtResult.TabIndex = 5;
             // 
@@ -410,7 +411,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1025, 729);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";

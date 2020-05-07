@@ -471,7 +471,9 @@ namespace HFM.Components
                     convertedData = data / 60;
                     break;
                 case "Bq"://最终测量计数平均值(Bq) = 200 * 计算平均值(cps) /探测效率
-                    convertedData = data / efficiency * 200;
+                    convertedData = data * efficiency / 200;
+                    
+                    //convertedData = 200 * data / efficiency;//cps 转bq
                     break;
                 case "Bq/cm2"://最终测量计数平均值(Bq/cm2) = 200 * 计算平均值(cps) /探测效率/该通道测量面积
                     //convertedData = 200 * data / efficiency / proberArea;
@@ -508,5 +510,21 @@ namespace HFM.Components
             return controls;
         }
         #endregion
+        #region 两个对象之间进行拷贝
+        public static void Clone(object objSource,object objDetection)
+        {
+            Type typeSource = objSource.GetType();
+            Type typeDetection = objDetection.GetType();
+            if(typeSource.Equals(typeDetection))
+            {
+                foreach(System.Reflection.PropertyInfo p in typeSource.GetProperties())
+                {
+                    System.Reflection.PropertyInfo p1=typeDetection.GetProperty(p.Name.ToString());
+                    p1.SetValue(objDetection, p.GetValue(objSource));
+                }
+            }
+        }
+        #endregion
+
     }
 }

@@ -117,4 +117,460 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BtnThree.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BtnThree.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BtnBackspace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 245</value>
+  </data>
+  <data name="&gt;&gt;BtnNine.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;BtnThree.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;BtnBackspace.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;LblLetter.Name" xml:space="preserve">
+    <value>LblLetter</value>
+  </data>
+  <data name="BtnZero.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;BtnEight.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="$this.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 4</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="&gt;&gt;LblLetter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnSeven.Name" xml:space="preserve">
+    <value>BtnSeven</value>
+  </data>
+  <data name="&gt;&gt;BtnBackspace.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BtnOne.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
+  </data>
+  <data name="BtnFour.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="BtnEnter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>206, 178</value>
+  </data>
+  <data name="BtnSeven.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 162</value>
+  </data>
+  <data name="BtnEight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 162</value>
+  </data>
+  <data name="&gt;&gt;BtnThree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnZero.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnFive.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="BtnNine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 162</value>
+  </data>
+  <data name="BtnTwo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="&gt;&gt;BtnFour.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="BtnNine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnFive.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Keyboard</value>
+  </data>
+  <data name="BtnBackspace.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnFive.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="BtnDot.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnFive.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 83</value>
+  </data>
+  <data name="BtnNine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="&gt;&gt;BtnEnter.Name" xml:space="preserve">
+    <value>BtnEnter</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="&gt;&gt;BtnThree.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BtnOne.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;BtnNine.Name" xml:space="preserve">
+    <value>BtnNine</value>
+  </data>
+  <data name="&gt;&gt;BtnTwo.Name" xml:space="preserve">
+    <value>BtnTwo</value>
+  </data>
+  <data name="&gt;&gt;BtnFour.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LblLetter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 200.25pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;BtnDot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnSix.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="BtnThree.Text" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;BtnOne.Name" xml:space="preserve">
+    <value>BtnOne</value>
+  </data>
+  <data name="BtnFour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="&gt;&gt;BtnEight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnEight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnZero.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;BtnTwo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BtnZero.Location" type="System.Drawing.Point, System.Drawing">
+    <value>206, 4</value>
+  </data>
+  <data name="&gt;&gt;BtnEight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BtnOne.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnDot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnEight.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BtnEnter.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BtnSeven.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BtnSeven.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="LblLetter.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LblLetter.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;BtnSix.Name" xml:space="preserve">
+    <value>BtnSix</value>
+  </data>
+  <data name="&gt;&gt;BtnZero.Name" xml:space="preserve">
+    <value>BtnZero</value>
+  </data>
+  <data name="BtnDot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="BtnBackspace.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="BtnEight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="BtnTwo.Text" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;BtnNine.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmKeyIn</value>
+  </data>
+  <data name="BtnFive.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnEnter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15.75pt</value>
+  </data>
+  <data name="BtnEnter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnDot.Text" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="BtnSeven.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnDot.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="BtnOne.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="LblLetter.Text" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="&gt;&gt;BtnFive.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnEight.Name" xml:space="preserve">
+    <value>BtnEight</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="BtnSix.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 83</value>
+  </data>
+  <data name="BtnFour.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnFive.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnZero.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="BtnBackspace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 57</value>
+  </data>
+  <data name="&gt;&gt;BtnSix.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnEight.Text" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="BtnSix.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnEnter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;BtnOne.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BtnSeven.Text" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="BtnSeven.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="&gt;&gt;BtnFive.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnFive.Name" xml:space="preserve">
+    <value>BtnFive</value>
+  </data>
+  <data name="&gt;&gt;BtnEnter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblLetter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnEight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnNine.Text" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;BtnZero.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="BtnFour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 83</value>
+  </data>
+  <data name="BtnDot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>206, 90</value>
+  </data>
+  <data name="&gt;&gt;BtnZero.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BtnSix.Text" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="BtnTwo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="&gt;&gt;BtnTwo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnBackspace.Text" xml:space="preserve">
+    <value>Backspace</value>
+  </data>
+  <data name="BtnBackspace.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 18pt</value>
+  </data>
+  <data name="BtnThree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="&gt;&gt;BtnZero.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;BtnFour.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BtnSeven.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnFour.Name" xml:space="preserve">
+    <value>BtnFour</value>
+  </data>
+  <data name="&gt;&gt;LblLetter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblLetter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BtnSix.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="BtnOne.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BtnNine.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BtnSix.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BtnTwo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 4</value>
+  </data>
+  <data name="&gt;&gt;BtnEnter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnTwo.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="BtnTwo.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="BtnSix.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnThree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 4</value>
+  </data>
+  <data name="LblLetter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 267</value>
+  </data>
+  <data name="&gt;&gt;BtnNine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LblLetter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 9</value>
+  </data>
+  <data name="&gt;&gt;BtnSeven.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnOne.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnFour.Text" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="BtnSix.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BtnOne.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;BtnDot.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;BtnThree.Name" xml:space="preserve">
+    <value>BtnThree</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>276, 310</value>
+  </data>
+  <data name="BtnTwo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnThree.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnOne.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BtnBackspace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnDot.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnBackspace.Name" xml:space="preserve">
+    <value>BtnBackspace</value>
+  </data>
+  <data name="BtnEnter.Text" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="&gt;&gt;BtnDot.Name" xml:space="preserve">
+    <value>BtnDot</value>
+  </data>
+  <data name="BtnNine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnFour.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="&gt;&gt;BtnSeven.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;BtnFive.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="BtnEnter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 124</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

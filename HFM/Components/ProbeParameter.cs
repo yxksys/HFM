@@ -2,11 +2,11 @@
  * ________________________________________________________________________________ 
  *
  *  描述：
- *  作者：邢家宁
+ *  作者：邢家宁 杨旭锴
  *  版本：
  *  创建时间：2020/2/13
  *  类名：探测器类型警报及效率类
- *  
+ *  更新修改:杨旭锴
  *  Copyright (C) 2020 TIT All rights reserved.
  *_________________________________________________________________________________
 */
@@ -34,7 +34,7 @@ namespace HFM.Components
         private const string SQL_UPDATE_PROBEPARAMETER = "UPDATE HFM_Preference SET ProbeType = @ProbeType,NuclideType = @NuclideType," +
                                                          "ChannelID = @ChannelID,HBackground = @HBackground,LBackground = @LBackground," +
                                                          "Alarm_1 = @Alarm_1,Alarm_2 = @Alarm_2,Efficiency = @Efficiency WHERE" +
-                                                         " NuclideType = @NuclideType AND ChannelID=@ChannelID";
+                                                         " NuclideType = @NuclideType AND ChannelID=@ChannelID";        
         private const string SQL_SELECCT_PROBERPARAMETER_BY_CHANNELID_ADN_NUCLIDETYPE = "SELECT a.ChannelID,NuclideType,PreferenceID,HBackground,LBackground,Alarm_1,Alarm_2,Efficiency," +
                                                          " ProbeType,ChannelName,ChannelName_English,ProbeArea," +
                                                          "Status,IsEnabled FROM HFM_Preference a INNER JOIN HFM_DIC_Channel b ON a.ChannelID=b.ChannelID " +

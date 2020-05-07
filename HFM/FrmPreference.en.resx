@@ -119,61 +119,61 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ChkHand.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="ChkHand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 51</value>
+    <value>57, 51</value>
   </data>
   <data name="ChkHand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 23</value>
+    <value>67, 24</value>
   </data>
   <data name="ChkHand.Text" xml:space="preserve">
     <value>Hand</value>
   </data>
   <data name="RdoDoubleHand.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoDoubleHand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>317, 50</value>
+    <value>306, 50</value>
   </data>
   <data name="RdoDoubleHand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 23</value>
+    <value>117, 24</value>
   </data>
   <data name="RdoDoubleHand.Text" xml:space="preserve">
     <value>DoubleHand</value>
   </data>
   <data name="RdoSingleHand.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoSingleHand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>177, 50</value>
+    <value>166, 50</value>
   </data>
   <data name="RdoSingleHand.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>110, 24</value>
   </data>
   <data name="RdoSingleHand.Text" xml:space="preserve">
     <value>SingleHand</value>
   </data>
   <data name="ChkClothes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="ChkClothes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>566, 51</value>
+    <value>555, 51</value>
   </data>
   <data name="ChkClothes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 23</value>
+    <value>76, 24</value>
   </data>
   <data name="ChkClothes.Text" xml:space="preserve">
     <value>Frisker</value>
   </data>
   <data name="ChkFoot.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="ChkFoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 51</value>
+    <value>446, 51</value>
   </data>
   <data name="ChkFoot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 23</value>
+    <value>61, 24</value>
   </data>
   <data name="ChkFoot.Text" xml:space="preserve">
     <value>Foot</value>
@@ -185,10 +185,10 @@
     <value>550, 56</value>
   </data>
   <data name="CmbUnclideType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>836, 56</value>
+    <value>844, 57</value>
   </data>
   <data name="LblUnclideType.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblUnclideType.Location" type="System.Drawing.Point, System.Drawing">
     <value>795, 59</value>
@@ -197,10 +197,10 @@
     <value>Type</value>
   </data>
   <data name="LblSoftName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblSoftName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>450, 59</value>
+    <value>482, 58</value>
   </data>
   <data name="LblSoftName.Text" xml:space="preserve">
     <value>Model</value>
@@ -209,10 +209,10 @@
     <value>318, 54</value>
   </data>
   <data name="LblInstrumentNum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblInstrumentNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>252, 59</value>
+    <value>275, 58</value>
   </data>
   <data name="LblInstrumentNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 21</value>
@@ -224,10 +224,10 @@
     <value>127, 54</value>
   </data>
   <data name="LblSmoothingFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblSmoothingFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 59</value>
+    <value>35, 56</value>
   </data>
   <data name="LblSmoothingFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 21</value>
@@ -238,41 +238,47 @@
   <data name="GrpFacilityData.Text" xml:space="preserve">
     <value>Factory Parameter</value>
   </data>
+  <data name="BtnPreferenceNo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt, style=Bold</value>
+  </data>
   <data name="BtnPreferenceNo.Text" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="BtnPreferenceOk.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt, style=Bold</value>
   </data>
   <data name="BtnPreferenceOk.Text" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="TxtRightFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>344, 214</value>
+    <value>368, 214</value>
   </data>
   <data name="TxtRightOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>344, 133</value>
+    <value>368, 133</value>
   </data>
   <data name="TxtLeftOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>344, 52</value>
+    <value>368, 52</value>
   </data>
   <data name="TxtCloseProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 295</value>
+    <value>140, 295</value>
   </data>
   <data name="TxtLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 214</value>
+    <value>141, 214</value>
   </data>
   <data name="TxtRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 133</value>
+    <value>141, 133</value>
   </data>
   <data name="TxtLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 52</value>
+    <value>141, 52</value>
   </data>
   <data name="LblRightFootProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblRightFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 217</value>
+    <value>239, 217</value>
   </data>
   <data name="LblRightFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 21</value>
+    <value>103, 21</value>
   </data>
   <data name="LblRightFootProbeArea.Text" xml:space="preserve">
     <value>Right Foot</value>
@@ -281,17 +287,17 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblRightOutProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="LblRightOutProbeArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="LblRightOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 137</value>
+    <value>239, 137</value>
   </data>
   <data name="LblRightOutProbeArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 21</value>
+    <value>103, 21</value>
   </data>
   <data name="LblRightOutProbeArea.Text" xml:space="preserve">
     <value>Right Hand Back</value>
@@ -300,13 +306,13 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblLeftOutProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblLeftOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 57</value>
+    <value>243, 57</value>
   </data>
   <data name="LblLeftOutProbeArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 21</value>
+    <value>99, 21</value>
   </data>
   <data name="LblLeftOutProbeArea.Text" xml:space="preserve">
     <value>Left Hand Back</value>
@@ -315,10 +321,10 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblClothesProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothesProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 297</value>
+    <value>36, 297</value>
   </data>
   <data name="LblClothesProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -330,10 +336,10 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblLeftFootProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 217</value>
+    <value>36, 217</value>
   </data>
   <data name="LblLeftFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -345,10 +351,10 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblRightInProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 137</value>
+    <value>23, 137</value>
   </data>
   <data name="LblRightInProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 21</value>
@@ -360,13 +366,13 @@
     <value>MiddleRight</value>
   </data>
   <data name="LblLeftInProbeArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblLeftInProbeArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="LblLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 57</value>
+    <value>36, 57</value>
   </data>
   <data name="LblLeftInProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -380,11 +386,14 @@
   <data name="GrpPreferenceArea.Text" xml:space="preserve">
     <value>Probe Area /cm²</value>
   </data>
+  <data name="LblBKGUpdate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblBKGUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 290</value>
+    <value>37, 290</value>
   </data>
   <data name="LblBKGUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>154, 21</value>
   </data>
   <data name="LblBKGUpdate.Text" xml:space="preserve">
     <value>BKG Update(count)</value>
@@ -392,14 +401,17 @@
   <data name="LblBKGUpdate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblAlarmTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblAlarmTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="LblAlarmTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 241</value>
+    <value>37, 241</value>
   </data>
   <data name="LblAlarmTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>154, 21</value>
   </data>
   <data name="LblAlarmTime.Text" xml:space="preserve">
     <value>Alarm Time(s)</value>
@@ -407,11 +419,14 @@
   <data name="LblAlarmTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblMeasurementUnit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblMeasurementUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 192</value>
+    <value>37, 192</value>
   </data>
   <data name="LblMeasurementUnit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>154, 21</value>
   </data>
   <data name="LblMeasurementUnit.Text" xml:space="preserve">
     <value>Measurement Unit</value>
@@ -419,11 +434,14 @@
   <data name="LblMeasurementUnit.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblMeasuringTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblMeasuringTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 144</value>
+    <value>37, 144</value>
   </data>
   <data name="LblMeasuringTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>154, 21</value>
   </data>
   <data name="LblMeasuringTime.Text" xml:space="preserve">
     <value>Measuring Time(s)</value>
@@ -431,11 +449,14 @@
   <data name="LblMeasuringTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblSmoothingTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblSmoothingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 97</value>
+    <value>37, 97</value>
   </data>
   <data name="LblSmoothingTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>154, 21</value>
   </data>
   <data name="LblSmoothingTime.Text" xml:space="preserve">
     <value>Smoothing Time(s)</value>
@@ -443,11 +464,14 @@
   <data name="LblSmoothingTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblSelfCheckTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblSelfCheckTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 47</value>
+    <value>37, 47</value>
   </data>
   <data name="LblSelfCheckTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 21</value>
+    <value>154, 21</value>
   </data>
   <data name="LblSelfCheckTime.Text" xml:space="preserve">
     <value>Self-check Time(s)</value>
@@ -504,11 +528,53 @@
   <data name="TxtAlphaEfficiency.Width" type="System.Int32, mscorlib">
     <value>147</value>
   </data>
+  <data name="BtnAlphaNo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 70</value>
+  </data>
   <data name="BtnAlphaNo.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="BtnAlphaOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 63</value>
+  </data>
   <data name="BtnAlphaOk.Text" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="RdoAlphaDefine2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="RdoAlphaDefine2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="RdoAlpha241.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="RdoAlpha241.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 24</value>
+  </data>
+  <data name="RdoAlphaDefine1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="RdoAlphaDefine1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="RdoAlpha238.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="RdoAlpha238.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 24</value>
+  </data>
+  <data name="RdoAlpha239.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="RdoAlpha239.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 24</value>
+  </data>
+  <data name="RdoAlpha235.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="RdoAlpha235.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
   </data>
   <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
     <value>Alpha nuclide selection</value>
@@ -549,47 +615,137 @@
   <data name="DgvBetaSet.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>None</value>
   </data>
+  <data name="BtnBetaNo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="BtnBetaNo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 70</value>
+  </data>
   <data name="BtnBetaNo.Text" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="BtnBetaOk.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="BtnBetaOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 66</value>
   </data>
   <data name="BtnBetaOk.Text" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="RdoBetaDefine2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="RdoBetaDefine2.Location" type="System.Drawing.Point, System.Drawing">
     <value>488, 174</value>
+  </data>
+  <data name="RdoBetaDefine2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="RdoBeta192.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta192.Location" type="System.Drawing.Point, System.Drawing">
     <value>335, 174</value>
   </data>
+  <data name="RdoBeta192.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 24</value>
+  </data>
+  <data name="RdoBeta90.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="RdoBeta90.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 174</value>
+  </data>
+  <data name="RdoBeta90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 24</value>
+  </data>
+  <data name="RdoBeta36.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta36.Location" type="System.Drawing.Point, System.Drawing">
     <value>36, 174</value>
   </data>
+  <data name="RdoBeta36.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="RdoBetaDefine1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="RdoBetaDefine1.Location" type="System.Drawing.Point, System.Drawing">
     <value>488, 118</value>
+  </data>
+  <data name="RdoBetaDefine1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="RdoBeta137.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta137.Location" type="System.Drawing.Point, System.Drawing">
     <value>335, 118</value>
   </data>
+  <data name="RdoBeta137.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 24</value>
+  </data>
+  <data name="RdoBeta60.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="RdoBeta60.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 118</value>
+  </data>
+  <data name="RdoBeta60.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 24</value>
+  </data>
+  <data name="RdoBeta32.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta32.Location" type="System.Drawing.Point, System.Drawing">
     <value>36, 118</value>
   </data>
+  <data name="RdoBeta32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 24</value>
+  </data>
+  <data name="RdoBeta204.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="RdoBeta204.Location" type="System.Drawing.Point, System.Drawing">
     <value>488, 62</value>
+  </data>
+  <data name="RdoBeta204.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 24</value>
+  </data>
+  <data name="RdoBeta204.Text" xml:space="preserve">
+    <value>Tl-240</value>
+  </data>
+  <data name="RdoBeta131.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta131.Location" type="System.Drawing.Point, System.Drawing">
     <value>335, 62</value>
   </data>
+  <data name="RdoBeta131.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 24</value>
+  </data>
+  <data name="RdoBeta131.Text" xml:space="preserve">
+    <value>I-131</value>
+  </data>
+  <data name="RdoBeta58.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="RdoBeta58.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 62</value>
   </data>
+  <data name="RdoBeta58.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 24</value>
+  </data>
+  <data name="RdoBeta14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="RdoBeta14.Location" type="System.Drawing.Point, System.Drawing">
     <value>36, 62</value>
+  </data>
+  <data name="RdoBeta14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 24</value>
   </data>
   <data name="GrpBetaNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
     <value>28, 342</value>
@@ -603,116 +759,122 @@
   <data name="β参数.Text" xml:space="preserve">
     <value>Beta Parameter</value>
   </data>
+  <data name="BtnClothesNo.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BtnClothesOk.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="RdoClothesBetaDefine1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBetaDefine1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 23</value>
+    <value>95, 24</value>
   </data>
   <data name="RdoClothesBeta192.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta192.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
+    <value>69, 24</value>
   </data>
   <data name="RdoClothesBeta90.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta90.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 23</value>
+    <value>66, 24</value>
   </data>
   <data name="RdoClothesBeta36.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta36.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 23</value>
+    <value>64, 24</value>
   </data>
   <data name="RdoClothesBeta137.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta137.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 23</value>
+    <value>78, 24</value>
   </data>
   <data name="RdoClothesBeta60.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta60.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
+    <value>70, 24</value>
   </data>
   <data name="RdoClothesBeta32.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 23</value>
+    <value>60, 24</value>
   </data>
   <data name="RdoClothesBeta204.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta204.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 23</value>
+    <value>71, 24</value>
   </data>
   <data name="RdoClothesBeta131.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta131.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 23</value>
+    <value>64, 24</value>
   </data>
   <data name="RdoClothesBeta58.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta58.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 23</value>
+    <value>70, 24</value>
   </data>
   <data name="RdoClothesBeta14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 23</value>
+    <value>61, 24</value>
   </data>
   <data name="RdoClothesAlphaDefine1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesAlphaDefine1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 23</value>
+    <value>95, 24</value>
   </data>
   <data name="RdoClothesAlpha241.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesAlpha241.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 23</value>
+    <value>83, 24</value>
   </data>
   <data name="RdoClothesAlpha238.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesAlpha238.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 23</value>
+    <value>78, 24</value>
   </data>
   <data name="RdoClothesAlpha239.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesAlpha239.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 23</value>
+    <value>78, 24</value>
   </data>
   <data name="RdoClothesAlpha235.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesAlpha235.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 23</value>
+    <value>71, 24</value>
   </data>
   <data name="LblClothesBetaOrClothes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothesBetaOrClothes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 19</value>
+    <value>162, 20</value>
   </data>
   <data name="LblClothesBetaOrClothes.Text" xml:space="preserve">
     <value>Beta / gamma nuclide</value>
   </data>
   <data name="LblClothesAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothesAlpha.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 19</value>
+    <value>104, 20</value>
   </data>
   <data name="LblClothesAlpha.Text" xml:space="preserve">
     <value>Alpha nuclide</value>
@@ -722,6 +884,9 @@
   </data>
   <data name="TxtClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 454</value>
+  </data>
+  <data name="LblClothOfflineTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>51, 456</value>
@@ -750,6 +915,9 @@
   <data name="TxtClothesHBackground.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 55</value>
   </data>
+  <data name="LblClothesEfficiency.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblClothesEfficiency.Location" type="System.Drawing.Point, System.Drawing">
     <value>51, 374</value>
   </data>
@@ -762,11 +930,14 @@
   <data name="LblClothesEfficiency.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblClothesAlarm_2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblClothesAlarm_2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 294</value>
+    <value>39, 294</value>
   </data>
   <data name="LblClothesAlarm_2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 19</value>
+    <value>167, 19</value>
   </data>
   <data name="LblClothesAlarm_2.Text" xml:space="preserve">
     <value>High Level Alarm(cps)</value>
@@ -774,11 +945,14 @@
   <data name="LblClothesAlarm_2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblClothesAlarm_1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblClothesAlarm_1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 213</value>
+    <value>35, 213</value>
   </data>
   <data name="LblClothesAlarm_1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 19</value>
+    <value>171, 19</value>
   </data>
   <data name="LblClothesAlarm_1.Text" xml:space="preserve">
     <value>Alarm Threshold(cps)</value>
@@ -786,11 +960,14 @@
   <data name="LblClothesAlarm_1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblClothesLBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblClothesLBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 136</value>
+    <value>31, 136</value>
   </data>
   <data name="LblClothesLBackground.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 19</value>
+    <value>175, 19</value>
   </data>
   <data name="LblClothesLBackground.Text" xml:space="preserve">
     <value>Low Background(cps)</value>
@@ -798,11 +975,14 @@
   <data name="LblClothesLBackground.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="LblClothesHBackground.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LblClothesHBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 60</value>
+    <value>27, 60</value>
   </data>
   <data name="LblClothesHBackground.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 19</value>
+    <value>179, 19</value>
   </data>
   <data name="LblClothesHBackground.Text" xml:space="preserve">
     <value>High Background(cps)</value>
@@ -818,6 +998,9 @@
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 19</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 20</value>
@@ -855,6 +1038,9 @@
   <data name="TxtMainPreferenceHVRatio.HeaderText" xml:space="preserve">
     <value>HVRatio</value>
   </data>
+  <data name="DgvMainPreferenceSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 55</value>
+  </data>
   <data name="BtnMainPreferenceWrite.Text" xml:space="preserve">
     <value>Write</value>
   </data>
@@ -874,10 +1060,10 @@
     <value>266, 232</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 234</value>
+    <value>189, 234</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>IsEnabled</value>
@@ -901,7 +1087,7 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportParity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportParity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -910,7 +1096,7 @@
     <value>199, 148</value>
   </data>
   <data name="LabcommportSetOfReportParity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 19</value>
+    <value>48, 20</value>
   </data>
   <data name="LabcommportSetOfReportParity.Text" xml:space="preserve">
     <value>Parity</value>
@@ -919,7 +1105,7 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -928,7 +1114,7 @@
     <value>198, 57</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 19</value>
+    <value>70, 20</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.Text" xml:space="preserve">
     <value>StopBits</value>
@@ -937,7 +1123,7 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -946,7 +1132,7 @@
     <value>21, 232</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 19</value>
+    <value>71, 20</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.Text" xml:space="preserve">
     <value>DataBits</value>
@@ -955,7 +1141,7 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -964,7 +1150,7 @@
     <value>21, 140</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 19</value>
+    <value>82, 20</value>
   </data>
   <data name="LabcommportSetOfReportBaudRate.Text" xml:space="preserve">
     <value>BaudRate</value>
@@ -973,7 +1159,7 @@
     <value>True</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -982,7 +1168,7 @@
     <value>21, 58</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 19</value>
+    <value>71, 20</value>
   </data>
   <data name="LabcommportSetOfReportPortNum.Text" xml:space="preserve">
     <value>PortNum</value>
@@ -997,70 +1183,70 @@
     <value>257, 53</value>
   </data>
   <data name="TxtcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 221</value>
+    <value>105, 221</value>
   </data>
   <data name="TxtcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 134</value>
+    <value>105, 134</value>
   </data>
   <data name="TxtcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 54</value>
+    <value>105, 54</value>
   </data>
   <data name="LabcommportSetParity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
     <value>190, 138</value>
   </data>
   <data name="LabcommportSetParity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 19</value>
+    <value>48, 20</value>
   </data>
   <data name="LabcommportSetParity.Text" xml:space="preserve">
     <value>Parity</value>
   </data>
   <data name="LabcommportSetStopBits.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetStopBits.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 56</value>
   </data>
   <data name="LabcommportSetStopBits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 19</value>
+    <value>70, 20</value>
   </data>
   <data name="LabcommportSetStopBits.Text" xml:space="preserve">
     <value>StopBits</value>
   </data>
   <data name="LabcommportSetDataBits.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 224</value>
   </data>
   <data name="LabcommportSetDataBits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 19</value>
+    <value>71, 20</value>
   </data>
   <data name="LabcommportSetDataBits.Text" xml:space="preserve">
     <value>DataBits</value>
   </data>
   <data name="LabcommportSetBaudRate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 141</value>
   </data>
   <data name="LabcommportSetBaudRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 19</value>
+    <value>82, 20</value>
   </data>
   <data name="LabcommportSetBaudRate.Text" xml:space="preserve">
     <value>BaudRate</value>
   </data>
   <data name="LabcommportSetPortNum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 56</value>
   </data>
   <data name="LabcommportSetPortNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 19</value>
+    <value>71, 20</value>
   </data>
   <data name="LabcommportSetPortNum.Text" xml:space="preserve">
     <value>PortNum</value>
@@ -1068,11 +1254,20 @@
   <data name="GrpcommportSet.Text" xml:space="preserve">
     <value>Control board port configuration</value>
   </data>
+  <data name="BtnPorRestoreDefault.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
+  </data>
   <data name="BtnPorRestoreDefault.Text" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="BtnCancel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
+  </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="BtnPorSave.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15pt</value>
   </data>
   <data name="BtnPorSave.Text" xml:space="preserve">
     <value>Save</value>
@@ -1080,11 +1275,14 @@
   <data name="TxtReportingTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>842, 50</value>
   </data>
+  <data name="LabReportingTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
   <data name="LabReportingTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>722, 54</value>
   </data>
   <data name="LabReportingTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 16</value>
+    <value>117, 20</value>
   </data>
   <data name="LabReportingTime.Text" xml:space="preserve">
     <value>Reporting Time</value>
@@ -1096,7 +1294,7 @@
     <value>False</value>
   </data>
   <data name="LblDeviceAddress.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblDeviceAddress.Location" type="System.Drawing.Point, System.Drawing">
     <value>549, 54</value>
@@ -1105,7 +1303,7 @@
     <value>Device address</value>
   </data>
   <data name="ChkIsConnectedAuto.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="ChkIsConnectedAuto.Location" type="System.Drawing.Point, System.Drawing">
     <value>435, 54</value>
@@ -1123,7 +1321,7 @@
     <value>40, 26</value>
   </data>
   <data name="LblPortNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>331, 56</value>
@@ -1147,13 +1345,13 @@
     <value>True</value>
   </data>
   <data name="LblIPAddress.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri Light, 12pt</value>
+    <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblIPAddress.Location" type="System.Drawing.Point, System.Drawing">
     <value>42, 56</value>
   </data>
   <data name="LblIPAddress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 19</value>
+    <value>85, 20</value>
   </data>
   <data name="LblIPAddress.Text" xml:space="preserve">
     <value>IP address</value>

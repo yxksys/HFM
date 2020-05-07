@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPreference));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpPresence = new System.Windows.Forms.GroupBox();
@@ -334,6 +334,7 @@
             this.CmbSoftName.Items.AddRange(new object[] {
             resources.GetString("CmbSoftName.Items")});
             this.CmbSoftName.Name = "CmbSoftName";
+            this.CmbSoftName.DropDown += new System.EventHandler(this.CmbSoftName_DropDown);
             // 
             // CmbUnclideType
             // 
@@ -605,17 +606,17 @@
             // 
             this.DgvAlphaSet.AllowUserToAddRows = false;
             this.DgvAlphaSet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.DgvAlphaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Silver;
+            this.DgvAlphaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvAlphaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.DgvAlphaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvAlphaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtAlphaChannelName,
@@ -628,8 +629,8 @@
             resources.ApplyResources(this.DgvAlphaSet, "DgvAlphaSet");
             this.DgvAlphaSet.Name = "DgvAlphaSet";
             this.DgvAlphaSet.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DgvAlphaSet.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DgvAlphaSet.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.DgvAlphaSet.RowTemplate.Height = 27;
             this.DgvAlphaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAlphaSet_CellClick);
             // 
@@ -701,6 +702,7 @@
             this.RdoAlphaDefine2.Name = "RdoAlphaDefine2";
             this.RdoAlphaDefine2.TabStop = true;
             this.RdoAlphaDefine2.UseVisualStyleBackColor = true;
+            this.RdoAlphaDefine2.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlpha241
             // 
@@ -708,6 +710,7 @@
             this.RdoAlpha241.Name = "RdoAlpha241";
             this.RdoAlpha241.TabStop = true;
             this.RdoAlpha241.UseVisualStyleBackColor = true;
+            this.RdoAlpha241.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlphaDefine1
             // 
@@ -715,6 +718,7 @@
             this.RdoAlphaDefine1.Name = "RdoAlphaDefine1";
             this.RdoAlphaDefine1.TabStop = true;
             this.RdoAlphaDefine1.UseVisualStyleBackColor = true;
+            this.RdoAlphaDefine1.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlpha238
             // 
@@ -722,6 +726,7 @@
             this.RdoAlpha238.Name = "RdoAlpha238";
             this.RdoAlpha238.TabStop = true;
             this.RdoAlpha238.UseVisualStyleBackColor = true;
+            this.RdoAlpha238.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlpha239
             // 
@@ -729,6 +734,7 @@
             this.RdoAlpha239.Name = "RdoAlpha239";
             this.RdoAlpha239.TabStop = true;
             this.RdoAlpha239.UseVisualStyleBackColor = true;
+            this.RdoAlpha239.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlpha235
             // 
@@ -736,6 +742,7 @@
             this.RdoAlpha235.Name = "RdoAlpha235";
             this.RdoAlpha235.TabStop = true;
             this.RdoAlpha235.UseVisualStyleBackColor = true;
+            this.RdoAlpha235.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // β参数
             // 
@@ -757,16 +764,16 @@
             // 
             this.DgvBetaSet.AllowUserToAddRows = false;
             this.DgvBetaSet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
-            this.DgvBetaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Silver;
+            this.DgvBetaSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.DgvBetaSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvBetaSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TxtBetaChannelName,
@@ -776,25 +783,25 @@
             this.TxtBetaAlarm_2,
             this.TxtBetaEfficiency});
             this.DgvBetaSet.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvBetaSet.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvBetaSet.DefaultCellStyle = dataGridViewCellStyle16;
             this.DgvBetaSet.EnableHeadersVisualStyles = false;
             resources.ApplyResources(this.DgvBetaSet, "DgvBetaSet");
             this.DgvBetaSet.Name = "DgvBetaSet";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvBetaSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvBetaSet.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.DgvBetaSet.RowHeadersVisible = false;
             this.DgvBetaSet.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DgvBetaSet.RowTemplate.Height = 27;
@@ -874,6 +881,7 @@
             this.RdoBetaDefine2.Name = "RdoBetaDefine2";
             this.RdoBetaDefine2.TabStop = true;
             this.RdoBetaDefine2.UseVisualStyleBackColor = true;
+            this.RdoBetaDefine2.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta192
             // 
@@ -881,6 +889,7 @@
             this.RdoBeta192.Name = "RdoBeta192";
             this.RdoBeta192.TabStop = true;
             this.RdoBeta192.UseVisualStyleBackColor = true;
+            this.RdoBeta192.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta90
             // 
@@ -888,6 +897,7 @@
             this.RdoBeta90.Name = "RdoBeta90";
             this.RdoBeta90.TabStop = true;
             this.RdoBeta90.UseVisualStyleBackColor = true;
+            this.RdoBeta90.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta36
             // 
@@ -895,6 +905,7 @@
             this.RdoBeta36.Name = "RdoBeta36";
             this.RdoBeta36.TabStop = true;
             this.RdoBeta36.UseVisualStyleBackColor = true;
+            this.RdoBeta36.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBetaDefine1
             // 
@@ -902,6 +913,7 @@
             this.RdoBetaDefine1.Name = "RdoBetaDefine1";
             this.RdoBetaDefine1.TabStop = true;
             this.RdoBetaDefine1.UseVisualStyleBackColor = true;
+            this.RdoBetaDefine1.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta137
             // 
@@ -909,6 +921,7 @@
             this.RdoBeta137.Name = "RdoBeta137";
             this.RdoBeta137.TabStop = true;
             this.RdoBeta137.UseVisualStyleBackColor = true;
+            this.RdoBeta137.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta60
             // 
@@ -916,6 +929,7 @@
             this.RdoBeta60.Name = "RdoBeta60";
             this.RdoBeta60.TabStop = true;
             this.RdoBeta60.UseVisualStyleBackColor = true;
+            this.RdoBeta60.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta32
             // 
@@ -923,6 +937,7 @@
             this.RdoBeta32.Name = "RdoBeta32";
             this.RdoBeta32.TabStop = true;
             this.RdoBeta32.UseVisualStyleBackColor = true;
+            this.RdoBeta32.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta204
             // 
@@ -930,6 +945,7 @@
             this.RdoBeta204.Name = "RdoBeta204";
             this.RdoBeta204.TabStop = true;
             this.RdoBeta204.UseVisualStyleBackColor = true;
+            this.RdoBeta204.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta131
             // 
@@ -937,6 +953,7 @@
             this.RdoBeta131.Name = "RdoBeta131";
             this.RdoBeta131.TabStop = true;
             this.RdoBeta131.UseVisualStyleBackColor = true;
+            this.RdoBeta131.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta58
             // 
@@ -944,6 +961,7 @@
             this.RdoBeta58.Name = "RdoBeta58";
             this.RdoBeta58.TabStop = true;
             this.RdoBeta58.UseVisualStyleBackColor = true;
+            this.RdoBeta58.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta14
             // 
@@ -951,6 +969,7 @@
             this.RdoBeta14.Name = "RdoBeta14";
             this.RdoBeta14.TabStop = true;
             this.RdoBeta14.UseVisualStyleBackColor = true;
+            this.RdoBeta14.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // 衣物探头
             // 
@@ -1006,6 +1025,7 @@
             this.RdoClothesBetaDefine1.Name = "RdoClothesBetaDefine1";
             this.RdoClothesBetaDefine1.TabStop = true;
             this.RdoClothesBetaDefine1.UseVisualStyleBackColor = true;
+            this.RdoClothesBetaDefine1.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta192
             // 
@@ -1013,6 +1033,7 @@
             this.RdoClothesBeta192.Name = "RdoClothesBeta192";
             this.RdoClothesBeta192.TabStop = true;
             this.RdoClothesBeta192.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta192.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta90
             // 
@@ -1020,6 +1041,7 @@
             this.RdoClothesBeta90.Name = "RdoClothesBeta90";
             this.RdoClothesBeta90.TabStop = true;
             this.RdoClothesBeta90.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta90.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta36
             // 
@@ -1027,6 +1049,7 @@
             this.RdoClothesBeta36.Name = "RdoClothesBeta36";
             this.RdoClothesBeta36.TabStop = true;
             this.RdoClothesBeta36.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta36.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta137
             // 
@@ -1034,6 +1057,7 @@
             this.RdoClothesBeta137.Name = "RdoClothesBeta137";
             this.RdoClothesBeta137.TabStop = true;
             this.RdoClothesBeta137.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta137.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta60
             // 
@@ -1041,6 +1065,7 @@
             this.RdoClothesBeta60.Name = "RdoClothesBeta60";
             this.RdoClothesBeta60.TabStop = true;
             this.RdoClothesBeta60.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta60.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta32
             // 
@@ -1048,6 +1073,7 @@
             this.RdoClothesBeta32.Name = "RdoClothesBeta32";
             this.RdoClothesBeta32.TabStop = true;
             this.RdoClothesBeta32.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta32.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta204
             // 
@@ -1055,6 +1081,7 @@
             this.RdoClothesBeta204.Name = "RdoClothesBeta204";
             this.RdoClothesBeta204.TabStop = true;
             this.RdoClothesBeta204.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta204.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta131
             // 
@@ -1062,6 +1089,7 @@
             this.RdoClothesBeta131.Name = "RdoClothesBeta131";
             this.RdoClothesBeta131.TabStop = true;
             this.RdoClothesBeta131.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta131.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta58
             // 
@@ -1069,6 +1097,7 @@
             this.RdoClothesBeta58.Name = "RdoClothesBeta58";
             this.RdoClothesBeta58.TabStop = true;
             this.RdoClothesBeta58.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta58.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta14
             // 
@@ -1076,6 +1105,7 @@
             this.RdoClothesBeta14.Name = "RdoClothesBeta14";
             this.RdoClothesBeta14.TabStop = true;
             this.RdoClothesBeta14.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta14.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlphaDefine1
             // 
@@ -1083,6 +1113,7 @@
             this.RdoClothesAlphaDefine1.Name = "RdoClothesAlphaDefine1";
             this.RdoClothesAlphaDefine1.TabStop = true;
             this.RdoClothesAlphaDefine1.UseVisualStyleBackColor = true;
+            this.RdoClothesAlphaDefine1.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlpha241
             // 
@@ -1090,6 +1121,7 @@
             this.RdoClothesAlpha241.Name = "RdoClothesAlpha241";
             this.RdoClothesAlpha241.TabStop = true;
             this.RdoClothesAlpha241.UseVisualStyleBackColor = true;
+            this.RdoClothesAlpha241.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlpha238
             // 
@@ -1097,6 +1129,7 @@
             this.RdoClothesAlpha238.Name = "RdoClothesAlpha238";
             this.RdoClothesAlpha238.TabStop = true;
             this.RdoClothesAlpha238.UseVisualStyleBackColor = true;
+            this.RdoClothesAlpha238.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlpha239
             // 
@@ -1104,6 +1137,7 @@
             this.RdoClothesAlpha239.Name = "RdoClothesAlpha239";
             this.RdoClothesAlpha239.TabStop = true;
             this.RdoClothesAlpha239.UseVisualStyleBackColor = true;
+            this.RdoClothesAlpha239.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlpha235
             // 
@@ -1111,6 +1145,7 @@
             this.RdoClothesAlpha235.Name = "RdoClothesAlpha235";
             this.RdoClothesAlpha235.TabStop = true;
             this.RdoClothesAlpha235.UseVisualStyleBackColor = true;
+            this.RdoClothesAlpha235.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // LblClothesBetaOrClothes
             // 
@@ -1227,16 +1262,16 @@
             // 
             this.DgvMainPreferenceSet.AllowUserToAddRows = false;
             this.DgvMainPreferenceSet.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Silver;
-            this.DgvMainPreferenceSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 12F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Silver;
+            this.DgvMainPreferenceSet.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(this.DgvMainPreferenceSet, "DgvMainPreferenceSet");
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1258,8 +1293,8 @@
             // TxtMainPreferenceChanneName
             // 
             this.TxtMainPreferenceChanneName.DataPropertyName = "ChannelName";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TxtMainPreferenceChanneName.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TxtMainPreferenceChanneName.DefaultCellStyle = dataGridViewCellStyle20;
             resources.ApplyResources(this.TxtMainPreferenceChanneName, "TxtMainPreferenceChanneName");
             this.TxtMainPreferenceChanneName.Name = "TxtMainPreferenceChanneName";
             // 

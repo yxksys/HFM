@@ -58,7 +58,11 @@ namespace HFM
         int clothesStatus = 0;//衣物探头状态。0：衣物探头还未被拿起，1：衣物探头已经被拿起
         int[] lastInfraredStatus = new int[3];//记录上一个数据包红外状态，分别为“左手、右手、衣物”，本底测量中，如果本次红外到位而上次不到位则进行语音播报，如果上次红外到位本次也红外到位，则不需要重复播报提示
         bool isSelfCheckSended = false;//自检指令是否已经下发标志，因为在一个自检周期内，自检指令只需下发一次
+        bool isBetaCommandToSend = false;//Beta自检指令是否应该下发，在α/β自检时，先下发α自检指令，自检时间到一半时再下发β自检指令
         bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
+        bool[] isLoadProgressPic =new bool[6] { false,false,false,false,false,false};//窗口顶部本底测量检测进度状态图片是否已经被加载        
+        bool isHandTested = false;//手部检测是否完成标志，由于单探测器时，手心手背必须分两次进行检测，手部第一次检测完成后，根据该标志进行线语音提示，然后进该标志置为true
+        bool isHandSecondEnabled = false;//是否允许启动手部翻转后测量，当手部第一次测量结束后，用户必须翻转手掌（红外出现至少一次不到位），才能启动第二次手部检测
         string pollutionRecord = null;//记录测量污染详细数据
         string pollutionRecord_E = null;//记录测量污染详细数据(英文)                
         FrmClothes frmClothes = null;//衣物探测界面
@@ -93,6 +97,7 @@ namespace HFM
         float smoothedDataOfClothes = 0;//平滑处理后的衣物测量值
         float baseDataOfClothes = 0;//衣物探头本底值
         int alarmCountOfClothes = 0;//衣物检测报警次数
+        int playControl = 1;//控制语音播放变量
         string clotheseNuclideUsed = "U_235";//衣物检测核素选择,默认U_235
         string alphaNuclideUsed = "U_235";//Alpha核素选择，默认U_235
         string betaNuclideUsed = "U_235";//Beta核素选择，默认U_235          
@@ -169,8 +174,7 @@ namespace HFM
                                              7,26,8,28,8,29,9,30,10,31,
                                             11,33,11,34,12,35,13,36,14,38 };//泊松表2
         int[] cycleLength = new int[8] { 16, 25, 36, 49, 64, 81, 100, 121 };       
-        //int handTestCount=0;//手部检测计数器。由于单探测器时，手心手背必须分两次进行检测，用来手心、手背检测计数。
-        bool isHandTested = false;//手部检测是否完成标志，由于单探测器时，手心手背必须分两次进行检测，手部第一次检测完成后，根据该标志进行线语音提示，然后进该标志置为true
+        //int handTestCount=0;//手部检测计数器。由于单探测器时，手心手背必须分两次进行检测，用来手心、手背检测计数。        
         public FrmMeasureMain()
         {
             InitializeComponent();
@@ -230,110 +234,13 @@ namespace HFM
             LblTime.Text = DateTime.Now.ToLongTimeString();            
             //在界面中显示“仪器名称”、“仪器编号”、“IP地址及端口”等信息
             LblName.Text = factoryParameter.SoftName;
-            LblIP.Text += factoryParameter.IpAddress + " " + factoryParameter.PortNumber;
+            LblIP.Text = factoryParameter.IpAddress + " " + factoryParameter.PortNumber;//yxk  。。。
             LblSN.Text += factoryParameter.InstrumentNum;
             //获得当前系统应用路径
-            string appPath = Application.StartupPath;
-            //加载相关图片资源（设备厂家图标、手部脚步图片、衣物图片等）
-            //PicLHB.Image = Image.FromFile(appPath + "\\Images\\LHB_NotInPlace.png");
-            //PicLHP.Image = Image.FromFile(appPath + "\\Images\\LHP_NotInPlace.png");
-            //PicRHB.Image = Image.FromFile(appPath + "\\Images\\RHB_NotInPlace.png");
-            //PicRHP.Image = Image.FromFile(appPath + "\\Images\\RHP_NotInPlace.png");
-            //PicLF.Image = Image.FromFile(appPath + "\\Images\\LF_NotInPlace.png");
-            //PicRF.Image = Image.FromFile(appPath + "\\Images\\RF_NotInPlace.png");
-            //PicFrisker.Image = Image.FromFile(appPath + "\\Images\\CLO_NotInPlace.png");
-            PicLogo.Image = Image.FromFile(appPath + "\\Images\\logo.png");
-            //设置label的容器为其对应的PictureBox，以使其透明背景有效   
-            //左手状态显示区域
-            //LblLeft.Parent = PicLeftBackground;
-            //重新设置label的位置，是想对于容器PictureBox的位置而不是窗体的位置
-            //LblLeft.Location = new Point(3, 20);
-            //右手状态显示区域
-            //LblRight.Parent = PicRightBackground;
-            //LblRight.Location = new Point(3, 20);
-            //衣物显示区域
-            //LblFrisker.Parent = PicFrisker;
-            //label在PictureBox中的位置为右对齐
-            //LblFrisker.Location = new Point(PicFrisker.Width - LblFrisker.Width, 15);
-            //监测过程状态显示区域
-            //LblShowStutas.Parent = PicShowStatus;//监测状态显示
-            //LblTimeRemain.Parent = PicShowStatus; //剩余时间显示
-            //LblShowStutas.Location = new Point(3, 50);
-            //LblTimeRemain.Location = new Point(PicShowStatus.Width - LblTimeRemain.Width, 0);                        
+            string appPath = Application.StartupPath;            
+            PicLogo.Image = Image.FromFile(appPath + "\\Images\\logo.png");                              
         }
-        //private void ChannelDisplayControl(Channel channel,bool enabled)
-        //{
-        //    PictureBox picture = null;
-        //    //TextBox textBox = null;
-        //    Panel panel = null;
-        //    Label label = null;
-        //    //界面中对应通道的Enabled属性设置为True，该通道相关元素背景色设置为正常
-        //    //找到通道测量值显示区域对应的Panel，其名字为：Pnl+通道英文名                    
-        //    panel = (Panel)(this.Controls[string.Format("Pnl{0}", channel.ChannelName_English)]);
-        //    if (panel != null)
-        //    {
-        //        panel.BackgroundImage= Image.FromFile(appPath + "\\Images\\Hand_NotInPlace.jpg");
-        //        panel.Enabled = enabled;
-        //        //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名                                   
-        //        label = (Label)(panel.Controls[string.Format("Lbl{0}", channel.ChannelName_English)]);
-        //        label.Enabled = enabled;
-        //        if (channel.ChannelID != 7)
-        //        {
-        //            label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", channel.ChannelName_English, "A")]);
-        //            label.Enabled = enabled;
-        //            label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", channel.ChannelName_English, "B")]);
-        //            label.Enabled = enabled;
-        //        }
-        //        picture = (PictureBox)(panel.Controls[string.Format("Pic{0}", channel.ChannelName_English)]);
-        //        label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", channel.ChannelName_English, "Status")]);
-        //        if (enabled == true)
-        //        {
-        //            picture.BackgroundImageLayout = ImageLayout.Zoom;
-        //            picture.Image = Image.FromFile(appPath + string.Format("\\Images\\{0}{1}.png", channel.ChannelName_English,"_NotInPlace"));                    
-        //            label.Text = "已启用";
-        //            label.BackColor = PlatForm.ColorStatus.COLOR_BKENABLED;
-        //            label.ForeColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
-        //        }
-        //        else
-        //        {
-        //            picture.BackgroundImageLayout = ImageLayout.Zoom;
-        //            picture.Image = Image.FromFile(appPath + string.Format("\\Images\\{0}{1}.png", channel.ChannelName_English,"_Disabled"));
-        //            label.Text = "未启用";
-        //            label.BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
-        //            label.ForeColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
-        //        }
-        //        picture.Enabled = enabled;
-        //    }
-        //    else
-        //    {
-        //        label = (Label)(this.Controls[string.Format("Lbl{0}", channel.ChannelName_English)]);
-        //        label.Enabled = enabled;
-        //        label = (Label)(this.Controls[string.Format("Lbl{0}{1}", channel.ChannelName_English,"A")]);
-        //        label.Enabled = enabled;
-        //        label = (Label)(this.Controls[string.Format("Lbl{0}{1}", channel.ChannelName_English, "B")]);
-        //        label.Enabled = enabled;
-        //        picture = (PictureBox)(this.Controls[string.Format("Pic{0}", channel.ChannelName_English)]);
-        //        label = (Label)(this.Controls[string.Format("Lbl{0}{1}", channel.ChannelName_English, "Status")]);
-        //        if (enabled == true)
-        //        {
-        //            picture.BackgroundImageLayout = ImageLayout.Zoom;
-        //            picture.Image = Image.FromFile(appPath + string.Format("\\Images\\{0}{1}.png", channel.ChannelName_English, "_NotInPlace"));
-        //            label.Text = "已启用";
-        //            label.BackColor = PlatForm.ColorStatus.COLOR_BKENABLED;
-        //            label.ForeColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
-        //        }
-        //        else
-        //        {
-        //            picture.BackgroundImageLayout = ImageLayout.Zoom;
-        //            picture.Image = Image.FromFile(appPath + string.Format("\\Images\\{0}{1}.png", channel.ChannelName_English, "_Disabled"));
-        //            label.Text = "未启用";
-        //            label.BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
-        //            label.ForeColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
-        //        }
-        //        picture.Enabled = enabled;
-        //        label.Enabled = enabled;
-        //    }                       
-        //}
+        
         /// <summary>
         /// 根据当前通道状态设置界面中各个通道显示效果
         /// </summary>
@@ -381,7 +288,7 @@ namespace HFM
                     //通道背景图片
                     if (channel.ChannelID >= 1 && channel.ChannelID <= 4)//手部
                     {
-                        PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\Hand_InPlace.jpg");
+                        PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\Hand_InPlace.jpg");                        
                     }
                     if (channel.ChannelID == 5 || channel.ChannelID == 6)//脚步
                     {
@@ -405,11 +312,34 @@ namespace HFM
                     if (channel.ChannelID == 7)
                     {
                         LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                        LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
                     }
                     else
                     {
-                        LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
-                        LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                        switch(factoryParameter.MeasureType)
+                        {
+                            case "α":
+                                LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = false;
+                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                break;
+                            case "β":
+                                LblValue[(channel.ChannelID - 1) * 2].Enabled = false;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                break;
+                            case "α/β":
+                                LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                break;
+
+                        }                        
                     }
                     if (channel.ChannelID != 7)
                     {
@@ -476,6 +406,10 @@ namespace HFM
             Label label = null;           
             foreach (MeasureData measureData in measureDataS)
             {
+                if(measureData.Channel.ChannelName==null||measureData.Channel.IsEnabled==false)
+                {
+                    continue;
+                }
                 //找到通道测量值显示区域对应的PictureBox，其名字为Pic+通道英文名
                 //pictureBox = (PictureBox)(this.Controls[string.Format("Pic{0}", measureData.Channel.ChannelName_English)]);
                 //找到通道测量值显示区域对应的Panel，其名字为：Pnl+通道英文名
@@ -483,7 +417,7 @@ namespace HFM
                 if (measureData.Channel.ChannelName_English == "Frisker")
                 {
                     //显示衣物测量结果
-                    LblFriskerB.Text= measureData.Beta.ToString("F1") + unit;//衣物测量结果在Beta值中存储
+                    LblFriskerB.Text= measureData.Beta.ToString("F1") +"cps";//衣物测量结果在Beta值中存储，衣物探头测量单位全部为cps
                     continue;
                 }                
                 switch (factoryParameter.MeasureType)
@@ -532,6 +466,29 @@ namespace HFM
             errorData.IsEnglish = true;
             errorData.AddData(errorData);
         }        
+
+        /// <summary>
+        /// 设置窗体顶部检测index索引项的进度背景图片加载标志为True,其他设置为false
+        /// </summary>
+        /// <param name="index">窗体顶部检测进度索引0：仪器自检；1：本底测量；2：等待测量；3：开始测量；4：无污染；5：人员污染</param>
+        private void SetProgressPicFlag(int index)
+        {            
+            for(int i=0;i<6;i++)
+            {   
+                isLoadProgressPic[i] = false;               
+            }
+            isLoadProgressPic[index] = true;
+        }
+        /// <summary>
+        /// 清除窗体顶部检测进度背景图片加载标志，将窗口顶部所有检测监督背景图片加载标志设置为false
+        /// </summary>
+        private void ClearProgressPicFlag()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                isLoadProgressPic[i] = false;
+            }
+        }
         private void FrmMeasureMain_Load(object sender, EventArgs e)
         {            
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
@@ -585,7 +542,7 @@ namespace HFM
             //初始化显示界面
             DisplayInit();
             //实例化衣物探测界面
-            frmClothes = new FrmClothes();
+            frmClothes = new FrmClothes(isEnglish);
             checkTime = systemParameter.SelfCheckTime;//检测时间 
             alarmTimeSet = systemParameter.AlarmTime;//报警时间                                  
             //在界面中将启用通道（通道处于启用状态同时探测面积不为0）的控件Enabled有效，其它通道（通道未启用或探测面积为0）的控件Enabled无效；                       
@@ -634,6 +591,7 @@ namespace HFM
             }
             //从配置文件获得当前监测串口配置
             commPort.GetCommPortSet("commportSet");
+            //commPort.PortNum = 6;
             //打开监测通信串口
             try
             {
@@ -787,42 +745,48 @@ namespace HFM
                             //isSelfCheckSended = true;                            
                             break;
                         case "α/β":
-                            //先下发Alpha自检指令
-                            //生成Alpha自检指令报文，包含参数：自检时间/2-2 
-                            messageDate = Components.Message.BuildMessage(0, checkTime / 2 - 2);
-                            //下发Alpha自检指令，如果不成功则：
-                            if (Components.Message.SendMessage(messageDate, commPort) != true)
+                            if (isBetaCommandToSend == false)
                             {
-                                //错误计数器errorNumber+1
-                                errorNumber++;
-                                //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
-                                if (errorNumber > 5)
+                                //先下发Alpha自检指令
+                                //生成Alpha自检指令报文，包含参数：自检时间/2-2 
+                                messageDate = Components.Message.BuildMessage(0, checkTime / 2 - 2);
+                                //下发Alpha自检指令，如果不成功则：
+                                if (Components.Message.SendMessage(messageDate, commPort) != true)
                                 {
-                                    worker.ReportProgress(1, null);
-                                }
-                                else
-                                {
-                                    System.Threading.Thread.Sleep(delayTime);
-                                    continue;
+                                    //错误计数器errorNumber+1
+                                    errorNumber++;
+                                    //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                                    if (errorNumber > 5)
+                                    {
+                                        worker.ReportProgress(1, null);
+                                    }
+                                    else
+                                    {
+                                        System.Threading.Thread.Sleep(delayTime);
+                                        continue;
+                                    }
                                 }
                             }
-                            //后下发Beta自检指令
-                            //生成Beta自检指令报文，包含参数：自检时间/2-2
-                            messageDate = Components.Message.BuildMessage(1, checkTime / 2 - 2);
-                            //下发Beta自检指令,如果不成功则
-                            if (Components.Message.SendMessage(messageDate, commPort) != true)
+                            else
                             {
-                                //错误计数器errorNumber+1
-                                errorNumber++;
-                                //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
-                                if (errorNumber > 5)
+                                //后下发Beta自检指令
+                                //生成Beta自检指令报文，包含参数：自检时间/2-2
+                                messageDate = Components.Message.BuildMessage(1, checkTime / 2 - 2);
+                                //下发Beta自检指令,如果不成功则
+                                if (Components.Message.SendMessage(messageDate, commPort) != true)
                                 {
-                                    worker.ReportProgress(1, null);
-                                }
-                                else
-                                {
-                                    System.Threading.Thread.Sleep(delayTime);
-                                    continue;
+                                    //错误计数器errorNumber+1
+                                    errorNumber++;
+                                    //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                                    if (errorNumber > 5)
+                                    {
+                                        worker.ReportProgress(1, null);
+                                    }
+                                    else
+                                    {
+                                        System.Threading.Thread.Sleep(delayTime);
+                                        continue;
+                                    }
                                 }
                             }
                             ////下发成功，置报文已经发送标志
@@ -832,9 +796,12 @@ namespace HFM
                     //下发成功，置报文已经发送标志
                     isSelfCheckSended = true;
                     //延时2000毫秒
-                    Thread.Sleep(2000);
+                    Thread.Sleep(300);
                     //启动自检计时 
-                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    if (isBetaCommandToSend == false)//如果时Alpha/Beta自检，Beta自检指令需要下发时不需要重新设置开始时间
+                    {
+                        stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    }
                 }
                 //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
@@ -944,7 +911,7 @@ namespace HFM
                             //设置窗体进度条状态
                             frmClothes.loadingCircle.Active = true;
                             frmClothes.PrgClothAlarm_2.Maximum = (int)clothesProbeParmeter[0].Alarm_2;
-                            frmClothes.PrgClothAlarm_1.Maximum = (int)clothesProbeParmeter[0].Alarm_1;
+                            frmClothes.PrgClothAlarm_1.Maximum = (int)clothesProbeParmeter[0].Alarm_1;                                                        
                             //frmClothes.PrgClothAlarm_1.Width = (int)(frmClothes.PrgClothAlarm_2.Width * clothesProbeParmeter[0].Alarm_1 / clothesProbeParmeter[0].Alarm_2);
                             //显示衣物探头监测窗口                    
                             frmClothes.Show();
@@ -960,8 +927,8 @@ namespace HFM
                             //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
                             IList<EfficiencyParameter> efficiencyParameterNow= efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "C" && efficiencyParameter.Channel.ChannelID == 7 && efficiencyParameter.NuclideName == clotheseNuclideUsed).ToList();
                             //根据系统参数中设置的检测单位，对减去本底值后的测量值进行单位变换并在衣物探测界面中进行显示
-                            float converedData = Tools.UnitConvertCPSTo(smoothedDataOfClothes, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, measureDataS[6].Channel.ProbeArea);
-                            frmClothes.TxtMeasureValue.Text = string.Format("{0}{1}", converedData.ToString("F1"), systemParameter.MeasurementUnit);
+                            //float converedData = Tools.UnitConvertCPSTo(smoothedDataOfClothes, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, measureDataS[6].Channel.ProbeArea);
+                            frmClothes.TxtMeasureValue.Text = string.Format("{0}cps", smoothedDataOfClothes.ToString("F1"));
                             #region 如果减去本底值后的测量值大于一级报警，说明有污染  
                             ////获得当前衣物检测通道的探测参数
                             //IList<ProbeParameter> clothesProbeParmeter = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == 7).ToList();
@@ -992,7 +959,7 @@ namespace HFM
                                     //衣物探测结果显示区域背景色设置为污染
                                     LblFriskerB.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
                                     //衣物探测结果显示区域显示当前衣物探测值
-                                    LblFriskerB.Text= string.Format("{0}{1}", converedData.ToString("F1"), systemParameter.MeasurementUnit);
+                                    LblFriskerB.Text= string.Format("{0}cps", smoothedDataOfClothes.ToString("F1"));
                                     //探测主界面的探测结果显示区域显示衣物污染
                                     if (isEnglish)
                                     {
@@ -1011,11 +978,12 @@ namespace HFM
                                     MeasureData measureData = new MeasureData();
                                     measureData.MeasureDate = DateTime.Now;
                                     measureData.MeasureStatus = "污染";
-                                    measureData.DetailedInfo = string.Format("衣物探头{0}{1}", converedData.ToString("F1"), systemParameter.MeasurementUnit);
+                                    //string temp = converedData.ToString("F1");
+                                    measureData.DetailedInfo = string.Format("衣物探头{0}cps", smoothedDataOfClothes.ToString("F1"));
                                     measureData.IsEnglish = false;
                                     measureData.AddData(measureData);
                                     measureData.MeasureStatus = "Contaminated";
-                                    measureData.DetailedInfo = string.Format("Frisker{0}{1}", converedData.ToString("F1"), systemParameter.MeasurementUnit);
+                                    measureData.DetailedInfo = string.Format("Frisker{0}cps", smoothedDataOfClothes.ToString("F1"));
                                     measureData.IsEnglish = true;
                                     measureData.AddData(measureData);
                                     //启动报警计时
@@ -1059,7 +1027,7 @@ namespace HFM
                     //衣物探测结果显示区域背景色设置为正常
                     LblFriskerB.BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
                     //衣物探测结果显示区域显示当前衣物探测值为0cps
-                    LblFriskerB.Text = string.Format("{0}{1}",0,"cps");
+                    //LblFriskerB.Text = string.Format("{0}{1}",0,"cps");
                     if (clothesStatus == 1)//探头当前状态为已经被拿起，说明衣物探头刚刚被放下
                     {                        
                         //关闭衣物探头监测界面
@@ -1072,16 +1040,7 @@ namespace HFM
                         clothesStatus = 0;
                         #region 如果衣物离线时间大于系统设置的离线自检时间
                         if (clothesTimeCount > systemParameter.ClothOfflineTime)
-                        {
-                            //设置当前状态为本底测量
-                            PnlMeasuring.BackgroundImage=null;
-                            PnlContaminated.BackgroundImage = null;
-                            PnlContaminated.BackColor = Color.Transparent;
-                            PnlNoContamination.BackColor = Color.Transparent;
-                            PnlNoContamination.BackgroundImage = null;
-                            PnlBackground.BackgroundImage = Image.FromFile(appPath+ "\\Images\\progress.jpg");
-                            LblBackground.BringToFront();
-                            //重置衣物探测实际次数
+                        {                            
                             clothesTimeCount = 0;
                             //监测结果显示区域显示“仪器本底测量”
                             if (isEnglish)
@@ -1202,7 +1161,7 @@ namespace HFM
             }
             //如果当前运行状态为“仪器自检”
             if (platformState == PlatformState.SelfTest)
-            {
+            {                
                 //取消本底测量状态图片
                 PnlBackground.BackgroundImage = null;
                 string[] errRecordS = new string[2];
@@ -1300,7 +1259,13 @@ namespace HFM
                     }
                 }
                 //界面中对应通道显示当前测量值
-                DisplayMeasureData(calculatedMeasureDataS,"cps");
+                DisplayMeasureData(measureDataS, "cps");
+                //如果是α/β自检且自检时间是否到自检时间的一半
+                if(factoryParameter.MeasureType== "α/β"&& stateTimeRemain== stateTimeSet/2+2)
+                {
+                    isSelfCheckSended = false;
+                    isBetaCommandToSend = true;
+                }
                 //自检时间到
                 if (stateTimeRemain < 0)
                 {                                      
@@ -1308,8 +1273,16 @@ namespace HFM
                     if (errRecordS == null)//自检通过
                     {
                         //恢复当前标签文字提示（自检过程中可能有故障提示，所以自检通过后需要重新恢复）
-                        LblCheck.Font = new Font("微软雅黑", FONT_SIZE, FontStyle.Italic);
-                        LblCheck.Text = "仪器自检";
+                        if (isEnglish==false)
+                        {
+                            LblCheck.Font = new Font("微软雅黑", FONT_SIZE, FontStyle.Italic);
+                            LblCheck.Text = "仪器自检";
+                        }
+                        else
+                        {
+                            LblCheck.Font = new Font("微软雅黑", FONT_SIZE_E, FontStyle.Italic);
+                            LblCheck.Text = "Self-Checking";
+                        }
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         // 运行状态标志设置为“本底测量”
@@ -1364,6 +1337,7 @@ namespace HFM
                             calculatedMeasureDataS[i].Beta = 0;
                         }
                         isSelfCheckSended = false;
+                        isBetaCommandToSend = false;
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                         //重新启动自检计时
@@ -1376,18 +1350,23 @@ namespace HFM
             //运行状态为本底测量
             if (platformState == PlatformState.BackGrouneMeasure)
             {
-                //取消仪器自检状态标签设置
-                PnlSelfCheck.BackgroundImage = null;
-                //取消等待测量状态标签设置
-                PnlReady.BackgroundImage = null;
-                PnlNoContamination.BackgroundImage = null;
-                PnlContaminated.BackgroundImage = null;
-                PnlMeasuring.BackgroundImage = null;
-                //本底测量状态标签设置为当前状态图片
-                PnlBackground.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
-                LblBackground.BringToFront();
-                LblTimeRemain.Parent = PnlBackground;//控制剩余时间标签显示位置
-                LblTimeRemain.BringToFront();
+                if (isLoadProgressPic[1] == false)
+                {
+                    SetProgressPicFlag(1);//本底测量进度图片已经被加载标志设置为true，其它为false
+                    //取消仪器自检状态标签设置
+                    PnlSelfCheck.BackgroundImage = null;
+                    //取消等待测量状态标签设置
+                    PnlReady.BackgroundImage = null;
+                    PnlMeasuring.BackgroundImage = null;
+                    PnlNoContamination.BackgroundImage = null;
+                    PnlContaminated.BackgroundImage = null;                   
+                    //本底测量状态标签设置为当前状态图片
+                    PnlBackground.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
+                    LblTimeRemain.Parent = PnlBackground;//控制剩余时间标签显示位置                                
+                    LblBackground.BringToFront();
+                    LblTimeRemain.BringToFront();
+                    LblTimeRemain.BackColor = Color.Transparent;
+                }
                 bool isReDisplay = false; //是否需要重新显示"本底测量"提示信息,默认false
                 //textBox1.Text += platformState.ToString();
                 //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
@@ -1590,7 +1569,9 @@ namespace HFM
                         for (int i = 0; i < channelS.Count; i++)
                         {
                             //将最终的本底计算结果保存，以用于检测时对测量结果进行校正
-                            baseData.Add(calculatedMeasureDataS[i]);
+                            MeasureData baseDataTemp = new MeasureData();
+                            Tools.Clone(calculatedMeasureDataS[i], baseDataTemp);
+                            baseData.Add(baseDataTemp);
                             //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为测量时计算做准备
                             calculatedMeasureDataS[i].Alpha = 0;
                             calculatedMeasureDataS[i].Beta = 0;
@@ -1612,6 +1593,7 @@ namespace HFM
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                         stateTimeStart = new DateTime(1900, 01, 01);//重新初始化开始计时对象
                         isSelfCheckSended = false;//置是否已经下发自检指令标志为false（需重新下发自检指令）
+                        isBetaCommandToSend = false;//
                         platformState = PlatformState.ReadyToRun;                        
                     }
                     return;
@@ -1621,15 +1603,20 @@ namespace HFM
             //运行状态为等待测量
             if (platformState == PlatformState.ReadyToMeasure)
             {
-                PnlBackground.BackgroundImage = null;
-                PnlMeasuring.BackgroundImage = null;
-                PnlNoContamination.BackgroundImage = null;
-                PnlContaminated.BackgroundImage = null;
-                //等待测量状态标签设置为当前状态图片
-                PnlReady.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
-                LblReady.BringToFront();
-                LblTimeRemain.Parent = PnlReady;//控制剩余时间标签显示位置
-                LblTimeRemain.BringToFront();
+                if (isLoadProgressPic[2] == false)
+                {
+                    SetProgressPicFlag(2);////等待测量进度图片已经被加载标志设置为true，其它为false
+                    PnlBackground.BackgroundImage = null;
+                    PnlMeasuring.BackgroundImage = null;
+                    PnlNoContamination.BackgroundImage = null;
+                    PnlContaminated.BackgroundImage = null;
+                    //等待测量状态标签设置为当前状态图片
+                    PnlReady.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
+                    LblReady.BringToFront();
+                    LblTimeRemain.Parent = PnlReady;//控制剩余时间标签显示位置
+                    LblTimeRemain.BringToFront();
+                    return;
+                }
                 //获得当前系统参数设置中的的测量时间并赋值给stateTimeSet
                 stateTimeSet = systemParameter.SmoothingTime;
                 //在系统界面中显示正在测量倒计时时间（s）:系统设置测量时间-已经用时
@@ -1638,18 +1625,65 @@ namespace HFM
                 MeasureData conversionData = new MeasureData();
                 IList<MeasureData> conversionDataS = new List<MeasureData>();
                 //所有手部红外到位标志，默认全部到位
-                bool isHandInfraredStatus = true;  
-                //只有衣物检测被启用
-                if(channelS.Count==1 && channelS[0].ChannelID==7)
-                {
-                    isHandInfraredStatus = false;
-                }
+                bool isHandInfraredStatus = true;
+                //控制每个通道的红外状态显示
                 for (int i = 0; i < channelS.Count; i++)
                 {
+                    List<MeasureData> list = measureDataS.Where(measureData => measureData.Channel.ChannelID == channelS[i].ChannelID).ToList();
+                    if (list[0].InfraredStatus == 0)
+                    {
+                        ChannelDisplayControl(list[0].Channel, 1);
+                    }
+                    if (list[0].InfraredStatus == 1)
+                    {
+                        ChannelDisplayControl(list[0].Channel, 2);
+                    }
+                }                
+                //如果是单探测器，且手部第一次检查完成，则需要扔掉翻转手掌过程中预读取的数据
+                if (factoryParameter.IsDoubleProbe==false && isHandTested==true)//isHandTested为true，说明手部第一次检测已经完成现在的等待检测状态为第二次手部检测
+                {                    
+                    if (stateTimeRemain <= 0)
+                    {
+                        //重新启动本底计时
+                        stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    }
+                    if (measureDataS[1].InfraredStatus == 0 && measureDataS[3].InfraredStatus == 0 && isHandSecondEnabled == false)
+                    {
+                        
+                        isHandSecondEnabled = true;                        
+                        return;
+                    }
+                    if (isHandSecondEnabled == false)
+                    {
+                        if (playControl % 3 == 0)
+                        {
+                            //提示翻转手掌进行检测
+                            if (isEnglish == false)
+                            {
+                                //提示翻转手掌
+                                player.SoundLocation = appPath + "\\Audio\\Chinese_Please_Flip_Palm_for_Measuring.wav";
+                            }
+                            else
+                            {
+                                player.SoundLocation = appPath + "\\Audio\\English_Please_Flip_Palm_for_Measuring.wav";
+                            }
+                            player.Play();
+                        }
+                        playControl++;
+                        return;
+                    }                   
+                }
+                //只有衣物检测被启用
+                if (channelS.Count==1 && channelS[0].ChannelID==7)
+                {
+                    isHandInfraredStatus = false;
+                }                
+                for (int i = 0; i < channelS.Count; i++)
+                {                    
                     //因为measureDataS中是从报文协议中解析的全部7个通道的监测数据，但是calculatedMeasureDataS只是存储当前在用的通道信息
                     //所以，需要从measureDataS中找到对应通道的监测数据通过平滑计算后赋值给calculatedMeasureDataS
                     //从解析的7个通道的measureDataS监测数据中找到当前通道的测量数据
-                    List<MeasureData> list = measureDataS.Where(measureData => measureData.Channel.ChannelID == channelS[i].ChannelID).ToList();
+                    List<MeasureData> list = measureDataS.Where(measureData => measureData.Channel.ChannelID == channelS[i].ChannelID).ToList();                    
                     if (list[0].Channel.ChannelID>=1&& list[0].Channel.ChannelID<=6 && list[0].InfraredStatus == 0)//当前通道为手部脚步通道且红外不到位
                     {                        
                             //第一次判断红外状态
@@ -1674,7 +1708,10 @@ namespace HFM
                         conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
                         conversionData.Channel = calculatedMeasureDataS[i].Channel;
                         //将单位转换后的测量数据添加进IList列表
-                        conversionDataS.Add(conversionData);
+                        MeasureData conversionDataTemp = new MeasureData();
+                        Tools.Clone(conversionData, conversionDataTemp);
+                        Tools.Clone(conversionData.Channel, conversionDataTemp.Channel = new Channel());
+                        conversionDataS.Add(conversionDataTemp);
 
                     }                      
                 }                               
@@ -1696,6 +1733,7 @@ namespace HFM
                         player.SoundLocation = appPath + "\\Audio\\Chinese_Start_counting.wav";
                     }                    
                     player.Play();
+                    Thread.Sleep(100);
                     //左右手状态区域显示正常
                     if (isEnglish)
                     {
@@ -1731,7 +1769,7 @@ namespace HFM
                     //本底测量判断
                     if (errRecordS == null)//本底检测通过
                     {
-                        DisplayMeasureData(calculatedMeasureDataS, "cps");//yxk,修改显示当前本底值
+                        DisplayMeasureData(measureDataS, "cps");//yxk,修改显示当前本底值
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //下次如果还进行本底计算，则需重新计时，所以置标志为True
@@ -1739,7 +1777,7 @@ namespace HFM
                         for (int i = 0; i < channelS.Count; i++)
                         {
                             //将最终的本底计算结果保存，以用于检测时对测量结果进行校正
-                            baseData.Add(calculatedMeasureDataS[i]);
+                            Tools.Clone(calculatedMeasureDataS[i], baseData[i]);
                             //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次计算做准备
                             //calculatedMeasureDataS[i].Alpha = 0;
                             //calculatedMeasureDataS[i].Beta = 0;
@@ -1765,11 +1803,15 @@ namespace HFM
             //运行状态为开始测量
             if (platformState == PlatformState.Measuring)
             {
-                PnlReady.BackgroundImage = null;
-                //开始测量状态标签设置为当前状态图片
-                PnlMeasuring.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
-                LblTimeRemain.Parent = PnlMeasuring;//控制剩余时间标签显示位置
-                LblTimeRemain.BringToFront();
+                if (isLoadProgressPic[3] == false)
+                {
+                    SetProgressPicFlag(3);
+                    PnlReady.BackgroundImage = null;
+                    //开始测量状态标签设置为当前状态图片
+                    PnlMeasuring.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
+                    LblTimeRemain.Parent = PnlMeasuring;//控制剩余时间标签显示位置
+                    LblTimeRemain.BringToFront();
+                }
                 MeasureData conversionData = new MeasureData();
                 IList<MeasureData> conversionDataS=new List<MeasureData>();
                 //获得当前系统参数设置中的的测量时间并赋值给stateTimeSet
@@ -1848,77 +1890,238 @@ namespace HFM
                 {
                     //PictureBox pictureBox;
                     //Panel panel;
-                    Label label;
+                    Label label=null;
                     //计算每个通道的计数平均值,然后减去本底值
                     for (int i = 0; i < calculatedMeasureDataS.Count; i++)
                     {
                         if(calculatedMeasureDataS[i].Channel.ChannelID==7)//如果是衣物探头，则跳过继续
                         {
                             continue;
-                        }                                       
-                        calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha / stateTimeSet - baseData[i].Alpha;
-                        if (calculatedMeasureDataS[i].Alpha < 0)
-                        {
-                            calculatedMeasureDataS[i].Alpha = 0;
-                        }                        
-                        //获得当前检测通道的Alpha探测参数
-                        IList<ProbeParameter> probeParmeterNow = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && probeParmeter.NuclideType== "α").ToList();                       
-                        //判断当前通道Alpha测量值是否超过报警阈值
-                        if (calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_1 || calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2)
-                        {
-                            //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
-                            pollutionRecord += string.Format("{0}:α值{1}cps;", calculatedMeasureDataS[i].Channel.ChannelName,calculatedMeasureDataS[i].Alpha);
-                            pollutionRecord_E += string.Format("{0}:Alpha Value{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName_English,calculatedMeasureDataS[i].Alpha);
-                            //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
-                            Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                            label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
-                            if (calculatedMeasureDataS[i].Alpha> probeParmeterNow[0].Alarm_2)
-                            {                                
-                                //当前通道测量结果显示文本框背景设置为Alarm2
-                                label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
-                            }
-                            else
-                            {
-                                label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
-                            }
-                        }                        
-                        calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta / stateTimeSet - baseData[i].Beta;
-                        if (calculatedMeasureDataS[i].Beta < 0)
-                        {
-                            calculatedMeasureDataS[i].Beta = 0;
-                        }                        
-                        //获得当前检测通道的Beta探测参数
-                        probeParmeterNow = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && probeParmeter.NuclideType == "β").ToList();
-                        if (calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_1 || calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_2)
-                        {
-                            //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                            pollutionRecord += string.Format("{0}:β值{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName,calculatedMeasureDataS[i].Beta);
-                            pollutionRecord_E += string.Format("{0}:Beta Value}{1}cps;",calculatedMeasureDataS[i].Channel.ChannelName_English,calculatedMeasureDataS[i].Beta);
-                            //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
-                            Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                            label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
-                            if (calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_2)
-                            {
-                                //当前通道测量结果显示文本框背景设置为Alarm2
-                                label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
-                            }
-                            else
-                            {
-                                label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
-                            }
                         }
                         //获得当前系统参数设置中的测量单位                                                
                         //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
-                        IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
-                        conversionData.Alpha = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
-                        efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "β" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == betaNuclideUsed).ToList();
-                        conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
-                        conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                        //IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
+                        //conversionData.Alpha = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                        //efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "β" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == betaNuclideUsed).ToList();
+                        //conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                        //conversionData.Channel = calculatedMeasureDataS[i].Channel;
                         //将单位转换后的测量数据添加进IList列表
-                        conversionDataS.Add(conversionData);
+                        //MeasureData conversionDataTemp = new MeasureData();
+                        //Tools.Clone(conversionData, conversionDataTemp);
+                        //Tools.Clone(conversionData.Channel, conversionDataTemp.Channel = new Channel());
+                        //conversionDataS.Add(conversionDataTemp);
+                        if (factoryParameter.MeasureType == "α" || factoryParameter.MeasureType == "α/β")
+                        {
+                            calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha / stateTimeSet - baseData[i].Alpha;
+                            if (calculatedMeasureDataS[i].Alpha < 0)
+                            {
+                                calculatedMeasureDataS[i].Alpha = 0;
+                            }
+                            //测量单位转换
+                            IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
+                            conversionData.Alpha = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                            //获得当前检测通道的Alpha探测参数
+                            IList<ProbeParameter> probeParmeterNow = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && probeParmeter.NuclideType== "α").ToList();
+                            //判断当前通道Alpha测量值是否超过报警阈值                       
+                            if (calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_1 || calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2)
+                            {                                
+                                if (factoryParameter.IsDoubleProbe == false)//单探测器
+                                {
+                                    if (isHandTested == false)//手部第一次测量（手心）、左脚、右脚
+                                    {
+                                        pollutionRecord += string.Format("{0}:α值{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit);
+                                        pollutionRecord_E += string.Format("{0}:Alpha Value{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit);
+                                        //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
+                                        Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                        label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
+                                    }
+                                    else//手部第二次检测，数据在手心，实际测量是手背
+                                    {
+                                        //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
+                                        switch (calculatedMeasureDataS[i].Channel.ChannelID)
+                                        {
+                                            case 1://探测器接手心，所以左手心的值是对应是左手背
+                                                pollutionRecord += string.Format("{0}:α值{1}{2};", "左手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}:Alpha Value{1}{2};", "LHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit);
+                                                //找到通道测量值显示Label控件
+                                                Panel panel = (Panel)(this.Controls["PnlLHB"]);
+                                                label = (Label)(panel.Controls["LblLHBA"]);
+                                                break;
+                                            case 3://探测器接手心，所以右手心的值是对应是右手背
+                                                pollutionRecord += string.Format("{0}:α值{1}{2};", "右手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}:Alpha Value{1}{2};", "RHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit);
+                                                //找到通道测量值显示Label控件
+                                                panel = (Panel)(this.Controls["PnlRHB"]);
+                                                label = (Label)(panel.Controls["LblRHBA"]);
+                                                break;
+                                            case 5://左脚右脚
+                                            case 6:
+                                                //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
+                                                pollutionRecord += string.Format("{0}:α值{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}:Alpha Value{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit);
+                                                //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
+                                                panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                                label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
+                                                break;
+                                        }                                        
+                                        
+                                    }
+                                }
+                                else//双探测器
+                                {
+                                    //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
+                                    pollutionRecord += string.Format("{0}:α值{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit);
+                                    pollutionRecord_E += string.Format("{0}:Alpha Value{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit);
+                                    //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
+                                    Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                    label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
+                                }
+                                if (calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2)
+                                {
+                                    //当前通道测量结果显示文本框背景设置为Alarm2
+                                    label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
+                                }
+                                else
+                                {
+                                    label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
+                                }
+                            }
+                        }
+                        if (factoryParameter.MeasureType == "β" || factoryParameter.MeasureType == "α/β")
+                        {
+                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta / stateTimeSet - baseData[i].Beta;
+                            if (calculatedMeasureDataS[i].Beta < 0)
+                            {
+                                calculatedMeasureDataS[i].Beta = 0;
+                            }
+                            //测量单位转换
+                            IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "β" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == betaNuclideUsed).ToList();
+                            conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                            //获得当前检测通道的Beta探测参数
+                            IList<ProbeParameter> probeParmeterNow = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && probeParmeter.NuclideType == "β").ToList();                            
+                            if (calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_1 || calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_2)
+                            {                                
+                                if (factoryParameter.IsDoubleProbe == false)//单探测器
+                                {
+                                    if (isHandTested == false)//手部第一次测量（手心）
+                                    {
+                                        //将当前通道Beta测量污染信息添加进pollutionRecord字符串
+                                        pollutionRecord += string.Format("{0}:β值{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit);
+                                        pollutionRecord_E += string.Format("{0}:Beta Value{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit);
+                                        //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
+                                        Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                        label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
+                                    }
+                                    else//手部第二次检测，数据在手心，实际测量是手背
+                                    {
+                                        //将当前通道Beta测量污染信息添加进pollutionRecord字符串
+                                        switch(calculatedMeasureDataS[i].Channel.ChannelID)
+                                        {
+                                            case 1:
+                                                pollutionRecord += string.Format("{0}:β值{1}{2};","左手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}:Beta Value{1}{2};","LHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit);
+                                                //找到通道测量值显示Label控件
+                                                Panel panel = (Panel)(this.Controls["PnlLHB"]);
+                                                label = (Label)(panel.Controls["LblLHBB"]);
+                                                break;
+                                            case 3:
+                                                pollutionRecord += string.Format("{0}:β值{1}{2};", "右手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}:Beta Value{1}{2};", "RHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit);
+                                                //找到通道测量值显示Label控件
+                                                panel = (Panel)(this.Controls["PnlRHB"]);
+                                                label = (Label)(panel.Controls["LblRHBB"]);
+                                                break;
+                                            case 5:
+                                            case 6:
+                                                //将当前通道Beta测量污染信息添加进pollutionRecord字符串
+                                                pollutionRecord += string.Format("{0}:β值{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}:Beta Value{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit);
+                                                //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
+                                                panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                                label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
+                                                break;
+                                        }                                        
+                                    }
+                                }
+                                else//双探测器
+                                {
+                                    
+                                    //将当前通道Beta测量污染信息添加进pollutionRecord字符串
+                                    pollutionRecord += string.Format("{0}:β值{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit);
+                                    pollutionRecord_E += string.Format("{0}:Beta Value{1}{2};", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit);
+                                    //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
+                                    Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                    label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
+                                }
+                                if (calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_2)
+                                {
+                                    //当前通道测量结果显示文本框背景设置为Alarm2
+                                    label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
+                                }
+                                else
+                                {
+                                    label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
+                                }
+                            }
+                        }
+                        conversionData.Channel= calculatedMeasureDataS[i].Channel;
+                        //将单位转换后的测量数据添加进IList列表
+                        MeasureData conversionDataTemp = new MeasureData();
+                        Tools.Clone(conversionData, conversionDataTemp);
+                        Tools.Clone(conversionData.Channel, conversionDataTemp.Channel = new Channel());
+                        conversionDataS.Add(conversionDataTemp);
+                        ////获得当前系统参数设置中的测量单位                                                
+                        ////从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
+                        //IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
+                        //conversionData.Alpha = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Alpha, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                        //efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "β" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == betaNuclideUsed).ToList();
+                        //conversionData.Beta = Tools.UnitConvertCPSTo(calculatedMeasureDataS[i].Beta, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
+                        //conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                        ////将单位转换后的测量数据添加进IList列表
+                        //MeasureData conversionDataTemp = new MeasureData();
+
+                        //Tools.Clone(conversionData, conversionDataTemp);
+                        //Tools.Clone(conversionData.Channel, conversionDataTemp.Channel=new Channel());
+                        //conversionDataS.Add(conversionDataTemp);
                     }
-                    //按照系统参数单位要求显示最终测量结果,级显示单位转换后的conversionDataS列表值
-                    DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);
+                    ////按照系统参数单位要求显示最终测量结果,级显示单位转换后的conversionDataS列表值
+                    //DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);
+                    if (factoryParameter.IsDoubleProbe == false)//单探测器检测，则探测器接到手心/手背一个道盒，所以手心手背的检测需分两次进行
+                    {
+                        //当前为手手部第一次检测完成
+                        if (isHandTested == false)//说明手部第一次检测刚刚完成
+                        {
+                            isHandTested = true;//设置手部检测完成标志为true                               
+                                                //语音提示翻转手掌进行检测
+                            if (isEnglish==false)
+                            {
+                                //提示翻转手掌
+                                player.SoundLocation = appPath + "\\Audio\\Chinese_Please_Flip_Palm_for_Measuring.wav";
+                            }
+                            else
+                            {
+                                player.SoundLocation = appPath + "\\Audio\\English_Please_Flip_Palm_for_Measuring.wav";
+                            }
+                            player.PlaySync();
+                            if (isEnglish)
+                            {
+                                //测试结果区域显示等待测量
+                                TxtShowResult.Text += "Ready\r\n";
+                            }
+                            else
+                            {
+                                //测试结果区域显示等待测量
+                                TxtShowResult.Text += "等待测量\r\n";
+                            }
+                            //设备监测状态为正常
+                            deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
+                            //commPort.
+                            //设置运行状态为等待测量
+                            platformState = PlatformState.ReadyToMeasure;
+                            //返回
+                            return;
+                        }
+                    }
                     if (pollutionRecord == null)//说明本次测量无污染
                     {
                         //将本次测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次测量时计算做准备
@@ -1927,63 +2130,75 @@ namespace HFM
                             calculatedMeasureDataS[j].Alpha = 0;
                             calculatedMeasureDataS[j].Beta = 0;
                         }
-                        if (factoryParameter.IsDoubleProbe==false)//单探测器检测，则探测器接到手心/手背一个道盒，所以手心手背的检测需分两次进行
+                        //if (factoryParameter.IsDoubleProbe==false)//单探测器检测，则探测器接到手心/手背一个道盒，所以手心手背的检测需分两次进行
+                        //{
+                        //    //当前为手手部第一次检测完成
+                        //    if(isHandTested==false)//说明手部第一次检测刚刚完成
+                        //    {                                
+                        //        isHandTested = true;//设置手部检测完成标志为true                               
+                        //        //语音提示翻转手掌进行检测
+                        //        if (isEnglish)
+                        //        {                                                                       
+                        //            //提示翻转手掌
+                        //            player.SoundLocation = appPath + "\\Audio\\Chinese_Please_Flip_Palm_for_Measuring.wav";
+                        //        }
+                        //        else
+                        //        {                                                                       
+                        //            player.SoundLocation = appPath + "\\Audio\\English_Please_Flip_Palm_for_Measuring.wav";
+                        //        }
+                        //        player.PlaySync();                                
+                        //        if (isEnglish)
+                        //        {                                    
+                        //            //测试结果区域显示等待测量
+                        //            TxtShowResult.Text += "Ready\r\n";
+                        //        }
+                        //        else
+                        //        {                                   
+                        //            //测试结果区域显示等待测量
+                        //            TxtShowResult.Text += "等待测量\r\n";
+                        //        }
+                        //        //设备监测状态为正常
+                        //        deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
+                        //        //commPort.
+                        //        //设置运行状态为等待测量
+                        //        platformState = PlatformState.ReadyToMeasure;
+                        //        //返回
+                        //        return;                                
+                        //    }                                                       
+                        //}
+                        if (measureDataS[6].Channel.IsEnabled == true)//衣物探头被启用
                         {
-                            //当前为手手部第一次检测完成
-                            if(isHandTested==false)//说明手部第一次检测刚刚完成
-                            {                                
-                                isHandTested = true;//设置手部检测完成标志为true                               
-                                //语音提示翻转手掌进行检测
-                                if (isEnglish)
-                                {                                                                       
-                                    //提示翻转手掌
-                                    player.SoundLocation = appPath + "\\Audio\\English_Please_Flip_Palm_for_Measuring.wav";
-                                }
-                                else
-                                {                                                                       
-                                    player.SoundLocation = appPath + "\\Audio\\Chinese_Please_Flip_Palm_for_Measuring.wav";
-                                }
-                                player.PlaySync();                                
-                                if (isEnglish)
-                                {                                    
-                                    //测试结果区域显示等待测量
-                                    TxtShowResult.Text += "Ready\r\n";
-                                }
-                                else
-                                {                                   
-                                    //测试结果区域显示等待测量
-                                    TxtShowResult.Text += "等待测量\r\n";
-                                }
-                                //设备监测状态为正常
-                                deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
-                                //commPort.
-                                //设置运行状态为等待测量
-                                platformState = PlatformState.ReadyToMeasure;
-                                //返回
-                                return;                                
-                            }                                                       
+                            //检测完成，语音和文字提示“没有污染”
+                            if (isEnglish)
+                            {
+                                //设备状态区域显示无污染
+                                //测量结果显示区域提示没有污染，请进行衣物测量
+                                TxtShowResult.Text += "No Contamination,Please measure the clothing!\r\n";
+                                player.SoundLocation = appPath + "\\Audio\\English_NoContamination_please_frisker.wav";
+                            }
+                            else
+                            {
+                                //测量结果显示区域提示没有污染，请进行衣物测量
+                                TxtShowResult.Text += "没有污染，请进行衣物测量\r\n";
+                                player.SoundLocation = appPath + "\\Audio\\Chinese_NoContamination_please_frisker.wav";
+                            }
                         }
-                        //检测完成，语音和文字提示“没有污染”
-                        if (isEnglish)
+                        else//衣物探头未启用
                         {
-                            player.SoundLocation = appPath + "\\Audio\\English_NoContamination_please_frisker.wav";
+                            if(isEnglish==false)
+                            {
+                                //设备状态区域显示无污染
+                                //测量结果显示区域提示没有污染，请离开
+                                TxtShowResult.Text += "没有污染，请离开!\r\n";
+                                player.SoundLocation = appPath + "\\Audio\\Chinese_NoContamination_please_leave.wav";
+                            }
+                            else
+                            {
+                                TxtShowResult.Text += "No Contamination,Please Leave!\r\n";
+                                player.SoundLocation = appPath + "\\Audio\\English_NoContamination_please_leave.wav";
+                            }
                         }
-                        else
-                        {
-                            player.SoundLocation = appPath + "\\Audio\\Chinese_NoContamination_please_frisker.wav";
-                        }
-                        player.PlaySync();
-                        //设备状态区域显示无污染                       
-                        if (isEnglish)
-                        {                                               
-                            //测量结果显示区域提示没有污染，请进行衣物测量
-                            TxtShowResult.Text += "No Contamination,Please measure the clothing!\r\n";
-                        }
-                        else
-                        {                                                  
-                            //测量结果显示区域提示没有污染，请进行衣物测量
-                            TxtShowResult.Text += "没有污染，请进行衣物测量\r\n";
-                        }
+                        player.PlaySync();                                                                       
                         //仪器无污染状态背景色设置为无污染
                         PnlNoContamination.BackgroundImage = Image.FromFile(appPath + "\\Images\\NoContamination_progress.jpg");                        
                         PnlMeasuring.BackColor = Color.Transparent;
@@ -2020,18 +2235,22 @@ namespace HFM
                         MeasureData measureData = new MeasureData();
                         measureData.MeasureDate = DateTime.Now;
                         measureData.MeasureStatus = "污染";
-                        measureData.DetailedInfo = pollutionRecord;
+                        measureData.DetailedInfo = pollutionRecord;                        
                         measureData.IsEnglish = false;
                         measureData.AddData(measureData);
                         measureData.MeasureStatus ="Contaminated";
                         measureData.DetailedInfo =pollutionRecord_E;
                         measureData.IsEnglish = true;
-                        measureData.AddData(measureData);
+                        measureData.AddData(measureData);                       
                         //启动报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
+                    //按照系统参数单位要求显示最终测量结果,级显示单位转换后的conversionDataS列表值
+                    DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);
                     //本次检测完成，设置手部监测标志为false，为下一个人检测做准备
                     isHandTested = false;
+                    isHandSecondEnabled = false;
+                    playControl = 0;
                     //更新本底测量次数（+1）                    
                     systemParameter.UpdateMeasuredCount();
                     //运行状态设置为“测量结束”
@@ -2043,6 +2262,7 @@ namespace HFM
             //运行状态为“测量结束”
             if (platformState == PlatformState.Result)
             {
+                ClearProgressPicFlag();//检测完成，将窗体顶部状态图片加载标志全部设置为false
                 //扔掉5次预读取的数据
                 if(throwDataCount<5)
                 {
@@ -2133,6 +2353,7 @@ namespace HFM
                 }
                 else//有污染,转到本底测量状态
                 {
+                    pollutionRecord = null;//清空本次污染记录信息，为下一次测量做准备
                     //人员污染状态设置为透明
                     //PnlContaminated.BackColor = Color.Transparent;
                     //设备监测状态为正常
@@ -2161,6 +2382,20 @@ namespace HFM
                         player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
                     }
                     player.PlaySync();
+                    //测量值显示标签背景恢复为默认状态（如果检查结果为人员污染，则会将测量值显示标签背景色变为污染报警，所以需要恢复）
+                    for (int i = 0; i < channelS.Count;i++)
+                    {
+                        //通道测量值标签
+                        if (channelS[i].ChannelID == 7)
+                        {
+                            LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White ;
+                        }
+                        else
+                        {
+                            LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                            LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = Color.White;
+                        }
+                    }
                     //启动本底测量计时 
                     stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     //Thread.Sleep(1000);
@@ -2431,6 +2666,14 @@ namespace HFM
                 {
                     continue;
                 }
+                //如果是单探测器，则将左右手背跳过不进行判断
+                if(factoryParameter.IsDoubleProbe==false)
+                {
+                    if(channelS[i].ChannelID==2||channelS[i].ChannelID==4)
+                    {
+                        continue;
+                    }
+                }
                 //获得当前通道的道盒参数,从全部道盒参数列表channelParameterS中找到当前通道的道盒参数
                 //ChannelParameter channelParameter = new ChannelParameter();
                 //channelParameter.GetParameter(calculatedMeasureDataS[i].Channel.ChannelID);
@@ -2439,8 +2682,8 @@ namespace HFM
                 if (calculatedMeasureDataS[i].HV< channelParameterNow[0].PresetHV * (1 - PlatForm.ErrorRange.HV_ERROR) || calculatedMeasureDataS[i].HV > channelParameterNow[0].PresetHV * (1 + PlatForm.ErrorRange.HV_ERROR))
                 {
                     //高压故障,将故障信息添加到errRecord字符串
-                    errRecordOfChannel += string.Format("高压故障,设置值:{0}V,实测值:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
-                    errRecordOfChannel_E += string.Format("HV Fault,Preset:{0}V,Actual:{1}V;", channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
+                    errRecordOfChannel += string.Format("{0}高压故障,设置值:{1}V,实测值:{2}V;", calculatedMeasureDataS[i].Channel.ChannelName,channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
+                    errRecordOfChannel_E += string.Format("{0}HV Fault,Preset:{1}V,Actual:{2}V;",calculatedMeasureDataS[i].Channel.ChannelName_English,channelParameterNow[0].PresetHV.ToString(), calculatedMeasureDataS[i].HV.ToString());
                     //设置isCheck为false
                     isCheck = false;
                 }
@@ -2470,8 +2713,8 @@ namespace HFM
                         if(calculatedMeasureDataS[i].Alpha< BASE_DATA * (1-PlatForm.ErrorRange.BASE_ERROR)||calculatedMeasureDataS[i].Alpha> BASE_DATA * (1+PlatForm.ErrorRange.BASE_ERROR))
                         {
                             //将故障信息添加到error字符串
-                            errRecordOfChannel += string.Format("α电子线路故障;");
-                            errRecordOfChannel_E += string.Format("Alpha Channel Fault;");
+                            errRecordOfChannel += string.Format("{0}α电子线路故障;",calculatedMeasureDataS[i].Channel.ChannelName);
+                            errRecordOfChannel_E += string.Format("{0}Alpha Channel Fault;", calculatedMeasureDataS[i].Channel.ChannelName_English);
                             //设置isCheck为false
                             isCheck = false;
                         }
@@ -2483,8 +2726,8 @@ namespace HFM
                            // if (calculatedMeasureDataS[i].Beta < channelParameterNow[0].BetaThreshold * (1 - PlatForm.ErrorRange.BASE_ERROR) || calculatedMeasureDataS[i].Beta > channelParameterNow[0].BetaThreshold * (1 + PlatForm.ErrorRange.BASE_ERROR))
                         {
                             //将故障信息添加到error字符串
-                            errRecordOfChannel += string.Format("β电子线路故障;");
-                            errRecordOfChannel_E += string.Format("Beta Channel Fault;");
+                            errRecordOfChannel += string.Format("{0}β电子线路故障;", calculatedMeasureDataS[i].Channel.ChannelName);
+                            errRecordOfChannel_E += string.Format("{0}Beta Channel Fault;", calculatedMeasureDataS[i].Channel.ChannelName_English);
                             //设置isCheck为false
                             isCheck = false;
                         }
@@ -2493,8 +2736,8 @@ namespace HFM
                     if (calculatedMeasureDataS[i].InfraredStatus == 1)//红外状态到位
                     {
                         //红外故障,将故障信息添加到errRecord字符串
-                        errRecordOfChannel += string.Format("红外故障;");
-                        errRecordOfChannel_E += string.Format("Sensor fault;");
+                        errRecordOfChannel += string.Format("{0}红外故障;", calculatedMeasureDataS[i].Channel.ChannelName);
+                        errRecordOfChannel_E += string.Format("{0}Sensor fault;", calculatedMeasureDataS[i].Channel.ChannelName_English);
                         isCheck = false;
                     }                                
                 }
@@ -2510,15 +2753,15 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Alpha < probeParameterNow[0].LBackground) //超过当前通道的本底下限
                         {
                             //该通道channelS[i].ChannelName的本底下限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecordOfChannel += string.Format("α本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(),calculatedMeasureDataS[i].Alpha.ToString());
-                            errRecordOfChannel_E += string.Format("αLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel += string.Format("{0}α本底下限值:{1}cps,当前本底值:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName, probeParameterNow[0].LBackground.ToString(),calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel_E += string.Format("{0} α Low Background Threshold{1}cps,Actual Background:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName_English, probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
                             isCheck = false;
                         }
                         if (calculatedMeasureDataS[i].Alpha >= probeParameterNow[0].HBackground)//超过当前通道的本底上限
                         {
                             //该通道channelS[i].ChannelName本底上限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecordOfChannel += string.Format("α本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
-                            errRecordOfChannel_E += string.Format("αHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel += string.Format("{0}α本底上限值:{1}cps,当前本底值:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName, probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
+                            errRecordOfChannel_E += string.Format("{0} α High Background Threshold{1}cps,Actual Background:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName_English, probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Alpha.ToString());
                             isCheck = false;
                         }
                     }
@@ -2531,15 +2774,15 @@ namespace HFM
                         if (calculatedMeasureDataS[i].Beta < probeParameterNow[0].LBackground)//超过当前通道的本底下限
                         {
                             //该通道channelS[i].ChannelName本底下限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecordOfChannel += string.Format("β本底下限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
-                            errRecordOfChannel_E += string.Format("βLow Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel += string.Format("{0} β本底下限值:{1}cps,当前本底值:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName, probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel_E += string.Format("{0} β Low Background Threshold{1}cps,Actual Background:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName_English, probeParameterNow[0].LBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
                             isCheck = false;
                         }
                         if (calculatedMeasureDataS[i].Beta >= probeParameterNow[0].HBackground)//超过当前通道的本底上限
                         {
                             //该通道channelS[i].ChannelName本底上限值，当前本底值添加到错误信息串errRecord。置isCheck=false
-                            errRecordOfChannel += string.Format("β本底上限值:{0}cps,当前本底值:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
-                            errRecordOfChannel_E += string.Format("βHigh Background Threshold{0}cps,Actual Background:{1}cps;", probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel += string.Format("{0}β本底上限值:{1}cps,当前本底值:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName, probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
+                            errRecordOfChannel_E += string.Format("{0} β High Background Threshold{1}cps,Actual Background:{2}cps;", calculatedMeasureDataS[i].Channel.ChannelName_English, probeParameterNow[0].HBackground.ToString(), calculatedMeasureDataS[i].Beta.ToString());
                             isCheck = false;
                         }
                     }
@@ -2563,11 +2806,11 @@ namespace HFM
                     }
                     if (isEnglish != true)
                     {
-                        TxtShowResult.Text += calculatedMeasureDataS[i].Channel.ChannelName + errRecordOfChannel + "\r\n";
+                        TxtShowResult.Text += errRecordOfChannel + "\r\n";
                     }
                     else
                     {
-                        TxtShowResult.Text += calculatedMeasureDataS[i].Channel.ChannelName_English + errRecordOfChannel_E + "\r\n";
+                        TxtShowResult.Text +=errRecordOfChannel_E + "\r\n";
                     }
                     //对应通道名字文本框背景色显示为ERROR
                     if (calculatedMeasureDataS[i].Channel.ChannelID != 7)//衣物探头除外
@@ -2767,7 +3010,7 @@ namespace HFM
                     //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
                     if(measureData.IsReported==false && (errorData.IsReported==true||errorData==null))
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x02:仪器污染
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x04:仪器污染
                     }
                     //监测数据和故障数据都未上报，则将最近的状态进行上报，更新两条记录为已上报
                     if (measureData.IsReported == false && errorData.IsReported == false)
@@ -2938,29 +3181,60 @@ namespace HFM
 
         private void BtnOption_Click(object sender, EventArgs e)
         {            
-            FrmEnterPassword frmEnterPassword = new FrmEnterPassword();
-            if (bkWorkerReportStatus.IsBusy)
+            FrmEnterPassword frmEnterPassword = new FrmEnterPassword();           
+            if (frmEnterPassword.ShowDialog()==DialogResult.OK)
             {
-                bkWorkerReportStatus.CancelAsync();
-            }
-            if (bkWorkerReceiveData.IsBusy)
-            {
-                bkWorkerReceiveData.CancelAsync();
-            }
-            bkWorkerReceiveData.Dispose();
-            bkWorkerReportStatus.Dispose();
-            this.TmrDispTime.Enabled = false;
-            if (this.commPort.Opened == true)
-            {
-                this.commPort.Close();
+                bool isOpened = false;
+                if (bkWorkerReportStatus.IsBusy)
+                {
+                    bkWorkerReportStatus.CancelAsync();
+                    Thread.Sleep(200);
+                }
+                if (bkWorkerReceiveData.IsBusy)
+                {
+                    bkWorkerReceiveData.CancelAsync();
+                    Thread.Sleep(200);
+                }
+                bkWorkerReportStatus.Dispose();
                 Thread.Sleep(200);
-            }
-            if (this.commPort_Supervisory.Opened == true)
-            {
-                this.commPort_Supervisory.Close();
+                bkWorkerReceiveData.Dispose();
                 Thread.Sleep(200);
+                while (this.TmrDispTime.Enabled)
+                {
+                    this.TmrDispTime.Stop();
+                }
+                if (this.commPort.Opened == true)
+                {
+                    this.commPort.Close();
+                    Thread.Sleep(200);
+                }
+                if (this.commPort_Supervisory.Opened == true)
+                {
+                    this.commPort_Supervisory.Close();
+                    Thread.Sleep(200);
+                }
+                #region 打开窗体操作
+                FrmMain frmMain = new FrmMain();
+                frmMain.Show();
+                //try
+                //{
+                //    FrmMain frmMain = new FrmMain();
+                //}
+                //catch (Exception exception)
+                //{
+                //    Console.WriteLine(exception);
+                //    throw;
+                //}
+                //if (isEnglish)
+                //{
+                //    MessageBox.Show("Login Successful!", "Success");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("用户登录成功！", "成功");
+                //}
+                #endregion
             }
-            frmEnterPassword.Show();            
         }
 
         private void FrmMeasureMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -2968,10 +3242,12 @@ namespace HFM
             if (bkWorkerReportStatus.IsBusy)
             {
                 bkWorkerReportStatus.CancelAsync();
+                Thread.Sleep(200);
             }
             if (bkWorkerReceiveData.IsBusy)
             {
                 bkWorkerReceiveData.CancelAsync();
+                Thread.Sleep(200);
             }
             bkWorkerReceiveData.Dispose();
             bkWorkerReportStatus.Dispose();
@@ -2993,10 +3269,12 @@ namespace HFM
             if (bkWorkerReportStatus.IsBusy)
             {
                 bkWorkerReportStatus.CancelAsync();
+                Thread.Sleep(200);
             }
             if (bkWorkerReceiveData.IsBusy)
             {
                 bkWorkerReceiveData.CancelAsync();
+                Thread.Sleep(200);
             }
             bkWorkerReceiveData.Dispose();
             bkWorkerReportStatus.Dispose();
@@ -3033,6 +3311,20 @@ namespace HFM
                     this.Text = "英文";
                 }
                 Tools.ApplyLanguageResource(this);
+                //在界面中将启用通道（通道处于启用状态同时探测面积不为0）的控件Enabled有效，其它通道（通道未启用或探测面积为0）的控件Enabled无效；                       
+                for (int i = 0; i < channelsAll.Count(); i++)
+                {
+                    if (channelsAll[i].IsEnabled == true && channelsAll[i].ProbeArea != 0)//通道被启用且探测面积不为0
+                    {
+                        //界面中相关通道控件Enabled设置为true，背景色设置为正常
+                        ChannelDisplayControl(channelsAll[i], 1);
+                    }
+                    else
+                    {
+                        //界面中相关通道控件Enabled属性设置为false，背景色设置为屏蔽
+                        ChannelDisplayControl(channelsAll[i], 0);
+                    }
+                }
                 DisplayInit();
             }
             catch
