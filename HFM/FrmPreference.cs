@@ -979,29 +979,29 @@ namespace HFM
             {
                 if (receiveBufferMessage[0] == Convert.ToByte('P'))
                 {
-                    //DgvMainPreferenceSet.Rows.Clear();
+                    DgvMainPreferenceSet.Rows.Clear();
                     //解析报文
                     _channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
                     if (_channelParameters.Count==8)
                     {
                         _channelParameters.RemoveAt(7);
                     }
-                    //foreach (var itemParameter in _channelParameters)
-                    //{
-                    //    //显示内容
-                    //    int index = this.DgvMainPreferenceSet.Rows.Add();
-                    //    DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
-                    //    DgvMainPreferenceSet.Rows[index].Cells[1].Value = itemParameter.AlphaThreshold;
-                    //    DgvMainPreferenceSet.Rows[index].Cells[2].Value = itemParameter.BetaThreshold;
-                    //    DgvMainPreferenceSet.Rows[index].Cells[3].Value = itemParameter.PresetHV;
-                    //    DgvMainPreferenceSet.Rows[index].Cells[4].Value = itemParameter.ADCFactor;
-                    //    DgvMainPreferenceSet.Rows[index].Cells[5].Value = itemParameter.DACFactor;
-                    //    DgvMainPreferenceSet.Rows[index].Cells[6].Value = itemParameter.HVFactor;
-                    //    DgvMainPreferenceSet.Rows[index].Cells[7].Value = itemParameter.WorkTime;
-                    //    DgvMainPreferenceSet.Rows[index].Cells[8].Value = itemParameter.HVRatio;
-                    //}
-                    DgvMainPreferenceSet.AutoGenerateColumns = false;
-                    DgvMainPreferenceSet.DataSource = _channelParameters;
+                    foreach (var itemParameter in _channelParameters)
+                    {
+                        //显示内容
+                        int index = this.DgvMainPreferenceSet.Rows.Add();
+                        DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
+                        DgvMainPreferenceSet.Rows[index].Cells[1].Value = itemParameter.AlphaThreshold;
+                        DgvMainPreferenceSet.Rows[index].Cells[2].Value = itemParameter.BetaThreshold;
+                        DgvMainPreferenceSet.Rows[index].Cells[3].Value = itemParameter.PresetHV;
+                        DgvMainPreferenceSet.Rows[index].Cells[4].Value = itemParameter.ADCFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[5].Value = itemParameter.DACFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[6].Value = itemParameter.HVFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[7].Value = itemParameter.WorkTime;
+                        DgvMainPreferenceSet.Rows[index].Cells[8].Value = itemParameter.HVRatio;
+                    }
+                    //DgvMainPreferenceSet.AutoGenerateColumns = false;
+                    //DgvMainPreferenceSet.DataSource = _channelParameters;
                 }
 
             }

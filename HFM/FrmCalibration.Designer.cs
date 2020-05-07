@@ -60,6 +60,7 @@
             this.LblMeasuringTime = new System.Windows.Forms.Label();
             this.LblChannelSelection = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
+            this.PrgCalibrate = new System.Windows.Forms.ProgressBar();
             this.TabCalibration.SuspendLayout();
             this.TabpageCalibration.SuspendLayout();
             this.GrpCalibration.SuspendLayout();
@@ -92,6 +93,7 @@
             // GrpCalibration
             // 
             this.GrpCalibration.AutoSize = true;
+            this.GrpCalibration.Controls.Add(this.PrgCalibrate);
             this.GrpCalibration.Controls.Add(this.DgvInformation);
             this.GrpCalibration.Controls.Add(this.TxtSFR);
             this.GrpCalibration.Controls.Add(this.LblSFR);
@@ -406,6 +408,13 @@
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BkWorkerReceiveData_ProgressChanged);
             // 
+            // PrgCalibrate
+            // 
+            this.PrgCalibrate.Location = new System.Drawing.Point(27, 162);
+            this.PrgCalibrate.Name = "PrgCalibrate";
+            this.PrgCalibrate.Size = new System.Drawing.Size(936, 2);
+            this.PrgCalibrate.TabIndex = 22;
+            // 
             // FrmCalibration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -462,5 +471,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
         private System.Windows.Forms.DataGridViewTextBoxColumn HV;
+        private System.Windows.Forms.ProgressBar PrgCalibrate;
     }
 }

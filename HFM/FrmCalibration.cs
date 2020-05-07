@@ -67,6 +67,10 @@ namespace HFM
         /// 刻度测量状态:false=本地测量;true=带源测量;
         /// </summary>
         private bool _sclaeState;
+        /// <summary>
+        /// 进度条时间
+        /// </summary>
+        private int _prgTime;
         #endregion
 
         #region 实例
@@ -165,6 +169,7 @@ namespace HFM
         {
             InitializeComponent();
             bkWorkerReceiveData.WorkerReportsProgress = true;
+            
         }
 
         private void FrmCalibration_Load(object sender, EventArgs e)
@@ -637,7 +642,7 @@ namespace HFM
             {
                 IList<MeasureData> measureDatas = new List<MeasureData>();
                 measureDatas = Message.ExplainMessage<MeasureData>(receiveBufferMessage);
-                //扔掉5次预读取的数据
+                //扔掉2次预读取的数据
                 if (throwDataCount < 2)
                 {
                     for (int i = 0; i < measureDataS.Count; i++)
@@ -671,9 +676,11 @@ namespace HFM
                         }
                     }
                 }
-                
+                _prgTime++;
+                PrgCalibrate.Value = _prgTime;
                 if (_sclaeState==false)
                 {
+                   
                     if (_isEnglish)
                     {
                         _addInformation[0] = "BKG";
@@ -688,13 +695,15 @@ namespace HFM
                     _addInformation[4] = (String.Format("{0:f2}", (_betacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
                     _addInformation[5] = _hv.ToString();
                     _measuringTime--;
+                    
                     if (_measuringTime == 0)
                     {
                         _measuringCount--;//时间为0次数减1
-                        _measuringTime = Convert.ToInt16(TxtMeasuringTime.Text);//次数减1后,时间恢复测量时间
+                        _measuringTime = Convert.ToInt16(TxtMeasuringTime.Text);//次数减1后,时间恢复测量时间                        
                         DgvInformation.Rows.Add(_addInformation);//添加本次数据
                         _alphacps = 0;
                         _betacps = 0;
+                        _prgTime = 0;//进度条时间
                     }
 
                     if (_measuringCount==0 )
@@ -728,6 +737,7 @@ namespace HFM
                                 _betacps = 0;
                                 _alphacnt = 0;
                                 _betacnt = 0;
+                                _prgTime = 0;//进度条时间
                                 bkWorkerReceiveData.RunWorkerAsync();
                                 Thread.Sleep(200);
                             }
@@ -742,6 +752,8 @@ namespace HFM
                 }
                 if (_sclaeState==true)
                 {
+                    //_prgTime++;
+                    //PrgCalibrate.Value = _prgTime;
                     if (_isEnglish)
                     {
                         _addInformation[0] = "Radioactive source";
@@ -763,7 +775,7 @@ namespace HFM
                         DgvInformation.Rows.Add(_addInformation);
                         _alphacps = 0;
                         _betacps = 0;
-                        
+                        _prgTime = 0;//进度条时间
                     }
 
                     if (_measuringCount == 0 )
@@ -918,6 +930,7 @@ namespace HFM
                         //使刻度按钮可以使用
                         BtnCalibrate.Enabled = true;
                         BtnSet.Enabled = true;
+                        GrpCalibration.Enabled = true;
                     }
                 }
             }
@@ -1008,6 +1021,9 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnCalibrate_Click(object sender, EventArgs e)
         {
+            PrgCalibrate.Maximum = Convert.ToInt32(TxtMeasuringTime.Text);//进度条最大进度为测量时间
+            _prgTime = 0;
+
             DgvInformation.Rows.Clear();
             TxtResult.Text = "";
             throwDataCount = 0;
@@ -1040,7 +1056,7 @@ namespace HFM
                 return;
             }
 
-            if (TxtSFR.Text=="")
+            if (TxtSFR.Text==""||TxtSFR.Text=="0")
             {
                _tools.PrompMessage(11);
                return;
@@ -1074,6 +1090,7 @@ namespace HFM
             //点击刻度和设置后使按钮不可用
             BtnCalibrate.Enabled = false;
             BtnSet.Enabled = false;
+            GrpCalibration.Enabled = false;
         }
 
 
