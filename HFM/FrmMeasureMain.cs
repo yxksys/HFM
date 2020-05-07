@@ -256,7 +256,7 @@ namespace HFM
                     {                        
                         PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\Hand_NotInPlace.jpg");                       
                     }
-                    if(channel.ChannelID==5 || channel.ChannelID==6)//脚步
+                    if(channel.ChannelID==5 || channel.ChannelID==6)//脚部
                     {                        
                         PnlStatus[channel.ChannelID-1].BackgroundImage= Image.FromFile(appPath + "\\Images\\Foot_NotInPlace.jpg");
                     }
@@ -290,7 +290,7 @@ namespace HFM
                     {
                         PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\Hand_InPlace.jpg");                        
                     }
-                    if (channel.ChannelID == 5 || channel.ChannelID == 6)//脚步
+                    if (channel.ChannelID == 5 || channel.ChannelID == 6)//脚部
                     {
                         PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\Foot_InPlace.jpg");
                     }
@@ -357,7 +357,7 @@ namespace HFM
                     {
                         PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\Hand_InPlace.jpg");
                     }
-                    if (channel.ChannelID == 5 || channel.ChannelID == 6)//脚步
+                    if (channel.ChannelID == 5 || channel.ChannelID == 6)//脚部
                     {
                         PnlStatus[channel.ChannelID - 1].BackgroundImage = Image.FromFile(appPath + "\\Images\\Foot_InPlace.jpg");
                     }
@@ -1173,6 +1173,7 @@ namespace HFM
                 }
                 LblTimeRemain.Parent = PnlSelfCheck;
                 LblTimeRemain.Location = new Point(112,0);//控制剩余时间标签显示位置
+                LblTimeRemain.BringToFront();
                 //获得当前系统参数设置中的的自检时间并赋值给stateTimeSet
                 stateTimeSet =systemParameter.SelfCheckTime;               
                 //更新剩余时间：系统自检设置时间-已经用时
@@ -1587,6 +1588,16 @@ namespace HFM
                         PnlBackground.BackgroundImage = Image.FromFile(appPath + "\\Images\\Fault_progress.jpg");
                         //将设备监测状态设置为“故障”
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
+                        //语音提示故障
+                        if (isEnglish)
+                        {
+                            player.SoundLocation = appPath + "\\Audio\\English_Background_abnomal.wav";
+                        }
+                        else
+                        {
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_Background_abnomal.wav";
+                        }
+                        player.PlaySync();
                         //将故障信息errRecord写入数据库
                         AddErrorData(errRecordS);                        
                         //启动故障报警计时
