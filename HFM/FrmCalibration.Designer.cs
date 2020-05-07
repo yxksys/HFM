@@ -31,6 +31,7 @@
             this.TabCalibration = new System.Windows.Forms.TabControl();
             this.TabpageCalibration = new System.Windows.Forms.TabPage();
             this.GrpCalibration = new System.Windows.Forms.GroupBox();
+            this.PrgCalibrate = new System.Windows.Forms.ProgressBar();
             this.DgvInformation = new System.Windows.Forms.DataGridView();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Channel = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +61,6 @@
             this.LblMeasuringTime = new System.Windows.Forms.Label();
             this.LblChannelSelection = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
-            this.PrgCalibrate = new System.Windows.Forms.ProgressBar();
             this.TabCalibration.SuspendLayout();
             this.TabpageCalibration.SuspendLayout();
             this.GrpCalibration.SuspendLayout();
@@ -122,6 +122,13 @@
             this.GrpCalibration.Size = new System.Drawing.Size(969, 868);
             this.GrpCalibration.TabIndex = 0;
             this.GrpCalibration.TabStop = false;
+            // 
+            // PrgCalibrate
+            // 
+            this.PrgCalibrate.Location = new System.Drawing.Point(27, 162);
+            this.PrgCalibrate.Name = "PrgCalibrate";
+            this.PrgCalibrate.Size = new System.Drawing.Size(936, 2);
+            this.PrgCalibrate.TabIndex = 22;
             // 
             // DgvInformation
             // 
@@ -407,13 +414,6 @@
             // 
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BkWorkerReceiveData_ProgressChanged);
-            // 
-            // PrgCalibrate
-            // 
-            this.PrgCalibrate.Location = new System.Drawing.Point(27, 162);
-            this.PrgCalibrate.Name = "PrgCalibrate";
-            this.PrgCalibrate.Size = new System.Drawing.Size(936, 2);
-            this.PrgCalibrate.TabIndex = 22;
             // 
             // FrmCalibration
             // 
