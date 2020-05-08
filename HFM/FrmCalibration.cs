@@ -568,6 +568,11 @@ namespace HFM
         #region ProgressChanged
         private void BkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            //如果窗体已经被释放,返回
+            if (this.IsDisposed==true)
+            {
+                return;
+            }
             float area = _channel.ProbeArea;//探测面积
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
@@ -676,8 +681,16 @@ namespace HFM
                         }
                     }
                 }
-                _prgTime++;
-                PrgCalibrate.Value = _prgTime;
+                _prgTime++;//进度条计数
+                if (_prgTime> Convert.ToInt32(TxtMeasuringTime.Text))
+                {
+                    _prgTime = 0;
+                    PrgCalibrate.Value = _prgTime;//进度条显示
+                }
+                else
+                {
+                    PrgCalibrate.Value = _prgTime;//进度条显示
+                }
                 if (_sclaeState==false)
                 {
                    
@@ -689,13 +702,15 @@ namespace HFM
                     {
                         _addInformation[0] = "本底测量";
                     }
-                    _addInformation[1] = CmbChannelSelection.Text;
-                    _addInformation[2] = area.ToString();
-                    _addInformation[3] = (String.Format("{0:f2}",(_alphacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
-                    _addInformation[4] = (String.Format("{0:f2}", (_betacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
-                    _addInformation[5] = _hv.ToString();
-                    _measuringTime--;
-                    
+                    if (this.IsDisposed!=true)
+                    {
+                        _addInformation[1] = CmbChannelSelection.Text;
+                        _addInformation[2] = area.ToString();
+                        _addInformation[3] = (String.Format("{0:f2}", (_alphacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
+                        _addInformation[4] = (String.Format("{0:f2}", (_betacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
+                        _addInformation[5] = _hv.ToString();
+                        _measuringTime--;
+                    }                    
                     if (_measuringTime == 0)
                     {
                         _measuringCount--;//时间为0次数减1

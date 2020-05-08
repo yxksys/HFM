@@ -42,13 +42,6 @@
             this.BtnDeleteCalibration = new System.Windows.Forms.Button();
             this.BtnDeriveCalibration = new System.Windows.Forms.Button();
             this.DgvCalibration = new System.Windows.Forms.DataGridView();
-            this.CalibrationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChannelID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HighVoltage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Threshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Efficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AlphaBetaPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabError = new System.Windows.Forms.TabPage();
             this.BtnDeleteError = new System.Windows.Forms.Button();
             this.BtnDeriveError = new System.Windows.Forms.Button();
@@ -56,6 +49,13 @@
             this.ErrTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Record = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsEnglishsError = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CalibrationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChannelID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HighVoltage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Threshold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Efficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AlphaBetaPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabHistory.SuspendLayout();
             this.TabMeasure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMeasure)).BeginInit();
@@ -111,28 +111,33 @@
             this.DetailedInfo,
             this.IsEnglish});
             this.DgvMeasure.Name = "DgvMeasure";
+            this.DgvMeasure.ReadOnly = true;
             this.DgvMeasure.RowTemplate.Height = 23;
             // 
             // MeasureDate
             // 
             resources.ApplyResources(this.MeasureDate, "MeasureDate");
             this.MeasureDate.Name = "MeasureDate";
+            this.MeasureDate.ReadOnly = true;
             // 
             // MeasureStatus
             // 
             resources.ApplyResources(this.MeasureStatus, "MeasureStatus");
             this.MeasureStatus.Name = "MeasureStatus";
+            this.MeasureStatus.ReadOnly = true;
             // 
             // DetailedInfo
             // 
             this.DetailedInfo.FillWeight = 400F;
             resources.ApplyResources(this.DetailedInfo, "DetailedInfo");
             this.DetailedInfo.Name = "DetailedInfo";
+            this.DetailedInfo.ReadOnly = true;
             // 
             // IsEnglish
             // 
             resources.ApplyResources(this.IsEnglish, "IsEnglish");
             this.IsEnglish.Name = "IsEnglish";
+            this.IsEnglish.ReadOnly = true;
             // 
             // TabCalibration
             // 
@@ -179,6 +184,64 @@
             this.DgvCalibration.ReadOnly = true;
             this.DgvCalibration.RowTemplate.Height = 23;
             // 
+            // TabError
+            // 
+            resources.ApplyResources(this.TabError, "TabError");
+            this.TabError.Controls.Add(this.BtnDeleteError);
+            this.TabError.Controls.Add(this.BtnDeriveError);
+            this.TabError.Controls.Add(this.DgvError);
+            this.TabError.Name = "TabError";
+            this.TabError.UseVisualStyleBackColor = true;
+            // 
+            // BtnDeleteError
+            // 
+            resources.ApplyResources(this.BtnDeleteError, "BtnDeleteError");
+            this.BtnDeleteError.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnDeleteError.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnDeleteError.Name = "BtnDeleteError";
+            this.BtnDeleteError.UseVisualStyleBackColor = false;
+            this.BtnDeleteError.Click += new System.EventHandler(this.BtnDeleteError_Click);
+            // 
+            // BtnDeriveError
+            // 
+            resources.ApplyResources(this.BtnDeriveError, "BtnDeriveError");
+            this.BtnDeriveError.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnDeriveError.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnDeriveError.Name = "BtnDeriveError";
+            this.BtnDeriveError.UseVisualStyleBackColor = false;
+            this.BtnDeriveError.Click += new System.EventHandler(this.BtnDeriveError_Click);
+            // 
+            // DgvError
+            // 
+            resources.ApplyResources(this.DgvError, "DgvError");
+            this.DgvError.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ErrTime,
+            this.Record,
+            this.IsEnglishsError});
+            this.DgvError.Name = "DgvError";
+            this.DgvError.ReadOnly = true;
+            this.DgvError.RowTemplate.Height = 23;
+            // 
+            // ErrTime
+            // 
+            resources.ApplyResources(this.ErrTime, "ErrTime");
+            this.ErrTime.Name = "ErrTime";
+            this.ErrTime.ReadOnly = true;
+            // 
+            // Record
+            // 
+            resources.ApplyResources(this.Record, "Record");
+            this.Record.Name = "Record";
+            this.Record.ReadOnly = true;
+            // 
+            // IsEnglishsError
+            // 
+            resources.ApplyResources(this.IsEnglishsError, "IsEnglishsError");
+            this.IsEnglishsError.Name = "IsEnglishsError";
+            this.IsEnglishsError.ReadOnly = true;
+            // 
             // CalibrationTime
             // 
             resources.ApplyResources(this.CalibrationTime, "CalibrationTime");
@@ -221,60 +284,6 @@
             this.AlphaBetaPercent.Name = "AlphaBetaPercent";
             this.AlphaBetaPercent.ReadOnly = true;
             // 
-            // TabError
-            // 
-            resources.ApplyResources(this.TabError, "TabError");
-            this.TabError.Controls.Add(this.BtnDeleteError);
-            this.TabError.Controls.Add(this.BtnDeriveError);
-            this.TabError.Controls.Add(this.DgvError);
-            this.TabError.Name = "TabError";
-            this.TabError.UseVisualStyleBackColor = true;
-            // 
-            // BtnDeleteError
-            // 
-            resources.ApplyResources(this.BtnDeleteError, "BtnDeleteError");
-            this.BtnDeleteError.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnDeleteError.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnDeleteError.Name = "BtnDeleteError";
-            this.BtnDeleteError.UseVisualStyleBackColor = false;
-            this.BtnDeleteError.Click += new System.EventHandler(this.BtnDeleteError_Click);
-            // 
-            // BtnDeriveError
-            // 
-            resources.ApplyResources(this.BtnDeriveError, "BtnDeriveError");
-            this.BtnDeriveError.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnDeriveError.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnDeriveError.Name = "BtnDeriveError";
-            this.BtnDeriveError.UseVisualStyleBackColor = false;
-            this.BtnDeriveError.Click += new System.EventHandler(this.BtnDeriveError_Click);
-            // 
-            // DgvError
-            // 
-            resources.ApplyResources(this.DgvError, "DgvError");
-            this.DgvError.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ErrTime,
-            this.Record,
-            this.IsEnglishsError});
-            this.DgvError.Name = "DgvError";
-            this.DgvError.RowTemplate.Height = 23;
-            // 
-            // ErrTime
-            // 
-            resources.ApplyResources(this.ErrTime, "ErrTime");
-            this.ErrTime.Name = "ErrTime";
-            // 
-            // Record
-            // 
-            resources.ApplyResources(this.Record, "Record");
-            this.Record.Name = "Record";
-            // 
-            // IsEnglishsError
-            // 
-            resources.ApplyResources(this.IsEnglishsError, "IsEnglishsError");
-            this.IsEnglishsError.Name = "IsEnglishsError";
-            // 
             // FrmHistory
             // 
             resources.ApplyResources(this, "$this");
@@ -306,13 +315,6 @@
         private System.Windows.Forms.Button BtnDeriveCalibration;
         private System.Windows.Forms.Button BtnDeleteError;
         private System.Windows.Forms.Button BtnDeriveError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CalibrationTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ChannelID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HighVoltage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Threshold;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Efficiency;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MDA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AlphaBetaPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn MeasureDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn MeasureStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn DetailedInfo;
@@ -322,5 +324,12 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglishsError;
         private System.Windows.Forms.Button BtnDeleteMeasure;
         private System.Windows.Forms.Button BtnDeriveMeasure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CalibrationTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChannelID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HighVoltage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Threshold;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Efficiency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MDA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AlphaBetaPercent;
     }
 }

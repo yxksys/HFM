@@ -143,10 +143,10 @@
     <value>5</value>
   </data>
   <data name="HighVoltage.HeaderText" xml:space="preserve">
-    <value>高压值</value>
+    <value>高压值(V)</value>
   </data>
-  <data name="&gt;&gt;ChannelID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
+    <value>IsEnglishsError</value>
   </data>
   <data name="&gt;&gt;DetailedInfo.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -170,9 +170,6 @@
   </data>
   <data name="DgvError.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
-    <value>IsEnglishsError</value>
   </data>
   <data name="MeasureStatus.HeaderText" xml:space="preserve">
     <value>测量状态</value>
@@ -226,7 +223,7 @@
     <value>6, 12</value>
   </data>
   <data name="Threshold.HeaderText" xml:space="preserve">
-    <value>阈值</value>
+    <value>阈值(mV)</value>
   </data>
   <data name="&gt;&gt;IsEnglish.Name" xml:space="preserve">
     <value>IsEnglish</value>
@@ -391,7 +388,7 @@
     <value>0</value>
   </data>
   <data name="Efficiency.HeaderText" xml:space="preserve">
-    <value>效率</value>
+    <value>效率(%)</value>
   </data>
   <data name="&gt;&gt;Efficiency.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -453,6 +450,9 @@
   <data name="&gt;&gt;BtnDeleteMeasure.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ChannelID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="TabMeasure.Size" type="System.Drawing.Size, System.Drawing">
     <value>1000, 651</value>
   </data>
@@ -493,7 +493,7 @@
     <value>3</value>
   </data>
   <data name="AlphaBetaPercent.HeaderText" xml:space="preserve">
-    <value>串道比</value>
+    <value>串道比(%)</value>
   </data>
   <data name="&gt;&gt;CalibrationTime.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

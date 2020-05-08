@@ -57,6 +57,19 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmHistory_Load(object sender, EventArgs e)
         {
+            //判断是否是超级管理员是:删除按钮可用,否:不可用
+            if (User.LandingUser.Role==1)
+            {
+                BtnDeleteCalibration.Visible = true;
+                BtnDeleteError.Visible = true;
+                BtnDeleteMeasure.Visible = true;
+            }
+            else
+            {
+                BtnDeleteCalibration.Visible = false;
+                BtnDeleteError.Visible = false;
+                BtnDeleteMeasure.Visible = false;
+            }
             GetMeasureDataLog();
         } 
         #endregion

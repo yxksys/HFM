@@ -151,19 +151,19 @@
     <value>Channel</value>
   </data>
   <data name="HighVoltage.HeaderText" xml:space="preserve">
-    <value>HV</value>
+    <value>HV(V)</value>
   </data>
   <data name="Threshold.HeaderText" xml:space="preserve">
-    <value>Threshold</value>
+    <value>Threshold(mV)</value>
   </data>
   <data name="Efficiency.HeaderText" xml:space="preserve">
-    <value>Eff</value>
+    <value>Eff(%)</value>
   </data>
   <data name="MDA.HeaderText" xml:space="preserve">
     <value>MDA</value>
   </data>
   <data name="AlphaBetaPercent.HeaderText" xml:space="preserve">
-    <value>α(β)/β(α)\r</value>
+    <value>α(β)/β(α)\r(%)</value>
   </data>
   <data name="TabCalibration.Text" xml:space="preserve">
     <value>Calibration Log</value>

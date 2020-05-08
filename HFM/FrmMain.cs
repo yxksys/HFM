@@ -249,6 +249,24 @@ namespace HFM
         {
             
         }
+        /// <summary>
+        /// 启动加载首次处理事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmMain_Shown(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+
+                if (this.Name != Application.OpenForms[i].Name)
+                {
+                    Application.OpenForms[i].Close();
+                }
+
+            }
+        }
+
         #endregion
 
         #region 系统
@@ -414,22 +432,6 @@ namespace HFM
         {
             Application.ExitThread();
         }
-        /// <summary>
-        /// 启动加载首次处理事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FrmMain_Shown(object sender, EventArgs e)
-        {
-            for (int i = 0; i < Application.OpenForms.Count; i++)
-            {
-
-                if (this.Name != Application.OpenForms[i].Name)
-                {
-                    Application.OpenForms[i].Dispose();
-                }
-
-            }
-        }
+        
     }
 }
