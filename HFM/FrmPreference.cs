@@ -2218,7 +2218,11 @@ namespace HFM
             }
             _commPort.Close();
             Thread.Sleep(200);
-        } 
+        }
+
+
         #endregion
+
+        
     }
 }

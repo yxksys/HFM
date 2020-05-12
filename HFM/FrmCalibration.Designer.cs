@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCalibration));
             this.TabCalibration = new System.Windows.Forms.TabControl();
             this.TabpageCalibration = new System.Windows.Forms.TabPage();
             this.GrpCalibration = new System.Windows.Forms.GroupBox();
@@ -70,29 +71,19 @@
             // TabCalibration
             // 
             this.TabCalibration.Controls.Add(this.TabpageCalibration);
-            this.TabCalibration.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TabCalibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.TabCalibration.ItemSize = new System.Drawing.Size(76, 25);
-            this.TabCalibration.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.TabCalibration, "TabCalibration");
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.SelectedIndex = 0;
-            this.TabCalibration.Size = new System.Drawing.Size(1008, 900);
-            this.TabCalibration.TabIndex = 0;
             // 
             // TabpageCalibration
             // 
             this.TabpageCalibration.Controls.Add(this.GrpCalibration);
-            this.TabpageCalibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TabpageCalibration.Location = new System.Drawing.Point(4, 29);
+            resources.ApplyResources(this.TabpageCalibration, "TabpageCalibration");
             this.TabpageCalibration.Name = "TabpageCalibration";
-            this.TabpageCalibration.Padding = new System.Windows.Forms.Padding(3);
-            this.TabpageCalibration.Size = new System.Drawing.Size(1000, 867);
-            this.TabpageCalibration.TabIndex = 0;
-            this.TabpageCalibration.Text = "仪器刻度";
             // 
             // GrpCalibration
             // 
-            this.GrpCalibration.AutoSize = true;
+            resources.ApplyResources(this.GrpCalibration, "GrpCalibration");
             this.GrpCalibration.Controls.Add(this.PrgCalibrate);
             this.GrpCalibration.Controls.Add(this.DgvInformation);
             this.GrpCalibration.Controls.Add(this.TxtSFR);
@@ -116,19 +107,13 @@
             this.GrpCalibration.Controls.Add(this.LblResult);
             this.GrpCalibration.Controls.Add(this.LblMeasuringTime);
             this.GrpCalibration.Controls.Add(this.LblChannelSelection);
-            this.GrpCalibration.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.GrpCalibration.Location = new System.Drawing.Point(6, 0);
             this.GrpCalibration.Name = "GrpCalibration";
-            this.GrpCalibration.Size = new System.Drawing.Size(969, 868);
-            this.GrpCalibration.TabIndex = 0;
             this.GrpCalibration.TabStop = false;
             // 
             // PrgCalibrate
             // 
-            this.PrgCalibrate.Location = new System.Drawing.Point(27, 162);
+            resources.ApplyResources(this.PrgCalibrate, "PrgCalibrate");
             this.PrgCalibrate.Name = "PrgCalibrate";
-            this.PrgCalibrate.Size = new System.Drawing.Size(936, 2);
-            this.PrgCalibrate.TabIndex = 22;
             // 
             // DgvInformation
             // 
@@ -141,274 +126,168 @@
             this.Alpha,
             this.Beta,
             this.HV});
-            this.DgvInformation.Location = new System.Drawing.Point(27, 166);
+            resources.ApplyResources(this.DgvInformation, "DgvInformation");
             this.DgvInformation.Name = "DgvInformation";
             this.DgvInformation.RowHeadersVisible = false;
             this.DgvInformation.RowTemplate.Height = 23;
-            this.DgvInformation.Size = new System.Drawing.Size(936, 673);
-            this.DgvInformation.TabIndex = 21;
             // 
             // Status
             // 
-            this.Status.HeaderText = "状态";
+            resources.ApplyResources(this.Status, "Status");
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
-            this.Status.Width = 170;
             // 
             // Channel
             // 
-            this.Channel.HeaderText = "通道";
+            resources.ApplyResources(this.Channel, "Channel");
             this.Channel.Name = "Channel";
             this.Channel.ReadOnly = true;
-            this.Channel.Width = 170;
             // 
             // Area
             // 
-            this.Area.HeaderText = "面积(cm2)";
+            resources.ApplyResources(this.Area, "Area");
             this.Area.Name = "Area";
             this.Area.ReadOnly = true;
-            this.Area.Width = 150;
             // 
             // Alpha
             // 
-            this.Alpha.HeaderText = "α计数(cps)";
+            resources.ApplyResources(this.Alpha, "Alpha");
             this.Alpha.Name = "Alpha";
             this.Alpha.ReadOnly = true;
-            this.Alpha.Width = 150;
             // 
             // Beta
             // 
-            this.Beta.HeaderText = "β计数(cps)";
+            resources.ApplyResources(this.Beta, "Beta");
             this.Beta.Name = "Beta";
             this.Beta.ReadOnly = true;
-            this.Beta.Width = 150;
             // 
             // HV
             // 
-            this.HV.HeaderText = "高压（V）";
+            resources.ApplyResources(this.HV, "HV");
             this.HV.Name = "HV";
             this.HV.ReadOnly = true;
-            this.HV.Width = 150;
             // 
             // TxtSFR
             // 
-            this.TxtSFR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.TxtSFR.Location = new System.Drawing.Point(846, 66);
+            resources.ApplyResources(this.TxtSFR, "TxtSFR");
             this.TxtSFR.Name = "TxtSFR";
-            this.TxtSFR.Size = new System.Drawing.Size(96, 29);
-            this.TxtSFR.TabIndex = 20;
-            this.TxtSFR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtSFR.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtSFR_MouseClick);
             // 
             // LblSFR
             // 
-            this.LblSFR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LblSFR.Location = new System.Drawing.Point(713, 71);
+            resources.ApplyResources(this.LblSFR, "LblSFR");
             this.LblSFR.Name = "LblSFR";
-            this.LblSFR.Size = new System.Drawing.Size(116, 25);
-            this.LblSFR.TabIndex = 19;
-            this.LblSFR.Text = "表面发射率";
-            this.LblSFR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BtnCalibrate
             // 
-            this.BtnCalibrate.AutoSize = true;
-            this.BtnCalibrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.BtnCalibrate.Location = new System.Drawing.Point(849, 25);
+            resources.ApplyResources(this.BtnCalibrate, "BtnCalibrate");
             this.BtnCalibrate.Name = "BtnCalibrate";
-            this.BtnCalibrate.Size = new System.Drawing.Size(93, 34);
-            this.BtnCalibrate.TabIndex = 18;
-            this.BtnCalibrate.Text = "刻度";
             this.BtnCalibrate.UseVisualStyleBackColor = true;
             this.BtnCalibrate.Click += new System.EventHandler(this.BtnCalibrate_Click);
             // 
             // BtnSet
             // 
-            this.BtnSet.AutoSize = true;
-            this.BtnSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.BtnSet.Location = new System.Drawing.Point(731, 25);
+            resources.ApplyResources(this.BtnSet, "BtnSet");
             this.BtnSet.Name = "BtnSet";
-            this.BtnSet.Size = new System.Drawing.Size(93, 34);
-            this.BtnSet.TabIndex = 17;
-            this.BtnSet.Text = "设置";
             this.BtnSet.UseVisualStyleBackColor = true;
             this.BtnSet.Click += new System.EventHandler(this.BtnSet_Click);
             // 
             // CmbNuclideSelect
             // 
             this.CmbNuclideSelect.DropDownWidth = 74;
-            this.CmbNuclideSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            resources.ApplyResources(this.CmbNuclideSelect, "CmbNuclideSelect");
             this.CmbNuclideSelect.FormattingEnabled = true;
-            this.CmbNuclideSelect.Location = new System.Drawing.Point(578, 67);
             this.CmbNuclideSelect.Name = "CmbNuclideSelect";
-            this.CmbNuclideSelect.Size = new System.Drawing.Size(93, 32);
-            this.CmbNuclideSelect.TabIndex = 16;
             this.CmbNuclideSelect.DropDown += new System.EventHandler(this.CmbNuclideSelect_DropDown);
             // 
             // Txtβ
             // 
-            this.Txtβ.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.Txtβ.Location = new System.Drawing.Point(670, 25);
+            resources.ApplyResources(this.Txtβ, "Txtβ");
             this.Txtβ.Name = "Txtβ";
-            this.Txtβ.Size = new System.Drawing.Size(42, 29);
-            this.Txtβ.TabIndex = 15;
-            this.Txtβ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Txtβ.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Txtβ_MouseClick);
             // 
             // Txtα
             // 
-            this.Txtα.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.Txtα.Location = new System.Drawing.Point(579, 26);
+            resources.ApplyResources(this.Txtα, "Txtα");
             this.Txtα.Name = "Txtα";
-            this.Txtα.Size = new System.Drawing.Size(42, 29);
-            this.Txtα.TabIndex = 14;
-            this.Txtα.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Txtα.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Txtα_MouseClick);
             // 
             // Lblβ
             // 
-            this.Lblβ.AutoSize = true;
-            this.Lblβ.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.Lblβ.Location = new System.Drawing.Point(636, 28);
+            resources.ApplyResources(this.Lblβ, "Lblβ");
             this.Lblβ.Name = "Lblβ";
-            this.Lblβ.Size = new System.Drawing.Size(21, 24);
-            this.Lblβ.TabIndex = 13;
-            this.Lblβ.Text = "β";
-            this.Lblβ.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Lblα
             // 
-            this.Lblα.AutoSize = true;
-            this.Lblα.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.Lblα.Location = new System.Drawing.Point(546, 30);
+            resources.ApplyResources(this.Lblα, "Lblα");
             this.Lblα.Name = "Lblα";
-            this.Lblα.Size = new System.Drawing.Size(21, 24);
-            this.Lblα.TabIndex = 12;
-            this.Lblα.Text = "α";
-            this.Lblα.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblNuclide
             // 
-            this.LblNuclide.AutoSize = true;
-            this.LblNuclide.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LblNuclide.Location = new System.Drawing.Point(447, 72);
+            resources.ApplyResources(this.LblNuclide, "LblNuclide");
             this.LblNuclide.Name = "LblNuclide";
-            this.LblNuclide.Size = new System.Drawing.Size(48, 24);
-            this.LblNuclide.TabIndex = 11;
-            this.LblNuclide.Text = "核素";
-            this.LblNuclide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblThreshold
             // 
-            this.LblThreshold.AutoSize = true;
-            this.LblThreshold.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LblThreshold.Location = new System.Drawing.Point(417, 30);
+            resources.ApplyResources(this.LblThreshold, "LblThreshold");
             this.LblThreshold.Name = "LblThreshold";
-            this.LblThreshold.Size = new System.Drawing.Size(89, 24);
-            this.LblThreshold.TabIndex = 10;
-            this.LblThreshold.Text = "阈值(mV)";
-            this.LblThreshold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TxtCount
             // 
-            this.TxtCount.Location = new System.Drawing.Point(343, 69);
+            resources.ApplyResources(this.TxtCount, "TxtCount");
             this.TxtCount.Name = "TxtCount";
-            this.TxtCount.Size = new System.Drawing.Size(54, 29);
-            this.TxtCount.TabIndex = 9;
-            this.TxtCount.Text = "1";
-            this.TxtCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtCount.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtCount_MouseClick);
             // 
             // TxtHV
             // 
-            this.TxtHV.Location = new System.Drawing.Point(343, 26);
+            resources.ApplyResources(this.TxtHV, "TxtHV");
             this.TxtHV.Name = "TxtHV";
-            this.TxtHV.Size = new System.Drawing.Size(54, 29);
-            this.TxtHV.TabIndex = 8;
-            this.TxtHV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtHV.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtHV_MouseClick);
             // 
             // LblCount
             // 
-            this.LblCount.AutoSize = true;
-            this.LblCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LblCount.Location = new System.Drawing.Point(257, 71);
+            resources.ApplyResources(this.LblCount, "LblCount");
             this.LblCount.Name = "LblCount";
-            this.LblCount.Size = new System.Drawing.Size(73, 24);
-            this.LblCount.TabIndex = 7;
-            this.LblCount.Text = "次    数 ";
-            this.LblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblHV
             // 
-            this.LblHV.AutoSize = true;
-            this.LblHV.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LblHV.Location = new System.Drawing.Point(254, 29);
+            resources.ApplyResources(this.LblHV, "LblHV");
             this.LblHV.Name = "LblHV";
-            this.LblHV.Size = new System.Drawing.Size(73, 24);
-            this.LblHV.TabIndex = 6;
-            this.LblHV.Text = "高压(V)";
-            this.LblHV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TxtResult
             // 
-            this.TxtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.TxtResult.Location = new System.Drawing.Point(157, 108);
+            resources.ApplyResources(this.TxtResult, "TxtResult");
             this.TxtResult.Name = "TxtResult";
             this.TxtResult.ReadOnly = true;
-            this.TxtResult.Size = new System.Drawing.Size(806, 29);
-            this.TxtResult.TabIndex = 5;
             // 
             // TxtMeasuringTime
             // 
-            this.TxtMeasuringTime.Location = new System.Drawing.Point(157, 67);
+            resources.ApplyResources(this.TxtMeasuringTime, "TxtMeasuringTime");
             this.TxtMeasuringTime.Name = "TxtMeasuringTime";
-            this.TxtMeasuringTime.Size = new System.Drawing.Size(74, 29);
-            this.TxtMeasuringTime.TabIndex = 4;
-            this.TxtMeasuringTime.Text = "5";
-            this.TxtMeasuringTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TxtMeasuringTime.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtMeasuringTime_MouseClick);
             // 
             // CmbChannelSelection
             // 
             this.CmbChannelSelection.DropDownWidth = 74;
-            this.CmbChannelSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            resources.ApplyResources(this.CmbChannelSelection, "CmbChannelSelection");
             this.CmbChannelSelection.FormattingEnabled = true;
-            this.CmbChannelSelection.Location = new System.Drawing.Point(157, 25);
             this.CmbChannelSelection.Name = "CmbChannelSelection";
-            this.CmbChannelSelection.Size = new System.Drawing.Size(74, 28);
-            this.CmbChannelSelection.TabIndex = 3;
             this.CmbChannelSelection.SelectedValueChanged += new System.EventHandler(this.CmbChannelSelection_SelectedValueChanged);
             // 
             // LblResult
             // 
-            this.LblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.LblResult.Location = new System.Drawing.Point(14, 108);
+            resources.ApplyResources(this.LblResult, "LblResult");
             this.LblResult.Name = "LblResult";
-            this.LblResult.Size = new System.Drawing.Size(120, 25);
-            this.LblResult.TabIndex = 2;
-            this.LblResult.Text = "测量结果";
-            this.LblResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblMeasuringTime
             // 
-            this.LblMeasuringTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LblMeasuringTime.Location = new System.Drawing.Point(14, 69);
+            resources.ApplyResources(this.LblMeasuringTime, "LblMeasuringTime");
             this.LblMeasuringTime.Name = "LblMeasuringTime";
-            this.LblMeasuringTime.Size = new System.Drawing.Size(120, 25);
-            this.LblMeasuringTime.TabIndex = 1;
-            this.LblMeasuringTime.Text = "测量时间(s)";
-            this.LblMeasuringTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblChannelSelection
             // 
-            this.LblChannelSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LblChannelSelection.Location = new System.Drawing.Point(14, 28);
+            resources.ApplyResources(this.LblChannelSelection, "LblChannelSelection");
             this.LblChannelSelection.Name = "LblChannelSelection";
-            this.LblChannelSelection.Size = new System.Drawing.Size(120, 25);
-            this.LblChannelSelection.TabIndex = 0;
-            this.LblChannelSelection.Text = "通道选择";
-            this.LblChannelSelection.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // bkWorkerReceiveData
             // 
@@ -417,14 +296,11 @@
             // 
             // FrmCalibration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1025, 729);
             this.ControlBox = false;
             this.Controls.Add(this.TabCalibration);
             this.Name = "FrmCalibration";
-            this.Text = "测试刻度";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCalibration_FormClosed);
             this.Load += new System.EventHandler(this.FrmCalibration_Load);
             this.TabCalibration.ResumeLayout(false);
@@ -465,12 +341,12 @@
         private System.Windows.Forms.Label LblResult;
         private System.Windows.Forms.Label LblMeasuringTime;
         private System.Windows.Forms.Label LblChannelSelection;
+        private System.Windows.Forms.ProgressBar PrgCalibrate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Channel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Area;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alpha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Beta;
         private System.Windows.Forms.DataGridViewTextBoxColumn HV;
-        private System.Windows.Forms.ProgressBar PrgCalibrate;
     }
 }

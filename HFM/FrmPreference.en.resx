@@ -122,7 +122,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="ChkHand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 51</value>
+    <value>14, 37</value>
   </data>
   <data name="ChkHand.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 24</value>
@@ -134,7 +134,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoDoubleHand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>306, 50</value>
+    <value>235, 36</value>
   </data>
   <data name="RdoDoubleHand.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 24</value>
@@ -146,7 +146,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoSingleHand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 50</value>
+    <value>103, 36</value>
   </data>
   <data name="RdoSingleHand.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 24</value>
@@ -158,7 +158,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="ChkClothes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>555, 51</value>
+    <value>457, 37</value>
   </data>
   <data name="ChkClothes.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 24</value>
@@ -170,7 +170,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="ChkFoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>446, 51</value>
+    <value>374, 37</value>
   </data>
   <data name="ChkFoot.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 24</value>
@@ -178,20 +178,26 @@
   <data name="ChkFoot.Text" xml:space="preserve">
     <value>Foot</value>
   </data>
+  <data name="GrpPresence.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 305</value>
+  </data>
+  <data name="GrpPresence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 71</value>
+  </data>
   <data name="GrpPresence.Text" xml:space="preserve">
     <value>Equipment configuration</value>
   </data>
   <data name="CmbSoftName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>550, 56</value>
+    <value>400, 45</value>
   </data>
   <data name="CmbUnclideType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>844, 57</value>
+    <value>649, 43</value>
   </data>
   <data name="LblUnclideType.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblUnclideType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>795, 59</value>
+    <value>600, 45</value>
   </data>
   <data name="LblUnclideType.Text" xml:space="preserve">
     <value>Type</value>
@@ -200,19 +206,22 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblSoftName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>482, 58</value>
+    <value>332, 47</value>
+  </data>
+  <data name="LblSoftName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
   </data>
   <data name="LblSoftName.Text" xml:space="preserve">
     <value>Model</value>
   </data>
   <data name="TxtInstrumentNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 54</value>
+    <value>224, 45</value>
   </data>
   <data name="LblInstrumentNum.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblInstrumentNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 58</value>
+    <value>181, 49</value>
   </data>
   <data name="LblInstrumentNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 21</value>
@@ -221,13 +230,13 @@
     <value>SN</value>
   </data>
   <data name="TxtSmoothingFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 54</value>
+    <value>106, 47</value>
   </data>
   <data name="LblSmoothingFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblSmoothingFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 56</value>
+    <value>14, 49</value>
   </data>
   <data name="LblSmoothingFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 21</value>
@@ -235,11 +244,23 @@
   <data name="LblSmoothingFactor.Text" xml:space="preserve">
     <value>Smoothing factor</value>
   </data>
+  <data name="GrpFacilityData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 381</value>
+  </data>
+  <data name="GrpFacilityData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>717, 101</value>
+  </data>
   <data name="GrpFacilityData.Text" xml:space="preserve">
     <value>Factory Parameter</value>
   </data>
   <data name="BtnPreferenceNo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15pt, style=Bold</value>
+  </data>
+  <data name="BtnPreferenceNo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>641, 326</value>
+  </data>
+  <data name="BtnPreferenceNo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 50</value>
   </data>
   <data name="BtnPreferenceNo.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -247,35 +268,41 @@
   <data name="BtnPreferenceOk.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15pt, style=Bold</value>
   </data>
+  <data name="BtnPreferenceOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>552, 325</value>
+  </data>
+  <data name="BtnPreferenceOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 50</value>
+  </data>
   <data name="BtnPreferenceOk.Text" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="TxtRightFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 214</value>
+    <value>315, 178</value>
   </data>
   <data name="TxtRightOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 133</value>
+    <value>315, 115</value>
   </data>
   <data name="TxtLeftOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 52</value>
+    <value>315, 52</value>
   </data>
   <data name="TxtCloseProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 295</value>
+    <value>118, 234</value>
   </data>
   <data name="TxtLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 214</value>
+    <value>118, 174</value>
   </data>
   <data name="TxtRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 133</value>
+    <value>118, 114</value>
   </data>
   <data name="TxtLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 52</value>
+    <value>118, 54</value>
   </data>
   <data name="LblRightFootProbeArea.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblRightFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 217</value>
+    <value>208, 179</value>
   </data>
   <data name="LblRightFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 21</value>
@@ -294,7 +321,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblRightOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 137</value>
+    <value>208, 118</value>
   </data>
   <data name="LblRightOutProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 21</value>
@@ -309,7 +336,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblLeftOutProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 57</value>
+    <value>212, 57</value>
   </data>
   <data name="LblLeftOutProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 21</value>
@@ -324,7 +351,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothesProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 297</value>
+    <value>21, 240</value>
   </data>
   <data name="LblClothesProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -339,7 +366,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblLeftFootProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 217</value>
+    <value>21, 179</value>
   </data>
   <data name="LblLeftFootProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -354,7 +381,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblRightInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 137</value>
+    <value>8, 118</value>
   </data>
   <data name="LblRightInProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 21</value>
@@ -372,7 +399,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblLeftInProbeArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 57</value>
+    <value>21, 57</value>
   </data>
   <data name="LblLeftInProbeArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 21</value>
@@ -383,8 +410,32 @@
   <data name="LblLeftInProbeArea.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="GrpPreferenceArea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>324, 15</value>
+  </data>
+  <data name="GrpPreferenceArea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>406, 285</value>
+  </data>
   <data name="GrpPreferenceArea.Text" xml:space="preserve">
     <value>Probe Area /cm²</value>
+  </data>
+  <data name="TxtBKGUpdate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 239</value>
+  </data>
+  <data name="TxtAlarmTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 199</value>
+  </data>
+  <data name="TxtMeasuringTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 121</value>
+  </data>
+  <data name="TxtSmoothingTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 81</value>
+  </data>
+  <data name="TxtSelfCheckTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 41</value>
+  </data>
+  <data name="CmbMeasurementUnit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 161</value>
   </data>
   <data name="LblBKGUpdate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -408,7 +459,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblAlarmTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 241</value>
+    <value>0, 241</value>
   </data>
   <data name="LblAlarmTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 21</value>
@@ -423,7 +474,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblMeasurementUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 192</value>
+    <value>0, 192</value>
   </data>
   <data name="LblMeasurementUnit.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 21</value>
@@ -438,7 +489,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblMeasuringTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 144</value>
+    <value>0, 144</value>
   </data>
   <data name="LblMeasuringTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 21</value>
@@ -453,7 +504,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblSmoothingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 97</value>
+    <value>0, 97</value>
   </data>
   <data name="LblSmoothingTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 21</value>
@@ -468,7 +519,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblSelfCheckTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 47</value>
+    <value>0, 47</value>
   </data>
   <data name="LblSelfCheckTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 21</value>
@@ -482,6 +533,9 @@
   <data name="GrpPreferenceData.Text" xml:space="preserve">
     <value>System Parameter</value>
   </data>
+  <data name="系统参数.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 523</value>
+  </data>
   <data name="系统参数.Text" xml:space="preserve">
     <value>System Parameter</value>
   </data>
@@ -494,48 +548,38 @@
   <data name="TxtAlphaChannelName.HeaderText" xml:space="preserve">
     <value>ChannelName</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="TxtAlphaChannelName.Width" type="System.Int32, mscorlib">
-    <value>154</value>
-  </data>
   <data name="TxtAlphaHBackground.HeaderText" xml:space="preserve">
     <value>High Background</value>
-  </data>
-  <data name="TxtAlphaHBackground.Width" type="System.Int32, mscorlib">
-    <value>154</value>
   </data>
   <data name="TxtAplhaLBackground.HeaderText" xml:space="preserve">
     <value>Low Background</value>
   </data>
-  <data name="TxtAplhaLBackground.Width" type="System.Int32, mscorlib">
-    <value>154</value>
-  </data>
   <data name="TxtAlphaAlarm_1.HeaderText" xml:space="preserve">
     <value>Alarm Threshold</value>
-  </data>
-  <data name="TxtAlphaAlarm_1.Width" type="System.Int32, mscorlib">
-    <value>154</value>
   </data>
   <data name="TxtAlphaAlarm_2.HeaderText" xml:space="preserve">
     <value>High Level Alarm</value>
   </data>
-  <data name="TxtAlphaAlarm_2.Width" type="System.Int32, mscorlib">
-    <value>162</value>
-  </data>
   <data name="TxtAlphaEfficiency.HeaderText" xml:space="preserve">
     <value>Efficiency(%)</value>
   </data>
-  <data name="TxtAlphaEfficiency.Width" type="System.Int32, mscorlib">
-    <value>147</value>
+  <data name="DgvAlphaSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>723, 237</value>
+  </data>
+  <data name="BtnAlphaNo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>605, 387</value>
   </data>
   <data name="BtnAlphaNo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 70</value>
+    <value>96, 58</value>
   </data>
   <data name="BtnAlphaNo.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="BtnAlphaOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>605, 327</value>
+  </data>
   <data name="BtnAlphaOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 63</value>
+    <value>96, 51</value>
   </data>
   <data name="BtnAlphaOk.Text" xml:space="preserve">
     <value>OK</value>
@@ -579,6 +623,9 @@
   <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
     <value>Alpha nuclide selection</value>
   </data>
+  <data name="α参数.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 523</value>
+  </data>
   <data name="α参数.Text" xml:space="preserve">
     <value>Alpha Parameter</value>
   </data>
@@ -603,20 +650,20 @@
   <data name="TxtBetaAlarm_2.HeaderText" xml:space="preserve">
     <value>High Level Alarm</value>
   </data>
-  <data name="TxtBetaAlarm_2.Width" type="System.Int32, mscorlib">
-    <value>162</value>
-  </data>
   <data name="TxtBetaEfficiency.HeaderText" xml:space="preserve">
     <value>Efficiency(%)</value>
-  </data>
-  <data name="TxtBetaEfficiency.Width" type="System.Int32, mscorlib">
-    <value>147</value>
   </data>
   <data name="DgvBetaSet.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>None</value>
   </data>
+  <data name="DgvBetaSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>725, 231</value>
+  </data>
   <data name="BtnBetaNo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
+  </data>
+  <data name="BtnBetaNo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>595, 376</value>
   </data>
   <data name="BtnBetaNo.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 70</value>
@@ -626,6 +673,9 @@
   </data>
   <data name="BtnBetaOk.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
+  </data>
+  <data name="BtnBetaOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>595, 295</value>
   </data>
   <data name="BtnBetaOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 66</value>
@@ -637,7 +687,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBetaDefine2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 174</value>
+    <value>368, 135</value>
   </data>
   <data name="RdoBetaDefine2.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
@@ -646,7 +696,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta192.Location" type="System.Drawing.Point, System.Drawing">
-    <value>335, 174</value>
+    <value>249, 135</value>
   </data>
   <data name="RdoBeta192.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 24</value>
@@ -655,7 +705,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta90.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 174</value>
+    <value>135, 135</value>
   </data>
   <data name="RdoBeta90.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -664,7 +714,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 174</value>
+    <value>28, 135</value>
   </data>
   <data name="RdoBeta36.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 24</value>
@@ -673,7 +723,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBetaDefine1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 118</value>
+    <value>368, 89</value>
   </data>
   <data name="RdoBetaDefine1.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
@@ -682,7 +732,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta137.Location" type="System.Drawing.Point, System.Drawing">
-    <value>335, 118</value>
+    <value>249, 89</value>
   </data>
   <data name="RdoBeta137.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 24</value>
@@ -691,7 +741,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta60.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 118</value>
+    <value>135, 89</value>
   </data>
   <data name="RdoBeta60.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -700,7 +750,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 118</value>
+    <value>31, 89</value>
   </data>
   <data name="RdoBeta32.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 24</value>
@@ -709,7 +759,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta204.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 62</value>
+    <value>368, 43</value>
   </data>
   <data name="RdoBeta204.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 24</value>
@@ -721,19 +771,16 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta131.Location" type="System.Drawing.Point, System.Drawing">
-    <value>335, 62</value>
+    <value>249, 43</value>
   </data>
   <data name="RdoBeta131.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 24</value>
-  </data>
-  <data name="RdoBeta131.Text" xml:space="preserve">
-    <value>I-131</value>
   </data>
   <data name="RdoBeta58.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta58.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 62</value>
+    <value>135, 43</value>
   </data>
   <data name="RdoBeta58.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -742,19 +789,22 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoBeta14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 62</value>
+    <value>31, 43</value>
   </data>
   <data name="RdoBeta14.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 24</value>
   </data>
   <data name="GrpBetaNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 342</value>
+    <value>14, 274</value>
   </data>
   <data name="GrpBetaNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>617, 245</value>
+    <value>534, 172</value>
   </data>
   <data name="GrpBetaNuclideChoose.Text" xml:space="preserve">
     <value>Selection of β / γ nuclides</value>
+  </data>
+  <data name="β参数.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 523</value>
   </data>
   <data name="β参数.Text" xml:space="preserve">
     <value>Beta Parameter</value>
@@ -811,7 +861,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="RdoClothesBeta204.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 24</value>
+    <value>73, 24</value>
   </data>
   <data name="RdoClothesBeta131.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -883,13 +933,13 @@
     <value>Nuclide selection</value>
   </data>
   <data name="TxtClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 454</value>
+    <value>190, 365</value>
   </data>
   <data name="LblClothOfflineTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothOfflineTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 456</value>
+    <value>38, 375</value>
   </data>
   <data name="LblClothOfflineTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 19</value>
@@ -901,25 +951,28 @@
     <value>MiddleRight</value>
   </data>
   <data name="TxtClothesEfficiency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 371</value>
+    <value>190, 303</value>
   </data>
   <data name="TxtClothesAlarm_2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 292</value>
+    <value>190, 241</value>
   </data>
   <data name="TxtClothesAlarm_1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 211</value>
+    <value>190, 179</value>
   </data>
   <data name="TxtClothesLBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 134</value>
+    <value>190, 117</value>
   </data>
   <data name="TxtClothesHBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 55</value>
+    <value>190, 55</value>
   </data>
   <data name="LblClothesEfficiency.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
+  <data name="LblClothesEfficiency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="LblClothesEfficiency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 374</value>
+    <value>38, 312</value>
   </data>
   <data name="LblClothesEfficiency.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 19</value>
@@ -934,7 +987,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothesAlarm_2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 294</value>
+    <value>16, 249</value>
   </data>
   <data name="LblClothesAlarm_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 19</value>
@@ -949,7 +1002,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothesAlarm_1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 213</value>
+    <value>12, 186</value>
   </data>
   <data name="LblClothesAlarm_1.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 19</value>
@@ -964,7 +1017,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothesLBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 136</value>
+    <value>8, 123</value>
   </data>
   <data name="LblClothesLBackground.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 19</value>
@@ -979,7 +1032,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblClothesHBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 60</value>
+    <value>4, 60</value>
   </data>
   <data name="LblClothesHBackground.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 19</value>
@@ -990,12 +1043,19 @@
   <data name="LblClothesHBackground.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
+  <data name="GrpClothesData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>331, 408</value>
+  </data>
   <data name="GrpClothesData.Text" xml:space="preserve">
     <value>Frisker Parameter</value>
+  </data>
+  <data name="衣物探头.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 523</value>
   </data>
   <data name="衣物探头.Text" xml:space="preserve">
     <value>Frisker Parameter</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1017,8 +1077,14 @@
   <data name="TxtMainPreferenceAlphaThreshold.HeaderText" xml:space="preserve">
     <value>αThreshold</value>
   </data>
+  <data name="TxtMainPreferenceAlphaThreshold.Width" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
   <data name="TxtMainPreferenceBetaThreshold.HeaderText" xml:space="preserve">
     <value>βThreshold</value>
+  </data>
+  <data name="TxtMainPreferenceBetaThreshold.Width" type="System.Int32, mscorlib">
+    <value>78</value>
   </data>
   <data name="TxtMainPreferencePresetHV.HeaderText" xml:space="preserve">
     <value>PresetHV</value>
@@ -1053,26 +1119,32 @@
   <data name="BtnMainPreferenceRetuen.Text" xml:space="preserve">
     <value>Reset to Default</value>
   </data>
+  <data name="工厂参数.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 523</value>
+  </data>
   <data name="工厂参数.Text" xml:space="preserve">
     <value>Channel Parameter</value>
   </data>
   <data name="CmbIsEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 232</value>
+    <value>278, 232</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 234</value>
+    <value>185, 234</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 23</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>IsEnabled</value>
   </data>
   <data name="TxtcommportSetOfReportParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 142</value>
+    <value>278, 142</value>
   </data>
   <data name="TxtcommportSetOfReportStopBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 55</value>
+    <value>278, 55</value>
   </data>
   <data name="TxtcommportSetOfReportDataBits.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 230</value>
@@ -1093,7 +1165,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabcommportSetOfReportParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 148</value>
+    <value>185, 148</value>
   </data>
   <data name="LabcommportSetOfReportParity.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 20</value>
@@ -1111,7 +1183,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 57</value>
+    <value>185, 57</value>
   </data>
   <data name="LabcommportSetOfReportStopBits.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>
@@ -1173,29 +1245,35 @@
   <data name="LabcommportSetOfReportPortNum.Text" xml:space="preserve">
     <value>PortNum</value>
   </data>
+  <data name="GrpcommportSetOfReport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 14</value>
+  </data>
+  <data name="GrpcommportSetOfReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>376, 286</value>
+  </data>
   <data name="GrpcommportSetOfReport.Text" xml:space="preserve">
     <value>Report status port configuration</value>
   </data>
   <data name="TxtcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 134</value>
+    <value>123, 246</value>
   </data>
   <data name="TxtcommportSetStopBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 53</value>
+    <value>123, 198</value>
   </data>
   <data name="TxtcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 221</value>
+    <value>123, 150</value>
   </data>
   <data name="TxtcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 134</value>
+    <value>123, 102</value>
   </data>
   <data name="TxtcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 54</value>
+    <value>123, 54</value>
   </data>
   <data name="LabcommportSetParity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetParity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 138</value>
+    <value>28, 248</value>
   </data>
   <data name="LabcommportSetParity.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 20</value>
@@ -1207,7 +1285,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetStopBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 56</value>
+    <value>28, 200</value>
   </data>
   <data name="LabcommportSetStopBits.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>
@@ -1219,7 +1297,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetDataBits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 224</value>
+    <value>28, 152</value>
   </data>
   <data name="LabcommportSetDataBits.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 20</value>
@@ -1231,7 +1309,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetBaudRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 141</value>
+    <value>28, 104</value>
   </data>
   <data name="LabcommportSetBaudRate.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 20</value>
@@ -1243,7 +1321,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabcommportSetPortNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 56</value>
+    <value>28, 56</value>
   </data>
   <data name="LabcommportSetPortNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 20</value>
@@ -1251,11 +1329,23 @@
   <data name="LabcommportSetPortNum.Text" xml:space="preserve">
     <value>PortNum</value>
   </data>
+  <data name="GrpcommportSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 14</value>
+  </data>
+  <data name="GrpcommportSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 286</value>
+  </data>
   <data name="GrpcommportSet.Text" xml:space="preserve">
     <value>Control board port configuration</value>
   </data>
   <data name="BtnPorRestoreDefault.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15pt</value>
+  </data>
+  <data name="BtnPorRestoreDefault.Location" type="System.Drawing.Point, System.Drawing">
+    <value>679, 328</value>
+  </data>
+  <data name="BtnPorRestoreDefault.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 135</value>
   </data>
   <data name="BtnPorRestoreDefault.Text" xml:space="preserve">
     <value>Default</value>
@@ -1263,23 +1353,35 @@
   <data name="BtnCancel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15pt</value>
   </data>
+  <data name="BtnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>679, 183</value>
+  </data>
+  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 135</value>
+  </data>
   <data name="BtnCancel.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="BtnPorSave.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15pt</value>
   </data>
+  <data name="BtnPorSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>679, 38</value>
+  </data>
+  <data name="BtnPorSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 135</value>
+  </data>
   <data name="BtnPorSave.Text" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="TxtReportingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>842, 50</value>
+    <value>476, 96</value>
   </data>
   <data name="LabReportingTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LabReportingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>722, 54</value>
+    <value>356, 100</value>
   </data>
   <data name="LabReportingTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 20</value>
@@ -1288,7 +1390,7 @@
     <value>Reporting Time</value>
   </data>
   <data name="TxtDeviceAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>606, 49</value>
+    <value>82, 93</value>
   </data>
   <data name="LblDeviceAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1297,7 +1399,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblDeviceAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>549, 54</value>
+    <value>19, 94</value>
   </data>
   <data name="LblDeviceAddress.Text" xml:space="preserve">
     <value>Device address</value>
@@ -1306,7 +1408,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="ChkIsConnectedAuto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 54</value>
+    <value>435, 41</value>
   </data>
   <data name="ChkIsConnectedAuto.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 25</value>
@@ -1315,7 +1417,7 @@
     <value>Automatic connection</value>
   </data>
   <data name="TxtPortNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>374, 51</value>
+    <value>369, 39</value>
   </data>
   <data name="TxtPortNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 26</value>
@@ -1324,22 +1426,22 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 56</value>
+    <value>326, 44</value>
   </data>
   <data name="LblPortNumber.Text" xml:space="preserve">
     <value>Port</value>
   </data>
   <data name="TxtIPAddressFour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>279, 51</value>
+    <value>256, 44</value>
   </data>
   <data name="TxtIPAddressThree.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 51</value>
+    <value>205, 44</value>
   </data>
   <data name="TxtIPAddressTwo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 51</value>
+    <value>155, 44</value>
   </data>
   <data name="TxtIPAddressOne.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 51</value>
+    <value>105, 44</value>
   </data>
   <data name="LblIPAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1348,7 +1450,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="LblIPAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 56</value>
+    <value>19, 49</value>
   </data>
   <data name="LblIPAddress.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 20</value>
@@ -1356,10 +1458,25 @@
   <data name="LblIPAddress.Text" xml:space="preserve">
     <value>IP address</value>
   </data>
+  <data name="GrpInternet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 307</value>
+  </data>
+  <data name="GrpInternet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>639, 161</value>
+  </data>
   <data name="GrpInternet.Text" xml:space="preserve">
     <value>Tcp/IP Configuration</value>
   </data>
+  <data name="COM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>781, 535</value>
+  </data>
   <data name="COM.Text" xml:space="preserve">
     <value>Port configuration</value>
+  </data>
+  <data name="TabPresence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>789, 569</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>797, 596</value>
   </data>
 </root>

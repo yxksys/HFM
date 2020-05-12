@@ -1155,7 +1155,9 @@ namespace HFM
             _commPort.Close();
             bkWorkerReceiveData.CancelAsync();
             Thread.Sleep(200);
-        } 
+        }
         #endregion
+
+      
     }
 }
