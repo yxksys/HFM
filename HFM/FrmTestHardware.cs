@@ -96,6 +96,21 @@ namespace HFM
         /// 异步线程初始化化时间,ReportProgress百分比数值
         /// </summary>
         private int _bkworkTime = 0;
+        /// <summary>
+        /// 时间显示
+        /// </summary>
+        /// <param name="_time"></param>
+        private void TimeVisible(int _time)
+        {
+            if (_isEnglish)
+            {
+                LblTimeWork.Text = "Countdown " + _time + " s";
+            }
+            else
+            {
+                LblTimeWork.Text = "测量剩余时间 " + _time + " 秒";
+            }
+        }
 
         #endregion 基本变量、实例
 
@@ -665,9 +680,7 @@ namespace HFM
                     }
                 }
             }
-
-            //try
-            //{
+                        
             if (DgvWork.IsDisposed!=true)
             {
                 DgvWork.Rows.Clear();
@@ -678,25 +691,11 @@ namespace HFM
                 DgvWork.Rows.Insert(4, _betacnt);
                 DgvWork.Rows.Insert(5, _strat);
                 TxtFriskercount.Text = _frisker;
-            }
-                
-            //}
-            //catch (Exception exception)
-            //{
-            //    bkWorkerReceiveData.CancelAsync();
-            //    Tools.ErrorLog(exception.ToString());
-            //    //throw;
-            //}
+            }           
 
             int time = _measuringTime - e.ProgressPercentage;
-            if (_isEnglish)
-            {
-                LblTimeWork.Text = "Countdown " + time + " s";
-            }
-            else
-            {
-                LblTimeWork.Text = "测量剩余时间 " + time + " 秒";
-            }
+            TimeVisible(time);
+            
             //判断右手红外状态界面显示颜色
             if (_infraredStatus[0] == 1 && _infraredStatus[1] == 1)
             {
@@ -756,6 +755,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnAlphaCheck_Click(object sender, EventArgs e)
         {
+            TimeVisible(0);//时间清零
             DgvArrayClear();
             _rubbishDataOfSelfCheckNum = 0;
             BtnCurency(HardwarePlatformState.AlphaCheck);
@@ -768,6 +768,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnBetaCheck_Click(object sender, EventArgs e)
         {
+            TimeVisible(0);//时间清零
             DgvArrayClear();
             _rubbishDataOfSelfCheckNum = 0;
             BtnCurency(HardwarePlatformState.BetaCheck);
@@ -780,6 +781,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnSelfCheck_Click(object sender, EventArgs e)
         {
+            TimeVisible(0);//时间清零
             DgvArrayClear();
             _rubbishDataOfSelfCheckNum = 0;
             BtnCurency(HardwarePlatformState.SelfTest);

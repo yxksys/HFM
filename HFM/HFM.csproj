@@ -169,6 +169,9 @@
       <DependentUpon>FrmModifyPasssword.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <EmbeddedResource Include="FrmCalibration.en.resx">
+      <DependentUpon>FrmCalibration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCalibration.resx">
       <DependentUpon>FrmCalibration.cs</DependentUpon>
     </EmbeddedResource>

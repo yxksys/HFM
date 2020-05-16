@@ -117,25 +117,874 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GrpCalibration.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PrgCalibrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 148</value>
+  </data>
+  <data name="PrgCalibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>757, 3</value>
+  </data>
+  <data name="PrgCalibrate.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;PrgCalibrate.Name" xml:space="preserve">
+    <value>PrgCalibrate</value>
+  </data>
+  <data name="&gt;&gt;PrgCalibrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PrgCalibrate.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;PrgCalibrate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="Status.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="Status.HeaderText" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="Status.Width" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
   <metadata name="Channel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="Channel.HeaderText" xml:space="preserve">
+    <value>通道</value>
+  </data>
+  <data name="Channel.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
   <metadata name="Area.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="Area.HeaderText" xml:space="preserve">
+    <value>面积(cm2)</value>
+  </data>
+  <data name="Area.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
   <metadata name="Alpha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="Alpha.HeaderText" xml:space="preserve">
+    <value>α计数(cps)</value>
+  </data>
+  <data name="Alpha.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
   <metadata name="Beta.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="Beta.HeaderText" xml:space="preserve">
+    <value>β计数(cps)</value>
+  </data>
+  <data name="Beta.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
   <metadata name="HV.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="HV.HeaderText" xml:space="preserve">
+    <value>高压（V）</value>
+  </data>
+  <data name="HV.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <data name="DgvInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 154</value>
+  </data>
+  <data name="DgvInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 600</value>
+  </data>
+  <data name="DgvInformation.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;DgvInformation.Name" xml:space="preserve">
+    <value>DgvInformation</value>
+  </data>
+  <data name="&gt;&gt;DgvInformation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DgvInformation.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;DgvInformation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TxtSFR.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="TxtSFR.Location" type="System.Drawing.Point, System.Drawing">
+    <value>644, 66</value>
+  </data>
+  <data name="TxtSFR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 22</value>
+  </data>
+  <data name="TxtSFR.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TxtSFR.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;TxtSFR.Name" xml:space="preserve">
+    <value>TxtSFR</value>
+  </data>
+  <data name="&gt;&gt;TxtSFR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtSFR.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;TxtSFR.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="LblSFR.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LblSFR.Location" type="System.Drawing.Point, System.Drawing">
+    <value>520, 66</value>
+  </data>
+  <data name="LblSFR.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 25</value>
+  </data>
+  <data name="LblSFR.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="LblSFR.Text" xml:space="preserve">
+    <value>表面发射率</value>
+  </data>
+  <data name="LblSFR.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblSFR.Name" xml:space="preserve">
+    <value>LblSFR</value>
+  </data>
+  <data name="&gt;&gt;LblSFR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblSFR.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;LblSFR.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="BtnCalibrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BtnCalibrate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="BtnCalibrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>650, 25</value>
+  </data>
+  <data name="BtnCalibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 28</value>
+  </data>
+  <data name="BtnCalibrate.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="BtnCalibrate.Text" xml:space="preserve">
+    <value>刻度</value>
+  </data>
+  <data name="&gt;&gt;BtnCalibrate.Name" xml:space="preserve">
+    <value>BtnCalibrate</value>
+  </data>
+  <data name="&gt;&gt;BtnCalibrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnCalibrate.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;BtnCalibrate.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="BtnSet.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BtnSet.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="BtnSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>551, 25</value>
+  </data>
+  <data name="BtnSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 28</value>
+  </data>
+  <data name="BtnSet.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="BtnSet.Text" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="&gt;&gt;BtnSet.Name" xml:space="preserve">
+    <value>BtnSet</value>
+  </data>
+  <data name="&gt;&gt;BtnSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnSet.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;BtnSet.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="CmbNuclideSelect.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="CmbNuclideSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>420, 67</value>
+  </data>
+  <data name="CmbNuclideSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 24</value>
+  </data>
+  <data name="CmbNuclideSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;CmbNuclideSelect.Name" xml:space="preserve">
+    <value>CmbNuclideSelect</value>
+  </data>
+  <data name="&gt;&gt;CmbNuclideSelect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CmbNuclideSelect.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;CmbNuclideSelect.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Txtβ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="Txtβ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>498, 25</value>
+  </data>
+  <data name="Txtβ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 22</value>
+  </data>
+  <data name="Txtβ.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="Txtβ.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;Txtβ.Name" xml:space="preserve">
+    <value>Txtβ</value>
+  </data>
+  <data name="&gt;&gt;Txtβ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Txtβ.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;Txtβ.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="Txtα.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="Txtα.Location" type="System.Drawing.Point, System.Drawing">
+    <value>420, 26</value>
+  </data>
+  <data name="Txtα.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 22</value>
+  </data>
+  <data name="Txtα.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="Txtα.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;Txtα.Name" xml:space="preserve">
+    <value>Txtα</value>
+  </data>
+  <data name="&gt;&gt;Txtα.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Txtα.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;Txtα.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="Lblβ.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lblβ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="Lblβ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>474, 28</value>
+  </data>
+  <data name="Lblβ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 16</value>
+  </data>
+  <data name="Lblβ.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="Lblβ.Text" xml:space="preserve">
+    <value>β</value>
+  </data>
+  <data name="Lblβ.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;Lblβ.Name" xml:space="preserve">
+    <value>Lblβ</value>
+  </data>
+  <data name="&gt;&gt;Lblβ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lblβ.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;Lblβ.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="Lblα.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lblα.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="Lblα.Location" type="System.Drawing.Point, System.Drawing">
+    <value>399, 30</value>
+  </data>
+  <data name="Lblα.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 16</value>
+  </data>
+  <data name="Lblα.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="Lblα.Text" xml:space="preserve">
+    <value>α</value>
+  </data>
+  <data name="Lblα.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;Lblα.Name" xml:space="preserve">
+    <value>Lblα</value>
+  </data>
+  <data name="&gt;&gt;Lblα.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lblα.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;Lblα.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="LblNuclide.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblNuclide.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LblNuclide.Location" type="System.Drawing.Point, System.Drawing">
+    <value>351, 72</value>
+  </data>
+  <data name="LblNuclide.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 16</value>
+  </data>
+  <data name="LblNuclide.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="LblNuclide.Text" xml:space="preserve">
+    <value>核素</value>
+  </data>
+  <data name="LblNuclide.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;LblNuclide.Name" xml:space="preserve">
+    <value>LblNuclide</value>
+  </data>
+  <data name="&gt;&gt;LblNuclide.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblNuclide.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;LblNuclide.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="LblThreshold.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblThreshold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LblThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>326, 30</value>
+  </data>
+  <data name="LblThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 16</value>
+  </data>
+  <data name="LblThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="LblThreshold.Text" xml:space="preserve">
+    <value>阈值(mV)</value>
+  </data>
+  <data name="LblThreshold.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;LblThreshold.Name" xml:space="preserve">
+    <value>LblThreshold</value>
+  </data>
+  <data name="&gt;&gt;LblThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblThreshold.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;LblThreshold.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="TxtCount.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="TxtCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 69</value>
+  </data>
+  <data name="TxtCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 22</value>
+  </data>
+  <data name="TxtCount.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="TxtCount.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TxtCount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;TxtCount.Name" xml:space="preserve">
+    <value>TxtCount</value>
+  </data>
+  <data name="&gt;&gt;TxtCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtCount.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;TxtCount.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="TxtHV.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="TxtHV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 26</value>
+  </data>
+  <data name="TxtHV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 22</value>
+  </data>
+  <data name="TxtHV.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="TxtHV.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;TxtHV.Name" xml:space="preserve">
+    <value>TxtHV</value>
+  </data>
+  <data name="&gt;&gt;TxtHV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtHV.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;TxtHV.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="LblCount.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblCount.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LblCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 71</value>
+  </data>
+  <data name="LblCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 16</value>
+  </data>
+  <data name="LblCount.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="LblCount.Text" xml:space="preserve">
+    <value>次    数 </value>
+  </data>
+  <data name="LblCount.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblCount.Name" xml:space="preserve">
+    <value>LblCount</value>
+  </data>
+  <data name="&gt;&gt;LblCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblCount.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;LblCount.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="LblHV.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LblHV.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LblHV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>199, 29</value>
+  </data>
+  <data name="LblHV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 16</value>
+  </data>
+  <data name="LblHV.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="LblHV.Text" xml:space="preserve">
+    <value>高压(V)</value>
+  </data>
+  <data name="LblHV.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblHV.Name" xml:space="preserve">
+    <value>LblHV</value>
+  </data>
+  <data name="&gt;&gt;LblHV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblHV.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;LblHV.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="TxtResult.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 11.25pt</value>
+  </data>
+  <data name="TxtResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 108</value>
+  </data>
+  <data name="TxtResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>652, 24</value>
+  </data>
+  <data name="TxtResult.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;TxtResult.Name" xml:space="preserve">
+    <value>TxtResult</value>
+  </data>
+  <data name="&gt;&gt;TxtResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtResult.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;TxtResult.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="TxtMeasuringTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="TxtMeasuringTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 67</value>
+  </data>
+  <data name="TxtMeasuringTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 22</value>
+  </data>
+  <data name="TxtMeasuringTime.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="TxtMeasuringTime.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="TxtMeasuringTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;TxtMeasuringTime.Name" xml:space="preserve">
+    <value>TxtMeasuringTime</value>
+  </data>
+  <data name="&gt;&gt;TxtMeasuringTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtMeasuringTime.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;TxtMeasuringTime.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="CmbChannelSelection.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="CmbChannelSelection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 25</value>
+  </data>
+  <data name="CmbChannelSelection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 24</value>
+  </data>
+  <data name="CmbChannelSelection.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;CmbChannelSelection.Name" xml:space="preserve">
+    <value>CmbChannelSelection</value>
+  </data>
+  <data name="&gt;&gt;CmbChannelSelection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CmbChannelSelection.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;CmbChannelSelection.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="LblResult.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LblResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 108</value>
+  </data>
+  <data name="LblResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 25</value>
+  </data>
+  <data name="LblResult.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="LblResult.Text" xml:space="preserve">
+    <value>测量结果</value>
+  </data>
+  <data name="LblResult.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblResult.Name" xml:space="preserve">
+    <value>LblResult</value>
+  </data>
+  <data name="&gt;&gt;LblResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblResult.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;LblResult.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="LblMeasuringTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LblMeasuringTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 69</value>
+  </data>
+  <data name="LblMeasuringTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 25</value>
+  </data>
+  <data name="LblMeasuringTime.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="LblMeasuringTime.Text" xml:space="preserve">
+    <value>测量时间(s)</value>
+  </data>
+  <data name="LblMeasuringTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblMeasuringTime.Name" xml:space="preserve">
+    <value>LblMeasuringTime</value>
+  </data>
+  <data name="&gt;&gt;LblMeasuringTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblMeasuringTime.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;LblMeasuringTime.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="LblChannelSelection.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="LblChannelSelection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 28</value>
+  </data>
+  <data name="LblChannelSelection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 25</value>
+  </data>
+  <data name="LblChannelSelection.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="LblChannelSelection.Text" xml:space="preserve">
+    <value>通道选择</value>
+  </data>
+  <data name="LblChannelSelection.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;LblChannelSelection.Name" xml:space="preserve">
+    <value>LblChannelSelection</value>
+  </data>
+  <data name="&gt;&gt;LblChannelSelection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblChannelSelection.Parent" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;LblChannelSelection.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="GrpCalibration.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="GrpCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="GrpCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>787, 787</value>
+  </data>
+  <data name="GrpCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;GrpCalibration.Name" xml:space="preserve">
+    <value>GrpCalibration</value>
+  </data>
+  <data name="&gt;&gt;GrpCalibration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrpCalibration.Parent" xml:space="preserve">
+    <value>TabpageCalibration</value>
+  </data>
+  <data name="&gt;&gt;GrpCalibration.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TabpageCalibration.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15.75pt</value>
+  </data>
+  <data name="TabpageCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="TabpageCalibration.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TabpageCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>769, 867</value>
+  </data>
+  <data name="TabpageCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TabpageCalibration.Text" xml:space="preserve">
+    <value>仪器刻度</value>
+  </data>
+  <data name="&gt;&gt;TabpageCalibration.Name" xml:space="preserve">
+    <value>TabpageCalibration</value>
+  </data>
+  <data name="&gt;&gt;TabpageCalibration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabpageCalibration.Parent" xml:space="preserve">
+    <value>TabCalibration</value>
+  </data>
+  <data name="&gt;&gt;TabpageCalibration.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TabCalibration.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="TabCalibration.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="TabCalibration.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>76, 25</value>
+  </data>
+  <data name="TabCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="TabCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>777, 900</value>
+  </data>
+  <data name="TabCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;TabCalibration.Name" xml:space="preserve">
+    <value>TabCalibration</value>
+  </data>
+  <data name="&gt;&gt;TabCalibration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabCalibration.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TabCalibration.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="bkWorkerReceiveData.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>794, 661</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>测试刻度</value>
+  </data>
+  <data name="&gt;&gt;Status.Name" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="&gt;&gt;Status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Channel.Name" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="&gt;&gt;Channel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Area.Name" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="&gt;&gt;Area.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Alpha.Name" xml:space="preserve">
+    <value>Alpha</value>
+  </data>
+  <data name="&gt;&gt;Alpha.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Beta.Name" xml:space="preserve">
+    <value>Beta</value>
+  </data>
+  <data name="&gt;&gt;Beta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HV.Name" xml:space="preserve">
+    <value>HV</value>
+  </data>
+  <data name="&gt;&gt;HV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bkWorkerReceiveData.Name" xml:space="preserve">
+    <value>bkWorkerReceiveData</value>
+  </data>
+  <data name="&gt;&gt;bkWorkerReceiveData.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmCalibration</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

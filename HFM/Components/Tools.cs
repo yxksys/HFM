@@ -239,11 +239,11 @@ namespace HFM.Components
                 case 11:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Please enter the emissivity!", @"Message");
+                        MessageBox.Show(@"Please enter the emissivity,And not equal to 0!", @"Message");
                     }
                     else
                     {
-                        MessageBox.Show(@"请输入发射率！", @"提示");
+                        MessageBox.Show(@"请输入发射率,并且不等于0！", @"提示");
                     }
                     break;
                 case 12:
