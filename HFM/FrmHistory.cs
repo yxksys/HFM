@@ -57,6 +57,19 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmHistory_Load(object sender, EventArgs e)
         {
+            //判断是否是超级管理员是:删除按钮可用,否:不可用
+            if (User.LandingUser.Role==1)
+            {
+                BtnDeleteCalibration.Visible = true;
+                BtnDeleteError.Visible = true;
+                BtnDeleteMeasure.Visible = true;
+            }
+            else
+            {
+                BtnDeleteCalibration.Visible = false;
+                BtnDeleteError.Visible = false;
+                BtnDeleteMeasure.Visible = false;
+            }
             GetMeasureDataLog();
         } 
         #endregion
@@ -116,7 +129,15 @@ namespace HFM
             foreach (var calibration in _calibrations)
             {
                 _calibrationArray[0] = calibration.CalibrationTime.ToString();
-                _calibrationArray[1] = calibration.Channel.ChannelID.ToString();
+                //_calibrationArray[1] = calibration.Channel.ChannelID.ToString();
+                if (_systemParameter.IsEnglish)
+                {
+                    _calibrationArray[1] = calibration.Channel.ChannelName_English.ToString();
+                }
+                else
+                {
+                    _calibrationArray[1] = calibration.Channel.ChannelName.ToString();
+                }
                 _calibrationArray[2] = calibration.HighVoltage.ToString();
                 _calibrationArray[3] = calibration.Threshold;
                 _calibrationArray[4] = calibration.Efficiency.ToString();

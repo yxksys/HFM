@@ -20,6 +20,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using HFM.Components;
+using System.Collections.Generic;
+
 namespace HFM.Components
 {
 	/// <summary>
@@ -27,6 +29,7 @@ namespace HFM.Components
 	/// </summary>
 	public class Tools
 	{
+        public static List<Control> controls = new List<Control>();
 		#region 将DataReader 转为 DataTable
 		/// <summary>
 		/// 将DataReader 转为 DataTable
@@ -236,11 +239,11 @@ namespace HFM.Components
                 case 11:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Please enter the emissivity!", @"Message");
+                        MessageBox.Show(@"Please enter the emissivity,And not equal to 0!", @"Message");
                     }
                     else
                     {
-                        MessageBox.Show(@"请输入发射率！", @"提示");
+                        MessageBox.Show(@"请输入发射率,并且不等于0！", @"提示");
                     }
                     break;
                 case 12:
@@ -388,13 +391,14 @@ namespace HFM.Components
         public static void ApplyLanguageResource(Form form)
         {
             System.ComponentModel.ComponentResourceManager res = new System.ComponentModel.ComponentResourceManager(form.GetType());
-            foreach (Control ctl in form.Controls)
+            GetControls(form);
+            foreach (Control ctl in controls)
             {
                 res.ApplyResources(ctl, ctl.Name);
-            }
+            }            
             form.ResumeLayout(false);
             form.PerformLayout();
-            res.ApplyResources(form, "$form");
+            res.ApplyResources(form, "$form");            
         }
         #endregion
 
@@ -467,7 +471,9 @@ namespace HFM.Components
                     convertedData = data / 60;
                     break;
                 case "Bq"://最终测量计数平均值(Bq) = 200 * 计算平均值(cps) /探测效率
-                    convertedData = data / efficiency * 200;
+                    convertedData = data * efficiency / 200;
+                    
+                    //convertedData = 200 * data / efficiency;//cps 转bq
                     break;
                 case "Bq/cm2"://最终测量计数平均值(Bq/cm2) = 200 * 计算平均值(cps) /探测效率/该通道测量面积
                     //convertedData = 200 * data / efficiency / proberArea;
@@ -485,7 +491,40 @@ namespace HFM.Components
             }
 
             return convertedData;
-        } 
+        }
         #endregion
+
+        #region 获得窗体中所有控件
+        private static List<Control> GetControls(Control fatherControl)
+        {
+            Control.ControlCollection sonControls = fatherControl.Controls;
+            //遍历所有控件
+            foreach(Control control in sonControls)
+            {
+                controls.Add(control);
+                if(control.Controls!=null)
+                {
+                    GetControls(control);
+                }
+            }
+            return controls;
+        }
+        #endregion
+        #region 两个对象之间进行拷贝
+        public static void Clone(object objSource,object objDetection)
+        {
+            Type typeSource = objSource.GetType();
+            Type typeDetection = objDetection.GetType();
+            if(typeSource.Equals(typeDetection))
+            {
+                foreach(System.Reflection.PropertyInfo p in typeSource.GetProperties())
+                {
+                    System.Reflection.PropertyInfo p1=typeDetection.GetProperty(p.Name.ToString());
+                    p1.SetValue(objDetection, p.GetValue(objSource));
+                }
+            }
+        }
+        #endregion
+
     }
 }

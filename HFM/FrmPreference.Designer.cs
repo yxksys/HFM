@@ -334,6 +334,7 @@
             this.CmbSoftName.Items.AddRange(new object[] {
             resources.GetString("CmbSoftName.Items")});
             this.CmbSoftName.Name = "CmbSoftName";
+            this.CmbSoftName.DropDown += new System.EventHandler(this.CmbSoftName_DropDown);
             // 
             // CmbUnclideType
             // 
@@ -701,6 +702,7 @@
             this.RdoAlphaDefine2.Name = "RdoAlphaDefine2";
             this.RdoAlphaDefine2.TabStop = true;
             this.RdoAlphaDefine2.UseVisualStyleBackColor = true;
+            this.RdoAlphaDefine2.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlpha241
             // 
@@ -708,6 +710,7 @@
             this.RdoAlpha241.Name = "RdoAlpha241";
             this.RdoAlpha241.TabStop = true;
             this.RdoAlpha241.UseVisualStyleBackColor = true;
+            this.RdoAlpha241.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlphaDefine1
             // 
@@ -715,6 +718,7 @@
             this.RdoAlphaDefine1.Name = "RdoAlphaDefine1";
             this.RdoAlphaDefine1.TabStop = true;
             this.RdoAlphaDefine1.UseVisualStyleBackColor = true;
+            this.RdoAlphaDefine1.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlpha238
             // 
@@ -722,6 +726,7 @@
             this.RdoAlpha238.Name = "RdoAlpha238";
             this.RdoAlpha238.TabStop = true;
             this.RdoAlpha238.UseVisualStyleBackColor = true;
+            this.RdoAlpha238.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlpha239
             // 
@@ -729,6 +734,7 @@
             this.RdoAlpha239.Name = "RdoAlpha239";
             this.RdoAlpha239.TabStop = true;
             this.RdoAlpha239.UseVisualStyleBackColor = true;
+            this.RdoAlpha239.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // RdoAlpha235
             // 
@@ -736,6 +742,7 @@
             this.RdoAlpha235.Name = "RdoAlpha235";
             this.RdoAlpha235.TabStop = true;
             this.RdoAlpha235.UseVisualStyleBackColor = true;
+            this.RdoAlpha235.CheckedChanged += new System.EventHandler(this.RdoAlpha_CheckedChanged);
             // 
             // β参数
             // 
@@ -874,6 +881,7 @@
             this.RdoBetaDefine2.Name = "RdoBetaDefine2";
             this.RdoBetaDefine2.TabStop = true;
             this.RdoBetaDefine2.UseVisualStyleBackColor = true;
+            this.RdoBetaDefine2.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta192
             // 
@@ -881,6 +889,7 @@
             this.RdoBeta192.Name = "RdoBeta192";
             this.RdoBeta192.TabStop = true;
             this.RdoBeta192.UseVisualStyleBackColor = true;
+            this.RdoBeta192.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta90
             // 
@@ -888,6 +897,7 @@
             this.RdoBeta90.Name = "RdoBeta90";
             this.RdoBeta90.TabStop = true;
             this.RdoBeta90.UseVisualStyleBackColor = true;
+            this.RdoBeta90.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta36
             // 
@@ -895,6 +905,7 @@
             this.RdoBeta36.Name = "RdoBeta36";
             this.RdoBeta36.TabStop = true;
             this.RdoBeta36.UseVisualStyleBackColor = true;
+            this.RdoBeta36.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBetaDefine1
             // 
@@ -902,6 +913,7 @@
             this.RdoBetaDefine1.Name = "RdoBetaDefine1";
             this.RdoBetaDefine1.TabStop = true;
             this.RdoBetaDefine1.UseVisualStyleBackColor = true;
+            this.RdoBetaDefine1.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta137
             // 
@@ -909,6 +921,7 @@
             this.RdoBeta137.Name = "RdoBeta137";
             this.RdoBeta137.TabStop = true;
             this.RdoBeta137.UseVisualStyleBackColor = true;
+            this.RdoBeta137.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta60
             // 
@@ -916,6 +929,7 @@
             this.RdoBeta60.Name = "RdoBeta60";
             this.RdoBeta60.TabStop = true;
             this.RdoBeta60.UseVisualStyleBackColor = true;
+            this.RdoBeta60.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta32
             // 
@@ -923,6 +937,7 @@
             this.RdoBeta32.Name = "RdoBeta32";
             this.RdoBeta32.TabStop = true;
             this.RdoBeta32.UseVisualStyleBackColor = true;
+            this.RdoBeta32.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta204
             // 
@@ -930,6 +945,7 @@
             this.RdoBeta204.Name = "RdoBeta204";
             this.RdoBeta204.TabStop = true;
             this.RdoBeta204.UseVisualStyleBackColor = true;
+            this.RdoBeta204.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta131
             // 
@@ -937,6 +953,7 @@
             this.RdoBeta131.Name = "RdoBeta131";
             this.RdoBeta131.TabStop = true;
             this.RdoBeta131.UseVisualStyleBackColor = true;
+            this.RdoBeta131.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta58
             // 
@@ -944,6 +961,7 @@
             this.RdoBeta58.Name = "RdoBeta58";
             this.RdoBeta58.TabStop = true;
             this.RdoBeta58.UseVisualStyleBackColor = true;
+            this.RdoBeta58.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // RdoBeta14
             // 
@@ -951,6 +969,7 @@
             this.RdoBeta14.Name = "RdoBeta14";
             this.RdoBeta14.TabStop = true;
             this.RdoBeta14.UseVisualStyleBackColor = true;
+            this.RdoBeta14.CheckedChanged += new System.EventHandler(this.RdoBeta_CheckedChanged);
             // 
             // 衣物探头
             // 
@@ -1006,6 +1025,7 @@
             this.RdoClothesBetaDefine1.Name = "RdoClothesBetaDefine1";
             this.RdoClothesBetaDefine1.TabStop = true;
             this.RdoClothesBetaDefine1.UseVisualStyleBackColor = true;
+            this.RdoClothesBetaDefine1.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta192
             // 
@@ -1013,6 +1033,7 @@
             this.RdoClothesBeta192.Name = "RdoClothesBeta192";
             this.RdoClothesBeta192.TabStop = true;
             this.RdoClothesBeta192.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta192.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta90
             // 
@@ -1020,6 +1041,7 @@
             this.RdoClothesBeta90.Name = "RdoClothesBeta90";
             this.RdoClothesBeta90.TabStop = true;
             this.RdoClothesBeta90.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta90.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta36
             // 
@@ -1027,6 +1049,7 @@
             this.RdoClothesBeta36.Name = "RdoClothesBeta36";
             this.RdoClothesBeta36.TabStop = true;
             this.RdoClothesBeta36.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta36.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta137
             // 
@@ -1034,6 +1057,7 @@
             this.RdoClothesBeta137.Name = "RdoClothesBeta137";
             this.RdoClothesBeta137.TabStop = true;
             this.RdoClothesBeta137.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta137.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta60
             // 
@@ -1041,6 +1065,7 @@
             this.RdoClothesBeta60.Name = "RdoClothesBeta60";
             this.RdoClothesBeta60.TabStop = true;
             this.RdoClothesBeta60.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta60.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta32
             // 
@@ -1048,6 +1073,7 @@
             this.RdoClothesBeta32.Name = "RdoClothesBeta32";
             this.RdoClothesBeta32.TabStop = true;
             this.RdoClothesBeta32.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta32.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta204
             // 
@@ -1055,6 +1081,7 @@
             this.RdoClothesBeta204.Name = "RdoClothesBeta204";
             this.RdoClothesBeta204.TabStop = true;
             this.RdoClothesBeta204.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta204.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta131
             // 
@@ -1062,6 +1089,7 @@
             this.RdoClothesBeta131.Name = "RdoClothesBeta131";
             this.RdoClothesBeta131.TabStop = true;
             this.RdoClothesBeta131.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta131.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta58
             // 
@@ -1069,6 +1097,7 @@
             this.RdoClothesBeta58.Name = "RdoClothesBeta58";
             this.RdoClothesBeta58.TabStop = true;
             this.RdoClothesBeta58.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta58.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesBeta14
             // 
@@ -1076,6 +1105,7 @@
             this.RdoClothesBeta14.Name = "RdoClothesBeta14";
             this.RdoClothesBeta14.TabStop = true;
             this.RdoClothesBeta14.UseVisualStyleBackColor = true;
+            this.RdoClothesBeta14.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlphaDefine1
             // 
@@ -1083,6 +1113,7 @@
             this.RdoClothesAlphaDefine1.Name = "RdoClothesAlphaDefine1";
             this.RdoClothesAlphaDefine1.TabStop = true;
             this.RdoClothesAlphaDefine1.UseVisualStyleBackColor = true;
+            this.RdoClothesAlphaDefine1.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlpha241
             // 
@@ -1090,6 +1121,7 @@
             this.RdoClothesAlpha241.Name = "RdoClothesAlpha241";
             this.RdoClothesAlpha241.TabStop = true;
             this.RdoClothesAlpha241.UseVisualStyleBackColor = true;
+            this.RdoClothesAlpha241.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlpha238
             // 
@@ -1097,6 +1129,7 @@
             this.RdoClothesAlpha238.Name = "RdoClothesAlpha238";
             this.RdoClothesAlpha238.TabStop = true;
             this.RdoClothesAlpha238.UseVisualStyleBackColor = true;
+            this.RdoClothesAlpha238.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlpha239
             // 
@@ -1104,6 +1137,7 @@
             this.RdoClothesAlpha239.Name = "RdoClothesAlpha239";
             this.RdoClothesAlpha239.TabStop = true;
             this.RdoClothesAlpha239.UseVisualStyleBackColor = true;
+            this.RdoClothesAlpha239.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // RdoClothesAlpha235
             // 
@@ -1111,6 +1145,7 @@
             this.RdoClothesAlpha235.Name = "RdoClothesAlpha235";
             this.RdoClothesAlpha235.TabStop = true;
             this.RdoClothesAlpha235.UseVisualStyleBackColor = true;
+            this.RdoClothesAlpha235.CheckedChanged += new System.EventHandler(this.RdoClothes_CheckedChanged);
             // 
             // LblClothesBetaOrClothes
             // 
@@ -1236,7 +1271,7 @@
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvMainPreferenceSet.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.DgvMainPreferenceSet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvMainPreferenceSet.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

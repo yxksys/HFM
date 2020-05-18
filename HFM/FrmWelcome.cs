@@ -19,7 +19,7 @@ namespace HFM
         private void Time_Welcome_cloes_Tick(object sender, System.EventArgs e)
         {
             Time_Welcome_cloes.Enabled = false;
-            Thread.Sleep(500);
+            Thread.Sleep(500);            
             FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
             frmMeasureMain.Show();
             this.Dispose();

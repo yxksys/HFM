@@ -32,7 +32,7 @@
             this.LblName = new System.Windows.Forms.Label();
             this.LblVersions = new System.Windows.Forms.Label();
             this.LblNumber = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblCopyright = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LblName
@@ -50,22 +50,23 @@
             resources.ApplyResources(this.LblNumber, "LblNumber");
             this.LblNumber.Name = "LblNumber";
             // 
-            // label3
+            // LblCopyright
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.LblCopyright, "LblCopyright");
+            this.LblCopyright.Name = "LblCopyright";
             // 
             // FrmHelp
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.LblNumber);
-            this.Controls.Add(this.LblVersions);
             this.Controls.Add(this.LblName);
+            this.Controls.Add(this.LblCopyright);
+            this.Controls.Add(this.LblVersions);
+            this.Controls.Add(this.LblNumber);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmHelp";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmHelp_FormClosed);
             this.ResumeLayout(false);
 
         }
@@ -75,6 +76,6 @@
         private System.Windows.Forms.Label LblName;
         private System.Windows.Forms.Label LblVersions;
         private System.Windows.Forms.Label LblNumber;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblCopyright;
     }
 }

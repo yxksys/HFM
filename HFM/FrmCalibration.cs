@@ -67,6 +67,10 @@ namespace HFM
         /// 刻度测量状态:false=本地测量;true=带源测量;
         /// </summary>
         private bool _sclaeState;
+        /// <summary>
+        /// 进度条时间
+        /// </summary>
+        private int _prgTime;
         #endregion
 
         #region 实例
@@ -165,6 +169,7 @@ namespace HFM
         {
             InitializeComponent();
             bkWorkerReceiveData.WorkerReportsProgress = true;
+            
         }
 
         private void FrmCalibration_Load(object sender, EventArgs e)
@@ -191,8 +196,8 @@ namespace HFM
                 DgvInformation.Columns[0].HeaderText = @"Status"; //状态
                 DgvInformation.Columns[1].HeaderText = @"Channel"; //通道
                 DgvInformation.Columns[2].HeaderText = @"Area"; //面积
-                DgvInformation.Columns[3].HeaderText = @"αCounts"; //α计数
-                DgvInformation.Columns[4].HeaderText = @"βCounts"; //β计数
+                DgvInformation.Columns[3].HeaderText = @"αCounts(cps)"; //α计数
+                DgvInformation.Columns[4].HeaderText = @"βCounts(cps)"; //β计数
                 DgvInformation.Columns[5].HeaderText = @"HV"; //高压
             }
 
@@ -344,6 +349,7 @@ namespace HFM
                         {
                             bkWorkerReceiveData.CancelAsync();
                             _bkworkTime = 0;
+                            
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -351,7 +357,11 @@ namespace HFM
                             
                             //延时
                             Thread.Sleep(100);
-                            receiveBuffMessage = Message.ReceiveMessage(_commPort);
+                            receiveBuffMessage = Message.ReceiveMessage(_commPort);  
+                            if(receiveBuffMessage.Length>0&&receiveBuffMessage[0].ToString()!="80")//由于下位机一直上传C指令，下发P指令后有可能读回的数据还是C指令，所以将其扔掉直到读回的是P指令为止                            
+                            {
+                                continue;
+                            }
                             //延时
                             Thread.Sleep(200);
                             //触发向主线程返回下位机上传数据事件
@@ -549,12 +559,20 @@ namespace HFM
         /// <summary>
         /// 探测器是否合格
         /// </summary>
-        private string _isStandardize; 
-
+        private string _isStandardize;
+        /// <summary>
+        /// 串口多余数据计数次数
+        /// </summary>
+        private int throwDataCount = 0;
         #endregion
         #region ProgressChanged
         private void BkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            //如果窗体已经被释放,返回
+            if (this.IsDisposed==true)
+            {
+                return;
+            }
             float area = _channel.ProbeArea;//探测面积
             int messageBufferLength = 62; //最短报文长度
             int errNumber = 0; //报文接收出现错误计数器
@@ -619,14 +637,29 @@ namespace HFM
                         Txtβ.Text = itemParameter.BetaThreshold.ToString();
                         //当前通道道盒参数
                         _setChannelParameter = itemParameter;
+                        
                     }
                 }
             }
+
             //解析C数据报文
             if (receiveBufferMessage[0] == Convert.ToByte('C'))
             {
                 IList<MeasureData> measureDatas = new List<MeasureData>();
                 measureDatas = Message.ExplainMessage<MeasureData>(receiveBufferMessage);
+                //扔掉2次预读取的数据
+                if (throwDataCount < 2)
+                {
+                    for (int i = 0; i < measureDataS.Count; i++)
+                    {
+                        measureDataS[i].Alpha = 0;
+                        measureDataS[i].Beta = 0;
+                        measureDataS[i].InfraredStatus = 0;
+                    }
+                    throwDataCount++;
+                    _commPort.ClearPortData();
+                    return;
+                }
                 
                 //解析通道数据
                 foreach (var item in measureDatas)
@@ -638,13 +671,29 @@ namespace HFM
                         _betacps += item.Beta;//单次/时间的累加和
                         _alphacnt = _alphacnt + item.Alpha;//类型内计数累加
                         _betacnt = _betacnt + item.Beta;//类型内计数累加
-                        _hv = item.HV;//高压
-                        
+                        if (_channel.ChannelID==7)
+                        {
+                            _hv = 500;
+                        }
+                        else
+                        {
+                            _hv = item.HV;//高压
+                        }
                     }
                 }
-
+                _prgTime++;//进度条计数
+                if (_prgTime> Convert.ToInt32(TxtMeasuringTime.Text))
+                {
+                    _prgTime = 0;
+                    PrgCalibrate.Value = _prgTime;//进度条显示
+                }
+                else
+                {
+                    PrgCalibrate.Value = _prgTime;//进度条显示
+                }
                 if (_sclaeState==false)
                 {
+                   
                     if (_isEnglish)
                     {
                         _addInformation[0] = "BKG";
@@ -653,19 +702,23 @@ namespace HFM
                     {
                         _addInformation[0] = "本底测量";
                     }
-                    _addInformation[1] = CmbChannelSelection.Text;
-                    _addInformation[2] = area.ToString();
-                    _addInformation[3] = ((_alphacps / Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
-                    _addInformation[4] = ((_betacps / Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
-                    _addInformation[5] = _hv.ToString();
-                    _measuringTime--;
+                    if (this.IsDisposed!=true)
+                    {
+                        _addInformation[1] = CmbChannelSelection.Text;
+                        _addInformation[2] = area.ToString();
+                        _addInformation[3] = (String.Format("{0:f2}", (_alphacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
+                        _addInformation[4] = (String.Format("{0:f2}", (_betacps / Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
+                        _addInformation[5] = _hv.ToString();
+                        _measuringTime--;
+                    }                    
                     if (_measuringTime == 0)
                     {
                         _measuringCount--;//时间为0次数减1
-                        _measuringTime = Convert.ToInt16(TxtMeasuringTime.Text);//次数减1后,时间恢复测量时间
+                        _measuringTime = Convert.ToInt16(TxtMeasuringTime.Text);//次数减1后,时间恢复测量时间                        
                         DgvInformation.Rows.Add(_addInformation);//添加本次数据
                         _alphacps = 0;
                         _betacps = 0;
+                        _prgTime = 0;//进度条时间
                     }
 
                     if (_measuringCount==0 )
@@ -674,15 +727,18 @@ namespace HFM
                         _betaNb = (_betacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text )));//本地总计数的平均值
                         _alphacnt = 0;//类型内计数清零
                         _betacnt = 0;//类型内计数清零
-                        _measuringTime = Convert.ToInt16(TxtMeasuringTime.Text);//恢复时间为填写时间
+                        _measuringTime = Convert.ToInt16(TxtMeasuringTime.Text)+1;//恢复时间为填写时间
                         _measuringCount = Convert.ToInt16(TxtCount.Text);//恢复次数
-                        _sclaeState = true;//刻度测量状态更换为"带源测量"
+                        
                         bkWorkerReceiveData.CancelAsync();
                         Thread.Sleep(500);
                         if (_isEnglish)
                         {
                             if (MessageBox.Show(@"Please insert the source!", @"Message") == DialogResult.OK)
                             {
+                                _sclaeState = true;//刻度测量状态更换为"带源测量"
+                                _alphacps = 0;
+                                _betacps = 0;
                                 bkWorkerReceiveData.RunWorkerAsync();
                             }
                         }
@@ -690,7 +746,15 @@ namespace HFM
                         {
                             if (MessageBox.Show(@"请放入放射源！", @"提示") == DialogResult.OK)
                             {
+                                throwDataCount = 0;
+                                _sclaeState = true;//刻度测量状态更换为"带源测量"
+                                _alphacps = 0;
+                                _betacps = 0;
+                                _alphacnt = 0;
+                                _betacnt = 0;
+                                _prgTime = 0;//进度条时间
                                 bkWorkerReceiveData.RunWorkerAsync();
+                                Thread.Sleep(200);
                             }
                         }
                         return;
@@ -703,11 +767,20 @@ namespace HFM
                 }
                 if (_sclaeState==true)
                 {
-                    _addInformation[0] = "带源测量";
+                    //_prgTime++;
+                    //PrgCalibrate.Value = _prgTime;
+                    if (_isEnglish)
+                    {
+                        _addInformation[0] = "Radioactive source";
+                    }
+                    else
+                    {
+                        _addInformation[0] = "带源测量";
+                    }                    
                     _addInformation[1] = CmbChannelSelection.Text;
                     _addInformation[2] = area.ToString();
-                    _addInformation[3] = ((_alphacps /Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
-                    _addInformation[4] = ((_betacps /Convert.ToSingle(TxtMeasuringTime.Text))).ToString();
+                    _addInformation[3] = (String.Format("{0:f2}", (_alphacps /Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
+                    _addInformation[4] = (String.Format("{0:f2}", (_betacps /Convert.ToSingle(TxtMeasuringTime.Text)))).ToString();
                     _addInformation[5] = _hv.ToString();
                     _measuringTime--;
                     if (_measuringTime == 0)
@@ -717,6 +790,7 @@ namespace HFM
                         DgvInformation.Rows.Add(_addInformation);
                         _alphacps = 0;
                         _betacps = 0;
+                        _prgTime = 0;//进度条时间
                     }
 
                     if (_measuringCount == 0 )
@@ -725,8 +799,8 @@ namespace HFM
                         bkWorkerReceiveData.CancelAsync();
                         _alphaNr = (_alphacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text))); ;//带源总计数的平均值
                         _betaNr = (_betacnt / (Convert.ToSingle(TxtMeasuringTime.Text) * Convert.ToSingle(TxtCount.Text)));//带源总计数的平均值
-                        _effAlpha =((_alphaNr - _alphaNb) / Convert.ToSingle(TxtSFR.Text));//Alpha效率
-                        _effBeta = ((_betaNr - _betaNb) / Convert.ToSingle(TxtSFR.Text));//Beta效率
+                        _effAlpha =(((_alphaNr - _alphaNb)<0?0:(_alphaNr - _alphaNb) )/ Convert.ToSingle(TxtSFR.Text));//Alpha效率
+                        _effBeta = (((_betaNr - _betaNb)<0?0:(_betaNr - _betaNb) ) / Convert.ToSingle(TxtSFR.Text));//Beta效率
                         _eff = _effAlpha > _effBeta ? _effAlpha*100 : _effBeta*100;//效率取Alpha或Beta的最大值
                         if (_eff>0)
                         {
@@ -773,7 +847,7 @@ namespace HFM
                         //按通道用不同的判断方法判断探测器的合格
                         if (_channel.ChannelID==7)
                         {
-                            if (_eff >= 30)
+                            if (_eff >= 20)
                             {
                                 _isStandardize = "探测器合格!";
                             }
@@ -785,7 +859,7 @@ namespace HFM
                         else
                         {
                             //判断效率大于30%同时探测下限在一定范围内为合格
-                            if (_eff >= 30 && _resultMda<=rangeMda)//需要补充代码的探测器下限范围
+                            if (_eff >= 20 && _resultMda<=rangeMda)//需要补充代码的探测器下限范围
                             {
                                 _isStandardize = "探测器合格!";
                             }
@@ -796,16 +870,21 @@ namespace HFM
                         }
                         //串道比计算
                         Calibration calibration_AlphaBetaPercent = new Calibration();
-                        if (_alphacnt>0)
+                        if (_alphacnt>0 || _betacnt>0)
                         {
-                            //alpha 串道计数
-                            calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
+                            if (_efficiencyList.First(x => x.NuclideType == "α").NuclideName == CmbNuclideSelect.Text)
+                            {
+                                //alpha 串道计数
+                                calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
+                            }
+                            else
+                            {
+                                //beta 串道计数
+                                calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
+                            }
+                            
                         }
-                        else if(_betacnt>0)
-                        {
-                            //beta 串道计数
-                            calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
-                        }
+                        
 
                         if (calibration_AlphaBetaPercent.AlphaBetaPercent<=0)
                         {
@@ -815,9 +894,9 @@ namespace HFM
                         //向刻度数据表添加信息
                         Calibration calibration = new Calibration
                         {
-                            Efficiency = _eff,//效率
-                            MDA = _resultMda,
-                            AlphaBetaPercent = calibration_AlphaBetaPercent.AlphaBetaPercent,//串道比
+                            Efficiency = _eff > 0 ?Convert.ToSingle( _eff.ToString("0.000")) : 0,//效率
+                            MDA = _resultMda > 0 ?Convert.ToSingle( _resultMda.ToString("0.000")):0,
+                            AlphaBetaPercent =Convert.ToSingle( calibration_AlphaBetaPercent.AlphaBetaPercent.ToString("0.00")),//串道比
                             CalibrationTime = DateTime.Now,
                             Channel = _changedEfficiency.Channel,
                             HighVoltage = _setChannelParameter.PresetHV,
@@ -856,14 +935,17 @@ namespace HFM
                                         }
                                         sw.WriteLine("");
                                     }
-                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}；{_isStandardize}");
+                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}%；");
                                     sw.Close();
                                 }
                             }
                         }
                         //测量结果
-                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}；{_isStandardize}";
-                        
+                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent:f2}%；";
+                        //使刻度按钮可以使用
+                        BtnCalibrate.Enabled = true;
+                        BtnSet.Enabled = true;
+                        GrpCalibration.Enabled = true;
                     }
                 }
             }
@@ -936,8 +1018,13 @@ namespace HFM
                 _tools.PrompMessage(2);
                 return;
             }
-            
-            
+            ////点击刻度和设置后使按钮不可用
+            //BtnCalibrate.Enabled = false;
+            //BtnSet.Enabled = false;
+            ////按钮可以使用
+            //BtnCalibrate.Enabled = true;
+            //BtnSet.Enabled = true;
+
         }
         #endregion
 
@@ -949,6 +1036,17 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnCalibrate_Click(object sender, EventArgs e)
         {
+            PrgCalibrate.Maximum = Convert.ToInt32(TxtMeasuringTime.Text);//进度条最大进度为测量时间
+            _prgTime = 0;
+
+            DgvInformation.Rows.Clear();
+            TxtResult.Text = "";
+            throwDataCount = 0;
+            //刻度时清理上一次的读数
+            _alphacps = 0;
+            _betacps = 0;
+            _alphacnt = 0;
+            _betacnt = 0;
             #region 信息判断
             //通道判断
             if (CmbChannelSelection.Text == "")
@@ -973,7 +1071,7 @@ namespace HFM
                 return;
             }
 
-            if (TxtSFR.Text=="")
+            if (TxtSFR.Text==""||TxtSFR.Text=="0")
             {
                _tools.PrompMessage(11);
                return;
@@ -984,8 +1082,15 @@ namespace HFM
             _measuringTime = Convert.ToInt32(TxtMeasuringTime.Text);//测量时间
             _measuringCount = Convert.ToInt16(TxtCount.Text);//测量次数
             _messageType = MessageType.CRead;
-            if (MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示")==DialogResult.OK)
+            if (_isEnglish)
             {
+
+            }
+            if (_isEnglish==true?MessageBox.Show(@"Please enter the emissivity!", "Message") ==DialogResult.OK: MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示") == DialogResult.OK)
+            {
+                //刻度时清理上一次的读数
+                _alphacps = 0;
+                _betacps = 0;
                 if (bkWorkerReceiveData.IsBusy == true)
                 {
                     bkWorkerReceiveData.CancelAsync();
@@ -997,7 +1102,10 @@ namespace HFM
                     bkWorkerReceiveData.RunWorkerAsync();
                 }
             }
-            
+            //点击刻度和设置后使按钮不可用
+            BtnCalibrate.Enabled = false;
+            BtnSet.Enabled = false;
+            GrpCalibration.Enabled = false;
         }
 
 
@@ -1038,6 +1146,7 @@ namespace HFM
         }
         #endregion
 
+        #region 窗口关闭后
         /// <summary>
         /// 窗口关闭后,关闭线程,关闭端口
         /// </summary>
@@ -1045,6 +1154,10 @@ namespace HFM
         {
             _commPort.Close();
             bkWorkerReceiveData.CancelAsync();
+            Thread.Sleep(200);
         }
+        #endregion
+
+      
     }
 }

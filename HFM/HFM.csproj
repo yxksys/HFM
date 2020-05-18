@@ -169,6 +169,9 @@
       <DependentUpon>FrmModifyPasssword.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <EmbeddedResource Include="FrmCalibration.en.resx">
+      <DependentUpon>FrmCalibration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCalibration.resx">
       <DependentUpon>FrmCalibration.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHistory.en.resx">
       <DependentUpon>FrmHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKeyIn.en.resx">
+      <DependentUpon>FrmKeyIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.en.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -232,19 +238,18 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="bin\Debug\Audio\ReadMe（名称对应内容）.text" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -335,6 +340,46 @@
     <Content Include="Audio\Chinese_Clothing_contaminated.wav" />
     <Content Include="Audio\Chinese_Decontaminate_please.wav" />
     <Content Include="bin\Debug\Audio\Chinese_HB_Measured_.wav" />
+    <None Include="bin\Debug\Images\Background_Progress.jpg" />
+    <None Include="bin\Debug\Images\Button_Down.jpg" />
+    <None Include="bin\Debug\Images\Button_Link.jpg" />
+    <None Include="bin\Debug\Images\clothes-highlight.jpg" />
+    <Content Include="bin\Debug\Images\clothes-middle.jpg" />
+    <None Include="bin\Debug\Images\clothes.jpg" />
+    <Content Include="bin\Debug\Images\Contaminated_progress.jpg" />
+    <Content Include="bin\Debug\Images\Fault_progress.jpg" />
+    <Content Include="bin\Debug\Images\foot-littl.jpg" />
+    <None Include="bin\Debug\Images\Foot_InPlace.jpg" />
+    <None Include="bin\Debug\Images\Foot_NotInPlace.jpg" />
+    <None Include="bin\Debug\Images\Frisker_Disabled.png" />
+    <None Include="bin\Debug\Images\Frisker_InPlace.png" />
+    <None Include="bin\Debug\Images\Frisker_NotInPlace.png" />
+    <Content Include="bin\Debug\Images\FriskerBK_InPlace.jpg" />
+    <Content Include="bin\Debug\Images\FriskerBK_NotInPlace.jpg" />
+    <None Include="bin\Debug\Images\Hand_InPlace.jpg" />
+    <None Include="bin\Debug\Images\Hand_NotInPlace.jpg" />
+    <None Include="bin\Debug\Images\Hand_Status.jpg" />
+    <None Include="bin\Debug\Images\LF_Disabled.png" />
+    <None Include="bin\Debug\Images\LF_InPlace.png" />
+    <None Include="bin\Debug\Images\LF_NotInPlace.png" />
+    <None Include="bin\Debug\Images\LHB_Disabled.png" />
+    <None Include="bin\Debug\Images\LHB_InPlace.png" />
+    <None Include="bin\Debug\Images\LHB_NotInPlace.png" />
+    <None Include="bin\Debug\Images\LHP_Disabled.png" />
+    <None Include="bin\Debug\Images\LHP_InPlace.png" />
+    <None Include="bin\Debug\Images\LHP_NotInPlace.png" />
+    <Content Include="bin\Debug\Images\NoContamination_progress.jpg" />
+    <None Include="bin\Debug\Images\progress.jpg" />
+    <None Include="bin\Debug\Images\RF_Disabled.png" />
+    <None Include="bin\Debug\Images\RF_InPlace.png" />
+    <None Include="bin\Debug\Images\RF_NotInPlace.png" />
+    <None Include="bin\Debug\Images\RHB_Disabled.png" />
+    <None Include="bin\Debug\Images\RHB_InPlace.png" />
+    <None Include="bin\Debug\Images\RHB_NotInPlace.png" />
+    <None Include="bin\Debug\Images\RHP_Disabled.png" />
+    <None Include="bin\Debug\Images\RHP_InPlace.png" />
+    <None Include="bin\Debug\Images\RHP_NotInPlace.png" />
+    <None Include="bin\Debug\Images\unfulfillment.jpg" />
     <Content Include="bin\Debug\Images\welcome.bmp" />
     <Content Include="bin\Debug\Audio\1.wav" />
     <Content Include="bin\Debug\Audio\10.wav" />
@@ -464,15 +509,48 @@
     <Content Include="bin\Debug\Images\RHB.png" />
     <Content Include="bin\Debug\Images\RHP.png" />
     <Content Include="Images\app.ico" />
-    <Content Include="Images\clothes.png" />
-    <Content Include="Images\LF.png" />
-    <Content Include="Images\LHB.png" />
-    <Content Include="Images\LHP.png" />
+    <None Include="Images\Background_Progress.jpg" />
+    <None Include="Images\clothes-highlight.jpg" />
+    <None Include="Images\Button_Down.jpg" />
+    <None Include="Images\Button_Link.jpg" />
+    <Content Include="Images\clothes-middle.jpg" />
+    <None Include="Images\clothes.jpg" />
+    <Content Include="Images\Contaminated_progress.jpg" />
+    <Content Include="Images\Fault_progress.jpg" />
+    <Content Include="Images\foot-littl.jpg" />
+    <None Include="Images\Foot_InPlace.jpg" />
+    <None Include="Images\Foot_NotInPlace.jpg" />
+    <None Include="Images\LF_Disabled.png" />
+    <None Include="Images\LF_InPlace.png" />
+    <None Include="Images\LF_NotInPlace.png" />
+    <None Include="Images\LHB_Disabled.png" />
+    <None Include="Images\LHB_InPlace.png" />
+    <None Include="Images\LHB_NotInPlace.png" />
+    <None Include="Images\LHP_Disabled.png" />
+    <None Include="Images\LHP_InPlace.png" />
+    <None Include="Images\LHP_NotInPlace.png" />
+    <None Include="Images\Hand_InPlace.jpg" />
+    <None Include="Images\Hand_NotInPlace.jpg" />
+    <None Include="Images\Frisker_Disabled.png" />
+    <None Include="Images\Frisker_InPlace.png" />
+    <None Include="Images\Frisker_NotInPlace.png" />
+    <None Include="Images\Hand_Status.jpg" />
+    <Content Include="Images\FriskerBK_InPlace.jpg" />
+    <Content Include="Images\FriskerBK_NotInPlace.jpg" />
     <Content Include="Images\logo.ico" />
     <Content Include="Images\logo.png" />
-    <Content Include="Images\RF.png" />
-    <Content Include="Images\RHB.png" />
-    <Content Include="Images\RHP.png" />
+    <None Include="Images\progress.jpg" />
+    <None Include="Images\RF_Disabled.png" />
+    <None Include="Images\RF_InPlace.png" />
+    <None Include="Images\RF_NotInPlace.png" />
+    <None Include="Images\RHB_Disabled.png" />
+    <None Include="Images\RHB_InPlace.png" />
+    <None Include="Images\RHB_NotInPlace.png" />
+    <None Include="Images\unfulfillment.jpg" />
+    <None Include="Images\RHP_Disabled.png" />
+    <None Include="Images\RHP_InPlace.png" />
+    <None Include="Images\RHP_NotInPlace.png" />
+    <Content Include="Images\NoContamination_progress.jpg" />
     <Content Include="Images\welcome.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

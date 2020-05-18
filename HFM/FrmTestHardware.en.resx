@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LblStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 259</value>
+    <value>-7, 206</value>
   </data>
   <data name="LblStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
@@ -132,7 +132,7 @@
     <value>False</value>
   </data>
   <data name="LblβTotalcnt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 224</value>
+    <value>-7, 178</value>
   </data>
   <data name="LblβTotalcnt.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
@@ -141,7 +141,7 @@
     <value>False</value>
   </data>
   <data name="Lblβcountrate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 189</value>
+    <value>-7, 150</value>
   </data>
   <data name="Lblβcountrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
@@ -150,7 +150,7 @@
     <value>False</value>
   </data>
   <data name="LblαTotalcnt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 154</value>
+    <value>-7, 122</value>
   </data>
   <data name="LblαTotalcnt.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
@@ -159,55 +159,52 @@
     <value>False</value>
   </data>
   <data name="Lblαcountrate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 119</value>
+    <value>-7, 94</value>
   </data>
   <data name="Lblαcountrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
   </data>
-  <data name="LblHighVoltage.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="LblHighVoltage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 84</value>
+    <value>-7, 66</value>
   </data>
   <data name="LblHighVoltage.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
   </data>
-  <data name="LblFriskercount.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="GrpWork.Size" type="System.Drawing.Size, System.Drawing">
+    <value>735, 309</value>
+  </data>
+  <data name="TxtFriskercount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 32</value>
   </data>
   <data name="LblFriskercount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 44</value>
-  </data>
-  <data name="LblFriskercount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 25</value>
+    <value>10, 36</value>
   </data>
   <data name="TxtFriskerState.Location" type="System.Drawing.Point, System.Drawing">
-    <value>391, 39</value>
+    <value>274, 33</value>
   </data>
   <data name="LblFriskerState.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="LblFriskerState.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 42</value>
+    <value>220, 39</value>
   </data>
   <data name="LblFriskerState.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 25</value>
   </data>
   <data name="TxtRHandState.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 39</value>
+    <value>168, 34</value>
   </data>
   <data name="LblRHandState.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="LblRHandState.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 42</value>
+    <value>121, 38</value>
   </data>
   <data name="LblRHandState.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 25</value>
   </data>
   <data name="TxtLHandState.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 39</value>
+    <value>66, 35</value>
   </data>
   <data name="LblLHandState.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -218,16 +215,25 @@
   <data name="LblLHandState.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 25</value>
   </data>
+  <data name="Lblμs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>528, 31</value>
+  </data>
   <data name="BtnSelfCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>863, 33</value>
+    <value>625, 26</value>
+  </data>
+  <data name="TxtPWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>496, 29</value>
   </data>
   <data name="LblPWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="LblPWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>627, 42</value>
+    <value>399, 30</value>
   </data>
   <data name="LblPWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 26</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>764, 535</value>
   </data>
 </root>
