@@ -15,22 +15,14 @@ namespace HFM
 {
     public partial class FrmClothes : Form
     {
+        public bool isEnglish = false;
         public FrmClothes()
         {
             InitializeComponent();
         }
         public FrmClothes(bool isEnglish)
         {
-            if(isEnglish)
-            {
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
-                Tools.ApplyLanguageResource(this);
-            }
-            else
-            {
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
-                Tools.ApplyLanguageResource(this);
-            }                        
+            this.isEnglish = isEnglish;                   
             InitializeComponent();
         }
         private void FrmClothes_Load(object sender, EventArgs e)
@@ -40,6 +32,34 @@ namespace HFM
             loadingCircle.NumberSpoke = 20;
             loadingCircle.SpokeThickness = 3;
             loadingCircle.Active = true;
+            if (isEnglish)
+            {
+                try
+                {
+                    isEnglish = true;
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+                    Tools.ApplyLanguageResource(this);
+                    Tools.controls.Clear();
+                }
+                catch
+                {
+                    return;
+                }
+            }
+            else
+            {
+                try
+                {
+                    isEnglish = false;
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
+                    Tools.ApplyLanguageResource(this);
+                    Tools.controls.Clear();
+                }
+                catch
+                {
+                    return;
+                }
+            }
         }
     }
 }

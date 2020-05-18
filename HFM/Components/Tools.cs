@@ -29,7 +29,7 @@ namespace HFM.Components
 	/// </summary>
 	public class Tools
 	{
-        static List<Control> controls = new List<Control>();
+        public static List<Control> controls = new List<Control>();
 		#region 将DataReader 转为 DataTable
 		/// <summary>
 		/// 将DataReader 转为 DataTable
@@ -395,10 +395,10 @@ namespace HFM.Components
             foreach (Control ctl in controls)
             {
                 res.ApplyResources(ctl, ctl.Name);
-            }
+            }            
             form.ResumeLayout(false);
             form.PerformLayout();
-            res.ApplyResources(form, "$form");
+            res.ApplyResources(form, "$form");            
         }
         #endregion
 

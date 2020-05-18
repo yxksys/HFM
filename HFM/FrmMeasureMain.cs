@@ -22,13 +22,13 @@ namespace HFM
         PictureBox[] PicStatus;
         Label[] LblStatus;
         string listS = "";
-        string timetemp = "";
+        //string timetemp = "";
         byte infraredStatusOfMessageLast = 0x1b;//上次报文信息中红外状态，默认手和衣物都不到位。格式：5-7通道红外状态-1-4通道红外状态。占低6位
         byte infraredStatusOfMessageNow = 0x1b;//本次报文信息中红外状态，默认手和衣物都不到位。格式：5-7通道红外状态-1-4通道红外状态。占低6位
         const int BASE_DATA = 1000;//标准本底值
-        const int FONT_SIZE_E = 14;//检测状态显示区域英文字体大小
-        const int FONT_SIZE = 18;//检测状态显示区域中午字体大小
-        const int FONT_SIZE_RESULT = 48;//检测结果显示字体
+        const int FONT_SIZE_E = 12;//检测状态显示区域英文字体大小
+        const int FONT_SIZE = 14;//检测状态显示区域中午字体大小
+        //const int FONT_SIZE_RESULT =18 ;//检测结果显示字体
         const int TEAM_LENGTH = 240;//
         //泊松参数
         const double POISSONUA_2 = 1.658;
@@ -527,6 +527,7 @@ namespace HFM
                     isEnglish = true;
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
                     Tools.ApplyLanguageResource(this);
+                    Tools.controls.Clear();
                 }
                 catch
                 {
@@ -538,6 +539,7 @@ namespace HFM
                 isEnglish = false;
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
                 Tools.ApplyLanguageResource(this);
+                Tools.controls.Clear();
             }
             TmrDispTime = new System.Timers.Timer();
             TmrDispTime.Interval = 500;
@@ -1119,17 +1121,17 @@ namespace HFM
                         //在衣物检测结果显示区域显示当前测量值，根据数据大小控制显示字体大小
                         if (smoothedDataOfClothes < 10)
                         {
-                            LblFriskerB.Font = new Font("宋体", 36, FontStyle.Bold);
+                            LblFriskerB.Font = new Font("宋体", 16, FontStyle.Bold);
                             LblFriskerB.Text = string.Format("{0}cps", smoothedDataOfClothes.ToString("F1"));
                         }
                         else if (smoothedDataOfClothes < 1000)
                         {
-                            LblFriskerB.Font = new Font("宋体", 36, FontStyle.Bold);
+                            LblFriskerB.Font = new Font("宋体", 16, FontStyle.Bold);
                             LblFriskerB.Text = string.Format("{0}cps", smoothedDataOfClothes.ToString("F0"));
                         }
                         else
                         {
-                            LblFriskerB.Font = new Font("宋体", 26, FontStyle.Bold);
+                            LblFriskerB.Font = new Font("宋体", 10, FontStyle.Bold);
                             LblFriskerB.Text = string.Format("{0}cps", smoothedDataOfClothes.ToString("F0"));
                         }
                     }
@@ -1220,7 +1222,7 @@ namespace HFM
                 {
                     SetProgressPicFlag(0);//仪器自检进度图片已经被加载标志设置为true，其它为false
                     LblTimeRemain.Parent = PnlSelfCheck;
-                    LblTimeRemain.Location = new Point(112, 2);//控制剩余时间标签显示位置
+                    LblTimeRemain.Location = new Point(84, 0);//控制剩余时间标签显示位置
                     LblTimeRemain.BringToFront();
                 }
                 //获得当前系统参数设置中的的自检时间并赋值给stateTimeSet
@@ -3451,6 +3453,7 @@ namespace HFM
         {
             systemParameter.IsEnglish = !systemParameter.IsEnglish;
             isEnglish = systemParameter.IsEnglish;
+            frmClothes.isEnglish = !frmClothes.isEnglish;
             try
             {
                 systemParameter.SetParameter(systemParameter);
@@ -3465,6 +3468,7 @@ namespace HFM
                     this.Text = "英文";
                 }
                 Tools.ApplyLanguageResource(this);
+                Tools.controls.Clear();
                 //在界面中将启用通道（通道处于启用状态同时探测面积不为0）的控件Enabled有效，其它通道（通道未启用或探测面积为0）的控件Enabled无效；                       
                 for (int i = 0; i < channelsAll.Count(); i++)
                 {

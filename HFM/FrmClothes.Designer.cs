@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClothes));
-            this.Txt = new System.Windows.Forms.Label();
-            this.LblBackground_Clothes = new System.Windows.Forms.Label();
+            this.LblTitle = new System.Windows.Forms.Label();
+            this.LblBKground_Clothes = new System.Windows.Forms.Label();
             this.LblMeasure = new System.Windows.Forms.Label();
             this.TxtBackgroundValue = new System.Windows.Forms.TextBox();
             this.TxtMeasureValue = new System.Windows.Forms.TextBox();
-            this.loadingCircle = new HFM.Controls.LoadingCircle();
             this.PrgClothAlarm_1 = new System.Windows.Forms.ProgressBar();
             this.PrgClothAlarm_2 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblAlarm_1 = new System.Windows.Forms.Label();
+            this.LblAlarm_2 = new System.Windows.Forms.Label();
+            this.loadingCircle = new HFM.Controls.LoadingCircle();
             this.SuspendLayout();
             // 
-            // Txt
+            // LblTitle
             // 
-            resources.ApplyResources(this.Txt, "Txt");
-            this.Txt.Name = "Txt";
+            resources.ApplyResources(this.LblTitle, "LblTitle");
+            this.LblTitle.Name = "LblTitle";
             // 
-            // LblBackground_Clothes
+            // LblBKground_Clothes
             // 
-            resources.ApplyResources(this.LblBackground_Clothes, "LblBackground_Clothes");
-            this.LblBackground_Clothes.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LblBackground_Clothes.Name = "LblBackground_Clothes";
+            resources.ApplyResources(this.LblBKground_Clothes, "LblBKground_Clothes");
+            this.LblBKground_Clothes.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LblBKground_Clothes.Name = "LblBKground_Clothes";
             // 
             // LblMeasure
             // 
@@ -72,20 +72,6 @@
             this.TxtMeasureValue.ReadOnly = true;
             this.TxtMeasureValue.TabStop = false;
             // 
-            // loadingCircle
-            // 
-            this.loadingCircle.Active = false;
-            this.loadingCircle.BackColor = System.Drawing.Color.Transparent;
-            this.loadingCircle.Color = System.Drawing.Color.Orange;
-            this.loadingCircle.InnerCircleRadius = 5;
-            resources.ApplyResources(this.loadingCircle, "loadingCircle");
-            this.loadingCircle.Name = "loadingCircle";
-            this.loadingCircle.NumberSpoke = 12;
-            this.loadingCircle.OuterCircleRadius = 11;
-            this.loadingCircle.RotationSpeed = 100;
-            this.loadingCircle.SpokeThickness = 2;
-            this.loadingCircle.StylePreset = HFM.Controls.LoadingCircle.StylePresets.MacOSX;
-            // 
             // PrgClothAlarm_1
             // 
             resources.ApplyResources(this.PrgClothAlarm_1, "PrgClothAlarm_1");
@@ -96,17 +82,31 @@
             resources.ApplyResources(this.PrgClothAlarm_2, "PrgClothAlarm_2");
             this.PrgClothAlarm_2.Name = "PrgClothAlarm_2";
             // 
-            // label1
+            // LblAlarm_1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.LblAlarm_1, "LblAlarm_1");
+            this.LblAlarm_1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LblAlarm_1.Name = "LblAlarm_1";
             // 
-            // label2
+            // LblAlarm_2
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.LblAlarm_2, "LblAlarm_2");
+            this.LblAlarm_2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.LblAlarm_2.Name = "LblAlarm_2";
+            // 
+            // loadingCircle
+            // 
+            resources.ApplyResources(this.loadingCircle, "loadingCircle");
+            this.loadingCircle.Active = false;
+            this.loadingCircle.BackColor = System.Drawing.Color.Transparent;
+            this.loadingCircle.Color = System.Drawing.Color.Orange;
+            this.loadingCircle.InnerCircleRadius = 5;
+            this.loadingCircle.Name = "loadingCircle";
+            this.loadingCircle.NumberSpoke = 12;
+            this.loadingCircle.OuterCircleRadius = 11;
+            this.loadingCircle.RotationSpeed = 100;
+            this.loadingCircle.SpokeThickness = 2;
+            this.loadingCircle.StylePreset = HFM.Controls.LoadingCircle.StylePresets.MacOSX;
             // 
             // FrmClothes
             // 
@@ -114,16 +114,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SpringGreen;
             this.ControlBox = false;
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblAlarm_2);
+            this.Controls.Add(this.LblAlarm_1);
             this.Controls.Add(this.PrgClothAlarm_2);
             this.Controls.Add(this.PrgClothAlarm_1);
             this.Controls.Add(this.loadingCircle);
             this.Controls.Add(this.TxtMeasureValue);
             this.Controls.Add(this.TxtBackgroundValue);
             this.Controls.Add(this.LblMeasure);
-            this.Controls.Add(this.LblBackground_Clothes);
-            this.Controls.Add(this.Txt);
+            this.Controls.Add(this.LblBKground_Clothes);
+            this.Controls.Add(this.LblTitle);
             this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -137,15 +137,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Label Txt;
-        private System.Windows.Forms.Label LblBackground_Clothes;
+        private System.Windows.Forms.Label LblTitle;
+        private System.Windows.Forms.Label LblBKground_Clothes;
         private System.Windows.Forms.Label LblMeasure;
         public System.Windows.Forms.TextBox TxtBackgroundValue;
         public System.Windows.Forms.TextBox TxtMeasureValue;
         public Controls.LoadingCircle loadingCircle;
         public System.Windows.Forms.ProgressBar PrgClothAlarm_1;
         public System.Windows.Forms.ProgressBar PrgClothAlarm_2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblAlarm_1;
+        private System.Windows.Forms.Label LblAlarm_2;
     }
 }

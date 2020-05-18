@@ -117,20 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Txt.Text" xml:space="preserve">
-    <value>Clothing measurement is in progress!</value>
+  <data name="LblTitle.Text" xml:space="preserve">
+    <value>Frisker Measuring</value>
   </data>
-  <data name="LblBackground.Text" xml:space="preserve">
-    <value>Background</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LblBKground_Clothes.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 15pt, style=Bold</value>
+  </data>
+  <data name="LblBKground_Clothes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 36</value>
+  </data>
+  <data name="LblBKground_Clothes.Text" xml:space="preserve">
+    <value> Actual Background</value>
+  </data>
+  <data name="LblMeasure.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 15pt, style=Bold</value>
   </data>
   <data name="LblMeasure.Text" xml:space="preserve">
     <value>Measuring</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Alarm-L</value>
+  <data name="LblAlarm_1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 15pt, style=Bold</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Alarm-H</value>
+  <data name="LblAlarm_1.Text" xml:space="preserve">
+    <value>Alarm_1</value>
+  </data>
+  <data name="LblAlarm_2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 15pt, style=Bold</value>
+  </data>
+  <data name="LblAlarm_2.Text" xml:space="preserve">
+    <value>Alarm_2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Frisker</value>
