@@ -534,10 +534,13 @@
     <value>System Parameter</value>
   </data>
   <data name="系统参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="系统参数.Text" xml:space="preserve">
     <value>System Parameter</value>
+  </data>
+  <data name="LblAlpha.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 11</value>
   </data>
   <data name="LblAlpha.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 21</value>
@@ -563,11 +566,14 @@
   <data name="TxtAlphaEfficiency.HeaderText" xml:space="preserve">
     <value>Efficiency(%)</value>
   </data>
+  <data name="DgvAlphaSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 39</value>
+  </data>
   <data name="DgvAlphaSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>723, 237</value>
+    <value>725, 231</value>
   </data>
   <data name="BtnAlphaNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>605, 387</value>
+    <value>595, 376</value>
   </data>
   <data name="BtnAlphaNo.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 58</value>
@@ -576,10 +582,10 @@
     <value>Cancel</value>
   </data>
   <data name="BtnAlphaOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>605, 327</value>
+    <value>595, 295</value>
   </data>
   <data name="BtnAlphaOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 51</value>
+    <value>96, 66</value>
   </data>
   <data name="BtnAlphaOk.Text" xml:space="preserve">
     <value>OK</value>
@@ -587,11 +593,17 @@
   <data name="RdoAlphaDefine2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
+  <data name="RdoAlphaDefine2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 88</value>
+  </data>
   <data name="RdoAlphaDefine2.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
   </data>
   <data name="RdoAlpha241.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="RdoAlpha241.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 88</value>
   </data>
   <data name="RdoAlpha241.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 24</value>
@@ -599,11 +611,17 @@
   <data name="RdoAlphaDefine1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
+  <data name="RdoAlphaDefine1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 43</value>
+  </data>
   <data name="RdoAlphaDefine1.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 24</value>
   </data>
   <data name="RdoAlpha238.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="RdoAlpha238.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 88</value>
   </data>
   <data name="RdoAlpha238.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 24</value>
@@ -611,20 +629,32 @@
   <data name="RdoAlpha239.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
+  <data name="RdoAlpha239.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 43</value>
+  </data>
   <data name="RdoAlpha239.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 24</value>
   </data>
   <data name="RdoAlpha235.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
+  <data name="RdoAlpha235.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 43</value>
+  </data>
   <data name="RdoAlpha235.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 24</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 274</value>
+  </data>
+  <data name="GrpAlphaNuclideChoose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>534, 160</value>
   </data>
   <data name="GrpAlphaNuclideChoose.Text" xml:space="preserve">
     <value>Alpha nuclide selection</value>
   </data>
   <data name="α参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="α参数.Text" xml:space="preserve">
     <value>Alpha Parameter</value>
@@ -804,7 +834,7 @@
     <value>Selection of β / γ nuclides</value>
   </data>
   <data name="β参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="β参数.Text" xml:space="preserve">
     <value>Beta Parameter</value>
@@ -1050,7 +1080,7 @@
     <value>Frisker Parameter</value>
   </data>
   <data name="衣物探头.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="衣物探头.Text" xml:space="preserve">
     <value>Frisker Parameter</value>
@@ -1120,7 +1150,7 @@
     <value>Reset to Default</value>
   </data>
   <data name="工厂参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="工厂参数.Text" xml:space="preserve">
     <value>Channel Parameter</value>

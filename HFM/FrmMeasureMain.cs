@@ -3405,6 +3405,7 @@ namespace HFM
                 bkWorkerReceiveData.CancelAsync();
                 Thread.Sleep(200);
             }
+
             bkWorkerReceiveData.Dispose();
             bkWorkerReportStatus.Dispose();
             this.TmrDispTime.Enabled = false;
