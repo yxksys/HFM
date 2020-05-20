@@ -82,6 +82,7 @@
             this.PnlReady = new System.Windows.Forms.Panel();
             this.LblReady = new System.Windows.Forms.Label();
             this.PnlBackground = new System.Windows.Forms.Panel();
+            this.LblBackground = new System.Windows.Forms.Label();
             this.PnlSelfCheck = new System.Windows.Forms.Panel();
             this.LblTimeRemain = new System.Windows.Forms.Label();
             this.LblCheck = new System.Windows.Forms.Label();
@@ -99,7 +100,6 @@
             this.LblRFB = new System.Windows.Forms.Label();
             this.LblRFA = new System.Windows.Forms.Label();
             this.LblRF = new System.Windows.Forms.Label();
-            this.LblBackground = new System.Windows.Forms.Label();
             this.PnlLHP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLHP)).BeginInit();
             this.PnlRHP.SuspendLayout();
@@ -145,8 +145,8 @@
             // 
             // TxtShowResult
             // 
-            resources.ApplyResources(this.TxtShowResult, "TxtShowResult");
             this.TxtShowResult.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(219)))), ((int)(((byte)(216)))));
+            resources.ApplyResources(this.TxtShowResult, "TxtShowResult");
             this.TxtShowResult.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
             this.TxtShowResult.Name = "TxtShowResult";
             this.TxtShowResult.ReadOnly = true;
@@ -178,8 +178,8 @@
             // 
             // PnlLHP
             // 
-            resources.ApplyResources(this.PnlLHP, "PnlLHP");
             this.PnlLHP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.PnlLHP, "PnlLHP");
             this.PnlLHP.Controls.Add(this.LblLHPStatus);
             this.PnlLHP.Controls.Add(this.PicLHP);
             this.PnlLHP.Controls.Add(this.LblLHPB);
@@ -189,8 +189,8 @@
             // 
             // LblLHPStatus
             // 
-            resources.ApplyResources(this.LblLHPStatus, "LblLHPStatus");
             this.LblLHPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblLHPStatus, "LblLHPStatus");
             this.LblLHPStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblLHPStatus.Name = "LblLHPStatus";
             // 
@@ -202,15 +202,15 @@
             // 
             // LblLHPB
             // 
-            resources.ApplyResources(this.LblLHPB, "LblLHPB");
             this.LblLHPB.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblLHPB, "LblLHPB");
             this.LblLHPB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblLHPB.Name = "LblLHPB";
             // 
             // LblLHPA
             // 
-            resources.ApplyResources(this.LblLHPA, "LblLHPA");
             this.LblLHPA.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblLHPA, "LblLHPA");
             this.LblLHPA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblLHPA.Name = "LblLHPA";
             // 
@@ -222,8 +222,8 @@
             // 
             // PnlRHP
             // 
-            resources.ApplyResources(this.PnlRHP, "PnlRHP");
             this.PnlRHP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.PnlRHP, "PnlRHP");
             this.PnlRHP.Controls.Add(this.LblRHPStatus);
             this.PnlRHP.Controls.Add(this.PicRHP);
             this.PnlRHP.Controls.Add(this.LblRHPB);
@@ -233,8 +233,8 @@
             // 
             // LblRHPStatus
             // 
-            resources.ApplyResources(this.LblRHPStatus, "LblRHPStatus");
             this.LblRHPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblRHPStatus, "LblRHPStatus");
             this.LblRHPStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblRHPStatus.Name = "LblRHPStatus";
             // 
@@ -246,15 +246,15 @@
             // 
             // LblRHPB
             // 
-            resources.ApplyResources(this.LblRHPB, "LblRHPB");
             this.LblRHPB.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblRHPB, "LblRHPB");
             this.LblRHPB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblRHPB.Name = "LblRHPB";
             // 
             // LblRHPA
             // 
-            resources.ApplyResources(this.LblRHPA, "LblRHPA");
             this.LblRHPA.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblRHPA, "LblRHPA");
             this.LblRHPA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblRHPA.Name = "LblRHPA";
             // 
@@ -266,8 +266,8 @@
             // 
             // PnlLF
             // 
-            resources.ApplyResources(this.PnlLF, "PnlLF");
             this.PnlLF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.PnlLF, "PnlLF");
             this.PnlLF.Controls.Add(this.LblLFStatus);
             this.PnlLF.Controls.Add(this.PicLF);
             this.PnlLF.Controls.Add(this.LblLFB);
@@ -277,8 +277,8 @@
             // 
             // LblLFStatus
             // 
-            resources.ApplyResources(this.LblLFStatus, "LblLFStatus");
             this.LblLFStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblLFStatus, "LblLFStatus");
             this.LblLFStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblLFStatus.Name = "LblLFStatus";
             // 
@@ -290,15 +290,15 @@
             // 
             // LblLFB
             // 
-            resources.ApplyResources(this.LblLFB, "LblLFB");
             this.LblLFB.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblLFB, "LblLFB");
             this.LblLFB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblLFB.Name = "LblLFB";
             // 
             // LblLFA
             // 
-            resources.ApplyResources(this.LblLFA, "LblLFA");
             this.LblLFA.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblLFA, "LblLFA");
             this.LblLFA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblLFA.Name = "LblLFA";
             // 
@@ -310,8 +310,8 @@
             // 
             // PnlRHB
             // 
-            resources.ApplyResources(this.PnlRHB, "PnlRHB");
             this.PnlRHB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.PnlRHB, "PnlRHB");
             this.PnlRHB.Controls.Add(this.LblRHBStatus);
             this.PnlRHB.Controls.Add(this.PicRHB);
             this.PnlRHB.Controls.Add(this.LblRHBB);
@@ -321,8 +321,8 @@
             // 
             // LblRHBStatus
             // 
-            resources.ApplyResources(this.LblRHBStatus, "LblRHBStatus");
             this.LblRHBStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblRHBStatus, "LblRHBStatus");
             this.LblRHBStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblRHBStatus.Name = "LblRHBStatus";
             // 
@@ -334,15 +334,15 @@
             // 
             // LblRHBB
             // 
-            resources.ApplyResources(this.LblRHBB, "LblRHBB");
             this.LblRHBB.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblRHBB, "LblRHBB");
             this.LblRHBB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblRHBB.Name = "LblRHBB";
             // 
             // LblRHBA
             // 
-            resources.ApplyResources(this.LblRHBA, "LblRHBA");
             this.LblRHBA.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblRHBA, "LblRHBA");
             this.LblRHBA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblRHBA.Name = "LblRHBA";
             // 
@@ -360,8 +360,8 @@
             // 
             // LblLeft
             // 
-            resources.ApplyResources(this.LblLeft, "LblLeft");
             this.LblLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblLeft, "LblLeft");
             this.LblLeft.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblLeft.Name = "LblLeft";
             // 
@@ -376,8 +376,8 @@
             // 
             // PnlLHB
             // 
-            resources.ApplyResources(this.PnlLHB, "PnlLHB");
             this.PnlLHB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.PnlLHB, "PnlLHB");
             this.PnlLHB.Controls.Add(this.LblLHBStatus);
             this.PnlLHB.Controls.Add(this.PicLHB);
             this.PnlLHB.Controls.Add(this.LblLHBB);
@@ -387,8 +387,8 @@
             // 
             // LblLHBStatus
             // 
-            resources.ApplyResources(this.LblLHBStatus, "LblLHBStatus");
             this.LblLHBStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblLHBStatus, "LblLHBStatus");
             this.LblLHBStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblLHBStatus.Name = "LblLHBStatus";
             // 
@@ -400,15 +400,15 @@
             // 
             // LblLHBB
             // 
-            resources.ApplyResources(this.LblLHBB, "LblLHBB");
             this.LblLHBB.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblLHBB, "LblLHBB");
             this.LblLHBB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblLHBB.Name = "LblLHBB";
             // 
             // LblLHBA
             // 
-            resources.ApplyResources(this.LblLHBA, "LblLHBA");
             this.LblLHBA.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblLHBA, "LblLHBA");
             this.LblLHBA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblLHBA.Name = "LblLHBA";
             // 
@@ -426,8 +426,8 @@
             // 
             // PnlProgress
             // 
-            resources.ApplyResources(this.PnlProgress, "PnlProgress");
             this.PnlProgress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.PnlProgress, "PnlProgress");
             this.PnlProgress.Controls.Add(this.PnlContaminated);
             this.PnlProgress.Controls.Add(this.PnlNoContamination);
             this.PnlProgress.Controls.Add(this.PnlMeasuring);
@@ -438,9 +438,9 @@
             // 
             // PnlContaminated
             // 
-            resources.ApplyResources(this.PnlContaminated, "PnlContaminated");
             this.PnlContaminated.BackColor = System.Drawing.Color.Transparent;
             this.PnlContaminated.Controls.Add(this.LblContaminated);
+            resources.ApplyResources(this.PnlContaminated, "PnlContaminated");
             this.PnlContaminated.Name = "PnlContaminated";
             // 
             // LblContaminated
@@ -451,9 +451,9 @@
             // 
             // PnlNoContamination
             // 
-            resources.ApplyResources(this.PnlNoContamination, "PnlNoContamination");
             this.PnlNoContamination.BackColor = System.Drawing.Color.Transparent;
             this.PnlNoContamination.Controls.Add(this.LblNoContamination);
+            resources.ApplyResources(this.PnlNoContamination, "PnlNoContamination");
             this.PnlNoContamination.Name = "PnlNoContamination";
             // 
             // LblNoContamination
@@ -464,9 +464,9 @@
             // 
             // PnlMeasuring
             // 
-            resources.ApplyResources(this.PnlMeasuring, "PnlMeasuring");
             this.PnlMeasuring.BackColor = System.Drawing.Color.Transparent;
             this.PnlMeasuring.Controls.Add(this.LblMeasuring);
+            resources.ApplyResources(this.PnlMeasuring, "PnlMeasuring");
             this.PnlMeasuring.Name = "PnlMeasuring";
             // 
             // LblMeasuring
@@ -477,9 +477,9 @@
             // 
             // PnlReady
             // 
-            resources.ApplyResources(this.PnlReady, "PnlReady");
             this.PnlReady.BackColor = System.Drawing.Color.Transparent;
             this.PnlReady.Controls.Add(this.LblReady);
+            resources.ApplyResources(this.PnlReady, "PnlReady");
             this.PnlReady.Name = "PnlReady";
             // 
             // LblReady
@@ -490,30 +490,36 @@
             // 
             // PnlBackground
             // 
-            resources.ApplyResources(this.PnlBackground, "PnlBackground");
             this.PnlBackground.BackColor = System.Drawing.Color.Transparent;
             this.PnlBackground.Controls.Add(this.LblBackground);
+            resources.ApplyResources(this.PnlBackground, "PnlBackground");
             this.PnlBackground.Name = "PnlBackground";
+            // 
+            // LblBackground
+            // 
+            resources.ApplyResources(this.LblBackground, "LblBackground");
+            this.LblBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
+            this.LblBackground.Name = "LblBackground";
             // 
             // PnlSelfCheck
             // 
-            resources.ApplyResources(this.PnlSelfCheck, "PnlSelfCheck");
             this.PnlSelfCheck.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.PnlSelfCheck, "PnlSelfCheck");
             this.PnlSelfCheck.Controls.Add(this.LblTimeRemain);
             this.PnlSelfCheck.Controls.Add(this.LblCheck);
             this.PnlSelfCheck.Name = "PnlSelfCheck";
             // 
             // LblTimeRemain
             // 
-            resources.ApplyResources(this.LblTimeRemain, "LblTimeRemain");
             this.LblTimeRemain.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.LblTimeRemain, "LblTimeRemain");
             this.LblTimeRemain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
             this.LblTimeRemain.Name = "LblTimeRemain";
             // 
             // LblCheck
             // 
-            resources.ApplyResources(this.LblCheck, "LblCheck");
             this.LblCheck.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.LblCheck, "LblCheck");
             this.LblCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
             this.LblCheck.Name = "LblCheck";
             // 
@@ -525,15 +531,15 @@
             // 
             // LblRight
             // 
-            resources.ApplyResources(this.LblRight, "LblRight");
             this.LblRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblRight, "LblRight");
             this.LblRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblRight.Name = "LblRight";
             // 
             // PnlFrisker
             // 
-            resources.ApplyResources(this.PnlFrisker, "PnlFrisker");
             this.PnlFrisker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.PnlFrisker, "PnlFrisker");
             this.PnlFrisker.Controls.Add(this.LblFriskerStatus);
             this.PnlFrisker.Controls.Add(this.PicFrisker);
             this.PnlFrisker.Controls.Add(this.LblFrisker);
@@ -542,8 +548,8 @@
             // 
             // LblFriskerStatus
             // 
-            resources.ApplyResources(this.LblFriskerStatus, "LblFriskerStatus");
             this.LblFriskerStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblFriskerStatus, "LblFriskerStatus");
             this.LblFriskerStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblFriskerStatus.Name = "LblFriskerStatus";
             // 
@@ -561,8 +567,8 @@
             // 
             // LblFriskerB
             // 
-            resources.ApplyResources(this.LblFriskerB, "LblFriskerB");
             this.LblFriskerB.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblFriskerB, "LblFriskerB");
             this.LblFriskerB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblFriskerB.Name = "LblFriskerB";
             // 
@@ -577,8 +583,8 @@
             // 
             // PnlRF
             // 
-            resources.ApplyResources(this.PnlRF, "PnlRF");
             this.PnlRF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(219)))), ((int)(((byte)(220)))));
+            resources.ApplyResources(this.PnlRF, "PnlRF");
             this.PnlRF.Controls.Add(this.LblRFStatus);
             this.PnlRF.Controls.Add(this.PicRF);
             this.PnlRF.Controls.Add(this.LblRFB);
@@ -588,8 +594,8 @@
             // 
             // LblRFStatus
             // 
-            resources.ApplyResources(this.LblRFStatus, "LblRFStatus");
             this.LblRFStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(185)))), ((int)(((byte)(196)))));
+            resources.ApplyResources(this.LblRFStatus, "LblRFStatus");
             this.LblRFStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(127)))), ((int)(((byte)(27)))));
             this.LblRFStatus.Name = "LblRFStatus";
             // 
@@ -601,15 +607,15 @@
             // 
             // LblRFB
             // 
-            resources.ApplyResources(this.LblRFB, "LblRFB");
             this.LblRFB.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblRFB, "LblRFB");
             this.LblRFB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
             this.LblRFB.Name = "LblRFB";
             // 
             // LblRFA
             // 
-            resources.ApplyResources(this.LblRFA, "LblRFA");
             this.LblRFA.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.LblRFA, "LblRFA");
             this.LblRFA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
             this.LblRFA.Name = "LblRFA";
             // 
@@ -619,17 +625,11 @@
             this.LblRF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
             this.LblRF.Name = "LblRF";
             // 
-            // LblBackground
-            // 
-            resources.ApplyResources(this.LblBackground, "LblBackground");
-            this.LblBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(90)))), ((int)(((byte)(170)))));
-            this.LblBackground.Name = "LblBackground";
-            // 
             // FrmMeasureMain
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(231)))), ((int)(((byte)(225)))));
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.PnlLHP);
             this.Controls.Add(this.PnlRHP);
             this.Controls.Add(this.PnlLF);

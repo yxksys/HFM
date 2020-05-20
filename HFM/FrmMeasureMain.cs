@@ -850,17 +850,66 @@ namespace HFM
             {
                 receiveBufferMessage = (byte[])e.UserState;
             }
-            //报警时间小于系统参数设置的报警时间长度，则直接返回等待
+            //人员污染同时报警时间小于系统参数设置的报警时间长度，则直接返回等待
             if ((deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated))&&((DateTime.Now - alarmTimeStart).Seconds<alarmTimeSet))
             {
                 return;
             }
             else//报警时间超过系统参数设置的报警时间长度，则监测状态恢复为正常状态                       
-            {
+            {                
+                //如果人员污染同时报警时间大于系统参数设置的报警时间长度，则进行本底测量
+                if (((deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated))|| isClothesContaminated==true) && ((DateTime.Now - alarmTimeStart).Seconds >= alarmTimeSet))
+                {
+                    //恢复检测状态为正常
+                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
+                    // 运行状态标志设置为“本底测量”
+                    platformState = PlatformState.BackGrouneMeasure;
+                    //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为本底测量时计算做准备
+                    for (int i = 0; i < channelS.Count; i++)
+                    {
+                        calculatedMeasureDataS[i].Alpha = 0;
+                        calculatedMeasureDataS[i].Beta = 0;
+                    }
+                    //系统状态显示区域显示本底测量
+                    if (isEnglish)
+                    {                                                
+                        //测试结果区域显示本底测量
+                        TxtShowResult.Text += "Updating Background\r\n";
+                        //系统提示本底测量
+                        player.SoundLocation = appPath + "\\Audio\\English_Updating_background.wav";
+                    }
+                    else
+                    {
+                        //测试结果区域显示本底测量
+                        TxtShowResult.Text += "本底测量\r\n";
+                        //系统提示本底测量
+                        player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
+                    }
+                    player.PlaySync();
+                    //测量值显示标签背景恢复为默认状态（如果检查结果为人员污染，则会将测量值显示标签背景色变为污染报警，所以需要恢复）
+                    for (int i = 0; i < channelS.Count; i++)
+                    {
+                        //通道测量值标签
+                        if (channelS[i].ChannelID == 7)
+                        {
+                            LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                        }
+                        else
+                        {
+                            LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                            LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = Color.White;
+                        }
+                    }
+                    //启动本底测量计时 
+                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    //Thread.Sleep(1000);
+                    return;
+                }
+                //恢复检测状态为正常
                 deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
             }                    
             //接收报文数据为空
-            if (receiveBufferMessage.Length < messageBufferLength)
+            if (receiveBufferMessage==null||receiveBufferMessage.Length < messageBufferLength)
             {
                 //数据接收出现错误次数超限
                 if (errNumber >= 2)
@@ -2341,7 +2390,7 @@ namespace HFM
                     //更新测量次数（+1）              
                     systemParameter.MeasuredCount++;
                     systemParameter.UpdateMeasuredCount();                    
-                    ////运行状态设置为“测量结束”
+                    //运行状态设置为“测量结束”
                     platformState = PlatformState.Result;
                     return;
                 }
@@ -2369,6 +2418,42 @@ namespace HFM
                 {
                     //无污染状态设置为透明
                     PnlNoContamination.BackColor = Color.Transparent;
+                    //如果检测次数大于本底上限次数，则强制进行本底测量。
+                    if (systemParameter.MeasuredCount >= systemParameter.BkgUpdate)
+                    {
+                        //设备监测状态为正常
+                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
+                        // 运行状态标志设置为“本底测量”
+                        platformState = PlatformState.BackGrouneMeasure;
+                        //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为本底测量时计算做准备
+                        for (int i = 0; i < channelS.Count; i++)
+                        {
+                            calculatedMeasureDataS[i].Alpha = 0;
+                            calculatedMeasureDataS[i].Beta = 0;
+                        }
+                        //系统状态显示区域显示本底测量
+                        if (isEnglish)
+                        {
+                            //LblShowStutas.Font = new Font("宋体", FONT_SIZE_E, FontStyle.Bold);
+                            //LblShowStutas.Text = "Updating Background";
+                            //测试结果区域显示本底测量
+                            TxtShowResult.Text += "Updating Background\r\n";
+                            //系统提示本底测量
+                            player.SoundLocation = appPath + "\\Audio\\English_Updating_background.wav";
+                        }
+                        else
+                        {
+                            //测试结果区域显示本底测量
+                            TxtShowResult.Text += "本底测量\r\n";
+                            //系统提示本底测量
+                            player.SoundLocation = appPath + "\\Audio\\Chinese_Background_measure.wav";
+                        }
+                        player.PlaySync();
+                        //启动本底测量计时 
+                        stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                        //Thread.Sleep(1000);
+                        return;
+                    }                       
                     //系统状态显示区域显示等待测量
                     if (isEnglish)
                     {
