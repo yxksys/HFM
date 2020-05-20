@@ -2956,6 +2956,12 @@ namespace HFM
                     //{
                     //    ChannelDisplayControl(calculatedMeasureDataS[i].Channel, 1);                        
                     //}
+                    //对应通道名字文本框背景色显示为正常
+                    if (calculatedMeasureDataS[i].Channel.ChannelID != 7)//衣物探头除外
+                    {
+                        Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                        ((Label)(panel.Controls[string.Format("Lbl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)])).BackColor = PlatForm.ColorStatus.COLOC_BKNORMAL;
+                    }
                 }
                 errRecord += errRecordOfChannel;//将当前通道错误记录添加到整体错误记录字符串
                 errRecord_E += errRecordOfChannel_E;

@@ -534,7 +534,7 @@
     <value>System Parameter</value>
   </data>
   <data name="系统参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="系统参数.Text" xml:space="preserve">
     <value>System Parameter</value>
@@ -624,7 +624,7 @@
     <value>Alpha nuclide selection</value>
   </data>
   <data name="α参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="α参数.Text" xml:space="preserve">
     <value>Alpha Parameter</value>
@@ -804,7 +804,7 @@
     <value>Selection of β / γ nuclides</value>
   </data>
   <data name="β参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="β参数.Text" xml:space="preserve">
     <value>Beta Parameter</value>
@@ -1050,7 +1050,7 @@
     <value>Frisker Parameter</value>
   </data>
   <data name="衣物探头.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="衣物探头.Text" xml:space="preserve">
     <value>Frisker Parameter</value>
@@ -1120,7 +1120,7 @@
     <value>Reset to Default</value>
   </data>
   <data name="工厂参数.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 523</value>
+    <value>781, 535</value>
   </data>
   <data name="工厂参数.Text" xml:space="preserve">
     <value>Channel Parameter</value>

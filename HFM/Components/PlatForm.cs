@@ -27,7 +27,7 @@ namespace HFM.Components
             public static Color CORLOR_FRNORMAL = Color.White;//通用前景色白色
             public static Color CORLOR_BKNOTINPLACE = Color.FromArgb(161,185,196);//红外不到位背景色
             public static Color CORLOR_FRNOTINPLACE = Color.FromArgb(246,127,27);//红外不到位前景色
-            public static Color COLOC_PINGBI = Color.FromArgb(64,64,64);
+            public static Color COLOC_BKNORMAL = Color.FromArgb(217,219,220);
             public static Color COLOR_STATUS = Color.LightBlue;
             public static Color COLOR_STOP = Color.Gray;
             public static Color CORLOR_ERROR = Color.Orange;

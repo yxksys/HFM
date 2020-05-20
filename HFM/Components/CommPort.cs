@@ -183,9 +183,14 @@ namespace HFM.Components
         
 				// OPEN THE COMM PORT. 
 
-       
-				hComm = CreateFile("COM" + PortNum ,GENERIC_READ | GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE, 0,OPEN_EXISTING,0,0); 
-       
+                if(PortNum<10)
+                {
+                    hComm = CreateFile("COM" + PortNum, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
+                }
+				else
+                {
+                    hComm = CreateFile("\\\\.\\COM" + PortNum, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
+                }       
 				// IF THE PORT CANNOT BE OPENED, BAIL OUT. 
 				if(hComm == INVALID_HANDLE_value)  
 				{ 
