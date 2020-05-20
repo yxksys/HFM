@@ -326,7 +326,7 @@ namespace HFM
                                 continue;
                             }
                         }
-                        Thread.Sleep(2000);
+                        Thread.Sleep(3000);
                         DgvArrayClear();
                         TimeConutPort();
                         break;
@@ -350,7 +350,7 @@ namespace HFM
                                 continue;
                             }
                         }
-                        Thread.Sleep(2000);
+                        Thread.Sleep(3000);
                         DgvArrayClear();
                         TimeConutPort();
                         break;
@@ -404,7 +404,7 @@ namespace HFM
                                 continue;
                             }
                         }
-                        Thread.Sleep(2000);
+                        Thread.Sleep(3000);
                         DgvArrayClear();
                         TimeConutPort();
                         break;
@@ -604,6 +604,7 @@ namespace HFM
             {
                 if (channelS[i].IsEnabled == false)
                 {
+                    //if()
                     //DgvWork.Columns[i].DefaultCellStyle.ForeColor = Color.AntiqueWhite; //前景颜色改变
                     //DgvWork.Columns[i].DefaultCellStyle.BackColor = Color.DarkGray;     //背景颜色改变
                     _hv[i] = "";            //未启用的通道信息清空

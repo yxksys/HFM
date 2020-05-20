@@ -30,7 +30,7 @@ namespace HFM
     {
         #region 字段
 
-        private bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;
+        public static bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;
         #endregion
 
         #region 实例
@@ -45,7 +45,7 @@ namespace HFM
         /// <summary>
         /// 端口类实例
         /// </summary>
-        private CommPort _commPort = new CommPort();
+        //private CommPort _commPort = new CommPort();
         /// <summary>
         /// 工具类实例
         /// </summary>
@@ -202,7 +202,52 @@ namespace HFM
             }
         }
         #endregion
+        //#region 开启端口
+        ////实例化串口
+        
+        //public static bool ISOpenComPort()
+        //{
+        //    CommPort _commPort = new CommPort();
+        //    //从配置文件获得当前串口配置
+        //    if (_commPort.Opened == true)
+        //    {
+        //        _commPort.Close();
+        //    }
 
+        //    _commPort.GetCommPortSet("commportSet");
+        //    //打开串口
+        //    try
+        //    {
+        //        _commPort.Open();
+        //        if (_commPort.Opened)
+        //        {
+        //            Tools.FormBottomPortStatus = true;
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            Tools.FormBottomPortStatus = false;
+        //            return false;
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        if (FrmMain.isEnglish == true)
+        //        {
+        //            MessageBox.Show("Port open error! Please check whether the communication is normal.");
+        //            //return;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("端口打开错误！请检查通讯是否正常。");
+        //            //return;
+        //        }
+        //        return false;
+        //    }
+        //}
+            
+        
+        //    #endregion 开启端口
 
         #region 构造函数
         public FrmMain()
@@ -265,6 +310,7 @@ namespace HFM
                 }
 
             }
+           
         }
 
         #endregion
