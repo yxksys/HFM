@@ -55,7 +55,7 @@ namespace HFM
         /// <summary>
         /// 串口实例
         /// </summary>
-        private CommPort _commPort = new CommPort();
+        private CommPort _commPort = null;
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -64,8 +64,12 @@ namespace HFM
         /// 当前发送报文的类型
         /// </summary>
         private MessageType _messageType;
-
         
+        public FrmPreference(CommPort commPort)
+        {
+           this._commPort = commPort;
+           InitializeComponent();
+        }        
         /// <summary>
         /// 读取数据
         /// </summary>
@@ -121,7 +125,7 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmPreference_Load(object sender, EventArgs e)
         {
-            OpenPort();
+            //OpenPort();
             //线程支持异步取消
             backgroundWorker_Preference.WorkerSupportsCancellation = true;
             //线程支持报告进度
@@ -1014,33 +1018,33 @@ namespace HFM
         /// <summary>
         /// 开启串口封装的方法
         /// </summary>
-        private void OpenPort()
-        {
+        //private void OpenPort()
+        //{
             //从配置文件获得当前串口配置
-            if (_commPort.Opened)
-            {
-                _commPort.Close();
-            }
-            _commPort.GetCommPortSet("commportSet");
-            //打开串口
-            try
-            {
-                _commPort.Open();
-                if (_commPort.Opened)
-                {
-                    Tools.FormBottomPortStatus = true;
-                }
-                else
-                {
-                    Tools.FormBottomPortStatus = false;
-                }
-            }
-            catch
-            {
-                _tools.PrompMessage(1);
-                
-            }
-        }
+            //if (_commPort.Opened)
+            //{
+            //    _commPort.Close();
+            //}
+            //_commPort.GetCommPortSet("commportSet");
+            ////打开串口
+            //try
+            //{
+            //    _commPort.Open();
+            //    if (_commPort.Opened)
+            //    {
+            //        Tools.FormBottomPortStatus = true;
+            //    }
+            //    else
+            //    {
+            //        Tools.FormBottomPortStatus = false;
+            //    }
+            //}
+            //catch
+            //{
+            //    _tools.PrompMessage(1);
+
+            //}
+        //}
 
         #endregion
 
@@ -1804,7 +1808,7 @@ namespace HFM
             {
                 if (MessageBox.Show("Restart the program to apply the new configuration!", "Reminder", MessageBoxButtons.OK) == DialogResult.OK)
                 {
-                    _commPort.Close();
+                    //_commPort.Close();
                     if (backgroundWorker_Preference.IsBusy == true)
                     {
                         backgroundWorker_Preference.Dispose();
@@ -1816,7 +1820,7 @@ namespace HFM
             {
                 if (MessageBox.Show("重新启动程序以应用新配置！", "提醒", MessageBoxButtons.OK) == DialogResult.OK)
                 {
-                    _commPort.Close();
+                    //_commPort.Close();
                     if (backgroundWorker_Preference.IsBusy == true)
                     {
                         backgroundWorker_Preference.Dispose();
@@ -2216,13 +2220,22 @@ namespace HFM
                 backgroundWorker_Preference.Dispose();
                 Thread.Sleep(200);
             }
-            _commPort.Close();
-            Thread.Sleep(200);
+            //_commPort.Close();
+            this.Controls.Clear();
+           
         }
+
 
 
         #endregion
 
-        
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (!IsHandleCreated)
+            {
+                this.Close();
+            }
+        }
     }
 }

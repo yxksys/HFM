@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTestHardware));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,6 +37,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GrpWork = new System.Windows.Forms.GroupBox();
             this.DgvWork = new System.Windows.Forms.DataGridView();
+            this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblBetacnt = new System.Windows.Forms.Label();
             this.LblBetacps = new System.Windows.Forms.Label();
             this.LblAlphacnt = new System.Windows.Forms.Label();
@@ -82,12 +87,6 @@
             this.LblSelfcount = new System.Windows.Forms.Label();
             this.LblTimeWork = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
-            this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RHB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GrpWork.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvWork)).BeginInit();
             this.GrpFrisker.SuspendLayout();
@@ -134,17 +133,51 @@
             this.RHB,
             this.LF,
             this.RF});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvWork.DefaultCellStyle = dataGridViewCellStyle7;
             this.DgvWork.Name = "DgvWork";
             this.DgvWork.RowHeadersVisible = false;
             this.DgvWork.RowTemplate.Height = 28;
+            // 
+            // LHP
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 10F);
+            this.LHP.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.LHP, "LHP");
+            this.LHP.Name = "LHP";
+            // 
+            // LHB
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10F);
+            this.LHB.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.LHB, "LHB");
+            this.LHB.Name = "LHB";
+            // 
+            // RHP
+            // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 10F);
+            this.RHP.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.RHP, "RHP");
+            this.RHP.Name = "RHP";
+            // 
+            // RHB
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10F);
+            this.RHB.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.RHB, "RHB");
+            this.RHB.Name = "RHB";
+            // 
+            // LF
+            // 
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10F);
+            this.LF.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.LF, "LF");
+            this.LF.Name = "LF";
+            // 
+            // RF
+            // 
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 10F);
+            this.RF.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.RF, "RF");
+            this.RF.Name = "RF";
             // 
             // LblBetacnt
             // 
@@ -417,48 +450,6 @@
             // 
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BkWorkerReceiveData_ProgressChanged);
-            // 
-            // LHP
-            // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 10F);
-            this.LHP.DefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(this.LHP, "LHP");
-            this.LHP.Name = "LHP";
-            // 
-            // LHB
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10F);
-            this.LHB.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.LHB, "LHB");
-            this.LHB.Name = "LHB";
-            // 
-            // RHP
-            // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 10F);
-            this.RHP.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.RHP, "RHP");
-            this.RHP.Name = "RHP";
-            // 
-            // RHB
-            // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10F);
-            this.RHB.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.RHB, "RHB");
-            this.RHB.Name = "RHB";
-            // 
-            // LF
-            // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10F);
-            this.LF.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.LF, "LF");
-            this.LF.Name = "LF";
-            // 
-            // RF
-            // 
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 10F);
-            this.RF.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.RF, "RF");
-            this.RF.Name = "RF";
             // 
             // FrmTestHardware
             // 

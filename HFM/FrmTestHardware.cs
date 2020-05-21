@@ -32,7 +32,7 @@ namespace HFM
         private IList<Channel> channelS = new List<Channel>();//当前可使用的检测通道,即全部启用的监测通道
         private FactoryParameter factoryParameter = new FactoryParameter();
         //实例化串口
-        private CommPort _commPort = new CommPort();
+        private CommPort _commPort =null;
 
         /// <summary>
         /// 存储各个通道最终计算检测值的List
@@ -122,6 +122,15 @@ namespace HFM
             //是否支持异步取消
             bkWorkerReceiveData.WorkerSupportsCancellation = true;
         }
+        public FrmTestHardware(CommPort commPort)
+        {
+            this._commPort = commPort;
+            InitializeComponent();
+            //能否报告进度更新。
+            bkWorkerReceiveData.WorkerReportsProgress = true;
+            //是否支持异步取消
+            bkWorkerReceiveData.WorkerSupportsCancellation = true;
+        }
 
         #region 初始化窗体
 
@@ -175,43 +184,43 @@ namespace HFM
             //初始化测量时间为系统参数时间
             _measuringTime = _sqltime + 1;
 
-            #region 开启端口
+            //#region 开启端口
 
-            //从配置文件获得当前串口配置
-            if (_commPort.Opened == true)
-            {
-                _commPort.Close();
-            }
+            ////从配置文件获得当前串口配置
+            //if (_commPort.Opened == true)
+            //{
+            //    _commPort.Close();
+            //}
 
-            _commPort.GetCommPortSet("commportSet");
-            //打开串口
-            try
-            {
-                _commPort.Open();
-                if (_commPort.Opened)
-                {
-                    Tools.FormBottomPortStatus = true;
-                }
-                else
-                {
-                    Tools.FormBottomPortStatus = false;
-                }
-            }
-            catch
-            {
-                if (_isEnglish == true)
-                {
-                    MessageBox.Show("Port open error! Please check whether the communication is normal.");
-                    //return;
-                }
-                else
-                {
-                    MessageBox.Show("端口打开错误！请检查通讯是否正常。");
-                    //return;
-                }
-            }
+            //_commPort.GetCommPortSet("commportSet");
+            ////打开串口
+            //try
+            //{
+            //    _commPort.Open();
+            //    if (_commPort.Opened)
+            //    {
+            //        Tools.FormBottomPortStatus = true;
+            //    }
+            //    else
+            //    {
+            //        Tools.FormBottomPortStatus = false;
+            //    }
+            //}
+            //catch
+            //{
+            //    if (_isEnglish == true)
+            //    {
+            //        MessageBox.Show("Port open error! Please check whether the communication is normal.");
+            //        //return;
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("端口打开错误！请检查通讯是否正常。");
+            //        //return;
+            //    }
+            //}
 
-            #endregion 开启端口
+            //#endregion 开启端口
 
             //获得通道信息
             Channel channel = new Channel();
@@ -813,17 +822,19 @@ namespace HFM
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmTestHardware_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _commPort.Close();
-            Thread.Sleep(50);
+        {            
+            //Thread.Sleep(50);
             bkWorkerReceiveData.CancelAsync();
-            bkWorkerReceiveData.Dispose();
-            Thread.Sleep(50);
+            Thread.Sleep(200);
+            bkWorkerReceiveData.Dispose();            
+            this.Controls.Clear();
         }
 
         private void FrmTestHardware_FormClosing(object sender, FormClosingEventArgs e)
         {
-            bkWorkerReceiveData.CancelAsync();
+            //bkWorkerReceiveData.CancelAsync();
+            //Thread.Sleep(200);
+            //this.Controls.Clear();
         }
 
         #region 数字键盘显示
@@ -848,6 +859,14 @@ namespace HFM
             FrmKeyIn.DelegatesKeyInTextBox(TxtPWidth);
         }
 
-        #endregion 数字键盘显示
+        #endregion 数字键盘显示        
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (!IsHandleCreated)
+            {
+                this.Close();
+            }
+        }
     }
 }
