@@ -3505,6 +3505,7 @@ namespace HFM
                 #region 打开窗体操作
                 FrmMain frmMain = new FrmMain();
                 frmMain.Show();
+                //this.Dispose();
                 //try
                 //{
                 //    FrmMain frmMain = new FrmMain();
@@ -3551,7 +3552,8 @@ namespace HFM
             {
                 this.commPort_Supervisory.Close();
                 Thread.Sleep(200);
-            }            
+            }
+            this.Controls.Clear();
         }
 
         private void BtExit_Click(object sender, EventArgs e)
@@ -3630,6 +3632,14 @@ namespace HFM
                     MessageBox.Show("切换失败，请稍后再试");
                 }
                 return;
+            }
+        }
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (!IsHandleCreated)
+            {
+                this.Close();
             }
         }
     }

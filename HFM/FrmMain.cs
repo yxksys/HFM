@@ -45,7 +45,7 @@ namespace HFM
         /// <summary>
         /// 端口类实例
         /// </summary>
-        //private CommPort _commPort = new CommPort();
+        public CommPort _commPort = new CommPort();
         /// <summary>
         /// 工具类实例
         /// </summary>
@@ -202,52 +202,49 @@ namespace HFM
             }
         }
         #endregion
-        //#region 开启端口
-        ////实例化串口
-        
-        //public static bool ISOpenComPort()
-        //{
-        //    CommPort _commPort = new CommPort();
-        //    //从配置文件获得当前串口配置
-        //    if (_commPort.Opened == true)
-        //    {
-        //        _commPort.Close();
-        //    }
+        #region 开启端口
+        //实例化串口
 
-        //    _commPort.GetCommPortSet("commportSet");
-        //    //打开串口
-        //    try
-        //    {
-        //        _commPort.Open();
-        //        if (_commPort.Opened)
-        //        {
-        //            Tools.FormBottomPortStatus = true;
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            Tools.FormBottomPortStatus = false;
-        //            return false;
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        if (FrmMain.isEnglish == true)
-        //        {
-        //            MessageBox.Show("Port open error! Please check whether the communication is normal.");
-        //            //return;
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("端口打开错误！请检查通讯是否正常。");
-        //            //return;
-        //        }
-        //        return false;
-        //    }
-        //}
-            
-        
-        //    #endregion 开启端口
+        public bool OpenComPort()
+        {            
+            //从配置文件获得当前串口配置
+            if (_commPort.Opened == true)
+            {
+                _commPort.Close();
+            }
+
+            _commPort.GetCommPortSet("commportSet");
+            //打开串口
+            try
+            {
+                _commPort.Open();
+                if (_commPort.Opened)
+                {
+                    Tools.FormBottomPortStatus = true;
+                    return true;
+                }
+                else
+                {
+                    Tools.FormBottomPortStatus = false;
+                    return false;
+                }
+            }
+            catch
+            {
+                if (FrmMain.isEnglish == true)
+                {
+                    MessageBox.Show("Port open error! Please check whether the communication is normal.");
+                    //return;
+                }
+                else
+                {
+                    MessageBox.Show("端口打开错误！请检查通讯是否正常。");
+                    //return;
+                }
+                return false;
+            }
+        }
+#endregion 开启端口
 
         #region 构造函数
         public FrmMain()
@@ -292,7 +289,7 @@ namespace HFM
         #region 启动加载
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            
+            //OpenComPort();
         }
         /// <summary>
         /// 启动加载首次处理事件
@@ -310,7 +307,7 @@ namespace HFM
                 }
 
             }
-           
+            OpenComPort();
         }
 
         #endregion
@@ -331,8 +328,9 @@ namespace HFM
                 {
                     Application.OpenForms[i].Close();
                 }
-
             }
+            this._commPort.Close();
+            Thread.Sleep(200);
             Tsslbl_NowTime.Dispose();
             FrmDispose(new FrmMeasureMain());
             this.Dispose();
@@ -419,7 +417,7 @@ namespace HFM
         /// <param name="e"></param>
         private void ParameterSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDisposeMax(new FrmPreference());
+            FrmDisposeMax(new FrmPreference(_commPort));
         }
 
         #endregion
@@ -432,7 +430,7 @@ namespace HFM
         /// <param name="e"></param>
         private void CalibrationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDisposeMax(new FrmCalibration());
+            FrmDisposeMax(new FrmCalibration(_commPort));
         }
         /// <summary>
         /// 硬件检测
@@ -441,7 +439,7 @@ namespace HFM
         /// <param name="e"></param>
         private void TestHardwareToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDisposeMax(new FrmTestHardware());
+            FrmDisposeMax(new FrmTestHardware(_commPort));
         }
 
         #endregion
@@ -478,6 +476,5 @@ namespace HFM
         {
             Application.ExitThread();
         }
-        
     }
 }

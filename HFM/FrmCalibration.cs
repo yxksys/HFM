@@ -77,7 +77,7 @@ namespace HFM
         /// <summary>
         /// 串口实例
         /// </summary>
-        private CommPort _commPort = new CommPort();
+        private CommPort _commPort = null;
         /// <summary>
         /// 获取所有“通道参数”
         /// </summary>
@@ -114,33 +114,33 @@ namespace HFM
         /// <summary>
         /// 开启串口封装的方法
         /// </summary>
-        private void OpenPort()
-        {
-            //从配置文件获得当前串口配置
-            if (_commPort.Opened )
-            {
-                _commPort.Close();
-            }
-            _commPort.GetCommPortSet("commportSet");
-            //打开串口
-            try
-            {
-                _commPort.Open();
-                if (_commPort.Opened)
-                {
-                    Tools.FormBottomPortStatus = true;
-                }
-                else
-                {
-                    Tools.FormBottomPortStatus = false;
-                }
-            }
-            catch
-            {
-                _tools.PrompMessage(1);
+        //private void OpenPort()
+        //{
+        //    //从配置文件获得当前串口配置
+        //    if (_commPort.Opened )
+        //    {
+        //        _commPort.Close();
+        //    }
+        //    _commPort.GetCommPortSet("commportSet");
+        //    //打开串口
+        //    try
+        //    {
+        //        _commPort.Open();
+        //        if (_commPort.Opened)
+        //        {
+        //            Tools.FormBottomPortStatus = true;
+        //        }
+        //        else
+        //        {
+        //            Tools.FormBottomPortStatus = false;
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        _tools.PrompMessage(1);
                 
-            }
-        }
+        //    }
+        //}
         /// <summary>
         /// 发送消息类型：
         /// </summary>
@@ -171,7 +171,13 @@ namespace HFM
             bkWorkerReceiveData.WorkerReportsProgress = true;
             
         }
+        public FrmCalibration(CommPort commPort)
+        {
+            this._commPort = commPort;
+            InitializeComponent();
+            bkWorkerReceiveData.WorkerReportsProgress = true;
 
+        }
         private void FrmCalibration_Load(object sender, EventArgs e)
         {
             //线程支持异步取消
@@ -228,8 +234,7 @@ namespace HFM
                 }
             }
             #endregion
-
-            OpenPort();
+            //OpenPort();
         }
         #endregion
 
@@ -256,7 +261,7 @@ namespace HFM
             //当前通讯更改为pread
             _messageType = MessageType.PRead;
             //开启端口
-            OpenPort();
+            //OpenPort();
 
             var lisChanneList = _channelList.Where(n => n.ChannelName.ToString() == CmbChannelSelection.Text|| n.ChannelName_English.ToString() == CmbChannelSelection.Text).ToList();
             foreach (var b in lisChanneList)
@@ -1152,12 +1157,20 @@ namespace HFM
         /// </summary>
         private void FrmCalibration_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _commPort.Close();
+            //_commPort.Close();
             bkWorkerReceiveData.CancelAsync();
             Thread.Sleep(200);
+            this.Controls.Clear();
         }
-        #endregion
 
-      
+        #endregion
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (!IsHandleCreated)
+            {
+                this.Close();
+            }
+        }
     }
 }
