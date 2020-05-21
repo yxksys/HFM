@@ -496,6 +496,8 @@ namespace HFM
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            _commPort.Close();
+            Thread.Sleep(200);
             TmrDispTime.Enabled = false;
             TmrDispTime.Close();
             Application.ExitThread();
