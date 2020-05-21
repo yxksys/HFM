@@ -30,7 +30,7 @@ namespace HFM
         #region 基本变量、实例
 
         private IList<Channel> channelS = new List<Channel>();//当前可使用的检测通道,即全部启用的监测通道
-
+        private FactoryParameter factoryParameter = new FactoryParameter();
         //实例化串口
         private CommPort _commPort = new CommPort();
 
@@ -169,7 +169,7 @@ namespace HFM
             }
 
             #endregion 中英文转换
-
+            factoryParameter.GetParameter();
             //初始化运行状态为默认状态
             _platformState = HardwarePlatformState.Default;
             //初始化测量时间为系统参数时间
@@ -602,9 +602,26 @@ namespace HFM
             //赋值alpha和Beta总计数并且判断赋值通道状态
             for (i = 0; i < 6; i++)
             {
+                //如果是单探测器的话手背显示未启用，清空列表
+                if (factoryParameter.IsDoubleProbe == false && (i == 1 || i == 3))
+                {
+                    _hv[i] = "";            //未启用的通道信息清空
+                    _alphacps[i] = "";      //未启用的通道信息清空
+                    _alphacnt[i] = "";      //未启用的通道信息清空
+                    _betacps[i] = "";       //未启用的通道信息清空
+                    _betacnt[i] = "";       //未启用的通道信息清空
+                    if (_isEnglish)
+                    {
+                        _strat[i] = "NotEnabled";
+                    }
+                    else
+                    {
+                        _strat[i] = "未启用";
+                    }
+                    continue;
+                }
                 if (channelS[i].IsEnabled == false)
                 {
-                    //if()
                     //DgvWork.Columns[i].DefaultCellStyle.ForeColor = Color.AntiqueWhite; //前景颜色改变
                     //DgvWork.Columns[i].DefaultCellStyle.BackColor = Color.DarkGray;     //背景颜色改变
                     _hv[i] = "";            //未启用的通道信息清空
