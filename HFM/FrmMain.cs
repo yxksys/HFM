@@ -31,6 +31,7 @@ namespace HFM
         #region 字段
 
         public static bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;
+        System.Timers.Timer TmrDispTime = null;//监测串口异步Timer对象
         #endregion
 
         #region 实例
@@ -201,6 +202,23 @@ namespace HFM
                 }
             }
         }
+
+        private void TmrDispTime_Tick(object sender, EventArgs e)
+        {
+            //监测串口状态，如果串口关闭则打开
+            if (_commPort.Opened == false)
+            {
+                try
+                {
+
+                    _commPort.Open();
+                }
+                catch
+                {
+                    return;
+                }
+            }
+        }
         #endregion
         #region 开启端口
         //实例化串口
@@ -290,6 +308,10 @@ namespace HFM
         private void FrmMain_Load(object sender, EventArgs e)
         {
             //OpenComPort();
+            TmrDispTime = new System.Timers.Timer();
+            TmrDispTime.Interval = 500;
+            TmrDispTime.Elapsed += TmrDispTime_Tick;
+            TmrDispTime.Enabled = true;
         }
         /// <summary>
         /// 启动加载首次处理事件
@@ -474,6 +496,8 @@ namespace HFM
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            TmrDispTime.Enabled = false;
+            TmrDispTime.Close();
             Application.ExitThread();
         }
     }
