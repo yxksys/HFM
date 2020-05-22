@@ -67,6 +67,7 @@ namespace HFM
         bool isHandSecondEnabled = false;//是否允许启动手部翻转后测量，当手部第一次测量结束后，用户必须翻转手掌（红外出现至少一次不到位），才能启动第二次手部检测
         bool isClothesContaminated=false;//衣物探测是否有污染
         bool isTestedEnd = false;//探测是否结束标志
+        bool isFrmDisplayed = false;
         string pollutionRecord = null;//记录测量污染详细数据
         string pollutionRecord_E = null;//记录测量污染详细数据(英文)                
         FrmClothes frmClothes = null;//衣物探测界面
@@ -540,11 +541,7 @@ namespace HFM
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
                 Tools.ApplyLanguageResource(this);
                 Tools.controls.Clear();
-            }
-            TmrDispTime = new System.Timers.Timer();
-            TmrDispTime.Interval = 500;
-            TmrDispTime.Elapsed += TmrDispTime_Tick;
-            TmrDispTime.Enabled = true;
+            }            
             //初始化显示界面
             DisplayInit();
             LblTimeRemain.Text = string.Format("{0}s",systemParameter.SelfCheckTime.ToString());
@@ -678,11 +675,18 @@ namespace HFM
             //如果没有取消异步线程
             if (bkWorkerReceiveData.CancellationPending == false)
             {
+                TmrDispTime = new System.Timers.Timer();
+                TmrDispTime.Interval = 500;
+                TmrDispTime.Elapsed += TmrDispTime_Tick;
+                TmrDispTime.Enabled = true;
                 //在异步线程上执行串口读操作ReadDataFromSerialPort方法
                 BackgroundWorker bkWorker = sender as BackgroundWorker;
                 e.Result = ReadDataFromSerialPort(bkWorker, e);
             }
-            e.Cancel = true;
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         /// <summary>
@@ -848,8 +852,7 @@ namespace HFM
         }
 
         private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            //timetemp += DateTime.Now.Second+";";
+        {            
             if (e.UserState is byte[])
             {
                 receiveBufferMessage = (byte[])e.UserState;
@@ -879,7 +882,10 @@ namespace HFM
             stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;
             LblTimeRemain.Text = stateTimeRemain < 0 ? string.Format("{0,3}s", "0") : string.Format("{0,3}s", stateTimeRemain.ToString());
             //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
-            measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage); 
+            if (receiveBufferMessage[0] =='C' || receiveBufferMessage[0] == 'c') //判断报文头是C指令
+            {
+                measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
+            }            
             if(measureDataS==null)//解析失败
             {
                 return;
@@ -994,6 +1000,8 @@ namespace HFM
                                 //如果连续三次出现污染报警（污染报警计数器超过3）
                                 if (alarmCountOfClothes > 2 && isClothesContaminated == false)
                                 {
+                                    //将设备监测状态设置为“污染”
+                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated);
                                     //仪器人员污染状态背景色设置为污染
                                     PnlContaminated.BackgroundImage = Image.FromFile(appPath + "\\Images\\Contaminated_progress.jpg");                                    
                                     //衣物探测结果显示区域背景色设置为污染
@@ -1264,14 +1272,12 @@ namespace HFM
                 platformState = PlatformState.SelfTest;
                 //获得当前系统参数设置中的的自检时间并赋值给stateTimeSet
                 stateTimeSet = systemParameter.SelfCheckTime;
-                //stateTimeStart = System.DateTime.Now.AddSeconds(2);                
+                stateTimeStart = System.DateTime.Now;                
                 return;
             }
             //如果当前运行状态为“仪器自检”
             if (platformState == PlatformState.SelfTest)
-            {                
-                //取消本底测量状态图片
-                PnlBackground.BackgroundImage = null;
+            {                                
                 string[] errRecordS = new string[2];
                 if (errRecordS == null)//无自检故障信息时设置背景为正常状态背景
                 {
@@ -1282,6 +1288,12 @@ namespace HFM
                 if (isLoadProgressPic[0] == false)
                 {
                     SetProgressPicFlag(0);//仪器自检进度图片已经被加载标志设置为true，其它为false
+                    //仪器自检状态标签设置为当前状态图片
+                    PnlSelfCheck.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
+                    //取消本底测量状态图片
+                    PnlBackground.BackgroundImage = null;
+                    PnlReady.BackgroundImage = null;
+                    PnlMeasuring.BackgroundImage = null;
                     LblTimeRemain.Parent = PnlSelfCheck;
                     LblTimeRemain.Location = new Point(84, 0);//控制剩余时间标签显示位置
                     LblTimeRemain.BringToFront();
@@ -3474,38 +3486,38 @@ namespace HFM
             if (frmEnterPassword.ShowDialog()==DialogResult.OK)
             {
                 bool isOpened = false;
-                if (bkWorkerReportStatus.IsBusy)
+                if(bkWorkerReportStatus.IsBusy)
                 {
                     bkWorkerReportStatus.CancelAsync();
-                    Thread.Sleep(200);
+                    Thread.Sleep(100);
                 }
-                if (bkWorkerReceiveData.IsBusy)
+                if(bkWorkerReceiveData.IsBusy)
                 {
-                    bkWorkerReceiveData.CancelAsync();
-                    Thread.Sleep(200);
+                    bkWorkerReceiveData.CancelAsync();                    
+                    Thread.Sleep(100);
                 }
-                bkWorkerReportStatus.Dispose();
-                Thread.Sleep(200);
-                bkWorkerReceiveData.Dispose();
-                Thread.Sleep(200);
-                while (this.TmrDispTime.Enabled)
-                {
-                    this.TmrDispTime.Stop();
-                }
-                if (this.commPort.Opened == true)
-                {
-                    this.commPort.Close();
-                    Thread.Sleep(200);
-                }
-                if (this.commPort_Supervisory.Opened == true)
-                {
-                    this.commPort_Supervisory.Close();
-                    Thread.Sleep(200);
-                }
-                #region 打开窗体操作
-                FrmMain frmMain = new FrmMain();
+                //bkWorkerReportStatus.Dispose();
+                //Thread.Sleep(100);
+                //bkWorkerReceiveData.Dispose();
+                //Thread.Sleep(100);
+                //while (this.TmrDispTime.Enabled)
+                //{
+                //    this.TmrDispTime.Stop();
+                //}
+                //while (this.commPort.Opened == true)
+                //{
+                //    this.commPort.Close();                    
+                //    Thread.Sleep(100);                    
+                //}
+                //while (this.commPort_Supervisory.Opened == true)
+                //{
+                //    this.commPort_Supervisory.Close();
+                //    Thread.Sleep(100);
+                //}
+                #region 打开窗体操作                               
+                FrmMain frmMain = new FrmMain(commPort);
                 frmMain.Show();
-                //this.Dispose();
+                this.Hide();
                 //try
                 //{
                 //    FrmMain frmMain = new FrmMain();
@@ -3529,29 +3541,28 @@ namespace HFM
 
         private void FrmMeasureMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (bkWorkerReportStatus.IsBusy)
+            while (bkWorkerReportStatus.IsBusy)
             {
                 bkWorkerReportStatus.CancelAsync();
-                Thread.Sleep(200);
+                Thread.Sleep(100);
             }
-            if (bkWorkerReceiveData.IsBusy)
+            while(bkWorkerReceiveData.IsBusy)
             {
                 bkWorkerReceiveData.CancelAsync();
-                Thread.Sleep(200);
+                Thread.Sleep(100);
             }
-
-            bkWorkerReceiveData.Dispose();
+            bkWorkerReceiveData.Dispose();           
             bkWorkerReportStatus.Dispose();
             this.TmrDispTime.Enabled = false;
-            if (this.commPort.Opened == true)
+            while (this.commPort.Opened == true)
             {
                 this.commPort.Close();
-                Thread.Sleep(200);
+                Thread.Sleep(100);
             }
-            if (this.commPort_Supervisory.Opened == true)
+            while (this.commPort_Supervisory.Opened == true)
             {
                 this.commPort_Supervisory.Close();
-                Thread.Sleep(200);
+                Thread.Sleep(100);
             }
             this.Controls.Clear();
         }
@@ -3634,13 +3645,57 @@ namespace HFM
                 return;
             }
         }
-        protected override void OnVisibleChanged(EventArgs e)
-        {
-            base.OnVisibleChanged(e);
-            if (!IsHandleCreated)
+        //protected override void OnVisibleChanged(EventArgs e)
+        //{
+        //    base.OnVisibleChanged(e);
+        //    if (!IsHandleCreated)
+        //    {
+        //        this.Close();
+        //    }
+        //}
+
+        private void FrmMeasureMain_VisibleChanged(object sender, EventArgs e)
+        {            
+            commPort.ClearPortData();
+            if (isFrmDisplayed == false)
             {
-                this.Close();
+                LblTimeRemain.Text =string.Format("{0}s",systemParameter.SelfCheckTime.ToString());
+                if (this.bkWorkerReceiveData.IsBusy == false)
+                {
+                    this.bkWorkerReceiveData.RunWorkerAsync();
+                }
+                if (commPort_Supervisory.IsEnabled == true && this.bkWorkerReportStatus.IsBusy == false)
+                {
+                    this.bkWorkerReportStatus.RunWorkerAsync();
+                }
+                this.platformState = PlatformState.ReadyToRun;//重新设定当前状态为仪器自检
+                isSelfCheckSended = false;
+                //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，重新计数做准备
+                for (int i = 0; i < channelS.Count; i++)
+                {
+                    calculatedMeasureDataS[i].Alpha = 0;
+                    calculatedMeasureDataS[i].Beta = 0;
+                }
+                if (isLoadProgressPic[0] == false)
+                {
+                    SetProgressPicFlag(0);//仪器自检进度图片已经被加载标志设置为true，其它为false
+                    //仪器自检状态标签设置为进度图片
+                    PnlSelfCheck.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.jpg");
+                    //取消本底测量状态标签设置
+                    PnlBackground.BackgroundImage = null;
+                    //取消等待测量状态标签设置
+                    PnlReady.BackgroundImage = null;
+                    PnlMeasuring.BackgroundImage = null;
+                    PnlNoContamination.BackgroundImage = null;
+                    PnlContaminated.BackgroundImage = null;                    
+                    LblTimeRemain.Parent = PnlSelfCheck;//控制剩余时间标签显示位置                                
+                    LblBackground.BringToFront();
+                    LblTimeRemain.BringToFront();
+                    LblTimeRemain.BackColor = Color.Transparent;                    
+                }
+                //stateTimeStart = DateTime.Now;//重新启动计时
             }
+            isFrmDisplayed = !isFrmDisplayed;
         }
     }
 }

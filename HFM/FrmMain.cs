@@ -30,7 +30,7 @@ namespace HFM
     {
         #region 字段
 
-        public static bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;
+        public static bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;        
         #endregion
 
         #region 实例
@@ -55,7 +55,7 @@ namespace HFM
         /// </summary>
         System.Timers.Timer TmrStatus = new System.Timers.Timer(10000);
 
-        public static FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
+       // public static FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
 
         #endregion
 
@@ -205,62 +205,57 @@ namespace HFM
         #region 开启端口
         //实例化串口
 
-        public bool OpenComPort()
-        {            
+        public void OpenComPort()
+        {
             //从配置文件获得当前串口配置
+            _commPort.GetCommPortSet("commportSet");
             if (_commPort.Opened == true)
             {
                 _commPort.Close();
-            }
-
-            _commPort.GetCommPortSet("commportSet");
+            }           
             //打开串口
             try
             {
                 _commPort.Open();
                 if (_commPort.Opened)
                 {
-                    Tools.FormBottomPortStatus = true;
-                    return true;
-                }
-                else
-                {
-                    Tools.FormBottomPortStatus = false;
-                    return false;
-                }
+                    Tools.FormBottomPortStatus = true;                    
+                }                     
             }
             catch
             {
                 if (FrmMain.isEnglish == true)
                 {
                     MessageBox.Show("Port open error! Please check whether the communication is normal.");
-                    //return;
                 }
                 else
                 {
                     MessageBox.Show("端口打开错误！请检查通讯是否正常。");
-                    //return;
                 }
-                return false;
-            }
+                Tools.FormBottomPortStatus = false;                
+            }                                                   
         }
-#endregion 开启端口
+        #endregion 开启端口
 
         #region 构造函数
         public FrmMain()
         {
+
+        }
+        public FrmMain(CommPort commPort)
+        {
+            this._commPort = commPort;
             InitializeComponent();
             Text = _factoryParameter.SoftName;            //头部软件名称显示
             Tsslbl_Name.Text = _factoryParameter.SoftName;//底部软件名称显示
 
             //设置timer可用
-            TmrStatus.Enabled = true;
+            //TmrStatus.Enabled = true;
             //设置timer
-            TmrStatus.Interval = 1000;
+            //TmrStatus.Interval = 1000;
             //设置是否重复计时，如果该属性设为False,则只执行timer_Elapsed方法一次。
-            TmrStatus.AutoReset = true;
-
-            TmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(TmrStatus_Elapsed);
+            //TmrStatus.AutoReset = true;
+            //TmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(TmrStatus_Elapsed);
 
         }
         #endregion
@@ -288,8 +283,8 @@ namespace HFM
 
         #region 启动加载
         private void FrmMain_Load(object sender, EventArgs e)
-        {
-            //OpenComPort();
+        {            
+                              
         }
         /// <summary>
         /// 启动加载首次处理事件
@@ -297,16 +292,7 @@ namespace HFM
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmMain_Shown(object sender, EventArgs e)
-        {
-            for (int i = 0; i < Application.OpenForms.Count; i++)
-            {
-
-                if (this.Name != Application.OpenForms[i].Name)
-                {
-                    Application.OpenForms[i].Close();
-                }
-
-            }
+        {                       
             OpenComPort();
         }
 
@@ -320,19 +306,19 @@ namespace HFM
         /// <param name="e"></param>
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //关闭其他子窗体
+            
             for (int i = 0; i < Application.OpenForms.Count; i++)
             {
 
-                if (this.Name != Application.OpenForms[i].Name)
+                if (Application.OpenForms[i].Name=="FrmMeasureMain")
                 {
-                    Application.OpenForms[i].Close();
+                    Application.OpenForms[i].Show();
                 }
             }
-            this._commPort.Close();
-            Thread.Sleep(200);
-            Tsslbl_NowTime.Dispose();
-            FrmDispose(new FrmMeasureMain());
+            //this._commPort.Close();
+            //Thread.Sleep(200);
+            //Tsslbl_NowTime.Dispose();
+            //FrmDispose(new FrmMeasureMain());
             this.Dispose();
         }
 

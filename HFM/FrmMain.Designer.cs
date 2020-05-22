@@ -197,6 +197,7 @@
             this.MainMenuStrip = this.MnsFunction;
             this.Name = "FrmMain";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.Shown += new System.EventHandler(this.FrmMain_Shown);
             this.MnsFunction.ResumeLayout(false);
             this.MnsFunction.PerformLayout();

@@ -652,6 +652,7 @@
             this.Name = "FrmMeasureMain";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMeasureMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMeasureMain_Load);
+            this.VisibleChanged += new System.EventHandler(this.FrmMeasureMain_VisibleChanged);
             this.PnlLHP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicLHP)).EndInit();
             this.PnlRHP.ResumeLayout(false);

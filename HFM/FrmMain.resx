@@ -121,6 +121,30 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="StartRunningToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="StartRunningToolStripMenuItem.Text" xml:space="preserve">
+    <value>开始运行</value>
+  </data>
+  <data name="SuperUserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="SuperUserToolStripMenuItem.Text" xml:space="preserve">
+    <value>超级用户</value>
+  </data>
+  <data name="ChangePasswordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="ChangePasswordToolStripMenuItem.Text" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="RetreatSystemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="RetreatSystemToolStripMenuItem.Text" xml:space="preserve">
+    <value>退出系统</value>
+  </data>
   <data name="SystemToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -129,6 +153,12 @@
   </data>
   <data name="SystemToolStripMenuItem.Text" xml:space="preserve">
     <value>系统(S)</value>
+  </data>
+  <data name="ParameterSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="ParameterSettingToolStripMenuItem.Text" xml:space="preserve">
+    <value>参数设置</value>
   </data>
   <data name="SetUpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -139,6 +169,18 @@
   <data name="SetUpToolStripMenuItem.Text" xml:space="preserve">
     <value>设置(P)</value>
   </data>
+  <data name="CalibrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="CalibrationToolStripMenuItem.Text" xml:space="preserve">
+    <value>测试刻度</value>
+  </data>
+  <data name="TestHardwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="TestHardwareToolStripMenuItem.Text" xml:space="preserve">
+    <value>硬件检测</value>
+  </data>
   <data name="MaintainToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -148,6 +190,12 @@
   <data name="MaintainToolStripMenuItem.Text" xml:space="preserve">
     <value>维护(T)</value>
   </data>
+  <data name="HistoricalRecordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 24</value>
+  </data>
+  <data name="HistoricalRecordToolStripMenuItem.Text" xml:space="preserve">
+    <value>历史记录</value>
+  </data>
   <data name="RecordToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -156,6 +204,12 @@
   </data>
   <data name="RecordToolStripMenuItem.Text" xml:space="preserve">
     <value>记录(R)</value>
+  </data>
+  <data name="AboutHFMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
+  </data>
+  <data name="AboutHFMToolStripMenuItem.Text" xml:space="preserve">
+    <value>关于HFM</value>
   </data>
   <data name="AboutToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -191,87 +245,9 @@
   <data name="&gt;&gt;MnsFunction.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="StartRunningToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
-  </data>
-  <data name="StartRunningToolStripMenuItem.Text" xml:space="preserve">
-    <value>开始运行</value>
-  </data>
-  <data name="SuperUserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
-  </data>
-  <data name="SuperUserToolStripMenuItem.Text" xml:space="preserve">
-    <value>超级用户</value>
-  </data>
-  <data name="ChangePasswordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
-  </data>
-  <data name="ChangePasswordToolStripMenuItem.Text" xml:space="preserve">
-    <value>修改密码</value>
-  </data>
-  <data name="RetreatSystemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
-  </data>
-  <data name="RetreatSystemToolStripMenuItem.Text" xml:space="preserve">
-    <value>退出系统</value>
-  </data>
-  <data name="ParameterSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 24</value>
-  </data>
-  <data name="ParameterSettingToolStripMenuItem.Text" xml:space="preserve">
-    <value>参数设置</value>
-  </data>
-  <data name="CalibrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
-  </data>
-  <data name="CalibrationToolStripMenuItem.Text" xml:space="preserve">
-    <value>测试刻度</value>
-  </data>
-  <data name="TestHardwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
-  </data>
-  <data name="TestHardwareToolStripMenuItem.Text" xml:space="preserve">
-    <value>硬件检测</value>
-  </data>
-  <data name="HistoricalRecordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
-  </data>
-  <data name="HistoricalRecordToolStripMenuItem.Text" xml:space="preserve">
-    <value>历史记录</value>
-  </data>
-  <data name="AboutHFMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
-  </data>
-  <data name="AboutHFMToolStripMenuItem.Text" xml:space="preserve">
-    <value>关于HFM</value>
-  </data>
   <metadata name="StsFoot.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>145, 17</value>
   </metadata>
-  <data name="StsFoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 536</value>
-  </data>
-  <data name="StsFoot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 25</value>
-  </data>
-  <data name="StsFoot.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="StsFoot.Text" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;StsFoot.Name" xml:space="preserve">
-    <value>StsFoot</value>
-  </data>
-  <data name="&gt;&gt;StsFoot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;StsFoot.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;StsFoot.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Tsslbl_Name.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -313,6 +289,30 @@
   </data>
   <data name="Tsslbl_NowTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
+  </data>
+  <data name="StsFoot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 536</value>
+  </data>
+  <data name="StsFoot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 25</value>
+  </data>
+  <data name="StsFoot.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="StsFoot.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;StsFoot.Name" xml:space="preserve">
+    <value>StsFoot</value>
+  </data>
+  <data name="&gt;&gt;StsFoot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StsFoot.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;StsFoot.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

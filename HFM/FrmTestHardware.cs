@@ -569,7 +569,10 @@ namespace HFM
                 }
 
                 //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中
-                measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
+                if (receiveBufferMessage[0] == 'C' || receiveBufferMessage[0] == 'c')
+                {
+                    measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
+                }
             }
             //if(_rubbishDataOfSelfCheckNum<5&& (measureDataS[0].HV>1000)) //measureDataS[0].Alpha < 100 || measureDataS[0].Beta < 100 ||
             //{

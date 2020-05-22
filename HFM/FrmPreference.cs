@@ -1788,8 +1788,36 @@ namespace HFM
             config.AppSettings.Settings["commportSetOfReport"].Value = _commportSetOfReportSetString;
             //保存
             config.Save();
-
-
+            ConfigurationManager.RefreshSection("appSettings");
+            //读取当前串口配置
+            this._commPort.GetCommPortSet("commportSet");
+            if(this._commPort.Opened)
+            {
+                this._commPort.Close();
+            }
+            try
+            {
+                this._commPort.Open();                
+            }
+            catch
+            {
+                MessageBox.Show("数据采集端口设置错误，请重新进行设置");
+                return;
+            }
+            //自动上报串口配置测试
+            if(ChkIsConnectedAuto.Checked)
+            {
+                CommPort commPort = new CommPort();
+                try
+                {
+                    commPort.Open();
+                }
+                catch
+                {
+                    MessageBox.Show("数据上报端口设置错误，请重新进行设置");
+                    return;
+                }
+            }
             //网络保存
             FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
             //IP地址
@@ -1818,24 +1846,27 @@ namespace HFM
             }
             else
             {
-                if (MessageBox.Show("重新启动程序以应用新配置！", "提醒", MessageBoxButtons.OK) == DialogResult.OK)
-                {
+                MessageBox.Show("重新启动程序以应用新配置！", "提醒", MessageBoxButtons.OK);
+                //{
                     //_commPort.Close();
-                    if (backgroundWorker_Preference.IsBusy == true)
-                    {
-                        backgroundWorker_Preference.Dispose();
-                        Thread.Sleep(1000);
-                    }
-                    Process[] proc=Process.GetProcessesByName("HFM");
-                    Process procNew = new Process();
-                    procNew.StartInfo.FileName = Application.ExecutablePath;
-                    procNew.Start();
-                    foreach(Process p in proc)
-                    {
-                        p.Kill();
-                    }
+                    //if (backgroundWorker_Preference.IsBusy == true)
+                    //{
+                    //    backgroundWorker_Preference.CancelAsync();                        
+                    //    Thread.Sleep(100);
+                    //}
+                    //backgroundWorker_Preference.Dispose();
+                    //Thread.Sleep(100);
                     //Application.Restart();
-                }
+                    //Process[] proc=Process.GetProcessesByName("HFM");
+                    //Process procNew = new Process();
+                    //procNew.StartInfo.FileName = Application.ExecutablePath;
+                    //procNew.Start();
+                    //foreach(Process p in proc)
+                    //{
+                    //    p.Kill();
+                    //}
+                    //Application.Restart();
+                //}
             }
 
         }

@@ -28,6 +28,10 @@ namespace HFM.Components
 			// TODO: 在此处添加构造函数逻辑
 			//
 		}
+        ~CommPort()
+        {
+            
+        }
 		public int PortNum;  
 		public int BaudRate; 
 		public byte ByteSize; 
@@ -440,7 +444,7 @@ namespace HFM.Components
                 result = PurgeComm(hComm, 0);
             }
             return result;
-        }
+        }        
         #endregion
 
     }
