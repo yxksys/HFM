@@ -26,7 +26,7 @@ using System.Configuration;
 using HFM.Components;
 using System.Threading;
 using Message = HFM.Components.Message;
-
+using System.Diagnostics;
 
 namespace HFM
 {
@@ -1824,8 +1824,17 @@ namespace HFM
                     if (backgroundWorker_Preference.IsBusy == true)
                     {
                         backgroundWorker_Preference.Dispose();
+                        Thread.Sleep(1000);
                     }
-                    Application.Restart();
+                    Process[] proc=Process.GetProcessesByName("HFM");
+                    Process procNew = new Process();
+                    procNew.StartInfo.FileName = Application.ExecutablePath;
+                    procNew.Start();
+                    foreach(Process p in proc)
+                    {
+                        p.Kill();
+                    }
+                    //Application.Restart();
                 }
             }
 
