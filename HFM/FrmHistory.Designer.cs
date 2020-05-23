@@ -70,21 +70,21 @@
             // 
             // TabHistory
             // 
-            resources.ApplyResources(this.TabHistory, "TabHistory");
             this.TabHistory.Controls.Add(this.TabMeasure);
             this.TabHistory.Controls.Add(this.TabCalibration);
             this.TabHistory.Controls.Add(this.TabError);
+            resources.ApplyResources(this.TabHistory, "TabHistory");
             this.TabHistory.Name = "TabHistory";
             this.TabHistory.SelectedIndex = 0;
             this.TabHistory.SelectedIndexChanged += new System.EventHandler(this.TabHistory_SelectedIndexChanged);
             // 
             // TabMeasure
             // 
-            resources.ApplyResources(this.TabMeasure, "TabMeasure");
             this.TabMeasure.BackColor = System.Drawing.SystemColors.Control;
             this.TabMeasure.Controls.Add(this.BtnDeleteMeasure);
             this.TabMeasure.Controls.Add(this.BtnDeriveMeasure);
             this.TabMeasure.Controls.Add(this.DgvMeasure);
+            resources.ApplyResources(this.TabMeasure, "TabMeasure");
             this.TabMeasure.Name = "TabMeasure";
             // 
             // BtnDeleteMeasure
@@ -103,7 +103,6 @@
             // 
             // DgvMeasure
             // 
-            resources.ApplyResources(this.DgvMeasure, "DgvMeasure");
             this.DgvMeasure.AllowUserToAddRows = false;
             this.DgvMeasure.AllowUserToDeleteRows = false;
             this.DgvMeasure.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -113,6 +112,7 @@
             this.MeasureStatus,
             this.DetailedInfo,
             this.IsEnglish});
+            resources.ApplyResources(this.DgvMeasure, "DgvMeasure");
             this.DgvMeasure.Name = "DgvMeasure";
             this.DgvMeasure.ReadOnly = true;
             this.DgvMeasure.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -146,32 +146,31 @@
             // 
             // TabCalibration
             // 
-            resources.ApplyResources(this.TabCalibration, "TabCalibration");
             this.TabCalibration.Controls.Add(this.BtnDeleteCalibration);
             this.TabCalibration.Controls.Add(this.BtnDeriveCalibration);
             this.TabCalibration.Controls.Add(this.DgvCalibration);
+            resources.ApplyResources(this.TabCalibration, "TabCalibration");
             this.TabCalibration.Name = "TabCalibration";
             this.TabCalibration.UseVisualStyleBackColor = true;
             // 
             // BtnDeleteCalibration
             // 
-            resources.ApplyResources(this.BtnDeleteCalibration, "BtnDeleteCalibration");
             this.BtnDeleteCalibration.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.BtnDeleteCalibration, "BtnDeleteCalibration");
             this.BtnDeleteCalibration.Name = "BtnDeleteCalibration";
             this.BtnDeleteCalibration.UseVisualStyleBackColor = false;
             this.BtnDeleteCalibration.Click += new System.EventHandler(this.BtnDeleteCalibration_Click);
             // 
             // BtnDeriveCalibration
             // 
-            resources.ApplyResources(this.BtnDeriveCalibration, "BtnDeriveCalibration");
             this.BtnDeriveCalibration.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.BtnDeriveCalibration, "BtnDeriveCalibration");
             this.BtnDeriveCalibration.Name = "BtnDeriveCalibration";
             this.BtnDeriveCalibration.UseVisualStyleBackColor = false;
             this.BtnDeriveCalibration.Click += new System.EventHandler(this.BtnDeriveCalibration_Click);
             // 
             // DgvCalibration
             // 
-            resources.ApplyResources(this.DgvCalibration, "DgvCalibration");
             this.DgvCalibration.AllowUserToAddRows = false;
             this.DgvCalibration.AllowUserToDeleteRows = false;
             this.DgvCalibration.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -184,6 +183,7 @@
             this.Efficiency,
             this.MDA,
             this.AlphaBetaPercent});
+            resources.ApplyResources(this.DgvCalibration, "DgvCalibration");
             this.DgvCalibration.GridColor = System.Drawing.SystemColors.Control;
             this.DgvCalibration.Name = "DgvCalibration";
             this.DgvCalibration.ReadOnly = true;
@@ -194,17 +194,17 @@
             // 
             // TabError
             // 
-            resources.ApplyResources(this.TabError, "TabError");
             this.TabError.Controls.Add(this.BtnDeleteError);
             this.TabError.Controls.Add(this.BtnDeriveError);
             this.TabError.Controls.Add(this.DgvError);
+            resources.ApplyResources(this.TabError, "TabError");
             this.TabError.Name = "TabError";
             this.TabError.UseVisualStyleBackColor = true;
             // 
             // BtnDeleteError
             // 
-            resources.ApplyResources(this.BtnDeleteError, "BtnDeleteError");
             this.BtnDeleteError.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.BtnDeleteError, "BtnDeleteError");
             this.BtnDeleteError.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnDeleteError.Name = "BtnDeleteError";
             this.BtnDeleteError.UseVisualStyleBackColor = false;
@@ -212,8 +212,8 @@
             // 
             // BtnDeriveError
             // 
-            resources.ApplyResources(this.BtnDeriveError, "BtnDeriveError");
             this.BtnDeriveError.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.BtnDeriveError, "BtnDeriveError");
             this.BtnDeriveError.ForeColor = System.Drawing.SystemColors.ControlText;
             this.BtnDeriveError.Name = "BtnDeriveError";
             this.BtnDeriveError.UseVisualStyleBackColor = false;
@@ -221,13 +221,13 @@
             // 
             // DgvError
             // 
-            resources.ApplyResources(this.DgvError, "DgvError");
             this.DgvError.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ErrTime,
             this.Record,
             this.IsEnglishsError});
+            resources.ApplyResources(this.DgvError, "DgvError");
             this.DgvError.Name = "DgvError";
             this.DgvError.ReadOnly = true;
             this.DgvError.RowHeadersVisible = false;

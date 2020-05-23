@@ -118,45 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Background_Progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Background_Progress.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Button_Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Button_Down.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Button_Link" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Button_Link.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clothes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\clothes.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clothes_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\clothes-highlight.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clothes_middle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\clothes-middle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Contaminated_progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Contaminated_progress.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Fault_progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Fault_progress.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Foot_InPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Foot_InPlace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="foot_littl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\foot-littl.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Foot_NotInPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Foot_NotInPlace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FriskerBK_InPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\FriskerBK_InPlace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FriskerBK_NotInPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\FriskerBK_NotInPlace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Frisker_Disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Frisker_Disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -165,15 +126,6 @@
   </data>
   <data name="Frisker_NotInPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Frisker_NotInPlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hand_InPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Hand_InPlace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hand_NotInPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Hand_NotInPlace.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Hand_Status" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Hand_Status.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LF_Disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\LF_Disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,12 +157,6 @@
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NoContamination_progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\NoContamination_progress.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\progress.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="RF_Disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\RF_Disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -238,10 +184,64 @@
   <data name="RHP_NotInPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\RHP_NotInPlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="unfulfillment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\unfulfillment.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="welcome" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\welcome.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Background_Progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Background_Progress.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button_Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Button_Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Button_Link" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Button_Link.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clothes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\clothes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clothes_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\clothes_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clothes_middle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\clothes_middle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Contaminated_progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Contaminated_progress.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fault_progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Fault_progress.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Foot_InPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Foot_InPlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="foot_littl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\foot_littl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Foot_NotInPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Foot_NotInPlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FriskerBK_InPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\FriskerBK_InPlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FriskerBK_NotInPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\FriskerBK_NotInPlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hand_InPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Hand_InPlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hand_NotInPlace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Hand_NotInPlace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hand_Status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Hand_Status.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NoContamination_progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\NoContamination_progress.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="progress" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\progress.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="unfulfillment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\unfulfillment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

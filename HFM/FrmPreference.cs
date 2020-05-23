@@ -859,6 +859,7 @@ namespace HFM
                         IList<ChannelParameter> _first_setChannelP = new List<ChannelParameter>();
                         //道盒5-7通道解析原数据
                         IList<ChannelParameter> _second_setChanelP = new List<ChannelParameter>();
+                        //IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
                         int i = 0;
                         //把当前的高压阈值修改的数据对象添加到列表中
                         foreach (var itme in _channelParameters)
@@ -873,6 +874,7 @@ namespace HFM
                             }
                             i++;
                         }
+                        _channelParameters.Clear();
                         //道盒5-7通道列表加一个空对象,(3个对象解析会报错,必须四个为一组解析)
                         _second_setChanelP.Add(_first_setChannelP[0]);
 
@@ -883,6 +885,8 @@ namespace HFM
                         byte[] buffMessagePset1 = Message.BuildMessage(_first_setChannelP);
                         //道盒5-7通道解析完成的数据,
                         byte[] buffMessagePset2 = Message.BuildMessage(_second_setChanelP);
+                        _first_setChannelP.Clear();
+                        _second_setChanelP.Clear();
                         //成功则关闭线程
                         try
                         {
@@ -981,6 +985,7 @@ namespace HFM
             //接收报文无误，进行报文解析，并将解析后的道盒数据存储到channelParameters中 
             try
             {
+                 IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
                 if (receiveBufferMessage[0] == Convert.ToByte('P'))
                 {
                     DgvMainPreferenceSet.Rows.Clear();

@@ -43,7 +43,6 @@
             this.RecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HistoricalRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutHFMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StsFoot = new System.Windows.Forms.StatusStrip();
             this.Tsslbl_Name = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tsslbl_Status = new System.Windows.Forms.ToolStripStatusLabel();
@@ -146,16 +145,9 @@
             // 
             // AboutToolStripMenuItem
             // 
-            this.AboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AboutHFMToolStripMenuItem});
             resources.ApplyResources(this.AboutToolStripMenuItem, "AboutToolStripMenuItem");
             this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
-            // 
-            // AboutHFMToolStripMenuItem
-            // 
-            this.AboutHFMToolStripMenuItem.Name = "AboutHFMToolStripMenuItem";
-            resources.ApplyResources(this.AboutHFMToolStripMenuItem, "AboutHFMToolStripMenuItem");
-            this.AboutHFMToolStripMenuItem.Click += new System.EventHandler(this.AboutHFMToolStripMenuItem_Click);
+            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // StsFoot
             // 
@@ -224,7 +216,6 @@
         private System.Windows.Forms.ToolStripMenuItem RecordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HistoricalRecordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AboutHFMToolStripMenuItem;
         private System.Windows.Forms.StatusStrip StsFoot;
         private System.Windows.Forms.ToolStripStatusLabel Tsslbl_Name;
         private System.Windows.Forms.ToolStripStatusLabel Tsslbl_Status;

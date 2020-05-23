@@ -513,10 +513,18 @@
     <None Include="Images\clothes-highlight.jpg" />
     <None Include="Images\Button_Down.jpg" />
     <None Include="Images\Button_Link.jpg" />
+    <None Include="Images\Background_Progress.png" />
+    <None Include="Images\Button_Down.png" />
+    <None Include="Images\Button_Link.png" />
     <Content Include="Images\clothes-middle.jpg" />
     <None Include="Images\clothes.jpg" />
+    <None Include="Images\clothes.png" />
+    <None Include="Images\clothes_highlight.png" />
+    <None Include="Images\clothes_middle.png" />
     <Content Include="Images\Contaminated_progress.jpg" />
+    <None Include="Images\Contaminated_progress.png" />
     <Content Include="Images\Fault_progress.jpg" />
+    <None Include="Images\Fault_progress.png" />
     <Content Include="Images\foot-littl.jpg" />
     <None Include="Images\Foot_InPlace.jpg" />
     <None Include="Images\Foot_NotInPlace.jpg" />
@@ -535,8 +543,16 @@
     <None Include="Images\Frisker_InPlace.png" />
     <None Include="Images\Frisker_NotInPlace.png" />
     <None Include="Images\Hand_Status.jpg" />
+    <None Include="Images\Foot_InPlace.png" />
+    <None Include="Images\foot_littl.png" />
+    <None Include="Images\Foot_NotInPlace.png" />
     <Content Include="Images\FriskerBK_InPlace.jpg" />
+    <None Include="Images\FriskerBK_InPlace.png" />
     <Content Include="Images\FriskerBK_NotInPlace.jpg" />
+    <None Include="Images\FriskerBK_NotInPlace.png" />
+    <None Include="Images\Hand_InPlace.png" />
+    <None Include="Images\Hand_NotInPlace.png" />
+    <None Include="Images\Hand_Status.png" />
     <Content Include="Images\logo.ico" />
     <Content Include="Images\logo.png" />
     <None Include="Images\progress.jpg" />
@@ -551,6 +567,9 @@
     <None Include="Images\RHP_InPlace.png" />
     <None Include="Images\RHP_NotInPlace.png" />
     <Content Include="Images\NoContamination_progress.jpg" />
+    <None Include="Images\NoContamination_progress.png" />
+    <None Include="Images\progress.png" />
+    <None Include="Images\unfulfillment.png" />
     <Content Include="Images\welcome.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

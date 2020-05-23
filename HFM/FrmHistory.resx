@@ -117,308 +117,203 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;TabHistory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TabError.Text" xml:space="preserve">
-    <value>故障日志</value>
-  </data>
-  <data name="&gt;&gt;Record.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DgvError.Name" xml:space="preserve">
-    <value>DgvError</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="IsEnglish.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="DgvCalibration.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;HighVoltage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BtnDeleteCalibration.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="HighVoltage.HeaderText" xml:space="preserve">
-    <value>高压值(V)</value>
-  </data>
-  <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
-    <value>IsEnglishsError</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveMeasure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DetailedInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MDA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BtnDeleteCalibration.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteMeasure.Name" xml:space="preserve">
-    <value>BtnDeleteMeasure</value>
-  </data>
-  <data name="&gt;&gt;Record.Name" xml:space="preserve">
-    <value>Record</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="BtnDeleteError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="DgvError.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="BtnDeleteCalibration.Text" xml:space="preserve">
-    <value>删除数据</value>
-  </data>
-  <data name="MeasureStatus.HeaderText" xml:space="preserve">
-    <value>测量状态</value>
-  </data>
-  <data name="CalibrationTime.Width" type="System.Int32, mscorlib">
-    <value>145</value>
-  </data>
-  <data name="&gt;&gt;MDA.Name" xml:space="preserve">
-    <value>MDA</value>
-  </data>
-  <data name="BtnDeleteCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 448</value>
-  </data>
-  <data name="BtnDeleteError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 447</value>
-  </data>
-  <data name="HighVoltage.Width" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveMeasure.Parent" xml:space="preserve">
-    <value>TabMeasure</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveCalibration.Name" xml:space="preserve">
-    <value>BtnDeriveCalibration</value>
-  </data>
-  <data name="DgvMeasure.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="BtnDeriveCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="BtnDeleteError.Text" xml:space="preserve">
-    <value>删除数据</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveMeasure.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveError.Parent" xml:space="preserve">
-    <value>TabError</value>
-  </data>
-  <data name="&gt;&gt;ErrTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BtnDeriveMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteMeasure.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="Threshold.HeaderText" xml:space="preserve">
-    <value>阈值(mV)</value>
-  </data>
-  <data name="TabHistory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <data name="BtnDeleteMeasure.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
-  </data>
-  <data name="&gt;&gt;DgvCalibration.Name" xml:space="preserve">
-    <value>DgvCalibration</value>
-  </data>
-  <data name="&gt;&gt;TabError.Parent" xml:space="preserve">
-    <value>TabHistory</value>
-  </data>
-  <data name="AlphaBetaPercent.Width" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <data name="TabError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
-  </data>
-  <data name="TabError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
-  </data>
-  <data name="ChannelID.HeaderText" xml:space="preserve">
-    <value>刻度通道</value>
-  </data>
-  <data name="&gt;&gt;DgvMeasure.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="DgvCalibration.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="DgvCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="&gt;&gt;DgvError.Parent" xml:space="preserve">
-    <value>TabError</value>
-  </data>
-  <data name="TabError.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TabMeasure.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;IsEnglish.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IsEnglish.Name" xml:space="preserve">
-    <value>IsEnglish</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BtnDeriveError.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="&gt;&gt;TabHistory.Name" xml:space="preserve">
-    <value>TabHistory</value>
-  </data>
-  <data name="IsEnglishsError.Width" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveError.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="BtnDeleteCalibration.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
-  </data>
-  <data name="&gt;&gt;TabCalibration.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveMeasure.Name" xml:space="preserve">
-    <value>BtnDeriveMeasure</value>
   </data>
   <data name="BtnDeleteMeasure.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 449</value>
   </data>
-  <data name="&gt;&gt;TabMeasure.Parent" xml:space="preserve">
-    <value>TabHistory</value>
+  <data name="BtnDeleteMeasure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
   </data>
-  <data name="&gt;&gt;DgvMeasure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Efficiency.Name" xml:space="preserve">
-    <value>Efficiency</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FrmHistory</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteCalibration.Name" xml:space="preserve">
-    <value>BtnDeleteCalibration</value>
-  </data>
-  <data name="&gt;&gt;TabHistory.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteError.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="BtnDeleteError.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="BtnDeriveCalibration.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteError.Parent" xml:space="preserve">
-    <value>TabError</value>
-  </data>
-  <data name="TabMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BtnDeleteMeasure.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="BtnDeleteMeasure.Text" xml:space="preserve">
     <value>删除数据</value>
   </data>
-  <data name="&gt;&gt;DgvCalibration.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;BtnDeleteMeasure.Name" xml:space="preserve">
+    <value>BtnDeleteMeasure</value>
   </data>
-  <data name="DgvError.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;BtnDeleteMeasure.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="IsEnglishsError.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;BtnDeleteMeasure.Parent" xml:space="preserve">
+    <value>TabMeasure</value>
   </data>
-  <data name="TabCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
+  <data name="&gt;&gt;BtnDeleteMeasure.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="BtnDeriveError.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="BtnDeriveMeasure.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
-  <data name="Threshold.Width" type="System.Int32, mscorlib">
-    <value>120</value>
+  <data name="BtnDeriveMeasure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 449</value>
+  </data>
+  <data name="BtnDeriveMeasure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="BtnDeriveMeasure.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="BtnDeriveMeasure.Text" xml:space="preserve">
+    <value>导出数据</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveMeasure.Name" xml:space="preserve">
+    <value>BtnDeriveMeasure</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveMeasure.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveMeasure.Parent" xml:space="preserve">
+    <value>TabMeasure</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveMeasure.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="MeasureDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="MeasureDate.HeaderText" xml:space="preserve">
+    <value>测量时间</value>
   </data>
   <data name="MeasureDate.Width" type="System.Int32, mscorlib">
     <value>145</value>
   </data>
-  <data name="TabError.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <metadata name="MeasureStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="MeasureStatus.HeaderText" xml:space="preserve">
+    <value>测量状态</value>
   </data>
-  <data name="BtnDeriveError.Text" xml:space="preserve">
-    <value>导出数据</value>
+  <data name="MeasureStatus.Width" type="System.Int32, mscorlib">
+    <value>80</value>
   </data>
-  <data name="&gt;&gt;HighVoltage.Name" xml:space="preserve">
-    <value>HighVoltage</value>
-  </data>
-  <data name="&gt;&gt;MeasureStatus.Name" xml:space="preserve">
-    <value>MeasureStatus</value>
-  </data>
-  <data name="Efficiency.HeaderText" xml:space="preserve">
-    <value>效率(%)</value>
+  <metadata name="DetailedInfo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="DetailedInfo.HeaderText" xml:space="preserve">
+    <value>详细信息</value>
   </data>
   <data name="DetailedInfo.Width" type="System.Int32, mscorlib">
     <value>520</value>
   </data>
-  <data name="BtnDeriveCalibration.Text" xml:space="preserve">
-    <value>导出数据</value>
+  <metadata name="IsEnglish.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="IsEnglish.HeaderText" xml:space="preserve">
+    <value>是否英文</value>
   </data>
-  <data name="BtnDeriveCalibration.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+  <data name="IsEnglish.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DgvMeasure.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DgvMeasure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="DgvMeasure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 491</value>
+  </data>
+  <data name="DgvMeasure.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;DgvMeasure.Name" xml:space="preserve">
     <value>DgvMeasure</value>
   </data>
-  <data name="&gt;&gt;TabHistory.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;DgvMeasure.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CalibrationTime.HeaderText" xml:space="preserve">
-    <value>刻度时间</value>
+  <data name="&gt;&gt;DgvMeasure.Parent" xml:space="preserve">
+    <value>TabMeasure</value>
   </data>
-  <data name="&gt;&gt;DetailedInfo.Name" xml:space="preserve">
-    <value>DetailedInfo</value>
-  </data>
-  <data name="BtnDeleteMeasure.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;DgvMeasure.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="BtnDeleteError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
-  </data>
-  <data name="TabCalibration.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="TabMeasure.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 29</value>
   </data>
-  <data name="ErrTime.HeaderText" xml:space="preserve">
-    <value>故障时间</value>
+  <data name="TabMeasure.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="&gt;&gt;DgvCalibration.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="TabMeasure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 497</value>
   </data>
-  <data name="TabCalibration.Text" xml:space="preserve">
-    <value>刻度日志</value>
+  <data name="TabMeasure.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TabMeasure.Text" xml:space="preserve">
+    <value>测量日志</value>
+  </data>
+  <data name="&gt;&gt;TabMeasure.Name" xml:space="preserve">
+    <value>TabMeasure</value>
+  </data>
+  <data name="&gt;&gt;TabMeasure.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabMeasure.Parent" xml:space="preserve">
+    <value>TabHistory</value>
+  </data>
+  <data name="&gt;&gt;TabMeasure.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnDeleteCalibration.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="BtnDeleteCalibration.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="BtnDeleteCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 448</value>
+  </data>
+  <data name="BtnDeleteCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="BtnDeleteCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="BtnDeleteCalibration.Text" xml:space="preserve">
+    <value>删除数据</value>
+  </data>
+  <data name="&gt;&gt;BtnDeleteCalibration.Name" xml:space="preserve">
+    <value>BtnDeleteCalibration</value>
+  </data>
+  <data name="&gt;&gt;BtnDeleteCalibration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnDeleteCalibration.Parent" xml:space="preserve">
+    <value>TabCalibration</value>
+  </data>
+  <data name="&gt;&gt;BtnDeleteCalibration.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnDeriveCalibration.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="BtnDeriveCalibration.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="BtnDeriveCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 448</value>
+  </data>
+  <data name="BtnDeriveCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="BtnDeriveCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="BtnDeriveCalibration.Text" xml:space="preserve">
+    <value>导出数据</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveCalibration.Name" xml:space="preserve">
+    <value>BtnDeriveCalibration</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveCalibration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BtnDeriveCalibration.Parent" xml:space="preserve">
     <value>TabCalibration</value>
@@ -426,280 +321,382 @@
   <data name="&gt;&gt;BtnDeriveCalibration.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ErrTime.Width" type="System.Int32, mscorlib">
-    <value>150</value>
+  <metadata name="CalibrationTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="CalibrationTime.HeaderText" xml:space="preserve">
+    <value>刻度时间</value>
   </data>
-  <data name="BtnDeriveMeasure.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+  <data name="CalibrationTime.Width" type="System.Int32, mscorlib">
+    <value>145</value>
   </data>
+  <metadata name="ChannelID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ChannelID.HeaderText" xml:space="preserve">
+    <value>刻度通道</value>
+  </data>
+  <metadata name="HighVoltage.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="HighVoltage.HeaderText" xml:space="preserve">
+    <value>高压值(V)</value>
+  </data>
+  <data name="HighVoltage.Width" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <metadata name="Threshold.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Threshold.HeaderText" xml:space="preserve">
+    <value>阈值(mV)</value>
+  </data>
+  <data name="Threshold.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <metadata name="Efficiency.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Efficiency.HeaderText" xml:space="preserve">
+    <value>效率(%)</value>
+  </data>
+  <metadata name="MDA.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="MDA.HeaderText" xml:space="preserve">
-    <value>探测下限(Bp/cm²)</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteMeasure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ChannelID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TabMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
-  </data>
-  <data name="DgvMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="&gt;&gt;DgvMeasure.Parent" xml:space="preserve">
-    <value>TabMeasure</value>
-  </data>
-  <data name="&gt;&gt;TabError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Threshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TabCalibration.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ChannelID.Name" xml:space="preserve">
-    <value>ChannelID</value>
-  </data>
-  <data name="BtnDeriveMeasure.Text" xml:space="preserve">
-    <value>导出数据</value>
+    <value>探测下限(Bq/cm²)</value>
   </data>
   <data name="MDA.Width" type="System.Int32, mscorlib">
     <value>110</value>
   </data>
-  <data name="BtnDeriveCalibration.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
-  </data>
-  <data name="&gt;&gt;TabError.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteCalibration.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TabHistory.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
+  <metadata name="AlphaBetaPercent.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="AlphaBetaPercent.HeaderText" xml:space="preserve">
     <value>串道比(%)</value>
   </data>
-  <data name="&gt;&gt;CalibrationTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="AlphaBetaPercent.Width" type="System.Int32, mscorlib">
+    <value>120</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="IsEnglishsError.HeaderText" xml:space="preserve">
-    <value>是否英文</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteMeasure.Parent" xml:space="preserve">
-    <value>TabMeasure</value>
-  </data>
-  <data name="&gt;&gt;DgvError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ErrTime.Name" xml:space="preserve">
-    <value>ErrTime</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteError.Name" xml:space="preserve">
-    <value>BtnDeleteError</value>
-  </data>
-  <data name="&gt;&gt;TabCalibration.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Threshold.Name" xml:space="preserve">
-    <value>Threshold</value>
-  </data>
-  <data name="DgvMeasure.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="DetailedInfo.HeaderText" xml:space="preserve">
-    <value>详细信息</value>
-  </data>
-  <data name="BtnDeriveError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteCalibration.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BtnDeriveError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
-  </data>
-  <data name="&gt;&gt;IsEnglishsError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MeasureStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Efficiency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabMeasure.Name" xml:space="preserve">
-    <value>TabMeasure</value>
-  </data>
-  <data name="DgvError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 491</value>
-  </data>
-  <data name="&gt;&gt;DgvCalibration.Parent" xml:space="preserve">
-    <value>TabCalibration</value>
-  </data>
-  <data name="TabMeasure.Text" xml:space="preserve">
-    <value>测量日志</value>
-  </data>
-  <data name="DgvMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 491</value>
-  </data>
-  <data name="&gt;&gt;TabError.Name" xml:space="preserve">
-    <value>TabError</value>
-  </data>
-  <data name="&gt;&gt;TabMeasure.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TabHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 530</value>
-  </data>
-  <data name="TabHistory.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
-  </data>
-  <data name="Record.HeaderText" xml:space="preserve">
-    <value>故障记录</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>历史记录</value>
-  </data>
-  <data name="&gt;&gt;TabCalibration.Name" xml:space="preserve">
-    <value>TabCalibration</value>
-  </data>
-  <data name="Record.Width" type="System.Int32, mscorlib">
-    <value>620</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>784, 530</value>
-  </data>
-  <data name="IsEnglish.HeaderText" xml:space="preserve">
-    <value>是否英文</value>
-  </data>
-  <data name="&gt;&gt;AlphaBetaPercent.Name" xml:space="preserve">
-    <value>AlphaBetaPercent</value>
-  </data>
-  <data name="BtnDeriveMeasure.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TabCalibration.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;CalibrationTime.Name" xml:space="preserve">
-    <value>CalibrationTime</value>
-  </data>
-  <data name="TabHistory.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="DgvCalibration.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="MeasureStatus.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="&gt;&gt;BtnDeleteCalibration.Parent" xml:space="preserve">
-    <value>TabCalibration</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveError.Name" xml:space="preserve">
-    <value>BtnDeriveError</value>
-  </data>
-  <data name="BtnDeleteMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="&gt;&gt;MeasureDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TabMeasure.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="MeasureDate.HeaderText" xml:space="preserve">
-    <value>测量时间</value>
-  </data>
-  <data name="&gt;&gt;BtnDeriveCalibration.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BtnDeleteCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 25</value>
-  </data>
-  <data name="BtnDeriveError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 447</value>
-  </data>
-  <data name="&gt;&gt;AlphaBetaPercent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TabCalibration.Parent" xml:space="preserve">
-    <value>TabHistory</value>
+  <data name="DgvCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
   <data name="DgvCalibration.Size" type="System.Drawing.Size, System.Drawing">
     <value>770, 491</value>
   </data>
-  <data name="&gt;&gt;TabMeasure.Type" xml:space="preserve">
+  <data name="DgvCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;DgvCalibration.Name" xml:space="preserve">
+    <value>DgvCalibration</value>
+  </data>
+  <data name="&gt;&gt;DgvCalibration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DgvCalibration.Parent" xml:space="preserve">
+    <value>TabCalibration</value>
+  </data>
+  <data name="&gt;&gt;DgvCalibration.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TabCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="TabCalibration.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TabCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 497</value>
+  </data>
+  <data name="TabCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TabCalibration.Text" xml:space="preserve">
+    <value>刻度日志</value>
+  </data>
+  <data name="&gt;&gt;TabCalibration.Name" xml:space="preserve">
+    <value>TabCalibration</value>
+  </data>
+  <data name="&gt;&gt;TabCalibration.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DgvError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="&gt;&gt;TabCalibration.Parent" xml:space="preserve">
+    <value>TabHistory</value>
   </data>
-  <data name="BtnDeriveCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 448</value>
+  <data name="&gt;&gt;TabCalibration.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="BtnDeriveMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 449</value>
+  <data name="BtnDeleteError.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="BtnDeleteError.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="BtnDeleteError.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 447</value>
+  </data>
+  <data name="BtnDeleteError.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
   </data>
   <data name="BtnDeleteError.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;MeasureDate.Name" xml:space="preserve">
-    <value>MeasureDate</value>
+  <data name="BtnDeleteError.Text" xml:space="preserve">
+    <value>删除数据</value>
   </data>
-  <data name="&gt;&gt;DgvError.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;BtnDeleteError.Name" xml:space="preserve">
+    <value>BtnDeleteError</value>
+  </data>
+  <data name="&gt;&gt;BtnDeleteError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnDeleteError.Parent" xml:space="preserve">
+    <value>TabError</value>
+  </data>
+  <data name="&gt;&gt;BtnDeleteError.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnDeriveError.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="BtnDeriveError.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="BtnDeriveError.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 447</value>
+  </data>
+  <data name="BtnDeriveError.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 25</value>
+  </data>
+  <data name="BtnDeriveError.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="BtnDeriveError.Text" xml:space="preserve">
+    <value>导出数据</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveError.Name" xml:space="preserve">
+    <value>BtnDeriveError</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveError.Parent" xml:space="preserve">
+    <value>TabError</value>
+  </data>
+  <data name="&gt;&gt;BtnDeriveError.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="ErrTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ErrTime.HeaderText" xml:space="preserve">
+    <value>故障时间</value>
+  </data>
+  <data name="ErrTime.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <metadata name="Record.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Record.HeaderText" xml:space="preserve">
+    <value>故障记录</value>
+  </data>
+  <data name="Record.Width" type="System.Int32, mscorlib">
+    <value>620</value>
   </data>
   <metadata name="IsEnglishsError.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="DetailedInfo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Record.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="IsEnglish.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="HighVoltage.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="AlphaBetaPercent.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Efficiency.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="MDA.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="MeasureDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ErrTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="ChannelID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>en</value>
-  </metadata>
-  <metadata name="CalibrationTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="IsEnglishsError.HeaderText" xml:space="preserve">
+    <value>是否英文</value>
+  </data>
+  <data name="IsEnglishsError.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="IsEnglishsError.Width" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="DgvError.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DgvError.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="DgvError.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 491</value>
+  </data>
+  <data name="DgvError.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;DgvError.Name" xml:space="preserve">
+    <value>DgvError</value>
+  </data>
+  <data name="&gt;&gt;DgvError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DgvError.Parent" xml:space="preserve">
+    <value>TabError</value>
+  </data>
+  <data name="&gt;&gt;DgvError.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TabError.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="TabError.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TabError.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 497</value>
+  </data>
+  <data name="TabError.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="TabError.Text" xml:space="preserve">
+    <value>故障日志</value>
+  </data>
+  <data name="&gt;&gt;TabError.Name" xml:space="preserve">
+    <value>TabError</value>
+  </data>
+  <data name="&gt;&gt;TabError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabError.Parent" xml:space="preserve">
+    <value>TabHistory</value>
+  </data>
+  <data name="&gt;&gt;TabError.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TabHistory.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TabHistory.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="TabHistory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="TabHistory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 530</value>
+  </data>
+  <data name="TabHistory.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;TabHistory.Name" xml:space="preserve">
+    <value>TabHistory</value>
+  </data>
+  <data name="&gt;&gt;TabHistory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabHistory.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TabHistory.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="MeasureStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Threshold.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>784, 530</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>历史记录</value>
+  </data>
+  <data name="&gt;&gt;MeasureDate.Name" xml:space="preserve">
+    <value>MeasureDate</value>
+  </data>
+  <data name="&gt;&gt;MeasureDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureStatus.Name" xml:space="preserve">
+    <value>MeasureStatus</value>
+  </data>
+  <data name="&gt;&gt;MeasureStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DetailedInfo.Name" xml:space="preserve">
+    <value>DetailedInfo</value>
+  </data>
+  <data name="&gt;&gt;DetailedInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IsEnglish.Name" xml:space="preserve">
+    <value>IsEnglish</value>
+  </data>
+  <data name="&gt;&gt;IsEnglish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ErrTime.Name" xml:space="preserve">
+    <value>ErrTime</value>
+  </data>
+  <data name="&gt;&gt;ErrTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Record.Name" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="&gt;&gt;Record.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
+    <value>IsEnglishsError</value>
+  </data>
+  <data name="&gt;&gt;IsEnglishsError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CalibrationTime.Name" xml:space="preserve">
+    <value>CalibrationTime</value>
+  </data>
+  <data name="&gt;&gt;CalibrationTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ChannelID.Name" xml:space="preserve">
+    <value>ChannelID</value>
+  </data>
+  <data name="&gt;&gt;ChannelID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HighVoltage.Name" xml:space="preserve">
+    <value>HighVoltage</value>
+  </data>
+  <data name="&gt;&gt;HighVoltage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Threshold.Name" xml:space="preserve">
+    <value>Threshold</value>
+  </data>
+  <data name="&gt;&gt;Threshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Efficiency.Name" xml:space="preserve">
+    <value>Efficiency</value>
+  </data>
+  <data name="&gt;&gt;Efficiency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MDA.Name" xml:space="preserve">
+    <value>MDA</value>
+  </data>
+  <data name="&gt;&gt;MDA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AlphaBetaPercent.Name" xml:space="preserve">
+    <value>AlphaBetaPercent</value>
+  </data>
+  <data name="&gt;&gt;AlphaBetaPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmHistory</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

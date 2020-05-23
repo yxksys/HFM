@@ -122,25 +122,25 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="StartRunningToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="StartRunningToolStripMenuItem.Text" xml:space="preserve">
     <value>开始运行</value>
   </data>
   <data name="SuperUserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="SuperUserToolStripMenuItem.Text" xml:space="preserve">
     <value>超级用户</value>
   </data>
   <data name="ChangePasswordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="ChangePasswordToolStripMenuItem.Text" xml:space="preserve">
     <value>修改密码</value>
   </data>
   <data name="RetreatSystemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="RetreatSystemToolStripMenuItem.Text" xml:space="preserve">
     <value>退出系统</value>
@@ -204,12 +204,6 @@
   </data>
   <data name="RecordToolStripMenuItem.Text" xml:space="preserve">
     <value>记录(R)</value>
-  </data>
-  <data name="AboutHFMToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
-  </data>
-  <data name="AboutHFMToolStripMenuItem.Text" xml:space="preserve">
-    <value>关于HFM</value>
   </data>
   <data name="AboutToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
@@ -406,12 +400,6 @@
     <value>AboutToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;AboutToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AboutHFMToolStripMenuItem.Name" xml:space="preserve">
-    <value>AboutHFMToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;AboutHFMToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Tsslbl_Name.Name" xml:space="preserve">

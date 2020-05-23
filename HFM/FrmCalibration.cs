@@ -279,6 +279,9 @@ namespace HFM
                 Thread.Sleep(100);
                 bkWorkerReceiveData.RunWorkerAsync();
             }
+            //点击刻度和设置后使按钮不可用
+            BtnCalibrate.Enabled = false;
+            BtnSet.Enabled = false;
         }
         #endregion
 
@@ -350,11 +353,13 @@ namespace HFM
                         buffMessage[0] = Convert.ToByte('P');
                         //buffMessage[61] = Convert.ToByte(0);
                         _bkworkTime++;
-                        if (_bkworkTime > 3)
+                        if (_bkworkTime > 4)
                         {
                             bkWorkerReceiveData.CancelAsync();
                             _bkworkTime = 0;
-                            
+                            //按钮可以使用
+                            BtnCalibrate.Enabled = true;
+                            BtnSet.Enabled = true;
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -407,7 +412,7 @@ namespace HFM
                             }
                             i++;
                         }
-                        
+                        _channelParameters.Clear();
                         _second_setChanelP.RemoveAt(3);
                         _second_setChanelP.Add(_setChannelParameter);
                         //生成报文
@@ -421,7 +426,7 @@ namespace HFM
                             if (Message.SendMessage(buffMessage, _commPort))
                             {
                                 //写入成功,返回p指令读取当前高压以确认更改成功
-                                bkWorkerReceiveData.CancelAsync();
+                                //bkWorkerReceiveData.CancelAsync();
                                 if (_isEnglish)
                                 {
                                     MessageBox.Show("Data has been distributed!", "Message");
@@ -1023,9 +1028,9 @@ namespace HFM
                 _tools.PrompMessage(2);
                 return;
             }
-            ////点击刻度和设置后使按钮不可用
-            //BtnCalibrate.Enabled = false;
-            //BtnSet.Enabled = false;
+            //点击刻度和设置后使按钮不可用
+            BtnCalibrate.Enabled = false;
+            BtnSet.Enabled = false;
             ////按钮可以使用
             //BtnCalibrate.Enabled = true;
             //BtnSet.Enabled = true;

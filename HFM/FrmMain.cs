@@ -330,14 +330,22 @@ namespace HFM
         private void SuperUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //关闭其他子窗体
-            for (int i = 0; i < Application.OpenForms.Count; i++)
+            //for (int i = 0; i < Application.OpenForms.Count; i++)
+            //{
+
+            //    if (this.Name != Application.OpenForms[i].Name)
+            //    {
+            //        Application.OpenForms[i].Close();
+            //    }
+
+            //}
+            foreach (Form form in this.MdiChildren)     //循环MDI中的所有子窗体
             {
-
-                if (this.Name != Application.OpenForms[i].Name)
+                //销毁其他不是要打开的窗口实例
+                if (this.Name != form.Name)
                 {
-                    Application.OpenForms[i].Close();
-                }
-
+                    form.Close();
+                }                
             }
             /* 判断当前是否是超级用户
              * 是:弹出提示框,让用户选择退出当前用户状态
@@ -372,15 +380,15 @@ namespace HFM
         private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //关闭其他子窗体
-            for (int i = 0; i < Application.OpenForms.Count; i++)
-            {
+            //for (int i = 0; i < Application.OpenForms.Count; i++)
+            //{
 
-                if (this.Name != Application.OpenForms[i].Name)
-                {
-                    Application.OpenForms[i].Close();
-                }
+            //    if (this.Name != Application.OpenForms[i].Name)
+            //    {
+            //        Application.OpenForms[i].Close();
+            //    }
 
-            }
+            //}
             FrmDisposeNormal(new FrmModifyPasssword());
         }
         /// <summary>
@@ -449,12 +457,16 @@ namespace HFM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AboutHFMToolStripMenuItem_Click(object sender, EventArgs e)
+        //private void AboutHFMToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    //开启关于窗体
+        //    FrmDisposeMax(new FrmHelp());
+        //}
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //开启关于窗体
             FrmDisposeMax(new FrmHelp());
         }
-
 
         #endregion
 
@@ -462,5 +474,7 @@ namespace HFM
         {
             Application.ExitThread();
         }
+
+       
     }
 }

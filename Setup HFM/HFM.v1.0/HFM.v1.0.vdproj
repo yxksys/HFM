@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:HFM.v1.0"
+"ProjectName" = "8:HFM.v3.0"
 "LanguageId" = "3:2052"
 "CodePage" = "3:936"
 "UILanguageId" = "3:2052"
@@ -21,12 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_02AECC3A3D8541D1B1E5DA0F007C3B8E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0337DB33AA9F47439F15BDDB289A0369"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -39,19 +33,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0583E8DC0A8E49379FA9E06D0C84FD5E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0E8A1591281F49DC98C89F9195FAB97E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0ED948D970D74D9D95589078ECC3E2B8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -93,12 +75,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1BA63EFED5E04161B287FC04DF92A918"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1D3B2D4EF5C842FFBAEEA8C65003229F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -123,37 +99,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2148A13755F94B7D87A19513D6FA54CA"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_22857F5F6BEA4E2C84C3DFF82B8E673B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_23CE815AFEA64C0798238345B01475AF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_250B8CB648B544F2AAC9EE29A2E82D07"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_26A9A90EB04E4B5BB3ECE8B08AA412A7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_274971D43B0D4031B6350C540BF56C42"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -201,18 +153,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_33FB676CFBCC4166BF0FEBFEF10A6C0A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_357402E388FE44159374DA3CC3392224"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_3583A9A819A84E1BADAED7EA1E8B8948"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -225,12 +165,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_36E94D05F7784DDAAF81BFA9638E19D6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_373573AEF037400293FE6AD120635148"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -238,18 +172,6 @@
         "Entry"
         {
         "MsmKey" = "8:_3816DF41D5A943CCA9645CF29E70B81C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_390DB8F522E84F9C8B1F4332BD1A6824"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3984C3641DEC4FA7A32B805A6615766C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -291,6 +213,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3D246FADFE7B43C99BE1D7AAC6F6061A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3DE39D5734444C45BA809BA3D849F5BC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -327,12 +255,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_45DDA528740B4ABE8FA901CDEE570A33"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_48494FE4049B4BD2831C286983E2FAFB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -345,7 +267,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4C85AF827A43408C8208F79614A4066B"
+        "MsmKey" = "8:_4C0AB074DA86459B8B3CDA1CB460997B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -357,19 +279,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5011E228616E4751AAF5631E4B4459F7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_50ECB06847DB49CD8FFEF63A6D26D6E7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_528A55D3AF10441C9652DFC05E3225AC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -405,12 +315,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_59DB763F9FE24CDB8991E1A2EE39DC47"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5D082A3C392149CFB5612CCD061872C1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -418,12 +322,6 @@
         "Entry"
         {
         "MsmKey" = "8:_5D9AE111F5934F7B9ACBFC614988DFB6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5DCDDEAC242E43F2A0BF6BC66AD79EC7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -465,31 +363,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6D2D24467F854271BBEE7A8E57FC792C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6F1DA3EB100A4593B6AF73A98B679E37"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_710CA55F30A34326A6943F667544BEF3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_71A46DB221FB4560BE69ECF6CD9BF339"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_71DF84C881A74E1CAAE4EB66B0C4FCE2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_730CBD0A40AD4F848641D83405A3A620"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -507,18 +393,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7833B3FCCF7247E6924D184388E67E62"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_78ABEBAB5B644FB8B3809D7B398D1688"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7C954A3B294848B38B08909A5E1EEB9E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -531,20 +405,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_81986195ADFE463495BA1E80A2F94A3D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_86B70A52A19C49C8A7EA8DEB99F1C8EB"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
-        "OwnerKey" = "8:_22857F5F6BEA4E2C84C3DFF82B8E673B"
+        "OwnerKey" = "8:_4C0AB074DA86459B8B3CDA1CB460997B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -567,36 +429,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8EB0BC70D453436299D283F926643929"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_909A3AA1AFB340F09FDC24FD83DFEDD6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9181F6CB375E45F781F0AE13296B1234"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_92BB3F21CBE043D788D9413A2B0E7BBC"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_93DE2D91226C494F963999FC23985833"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_94DFCF432469457A921482B579A0CB5D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -609,49 +441,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9755F9F0A16341B9AD8EFDEB9F17797F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9864B41D117F4332B0708605075E9159"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9AB67A0C677F41CB968E759BE2C61A9C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9AEA140F584142AFB0CD9526298D5058"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9B368A7AACE04AC3A79FA19448F39F69"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9FB99CDB7F284421957E1DEBFA8BFB30"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A24CCD6834DE4D1191FFBA34AE10503A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A302B9702E334178B20DBBE996F81771"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -664,12 +454,6 @@
         "Entry"
         {
         "MsmKey" = "8:_A58DA44F89A64ACCB516C7E87E12BC0C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A6EE5868A5AF4787916279E643B407B5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -693,13 +477,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B78B7C577DE44295B871EA65AA5E48FD"
+        "MsmKey" = "8:_B68A41484AAF4CA08C387FEC00210E5C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B92C725D0B1448BEB4F22670681D9F3D"
+        "MsmKey" = "8:_B78B7C577DE44295B871EA65AA5E48FD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -717,12 +501,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BB0377EA003D4F37931851008301F6C5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BB780CF46B0044AB9D86676EFA6918FC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -730,12 +508,6 @@
         "Entry"
         {
         "MsmKey" = "8:_BC2F682ADF2C47C4AD1083626E152298"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BD40DC7CEF88493F9E262921AE57BB10"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -759,25 +531,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C2AD43F68EEE4334B9C098D104D6BD52"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C471B186207C49C49E12BC853BEDD55F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C7B14A43F7CF4388A8D2CA218A4239CD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C92D9D16894648E692BF0B5BB3F90015"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -801,12 +555,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CF49FC931C434691A3457525FE215F92"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D06A9DE15DA64CDC8CFE95D58582E197"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -819,12 +567,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D24428E2D57440009964361517ACAA1D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D386D385B1A741DDAD1931E99A7053F4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -832,18 +574,6 @@
         "Entry"
         {
         "MsmKey" = "8:_D3FD37B80F694165A91DFAFC1D1DE9DF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D52FE9C07BE04A5DA1A271CF8D77BD35"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DFF35CFC4025479DB8B34DE8AFFDD54D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -891,12 +621,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_ED423DF6FF214A898831B9E4BF4343EA"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_EF24A64C32244C64BDE60C28F266BC5D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -904,12 +628,6 @@
         "Entry"
         {
         "MsmKey" = "8:_F02F6A9400024558B28B7D6EB5DA0B02"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F23ED7E9F9A54EF6990EAEAE523BF0E6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -945,12 +663,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FB87371891BE4E9C86F6C14A34D90F22"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FCFA395AC5DE41CCAF7E0EDBAB916687"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -970,13 +682,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_22857F5F6BEA4E2C84C3DFF82B8E673B"
+        "OwnerKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
+        "OwnerKey" = "8:_4C0AB074DA86459B8B3CDA1CB460997B"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1089,26 +801,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_02AECC3A3D8541D1B1E5DA0F007C3B8E"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\开始测量.wav"
-            "TargetName" = "8:开始测量.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0337DB33AA9F47439F15BDDB289A0369"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\LF_NotInPlace.png"
@@ -1149,50 +841,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0583E8DC0A8E49379FA9E06D0C84FD5E"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\5.wav"
-            "TargetName" = "8:5.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E8A1591281F49DC98C89F9195FAB97E"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_One.wav"
             "TargetName" = "8:Chinese_One.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0ED948D970D74D9D95589078ECC3E2B8"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E右手红外到位.wav"
-            "TargetName" = "8:E右手红外到位.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -1329,26 +981,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1BA63EFED5E04161B287FC04DF92A918"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\仪器自检.wav"
-            "TargetName" = "8:仪器自检.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1D3B2D4EF5C842FFBAEEA8C65003229F"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Four.wav"
@@ -1429,26 +1061,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2148A13755F94B7D87A19513D6FA54CA"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\自检故障.wav"
-            "TargetName" = "8:自检故障.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_23CE815AFEA64C0798238345B01475AF"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\dida1.wav"
@@ -1469,50 +1081,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_250B8CB648B544F2AAC9EE29A2E82D07"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\左手红外到位.wav"
-            "TargetName" = "8:左手红外到位.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_26A9A90EB04E4B5BB3ECE8B08AA412A7"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Decontaminate_please.wav"
             "TargetName" = "8:Chinese_Decontaminate_please.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_274971D43B0D4031B6350C540BF56C42"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\衣物没有污染.wav"
-            "TargetName" = "8:衣物没有污染.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -1669,57 +1241,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_33FB676CFBCC4166BF0FEBFEF10A6C0A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=0.0.0.0, Culture=en, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_33FB676CFBCC4166BF0FEBFEF10A6C0A"
-                    {
-                    "Name" = "8:HFM.resources.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\en\\HFM.resources.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_7119D8F0BFAC4BD6A84A4AAC9D16E7BA"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_357402E388FE44159374DA3CC3392224"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\衣物探头到位.wav"
-            "TargetName" = "8:衣物探头到位.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3583A9A819A84E1BADAED7EA1E8B8948"
             {
             "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\HFM.accdb"
@@ -1760,26 +1281,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_36E94D05F7784DDAAF81BFA9638E19D6"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\2.wav"
-            "TargetName" = "8:2.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_373573AEF037400293FE6AD120635148"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\RF_InPlace.png"
@@ -1806,46 +1307,6 @@
             "TargetName" = "8:RF_Disabled.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_390DB8F522E84F9C8B1F4332BD1A6824"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\3.wav"
-            "TargetName" = "8:3.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3984C3641DEC4FA7A32B805A6615766C"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\20.wav"
-            "TargetName" = "8:20.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1980,6 +1441,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3D246FADFE7B43C99BE1D7AAC6F6061A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=0.0.0.0, Culture=en, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_3D246FADFE7B43C99BE1D7AAC6F6061A"
+                    {
+                    "Name" = "8:HFM.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\en\\HFM.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7119D8F0BFAC4BD6A84A4AAC9D16E7BA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3DE39D5734444C45BA809BA3D849F5BC"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\RF_NotInPlace.png"
@@ -2100,26 +1592,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_45DDA528740B4ABE8FA901CDEE570A33"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\8.wav"
-            "TargetName" = "8:8.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_48494FE4049B4BD2831C286983E2FAFB"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Updating_background.wav"
@@ -2160,50 +1632,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C85AF827A43408C8208F79614A4066B"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E没有污染.wav"
-            "TargetName" = "8:E没有污染.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4F51A15E5E5B41D699CC05AE4635139E"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_fault.wav"
             "TargetName" = "8:English_fault.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5011E228616E4751AAF5631E4B4459F7"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\仪器正常.wav"
-            "TargetName" = "8:仪器正常.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -2226,26 +1658,6 @@
             "TargetName" = "8:RHP_Disabled.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_528A55D3AF10441C9652DFC05E3225AC"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\22.wav"
-            "TargetName" = "8:22.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2360,26 +1772,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_59DB763F9FE24CDB8991E1A2EE39DC47"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\23.wav"
-            "TargetName" = "8:23.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D082A3C392149CFB5612CCD061872C1"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\RHP_InPlace.png"
@@ -2404,26 +1796,6 @@
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\新建文本文档.txt"
             "TargetName" = "8:新建文本文档.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5DCDDEAC242E43F2A0BF6BC66AD79EC7"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\右手红外到位.wav"
-            "TargetName" = "8:右手红外到位.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -2560,6 +1932,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6D2D24467F854271BBEE7A8E57FC792C"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\ErrorLog\\errorlog.txt"
+            "TargetName" = "8:errorlog.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_06E5C9565A6A4B4CA95DADDFBE2B228B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F1DA3EB100A4593B6AF73A98B679E37"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\Background_Progress.jpg"
@@ -2580,72 +1972,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_710CA55F30A34326A6943F667544BEF3"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\衣物探头污染.wav"
-            "TargetName" = "8:衣物探头污染.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_71A46DB221FB4560BE69ECF6CD9BF339"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\Button_Down.jpg"
             "TargetName" = "8:Button_Down.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_71DF84C881A74E1CAAE4EB66B0C4FCE2"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E衣物探头污染.wav"
-            "TargetName" = "8:E衣物探头污染.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_730CBD0A40AD4F848641D83405A3A620"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E开始测量.wav"
-            "TargetName" = "8:E开始测量.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2700,46 +2032,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7833B3FCCF7247E6924D184388E67E62"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E仪器自检.wav"
-            "TargetName" = "8:E仪器自检.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_78ABEBAB5B644FB8B3809D7B398D1688"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\28.wav"
-            "TargetName" = "8:28.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C954A3B294848B38B08909A5E1EEB9E"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_Background_abnomal.wav"
@@ -2764,46 +2056,6 @@
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_Eight.wav"
             "TargetName" = "8:English_Eight.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_81986195ADFE463495BA1E80A2F94A3D"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E左手红外到位.wav"
-            "TargetName" = "8:E左手红外到位.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_86B70A52A19C49C8A7EA8DEB99F1C8EB"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\4.wav"
-            "TargetName" = "8:4.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -2911,106 +2163,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8EB0BC70D453436299D283F926643929"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\24.wav"
-            "TargetName" = "8:24.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_909A3AA1AFB340F09FDC24FD83DFEDD6"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\26.wav"
-            "TargetName" = "8:26.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9181F6CB375E45F781F0AE13296B1234"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\本底异常.wav"
-            "TargetName" = "8:本底异常.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_92BB3F21CBE043D788D9413A2B0E7BBC"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\25.wav"
-            "TargetName" = "8:25.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_93DE2D91226C494F963999FC23985833"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E衣物探头到位.wav"
-            "TargetName" = "8:E衣物探头到位.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_94DFCF432469457A921482B579A0CB5D"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_Left_hand_in_place_please_measure_again.wav"
@@ -3051,150 +2203,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9755F9F0A16341B9AD8EFDEB9F17797F"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\ReadMe（名称对应内容）.text"
-            "TargetName" = "8:ReadMe（名称对应内容）.text"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9864B41D117F4332B0708605075E9159"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E自检故障.wav"
-            "TargetName" = "8:E自检故障.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9AB67A0C677F41CB968E759BE2C61A9C"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Self-checking_fault.wav"
             "TargetName" = "8:Chinese_Self-checking_fault.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9AEA140F584142AFB0CD9526298D5058"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\没有污染.wav"
-            "TargetName" = "8:没有污染.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B368A7AACE04AC3A79FA19448F39F69"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\27.wav"
-            "TargetName" = "8:27.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9FB99CDB7F284421957E1DEBFA8BFB30"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\右手移动.wav"
-            "TargetName" = "8:右手移动.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A24CCD6834DE4D1191FFBA34AE10503A"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\左手移动.wav"
-            "TargetName" = "8:左手移动.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A302B9702E334178B20DBBE996F81771"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\7.wav"
-            "TargetName" = "8:7.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -3237,26 +2249,6 @@
             "TargetName" = "8:LHP_NotInPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A6EE5868A5AF4787916279E643B407B5"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E本底测量.wav"
-            "TargetName" = "8:E本底测量.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3331,12 +2323,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B78B7C577DE44295B871EA65AA5E48FD"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B68A41484AAF4CA08C387FEC00210E5C"
             {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Five.wav"
-            "TargetName" = "8:Chinese_Five.wav"
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\CalibrationLog\\log.txt"
+            "TargetName" = "8:log.txt"
             "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Folder" = "8:_F0F85EFBD05046BE951A0C60CB84E39E"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3351,10 +2343,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B92C725D0B1448BEB4F22670681D9F3D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B78B7C577DE44295B871EA65AA5E48FD"
             {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\6.wav"
-            "TargetName" = "8:6.wav"
+            "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Five.wav"
+            "TargetName" = "8:Chinese_Five.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -3411,26 +2403,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB0377EA003D4F37931851008301F6C5"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E左手移动.wav"
-            "TargetName" = "8:E左手移动.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB780CF46B0044AB9D86676EFA6918FC"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\logo.ico"
@@ -3455,26 +2427,6 @@
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_Six.wav"
             "TargetName" = "8:English_Six.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BD40DC7CEF88493F9E262921AE57BB10"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\故障.wav"
-            "TargetName" = "8:故障.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -3551,72 +2503,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C2AD43F68EEE4334B9C098D104D6BD52"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\21.wav"
-            "TargetName" = "8:21.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C471B186207C49C49E12BC853BEDD55F"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\logo.png"
             "TargetName" = "8:logo.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C7B14A43F7CF4388A8D2CA218A4239CD"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\9.wav"
-            "TargetName" = "8:9.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C92D9D16894648E692BF0B5BB3F90015"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\29.wav"
-            "TargetName" = "8:29.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3691,26 +2583,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF49FC931C434691A3457525FE215F92"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E右手移动.wav"
-            "TargetName" = "8:E右手移动.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D06A9DE15DA64CDC8CFE95D58582E197"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\Fault_progress.jpg"
@@ -3735,26 +2607,6 @@
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_Seven.wav"
             "TargetName" = "8:English_Seven.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D24428E2D57440009964361517ACAA1D"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\1.wav"
-            "TargetName" = "8:1.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -3797,46 +2649,6 @@
             "TargetName" = "8:LF_InPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D52FE9C07BE04A5DA1A271CF8D77BD35"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\被测人员污染.wav"
-            "TargetName" = "8:被测人员污染.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DFF35CFC4025479DB8B34DE8AFFDD54D"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E故障.wav"
-            "TargetName" = "8:E故障.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3991,26 +2803,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ED423DF6FF214A898831B9E4BF4343EA"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E本底异常.wav"
-            "TargetName" = "8:E本底异常.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EF24A64C32244C64BDE60C28F266BC5D"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\foot-littl.jpg"
@@ -4035,26 +2827,6 @@
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Please_Flip_Palm_for_Measuring.wav"
             "TargetName" = "8:Chinese_Please_Flip_Palm_for_Measuring.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F23ED7E9F9A54EF6990EAEAE523BF0E6"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\E仪器正常.wav"
-            "TargetName" = "8:E仪器正常.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -4155,26 +2927,6 @@
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Left_hand_moved_please_measure_again.wav"
             "TargetName" = "8:Chinese_Left_hand_moved_please_measure_again.wav"
-            "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FB87371891BE4E9C86F6C14A34D90F22"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\10.wav"
-            "TargetName" = "8:10.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
@@ -4363,7 +3115,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HFM.v1.0"
         "ProductCode" = "8:{982FEBAD-9AE6-41F0-ADBC-DFDF251AB9EC}"
-        "PackageCode" = "8:{74BE03EB-6B70-4F3D-BB73-784EBFA36D68}"
+        "PackageCode" = "8:{54FFFF96-503F-478C-9616-6701B8DDD4F7}"
         "UpgradeCode" = "8:{E5DED200-49C6-461D-BC4D-557359A3ACF3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -4483,7 +3235,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2D5385658AEE495182143A5EC4593A0C"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E6DA9DDAD7944BFC9224DE17F394C8C8"
             {
             "Name" = "8:HFM"
             "Arguments" = "8:"
@@ -4491,7 +3243,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_22857F5F6BEA4E2C84C3DFF82B8E673B"
+            "Target" = "8:_4C0AB074DA86459B8B3CDA1CB460997B"
             "Folder" = "8:_DF8CC310BF59498EA50CFF9D731FEC05"
             "WorkingFolder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
             "Icon" = "8:_3C0648E17C7A4C98BD7443F7457E4C4B"
@@ -4896,7 +3648,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_22857F5F6BEA4E2C84C3DFF82B8E673B"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4C0AB074DA86459B8B3CDA1CB460997B"
             {
             "SourcePath" = "8:..\\..\\HFM\\obj\\Debug\\HFM.exe"
             "TargetName" = "8:"
