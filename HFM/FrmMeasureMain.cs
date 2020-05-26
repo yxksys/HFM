@@ -240,7 +240,7 @@ namespace HFM
             //在界面中显示当前系统时间
             LblTime.Text = DateTime.Now.ToLongTimeString();
             //在界面中显示“仪器名称”、“仪器编号”、“IP地址及端口”等信息
-            /*杨旭锴修改仪器名称中英文切换
+            /*yxk修改仪器名称中英文切换
              */
             Tools tools = new Tools();//实例化工具类，中英文切换需要
             if (isEnglish==true)
@@ -1109,12 +1109,14 @@ namespace HFM
                                     //探测主界面的探测结果显示区域显示衣物污染
                                     if (isEnglish)
                                     {
-                                        TxtShowResult.Text +=string.Format("Clothing Contaminated,Preset:{0}Actual:{1}\r\n", smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2 ? clothesProbeParmeter[0].Alarm_2 : clothesProbeParmeter[0].Alarm_1, smoothedDataOfClothes.ToString("F1"));
+                                        //yxk修改：去掉+号
+                                        TxtShowResult.Text =string.Format("Clothing Contaminated,Preset:{0}Actual:{1}\r\n", smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2 ? clothesProbeParmeter[0].Alarm_2 : clothesProbeParmeter[0].Alarm_1, smoothedDataOfClothes.ToString("F1"));
                                         player.SoundLocation = appPath + "\\Audio\\English_Decontaminate_please.wav";
                                     }
                                     else
                                     {
-                                        TxtShowResult.Text +=string.Format("衣物污染，设置值：{0}测量值：{0}\r\n", smoothedDataOfClothes> clothesProbeParmeter[0].Alarm_2? clothesProbeParmeter[0].Alarm_2: clothesProbeParmeter[0].Alarm_1, smoothedDataOfClothes.ToString("F1"));
+                                        //yxk修改：去掉+号
+                                        TxtShowResult.Text =string.Format("衣物污染，设置值：{0}测量值：{0}\r\n", smoothedDataOfClothes> clothesProbeParmeter[0].Alarm_2? clothesProbeParmeter[0].Alarm_2: clothesProbeParmeter[0].Alarm_1, smoothedDataOfClothes.ToString("F1"));
                                         //语音提示被测人员污染
                                         player.SoundLocation = appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
                                     }
@@ -2101,6 +2103,7 @@ namespace HFM
                             //calculatedMeasureDataS[i].Alpha = 0;
                             //calculatedMeasureDataS[i].Beta = 0;
                         }
+                        platformState = PlatformState.ReadyToMeasure;//yxk修改未通过运行状态改为本底测量
                     }
                     else//本底检测未通过
                     {
@@ -2127,6 +2130,7 @@ namespace HFM
                         AddErrorData(errRecordS);
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
+                        platformState = PlatformState.BackGrouneMeasure;//yxk修改未通过运行状态改为本底测量
                     }
                     for (int i = 0; i < channelS.Count; i++)
                     {
@@ -2134,7 +2138,7 @@ namespace HFM
                         calculatedMeasureDataS[i].Alpha = 0;
                         calculatedMeasureDataS[i].Beta = 0;
                     }
-                    platformState = PlatformState.BackGrouneMeasure;
+                    //platformState = PlatformState.BackGrouneMeasure;
                     //重新启动本底测量计时
                     stateTimeStart = System.DateTime.Now.AddSeconds(1);
                 }
@@ -2286,6 +2290,7 @@ namespace HFM
                                 {
                                     if (isHandTested == 0)//手部第一次测量（手心）、左脚、右脚
                                     {
+                                        //pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit, calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2?Tools.UnitConvertCPSTo(probeParmeterNow[0].Alarm_2.ToString,systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea).ToString : probeParmeterNow[0].Alarm_1.ToString());
                                         pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit, calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2? probeParmeterNow[0].Alarm_2.ToString(): probeParmeterNow[0].Alarm_1.ToString());
                                         pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Perset:{3};", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit, calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2 ? probeParmeterNow[0].Alarm_2.ToString() : probeParmeterNow[0].Alarm_1.ToString());
                                         //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
@@ -2549,14 +2554,16 @@ namespace HFM
                         if (isEnglish)
                         {                            
                             //测量结果显示区域提示被测人员污染，请去污
-                            TxtShowResult.Text +=string.Format("Decontaminate, please!{0}\r\n", pollutionRecord_E);
+                            TxtShowResult.Text =string.Format("Decontaminate, please!{0}\r\n", pollutionRecord_E);//yxk修改：去掉+号
+                            pollutionRecord_E = "";//yxk修改：清空信息
                             //语音提示被测人员污染
                             player.SoundLocation = appPath + "\\Audio\\English_Decontaminate_please.wav";
                         }
                         else
                         {                            
                             //测量结果显示区域提示被测人员污染，请去污
-                            TxtShowResult.Text +=string.Format("被测人员污染，请去污！{0}\r\n", pollutionRecord);
+                            TxtShowResult.Text =string.Format("被测人员污染，请去污！{0}\r\n", pollutionRecord);//yxk修改：去掉+号
+                            pollutionRecord = "";//yxk修改：清空信息
                             //语音提示被测人员污染
                             player.SoundLocation = appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
                             player.Load();
@@ -3964,8 +3971,10 @@ namespace HFM
                     //}
                     //恢复仪器自检状态背景
                     PnlSelfCheck.BackColor = Color.Transparent;
-                if (isLoadProgressPic[0] == false)
+                if (isLoadProgressPic[0] == false|| LblCheck.Text == "仪器故障")//yxk：增加仪器故障判断
                 {
+                    //yxk:增加文本显示
+                    LblCheck.Text = "仪器自检";
                     SetProgressPicFlag(0);//仪器自检进度图片已经被加载标志设置为true，其它为false
                     //仪器自检状态标签设置为进度图片
                     PnlSelfCheck.BackgroundImage = Image.FromFile(appPath + "\\Images\\progress.png");
