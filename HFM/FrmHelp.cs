@@ -27,11 +27,7 @@ namespace HFM
             {
                 _commPort.Close();
             }
-
-            
-
-            
-
+            Tools tools = new Tools();//实例化工具类：仪器名称中英文转换使用使用
             if (systemParameter.IsEnglish==false)
             {
                 //仪器名称
@@ -46,7 +42,8 @@ namespace HFM
             else//英文
             {
                 //仪器名称
-                LblName.Text = "Model:" + factoryParameter.SoftName;
+                LblName.Text = "Model:" + tools.EnSoftName(factoryParameter.SoftName);
+                //LblName.Text = "Model:" + factoryParameter.SoftName;
                 //软件版本
                 LblVersions.Text = "Version:" + "V1.0";
                 //联系方式

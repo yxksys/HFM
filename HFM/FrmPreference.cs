@@ -333,16 +333,16 @@ namespace HFM
                 }
             }
             //未启用则数据修改只能对左手进行
-            if (factoryParameter.IsDoubleProbe!=true)
-            {
-                //使外手心同步与内手心
-                ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
-                ((TextBox)a[3]).Text = ((TextBox)a[2]).Text;
-                ((TextBox)a[1]).Enabled = false;
-                ((TextBox)a[3]).Enabled = false;
-                ((Label)label[1]).Enabled = false;
-                ((Label)label[3]).Enabled = false;
-            }
+            //if (factoryParameter.IsDoubleProbe!=true)
+            //{
+            //    //使外手心同步与内手心
+            //    ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
+            //    ((TextBox)a[3]).Text = ((TextBox)a[2]).Text;
+            //    ((TextBox)a[1]).Enabled = false;
+            //    ((TextBox)a[3]).Enabled = false;
+            //    ((Label)label[1]).Enabled = false;
+            //    ((Label)label[3]).Enabled = false;
+            //}
             #endregion
 
             #region 设备配置
@@ -2249,6 +2249,7 @@ namespace HFM
             CmbSoftName.Items.Add("HM100TS手部表面污染监测仪");
             CmbSoftName.Items.Add("CRM100壁挂式污染监测仪");
             CmbSoftName.Items.Add("FM100脚部表面污染监测仪");
+            CmbSoftName.Items.Add("RM-AP报警盘");
         }
         #endregion
 

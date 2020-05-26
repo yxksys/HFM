@@ -526,5 +526,35 @@ namespace HFM.Components
         }
         #endregion
 
+        #region 仪器名称中英文转换
+        /// <summary>
+        /// 仪器名称中英文使用
+        /// </summary>
+        /// <param name="cnSoftname"></param>
+        /// <returns></returns>
+        public string EnSoftName(string cnSoftname)
+        {
+            switch (cnSoftname)
+            {
+                case "HFM100手脚表面污染监测仪":
+                    return "HFM100 Hand-Foot Monitor";
+                case "HFM100TS手脚表面污染监测仪":
+                    return "HFM100TS Two-Step Hand-Foot Monitor";
+                case "HM100手部污染监测仪":
+                    return "HM100 Hand Monitor";
+                case "HM100TS手部污染监测仪":
+                    return "HFM100 Two-Step Hand Monitor";
+                case "CRM100壁挂式污染监测仪":
+                    return "CRM100 Radiation Monitor";
+                case "FM100脚部污染监测仪":
+                    return "FM100 Foot Monitor";
+                case "RM-AP报警盘":
+                    return "RM-AP Alarm Panel";
+                default:
+                    return "";
+            }
+        }
+        #endregion
+
     }
 }
