@@ -47,7 +47,7 @@ namespace HFM.Properties {
         }
         
         /// <summary>
-        ///   重写当前线程的 CurrentUICulture 属性
+        ///   使用此强类型资源类，为所有资源查找
         ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -91,6 +91,15 @@ namespace HFM.Properties {
         }
         
         /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Background_abnomal {
+            get {
+                return ResourceManager.GetStream("Chinese_Background_abnomal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap clothes {
@@ -127,6 +136,15 @@ namespace HFM.Properties {
             get {
                 object obj = ResourceManager.GetObject("Contaminated_progress", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Background_abnomal {
+            get {
+                return ResourceManager.GetStream("English_Background_abnomal", resourceCulture);
             }
         }
         
