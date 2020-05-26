@@ -238,9 +238,19 @@ namespace HFM
         private void DisplayInit()
         {            
             //在界面中显示当前系统时间
-            LblTime.Text = DateTime.Now.ToLongTimeString();            
+            LblTime.Text = DateTime.Now.ToLongTimeString();
             //在界面中显示“仪器名称”、“仪器编号”、“IP地址及端口”等信息
-            LblName.Text = factoryParameter.SoftName;
+            /*杨旭锴修改仪器名称中英文切换
+             */
+            Tools tools = new Tools();//实例化工具类，中英文切换需要
+            if (isEnglish==true)
+            {
+                LblName.Text =tools.EnSoftName( factoryParameter.SoftName);
+            }
+            else
+            {
+                LblName.Text = factoryParameter.SoftName;
+            }
             LblIP.Text = factoryParameter.IpAddress + " " + factoryParameter.PortNumber;//yxk  。。。
             LblSN.Text = factoryParameter.InstrumentNum;
             //获得当前系统应用路径
