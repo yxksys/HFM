@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Globalization;
 using HFM.Components;
+using HFM.Properties;
 
 namespace HFM
 {
@@ -91,7 +92,8 @@ namespace HFM
         {
             OperatingNormally=16,
             OperatingFaulted=32,
-            OperatingContaminated=64
+            OperatingContaminated_1=63,
+            OperatingContaminated_2=64
         }
         byte deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);//设备当前状态        
         DateTime stateTimeStart;//系统当前运行状态的开始计时变量                
@@ -821,8 +823,9 @@ namespace HFM
                 //向下位机下发“C”指令码
                 byte[] buffMessage = new byte[62];
                 buffMessage[0] = Convert.ToByte('C');
-                //将当前监测状态打包到报文最后一个字节
-                buffMessage[61] = Convert.ToByte(deviceStatus);
+
+                //将当前监测状态打包到报文最后一个字节                
+                buffMessage[61] = deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_1) ? Convert.ToByte(DeviceStatus.OperatingFaulted) : deviceStatus;
                 if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)
                 {
                     //延时
@@ -1081,11 +1084,11 @@ namespace HFM
                                     //将设备监测状态设置为“污染”
                                     if (smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2)
                                     {
-                                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated);
+                                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_2);
                                     }
                                     else
                                     {
-                                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
+                                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
                                     }
                                     //仪器人员污染状态背景色设置为污染
                                     PnlContaminated.BackgroundImage = Image.FromFile(appPath + "\\Images\\Contaminated_progress.png");                                    
@@ -1209,7 +1212,7 @@ namespace HFM
                     }
                     //对衣物探头测量数据进行平滑处理
                     smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);
-                    if (platformState == PlatformState.BackGrouneMeasure || platformState == PlatformState.Measuring)
+                    if (platformState == PlatformState.BackGrouneMeasure || platformState == PlatformState.ReadyToMeasure || platformState == PlatformState.Measuring)
                     {
                         //将当前平滑处理后的检测值作为本底值
                         baseDataOfClothes = smoothedDataOfClothes;
@@ -1234,14 +1237,14 @@ namespace HFM
             }
 
             //人员污染同时报警时间小于系统参数设置的报警时间长度，则直接返回等待
-            if (((deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated)) || isClothesContaminated == true) && ((DateTime.Now - alarmTimeStart).Seconds < alarmTimeSet))
+            if (((deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_1)) || (deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_2)) || isClothesContaminated == true) && ((DateTime.Now - alarmTimeStart).Seconds < alarmTimeSet))
             {
                 return;
             }
             else//报警时间超过系统参数设置的报警时间长度，则监测状态恢复为正常状态                       
             {
                 //如果人员污染同时报警时间大于系统参数设置的报警时间长度，则进行本底测量
-                if ((deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated)) && ((DateTime.Now - alarmTimeStart).Seconds >= alarmTimeSet))
+                if (((deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_1))|| (deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_2))) && ((DateTime.Now - alarmTimeStart).Seconds >= alarmTimeSet))
                 {
                     //恢复检测状态为正常
                     deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
@@ -2097,7 +2100,21 @@ namespace HFM
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
                         //将故障信息errRecord写入数据库
                         AddErrorData(errRecordS);
-                        //界面显示“本底测量出现故障”同时进行语音提示                        
+                        //界面显示“本底测量出现故障”同时进行语音提示   
+                        TxtShowResult.Text += "本底测量故障\r\n";                        
+                        //语音提示故障
+                        if (isEnglish)
+                        {
+                            player.Stream= Resources.English_Background_abnomal;
+                        }
+                        else
+                        {
+                            player.Stream =Resources.Chinese_Background_abnomal;
+                        }
+                        player.LoadAsync();
+                        player.PlaySync();
+                        //将故障信息errRecord写入数据库
+                        AddErrorData(errRecordS);
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
@@ -2107,6 +2124,7 @@ namespace HFM
                         calculatedMeasureDataS[i].Alpha = 0;
                         calculatedMeasureDataS[i].Beta = 0;
                     }
+                    platformState = PlatformState.BackGrouneMeasure;
                     //重新启动本底测量计时
                     stateTimeStart = System.DateTime.Now.AddSeconds(1);
                 }
@@ -2310,13 +2328,13 @@ namespace HFM
                                     //当前通道测量结果显示文本框背景设置为Alarm2
                                     label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
                                     //将设备监测状态设置为“污染”
-                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated);
+                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_2);
                                 }
                                 else
                                 {
                                     label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
                                     //将设备监测状态设置为“污染”
-                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
+                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
                                 }
                             }
                         }
@@ -2390,12 +2408,12 @@ namespace HFM
                                 {
                                     //当前通道测量结果显示文本框背景设置为Alarm2
                                     label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_2;
-                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated);
+                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_2);
                                 }
                                 else
                                 {
                                     label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
-                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
+                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
                                 }
                             }
                         }
@@ -2712,7 +2730,7 @@ namespace HFM
                             //启动本底测量计时 
                             stateTimeStart = System.DateTime.Now;
                             //Thread.Sleep(1000);
-                            return;
+                            //return;
                         }
                         else
                         {
@@ -2749,7 +2767,7 @@ namespace HFM
                             stateTimeSet = systemParameter.SmoothingTime;
                             //重新启动测量计时 
                             stateTimeStart = System.DateTime.Now;
-                            return;
+                            //return;
                         }
                     }
                     else//有污染,转到本底测量状态
@@ -2805,8 +2823,12 @@ namespace HFM
                         //启动本底测量计时 
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                         //Thread.Sleep(1000);
-                        return;
-                    }                    
+                        //return;
+                    }  
+                    if(TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) + 1>16)
+                    {
+                        TxtShowResult.Text = "";
+                    }
                 }
             }
         }
