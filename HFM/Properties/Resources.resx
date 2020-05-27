@@ -247,7 +247,103 @@
   <data name="Chinese_Background_abnomal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Audio\Chinese_Background_abnomal.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Chinese_Background_measure" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Background_measure.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Decontaminate_please" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Decontaminate_please.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_frisker_In_place" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_frisker_In_place.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_frisker_In_place_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_frisker_In_place_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Left_hand_in_place_please_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Left_hand_in_place_please_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Left_hand_moved_please_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Left_hand_moved_please_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_NoContamination_please_frisker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_NoContamination_please_frisker.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_NoContamination_please_leave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_NoContamination_please_leave.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Please_Flip_Palm_for_Measuring" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Please_Flip_Palm_for_Measuring.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Ready" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Ready.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_right_hand_in_place_please_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_right_hand_in_place_please_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_right_hand_moved_please_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_right_hand_moved_please_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Self_checking" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Self_checking.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Self_checking_fault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Self-checking_fault.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Start_counting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Start_counting.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chinese_Updating_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\Chinese_Updating_background.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dida1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\dida1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dida2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\dida2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="English_Background_abnomal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Audio\English_Background_abnomal.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_Decontaminate_please" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_Decontaminate_please.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_frisker_In_place" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_frisker_In_place.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_Left_hand_in_place_please_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_Left_hand_in_place_please_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_Left_hand_moved_please_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_Left_hand_moved_please_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_NoContamination_please_frisker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_NoContamination_please_frisker.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_NoContamination_please_leave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_NoContamination_please_leave.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_please_flip_palm_for_measuring" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_please_flip_palm_for_measuring.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_Ready" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_Ready.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_right_hand_in_place_please_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_right_hand_in_place_please_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_right_hand_moved_please_measure_again" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_right_hand_moved_please_measure_again.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_Self_checking" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_Self_checking.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_Self_checking_fault" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_Self-checking_fault.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_Start_counting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_Start_counting.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="English_Updating_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Audio\English_Updating_background.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
