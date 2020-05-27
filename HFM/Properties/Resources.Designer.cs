@@ -100,6 +100,150 @@ namespace HFM.Properties {
         }
         
         /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Background_measure {
+            get {
+                return ResourceManager.GetStream("Chinese_Background_measure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Decontaminate_please {
+            get {
+                return ResourceManager.GetStream("Chinese_Decontaminate_please", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_frisker_In_place {
+            get {
+                return ResourceManager.GetStream("Chinese_frisker_In_place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_frisker_In_place_measure_again {
+            get {
+                return ResourceManager.GetStream("Chinese_frisker_In_place_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Left_hand_in_place_please_measure_again {
+            get {
+                return ResourceManager.GetStream("Chinese_Left_hand_in_place_please_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Left_hand_moved_please_measure_again {
+            get {
+                return ResourceManager.GetStream("Chinese_Left_hand_moved_please_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_NoContamination_please_frisker {
+            get {
+                return ResourceManager.GetStream("Chinese_NoContamination_please_frisker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_NoContamination_please_leave {
+            get {
+                return ResourceManager.GetStream("Chinese_NoContamination_please_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Please_Flip_Palm_for_Measuring {
+            get {
+                return ResourceManager.GetStream("Chinese_Please_Flip_Palm_for_Measuring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Ready {
+            get {
+                return ResourceManager.GetStream("Chinese_Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_right_hand_in_place_please_measure_again {
+            get {
+                return ResourceManager.GetStream("Chinese_right_hand_in_place_please_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_right_hand_moved_please_measure_again {
+            get {
+                return ResourceManager.GetStream("Chinese_right_hand_moved_please_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Self_checking {
+            get {
+                return ResourceManager.GetStream("Chinese_Self_checking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Self_checking_fault {
+            get {
+                return ResourceManager.GetStream("Chinese_Self_checking_fault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Start_counting {
+            get {
+                return ResourceManager.GetStream("Chinese_Start_counting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Updating_background {
+            get {
+                return ResourceManager.GetStream("Chinese_Updating_background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap clothes {
@@ -142,9 +286,153 @@ namespace HFM.Properties {
         /// <summary>
         ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream dida1 {
+            get {
+                return ResourceManager.GetStream("dida1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream dida2 {
+            get {
+                return ResourceManager.GetStream("dida2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream English_Background_abnomal {
             get {
                 return ResourceManager.GetStream("English_Background_abnomal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Decontaminate_please {
+            get {
+                return ResourceManager.GetStream("English_Decontaminate_please", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_frisker_In_place {
+            get {
+                return ResourceManager.GetStream("English_frisker_In_place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Left_hand_in_place_please_measure_again {
+            get {
+                return ResourceManager.GetStream("English_Left_hand_in_place_please_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Left_hand_moved_please_measure_again {
+            get {
+                return ResourceManager.GetStream("English_Left_hand_moved_please_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_NoContamination_please_frisker {
+            get {
+                return ResourceManager.GetStream("English_NoContamination_please_frisker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_NoContamination_please_leave {
+            get {
+                return ResourceManager.GetStream("English_NoContamination_please_leave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_please_flip_palm_for_measuring {
+            get {
+                return ResourceManager.GetStream("English_please_flip_palm_for_measuring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Ready {
+            get {
+                return ResourceManager.GetStream("English_Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_right_hand_in_place_please_measure_again {
+            get {
+                return ResourceManager.GetStream("English_right_hand_in_place_please_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_right_hand_moved_please_measure_again {
+            get {
+                return ResourceManager.GetStream("English_right_hand_moved_please_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Self_checking {
+            get {
+                return ResourceManager.GetStream("English_Self_checking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Self_checking_fault {
+            get {
+                return ResourceManager.GetStream("English_Self_checking_fault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Start_counting {
+            get {
+                return ResourceManager.GetStream("English_Start_counting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Updating_background {
+            get {
+                return ResourceManager.GetStream("English_Updating_background", resourceCulture);
             }
         }
         
