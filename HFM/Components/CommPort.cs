@@ -57,7 +57,7 @@ namespace HFM.Components
 		private const int INVALID_HANDLE_value = -1; 
        
 		[StructLayout(LayoutKind.Sequential)] 
-		private struct DCB  
+		public struct DCB  
 		{ 
 			//taken from c struct in platform sdk  
 			public int DCBlength;           // sizeof(DCB)  
@@ -444,8 +444,21 @@ namespace HFM.Components
                 result = PurgeComm(hComm, 0);
             }
             return result;
-        }        
+        }
         #endregion
 
+        #region 获得当前串口状态
+        //public bool GetCommState()
+        //{
+        //    if (hComm != INVALID_HANDLE_value)
+        //    {
+        //        return GetCommState(hComm);
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }           
+        //}
+        #endregion
     }
 }

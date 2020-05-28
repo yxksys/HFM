@@ -282,11 +282,11 @@ namespace HFM
         #region 启动加载
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            Tools tools = new Tools();
+            //Tools tools = new Tools();
             if (isEnglish == true)
             {
-                Text = tools.EnSoftName(_factoryParameter.SoftName);            //头部软件名称显示
-                Tsslbl_Name.Text = tools.EnSoftName(_factoryParameter.SoftName);//底部软件名称显示
+                Text = Tools.EnSoftName(_factoryParameter.SoftName);            //头部软件名称显示
+                Tsslbl_Name.Text = Tools.EnSoftName(_factoryParameter.SoftName);//底部软件名称显示
             }
             else
             {

@@ -287,7 +287,14 @@ namespace HFM
             //仪器编号
             TxtInstrumentNum.Text = factoryParameter.InstrumentNum.ToString();
             //软件名称
-            CmbSoftName.Text = factoryParameter.SoftName;
+            if (_isEnglish==true)
+            {
+                CmbSoftName.Text = Tools.EnSoftName(factoryParameter.SoftName);
+            }
+            else
+            {
+                CmbSoftName.Text = factoryParameter.SoftName;
+            }            
             //探测类型
             CmbUnclideType.Text = factoryParameter.MeasureType;
 
@@ -823,6 +830,7 @@ namespace HFM
                             {
                                 MessageBox.Show("读取完成.");
                             }
+                            TabPresence.Enabled = true;
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -1107,10 +1115,10 @@ namespace HFM
             FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
             factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
             factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
-            Tools tools = new Tools();
+           //Tools tools = new Tools();
             if (_isEnglish==true)
             {
-                factoryParameterBtn.SoftName = tools.CnSoftName(CmbSoftName.Text);
+                factoryParameterBtn.SoftName = Tools.CnSoftName(CmbSoftName.Text);
             }
             else
             {
@@ -1677,9 +1685,9 @@ namespace HFM
         private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
         {
             
-            //当前发送报文类型换成p写入
+            //当前发送报文类型换成p读取
             _messageType = MessageType.PRead;
-            
+            TabPresence.Enabled = false;
             //判断串口是否打开
             if (_commPort.Opened == true)
             {
@@ -1698,6 +1706,7 @@ namespace HFM
             {
                 //错误提示
                 _tools.PrompMessage(2);
+                TabPresence.Enabled = true;
                 return;
             }
         }

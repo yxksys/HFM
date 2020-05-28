@@ -139,161 +139,161 @@ namespace HFM.Components
                 case 1:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Port open error! Please check whether the communication is normal！", @"Message");
+                        MessageBox.Show(@"Port open error! Please check whether the communication is normal！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"端口打开错误！请检查通讯是否正常。！", @"提示");
+                        MessageBox.Show(@"端口打开错误！请检查通讯是否正常。！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 2:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Communication error! Please check whether the communication is normal.", @"Message");
+                        MessageBox.Show(@"Communication error! Please check whether the communication is normal.", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"通讯错误！请检查通讯是否正常！", @"提示");
+                        MessageBox.Show(@"通讯错误！请检查通讯是否正常！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 3:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"COM Fault!", @"Message");
+                        MessageBox.Show(@"COM Fault!", @"Message",MessageBoxButtons.OK, MessageBoxIcon.Warning,MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"通信故障,无法读取数据!", @"提示");
+                        MessageBox.Show(@"通信故障,无法读取数据!", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 4:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Login Failed！", @"Message");
+                        MessageBox.Show(@"Login Failed！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"登录失败，无法进行操作！", @"提示");
+                        MessageBox.Show(@"登录失败，无法进行操作！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 5:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"No Channel Selected！", @"Message");
+                        MessageBox.Show(@"No Channel Selected！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"没有选择通道！", @"提示");
+                        MessageBox.Show(@"没有选择通道！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 6:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"No High Voltage or threshold Inputed!", @"Message");
+                        MessageBox.Show(@"No High Voltage or threshold Inputed!", @"Message",MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"高压或者阈值数据没有输入。", @"提示");
+                        MessageBox.Show(@"高压或者阈值数据没有输入。", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 7:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Alpha Threshold range 0-1000mV,Input Error!", @"Message");
+                        MessageBox.Show(@"Alpha Threshold range 0-1000mV,Input Error!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"阈值范围-2000mV,α阈值输入有误", @"提示");
+                        MessageBox.Show(@"阈值范围-2000mV,α阈值输入有误", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 8:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Beta Threshold range 0-1000mV,Input Error!", @"Message");
+                        MessageBox.Show(@"Beta Threshold range 0-1000mV,Input Error!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"阈值范围-2000mV,β阈值输入有误", @"提示");
+                        MessageBox.Show(@"阈值范围-2000mV,β阈值输入有误", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 9:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Please select corresponding channel!", @"Message");
+                        MessageBox.Show(@"Please select corresponding channel!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"请选择相应通道。", @"提示");
+                        MessageBox.Show(@"请选择相应通道。", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 10:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Please select nuclide!", @"Message");
+                        MessageBox.Show(@"Please select nuclide!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"请选择核素类型！", @"提示");
+                        MessageBox.Show(@"请选择核素类型！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 11:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Please enter the emissivity,And not equal to 0!", @"Message");
+                        MessageBox.Show(@"Please enter the emissivity,And not equal to 0!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"请输入发射率,并且不等于0！", @"提示");
+                        MessageBox.Show(@"请输入发射率,并且不等于0！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 12:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Background measuring, confirm away from source?", @"Message");
+                        MessageBox.Show(@"Background measuring, confirm away from source?", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示");
+                        MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 13:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Please insert the source!", @"Message");
+                        MessageBox.Show(@"Please insert the source!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"请放入放射源！", @"提示");
+                        MessageBox.Show(@"请放入放射源！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 14:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Please enter a number！", @"Message");
+                        MessageBox.Show(@"Please enter a number！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"请输入数字！", @"提示");
+                        MessageBox.Show(@"请输入数字！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 case 15:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"HV range 0-1000V,Input Error!", @"Message");
+                        MessageBox.Show(@"HV range 0-1000V,Input Error!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"高压输入范围-1000V,高压输入有误！", @"提示");
+                        MessageBox.Show(@"高压输入范围-1000V,高压输入有误！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
                 default:
                     if (isEnglish == true)
                     {
-                        MessageBox.Show(@"Error", @"Message");
+                        MessageBox.Show(@"Error", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
-                        MessageBox.Show(@"错误，请检查！", @"提示");
+                        MessageBox.Show(@"错误，请检查！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
             }
@@ -532,7 +532,7 @@ namespace HFM.Components
         /// </summary>
         /// <param name="cnSoftname">中文名称</param>
         /// <returns>英文名称</returns>
-        public string EnSoftName(string cnSoftname)
+        public static string EnSoftName(string cnSoftname)
         {
             switch (cnSoftname)
             {
@@ -554,7 +554,7 @@ namespace HFM.Components
                     return "";
             }
         }
-        public string CnSoftName(string enSoftname)
+        public static string CnSoftName(string enSoftname)
         {
             switch (enSoftname)
             {
