@@ -1861,7 +1861,7 @@ namespace HFM
                             player.Stream = Resources.Chinese_Ready;// appPath + "\\Audio\\Chinese_Ready.wav";
                         }
                         player.LoadAsync();
-                        player.PlaySync();
+                        player.PlaySync();                        
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //系统参数中，将上次本底测量后已测量人数清零                        
@@ -2103,7 +2103,7 @@ namespace HFM
                         player.Stream = Resources.Chinese_Start_counting;// appPath + "\\Audio\\Chinese_Start_counting.wav";
                     }
                     player.Load();
-                    player.Play();
+                    player.PlaySync();
                     Thread.Sleep(100);
                     //左右手状态区域显示正常
                     if (isEnglish)
@@ -2660,9 +2660,14 @@ namespace HFM
             //运行状态为“测量结束”
             if (platformState == PlatformState.Result)
             {
-                if (TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) + 1 > 16)
+                if (TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) > 16)
                 {
-                    TxtShowResult.Text = "";
+                    int start=TxtShowResult.GetFirstCharIndexFromLine(0);
+                    int end=TxtShowResult.GetFirstCharIndexFromLine(TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) - 16);
+                    TxtShowResult.Select(start,end);
+                    TxtShowResult.SelectedText = "";
+                    //TxtShowResult.SelectionStart = TxtShowResult.Text.Length;
+                    //TxtShowResult.ScrollToCaret();
                 }
                 isTestedEnd = false;//恢复检测完成状态标志为false，为下次检测做准备
                 ClearProgressPicFlag();//检测完成，将窗体顶部状态图片加载标志全部设置为false                
@@ -3626,7 +3631,7 @@ namespace HFM
         private void TmrDispTime_Tick(object sender, EventArgs e)
         {
             //更新当前显示时间
-            LblTime.Text = DateTime.Now.ToLongTimeString();
+            LblTime.Text = DateTime.Now.ToLongTimeString();            
             //监测串口状态，如果串口关闭则打开
             if (bkWorkerReceiveData.IsBusy)
             {
@@ -4116,6 +4121,12 @@ namespace HFM
                 //stateTimeStart = DateTime.Now;//重新启动计时
             }
             isFrmDisplayed = !isFrmDisplayed;
+        }
+
+        private void TxtShowResult_TextChanged(object sender, EventArgs e)
+        {
+            TxtShowResult.SelectionStart = TxtShowResult.Text.Length;
+            TxtShowResult.ScrollToCaret();
         }
     }
 }
