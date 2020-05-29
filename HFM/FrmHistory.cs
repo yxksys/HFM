@@ -85,10 +85,13 @@ namespace HFM
             /// 检测数据(英文)数据库查询所得
             /// </summary>
             IList<MeasureData> _measureDataEnglish = new MeasureData().GetData(true);
+            _measureDataEnglish = _measureDataEnglish.OrderByDescending(o => o.MeasureDate).ToList();
             /// <summary>
             /// 检测数据(中文)数据库查询所得
             /// </summary>
             IList<MeasureData> _measureDataChinese = new MeasureData().GetData(false);
+            _measureDataChinese = _measureDataChinese.OrderByDescending(o => o.MeasureDate).ToList();
+            
             if (_systemParameter.IsEnglish)
             {
                 //遍历列表对象,取出数据按字段,添加到Dgv中
@@ -125,6 +128,7 @@ namespace HFM
             /// 刻度记录-数据库查询所得
             /// </summary>
             IList<Calibration> _calibrations = new Calibration().GetData();
+            _calibrations = _calibrations.OrderByDescending(o => o.CalibrationTime).ToList();
             //遍历列表对象,取出数据按字段,添加到Dgv中
             foreach (var calibration in _calibrations)
             {
@@ -156,10 +160,12 @@ namespace HFM
             /// 故障记录(英文)数据库查询所得
             /// </summary>
             IList<ErrorData> _errorDatasEnglish = new ErrorData().GetData(true);
+            _errorDatasEnglish = _errorDatasEnglish.OrderByDescending(o => o.ErrTime).ToList() ;
             /// <summary>
             /// 故障记录(中文)数据库查询所得
             /// </summary>
             IList<ErrorData> _errorDatasChinese = new ErrorData().GetData(false);
+            _errorDatasChinese = _errorDatasChinese.OrderByDescending(o => o.ErrTime).ToList();
             if (_systemParameter.IsEnglish)
             {
                 foreach (var errorData in _errorDatasEnglish)

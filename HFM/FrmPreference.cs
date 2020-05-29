@@ -287,7 +287,14 @@ namespace HFM
             //仪器编号
             TxtInstrumentNum.Text = factoryParameter.InstrumentNum.ToString();
             //软件名称
-            CmbSoftName.Text = factoryParameter.SoftName;
+            if (_isEnglish==true)
+            {
+                CmbSoftName.Text = Tools.EnSoftName(factoryParameter.SoftName);
+            }
+            else
+            {
+                CmbSoftName.Text = factoryParameter.SoftName;
+            }            
             //探测类型
             CmbUnclideType.Text = factoryParameter.MeasureType;
 
@@ -333,16 +340,16 @@ namespace HFM
                 }
             }
             //未启用则数据修改只能对左手进行
-            if (factoryParameter.IsDoubleProbe!=true)
-            {
-                //使外手心同步与内手心
-                ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
-                ((TextBox)a[3]).Text = ((TextBox)a[2]).Text;
-                ((TextBox)a[1]).Enabled = false;
-                ((TextBox)a[3]).Enabled = false;
-                ((Label)label[1]).Enabled = false;
-                ((Label)label[3]).Enabled = false;
-            }
+            //if (factoryParameter.IsDoubleProbe!=true)
+            //{
+            //    //使外手心同步与内手心
+            //    ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
+            //    ((TextBox)a[3]).Text = ((TextBox)a[2]).Text;
+            //    ((TextBox)a[1]).Enabled = false;
+            //    ((TextBox)a[3]).Enabled = false;
+            //    ((Label)label[1]).Enabled = false;
+            //    ((Label)label[3]).Enabled = false;
+            //}
             #endregion
 
             #region 设备配置
@@ -476,14 +483,14 @@ namespace HFM
                     {
                         DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
                     }
-                    DgvAlphaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
-                    DgvAlphaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
+                    DgvAlphaSet.Rows[index].Cells[1].Value =Math.Round( probeParameters[i].HBackground,3);
+                    DgvAlphaSet.Rows[index].Cells[2].Value = Math.Round(probeParameters[i].LBackground,3);
 
                     //污染警报根据系统测量参数中设定的测量单位显示数值
-                    DgvAlphaSet.Rows[index].Cells[3].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
+                    DgvAlphaSet.Rows[index].Cells[3].Value =Math.Round( Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea),3);
                     //高阶警报根据系统测量参数中设定的测量单位显示数值
-                    DgvAlphaSet.Rows[index].Cells[4].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
-                    DgvAlphaSet.Rows[index].Cells[5].Value = probeParameters[i].Efficiency;
+                    DgvAlphaSet.Rows[index].Cells[4].Value =Math.Round( Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea),3);
+                    DgvAlphaSet.Rows[index].Cells[5].Value =Math.Round( probeParameters[i].Efficiency,3);
                 }
                 //设备未启用(暂时不显示)
                 else
@@ -578,11 +585,11 @@ namespace HFM
                     {
                         DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
                     }
-                    DgvBetaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
-                    DgvBetaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
-                    DgvBetaSet.Rows[index].Cells[3].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
-                    DgvBetaSet.Rows[index].Cells[4].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
-                    DgvBetaSet.Rows[index].Cells[5].Value = probeParameters[i].Efficiency;
+                    DgvBetaSet.Rows[index].Cells[1].Value =Math.Round( probeParameters[i].HBackground,3);
+                    DgvBetaSet.Rows[index].Cells[2].Value = Math.Round(probeParameters[i].LBackground, 3);
+                    DgvBetaSet.Rows[index].Cells[3].Value = Math.Round(Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea), 3);
+                    DgvBetaSet.Rows[index].Cells[4].Value = Math.Round(Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea), 3);
+                    DgvBetaSet.Rows[index].Cells[5].Value = Math.Round(probeParameters[i].Efficiency, 3);
                 }
                 //设备未启用(暂时不显示)
                 else
@@ -823,6 +830,7 @@ namespace HFM
                             {
                                 MessageBox.Show("读取完成.");
                             }
+                            TabPresence.Enabled = true;
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -1107,8 +1115,15 @@ namespace HFM
             FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
             factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
             factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
-            factoryParameterBtn.SoftName = CmbSoftName.Text;
-            
+           //Tools tools = new Tools();
+            if (_isEnglish==true)
+            {
+                factoryParameterBtn.SoftName = Tools.CnSoftName(CmbSoftName.Text);
+            }
+            else
+            {
+                factoryParameterBtn.SoftName = CmbSoftName.Text;
+            }
             factoryParameterBtn.MeasureType = CmbUnclideType.Text;
             
             #endregion
@@ -1670,9 +1685,9 @@ namespace HFM
         private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
         {
             
-            //当前发送报文类型换成p写入
+            //当前发送报文类型换成p读取
             _messageType = MessageType.PRead;
-            
+            TabPresence.Enabled = false;
             //判断串口是否打开
             if (_commPort.Opened == true)
             {
@@ -1691,6 +1706,7 @@ namespace HFM
             {
                 //错误提示
                 _tools.PrompMessage(2);
+                TabPresence.Enabled = true;
                 return;
             }
         }
@@ -2242,13 +2258,28 @@ namespace HFM
         /// <param name="e"></param>
         private void CmbSoftName_DropDown(object sender, EventArgs e)
         {
-            CmbSoftName.Items.Clear();
-            CmbSoftName.Items.Add("HFM100手脚表面污染监测仪");
-            CmbSoftName.Items.Add("HFM100TS手脚表面污染监测仪");
-            CmbSoftName.Items.Add("HM100手部表面污染监测仪");
-            CmbSoftName.Items.Add("HM100TS手部表面污染监测仪");
-            CmbSoftName.Items.Add("CRM100壁挂式污染监测仪");
-            CmbSoftName.Items.Add("FM100脚部表面污染监测仪");
+            if (_isEnglish==true)
+            {
+                CmbSoftName.Items.Clear();
+                CmbSoftName.Items.Add("HFM100 Hand-Foot Monitor");
+                CmbSoftName.Items.Add("HFM100TS Two-Step Hand-Foot Monitor");
+                CmbSoftName.Items.Add("HM100 Hand Monitor");
+                CmbSoftName.Items.Add("HFM100 Two-Step Hand Monitor");
+                CmbSoftName.Items.Add("CRM100 Radiation Monitor");
+                CmbSoftName.Items.Add("FM100 Foot Monitor");
+                CmbSoftName.Items.Add("RM-AP Alarm Panel");
+            }
+            else
+            {
+                CmbSoftName.Items.Clear();
+                CmbSoftName.Items.Add("HFM100手脚表面污染监测仪");
+                CmbSoftName.Items.Add("HFM100TS手脚表面污染监测仪");
+                CmbSoftName.Items.Add("HM100手部污染监测仪");
+                CmbSoftName.Items.Add("HM100TS手部污染监测仪");
+                CmbSoftName.Items.Add("CRM100壁挂式污染监测仪");
+                CmbSoftName.Items.Add("FM100脚部污染监测仪");
+                CmbSoftName.Items.Add("RM-AP报警盘");
+            }
         }
         #endregion
 

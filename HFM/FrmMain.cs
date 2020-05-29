@@ -246,9 +246,7 @@ namespace HFM
         {
             this._commPort = commPort;
             InitializeComponent();
-            Text = _factoryParameter.SoftName;            //头部软件名称显示
-            Tsslbl_Name.Text = _factoryParameter.SoftName;//底部软件名称显示
-
+            
             //设置timer可用
             //TmrStatus.Enabled = true;
             //设置timer
@@ -283,8 +281,18 @@ namespace HFM
 
         #region 启动加载
         private void FrmMain_Load(object sender, EventArgs e)
-        {            
-                              
+        {
+            //Tools tools = new Tools();
+            if (isEnglish == true)
+            {
+                Text = Tools.EnSoftName(_factoryParameter.SoftName);            //头部软件名称显示
+                Tsslbl_Name.Text = Tools.EnSoftName(_factoryParameter.SoftName);//底部软件名称显示
+            }
+            else
+            {
+                Text = _factoryParameter.SoftName;            //头部软件名称显示
+                Tsslbl_Name.Text = _factoryParameter.SoftName;//底部软件名称显示
+            }
         }
         /// <summary>
         /// 启动加载首次处理事件

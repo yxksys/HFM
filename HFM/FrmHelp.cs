@@ -27,17 +27,13 @@ namespace HFM
             {
                 _commPort.Close();
             }
-
-            
-
-            
-
+            //Tools tools = new Tools();//实例化工具类：仪器名称中英文转换使用使用
             if (systemParameter.IsEnglish==false)
             {
                 //仪器名称
                 LblName.Text = "仪器名称:" + factoryParameter.SoftName;
                 //软件版本
-                LblVersions.Text = "软件版本:" + "V1.0";
+                LblVersions.Text = "软件版本:" + "V3.0";
                 //联系方式
                 LblNumber.Text = "联系方式:" + "0351-2202150  2203549";
                 //版权所有
@@ -46,9 +42,10 @@ namespace HFM
             else//英文
             {
                 //仪器名称
-                LblName.Text = "Model:" + factoryParameter.SoftName;
+                LblName.Text = "Model:" + Tools.EnSoftName(factoryParameter.SoftName);
+                //LblName.Text = "Model:" + factoryParameter.SoftName;
                 //软件版本
-                LblVersions.Text = "Version:" + "V1.0";
+                LblVersions.Text = "Version:" + "V3.0";
                 //联系方式
                 LblNumber.Text = "Tel:" + "0351-2202150  2203549";
                 //版权所有
