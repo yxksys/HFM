@@ -471,6 +471,11 @@ namespace HFM
             //选出启用的设备
             for (int i = 0; i < probeParameters.Count; i++)
             {
+                //单探测器不启用手背
+                if (factoryParameter.IsDoubleProbe==false && (probeParameters[i].ProbeChannel.ChannelID == 2 || probeParameters[i].ProbeChannel.ChannelID == 4))
+                {
+                    continue;
+                }
                 //设备启用且核素类型为α并除去衣物参数
                 if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "α" && probeParameters[i].ProbeChannel.ChannelID != 7)
                 {
@@ -573,6 +578,11 @@ namespace HFM
             //选出启用的设备
             for (int i = 0; i < probeParameters.Count; i++)
             {
+                //单探测器不启用手背
+                if (factoryParameter.IsDoubleProbe == false && (probeParameters[i].ProbeChannel.ChannelID == 2 || probeParameters[i].ProbeChannel.ChannelID == 4))
+                {
+                    continue;
+                }
                 //设备启用且核素类型为α并除去衣物参数
                 if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "β" && probeParameters[i].ProbeChannel.ChannelID != 7)
                 {
@@ -704,6 +714,15 @@ namespace HFM
             //选出所有设备
             for (int i = 0; i < channelParameters.Count; i++)
             {
+                //单探测器不启用手背
+                if (factoryParameter.IsDoubleProbe==false&&(channelParameters[i].Channel.ChannelID==2|| channelParameters[i].Channel.ChannelID == 4))
+                {
+                    continue;
+                }
+                if (channelParameters[i].Channel.IsEnabled==false)
+                {
+                    continue;
+                }
                 int index = this.DgvMainPreferenceSet.Rows.Add();
                 if (_isEnglish)
                 {
@@ -869,30 +888,59 @@ namespace HFM
                         IList<ChannelParameter> _second_setChanelP = new List<ChannelParameter>();
                         //IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
                         int i = 0;
-                        //把当前的高压阈值修改的数据对象添加到列表中
-                        foreach (var itme in _channelParameters)
+                        if (_channelParameters.Count<5)
                         {
-                            if (i < 4)
+                            foreach (var itme in _channelParameters)
                             {
                                 _first_setChannelP.Add(itme);
+                                i++;
                             }
-                            else
+                            while (_first_setChannelP.Count<=4)
                             {
-                                _second_setChanelP.Add(itme);
+                                _first_setChannelP.Add(_channelParameters[0]);
                             }
-                            i++;
                         }
-                        _channelParameters.Clear();
+                        else
+                        {
+                            //把当前的高压阈值修改的数据对象添加到列表中
+                            foreach (var itme in _channelParameters)
+                            {
+                                if (i < 4)
+                                {
+                                    _first_setChannelP.Add(itme);
+                                }
+                                else
+                                {
+                                    _second_setChanelP.Add(itme);
+                                }
+                                i++;
+                            }
+                            while (_second_setChanelP.Count <= 4)
+                            {
+                                _second_setChanelP.Add(_channelParameters[0]);
+                            }
+                        }
                         //道盒5-7通道列表加一个空对象,(3个对象解析会报错,必须四个为一组解析)
-                        _second_setChanelP.Add(_first_setChannelP[0]);
-
+                        //_second_setChanelP.Add(_first_setChannelP[0]);
+                        byte[] buffMessagePset1 = null;
+                        byte[] buffMessagePset2 = null;
                         // _second_setChanelP.RemoveAt(3);
                         // _second_setChanelP.Add(_setChannelParameter);
-                        //生成报文
-                        //道盒1-4通道解析完成的数据
-                        byte[] buffMessagePset1 = Message.BuildMessage(_first_setChannelP);
-                        //道盒5-7通道解析完成的数据,
-                        byte[] buffMessagePset2 = Message.BuildMessage(_second_setChanelP);
+                        if (_channelParameters.Count<5)
+                        {
+                            //生成报文
+                            //道盒1-4通道解析完成的数据
+                            buffMessagePset1 = Message.BuildMessage(_first_setChannelP);
+                        }
+                        else
+                        {
+                            //生成报文
+                            //道盒1-4通道解析完成的数据
+                            buffMessagePset1 = Message.BuildMessage(_first_setChannelP);
+                            //道盒5-7通道解析完成的数据,
+                            buffMessagePset2 = Message.BuildMessage(_second_setChanelP);
+                        }
+                        _channelParameters.Clear();
                         _first_setChannelP.Clear();
                         _second_setChanelP.Clear();
                         //成功则关闭线程
@@ -1005,6 +1053,12 @@ namespace HFM
                     }
                     foreach (var itemParameter in _channelParameters)
                     {
+                        //单探测器启用则手背不显示
+                        //通道不启用则不显示
+                        if ((factoryParameter.IsDoubleProbe==false && (itemParameter.Channel.ChannelID==2|| itemParameter.Channel.ChannelID == 4))||itemParameter.Channel.IsEnabled==false)
+                        {
+                            continue;
+                        }
                         //显示内容
                         int index = this.DgvMainPreferenceSet.Rows.Add();
                         DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
