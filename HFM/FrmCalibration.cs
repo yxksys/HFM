@@ -210,7 +210,7 @@ namespace HFM
             #endregion
 
             #region 获得全部启用的通道添加到下拉列表中，更具系统中英文状态选择中英文
-            FactoryParameter factoryParameter = new FactoryParameter();
+            FactoryParameter factoryParameter = new FactoryParameter().GetParameter();
             //根据系统语言填充通道下拉列表
             if (_isEnglish)
             {
@@ -247,7 +247,7 @@ namespace HFM
         }
         #endregion
 
-        #region 界面下拉列表
+        #region 界面下拉列表触发事件
         #region 通道下拉列表
         /// <summary>
         /// 通道下拉列表选择后（触发事件）
