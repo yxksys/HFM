@@ -151,7 +151,7 @@
             this.TxtShowResult.Name = "TxtShowResult";
             this.TxtShowResult.ReadOnly = true;
             this.TxtShowResult.ShortcutsEnabled = false;
-            //this.TxtShowResult.TextChanged += new System.EventHandler(this.TxtShowResult_TextChanged);
+            this.TxtShowResult.TextChanged += new System.EventHandler(this.TxtShowResult_TextChanged);
             // 
             // LblTime
             // 

@@ -3714,7 +3714,7 @@ namespace HFM
             //监测串口状态，如果串口关闭则打开
             if (bkWorkerReceiveData.IsBusy)
             {
-                if (isCommError)//监测端口通讯错误
+                if (isCommError||commPort.Opened==false)//监测端口通讯错误
                 {                    
                     try
                     {
@@ -3722,6 +3722,7 @@ namespace HFM
                         if (commPort.Opened == false)
                         {
                             commPort.Open();
+                            Thread.Sleep(100);
                             isCommError = false;
                         }
                     }
@@ -4215,6 +4216,13 @@ namespace HFM
 
         private void TxtShowResult_TextChanged(object sender, EventArgs e)
         {
+            if (TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) > 16)
+            {
+                int start = TxtShowResult.GetFirstCharIndexFromLine(0);
+                int end = TxtShowResult.GetFirstCharIndexFromLine(TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) - 16);
+                TxtShowResult.Select(start, end);
+                TxtShowResult.SelectedText = "";
+            }
             TxtShowResult.SelectionStart = TxtShowResult.Text.Length;
             TxtShowResult.ScrollToCaret();
         }
