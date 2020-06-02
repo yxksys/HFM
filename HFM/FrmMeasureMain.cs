@@ -2239,6 +2239,7 @@ namespace HFM
                     PnlMeasuring.BackgroundImage = Resources.progress;// Image.FromFile(appPath + "\\Images\\progress.png");
                     LblTimeRemain.Parent = PnlMeasuring;//控制剩余时间标签显示位置
                     LblTimeRemain.BringToFront();
+                    return;
                 }
                 //MeasureData conversionData = new MeasureData();
                 //conversionData.Channel = new Channel();
@@ -2277,7 +2278,7 @@ namespace HFM
                                 //系统语音提示左手移动重新测量
                                 player.Stream = Resources.Chinese_Left_hand_moved_please_measure_again;// appPath + "\\Audio\\Chinese_Left_hand_moved_please_measure_again.wav";
                             }
-                            player.LoadAsync();
+                            player.Load();                            
                             player.PlaySync();
                             //Thread.Sleep(2000);
                         }
@@ -2344,6 +2345,30 @@ namespace HFM
                         {
                             continue;
                         }
+                        conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                        //如果是单探测器且是第二次测量，则把手心数据赋值给手背,然后不做任何报警判断。
+                        if (factoryParameter.IsDoubleProbe == false && isHandTested == 1)
+                        {
+                            List<MeasureData> list = null;
+                            if (calculatedMeasureDataS[i].Channel.ChannelID == 1)//左手心道盒数据，存储到左手背
+                            {
+                                //找到calculatedMeasureDataS的左手背通道                                
+                                list=calculatedMeasureDataS.Where(data => data.Channel.ChannelID == 2).ToList();                                                                                    
+                            }
+                            if (calculatedMeasureDataS[i].Channel.ChannelID == 3)//右手心道盒数据，存储到右手背
+                            {
+                                //找到calculatedMeasureDataS的右手背通道                                
+                                list = calculatedMeasureDataS.Where(data => data.Channel.ChannelID == 4).ToList();                                
+                            }
+                            if (list!=null && list.Count > 0)
+                            {
+                                //找到手背通道对应的索引号
+                                int index = calculatedMeasureDataS.IndexOf(list[0]);
+                                //将手心通道数据拷贝到手背通道
+                                Tools.Clone(calculatedMeasureDataS[i], calculatedMeasureDataS[index]);
+                                continue;
+                            }
+                        }
                         //获得当前系统参数设置中的测量单位                                                
                         //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
                         //IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
@@ -2370,61 +2395,64 @@ namespace HFM
                             IList<ProbeParameter> probeParmeterNow = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && probeParmeter.NuclideType== "α").ToList();
                             //判断当前通道Alpha测量值是否超过报警阈值                       
                             if (calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_1 || calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2)
-                            {
+                            {                                                                
                                 float tempValue = calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2 ? probeParmeterNow[0].Alarm_2 : probeParmeterNow[0].Alarm_1;
                                 tempValue = Tools.UnitConvertCPSTo(tempValue, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
-                                if (factoryParameter.IsDoubleProbe == false)//单探测器
-                                {
-                                    if (isHandTested == 0)//手部第一次测量（手心）、左脚、右脚
-                                    {                                        
-                                        pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                        pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Perset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                        //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
-                                        Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                                        label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
-                                    }
-                                    if(isHandTested==1)//手部第二次检测，数据在手心，实际测量是手背
-                                    {
+                                //if (factoryParameter.IsDoubleProbe == false)//单探测器
+                                //{
+                                //    if (isHandTested == 0)//手部第一次测量（手心）、左脚、右脚
+                                //    {                                        
+                                //        pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //        pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Perset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //        //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
+                                //        Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                //        label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
+                                //    }
+                                //    if(isHandTested==1)//手部第二次检测，数据在手心，实际测量是手背
+                                //    {
                                         
-                                        //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
-                                        switch (calculatedMeasureDataS[i].Channel.ChannelID)
-                                        {
-                                            case 1://探测器接手心，所以左手心的值是对应是左手背                                                
-                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", "左手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", "LHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                //找到通道测量值显示Label控件
-                                                Panel panel = (Panel)(this.Controls["PnlLHB"]);
-                                                label = (Label)(panel.Controls["LblLHBA"]);
-                                                break;
-                                            case 3://探测器接手心，所以右手心的值是对应是右手背
-                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", "右手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", "RHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                //找到通道测量值显示Label控件
-                                                panel = (Panel)(this.Controls["PnlRHB"]);
-                                                label = (Label)(panel.Controls["LblRHBA"]);
-                                                break;
-                                            case 5://左脚右脚
-                                            case 6:
-                                                //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
-                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
-                                                panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                                                label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
-                                                break;
-                                        }                                        
+                                //        //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
+                                //        switch (calculatedMeasureDataS[i].Channel.ChannelID)
+                                //        {
+                                //            case 1://探测器接手心，所以左手心的值是对应是左手背                                                
+                                //                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", "左手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", "LHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                //找到通道测量值显示Label控件
+                                //                Panel panel = (Panel)(this.Controls["PnlLHB"]);
+                                //                label = (Label)(panel.Controls["LblLHBA"]);
+                                //                break;
+                                //            case 3://探测器接手心，所以右手心的值是对应是右手背
+                                //                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", "右手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", "RHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                //找到通道测量值显示Label控件
+                                //                panel = (Panel)(this.Controls["PnlRHB"]);
+                                //                label = (Label)(panel.Controls["LblRHBA"]);
+                                //                break;
+                                //            case 5://左脚右脚
+                                //            case 6:
+                                //                //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
+                                //                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
+                                //                panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                //                label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
+                                //                break;
+                                //            case 2:
+                                //            case 4:
+                                //                continue;                                                
+                                //        }                                        
                                         
-                                    }
-                                }
-                                else//双探测器
-                                {
+                                //    }
+                                //}
+                                //else//双探测器
+                                //{
                                     //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
-                                    pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                    pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                    //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
-                                    Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                                    label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
-                                }
+                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
+                                Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
+                                //}
                                 if (calculatedMeasureDataS[i].Alpha > probeParmeterNow[0].Alarm_2)
                                 {
                                     //当前通道测量结果显示文本框背景设置为Alarm2
@@ -2456,63 +2484,63 @@ namespace HFM
                             {
                                 float tempValue = calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_2 ? probeParmeterNow[0].Alarm_2 : probeParmeterNow[0].Alarm_1;
                                 tempValue = Tools.UnitConvertCPSTo(tempValue, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, calculatedMeasureDataS[i].Channel.ProbeArea);
-                                if (factoryParameter.IsDoubleProbe == false)//单探测器
-                                {
-                                    if (isHandTested == 0)//手部第一次测量（手心）
-                                    {
-                                        //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                                        pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                        pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                        //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
-                                        Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                                        label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
-                                        //Tools.Clone(calculatedMeasureDataS[i].Channel, conversionData.Channel);
-                                    }
-                                    if(isHandTested==1)//手部第二次检测，数据在手心，实际测量是手背
-                                    {
-                                        //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                                        switch(calculatedMeasureDataS[i].Channel.ChannelID)
-                                        {
-                                            case 1:
-                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", "左手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n","LHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                //找到通道测量值显示Label控件
-                                                Panel panel = (Panel)(this.Controls["PnlLHB"]);
-                                                label = (Label)(panel.Controls["LblLHBB"]);
-                                                //Tools.Clone(calculatedMeasureDataS[2].Channel, conversionData.Channel);//左手背道盒
-                                                break;
-                                            case 3:
-                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", "右手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", "RHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"),systemParameter.MeasurementUnit);
-                                                //找到通道测量值显示Label控件
-                                                panel = (Panel)(this.Controls["PnlRHB"]);
-                                                label = (Label)(panel.Controls["LblRHBB"]);
-                                                //Tools.Clone(calculatedMeasureDataS[4].Channel, conversionData.Channel);//右手背道盒
-                                                break;
-                                            case 5:
-                                            case 6:
-                                                //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
-                                                panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                                                label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
-                                                //Tools.Clone(calculatedMeasureDataS[i].Channel, conversionData.Channel);
-                                                break;
-                                        }                                        
-                                    }
-                                }
-                                else//双探测器
-                                {
+                                //if (factoryParameter.IsDoubleProbe == false)//单探测器
+                                //{
+                                //    if (isHandTested == 0)//手部第一次测量（手心）
+                                //    {
+                                //        //将当前通道Beta测量污染信息添加进pollutionRecord字符串
+                                //        pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //        pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //        //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
+                                //        Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                //        label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
+                                //        //Tools.Clone(calculatedMeasureDataS[i].Channel, conversionData.Channel);
+                                //    }
+                                //    if(isHandTested==1)//手部第二次检测，数据在手心，实际测量是手背
+                                //    {
+                                //        //将当前通道Beta测量污染信息添加进pollutionRecord字符串
+                                //        switch(calculatedMeasureDataS[i].Channel.ChannelID)
+                                //        {
+                                //            case 1:
+                                //                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", "左手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n","LHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                //找到通道测量值显示Label控件
+                                //                Panel panel = (Panel)(this.Controls["PnlLHB"]);
+                                //                label = (Label)(panel.Controls["LblLHBB"]);
+                                //                //Tools.Clone(calculatedMeasureDataS[2].Channel, conversionData.Channel);//左手背道盒
+                                //                break;
+                                //            case 3:
+                                //                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", "右手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", "RHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"),systemParameter.MeasurementUnit);
+                                //                //找到通道测量值显示Label控件
+                                //                panel = (Panel)(this.Controls["PnlRHB"]);
+                                //                label = (Label)(panel.Controls["LblRHBB"]);
+                                //                //Tools.Clone(calculatedMeasureDataS[4].Channel, conversionData.Channel);//右手背道盒
+                                //                break;
+                                //            case 5:
+                                //            case 6:
+                                //                //将当前通道Beta测量污染信息添加进pollutionRecord字符串
+                                //                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                //                //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
+                                //                panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                //                label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
+                                //                //Tools.Clone(calculatedMeasureDataS[i].Channel, conversionData.Channel);
+                                //                break;
+                                //        }                                        
+                                //    }
+                                //}
+                                //else//双探测器
+                                //{
                                     
                                     //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                                    pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                    pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"),systemParameter.MeasurementUnit);
-                                    //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
-                                    Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
-                                    label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
+                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"),systemParameter.MeasurementUnit);
+                                //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
+                                Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
+                                label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
                                     //Tools.Clone(calculatedMeasureDataS[i].Channel, conversionData.Channel);
-                                }
+                                //}
                                 if (calculatedMeasureDataS[i].Beta > probeParmeterNow[0].Alarm_2)
                                 {
                                     //当前通道测量结果显示文本框背景设置为Alarm2
@@ -2526,47 +2554,42 @@ namespace HFM
                                 }
                             }
                         }
-                        if (factoryParameter.IsDoubleProbe == false&& isHandTested == 1)//单探测器，第二次检测，测试手背数据，但检测数据在手心，所以将手心道盒数据保存到手背通道
+                        //if (factoryParameter.IsDoubleProbe == false&& isHandTested == 1)//单探测器，第二次检测，测试手背数据，但检测数据在手心，所以将手心道盒数据保存到手背通道
+                        //{                            
+                        //    if (calculatedMeasureDataS[i].Channel.ChannelID==1)//左手心道盒数据，存储到左手背
+                        //    {
+                        //        //conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                        //        conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == 2).ToList();
+                        //        Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
+                        //        //Tools.Clone(conversionData.Channel, conversionDataS[0].Channel);
+                        //    }
+                        //    if(calculatedMeasureDataS[i].Channel.ChannelID==3)//右手心道盒数据，存储到右手背
+                        //    {
+                        //        //conversionData.Channel = calculatedMeasureDataS[3].Channel;
+                        //        conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == 4).ToList();
+                        //        Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
+                        //        //Tools.Clone(conversionData.Channel, conversionDataS[3].Channel);
+                        //    }  
+                        //    if(calculatedMeasureDataS[i].Channel.ChannelID == 5||calculatedMeasureDataS[i].Channel.ChannelID == 6)
+                        //    {
+                        //        //conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                        //        conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID).ToList();
+                        //        Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
+                        //        //Tools.Clone(conversionData.Channel, conversionDataS[i].Channel);
+                        //    }                            
+                        //}
+                        //else
+                        //{                        
+                        //}
+                        //双探测器或者是单探测器第一次测量除去手背或者是单探测器第二次测量的手背数据，则将当前单位转换后的探测数据添加进转换单位探测数据列表
+                        if (factoryParameter.IsDoubleProbe == true || (factoryParameter.IsDoubleProbe == false && isHandTested == 0&& (conversionData.Channel.ChannelID != 2 && conversionData.Channel.ChannelID != 4))|| (factoryParameter.IsDoubleProbe == false && isHandTested == 1 && (conversionData.Channel.ChannelID==2||conversionData.Channel.ChannelID==4)))
                         {                            
-                            if (calculatedMeasureDataS[i].Channel.ChannelID==1)//左手心道盒数据，存储到左手背
-                            {
-                                //conversionData.Channel = calculatedMeasureDataS[i].Channel;
-                                conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == 2).ToList();
-                                Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
-                                //Tools.Clone(conversionData.Channel, conversionDataS[0].Channel);
-                            }
-                            if(calculatedMeasureDataS[i].Channel.ChannelID==3)//右手心道盒数据，存储到右手背
-                            {
-                                //conversionData.Channel = calculatedMeasureDataS[3].Channel;
-                                conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == 4).ToList();
-                                Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
-                                //Tools.Clone(conversionData.Channel, conversionDataS[3].Channel);
-                            }  
-                            if(calculatedMeasureDataS[i].Channel.ChannelID == 5||calculatedMeasureDataS[i].Channel.ChannelID == 6)
-                            {
-                                //conversionData.Channel = calculatedMeasureDataS[i].Channel;
-                                conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID).ToList();
-                                Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
-                                //Tools.Clone(conversionData.Channel, conversionDataS[i].Channel);
-                            }                            
-                        }
-                        else
-                        {
-                            conversionData.Channel = calculatedMeasureDataS[i].Channel;
-                        }
-                        if (factoryParameter.IsDoubleProbe == true || (factoryParameter.IsDoubleProbe == false && isHandTested == 0))
-                        { 
                             //将单位转换后的测量数据添加进IList列表
                             MeasureData conversionDataTemp = new MeasureData();
                             Tools.Clone(conversionData, conversionDataTemp);
                             Tools.Clone(conversionData.Channel, conversionDataTemp.Channel = new Channel());
-                        //if(factoryParameter.IsDoubleProbe == false && isHandTested == 1)//单探测器第二次检测，只修改手背和脚步测量数据
-                        //{
-                        //    if (calculatedMeasureDataS[i].Channel.ChannelID==1)//左手心数据
-                        //        Tools.Clone();
-                        //}                                                
-                            conversionDataS.Add(conversionDataTemp);
-                        }
+                            conversionDataS.Add(conversionDataTemp);                         
+                        }                        
                         ////获得当前系统参数设置中的测量单位                                                
                         ////从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
                         //IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
