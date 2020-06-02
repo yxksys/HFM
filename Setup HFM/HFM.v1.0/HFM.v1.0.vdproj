@@ -15,31 +15,31 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_02ADA2A50D71404F91B32832C6B2E85D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_02F373CC73B24BAF97A2A95B64D53F7F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_044E20FF605C4F91933A9973D5DCF7C4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_04FC5EDC378D4914B67BD96190046AA5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_05F7F74D15E74FBABC9BD556B86432EC"
+        "MsmKey" = "8:_06BDF4880DD9457D9849254F1ECFF7F5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0727D41E01734C91997418230E0EB914"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0892E02015D7456CAD0642F82ABB2444"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -57,13 +57,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0E097EE71B13465F8A0D0557A6BB7780"
+        "MsmKey" = "8:_0E542CA49CE0443D9889DFFFBA0CDB80"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0E26BE26216E4274895B81E07A3FBDFE"
+        "MsmKey" = "8:_1300AD8AEAD547FAB652B3E630CC9596"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -75,7 +75,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1466BA1EBF0D45999884CB0B6DAE34D2"
+        "MsmKey" = "8:_17D9E2CF7BAA481CA54B91547B377216"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -87,25 +87,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1A481119BA8A418F8C66D5AD630C3A38"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1B0772981A2942FD91E4AB05020CE1D8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1C766E8F9E7741CBA734D11A30BA08BF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1EE08A5441DB49EDA4ADDC9267B20EF1"
+        "MsmKey" = "8:_19F98188C2E9458788E9F806942AA21A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -117,19 +99,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2857F1AE12B74F5E8DF674C2B7AD87AF"
+        "MsmKey" = "8:_25D0EE362247433BBA6FE167C517118E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_29DE1F9C80C34BD887948ECCF6605386"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2A63232CC633438197F61C9439F335B7"
+        "MsmKey" = "8:_297D60F496F54CECBE0820979DFDFE59"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -141,19 +117,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2CF1A991FE2642AAA59287C9CD1D6983"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2DDD35E0CD914B81A4DFEC8034B1709E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2E21369663284C8D906C1929D6190513"
+        "MsmKey" = "8:_334381680E29473E9CF2394EAC2FCEE9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -165,13 +129,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_388123A590C4452A86EB8914D557AAC1"
+        "MsmKey" = "8:_3C103BD4A4894B50AA7EC9D1F21E9638"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_38C37207C4A945E89F095B2B9F20830D"
+        "MsmKey" = "8:_3C366874D1A04CA3A77212451FEB9561"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -183,13 +147,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_415489907E7547FC938A29F04FBC1B03"
+        "MsmKey" = "8:_40F84812E5D94AD4935CB1E81423AA6F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_47476CE407A646E9859D3E4E21D8A6B4"
+        "MsmKey" = "8:_416453064D91456E8298CB4FC39986FB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -201,37 +165,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4B658C2435644D859F84C224FC35F2C9"
+        "MsmKey" = "8:_4D51F9FD073F4CCB966F932A6454002D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4DA3CC2B8F8944BDB1ACBF03EB79E344"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_508EC9CC557746008B9DAF7F2E6852A8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_515BE39830E6493994D5AD21784DFD50"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_51762E43247E4E509CF1D6957E46FA94"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_519CCE0E93A7444B9B5E552DF76EF38F"
+        "MsmKey" = "8:_526C95FD2DC0476DB041826561267291"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -244,6 +184,30 @@
         "Entry"
         {
         "MsmKey" = "8:_52C5BDD39CB34FD285992D06296A8CB8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_55041A5C45264B338023CB305FBE1239"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_557D782E09104930A21DDD2F2360C5A7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_562E9CA1ABAB4389996588224679FAEA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5646310CE9314E3BA14F5407A9375B1C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -273,13 +237,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5C07F19B2FC24DD1AFA1B1964B92F78A"
+        "MsmKey" = "8:_5D0273816DE84892A51A5529F83EDA71"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5D0273816DE84892A51A5529F83EDA71"
+        "MsmKey" = "8:_5D41DAF025A442E5B7ACDA3FA4A3DCCC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -291,7 +255,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6176F76818C84DC19F7B7A9FB9A60B78"
+        "MsmKey" = "8:_612E01904CF6445DA68972035D8BAC6D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -309,19 +273,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_63A285F5E0784D7F96AFFA64D03F7644"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_64393828C99A4814A8F0CCD2106EAE83"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_66CDC84EAF214FBA8A95B936452216A8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_67579FDCB35F427F93BA8DD1B82CB6AF"
+        "MsmKey" = "8:_6836E0E2D8C24927B4C50080122E7C02"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -333,7 +297,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6955688F4BFE4505A72F442E441B90E4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6A08C5AF6C4745D59ED1BDDE223264F6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6B71701085C048D987C8C0792C7D058A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -345,13 +321,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6E129A6707E64468906E92DDDA07D91F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6EBD451CE4E042588667E73A18BABE08"
+        "MsmKey" = "8:_6E2165FA08504DB39C330C1F3C31498F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -363,37 +333,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_71C2F02DCB68491D8BD76F9B19CB1E39"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_76C321C99ECA411BA251895B2B5F90D3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7710C4560CB54598B2758515BBB78F46"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_77B23FD7FB844160A6F1F7673CFE822B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_794C8D9D4A4C4524B854652ACCA5A791"
+        "MsmKey" = "8:_75B4524BDF55435E88884A89AF3630C1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_795ED25B4E454B3E8FC93E1976B170FA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7C0D865D139142759B0D8F4092E7DBBF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7CF62EDAAEBC4CC5ABE7A5A9E14BE2F6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -435,12 +393,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_823D8D98F6C54114B87C7DB8338289E5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_85EB175544D141279E928CAE0B220BFA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -453,20 +405,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_88F8E9232C65482B9E298453BCF189F7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
-        "OwnerKey" = "8:_CC2FEC6AB8354DD98E7BDB83913B63CA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8949F26C0F3D40278AAD476D3A8C95C6"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3C366874D1A04CA3A77212451FEB9561"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -477,13 +417,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8BE4B01FAFD04BE8B856049C9093EF17"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8BE938DE3F0E416B9B7D2E701B3F3766"
+        "MsmKey" = "8:_8BA138E949C348A68223AA3336F0390F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -495,19 +429,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8CDC37A1796B4279BA28235427D1D218"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_914AA0070BB94829B54609217C9A0B36"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_931555C4D56B4ECAA00ECACA236C896D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -519,7 +441,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_968D7CD10F7B4A98A7B78346742FACF6"
+        "MsmKey" = "8:_94924CF9ECBC4A8E802B67C25E866332"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9734EDFA1C374948BD3412AC9E895564"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -531,19 +459,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9CB767A5EAB54874B1B1E1F0D10BC176"
+        "MsmKey" = "8:_994D85B514F04DAB9E07177B765DF85B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9E98FA5A0B8E43B58656D231818D8C99"
+        "MsmKey" = "8:_9B29A0A9273B47F98C6A28D7A39E576D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A3CD244A37C844628008D2A08FDCE96F"
+        "MsmKey" = "8:_9B90FE448C554E6A9AADF721FD18D337"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -555,7 +483,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B1E116C5C51D4D8B8AAB740A7C46E2A7"
+        "MsmKey" = "8:_A5B428E7FCAB485390C91B35B4B14151"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A784DF58F1B24E83821F3205BCEB7218"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AC157DBCCC734878AD251CEE752921B3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AC6B36DC204945A7B38EC7C8AD0A2A0D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -579,7 +525,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B7BAE00B677843C6A392060D48D265B2"
+        "MsmKey" = "8:_B92A3AC61D9C43CFA6A0F2A2CFB3AAD2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -591,13 +537,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BAA0E063E9D2493BBE51A7CF940FE96B"
+        "MsmKey" = "8:_BD7161B6C9714035BA7161206DD94A55"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_BCE1E6BCF1FB427784AC61C44376130B"
+        "MsmKey" = "8:_BDAA3236196047A5A87B8E16B1FF4264"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -609,19 +555,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C07CE8BF65B84B258EEDCBB3CD60D566"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C548E365343740E2BE6862FC9C96827D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C7A62C4DE73D4E00A83DA10880443202"
+        "MsmKey" = "8:_C553D218639245108FC32CA5347FDD5D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C870150CD04C4C1097E87A4E661E3343"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -633,19 +579,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CBDFC9EFB9C64460A2E7FAE8EDD44EE1"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CC2FEC6AB8354DD98E7BDB83913B63CA"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_CDC7314BCFE149E2A38E99A560ED1B7C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CDD43FD6572B4A26A0D98E43DE5E62E8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE99D937CC4A49F5AD4995B84FFD79D0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CF4526708779487C97FA0B681FDD9B18"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -657,31 +609,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D06944B840154CE985AAC71C527216D2"
+        "MsmKey" = "8:_D0C4989A24474DA38DCD36D6C04F286B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D0B91464CA6B4AB2B5B200B7241F72EB"
+        "MsmKey" = "8:_D75933E876B24D57B5121FC92422A5F5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D2D604477F8A4658B58008F109B21774"
+        "MsmKey" = "8:_D82CD85D5CBD4C2EA0C800840D23A414"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D3450E6508B1448183F49C2255FDA643"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D7FBE849B94142D3936B7416FC23476A"
+        "MsmKey" = "8:_D959B0F7345742D788030BA0A94BAEA7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -699,7 +645,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DC7E3ABDB37A4C209BFC0E0341C81C87"
+        "MsmKey" = "8:_DD4CAB1030D748D4A71ABFDCEAAC54E3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DD9F89307A934594879A5F5A96D3A1BF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -729,13 +681,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E0C98E65B1954055B67A9AE5AB435626"
+        "MsmKey" = "8:_E65A26EB3E23433C8BFF89ECE1AF50C5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E780C85CA32A495787F8DCCFBD959138"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E7FB5C83F392495BAB5141F5C078DB97"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -753,13 +711,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EA59FFD44E104BD3AF597BF7AD66A83A"
+        "MsmKey" = "8:_EAD52AA67B06476DA48A96F4D4D57E26"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EAD52AA67B06476DA48A96F4D4D57E26"
+        "MsmKey" = "8:_EAF1EC9547C348C7BB25D6909238728C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EB29E718B63045F6B5018A249C562B46"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -771,25 +735,37 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EDC3768997A341269B462BC835E33C98"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F11FCFC702534153A4FEC965DE9DF77A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F1BABF75463647419C8F1E8006D302D2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F52586A8A017454F82887EB02EB2E0A0"
+        "MsmKey" = "8:_F54C0238363042ECA75E5059FD8E5D76"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F76025B846A7408E9F627A14583FF322"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F80DB6AA1787447B987811079D81197B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FA101C512FE0484AB5F5B22D37C136F8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FA3D6D2156D44870B7879B661CFFD488"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -813,14 +789,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CC2FEC6AB8354DD98E7BDB83913B63CA"
+        "MsmKey" = "8:_FC2928BCDE2B4A9A84C5EC7927771560"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3C366874D1A04CA3A77212451FEB9561"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -831,7 +813,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\HFM.v1.0.msi"
+        "OutputFilename" = "8:Debug\\HFM.v3.0.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -913,6 +895,46 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_02ADA2A50D71404F91B32832C6B2E85D"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LF_NotInPlace.png"
+            "TargetName" = "8:LF_NotInPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_02F373CC73B24BAF97A2A95B64D53F7F"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Contaminated_progress.png"
+            "TargetName" = "8:Contaminated_progress.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_044E20FF605C4F91933A9973D5DCF7C4"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\dida1.wav"
@@ -933,30 +955,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04FC5EDC378D4914B67BD96190046AA5"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_06BDF4880DD9457D9849254F1ECFF7F5"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Hand_NotInPlace.jpg"
-            "TargetName" = "8:Hand_NotInPlace.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_05F7F74D15E74FBABC9BD556B86432EC"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Fault_progress.png"
-            "TargetName" = "8:Fault_progress.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\app.ico"
+            "TargetName" = "8:app.ico"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -979,26 +981,6 @@
             "TargetName" = "8:English_Six.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0892E02015D7456CAD0642F82ABB2444"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Fault_progress.jpg"
-            "TargetName" = "8:Fault_progress.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1053,10 +1035,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E097EE71B13465F8A0D0557A6BB7780"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E542CA49CE0443D9889DFFFBA0CDB80"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RHB_Disabled.png"
-            "TargetName" = "8:RHB_Disabled.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\logo.ico"
+            "TargetName" = "8:logo.ico"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1073,9 +1055,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E26BE26216E4274895B81E07A3FBDFE"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1300AD8AEAD547FAB652B3E630CC9596"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Background_Progress.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Background_Progress.jpg"
             "TargetName" = "8:Background_Progress.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
@@ -1113,9 +1095,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1466BA1EBF0D45999884CB0B6DAE34D2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_17D9E2CF7BAA481CA54B91547B377216"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\logo.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\logo.png"
             "TargetName" = "8:logo.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
@@ -1153,70 +1135,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1A481119BA8A418F8C66D5AD630C3A38"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_19F98188C2E9458788E9F806942AA21A"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LHP_InPlace.png"
-            "TargetName" = "8:LHP_InPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1B0772981A2942FD91E4AB05020CE1D8"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RHB_InPlace.png"
-            "TargetName" = "8:RHB_InPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1C766E8F9E7741CBA734D11A30BA08BF"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Background_Progress.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Background_Progress.png"
             "TargetName" = "8:Background_Progress.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1EE08A5441DB49EDA4ADDC9267B20EF1"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RF_InPlace.png"
-            "TargetName" = "8:RF_InPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1253,10 +1175,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2857F1AE12B74F5E8DF674C2B7AD87AF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_25D0EE362247433BBA6FE167C517118E"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Frisker_InPlace.png"
-            "TargetName" = "8:Frisker_InPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\welcome.bmp"
+            "TargetName" = "8:welcome.bmp"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1273,30 +1195,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_29DE1F9C80C34BD887948ECCF6605386"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_297D60F496F54CECBE0820979DFDFE59"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\clothes.png"
-            "TargetName" = "8:clothes.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2A63232CC633438197F61C9439F335B7"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LHB_NotInPlace.png"
-            "TargetName" = "8:LHB_NotInPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LHB_Disabled.png"
+            "TargetName" = "8:LHB_Disabled.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1333,50 +1235,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2CF1A991FE2642AAA59287C9CD1D6983"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_334381680E29473E9CF2394EAC2FCEE9"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Hand_NotInPlace.png"
-            "TargetName" = "8:Hand_NotInPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2DDD35E0CD914B81A4DFEC8034B1709E"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RF_Disabled.png"
-            "TargetName" = "8:RF_Disabled.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2E21369663284C8D906C1929D6190513"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LHB_Disabled.png"
-            "TargetName" = "8:LHB_Disabled.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Button_Link.jpg"
+            "TargetName" = "8:Button_Link.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1413,30 +1275,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_388123A590C4452A86EB8914D557AAC1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3C103BD4A4894B50AA7EC9D1F21E9638"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LF_InPlace.png"
-            "TargetName" = "8:LF_InPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_38C37207C4A945E89F095B2B9F20830D"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LF_Disabled.png"
-            "TargetName" = "8:LF_Disabled.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\NoContamination_progress.jpg"
+            "TargetName" = "8:NoContamination_progress.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1473,10 +1315,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_415489907E7547FC938A29F04FBC1B03"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_40F84812E5D94AD4935CB1E81423AA6F"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Foot_InPlace.jpg"
-            "TargetName" = "8:Foot_InPlace.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Fault_progress.png"
+            "TargetName" = "8:Fault_progress.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1493,10 +1335,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_47476CE407A646E9859D3E4E21D8A6B4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_416453064D91456E8298CB4FC39986FB"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\clothes_highlight.jpg"
-            "TargetName" = "8:clothes_highlight.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\clothes_middle.jpg"
+            "TargetName" = "8:clothes_middle.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1533,10 +1375,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4B658C2435644D859F84C224FC35F2C9"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4D51F9FD073F4CCB966F932A6454002D"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Foot_NotInPlace.jpg"
-            "TargetName" = "8:Foot_NotInPlace.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Foot_InPlace.png"
+            "TargetName" = "8:Foot_InPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1553,90 +1395,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4DA3CC2B8F8944BDB1ACBF03EB79E344"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_526C95FD2DC0476DB041826561267291"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RHP_InPlace.png"
-            "TargetName" = "8:RHP_InPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_508EC9CC557746008B9DAF7F2E6852A8"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Frisker_Disabled.png"
-            "TargetName" = "8:Frisker_Disabled.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_515BE39830E6493994D5AD21784DFD50"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Hand_Status.png"
-            "TargetName" = "8:Hand_Status.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51762E43247E4E509CF1D6957E46FA94"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\welcome.bmp"
-            "TargetName" = "8:welcome.bmp"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_519CCE0E93A7444B9B5E552DF76EF38F"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Button_Down.jpg"
-            "TargetName" = "8:Button_Down.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\progress.png"
+            "TargetName" = "8:progress.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1679,6 +1441,86 @@
             "TargetName" = "8:English_Clothing_contaminated.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_55041A5C45264B338023CB305FBE1239"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\FriskerBK_InPlace.jpg"
+            "TargetName" = "8:FriskerBK_InPlace.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_557D782E09104930A21DDD2F2360C5A7"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Frisker_NotInPlace.png"
+            "TargetName" = "8:Frisker_NotInPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_562E9CA1ABAB4389996588224679FAEA"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LHB_NotInPlace.png"
+            "TargetName" = "8:LHB_NotInPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5646310CE9314E3BA14F5407A9375B1C"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LHP_Disabled.png"
+            "TargetName" = "8:LHP_Disabled.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1773,12 +1615,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5C07F19B2FC24DD1AFA1B1964B92F78A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D0273816DE84892A51A5529F83EDA71"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LHB_InPlace.png"
-            "TargetName" = "8:LHB_InPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Audio\\English_One.wav"
+            "TargetName" = "8:English_One.wav"
             "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1793,12 +1635,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D0273816DE84892A51A5529F83EDA71"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D41DAF025A442E5B7ACDA3FA4A3DCCC"
             {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\English_One.wav"
-            "TargetName" = "8:English_One.wav"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RF_InPlace.png"
+            "TargetName" = "8:RF_InPlace.png"
             "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1833,10 +1675,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6176F76818C84DC19F7B7A9FB9A60B78"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_612E01904CF6445DA68972035D8BAC6D"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\FriskerBK_NotInPlace.png"
-            "TargetName" = "8:FriskerBK_NotInPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LHP_InPlace.png"
+            "TargetName" = "8:LHP_InPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1893,6 +1735,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63A285F5E0784D7F96AFFA64D03F7644"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Foot_NotInPlace.png"
+            "TargetName" = "8:Foot_NotInPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_64393828C99A4814A8F0CCD2106EAE83"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_HB_Measured_.wav"
@@ -1913,30 +1775,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_66CDC84EAF214FBA8A95B936452216A8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6836E0E2D8C24927B4C50080122E7C02"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Foot_NotInPlace.png"
-            "TargetName" = "8:Foot_NotInPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_67579FDCB35F427F93BA8DD1B82CB6AF"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\unfulfillment.png"
-            "TargetName" = "8:unfulfillment.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Hand_Status.png"
+            "TargetName" = "8:Hand_Status.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -1973,12 +1815,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6955688F4BFE4505A72F442E441B90E4"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LHB_InPlace.png"
+            "TargetName" = "8:LHB_InPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A08C5AF6C4745D59ED1BDDE223264F6"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Eight.wav"
             "TargetName" = "8:Chinese_Eight.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B71701085C048D987C8C0792C7D058A"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\unfulfillment.jpg"
+            "TargetName" = "8:unfulfillment.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2013,30 +1895,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E129A6707E64468906E92DDDA07D91F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E2165FA08504DB39C330C1F3C31498F"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RHP_Disabled.png"
-            "TargetName" = "8:RHP_Disabled.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6EBD451CE4E042588667E73A18BABE08"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\foot_littl.jpg"
-            "TargetName" = "8:foot_littl.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RHB_Disabled.png"
+            "TargetName" = "8:RHB_Disabled.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2073,90 +1935,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_71C2F02DCB68491D8BD76F9B19CB1E39"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_75B4524BDF55435E88884A89AF3630C1"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\FriskerBK_NotInPlace.jpg"
-            "TargetName" = "8:FriskerBK_NotInPlace.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_76C321C99ECA411BA251895B2B5F90D3"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\FriskerBK_InPlace.jpg"
-            "TargetName" = "8:FriskerBK_InPlace.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7710C4560CB54598B2758515BBB78F46"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\clothes_middle.png"
-            "TargetName" = "8:clothes_middle.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77B23FD7FB844160A6F1F7673CFE822B"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Foot_InPlace.png"
-            "TargetName" = "8:Foot_InPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_794C8D9D4A4C4524B854652ACCA5A791"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\clothes_middle.jpg"
-            "TargetName" = "8:clothes_middle.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Button_Link.png"
+            "TargetName" = "8:Button_Link.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2179,6 +1961,46 @@
             "TargetName" = "8:English_Left_hand_moved_please_measure_again.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C0D865D139142759B0D8F4092E7DBBF"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Frisker_Disabled.png"
+            "TargetName" = "8:Frisker_Disabled.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CF62EDAAEBC4CC5ABE7A5A9E14BE2F6"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Button_Down.jpg"
+            "TargetName" = "8:Button_Down.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2313,26 +2135,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_823D8D98F6C54114B87C7DB8338289E5"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Hand_InPlace.jpg"
-            "TargetName" = "8:Hand_InPlace.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_85EB175544D141279E928CAE0B220BFA"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_Background_abnomal.wav"
@@ -2373,26 +2175,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_88F8E9232C65482B9E298453BCF189F7"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RHB_NotInPlace.png"
-            "TargetName" = "8:RHB_NotInPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_88FFCD42B9D272125D25DAC391D83C73"
             {
             "AssemblyRegister" = "3:1"
@@ -2400,11 +2182,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_88FFCD42B9D272125D25DAC391D83C73"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -2422,26 +2199,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8949F26C0F3D40278AAD476D3A8C95C6"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RF_NotInPlace.png"
-            "TargetName" = "8:RF_NotInPlace.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8B2496A100744507B5CD1F6B80F72CE3"
@@ -2464,30 +2221,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8BE4B01FAFD04BE8B856049C9093EF17"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8BA138E949C348A68223AA3336F0390F"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\progress.png"
-            "TargetName" = "8:progress.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8BE938DE3F0E416B9B7D2E701B3F3766"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Hand_Status.jpg"
-            "TargetName" = "8:Hand_Status.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Contaminated_progress.jpg"
+            "TargetName" = "8:Contaminated_progress.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2524,52 +2261,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8CDC37A1796B4279BA28235427D1D218"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Button_Down.png"
-            "TargetName" = "8:Button_Down.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_914AA0070BB94829B54609217C9A0B36"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\English_Left_hand_in_place_please_measure_again.wav"
             "TargetName" = "8:English_Left_hand_in_place_please_measure_again.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_931555C4D56B4ECAA00ECACA236C896D"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\unfulfillment.jpg"
-            "TargetName" = "8:unfulfillment.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2604,10 +2301,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_968D7CD10F7B4A98A7B78346742FACF6"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_94924CF9ECBC4A8E802B67C25E866332"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\app.ico"
-            "TargetName" = "8:app.ico"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RHB_NotInPlace.png"
+            "TargetName" = "8:RHB_NotInPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9734EDFA1C374948BD3412AC9E895564"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RF_Disabled.png"
+            "TargetName" = "8:RF_Disabled.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2644,10 +2361,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9CB767A5EAB54874B1B1E1F0D10BC176"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_994D85B514F04DAB9E07177B765DF85B"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LHP_NotInPlace.png"
-            "TargetName" = "8:LHP_NotInPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\foot_littl.jpg"
+            "TargetName" = "8:foot_littl.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2664,10 +2381,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9E98FA5A0B8E43B58656D231818D8C99"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B29A0A9273B47F98C6A28D7A39E576D"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LHP_Disabled.png"
-            "TargetName" = "8:LHP_Disabled.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\FriskerBK_InPlace.png"
+            "TargetName" = "8:FriskerBK_InPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2684,10 +2401,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A3CD244A37C844628008D2A08FDCE96F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B90FE448C554E6A9AADF721FD18D337"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\RHP_NotInPlace.png"
-            "TargetName" = "8:RHP_NotInPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Hand_InPlace.jpg"
+            "TargetName" = "8:Hand_InPlace.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2724,10 +2441,70 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B1E116C5C51D4D8B8AAB740A7C46E2A7"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A5B428E7FCAB485390C91B35B4B14151"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\FriskerBK_InPlace.png"
-            "TargetName" = "8:FriskerBK_InPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LF_InPlace.png"
+            "TargetName" = "8:LF_InPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A784DF58F1B24E83821F3205BCEB7218"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RHP_NotInPlace.png"
+            "TargetName" = "8:RHP_NotInPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC157DBCCC734878AD251CEE752921B3"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RHP_InPlace.png"
+            "TargetName" = "8:RHP_InPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC6B36DC204945A7B38EC7C8AD0A2A0D"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RHB_InPlace.png"
+            "TargetName" = "8:RHB_InPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2804,10 +2581,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B7BAE00B677843C6A392060D48D265B2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B92A3AC61D9C43CFA6A0F2A2CFB3AAD2"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\foot-littl.jpg"
-            "TargetName" = "8:foot-littl.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Foot_InPlace.jpg"
+            "TargetName" = "8:Foot_InPlace.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2844,10 +2621,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BAA0E063E9D2493BBE51A7CF940FE96B"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BD7161B6C9714035BA7161206DD94A55"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Button_Link.png"
-            "TargetName" = "8:Button_Link.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Hand_NotInPlace.png"
+            "TargetName" = "8:Hand_NotInPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2864,10 +2641,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BCE1E6BCF1FB427784AC61C44376130B"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BDAA3236196047A5A87B8E16B1FF4264"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Contaminated_progress.jpg"
-            "TargetName" = "8:Contaminated_progress.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Hand_InPlace.png"
+            "TargetName" = "8:Hand_InPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2890,26 +2667,6 @@
             "TargetName" = "8:English_Decontaminate_please.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C07CE8BF65B84B258EEDCBB3CD60D566"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\clothes-middle.jpg"
-            "TargetName" = "8:clothes-middle.jpg"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2955,10 +2712,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C7A62C4DE73D4E00A83DA10880443202"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C553D218639245108FC32CA5347FDD5D"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\progress.jpg"
-            "TargetName" = "8:progress.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Fault_progress.jpg"
+            "TargetName" = "8:Fault_progress.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C870150CD04C4C1097E87A4E661E3343"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LHP_NotInPlace.png"
+            "TargetName" = "8:LHP_NotInPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -2995,10 +2772,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CBDFC9EFB9C64460A2E7FAE8EDD44EE1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CDC7314BCFE149E2A38E99A560ED1B7C"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Button_Link.jpg"
-            "TargetName" = "8:Button_Link.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Nine.wav"
+            "TargetName" = "8:Chinese_Nine.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CDD43FD6572B4A26A0D98E43DE5E62E8"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\unfulfillment.png"
+            "TargetName" = "8:unfulfillment.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3015,12 +2812,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CDC7314BCFE149E2A38E99A560ED1B7C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE99D937CC4A49F5AD4995B84FFD79D0"
             {
-            "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Nine.wav"
-            "TargetName" = "8:Chinese_Nine.wav"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\foot_littl.png"
+            "TargetName" = "8:foot_littl.png"
             "Tag" = "8:"
-            "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF4526708779487C97FA0B681FDD9B18"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Frisker_InPlace.png"
+            "TargetName" = "8:Frisker_InPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3055,10 +2872,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D06944B840154CE985AAC71C527216D2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D0C4989A24474DA38DCD36D6C04F286B"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\clothes.jpg"
-            "TargetName" = "8:clothes.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\LF_Disabled.png"
+            "TargetName" = "8:LF_Disabled.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3075,10 +2892,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D0B91464CA6B4AB2B5B200B7241F72EB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D75933E876B24D57B5121FC92422A5F5"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Hand_InPlace.png"
-            "TargetName" = "8:Hand_InPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Hand_NotInPlace.jpg"
+            "TargetName" = "8:Hand_NotInPlace.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3095,10 +2912,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D2D604477F8A4658B58008F109B21774"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D82CD85D5CBD4C2EA0C800840D23A414"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\NoContamination_progress.jpg"
-            "TargetName" = "8:NoContamination_progress.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Foot_NotInPlace.jpg"
+            "TargetName" = "8:Foot_NotInPlace.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3115,30 +2932,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D3450E6508B1448183F49C2255FDA643"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D959B0F7345742D788030BA0A94BAEA7"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\clothes_highlight.png"
-            "TargetName" = "8:clothes_highlight.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D7FBE849B94142D3936B7416FC23476A"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\clothes-highlight.jpg"
-            "TargetName" = "8:clothes-highlight.jpg"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RF_NotInPlace.png"
+            "TargetName" = "8:RF_NotInPlace.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3195,10 +2992,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DC7E3ABDB37A4C209BFC0E0341C81C87"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DD4CAB1030D748D4A71ABFDCEAAC54E3"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Contaminated_progress.png"
-            "TargetName" = "8:Contaminated_progress.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\clothes.png"
+            "TargetName" = "8:clothes.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DD9F89307A934594879A5F5A96D3A1BF"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\RHP_Disabled.png"
+            "TargetName" = "8:RHP_Disabled.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3295,10 +3112,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E0C98E65B1954055B67A9AE5AB435626"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E65A26EB3E23433C8BFF89ECE1AF50C5"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\foot_littl.png"
-            "TargetName" = "8:foot_littl.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\FriskerBK_NotInPlace.jpg"
+            "TargetName" = "8:FriskerBK_NotInPlace.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3321,6 +3138,26 @@
             "TargetName" = "8:Chinese_Ten.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E7FB5C83F392495BAB5141F5C078DB97"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Hand_Status.jpg"
+            "TargetName" = "8:Hand_Status.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3375,10 +3212,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA59FFD44E104BD3AF597BF7AD66A83A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EAD52AA67B06476DA48A96F4D4D57E26"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\LF_NotInPlace.png"
-            "TargetName" = "8:LF_NotInPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\HFM.accdb"
+            "TargetName" = "8:HFM.accdb"
+            "Tag" = "8:"
+            "Folder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EAF1EC9547C348C7BB25D6909238728C"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\NoContamination_progress.png"
+            "TargetName" = "8:NoContamination_progress.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3395,12 +3252,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EAD52AA67B06476DA48A96F4D4D57E26"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EB29E718B63045F6B5018A249C562B46"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\HFM.accdb"
-            "TargetName" = "8:HFM.accdb"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\clothes_highlight.jpg"
+            "TargetName" = "8:clothes_highlight.jpg"
             "Tag" = "8:"
-            "Folder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3435,46 +3292,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EDC3768997A341269B462BC835E33C98"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\logo.ico"
-            "TargetName" = "8:logo.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F11FCFC702534153A4FEC965DE9DF77A"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\NoContamination_progress.png"
-            "TargetName" = "8:NoContamination_progress.png"
-            "Tag" = "8:"
-            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F1BABF75463647419C8F1E8006D302D2"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Three.wav"
@@ -3495,10 +3312,90 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F52586A8A017454F82887EB02EB2E0A0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F54C0238363042ECA75E5059FD8E5D76"
             {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\Images\\Frisker_NotInPlace.png"
-            "TargetName" = "8:Frisker_NotInPlace.png"
+            "SourcePath" = "8:..\\..\\HFM\\Images\\clothes.jpg"
+            "TargetName" = "8:clothes.jpg"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F76025B846A7408E9F627A14583FF322"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\Button_Down.png"
+            "TargetName" = "8:Button_Down.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F80DB6AA1787447B987811079D81197B"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\clothes_middle.png"
+            "TargetName" = "8:clothes_middle.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FA101C512FE0484AB5F5B22D37C136F8"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\clothes_highlight.png"
+            "TargetName" = "8:clothes_highlight.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FA3D6D2156D44870B7879B661CFFD488"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\progress.jpg"
+            "TargetName" = "8:progress.jpg"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
@@ -3561,6 +3458,26 @@
             "TargetName" = "8:English_Ten.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC2928BCDE2B4A9A84C5EC7927771560"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\Images\\FriskerBK_NotInPlace.png"
+            "TargetName" = "8:FriskerBK_NotInPlace.png"
+            "Tag" = "8:"
+            "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3807,7 +3724,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CE5D6BC73786452F8B62AA242B297BA8"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_08E6C69809204C69881B84727229786B"
             {
             "Name" = "8:HFM"
             "Arguments" = "8:"
@@ -3815,10 +3732,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_CC2FEC6AB8354DD98E7BDB83913B63CA"
+            "Target" = "8:_3C366874D1A04CA3A77212451FEB9561"
             "Folder" = "8:_DF8CC310BF59498EA50CFF9D731FEC05"
             "WorkingFolder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
-            "Icon" = "8:_968D7CD10F7B4A98A7B78346742FACF6"
+            "Icon" = "8:_06BDF4880DD9457D9849254F1ECFF7F5"
             "Feature" = "8:"
             }
         }
@@ -4220,7 +4137,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CC2FEC6AB8354DD98E7BDB83913B63CA"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3C366874D1A04CA3A77212451FEB9561"
             {
             "SourcePath" = "8:..\\..\\HFM\\obj\\Debug\\HFM.exe"
             "TargetName" = "8:"
