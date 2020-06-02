@@ -1071,6 +1071,14 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnPreferenceOk_Click(object sender, EventArgs e)
         {
+            if(RdoSingleHand.Checked==true)
+            {
+                if(TxtLeftInProbeArea.Text!=TxtLeftOutProbeArea.Text||TxtRightInProbeArea.Text!=TxtRightOutProbeArea.Text)
+                {
+                    MessageBox.Show("手心手背探测面积必须一致，请重新输入！");
+                    return;
+                }
+            }
             #region 系统参数
             //首先获得默认参数,通过对原始数据赋值来实现更新
             HFM.Components.SystemParameter system = new HFM.Components.SystemParameter().GetParameter();
