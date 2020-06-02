@@ -22,7 +22,7 @@ namespace HFM
         Label[] LblValue;
         PictureBox[] PicStatus;
         Label[] LblStatus;
-        string listS = "";
+       // string listS = "";
         //string timetemp = "";
         byte infraredStatusOfMessageLast = 0x1b;//上次报文信息中红外状态，默认手和衣物都不到位。格式：5-7通道红外状态-1-4通道红外状态。占低6位
         byte infraredStatusOfMessageNow = 0x1b;//本次报文信息中红外状态，默认手和衣物都不到位。格式：5-7通道红外状态-1-4通道红外状态。占低6位
@@ -69,7 +69,8 @@ namespace HFM
         bool isClothesContaminated=false;//衣物探测是否有污染
         bool isTestedEnd = false;//探测是否结束标志
         bool isFrmDisplayed = false;
-        bool isCommError = false;
+        bool isCommError = false;//监测端口通信错误标志
+        bool isCommReportError = false;//上报端口通信错误标志
         string pollutionRecord = null;//记录测量污染详细数据
         string pollutionRecord_E = null;//记录测量污染详细数据(英文)                
         FrmClothes frmClothes = null;//衣物探测界面
@@ -862,6 +863,7 @@ namespace HFM
                     catch
                     {
                         TxtShowResult.Text += "监测测端口通信错误！\r\n";
+                        isCommError = true;
                     }
                     //延时
                     if (platformState == PlatformState.SelfTest && isSelfCheckSended == false)
@@ -872,8 +874,20 @@ namespace HFM
                     {
                         Thread.Sleep(800);
                     }
-                    //触发向主线程返回下位机上传数据事件
-                    worker.ReportProgress(1, receiveBuffMessage);
+                    if (receiveBuffMessage.Length >0)
+                    {
+                        //触发向主线程返回下位机上传数据事件
+                        worker.ReportProgress(1, receiveBuffMessage);
+                        isCommError = false;
+                    }
+                    else
+                    {
+                        errorNumber++;
+                        if(errorNumber>5)
+                        {
+                            isCommError = true;
+                        }
+                    }
                 }
             }
         }
@@ -2123,7 +2137,7 @@ namespace HFM
                         player.Stream = Resources.Chinese_Start_counting;// appPath + "\\Audio\\Chinese_Start_counting.wav";
                     }
                     player.Load();
-                    player.Play();
+                    player.PlaySync();
                     Thread.Sleep(100);
                     //左右手状态区域显示正常
                     if (isEnglish)
@@ -2304,7 +2318,7 @@ namespace HFM
                     //计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)进行累加：                    
                     calculatedMeasureDataS[i].Alpha += list[0].Alpha;
                     calculatedMeasureDataS[i].Beta += list[0].Beta;
-                    listS += list[0].Beta.ToString() + ";";
+                    //listS += list[0].Beta.ToString() + ";";
                     calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                 }
                 //进行语音提示
@@ -2363,8 +2377,8 @@ namespace HFM
                                 {
                                     if (isHandTested == 0)//手部第一次测量（手心）、左脚、右脚
                                     {                                        
-                                        pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4};", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                        pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Perset:{3}{4};", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                        pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                        pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Perset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
                                         //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
                                         Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                                         label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
@@ -2376,15 +2390,15 @@ namespace HFM
                                         switch (calculatedMeasureDataS[i].Channel.ChannelID)
                                         {
                                             case 1://探测器接手心，所以左手心的值是对应是左手背                                                
-                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}", "左手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}", "LHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", "左手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", "LHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
                                                 //找到通道测量值显示Label控件
                                                 Panel panel = (Panel)(this.Controls["PnlLHB"]);
                                                 label = (Label)(panel.Controls["LblLHBA"]);
                                                 break;
                                             case 3://探测器接手心，所以右手心的值是对应是右手背
-                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}", "右手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}", "RHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", "右手背", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", "RHB", conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
                                                 //找到通道测量值显示Label控件
                                                 panel = (Panel)(this.Controls["PnlRHB"]);
                                                 label = (Label)(panel.Controls["LblRHBA"]);
@@ -2392,8 +2406,8 @@ namespace HFM
                                             case 5://左脚右脚
                                             case 6:
                                                 //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
-                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
                                                 //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
                                                 panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                                                 label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
@@ -2405,8 +2419,8 @@ namespace HFM
                                 else//双探测器
                                 {
                                     //将当前通道Alpha测量污染信息添加进pollutionRecord字符串
-                                    pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                    pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                    pollutionRecord += string.Format("{0}测量值:α值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Alpha.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                    pollutionRecord_E += string.Format("{0}Actual:Alpha Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Alpha.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"), systemParameter.MeasurementUnit);
                                     //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"A"
                                     Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                                     label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "A")]);
@@ -2447,8 +2461,8 @@ namespace HFM
                                     if (isHandTested == 0)//手部第一次测量（手心）
                                     {
                                         //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                                        pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                        pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                        pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                        pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
                                         //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
                                         Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                                         label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
@@ -2460,16 +2474,16 @@ namespace HFM
                                         switch(calculatedMeasureDataS[i].Channel.ChannelID)
                                         {
                                             case 1:
-                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}","左手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}","LHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", "左手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n","LHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
                                                 //找到通道测量值显示Label控件
                                                 Panel panel = (Panel)(this.Controls["PnlLHB"]);
                                                 label = (Label)(panel.Controls["LblLHBB"]);
                                                 //Tools.Clone(calculatedMeasureDataS[2].Channel, conversionData.Channel);//左手背道盒
                                                 break;
                                             case 3:
-                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}", "右手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}", "RHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"),systemParameter.MeasurementUnit);
+                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", "右手背", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", "RHB", conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit, tempValue.ToString("F1"),systemParameter.MeasurementUnit);
                                                 //找到通道测量值显示Label控件
                                                 panel = (Panel)(this.Controls["PnlRHB"]);
                                                 label = (Label)(panel.Controls["LblRHBB"]);
@@ -2478,8 +2492,8 @@ namespace HFM
                                             case 5:
                                             case 6:
                                                 //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值{3}{4}:", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset{3}{4}:", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                                pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"), systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
                                                 //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
                                                 panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                                                 label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
@@ -2492,8 +2506,8 @@ namespace HFM
                                 {
                                     
                                     //将当前通道Beta测量污染信息添加进pollutionRecord字符串
-                                    pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
-                                    pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset{3}{4}:", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"),systemParameter.MeasurementUnit);
+                                    pollutionRecord += string.Format("{0}测量值:β值{1}{2}设置值:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"), systemParameter.MeasurementUnit);
+                                    pollutionRecord_E += string.Format("{0}Actual:Beta Value{1}{2}Preset:{3}{4}\r\n", calculatedMeasureDataS[i].Channel.ChannelName_English, conversionData.Beta.ToString("F1"),systemParameter.MeasurementUnit,tempValue.ToString("F1"),systemParameter.MeasurementUnit);
                                     //找到通道测量值显示Label控件，其名字为：Lbl+通道英文名+"B"
                                     Panel panel = (Panel)(this.Controls[string.Format("Pnl{0}", calculatedMeasureDataS[i].Channel.ChannelName_English)]);
                                     label = (Label)(panel.Controls[string.Format("Lbl{0}{1}", calculatedMeasureDataS[i].Channel.ChannelName_English, "B")]);
@@ -2516,21 +2530,24 @@ namespace HFM
                         {                            
                             if (calculatedMeasureDataS[i].Channel.ChannelID==1)//左手心道盒数据，存储到左手背
                             {
-                                conversionData.Channel = calculatedMeasureDataS[1].Channel;
-                                Tools.Clone(conversionData, conversionDataS[1]);
-                                Tools.Clone(conversionData.Channel, conversionDataS[1].Channel);
+                                //conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                                conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == 2).ToList();
+                                Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
+                                //Tools.Clone(conversionData.Channel, conversionDataS[0].Channel);
                             }
                             if(calculatedMeasureDataS[i].Channel.ChannelID==3)//右手心道盒数据，存储到右手背
                             {
-                                conversionData.Channel = calculatedMeasureDataS[3].Channel;
-                                Tools.Clone(conversionData, conversionDataS[3]);
-                                Tools.Clone(conversionData.Channel, conversionDataS[3].Channel);
+                                //conversionData.Channel = calculatedMeasureDataS[3].Channel;
+                                conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == 4).ToList();
+                                Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
+                                //Tools.Clone(conversionData.Channel, conversionDataS[3].Channel);
                             }  
                             if(calculatedMeasureDataS[i].Channel.ChannelID == 5||calculatedMeasureDataS[i].Channel.ChannelID == 6)
                             {
-                                conversionData.Channel = calculatedMeasureDataS[i].Channel;
-                                Tools.Clone(conversionData, conversionDataS[i]);
-                                Tools.Clone(conversionData.Channel, conversionDataS[i].Channel);
+                                //conversionData.Channel = calculatedMeasureDataS[i].Channel;
+                                conversionDataS = conversionDataS.Where(data => data.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID).ToList();
+                                Tools.Clone(calculatedMeasureDataS[i], conversionDataS[0]);
+                                //Tools.Clone(conversionData.Channel, conversionDataS[i].Channel);
                             }                            
                         }
                         else
@@ -2718,10 +2735,12 @@ namespace HFM
             //运行状态为“测量结束”
             if (platformState == PlatformState.Result)
             {
-                while(TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) + 1 > 16)
+                if (TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) > 16)
                 {
-                    //TxtShowResult.Text.Remove(16,TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) + 1-16);  
-                    TxtShowResult.Text = "";
+                    int start = TxtShowResult.GetFirstCharIndexFromLine(0);
+                    int end = TxtShowResult.GetFirstCharIndexFromLine(TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) - 16);
+                    TxtShowResult.Select(start, end);
+                    TxtShowResult.SelectedText = "";                   
                 }
                 isTestedEnd = false;//恢复检测完成状态标志为false，为下次检测做准备
                 ClearProgressPicFlag();//检测完成，将窗体顶部状态图片加载标志全部设置为false                
@@ -2866,8 +2885,7 @@ namespace HFM
                 {
                     calculatedMeasureDataS[j].Alpha = 0;
                     calculatedMeasureDataS[j].Beta = 0;
-                }
-                //conversionData
+                }                
                 conversionDataS.Clear();
                 //设备监测状态为正常
                 deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
@@ -3507,12 +3525,14 @@ namespace HFM
                 catch
                 {
                     TxtShowResult.Text += "管理机端口通信错误！\r\n";
+                    isCommReportError = true;
                 }
                 //延时
                 Thread.Sleep(1000);
                 //触发向主线程返回下位机上传数据事件
                 if (receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
                 {
+                    isCommReportError = false;
                     worker.ReportProgress(1, receiveBuffMessage);
                 }
             }
@@ -3541,7 +3561,8 @@ namespace HFM
                     }
                     else
                     {
-                        TxtShowResult.Text += "管理机通讯错误！";
+                        TxtShowResult.Text += "管理机通讯错误！\r\n";
+                        isCommReportError = true;
                     }
                 }
                 else
@@ -3549,15 +3570,16 @@ namespace HFM
                     errNumber++;
                 }
                 return;
-            }
+            }           
             //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
-            message = Components.Message.ExplainMessage(receiveBufferMessage);
-            if (message == null)//解析失败
+            message = Components.Message.ExplainMessage(receiveBufferMessage);            
+            if (message == null||message.Length<=0)//解析失败
             {
                 return;
             }
+            isCommReportError = false;
             //解析成功
-            if(message.Count()>=7)//长度大于1，为时间同步命令
+            if (message.Count()>=7)//长度大于1，为时间同步命令
             {
                 //将当前系统时间同步为管理机下发的时间
                 SYSTEMTIME timeForSyn = new SYSTEMTIME();
@@ -3693,8 +3715,7 @@ namespace HFM
             if (bkWorkerReceiveData.IsBusy)
             {
                 if (isCommError)//监测端口通讯错误
-                {
-                    
+                {                    
                     try
                     {
                         commPort.Close();
@@ -3712,11 +3733,16 @@ namespace HFM
             }
             if (bkWorkerReportStatus.IsBusy)
             {
-                if (commPort_Supervisory.Opened == false)
+                if (isCommReportError)//上报状态端口通讯错误
                 {
                     try
                     {
-                        commPort_Supervisory.Open();
+                        commPort_Supervisory.Close();
+                        if (commPort_Supervisory.Opened == false)
+                        {
+                            commPort_Supervisory.Open();
+                            isCommReportError = false;
+                        }
                     }
                     catch
                     {
@@ -4185,6 +4211,12 @@ namespace HFM
                 //stateTimeStart = DateTime.Now;//重新启动计时
             }
             isFrmDisplayed = !isFrmDisplayed;
+        }
+
+        private void TxtShowResult_TextChanged(object sender, EventArgs e)
+        {
+            TxtShowResult.SelectionStart = TxtShowResult.Text.Length;
+            TxtShowResult.ScrollToCaret();
         }
     }
 }
