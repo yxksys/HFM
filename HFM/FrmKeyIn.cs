@@ -157,7 +157,9 @@ namespace HFM
                     //去掉密码字符串的最后一位
                     Code = Code.Substring(0, Code.Length - 1);
                 }
-            }          
+            }
+            //执行委托
+            SendValueEventHandler.Invoke(Code);
         }
         #endregion
 

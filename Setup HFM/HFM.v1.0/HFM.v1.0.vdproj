@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_040DF595FE9D45669FF95F3027EC49A8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_044E20FF605C4F91933A9973D5DCF7C4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -130,12 +136,6 @@
         "Entry"
         {
         "MsmKey" = "8:_3C103BD4A4894B50AA7EC9D1F21E9638"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3C366874D1A04CA3A77212451FEB9561"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -369,6 +369,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7F0ABE0BAE7148C6A92C1BC990AF8ABA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7F4C8B2CF6CC419482E582C89AF425AD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -406,7 +412,7 @@
         "Entry"
         {
         "MsmKey" = "8:_88FFCD42B9D272125D25DAC391D83C73"
-        "OwnerKey" = "8:_3C366874D1A04CA3A77212451FEB9561"
+        "OwnerKey" = "8:_BAF48D452B8444E887BABA60BA5F9467"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -537,6 +543,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BAF48D452B8444E887BABA60BA5F9467"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BD7161B6C9714035BA7161206DD94A55"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -550,12 +562,6 @@
         "Entry"
         {
         "MsmKey" = "8:_BF6CAE9CF09B482BB38F7E7F3E237F85"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C548E365343740E2BE6862FC9C96827D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -711,12 +717,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EAD52AA67B06476DA48A96F4D4D57E26"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_EAF1EC9547C348C7BB25D6909238728C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -802,7 +802,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3C366874D1A04CA3A77212451FEB9561"
+        "OwnerKey" = "8:_BAF48D452B8444E887BABA60BA5F9467"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -921,6 +921,37 @@
             "TargetName" = "8:Contaminated_progress.png"
             "Tag" = "8:"
             "Folder" = "8:_19BE7B29EDAA4AFF80C9B19337DFDBD6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_040DF595FE9D45669FF95F3027EC49A8"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=0.0.0.0, Culture=en, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_040DF595FE9D45669FF95F3027EC49A8"
+                    {
+                    "Name" = "8:HFM.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\en\\HFM.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7119D8F0BFAC4BD6A84A4AAC9D16E7BA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2055,6 +2086,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F0ABE0BAE7148C6A92C1BC990AF8ABA"
+            {
+            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\HFM.accdb"
+            "TargetName" = "8:HFM.accdb"
+            "Tag" = "8:"
+            "Folder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F4C8B2CF6CC419482E582C89AF425AD"
             {
             "SourcePath" = "8:..\\..\\HFM\\Audio\\Chinese_Four.wav"
@@ -2182,6 +2233,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_88FFCD42B9D272125D25DAC391D83C73"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -2667,37 +2723,6 @@
             "TargetName" = "8:English_Decontaminate_please.wav"
             "Tag" = "8:"
             "Folder" = "8:_3D63CB7D2994401EB21D37AE816350F8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C548E365343740E2BE6862FC9C96827D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=0.0.0.0, Culture=en, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_C548E365343740E2BE6862FC9C96827D"
-                    {
-                    "Name" = "8:HFM.resources.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\en\\HFM.resources.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_7119D8F0BFAC4BD6A84A4AAC9D16E7BA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3212,26 +3237,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EAD52AA67B06476DA48A96F4D4D57E26"
-            {
-            "SourcePath" = "8:..\\..\\HFM\\bin\\Debug\\HFM.accdb"
-            "TargetName" = "8:HFM.accdb"
-            "Tag" = "8:"
-            "Folder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EAF1EC9547C348C7BB25D6909238728C"
             {
             "SourcePath" = "8:..\\..\\HFM\\Images\\NoContamination_progress.png"
@@ -3724,7 +3729,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_08E6C69809204C69881B84727229786B"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_94587D15CDD740A6BFB361DAFB0EBC06"
             {
             "Name" = "8:HFM"
             "Arguments" = "8:"
@@ -3732,7 +3737,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_3C366874D1A04CA3A77212451FEB9561"
+            "Target" = "8:_BAF48D452B8444E887BABA60BA5F9467"
             "Folder" = "8:_DF8CC310BF59498EA50CFF9D731FEC05"
             "WorkingFolder" = "8:_35ABF44552084F3CA8861171BD54DAA6"
             "Icon" = "8:_06BDF4880DD9457D9849254F1ECFF7F5"
@@ -4137,7 +4142,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3C366874D1A04CA3A77212451FEB9561"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BAF48D452B8444E887BABA60BA5F9467"
             {
             "SourcePath" = "8:..\\..\\HFM\\obj\\Debug\\HFM.exe"
             "TargetName" = "8:"
