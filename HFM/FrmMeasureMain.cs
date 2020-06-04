@@ -17,6 +17,7 @@ namespace HFM
 {
     public partial class FrmMeasureMain : Form
     {
+        //int measureCount = 0;
         Panel[] PnlStatus;
         Label[] LblTitle;
         Label[] LblValue;
@@ -64,6 +65,7 @@ namespace HFM
         bool isSelfCheckSended = false;//自检指令是否已经下发标志，因为在一个自检周期内，自检指令只需下发一次
         bool isBetaCommandToSend = false;//Beta自检指令是否应该下发，在α/β自检时，先下发α自检指令，自检时间到一半时再下发β自检指令
         bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
+        bool isFirstBackGroundData = true;//串口回传的第一个本底数据
         bool[] isLoadProgressPic =new bool[6] { false,false,false,false,false,false};//窗口顶部本底测量检测进度状态图片是否已经被加载                
         bool isHandSecondEnabled = false;//是否允许启动手部翻转后测量，当手部第一次测量结束后，用户必须翻转手掌（红外出现至少一次不到位），才能启动第二次手部检测
         bool isClothesContaminated=false;//衣物探测是否有污染
@@ -853,6 +855,7 @@ namespace HFM
                 buffMessage[61] = (deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_1) ? Convert.ToByte(DeviceStatus.OperatingFaulted) : deviceStatus);
                 if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)
                 {
+
                     //延时
                     Thread.Sleep(100);
                     //读取串口回传数据并赋值给receiveBuffMessage
@@ -875,19 +878,29 @@ namespace HFM
                     {
                         Thread.Sleep(800);
                     }
-                    if (receiveBuffMessage.Length >0)
+                    if (receiveBuffMessage!= null&& receiveBuffMessage.Length >0)
                     {
                         //触发向主线程返回下位机上传数据事件
                         worker.ReportProgress(1, receiveBuffMessage);
                         isCommError = false;
+                        errorNumber = 0;
                     }
                     else
                     {
                         errorNumber++;
                         if(errorNumber>5)
                         {
-                            isCommError = true;
+                            isCommError = true;                            
                         }
+                    }
+                }
+                else
+                {
+                    errNumber++;
+                    if(errNumber == 5)
+                    {
+                        TxtShowResult.Text += "监测测端口通信错误！\r\n";
+                        isCommError = true;                        
                     }
                 }
             }
@@ -1600,7 +1613,7 @@ namespace HFM
                 //自检时间到
                 if (stateTimeRemain < 0)
                 {                                      
-                    errRecordS = BaseCheck();
+                    errRecordS = BaseCheck();                    
                     if (errRecordS == null)//自检通过
                     {
                         //恢复当前标签文字提示（自检过程中可能有故障提示，所以自检通过后需要重新恢复）
@@ -1622,11 +1635,11 @@ namespace HFM
                         stateTimeSet = systemParameter.SmoothingTime;
                         //启动本底测量计时 
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
-                        //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为本底测量时计算做准备
+                        //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS初始化为当前本底值，为本底测量时计算做准备
                         for (int i = 0; i < channelS.Count; i++)
                         {
-                            calculatedMeasureDataS[i].Alpha = 0;
-                            calculatedMeasureDataS[i].Beta = 0;
+                            calculatedMeasureDataS[i].Alpha =0;
+                            calculatedMeasureDataS[i].Beta = 0 ;
                         }                        
                         //系统状态显示区域显示本底测量
                         if (isEnglish)
@@ -1717,10 +1730,19 @@ namespace HFM
                     List<MeasureData> list = measureDataS.Where(measureData => measureData.Channel.ChannelID == channelS[i].ChannelID).ToList();
                     if (list.Count > 0)
                     {
-                        //计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
-                        //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）               
-                        calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
-                        calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);
+                        if (isFirstBackGroundData)
+                        {
+                            calculatedMeasureDataS[i].Alpha = list[0].Alpha;
+                            calculatedMeasureDataS[i].Beta = list[0].Beta;
+                            
+                        }
+                        else
+                        {
+                            //计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
+                            //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）               
+                            calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
+                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);
+                        }
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                     }
                     //当前通道红外到位
@@ -1832,8 +1854,9 @@ namespace HFM
                         for (int j = 0; j < channelS.Count; j++)
                         {
                             calculatedMeasureDataS[j].Alpha = 0;
-                            calculatedMeasureDataS[j].Beta = 0;
+                            calculatedMeasureDataS[j].Beta =0;                            
                         }
+                        isFirstBackGroundData = true;
                         return;
                     }
                     else//当前通道红外不到位
@@ -1862,6 +1885,7 @@ namespace HFM
                         }
                     }                    
                 }
+                isFirstBackGroundData = false;
                 DisplayMeasureData(calculatedMeasureDataS,"cps");//yxk,修改,显示数据
                 //之前测量被中断过，需要重新显示提示信息
                 if (isReDisplay== true)
@@ -1884,6 +1908,7 @@ namespace HFM
                 //本底测量时间到
                 if (stateTimeRemain < 0)
                 {
+                    isFirstBackGroundData = true;
                     //isPlayed = false;
                     //各个手部和脚部通道显示当前测量本底值（cps）
                     string[] errRecordS = BaseCheck();
@@ -2114,11 +2139,19 @@ namespace HFM
                         {
                             isHandInfraredStatus = false;
                         }
-                        //继续计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
-                        //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）                                       
-                        calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
-                        calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1); ;
-                        calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
+                        if (isFirstBackGroundData)
+                        {
+                            calculatedMeasureDataS[i].Alpha = list[0].Alpha;
+                            calculatedMeasureDataS[i].Beta = list[0].Beta;                            
+                        }
+                        else
+                        {
+                            //继续计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
+                            //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）                                       
+                            calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
+                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1); ;
+                        }
+                            calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                         //获得当前系统参数设置中的测量单位                                                
                         //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
                         //IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
@@ -2132,7 +2165,8 @@ namespace HFM
                         //Tools.Clone(conversionData.Channel, conversionDataTemp.Channel = new Channel());
                         //conversionDataS.Add(conversionDataTemp);
                     }                      
-                }                               
+                }
+                isFirstBackGroundData = false;
                 //DisplayMeasureData(conversionDataS, systemParameter.MeasurementUnit);//yxk,修改,实时显示数据
                 //所有通道手部红外状态全部到位
                 if (isHandInfraredStatus == true && isHandTested!=2)
@@ -2178,14 +2212,15 @@ namespace HFM
                     //获得当前系统参数设置中的的测量时间并赋值给stateTimeSet
                     stateTimeSet = systemParameter.MeasuringTime;
                     //重新启动计时，为开始测量及时准备
-                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    stateTimeStart = System.DateTime.Now;
                     return;
                 }
                 //本底测量时间到，进行本底判断
                 if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds <= 0)
                 {
                     //下次如果还进行本底计算，则需重新计时，所以置标志为True
-                    isFirstBackGround = true;                   
+                    isFirstBackGround = true;
+                    isFirstBackGroundData = true;
                     string[] errRecordS = BaseCheck();
                     //本底测量判断
                     if (errRecordS == null)//本底检测通过
@@ -2235,7 +2270,7 @@ namespace HFM
                     {
                         //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次计算做准备
                         calculatedMeasureDataS[i].Alpha = 0;
-                        calculatedMeasureDataS[i].Beta = 0;
+                        calculatedMeasureDataS[i].Beta =0;
                     }
                     //重新启动本底测量计时
                     stateTimeStart = System.DateTime.Now.AddSeconds(1);
@@ -2271,8 +2306,8 @@ namespace HFM
                         //TxtShowResult.Text += "开始测量\r\n";
                         player.Stream = Resources.Chinese_Start_counting;// appPath + "\\Audio\\Chinese_Start_counting.wav";
                     }
-                   // player.Load();
-                    //player.PlaySync();
+                    player.Load();
+                    player.Play();
                     //重新启动计时，为开始测量及时准备
                     stateTimeStart = System.DateTime.Now.AddSeconds(-1);
                     return;
@@ -2351,6 +2386,8 @@ namespace HFM
                         stateTimeStart = System.DateTime.Now;
                         return;                        
                     }
+                    //measureCount++;
+                    //TxtShowResult.Text += measureCount.ToString()+"   ";
                     //控制每个通道状态显示为到位
                     //ChannelDisplayControl(list[0].Channel, 2);修正注释
                     //计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)进行累加：                    
@@ -2425,7 +2462,7 @@ namespace HFM
                         //conversionDataS.Add(conversionDataTemp);
                         if (factoryParameter.MeasureType == "α" || factoryParameter.MeasureType == "α/β")
                         {
-                            calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha / stateTimeSet - baseData[i].Alpha;
+                            calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha / (stateTimeSet+1) - baseData[i].Alpha;
                             if (calculatedMeasureDataS[i].Alpha < 0)
                             {
                                 calculatedMeasureDataS[i].Alpha = 0;
@@ -2512,7 +2549,9 @@ namespace HFM
                         }
                         if (factoryParameter.MeasureType == "β" || factoryParameter.MeasureType == "α/β")
                         {
-                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta / stateTimeSet - baseData[i].Beta;
+                            //TxtShowResult.Text += calculatedMeasureDataS[i].Beta.ToString() + "\r\n";
+                            //TxtShowResult.Text += "本："+baseData[i].Beta.ToString() + "\r\n";
+                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta / (stateTimeSet+1) - baseData[i].Beta;
                             if (calculatedMeasureDataS[i].Beta < 0)
                             {
                                 calculatedMeasureDataS[i].Beta = 0;
@@ -2852,22 +2891,23 @@ namespace HFM
                     player.LoadAsync();
                     player.PlaySync();
                 }
-                //if(deviceStatus==Convert.ToByte(DeviceStatus.OperatingContaminated_1)||deviceStatus== Convert.ToByte(DeviceStatus.OperatingContaminated_2))
-                //{
-                //    // 设备状态区域显示人员污染
-                //    if (isEnglish)
-                //    {                       
-                //        //语音提示被测人员污染
-                //        player.Stream = Resources.English_Decontaminate_please;// appPath + "\\Audio\\English_Decontaminate_please.wav";
-                //    }
-                //    else
-                //    {                       
-                //        //语音提示被测人员污染
-                //        player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";                            
-                //    }                        
-                //    player.LoadAsync();
-                //    player.PlaySync();
-                //}
+                if (deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_1) || deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_2))
+                {
+                    // 设备状态区域显示人员污染
+                    if (isEnglish)
+                    {
+                        //语音提示被测人员污染
+                        player.Stream = Resources.English_Decontaminate_please;// appPath + "\\Audio\\English_Decontaminate_please.wav";
+                    }
+                    else
+                    {
+                        //语音提示被测人员污染
+                        player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";                            
+                    }
+                    player.LoadAsync();
+                    player.PlaySync();
+                    //Thread.Sleep(200);
+                }
                 //检测次数大于强制本底次数、衣物离线时间大于设置时间、有污染（手脚、衣物）则强制本底
                 if (systemParameter.MeasuredCount >= systemParameter.BkgUpdate || clothesTimeCount > systemParameter.ClothOfflineTime||pollutionRecord != null || isClothesContaminated == true)
                 {                    
@@ -2887,7 +2927,7 @@ namespace HFM
                         platformState = PlatformState.BackGrouneMeasure;
                         //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
                         stateTimeSet = systemParameter.SmoothingTime;
-                        //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为本底测量时计算做准备
+                        //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS初始化为当前本底值，为本底测量时计算做准备
                         for (int i = 0; i < channelS.Count; i++)
                         {
                             calculatedMeasureDataS[i].Alpha = 0;
@@ -4202,6 +4242,7 @@ namespace HFM
             commPort.ClearPortData();
             if (isFrmDisplayed == false)
             {
+                errNumber = 0;
                 System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
                 TxtShowResult.Text = "";                
                 //获得工厂参数设置信息           

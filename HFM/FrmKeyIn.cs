@@ -51,6 +51,7 @@ namespace HFM
             InitializeComponent();
             SendValueEventHandler = sendValueEventHandler;
             Code = _value;
+            TempButton = new Button();
             //使得临时按钮的大小与数字键盘上按钮的大小相同，但颜色为黑色，不可视
             if (TempButton != null)
             {
@@ -72,7 +73,7 @@ namespace HFM
 
         #region 界面初始加载
         private void FrmKeyIn_Load(object sender, EventArgs e)
-        {
+        {            
             if (_isEnglish != true)
             {
                 this.Text = "数字输入";
@@ -135,6 +136,7 @@ namespace HFM
                 {
                     //获得发送者按钮的位置
                     TempButton.Location  = buttonNum[tempChar - 48].Location;
+                    TempButton.BringToFront();
                     //临时按钮可视化
                     TempButton.Visible = true;
                     Thread.Sleep(200);
@@ -144,6 +146,7 @@ namespace HFM
                 if (tempChar == 46)
                 {
                     TempButton = buttonNum[0];
+                    TempButton.BringToFront();
                     TempButton.Visible = true;
                     Thread.Sleep(200);
                     TempButton.Visible = false;
@@ -176,6 +179,7 @@ namespace HFM
                 TempButton.Location = btn.Location;
                 //使得临时按钮可视
                 TempButton.Visible = true;
+                TempButton.BringToFront();
                 //延时
                 Thread.Sleep(200);
                 //使得临时按钮不可视
