@@ -1344,6 +1344,7 @@ namespace HFM
             IList<EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
             ProbeParameter p = new ProbeParameter();
             EfficiencyParameter efficiency = new EfficiencyParameter();
+            EfficiencyParameter efficiencytwo = new EfficiencyParameter();//单探测器启用后手心的数据同步到手背中
             for (int i = 0; i < DgvAlphaSet.RowCount; i++)
             {
                 float alarm_1 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);//污染警报
@@ -1374,6 +1375,64 @@ namespace HFM
                 if (efficiency.SetParameter(efficiency)==true && p.SetParameter(p)==true)
                 {
                     setDataCount++;
+                }
+                //单探测器启用
+                if (factoryParameter.IsDoubleProbe == false)
+                {
+                    if (efficiency.Channel.ChannelID == 1)
+                    {
+                        efficiencytwo.Channel = Channels.First(x => x.ChannelID == 2);
+                        efficiencytwo.NuclideType = "α";
+                        efficiencytwo.NuclideName = nuclidename;
+                        efficiencytwo.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                        //efficiencyParameters.Add(efficiency);
+
+                        //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                        p.ProbeChannel = Channels.First(x => x.ChannelID == 2);
+                        p.NuclideType = "α";
+                        p.ProbeType = "闪烁体";
+                        p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
+                        p.LBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[2].Value);
+                        //按测量单位转换成cps
+                        p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
+                            p.ProbeChannel.ProbeArea);
+                        //按测量单位转换成cps
+                        p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
+                            p.ProbeChannel.ProbeArea);
+                        p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                        //probeParameters.Add(p);
+                        if (efficiency.SetParameter(efficiencytwo) == true && p.SetParameter(p) == true)
+                        {
+                            setDataCount++;
+                        }
+                    }
+                    if (efficiency.Channel.ChannelID == 3)
+                    {
+                        efficiencytwo.Channel = Channels.First(x => x.ChannelID == 4);
+                        efficiencytwo.NuclideType = "α";
+                        efficiencytwo.NuclideName = nuclidename;
+                        efficiencytwo.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                        //efficiencyParameters.Add(efficiency);
+
+                        //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                        p.ProbeChannel = Channels.First(x => x.ChannelID == 4);
+                        p.NuclideType = "α";
+                        p.ProbeType = "闪烁体";
+                        p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
+                        p.LBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[2].Value);
+                        //按测量单位转换成cps
+                        p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
+                            p.ProbeChannel.ProbeArea);
+                        //按测量单位转换成cps
+                        p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
+                            p.ProbeChannel.ProbeArea);
+                        p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                        //probeParameters.Add(p);
+                        if (efficiency.SetParameter(efficiencytwo) == true && p.SetParameter(p) == true)
+                        {
+                            setDataCount++;
+                        }
+                    }
                 }
             }
             #endregion
@@ -1465,12 +1524,14 @@ namespace HFM
             IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
             ProbeParameter p = new ProbeParameter();
             HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
+            HFM.Components.EfficiencyParameter efficiencytwo = new HFM.Components.EfficiencyParameter();
             for (int i = 0; i < DgvBetaSet.RowCount; i++)
             {
                 float alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);//污染警报
                 float alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);//高阶警报
                 var listChannels= Channels.First(x => x.ChannelName == DgvBetaSet.Rows[i].Cells[0].Value.ToString()|| x.ChannelName_English== DgvBetaSet.Rows[i].Cells[0].Value.ToString());
                 //efficiency.Channel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                
                 efficiency.Channel = listChannels;
                 efficiency.NuclideType = "β";
                 efficiency.NuclideName = nuclidename;
@@ -1483,15 +1544,77 @@ namespace HFM
                 p.ProbeType = "闪烁体";
                 p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
                 p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
+                
                 //按测量单位转换成cps
-                p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,p.ProbeChannel.ProbeArea);
+                p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
                 //按测量单位转换成cps
-                p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,p.ProbeChannel.ProbeArea);
+                p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
                 p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+
                 //probeParameters.Add(p);
                 if (efficiency.SetParameter(efficiency)&&p.SetParameter(p))
                 {
                     setDataCount++;
+                }
+                //单探测器启用
+                if (factoryParameter.IsDoubleProbe == false)
+                {
+                    if (listChannels.ChannelID == 1)
+                    {
+                        listChannels = Channels.First(x => x.ChannelID == 2);
+                        efficiencytwo.Channel = listChannels;
+                        efficiencytwo.NuclideType = "β";
+                        efficiencytwo.NuclideName = nuclidename;
+                        efficiencytwo.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                        //efficiencyParameters.Add(efficiency);
+
+                        //p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                        p.ProbeChannel = listChannels;
+                        p.NuclideType = "β";
+                        p.ProbeType = "闪烁体";
+                        p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
+                        p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
+
+                        //按测量单位转换成cps
+                        p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                        //按测量单位转换成cps
+                        p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                        p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+
+                        //probeParameters.Add(p);
+                        if (efficiency.SetParameter(efficiencytwo) && p.SetParameter(p))
+                        {
+                            setDataCount++;
+                        }
+                    }
+                    if (listChannels.ChannelID == 3)
+                    {
+                        listChannels = Channels.First(x => x.ChannelID == 4);
+                        efficiencytwo.Channel = listChannels;
+                        efficiencytwo.NuclideType = "β";
+                        efficiencytwo.NuclideName = nuclidename;
+                        efficiencytwo.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                        //efficiencyParameters.Add(efficiency);
+
+                        //p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                        p.ProbeChannel = listChannels;
+                        p.NuclideType = "β";
+                        p.ProbeType = "闪烁体";
+                        p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
+                        p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
+
+                        //按测量单位转换成cps
+                        p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                        //按测量单位转换成cps
+                        p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                        p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+
+                        //probeParameters.Add(p);
+                        if (efficiency.SetParameter(efficiencytwo) && p.SetParameter(p))
+                        {
+                            setDataCount++;
+                        }
+                    }
                 }
             }
             #endregion

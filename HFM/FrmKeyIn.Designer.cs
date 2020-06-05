@@ -47,11 +47,15 @@
             // 
             // BtnOne
             // 
-            resources.ApplyResources(this.BtnOne, "BtnOne");
             this.BtnOne.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnOne.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.BtnOne.FlatAppearance.BorderSize = 5;
+            this.BtnOne.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            resources.ApplyResources(this.BtnOne, "BtnOne");
             this.BtnOne.Name = "BtnOne";
-            this.BtnOne.UseVisualStyleBackColor = false;
+            this.BtnOne.UseVisualStyleBackColor = true;
             this.BtnOne.Click += new System.EventHandler(this.Button_Click);
+            this.BtnOne.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnTwo
             // 
@@ -59,13 +63,16 @@
             this.BtnTwo.Name = "BtnTwo";
             this.BtnTwo.UseVisualStyleBackColor = true;
             this.BtnTwo.Click += new System.EventHandler(this.Button_Click);
+            this.BtnTwo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnThree
             // 
+            this.BtnThree.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.BtnThree, "BtnThree");
             this.BtnThree.Name = "BtnThree";
             this.BtnThree.UseVisualStyleBackColor = true;
             this.BtnThree.Click += new System.EventHandler(this.Button_Click);
+            this.BtnThree.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnFour
             // 
@@ -73,6 +80,7 @@
             this.BtnFour.Name = "BtnFour";
             this.BtnFour.UseVisualStyleBackColor = true;
             this.BtnFour.Click += new System.EventHandler(this.Button_Click);
+            this.BtnFour.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnFive
             // 
@@ -80,6 +88,7 @@
             this.BtnFive.Name = "BtnFive";
             this.BtnFive.UseVisualStyleBackColor = true;
             this.BtnFive.Click += new System.EventHandler(this.Button_Click);
+            this.BtnFive.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnSix
             // 
@@ -87,6 +96,7 @@
             this.BtnSix.Name = "BtnSix";
             this.BtnSix.UseVisualStyleBackColor = true;
             this.BtnSix.Click += new System.EventHandler(this.Button_Click);
+            this.BtnSix.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnSeven
             // 
@@ -94,6 +104,7 @@
             this.BtnSeven.Name = "BtnSeven";
             this.BtnSeven.UseVisualStyleBackColor = true;
             this.BtnSeven.Click += new System.EventHandler(this.Button_Click);
+            this.BtnSeven.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnEight
             // 
@@ -101,6 +112,7 @@
             this.BtnEight.Name = "BtnEight";
             this.BtnEight.UseVisualStyleBackColor = true;
             this.BtnEight.Click += new System.EventHandler(this.Button_Click);
+            this.BtnEight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnNine
             // 
@@ -108,6 +120,7 @@
             this.BtnNine.Name = "BtnNine";
             this.BtnNine.UseVisualStyleBackColor = true;
             this.BtnNine.Click += new System.EventHandler(this.Button_Click);
+            this.BtnNine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnZero
             // 
@@ -115,6 +128,7 @@
             this.BtnZero.Name = "BtnZero";
             this.BtnZero.UseVisualStyleBackColor = true;
             this.BtnZero.Click += new System.EventHandler(this.Button_Click);
+            this.BtnZero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnDot
             // 
@@ -122,13 +136,15 @@
             this.BtnDot.Name = "BtnDot";
             this.BtnDot.UseVisualStyleBackColor = true;
             this.BtnDot.Click += new System.EventHandler(this.Button_Click);
+            this.BtnDot.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnEnter
             // 
-            resources.ApplyResources(this.BtnEnter, "BtnEnter");
             this.BtnEnter.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.BtnEnter, "BtnEnter");
             this.BtnEnter.Name = "BtnEnter";
             this.BtnEnter.Click += new System.EventHandler(this.BtnEnter_Click);
+            this.BtnEnter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // BtnBackspace
             // 
@@ -136,6 +152,7 @@
             this.BtnBackspace.Name = "BtnBackspace";
             this.BtnBackspace.UseVisualStyleBackColor = true;
             this.BtnBackspace.Click += new System.EventHandler(this.BtnBackspace_Click);
+            this.BtnBackspace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyboardInput);
             // 
             // LblLetter
             // 
