@@ -2716,7 +2716,7 @@ namespace HFM
                                 TxtShowResult.Text += "等待测量\r\n";
                             }
                             //设备监测状态为正常
-                            deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
+                            //deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                             //commPort.
                             //设置运行状态为等待测量
                             platformState = PlatformState.ReadyToMeasure;
