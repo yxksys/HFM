@@ -421,6 +421,7 @@
             // 
             // PicLogo
             // 
+            this.PicLogo.BackgroundImage = global::HFM.Properties.Resources.logo;
             resources.ApplyResources(this.PicLogo, "PicLogo");
             this.PicLogo.Name = "PicLogo";
             this.PicLogo.TabStop = false;
