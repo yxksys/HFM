@@ -1370,6 +1370,18 @@ namespace HFM
                 //按测量单位转换成cps
                 p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
                     p.ProbeChannel.ProbeArea);
+                if (p.Alarm_2<p.Alarm_1)
+                {
+                    if (_isEnglish==true)
+                    {
+                        MessageBox.Show(@"High price alarm must be greater than pollution alarm！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"高价报警必须大于污染报警！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    return;
+                }
                 p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
                 //probeParameters.Add(p);
                 if (efficiency.SetParameter(efficiency)==true && p.SetParameter(p)==true)
@@ -1549,6 +1561,19 @@ namespace HFM
                 p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
                 //按测量单位转换成cps
                 p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                if (p.Alarm_2 < p.Alarm_1)
+                {
+                    if (_isEnglish == true)
+                    {
+                        MessageBox.Show(@"High price alarm must be greater than pollution alarm！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"高价报警必须大于污染报警！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    return;
+                }
+
                 p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
 
                 //probeParameters.Add(p);
@@ -1745,6 +1770,18 @@ namespace HFM
             probeParameter.LBackground = Convert.ToSingle(TxtClothesLBackground.Text);
             probeParameter.Alarm_1 = Convert.ToSingle(TxtClothesAlarm_1.Text);
             probeParameter.Alarm_2 = Convert.ToSingle(TxtClothesAlarm_2.Text);
+            if (probeParameter.Alarm_2 < probeParameter.Alarm_1)
+            {
+                if (_isEnglish == true)
+                {
+                    MessageBox.Show(@"High price alarm must be greater than pollution alarm！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                }
+                else
+                {
+                    MessageBox.Show(@"高价报警必须大于污染报警！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                }
+                return;
+            }
             #endregion
 
             #region 更新数据库
