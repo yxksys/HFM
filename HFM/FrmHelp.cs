@@ -35,7 +35,7 @@ namespace HFM
                 //软件版本
                 LblVersions.Text = "软件版本:" + "V3.0";
                 //联系方式
-                LblNumber.Text = "联系方式:" + "0351-2202150  2203549";
+                LblNumber.Text = "联系方式:" + "0351-2202181  2203549";
                 //版权所有
                 LblCopyright.Text = "版权所有（C） 山西中辐核仪器有限责任公司";
             }
@@ -47,7 +47,7 @@ namespace HFM
                 //软件版本
                 LblVersions.Text = "Version:" + "V3.0";
                 //联系方式
-                LblNumber.Text = "Tel:" + "0351-2202150  2203549";
+                LblNumber.Text = "Tel:" + "0351-2202181  2203549";
                 //版权所有
                 LblCopyright.Text = "Copyright (c) Shanxi Zhongfu Nuclear Instruments Co., Ltd";
             }

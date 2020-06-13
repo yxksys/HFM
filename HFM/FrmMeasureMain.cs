@@ -1117,7 +1117,7 @@ namespace HFM
                             #region 如果减去本底值后的测量值大于一级报警，说明有污染  
                             ////获得当前衣物检测通道的探测参数
                             //IList<ProbeParameter> clothesProbeParmeter = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == 7).ToList();
-                            if (smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_1)
+                            if (smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_1|| smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2)
                             {
                                 //大于二级报警，衣物探测界面测量结果显示文本框背景色设置为ALATM2
                                 if (smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2)
@@ -2541,9 +2541,13 @@ namespace HFM
                                 }
                                 else
                                 {
-                                    label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
-                                    //将设备监测状态设置为“污染”
-                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
+                                    //本次污染状态为一级报警，当前设备状态比一级报警低（正常或故障），则当前设备状态设置为一级报警，否则状态不变
+                                    if (deviceStatus < Convert.ToByte(DeviceStatus.OperatingContaminated_1))
+                                    {
+                                        label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
+                                        //将设备监测状态设置为“污染”
+                                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
+                                    }
                                 }
                             }
                         }
@@ -2630,8 +2634,12 @@ namespace HFM
                                 }
                                 else
                                 {
-                                    label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
-                                    deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
+                                    //本次污染状态为一级报警，当前设备状态比一级报警低（正常或故障），则当前设备状态设置为一级报警，否则状态不变
+                                    if (deviceStatus < Convert.ToByte(DeviceStatus.OperatingContaminated_1))
+                                    {
+                                        label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
+                                        deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
+                                    }
                                 }
                             }
                         }

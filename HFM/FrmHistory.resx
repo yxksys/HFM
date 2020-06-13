@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnDeleteMeasure.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeleteMeasure.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 449</value>
@@ -147,7 +147,7 @@
     <value>0</value>
   </data>
   <data name="BtnDeriveMeasure.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeriveMeasure.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 449</value>
@@ -214,7 +214,7 @@
     <value>3, 3</value>
   </data>
   <data name="DgvMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 491</value>
+    <value>770, 490</value>
   </data>
   <data name="DgvMeasure.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -232,13 +232,13 @@
     <value>2</value>
   </data>
   <data name="TabMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 30</value>
   </data>
   <data name="TabMeasure.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
+    <value>776, 496</value>
   </data>
   <data name="TabMeasure.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -262,7 +262,7 @@
     <value>Popup</value>
   </data>
   <data name="BtnDeleteCalibration.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeleteCalibration.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 448</value>
@@ -292,7 +292,7 @@
     <value>Popup</value>
   </data>
   <data name="BtnDeriveCalibration.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeriveCalibration.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 448</value>
@@ -382,7 +382,7 @@
     <value>3, 3</value>
   </data>
   <data name="DgvCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 491</value>
+    <value>770, 490</value>
   </data>
   <data name="DgvCalibration.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -400,13 +400,13 @@
     <value>2</value>
   </data>
   <data name="TabCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 30</value>
   </data>
   <data name="TabCalibration.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
+    <value>776, 496</value>
   </data>
   <data name="TabCalibration.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -430,7 +430,7 @@
     <value>Popup</value>
   </data>
   <data name="BtnDeleteError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeleteError.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 447</value>
@@ -460,7 +460,7 @@
     <value>Popup</value>
   </data>
   <data name="BtnDeriveError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeriveError.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 447</value>
@@ -523,7 +523,7 @@
     <value>3, 3</value>
   </data>
   <data name="DgvError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 491</value>
+    <value>770, 490</value>
   </data>
   <data name="DgvError.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -541,13 +541,13 @@
     <value>2</value>
   </data>
   <data name="TabError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 30</value>
   </data>
   <data name="TabError.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
+    <value>776, 496</value>
   </data>
   <data name="TabError.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -571,7 +571,7 @@
     <value>Fill</value>
   </data>
   <data name="TabHistory.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="TabHistory.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -605,6 +605,30 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>历史记录</value>
+  </data>
+  <data name="&gt;&gt;MeasureDate.Name" xml:space="preserve">
+    <value>MeasureDate</value>
+  </data>
+  <data name="&gt;&gt;MeasureDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureStatus.Name" xml:space="preserve">
+    <value>MeasureStatus</value>
+  </data>
+  <data name="&gt;&gt;MeasureStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DetailedInfo.Name" xml:space="preserve">
+    <value>DetailedInfo</value>
+  </data>
+  <data name="&gt;&gt;DetailedInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IsEnglish.Name" xml:space="preserve">
+    <value>IsEnglish</value>
+  </data>
+  <data name="&gt;&gt;IsEnglish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CalibrationTime.Name" xml:space="preserve">
     <value>CalibrationTime</value>
@@ -664,30 +688,6 @@
     <value>IsEnglishsError</value>
   </data>
   <data name="&gt;&gt;IsEnglishsError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MeasureDate.Name" xml:space="preserve">
-    <value>MeasureDate</value>
-  </data>
-  <data name="&gt;&gt;MeasureDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MeasureStatus.Name" xml:space="preserve">
-    <value>MeasureStatus</value>
-  </data>
-  <data name="&gt;&gt;MeasureStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DetailedInfo.Name" xml:space="preserve">
-    <value>DetailedInfo</value>
-  </data>
-  <data name="&gt;&gt;DetailedInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IsEnglish.Name" xml:space="preserve">
-    <value>IsEnglish</value>
-  </data>
-  <data name="&gt;&gt;IsEnglish.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -37,6 +37,10 @@
             this.BtnDeleteMeasure = new System.Windows.Forms.Button();
             this.BtnDeriveMeasure = new System.Windows.Forms.Button();
             this.DgvMeasure = new System.Windows.Forms.DataGridView();
+            this.MeasureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MeasureStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetailedInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsEnglish = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabCalibration = new System.Windows.Forms.TabPage();
             this.BtnDeleteCalibration = new System.Windows.Forms.Button();
             this.BtnDeriveCalibration = new System.Windows.Forms.Button();
@@ -55,10 +59,6 @@
             this.ErrTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Record = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsEnglishsError = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.MeasureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MeasureStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DetailedInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsEnglish = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabHistory.SuspendLayout();
             this.TabMeasure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMeasure)).BeginInit();
@@ -118,6 +118,31 @@
             this.DgvMeasure.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.DgvMeasure.RowHeadersVisible = false;
             this.DgvMeasure.RowTemplate.Height = 23;
+            // 
+            // MeasureDate
+            // 
+            resources.ApplyResources(this.MeasureDate, "MeasureDate");
+            this.MeasureDate.Name = "MeasureDate";
+            this.MeasureDate.ReadOnly = true;
+            // 
+            // MeasureStatus
+            // 
+            resources.ApplyResources(this.MeasureStatus, "MeasureStatus");
+            this.MeasureStatus.Name = "MeasureStatus";
+            this.MeasureStatus.ReadOnly = true;
+            // 
+            // DetailedInfo
+            // 
+            this.DetailedInfo.FillWeight = 400F;
+            resources.ApplyResources(this.DetailedInfo, "DetailedInfo");
+            this.DetailedInfo.Name = "DetailedInfo";
+            this.DetailedInfo.ReadOnly = true;
+            // 
+            // IsEnglish
+            // 
+            resources.ApplyResources(this.IsEnglish, "IsEnglish");
+            this.IsEnglish.Name = "IsEnglish";
+            this.IsEnglish.ReadOnly = true;
             // 
             // TabCalibration
             // 
@@ -271,31 +296,6 @@
             resources.ApplyResources(this.IsEnglishsError, "IsEnglishsError");
             this.IsEnglishsError.Name = "IsEnglishsError";
             this.IsEnglishsError.ReadOnly = true;
-            // 
-            // MeasureDate
-            // 
-            resources.ApplyResources(this.MeasureDate, "MeasureDate");
-            this.MeasureDate.Name = "MeasureDate";
-            this.MeasureDate.ReadOnly = true;
-            // 
-            // MeasureStatus
-            // 
-            resources.ApplyResources(this.MeasureStatus, "MeasureStatus");
-            this.MeasureStatus.Name = "MeasureStatus";
-            this.MeasureStatus.ReadOnly = true;
-            // 
-            // DetailedInfo
-            // 
-            this.DetailedInfo.FillWeight = 400F;
-            resources.ApplyResources(this.DetailedInfo, "DetailedInfo");
-            this.DetailedInfo.Name = "DetailedInfo";
-            this.DetailedInfo.ReadOnly = true;
-            // 
-            // IsEnglish
-            // 
-            resources.ApplyResources(this.IsEnglish, "IsEnglish");
-            this.IsEnglish.Name = "IsEnglish";
-            this.IsEnglish.ReadOnly = true;
             // 
             // FrmHistory
             // 

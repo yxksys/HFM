@@ -122,94 +122,94 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="StartRunningToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>180, 26</value>
   </data>
   <data name="StartRunningToolStripMenuItem.Text" xml:space="preserve">
     <value>开始运行</value>
   </data>
   <data name="SuperUserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>180, 26</value>
   </data>
   <data name="SuperUserToolStripMenuItem.Text" xml:space="preserve">
     <value>超级用户</value>
   </data>
   <data name="ChangePasswordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>180, 26</value>
   </data>
   <data name="ChangePasswordToolStripMenuItem.Text" xml:space="preserve">
     <value>修改密码</value>
   </data>
   <data name="RetreatSystemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+    <value>180, 26</value>
   </data>
   <data name="RetreatSystemToolStripMenuItem.Text" xml:space="preserve">
     <value>退出系统</value>
   </data>
   <data name="SystemToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="SystemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 24</value>
+    <value>73, 25</value>
   </data>
   <data name="SystemToolStripMenuItem.Text" xml:space="preserve">
     <value>系统(S)</value>
   </data>
   <data name="ParameterSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>180, 26</value>
   </data>
   <data name="ParameterSettingToolStripMenuItem.Text" xml:space="preserve">
     <value>参数设置</value>
   </data>
   <data name="SetUpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="SetUpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 24</value>
+    <value>74, 25</value>
   </data>
   <data name="SetUpToolStripMenuItem.Text" xml:space="preserve">
     <value>设置(P)</value>
   </data>
   <data name="CalibrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>180, 26</value>
   </data>
   <data name="CalibrationToolStripMenuItem.Text" xml:space="preserve">
     <value>测试刻度</value>
   </data>
   <data name="TestHardwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>180, 26</value>
   </data>
   <data name="TestHardwareToolStripMenuItem.Text" xml:space="preserve">
     <value>硬件检测</value>
   </data>
   <data name="MaintainToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="MaintainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 24</value>
+    <value>73, 25</value>
   </data>
   <data name="MaintainToolStripMenuItem.Text" xml:space="preserve">
     <value>维护(T)</value>
   </data>
   <data name="HistoricalRecordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 24</value>
+    <value>180, 26</value>
   </data>
   <data name="HistoricalRecordToolStripMenuItem.Text" xml:space="preserve">
     <value>历史记录</value>
   </data>
   <data name="RecordToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="RecordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 24</value>
+    <value>74, 25</value>
   </data>
   <data name="RecordToolStripMenuItem.Text" xml:space="preserve">
     <value>记录(R)</value>
   </data>
   <data name="AboutToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="AboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 24</value>
+    <value>75, 25</value>
   </data>
   <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
     <value>关于(A)</value>
@@ -218,7 +218,7 @@
     <value>0, 0</value>
   </data>
   <data name="MnsFunction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 28</value>
+    <value>784, 29</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MnsFunction.TabIndex" type="System.Int32, mscorlib">
@@ -243,28 +243,28 @@
     <value>145, 17</value>
   </metadata>
   <data name="Tsslbl_Name.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="Tsslbl_Name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 20</value>
+    <value>163, 21</value>
   </data>
   <data name="Tsslbl_Name.Text" xml:space="preserve">
     <value>HFM手脚污染监测仪|</value>
   </data>
   <data name="Tsslbl_Status.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="Tsslbl_Status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+    <value>74, 21</value>
   </data>
   <data name="Tsslbl_Status.Text" xml:space="preserve">
     <value>通讯状态</value>
   </data>
   <data name="Tsslbl_Tcp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="Tsslbl_Tcp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 20</value>
+    <value>106, 21</value>
   </data>
   <data name="Tsslbl_Tcp.Text" xml:space="preserve">
     <value>网络连接状态</value>
@@ -273,10 +273,10 @@
     <value>False</value>
   </data>
   <data name="Tsslbl_NowTime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="Tsslbl_NowTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 20</value>
+    <value>400, 21</value>
   </data>
   <data name="Tsslbl_NowTime.Text" xml:space="preserve">
     <value>2020年3月27日 18点42分</value>
@@ -285,10 +285,10 @@
     <value>MiddleRight</value>
   </data>
   <data name="StsFoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 536</value>
+    <value>0, 535</value>
   </data>
   <data name="StsFoot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 25</value>
+    <value>784, 26</value>
   </data>
   <data name="StsFoot.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
