@@ -246,6 +246,7 @@ namespace HFM
                         break;
                     case 4:
                         GetMainProferenceData();
+                        ReadPreference();
                         break;
                     case 5:
                         GetPortConfiguration();
@@ -1143,6 +1144,26 @@ namespace HFM
             system.MeasurementUnit = CmbMeasurementUnit.Text;
             system.AlarmTime = int.Parse(TxtAlarmTime.Text);
             system.BkgUpdate = int.Parse(TxtBKGUpdate.Text);
+            if (system.SelfCheckTime<20)
+            {
+                MessageBox.Show(@"自检时间必须大于 20s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
+            if (system.SmoothingTime<10)
+            {
+                MessageBox.Show(@"平滑时间必须大于 10s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
+            if (system.MeasuringTime<4)
+            {
+                MessageBox.Show(@"测量时间必须大于 3s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
+            if (system.AlarmTime<2)
+            {
+                MessageBox.Show(@"报警时间必须大于 1s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
             #endregion
 
             #region 探测面积
@@ -1906,14 +1927,20 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
         {
-            
+            ReadPreference();
+        }
+        /// <summary>
+        /// 读取道合参数的方法
+        /// </summary>
+        private void ReadPreference()
+        {
             //当前发送报文类型换成p读取
             _messageType = MessageType.PRead;
             TabPresence.Enabled = false;
             //判断串口是否打开
             if (_commPort.Opened == true)
             {
-                if (backgroundWorker_Preference.IsBusy==true)
+                if (backgroundWorker_Preference.IsBusy == true)
                 {
                     backgroundWorker_Preference.CancelAsync();
                     Thread.Sleep(100);

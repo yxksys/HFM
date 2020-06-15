@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCalibration));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabCalibration = new System.Windows.Forms.TabControl();
             this.TabpageCalibration = new System.Windows.Forms.TabPage();
             this.GrpCalibration = new System.Windows.Forms.GroupBox();
@@ -118,6 +119,8 @@
             // DgvInformation
             // 
             this.DgvInformation.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 8.25F);
+            this.DgvInformation.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvInformation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvInformation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Status,

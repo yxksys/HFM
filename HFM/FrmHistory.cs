@@ -328,7 +328,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnDeleteError_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确定要删除所有故障日记记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("确定要删除所有故障日志记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 int count = new ErrorData().DeleteData();
                 MessageBox.Show($"您成功删除{count}条记录");
@@ -343,7 +343,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnDeleteCalibration_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确定要删除所有故障日记记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("确定要删除所有故障日志记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 int count = new Calibration().DeleteData();
                 MessageBox.Show($"您成功删除{count}条记录");
@@ -363,7 +363,7 @@ namespace HFM
 
         private void BtnDeleteMeasure_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确定要删除所有测量日记记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("确定要删除所有测量日志记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 int count = new MeasureData().DeleteData();
                 MessageBox.Show($"您成功删除{count}条记录");

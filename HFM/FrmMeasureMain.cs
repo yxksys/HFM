@@ -1947,6 +1947,12 @@ namespace HFM
                             calculatedMeasureDataS[i].Alpha = 0;
                             calculatedMeasureDataS[i].Beta = 0;
                         }
+                        //如果是单探测器，将左手心、右手心的本底值拷贝到左手背、右手背
+                        if(factoryParameter.IsDoubleProbe == false)
+                        {
+                            Tools.Clone(baseData[0], baseData[1]);
+                            Tools.Clone(baseData[2], baseData[3]);
+                        }
                         // 运行状态标志设置为“等待测量”
                         platformState = PlatformState.ReadyToMeasure;
                         //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
@@ -2206,7 +2212,7 @@ namespace HFM
                         //通道状态修改为红外到位
                         //ChannelDisplayControl(calculatedMeasureDataS[i].Channel, 2);修正注释
                     }
-                    DisplayMeasureData(calculatedMeasureDataS, systemParameter.MeasurementUnit);//yxk,修改,清零
+                    DisplayMeasureData(calculatedMeasureDataS,"cps");//yxk,修改,清零
                     //将运行状态修改为“开始测量”
                     platformState = PlatformState.Measuring;
                     //获得当前系统参数设置中的的测量时间并赋值给stateTimeSet
@@ -2222,10 +2228,10 @@ namespace HFM
                     isFirstBackGround = true;
                     isFirstBackGroundData = true;
                     string[] errRecordS = BaseCheck();
+                    DisplayMeasureData(calculatedMeasureDataS, "cps");//yxk,修改显示当前本底值
                     //本底测量判断
                     if (errRecordS == null)//本底检测通过
-                    {
-                        DisplayMeasureData(measureDataS, "cps");//yxk,修改显示当前本底值
+                    {                        
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //下次如果还进行本底计算，则需重新计时，所以置标志为True
@@ -2237,6 +2243,12 @@ namespace HFM
                             //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次计算做准备
                             //calculatedMeasureDataS[i].Alpha = 0;
                             //calculatedMeasureDataS[i].Beta = 0;
+                        }
+                        //如果是单探测器，将左手心、右手心的本底值拷贝到左手背、右手背
+                        if (factoryParameter.IsDoubleProbe == false)
+                        {
+                            Tools.Clone(baseData[0], baseData[1]);
+                            Tools.Clone(baseData[2], baseData[3]);
                         }
                     }
                     else//本底检测未通过
@@ -2294,20 +2306,20 @@ namespace HFM
                 {
                     isAudioPlayed = true;
                     //系统语音提示仪器正常开始测量
-                    if (isEnglish)
-                    {
-                        //测试结果区域显示开始测量
-                        //TxtShowResult.Text += "Start counting\r\n";
-                        player.Stream = Resources.English_Start_counting;// appPath + "\\Audio\\English_Start_counting.wav";
-                    }
-                    else
-                    {
-                        //测试结果区域显示开始测量
-                        //TxtShowResult.Text += "开始测量\r\n";
-                        player.Stream = Resources.Chinese_Start_counting;// appPath + "\\Audio\\Chinese_Start_counting.wav";
-                    }
-                    player.Load();
-                    player.Play();
+                    //if (isEnglish)
+                    //{
+                    //    //测试结果区域显示开始测量
+                    //    //TxtShowResult.Text += "Start counting\r\n";
+                    //    //player.Stream = Resources.English_Start_counting;// appPath + "\\Audio\\English_Start_counting.wav";
+                    //}
+                    //else
+                    //{
+                    //    //测试结果区域显示开始测量
+                    //    //TxtShowResult.Text += "开始测量\r\n";
+                    //    //player.Stream = Resources.Chinese_Start_counting;// appPath + "\\Audio\\Chinese_Start_counting.wav";
+                    //}
+                   // player.Load();
+                   // player.Play();
                     //重新启动计时，为开始测量及时准备
                     stateTimeStart = System.DateTime.Now.AddSeconds(-1);
                     return;
@@ -2541,10 +2553,11 @@ namespace HFM
                                 }
                                 else
                                 {
+                                    label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
                                     //本次污染状态为一级报警，当前设备状态比一级报警低（正常或故障），则当前设备状态设置为一级报警，否则状态不变
-                                    if (deviceStatus < Convert.ToByte(DeviceStatus.OperatingContaminated_1))
+                                    if (deviceStatus <= Convert.ToByte(DeviceStatus.OperatingContaminated_1))
                                     {
-                                        label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
+                                        //label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
                                         //将设备监测状态设置为“污染”
                                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
                                     }
@@ -2634,10 +2647,10 @@ namespace HFM
                                 }
                                 else
                                 {
+                                    label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
                                     //本次污染状态为一级报警，当前设备状态比一级报警低（正常或故障），则当前设备状态设置为一级报警，否则状态不变
-                                    if (deviceStatus < Convert.ToByte(DeviceStatus.OperatingContaminated_1))
-                                    {
-                                        label.BackColor = PlatForm.ColorStatus.COLOR_ALARM_1;
+                                    if (deviceStatus <= Convert.ToByte(DeviceStatus.OperatingContaminated_1))
+                                    {                                        
                                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
                                     }
                                 }
@@ -2784,27 +2797,28 @@ namespace HFM
                         //仪器无污染状态背景色设置为无污染
                         PnlNoContamination.BackgroundImage = Resources.NoContamination_progress;// Image.FromFile(appPath + "\\Images\\NoContamination_progress.png");                        
                         PnlMeasuring.BackColor = Color.Transparent;
+                        PnlMeasuring.BackgroundImage = null;
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);                        
                         //Thread.Sleep(3000);
                     }
                     else //本次手脚测量有污染
                     {
-                        //// 设备状态区域显示人员污染
-                        //if (isEnglish)
-                        //{                            
-                        //    //测量结果显示区域提示被测人员污染，请去污
-                        //    TxtShowResult.Text +=string.Format("Decontaminate, please!{0}\r\n", pollutionRecord_E);
-                        //    //语音提示被测人员污染
-                        //    player.Stream = Resources.English_Decontaminate_please;// appPath + "\\Audio\\English_Decontaminate_please.wav";
-                        //}
-                        //else
-                        //{                            
-                        //    //测量结果显示区域提示被测人员污染，请去污
-                        //    TxtShowResult.Text +=string.Format("被测人员污染，请去污！{0}\r\n", pollutionRecord);
-                        //    //语音提示被测人员污染
-                        //    player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";                            
-                        //}
+                        // 设备状态区域显示人员污染
+                        if (isEnglish)
+                        {
+                            //测量结果显示区域提示被测人员污染，请去污
+                            TxtShowResult.Text += string.Format("Decontaminate, please!\r\n{0}\r\n", pollutionRecord_E);
+                            //语音提示被测人员污染
+                            //player.Stream = Resources.English_Decontaminate_please;// appPath + "\\Audio\\English_Decontaminate_please.wav";
+                        }
+                        else
+                        {
+                            //测量结果显示区域提示被测人员污染，请去污
+                            TxtShowResult.Text += string.Format("被测人员污染，请去污！\r\n{0}\r\n", pollutionRecord);
+                            //语音提示被测人员污染
+                            //player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";                            
+                        }
                         //设置状态显示区域背景色
                         PnlContaminated.BackgroundImage = Resources.Contaminated_progress;// Image.FromFile(appPath + "\\Images\\Contaminated_progress.png");
                         PnlMeasuring.BackColor = Color.Transparent;
@@ -2904,11 +2918,15 @@ namespace HFM
                     // 设备状态区域显示人员污染
                     if (isEnglish)
                     {
+                        //测量结果显示区域提示被测人员污染，请去污
+                        //TxtShowResult.Text += string.Format("Decontaminate, please!{0}\r\n", pollutionRecord_E);
                         //语音提示被测人员污染
                         player.Stream = Resources.English_Decontaminate_please;// appPath + "\\Audio\\English_Decontaminate_please.wav";
                     }
                     else
                     {
+                        //测量结果显示区域提示被测人员污染，请去污
+                        //TxtShowResult.Text += string.Format("被测人员污染，请去污！{0}\r\n", pollutionRecord);
                         //语音提示被测人员污染
                         player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";                            
                     }
@@ -3693,7 +3711,7 @@ namespace HFM
                 //延时
                 Thread.Sleep(1000);
                 //触发向主线程返回下位机上传数据事件
-                if (receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
+                if (receiveBuffMessage!=null && receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
                 {
                     isCommReportError = false;
                     worker.ReportProgress(1, receiveBuffMessage);
