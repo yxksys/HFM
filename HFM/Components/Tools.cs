@@ -128,6 +128,7 @@ namespace HFM.Components
         /// 13：请放入放射源！
         /// 14：请输入数字！
         /// 15:高压输入范围-1000V,高压输入有误！
+        /// 16:未输入有效数据，请重新输入
         /// </param>
         public void PrompMessage(int num)
         {
@@ -286,6 +287,16 @@ namespace HFM.Components
                         MessageBox.Show(@"高压输入范围-1000V,高压输入有误！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
+                case 16:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"No valid data has been entered, please re-enter!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"未输入有效数据，请重新输入！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    break;                    
                 default:
                     if (isEnglish == true)
                     {

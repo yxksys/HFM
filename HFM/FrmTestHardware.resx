@@ -175,6 +175,9 @@
   <data name="RF.Width" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
+  <data name="DgvWork.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="DgvWork.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 62</value>
