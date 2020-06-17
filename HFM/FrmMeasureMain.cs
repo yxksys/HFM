@@ -2305,6 +2305,9 @@ namespace HFM
                 if (isAudioPlayed == false)
                 {
                     isAudioPlayed = true;
+                    //进行语音提示
+                    player.Stream = Resources.dida1;
+                    player.Play();
                     //系统语音提示仪器正常开始测量
                     //if (isEnglish)
                     //{
@@ -2318,8 +2321,8 @@ namespace HFM
                     //    //TxtShowResult.Text += "开始测量\r\n";
                     //    //player.Stream = Resources.Chinese_Start_counting;// appPath + "\\Audio\\Chinese_Start_counting.wav";
                     //}
-                   // player.Load();
-                   // player.Play();
+                    // player.Load();
+                    // player.Play();
                     //重新启动计时，为开始测量及时准备
                     stateTimeStart = System.DateTime.Now.AddSeconds(-1);
                     return;
