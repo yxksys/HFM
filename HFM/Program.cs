@@ -17,9 +17,17 @@ namespace HFM
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            FrmWelcome frmWelcome = new FrmWelcome();
-            frmWelcome.Show();
-            Application.Run();
+            int x = System.Diagnostics.Process.GetProcessesByName("HFM").Length;
+            if (System.Diagnostics.Process.GetProcessesByName("HFM").Length<=1)
+            {
+                FrmWelcome frmWelcome = new FrmWelcome();
+                frmWelcome.Show();
+                Application.Run();
+            }
+            else
+            {
+                MessageBox.Show("监测程序已经运行");
+            }
         }
         
     }
