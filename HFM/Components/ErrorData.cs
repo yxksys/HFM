@@ -43,7 +43,7 @@ namespace HFM.Components
         /// <summary>
         /// 查询最新一条监测记录
         /// </summary>
-        private const string SQL_SELECT_ERRORDATA_BY_NEWRECORD = "SELECT MAX(ErrID),ErrTime,Record,IsEnglish,IsReported FROM HFM_ErrData";
+        private const string SQL_SELECT_ERRORDATA_BY_NEWRECORD = "SELECT TOP 1 ErrID,ErrTime,Record,IsEnglish,IsReported FROM HFM_ErrData ORDER BY ErrID DESC";
         /// <summary>
         /// 查询ID小于errorDataID的所有监测数据记录的IsReported值
         /// </summary>
@@ -195,15 +195,19 @@ namespace HFM.Components
         {
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_NEWRECORD))
             {
+                if(reader.HasRows!=true)
+                {
+                    return null;
+                }
                 while (reader.Read())//读取查询结果
                 {
                     //构造ErrorData对象
-                    ErrorData errorData = new ErrorData();
-                    errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
-                    errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
-                    errorData.Record = Convert.ToString(reader["Record"].ToString());
-                    errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
-                    errorData.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
+                    //ErrorData errorData = new ErrorData();
+                    this.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
+                    this.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
+                    this.Record = Convert.ToString(reader["Record"].ToString());
+                    this.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    this.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();

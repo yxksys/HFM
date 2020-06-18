@@ -320,8 +320,8 @@ namespace HFM.Components
         /// <returns>输入参数data前length个元素的CRC16校验值</returns>
         public static byte[] CRC16(byte[] data, int length)
         {
-            int len = data.Length;
-            if (len > 0 && len>=length)
+            int len = data.Length;                 
+            if (len > 0 && len >= length)
             {
                 ushort crc = 0xFFFF;
                 for (int i = 0; i < length; i++)
@@ -521,6 +521,7 @@ namespace HFM.Components
             return controls;
         }
         #endregion
+
         #region 两个对象之间进行拷贝
         public static void Clone(object objSource,object objDetection)
         {
