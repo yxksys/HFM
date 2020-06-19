@@ -72,6 +72,7 @@
             this.RetreatSystemToolStripMenuItem});
             resources.ApplyResources(this.SystemToolStripMenuItem, "SystemToolStripMenuItem");
             this.SystemToolStripMenuItem.Name = "SystemToolStripMenuItem";
+            this.SystemToolStripMenuItem.Click += new System.EventHandler(this.SystemToolStripMenuItem_Click);
             // 
             // StartRunningToolStripMenuItem
             // 

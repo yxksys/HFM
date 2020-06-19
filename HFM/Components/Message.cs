@@ -457,11 +457,11 @@ namespace HFM.Components
                     if (message.Length >= 17)//报文长度满足要求
                     {
                         messageData = new int[7];
-                        messageData[0] = message[7] * 100 + message[8];//年
+                        messageData[0] = (message[7]>>4)*1000+(message[7]&0x0f)*100 + (message[8]>>4)*10+(message[8]&0x0f);//年
                         for(int i=1;i<messageData.Length;i++)
                         {
                             //messageData[1]到messageData[6]分别存储：月、日、时、分、妙、毫秒
-                            messageData[i] = message[i + 8];
+                            messageData[i] = (message[i + 8]>>4)*10+(message[i+8]&0x0f);
                         }                        
                     }
                     break;

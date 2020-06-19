@@ -39,6 +39,7 @@ namespace HFM
 
         #region 实例字段
         //运行参数设置
+        private IList<Channel> channelsyz = new Channel().GetChannel();
         private ChannelParameter channelParameter = new ChannelParameter();//道盒信息(α阈值等)
         private HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();//(自检时间、单位等)
         private FactoryParameter factoryParameter = new FactoryParameter();//仪器设备信息(IP地址、软件名称、是否双手探测器等)
@@ -1382,7 +1383,8 @@ namespace HFM
             }
 
             #endregion
-
+            float alarm_1;
+            float alarm_2;
             #region α参数
             int setDataCount = 0;//更新成功的信息条数
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//更新α参数
@@ -1392,20 +1394,30 @@ namespace HFM
             EfficiencyParameter efficiencytwo = new EfficiencyParameter();//单探测器启用后手心的数据同步到手背中
             for (int i = 0; i < DgvAlphaSet.RowCount; i++)
             {
-                float alarm_1 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);//污染警报
-                float alarm_2 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[4].Value);//高阶警报
-
-
+                try
+                {
+                    alarm_1 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);//污染警报
+                    alarm_2 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[4].Value);//高阶警报
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
+                
+                
                 //efficiency.Channel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
-                efficiency.Channel = Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
-                efficiency.NuclideType = "α";
-                efficiency.NuclideName = nuclidename;
-                efficiency.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                
+                
                 //efficiencyParameters.Add(efficiency);
 
                 //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
                 try
                 {
+                    efficiency.Channel = Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                    efficiency.NuclideType = "α";
+                    efficiency.NuclideName = nuclidename;
+                    efficiency.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
                     p.ProbeChannel = Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
                     p.NuclideType = "α";
                     p.ProbeType = "闪烁体";
@@ -1447,15 +1459,16 @@ namespace HFM
                 {
                     if (efficiency.Channel.ChannelID == 1)
                     {
-                        efficiencytwo.Channel = Channels.First(x => x.ChannelID == 2);
-                        efficiencytwo.NuclideType = "α";
-                        efficiencytwo.NuclideName = nuclidename;
-                        efficiencytwo.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                        
                         //efficiencyParameters.Add(efficiency);
 
                         //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
                         try
                         {
+                            efficiencytwo.Channel = Channels.First(x => x.ChannelID == 2);
+                            efficiencytwo.NuclideType = "α";
+                            efficiencytwo.NuclideName = nuclidename;
+                            efficiencytwo.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
                             p.ProbeChannel = Channels.First(x => x.ChannelID == 2);
                             p.NuclideType = "α";
                             p.ProbeType = "闪烁体";
@@ -1483,15 +1496,16 @@ namespace HFM
                     }
                     if (efficiency.Channel.ChannelID == 3)
                     {
-                        efficiencytwo.Channel = Channels.First(x => x.ChannelID == 4);
-                        efficiencytwo.NuclideType = "α";
-                        efficiencytwo.NuclideName = nuclidename;
-                        efficiencytwo.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                        
                         //efficiencyParameters.Add(efficiency);
 
                         //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
                         try
                         {
+                            efficiencytwo.Channel = Channels.First(x => x.ChannelID == 4);
+                            efficiencytwo.NuclideType = "α";
+                            efficiencytwo.NuclideName = nuclidename;
+                            efficiencytwo.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
                             p.ProbeChannel = Channels.First(x => x.ChannelID == 4);
                             p.NuclideType = "α";
                             p.ProbeType = "闪烁体";
@@ -1603,6 +1617,8 @@ namespace HFM
             #endregion
 
             #region β参数
+            float alarm_1;
+            float alarm_2;
             int setDataCount = 0;//更新成功的信息条数
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//更新β参数
             IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
@@ -1611,20 +1627,30 @@ namespace HFM
             HFM.Components.EfficiencyParameter efficiencytwo = new HFM.Components.EfficiencyParameter();
             for (int i = 0; i < DgvBetaSet.RowCount; i++)
             {
-                float alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);//污染警报
-                float alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);//高阶警报
+                try
+                {
+                    alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);//污染警报
+                    alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);//高阶警报
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
+                
                 var listChannels= Channels.First(x => x.ChannelName == DgvBetaSet.Rows[i].Cells[0].Value.ToString()|| x.ChannelName_English== DgvBetaSet.Rows[i].Cells[0].Value.ToString());
                 //efficiency.Channel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
                 
-                efficiency.Channel = listChannels;
-                efficiency.NuclideType = "β";
-                efficiency.NuclideName = nuclidename;
-                efficiency.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                
                 //efficiencyParameters.Add(efficiency);
 
                 //p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
                 try
                 {
+                    efficiency.Channel = listChannels;
+                    efficiency.NuclideType = "β";
+                    efficiency.NuclideName = nuclidename;
+                    efficiency.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
                     p.ProbeChannel = listChannels;
                     p.NuclideType = "β";
                     p.ProbeType = "闪烁体";
@@ -1667,16 +1693,17 @@ namespace HFM
                 {
                     if (listChannels.ChannelID == 1)
                     {
-                        listChannels = Channels.First(x => x.ChannelID == 2);
-                        efficiencytwo.Channel = listChannels;
-                        efficiencytwo.NuclideType = "β";
-                        efficiencytwo.NuclideName = nuclidename;
-                        efficiencytwo.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                        
                         //efficiencyParameters.Add(efficiency);
 
                         //p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
                         try
                         {
+                            listChannels = Channels.First(x => x.ChannelID == 2);
+                            efficiencytwo.Channel = listChannels;
+                            efficiencytwo.NuclideType = "β";
+                            efficiencytwo.NuclideName = nuclidename;
+                            efficiencytwo.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
                             p.ProbeChannel = listChannels;
                             p.NuclideType = "β";
                             p.ProbeType = "闪烁体";
@@ -1702,14 +1729,15 @@ namespace HFM
                     }
                     if (listChannels.ChannelID == 3)
                     {
-                        listChannels = Channels.First(x => x.ChannelID == 4);
-                        efficiencytwo.Channel = listChannels;
-                        efficiencytwo.NuclideType = "β";
-                        efficiencytwo.NuclideName = nuclidename;
-                        efficiencytwo.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                        
                         //efficiencyParameters.Add(efficiency);
                         try
                         {
+                            listChannels = Channels.First(x => x.ChannelID == 4);
+                            efficiencytwo.Channel = listChannels;
+                            efficiencytwo.NuclideType = "β";
+                            efficiencytwo.NuclideName = nuclidename;
+                            efficiencytwo.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
                             p.ProbeChannel = listChannels;
                             p.NuclideType = "β";
                             p.ProbeType = "闪烁体";
@@ -1937,18 +1965,32 @@ namespace HFM
             //循环每一行
             for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++) 
             {
-                ChannelParameter channelParameter = new ChannelParameter();
-                channelParameter.Channel = new Channel();
-                channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
-                channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
-                channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
-                channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
-                channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
-                channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
-                channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
-                channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
-                channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
-                channelParameters.Add(channelParameter);
+                //if (Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value)!=channelsyz[i].ChannelName)
+                //{
+                //    _tools.PrompMessage(16);
+                //    return;
+                //}
+                try
+                {
+                    ChannelParameter channelParameter = new ChannelParameter();
+                    channelParameter.Channel = new Channel();
+                    channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
+                    channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
+                    channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
+                    channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
+                    channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
+                    channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
+                    channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
+                    channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
+                    channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
+                    channelParameters.Add(channelParameter);
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
+                
             }
             //获得channelID
             for (int i = 0; i < channelParameters.Count; i++)

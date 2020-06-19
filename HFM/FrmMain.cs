@@ -308,6 +308,23 @@ namespace HFM
 
         #region 系统
         /// <summary>
+        /// 点击系统菜单时候关闭子窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SystemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)     //循环MDI中的所有子窗体
+            {
+                //销毁其他不是要打开的窗口实例
+                if (this.Name != form.Name)
+                {
+                    form.Close();
+                }
+            }
+        }
+
+        /// <summary>
         /// 开始运行
         /// </summary>
         /// <param name="sender"></param>
@@ -483,6 +500,6 @@ namespace HFM
             Application.ExitThread();
         }
 
-       
+        
     }
 }

@@ -110,6 +110,7 @@ namespace HFM
         float smoothedDataOfClothes = 0;//平滑处理后的衣物测量值
         float baseDataOfClothes = 0;//衣物探头本底值
         int alarmCountOfClothes = 0;//衣物检测报警次数
+        int unAlarmCountOfClothes = 0;//衣物检测正常次数
         int playControl = 1;//控制语音播放变量
         string clotheseNuclideUsed = "U_235";//衣物检测核素选择,默认U_235
         string alphaNuclideUsed = "U_235";//Alpha核素选择，默认U_235
@@ -1115,6 +1116,19 @@ namespace HFM
                             //根据系统参数中设置的检测单位，对减去本底值后的测量值进行单位变换并在衣物探测界面中进行显示
                             //float converedData = Tools.UnitConvertCPSTo(smoothedDataOfClothes, systemParameter.MeasurementUnit, efficiencyParameterNow[0].Efficiency, measureDataS[6].Channel.ProbeArea);
                             frmClothes.TxtMeasureValue.Text = string.Format("{0}cps", smoothedDataOfClothes.ToString("F1"));
+                            //if(isClothesContaminated)//衣物污染，一直报警
+                            //{
+                            //    if (isEnglish)
+                            //    {                                    
+                            //        player.Stream = Resources.English_Decontaminate_please;// appPath + "\\Audio\\English_Decontaminate_please.wav";
+                            //    }
+                            //    else
+                            //    {                                    
+                            //        player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
+                            //    }
+                            //    player.LoadAsync();
+                            //    player.PlaySync();
+                            //}
                             #region 如果减去本底值后的测量值大于一级报警，说明有污染  
                             ////获得当前衣物检测通道的探测参数
                             //IList<ProbeParameter> clothesProbeParmeter = probeParameterS.Where(probeParmeter => probeParmeter.ProbeChannel.ChannelID == 7).ToList();
@@ -1192,6 +1206,11 @@ namespace HFM
                             #region 如果减去本底值后的测量值未大于一级报警，说明没有污染
                             else
                             {
+                                unAlarmCountOfClothes++;//衣物检测正常计数器+1
+                                if(unAlarmCountOfClothes>2)//超过3次，界面背景设置为正常状态
+                                {
+                                    frmClothes.BackColor = Color.SpringGreen;
+                                }
                                 //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
                                 IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "C" && efficiencyParameter.Channel.ChannelID == 7 && efficiencyParameter.NuclideName == clotheseNuclideUsed).ToList();
                                 //设置衣物探测界面进度条变化百分比
@@ -3789,14 +3808,14 @@ namespace HFM
             }
             isCommReportError = false;
             //解析成功
-            if (message.Count()>=7)//长度大于1，为时间同步命令
+            if (message.Count()>=7)//长度大于7，为时间同步命令
             {
                 //将当前系统时间同步为管理机下发的时间
                 SYSTEMTIME timeForSyn = new SYSTEMTIME();
                 timeForSyn.Year =(short) message[0];
                 timeForSyn.Month = (short)message[1];
                 timeForSyn.Day = (short)message[2];
-                timeForSyn.Hour = (short)(message[3] - 8) <= 0 ? (short)(message[3] - 8 + 24) : (short)(message[3] - 8);
+                timeForSyn.Hour = (short)(message[3] - 8) <= 0 ? (short)(message[3] - 8 + 24) : (short)(message[3] - 8);//设置系统时间时，时间需和实际时间差8小时
                 timeForSyn.Minute = (short)message[4];
                 timeForSyn.Second = (short)message[5];
                 timeForSyn.MiliSecond = (short)message[6];
@@ -3924,7 +3943,7 @@ namespace HFM
             //监测串口状态，如果串口关闭则打开
             if (bkWorkerReceiveData.IsBusy)
             {
-                if (isCommError||commPort.Opened==false)//监测端口通讯错误
+                if (isCommError||commPort.Opened==false)//监测端口通讯错误或串口未打开
                 {                    
                     try
                     {
@@ -3944,7 +3963,7 @@ namespace HFM
             }
             if (bkWorkerReportStatus.IsBusy)
             {
-                if (isCommReportError)//上报状态端口通讯错误
+                if (isCommReportError||commPort_Supervisory.Opened==false)//上报状态端口通讯错误或串口未打开
                 {
                     try
                     {
@@ -4302,6 +4321,10 @@ namespace HFM
                 TxtShowResult.Text = "";                
                 //获得工厂参数设置信息           
                 factoryParameter.GetParameter();
+                //从配置文件获得当前监测串口配置
+                commPort.GetCommPortSet("commportSet");
+                //从配置文件获得当前管理机串口通信配置
+                commPort_Supervisory.GetCommPortSet("commportSetOfReport");
                 //获得系统参数设置信息
                 systemParameter.GetParameter();
                 Nuclide nuclide = new Nuclide();
