@@ -840,7 +840,7 @@ namespace HFM
                     //下发成功，置报文已经发送标志
                     isSelfCheckSended = true;
                     //延时200毫秒
-                    Thread.Sleep(200);
+                    Thread.Sleep(100);
                     //启动自检计时 
                     if (isBetaCommandToSend == false)//如果时Alpha/Beta自检，Beta自检指令需要下发时不需要重新设置开始时间
                     {
@@ -855,7 +855,6 @@ namespace HFM
                 buffMessage[61] = (deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_1) ? Convert.ToByte(DeviceStatus.OperatingFaulted) : deviceStatus);
                 if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)
                 {
-
                     //延时
                     Thread.Sleep(100);
                     //读取串口回传数据并赋值给receiveBuffMessage
@@ -872,11 +871,11 @@ namespace HFM
                     //延时
                     if (platformState == PlatformState.SelfTest && isSelfCheckSended == false)
                     {
-                        Thread.Sleep(800- errorNumber* delayTime);
+                        Thread.Sleep(50- errorNumber* delayTime);
                     }
                     else
                     {
-                        Thread.Sleep(800);
+                        Thread.Sleep(50);
                     }
                     if (receiveBuffMessage!= null&& receiveBuffMessage.Length >0)
                     {

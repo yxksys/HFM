@@ -13,8 +13,7 @@ namespace HFM
         public static FrmWelcome  frmWelcome;
         [STAThread]
         static void Main()
-        {
-            
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             int x = System.Diagnostics.Process.GetProcessesByName("HFM").Length;
@@ -28,7 +27,6 @@ namespace HFM
             {
                 MessageBox.Show("监测程序已经运行");
             }
-        }
-        
+        }        
     }
 }
