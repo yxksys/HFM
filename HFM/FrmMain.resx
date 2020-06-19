@@ -155,7 +155,7 @@
     <value>系统(S)</value>
   </data>
   <data name="ParameterSettingToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="ParameterSettingToolStripMenuItem.Text" xml:space="preserve">
     <value>参数设置</value>
@@ -170,13 +170,13 @@
     <value>设置(P)</value>
   </data>
   <data name="CalibrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="CalibrationToolStripMenuItem.Text" xml:space="preserve">
     <value>测试刻度</value>
   </data>
   <data name="TestHardwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="TestHardwareToolStripMenuItem.Text" xml:space="preserve">
     <value>硬件检测</value>
@@ -191,7 +191,7 @@
     <value>维护(T)</value>
   </data>
   <data name="HistoricalRecordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="HistoricalRecordToolStripMenuItem.Text" xml:space="preserve">
     <value>历史记录</value>

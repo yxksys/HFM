@@ -40,8 +40,8 @@ namespace HFM.Components
         /// <summary>
         /// 查询最新一条监测记录
         /// </summary>
-        private const string SQL_SELECT_MEASUREDATA_BY_NEWRECORD = "SELECT MAX(MeasureID),MeasureDate,MeasureStatus,DetailedInfo,IsEnglish ," +
-                                                          "IsReported FROM HFM_MeasureData";
+        private const string SQL_SELECT_MEASUREDATA_BY_NEWRECORD = "SELECT TOP 1 MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish ," +
+                                                          "IsReported FROM HFM_MeasureData ORDER BY MeasureID DESC";
         /// <summary>
         /// 查询ID小于measureDataID的所有监测数据记录的IsReported值
         /// </summary>
@@ -252,6 +252,10 @@ namespace HFM.Components
         {
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_NEWRECORD))
             {
+                if (reader.HasRows != true)
+                {
+                    return null;
+                }
                 while (reader.Read())//读查询结果
                 {
                     this.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());

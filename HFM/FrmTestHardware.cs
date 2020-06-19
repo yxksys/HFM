@@ -825,19 +825,24 @@ namespace HFM
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmTestHardware_FormClosed(object sender, FormClosedEventArgs e)
-        {            
+        {
             //Thread.Sleep(50);
-            bkWorkerReceiveData.CancelAsync();
+            if (bkWorkerReceiveData.IsBusy)
+            {
+                bkWorkerReceiveData.CancelAsync();
+            }
+            
             Thread.Sleep(200);
-            bkWorkerReceiveData.Dispose();            
+            //bkWorkerReceiveData.Dispose();            
             this.Controls.Clear();
         }
 
         private void FrmTestHardware_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //bkWorkerReceiveData.CancelAsync();
-            //Thread.Sleep(200);
-            //this.Controls.Clear();
+
+            bkWorkerReceiveData.CancelAsync();
+            Thread.Sleep(200);
+            this.Controls.Clear();
         }
 
         #region 数字键盘显示
