@@ -218,7 +218,7 @@ namespace HFM
         {
             for (int i = 0; i < Dgv.Rows.Count; i++)
             {
-                for (int j = 0; j < Dgv.Rows[i].Cells.Count; j++)
+                for (int j = 1; j < Dgv.Rows[i].Cells.Count; j++)
                 {
                     if (Dgv.Rows[i].Cells[j].Selected == true)
                     {
