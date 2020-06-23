@@ -167,7 +167,7 @@ namespace HFM
             public UInt32 baseData_Full;
             public UInt32 baseSum;
         }
-        SMOOTHINGDATA smoothingData;
+        SMOOTHINGDATA smoothingData = new SMOOTHINGDATA();
         [StructLayout(LayoutKind.Sequential)]
         struct SYSTEMTIME //系统时间结构体
         {
@@ -842,7 +842,7 @@ namespace HFM
                     //下发成功，置报文已经发送标志
                     isSelfCheckSended = true;
                     //延时200毫秒
-                    Thread.Sleep(200);
+                    Thread.Sleep(100);
                     //启动自检计时 
                     if (isBetaCommandToSend == false)//如果时Alpha/Beta自检，Beta自检指令需要下发时不需要重新设置开始时间
                     {
@@ -857,7 +857,6 @@ namespace HFM
                 buffMessage[61] = (deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_1) ? Convert.ToByte(DeviceStatus.OperatingFaulted) : deviceStatus);
                 if (HFM.Components.Message.SendMessage(buffMessage, commPort) == true)
                 {
-
                     //延时
                     Thread.Sleep(100);
                     //读取串口回传数据并赋值给receiveBuffMessage
@@ -874,11 +873,11 @@ namespace HFM
                     //延时
                     if (platformState == PlatformState.SelfTest && isSelfCheckSended == false)
                     {
-                        Thread.Sleep(800- errorNumber* delayTime);
+                        Thread.Sleep(50- errorNumber* delayTime);
                     }
                     else
                     {
-                        Thread.Sleep(800);
+                        Thread.Sleep(50);
                     }
                     if (receiveBuffMessage!= null&& receiveBuffMessage.Length >0)
                     {
@@ -1745,9 +1744,19 @@ namespace HFM
                 //stateTimeSet = systemParameter.SmoothingTime;                        
                 //在系统界面中显示本底测量倒计时时间（s）:系统平滑设置时间-已经用时
                 //stateTimeRemain = stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds;                
-                //LblTimeRemain.Text = stateTimeRemain < 0 ? string.Format("{0,3}s","0"):string.Format("{0,3}s",stateTimeRemain.ToString());                
+                //LblTimeRemain.Text = stateTimeRemain < 0 ? string.Format("{0,3}s","0"):string.Format("{0,3}s",stateTimeRemain.ToString());                                   
                 for (int i = 0; i < channelS.Count; i++)
-                {                    
+                {
+                    //测量值显示标签背景恢复为默认状态（如果检查结果为人员污染，则会将测量值显示标签背景色变为污染报警，所以需要恢复）  
+                    if (channelS[i].ChannelID == 7)
+                    {
+                        LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                    }
+                    else
+                    {
+                        LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                        LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = Color.White;
+                    }
                     //因为measureDataS中是从报文协议中解析的全部7个通道的监测数据，但是calculatedMeasureDataS只是存储当前在用的通道信息
                     //所以，需要从measureDataS中找到对应通道的监测数据通过平滑计算后赋值给calculatedMeasureDataS
                     //从解析的7个通道的measureDataS监测数据中找到当前通道的测量数据
@@ -2600,6 +2609,10 @@ namespace HFM
                                     }
                                 }
                             }
+                            else//当前通道数据未超过报警上限，则将检测数据归0，用于显示
+                            {
+                                conversionData.Alpha = 0;
+                            }
                         }
                         if (factoryParameter.MeasureType == "β" || factoryParameter.MeasureType == "α/β")
                         {
@@ -2691,6 +2704,10 @@ namespace HFM
                                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingContaminated_1);
                                     }
                                 }
+                            }
+                            else//当前通道数据未超过报警上限，则将检测数据归0，用于显示
+                            {
+                                conversionData.Beta = 0;
                             }
                         }
                         //if (factoryParameter.IsDoubleProbe == false&& isHandTested == 1)//单探测器，第二次检测，测试手背数据，但检测数据在手心，所以将手心道盒数据保存到手背通道
@@ -2980,7 +2997,8 @@ namespace HFM
                 {                    
                     //如果有污染且报警时间长度小于设定报警时间长度，则返回等待
                     if ((pollutionRecord != null || isClothesContaminated == true) && ((DateTime.Now - alarmTimeStart).Seconds< alarmTimeSet)) 
-                    {                        
+                    {
+                        Thread.Sleep(200);
                         return;
                     }
                     //转本底测量
@@ -3017,20 +3035,20 @@ namespace HFM
                         }
                         player.LoadAsync();
                         player.PlaySync();
-                        //测量值显示标签背景恢复为默认状态（如果检查结果为人员污染，则会将测量值显示标签背景色变为污染报警，所以需要恢复）
-                        for (int i = 0; i < channelS.Count; i++)
-                        {
-                            //通道测量值标签
-                            if (channelS[i].ChannelID == 7)
-                            {
-                                LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
-                            }
-                            else
-                            {
-                                LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
-                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = Color.White;
-                            }
-                        }
+                        ////测量值显示标签背景恢复为默认状态（如果检查结果为人员污染，则会将测量值显示标签背景色变为污染报警，所以需要恢复）
+                        //for (int i = 0; i < channelS.Count; i++)
+                        //{
+                        //    //通道测量值标签
+                        //    if (channelS[i].ChannelID == 7)
+                        //    {
+                        //        LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                        //    }
+                        //    else
+                        //    {
+                        //        LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                        //        LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = Color.White;
+                        //    }
+                        //}
                         ////启动本底测量计时 
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                         //Thread.Sleep(1000);
@@ -3297,7 +3315,7 @@ namespace HFM
             {
                 if (smoothingData.team_Full == 1)
                 {
-                    if (smoothingData.team_i == TEAM_LENGTH)
+                    if (smoothingData.team_i >= TEAM_LENGTH)
                     {
                         smoothingData.team_i = 0;
                     }
@@ -3761,6 +3779,12 @@ namespace HFM
                 //触发向主线程返回下位机上传数据事件
                 if (receiveBuffMessage!=null && receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
                 {
+                    if(receiveBufferMessage[0]==0x10)
+                    {
+                        byte[] receiveDataTemp = new byte[8];
+                        receiveDataTemp= Components.Message.ReceiveMessage(commPort_Supervisory);
+                        receiveDataTemp.CopyTo(receiveBuffMessage, 16);                        
+                    }
                     isCommReportError = false;
                     worker.ReportProgress(1, receiveBuffMessage);
                 }

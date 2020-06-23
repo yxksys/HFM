@@ -126,6 +126,18 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmPreference_Load(object sender, EventArgs e)
         {
+            for (int i = 0; i < DgvAlphaSet.Columns.Count; i++)
+            {
+                DgvAlphaSet.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < DgvBetaSet.Columns.Count; i++)
+            {
+                DgvBetaSet.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < DgvMainPreferenceSet.Columns.Count; i++)
+            {
+                DgvMainPreferenceSet.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
             //OpenPort();
             //线程支持异步取消
             backgroundWorker_Preference.WorkerSupportsCancellation = true;
@@ -162,7 +174,6 @@ namespace HFM
                         break;
                 }
             }
-
         } 
         #endregion
 
