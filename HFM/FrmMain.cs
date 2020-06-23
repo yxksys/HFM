@@ -268,7 +268,7 @@ namespace HFM
         {
             try
             {
-                Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                //Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 Tsslbl_Status_Text();
             }
             catch (Exception exception)
@@ -287,11 +287,13 @@ namespace HFM
             {
                 Text = Tools.EnSoftName(_factoryParameter.SoftName);            //头部软件名称显示
                 Tsslbl_Name.Text = Tools.EnSoftName(_factoryParameter.SoftName);//底部软件名称显示
+                Tsslbl_Version.Text = "V" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
             else
             {
                 Text = _factoryParameter.SoftName;            //头部软件名称显示
                 Tsslbl_Name.Text = _factoryParameter.SoftName;//底部软件名称显示
+                Tsslbl_Version.Text = "V" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
         /// <summary>
