@@ -12,12 +12,16 @@ using System.Threading;
 using System.Globalization;
 using HFM.Components;
 using HFM.Properties;
+using System.IO;
 
 namespace HFM
 {
     public partial class FrmMeasureMain : Form
     {
+        //string stream = "";
         //int measureCount = 0;
+        bool iswrite = true;
+        bool isPlatformStateSwitched=false;//状态是否发生变化
         Panel[] PnlStatus;
         Label[] LblTitle;
         Label[] LblValue;
@@ -48,6 +52,7 @@ namespace HFM
         DateTime alarmTimeStart = DateTime.Now;//系统报警时间计时
         int stateTimeSet = 0;//系统当前运行状态的检测时间设置
         int stateTimeRemain = 0;//系统当前运行状态剩余时间
+        int stateTimeRemain_Last = 0;//系统运行状态剩余时间记录值，用于判断剩余时间是否发生变化
         int errNumber = 0; //报文接收出现错误计数器   
         int throwDataCount = 0;//准备检测阶段预读取数据扔掉次数
         int clothesTimeCount = 0;//衣物离线时间计数器，每秒计数一次     
@@ -688,8 +693,9 @@ namespace HFM
             //将运行状态标志设置为“运行准备”
             platformState = PlatformState.ReadyToRun;
             //当前系统状态时间为自检时间
-            stateTimeSet = systemParameter.SelfCheckTime;
+            stateTimeSet = systemParameter.SelfCheckTime;            
             stateTimeStart = DateTime.Now;
+            stateTimeRemain_Last = stateTimeSet;
             //线程支持异步取消
             bkWorkerReceiveData.WorkerSupportsCancellation = true;
             //线程支持报告进度
@@ -841,10 +847,10 @@ namespace HFM
                     }
                     //下发成功，置报文已经发送标志
                     isSelfCheckSended = true;
-                    //延时200毫秒
+                    //延时100毫秒
                     Thread.Sleep(100);
                     //启动自检计时 
-                    if (isBetaCommandToSend == false)//如果时Alpha/Beta自检，Beta自检指令需要下发时不需要重新设置开始时间
+                    if (isBetaCommandToSend == false)//如果是Alpha/Beta自检，Beta自检指令需要下发时不需要重新设置开始时间
                     {
                         stateTimeStart = System.DateTime.Now;
                     }
@@ -908,7 +914,13 @@ namespace HFM
         }
 
         private void bkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {            
+        {
+            //if (platformState == PlatformState.SelfTest && iswrite==true)
+            //{
+            //    iswrite = false;
+            //    stream += "selftest:\r\n";
+            //}
+            //stream += DateTime.Now.ToString("h:mm:ss.ff") + "\r\n";            
             if (e.UserState is byte[])
             {
                 receiveBufferMessage = (byte[])e.UserState;
@@ -953,8 +965,8 @@ namespace HFM
             //    TxtShowResult.Text += measureDataS[3].Beta.ToString()+"   ";
             //}
 
-                //报文解析无误,将当前报文红外状态清零
-                infraredStatusOfMessageNow &= 0;
+            //报文解析无误,将当前报文红外状态清零
+            infraredStatusOfMessageNow &= 0;
             //加载将当前报文1-4通道红外状态
             infraredStatusOfMessageNow |= (byte)(receiveBufferMessage[61] & 7);//红外状态屏蔽高位后赋值            
             //加载当前报文5-7通道红外状态
@@ -1061,6 +1073,13 @@ namespace HFM
                 }                
             }
             infraredStatusOfMessageLast = infraredStatusOfMessageNow;//保存当前红外状态
+
+            if (stateTimeRemain == stateTimeRemain_Last&& platformState != PlatformState.ReadyToRun&& isPlatformStateSwitched==false)//当前剩余时间和上一次剩余时间记录相等，说明还没过1s，不进行任何数据处理直接返回
+            {
+                return;
+            }            
+            stateTimeRemain_Last = stateTimeRemain;//剩余时间发生了变化，则保存
+            isPlatformStateSwitched = false;//状态已经切换完成，恢复状态保持标志
             for (int i=0;i<channelsAll.Count();i++)
             {
                 measureDataS[i].Channel = channelsAll[i];
@@ -1073,7 +1092,17 @@ namespace HFM
                 {
                     // ChannelDisplayControl(measureDataS[6].Channel, 2);     修正注释               
                     //衣物探头已经被拿起（不是刚被拿起）
-                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);                                        
+                    try
+                    {
+                        smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);
+                    }
+                    catch (Exception ex)
+                    {
+                        using (StreamWriter fs = new StreamWriter(appPath+"\\log\\errorLog.txt", true))
+                        {
+                            fs.WriteLine(ex.ToString()+"\r\n");
+                        }
+                    }
                     //如果当前状态为等待测量或开始测量则,说明衣物探测界面已经加载
                     if (platformState == PlatformState.ReadyToMeasure || platformState == PlatformState.Measuring)
                     {
@@ -1272,6 +1301,7 @@ namespace HFM
                         //isHandTested = 0;
                         //运行状态设置为“测量结束”
                         platformState = PlatformState.Result;
+                        isPlatformStateSwitched = true;//置状态切换标志
                         //#region 如果衣物离线时间大于系统设置的离线自检时间，或者衣物污染，则启动本底测量
                         //if (clothesTimeCount > systemParameter.ClothOfflineTime||isClothesContaminated==true)
                         //{                            
@@ -1300,7 +1330,14 @@ namespace HFM
                         return;                                            
                     }
                     //对衣物探头测量数据进行平滑处理
-                    smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);
+                    try
+                    {
+                        smoothedDataOfClothes = SmoothData((UInt32)measureDataS[6].Beta);
+                    }
+                    catch(Exception ex)
+                    {
+                        File.WriteAllText(appPath+"\\log\\errorLog.txt",ex.ToString());
+                    }
                     if (platformState == PlatformState.BackGrouneMeasure || platformState == PlatformState.ReadyToMeasure || platformState == PlatformState.Measuring)
                     {
                         //将当前平滑处理后的检测值作为本底值
@@ -1506,17 +1543,20 @@ namespace HFM
                     player.Stream = Resources.Chinese_Self_checking;// appPath + "\\Audio\\Chinese_Self_checking.wav";
                 }
                 player.LoadAsync();
-                player.PlaySync();
+                player.Play();
                 //当前运行状态设置为“仪器自检”
                 platformState = PlatformState.SelfTest;
+                isPlatformStateSwitched = true;//置状态切换标志
                 //获得当前系统参数设置中的的自检时间并赋值给stateTimeSet
                 stateTimeSet = systemParameter.SelfCheckTime;
-                stateTimeStart = System.DateTime.Now;                
+                stateTimeStart = System.DateTime.Now; //启动仪器自检计时
+                stateTimeRemain_Last = stateTimeSet;
                 return;
             }
             //如果当前运行状态为“仪器自检”
             if (platformState == PlatformState.SelfTest)
-            {                                
+            {
+                //measureCount++;
                 string[] errRecordS = new string[2];
                 if (errRecordS == null)//无自检故障信息时设置背景为正常状态背景
                 {
@@ -1635,7 +1675,8 @@ namespace HFM
                 }
                 //自检时间到
                 if (stateTimeRemain < 0)
-                {                                      
+                {
+                    //File.WriteAllText("record.txt",stream);
                     errRecordS = BaseCheck();                    
                     if (errRecordS == null)//自检通过
                     {
@@ -1656,6 +1697,8 @@ namespace HFM
                         platformState = PlatformState.BackGrouneMeasure;
                         //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
                         stateTimeSet = systemParameter.SmoothingTime;
+                        stateTimeRemain_Last = stateTimeSet;
+                        isPlatformStateSwitched = true;//置状态切换标志
                         //启动本底测量计时 
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                         //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS初始化为当前本底值，为本底测量时计算做准备
@@ -1809,7 +1852,7 @@ namespace HFM
                                 }
                                 player.Load();
                                 player.Play();
-                                //重新启动测量计时
+                                //重新启动本底测量计时
                                 stateTimeStart = System.DateTime.Now.AddSeconds(1);
                                 //Thread.Sleep(3000);
                             }
@@ -1843,7 +1886,7 @@ namespace HFM
                                 }
                                 player.Load();
                                 player.Play();
-                                //重新启动测量计时
+                                //重新启动本底测量计时
                                 stateTimeStart = System.DateTime.Now.AddSeconds(1);
                                 //Thread.Sleep(3000);
                             }
@@ -1987,9 +2030,11 @@ namespace HFM
                             Tools.Clone(baseData[2], baseData[3]);
                         }
                         // 运行状态标志设置为“等待测量”
-                        platformState = PlatformState.ReadyToMeasure;
+                        platformState = PlatformState.ReadyToMeasure;                        
+                        isPlatformStateSwitched = true;//置状态切换标志
                         //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
                         stateTimeSet = systemParameter.SmoothingTime;
+                        stateTimeRemain_Last = stateTimeSet;
                         //启动等待测量计时(因为在等待测量过程中也要进行本底测量和计算) 
                         stateTimeStart = System.DateTime.Now;
                     }
@@ -2017,7 +2062,8 @@ namespace HFM
                         stateTimeStart = new DateTime(1900, 01, 01);//重新初始化开始计时对象
                         isSelfCheckSended = false;//置是否已经下发自检指令标志为false（需重新下发自检指令）
                         isBetaCommandToSend = false;//
-                        platformState = PlatformState.ReadyToRun;                        
+                        platformState = PlatformState.ReadyToRun;
+                        isPlatformStateSwitched = true;//置状态切换标志
                     }
                     return;
                 }
@@ -2070,12 +2116,11 @@ namespace HFM
                 {                    
                     if (stateTimeRemain <= 0)
                     {
-                        //重新启动本底计时
+                        //重新启动本底测量计时
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
                     if (measureDataS[1].InfraredStatus == 0 && measureDataS[3].InfraredStatus == 0 && isHandSecondEnabled == false)
-                    {
-                        
+                    {                        
                         isHandSecondEnabled = true;                        
                         return;
                     }
@@ -2167,13 +2212,13 @@ namespace HFM
                     }
                     if (list[0].Channel.ChannelID>=1&& list[0].Channel.ChannelID<=7 && list[0].InfraredStatus == 0)//当前通道为手部脚步通道且红外不到位  ///yxk测试修改 衣物探头在等待测量界面的时候显示值有数，提示框测量值为零
                     {                        
-                            //第一次判断红外状态
-                            if (isFirstBackGround == true)
-                            {
-                                //重新启动本底计时
-                                stateTimeStart = System.DateTime.Now;
-                                isFirstBackGround = false;
-                            }
+                        //第一次判断红外状态
+                        if (isFirstBackGround == true)
+                        {
+                            //重新启动本底测量计时
+                            //stateTimeStart = System.DateTime.Now;
+                            isFirstBackGround = false;
+                        }
                         //手部红外状态到位标志置false，说明手部不到位
                         if (list[0].Channel.ChannelID != 7)
                         {
@@ -2253,6 +2298,8 @@ namespace HFM
                     stateTimeSet = systemParameter.MeasuringTime;
                     //重新启动计时，为开始测量及时准备
                     stateTimeStart = System.DateTime.Now;
+                    stateTimeRemain_Last = stateTimeSet;
+                    isPlatformStateSwitched = true;//置状态切换标志
                     return;
                 }
                 //本底测量时间到，进行本底判断
@@ -2311,6 +2358,7 @@ namespace HFM
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                         platformState = PlatformState.BackGrouneMeasure;
+                        isPlatformStateSwitched = true;//置状态切换标志
                     }
                     //for (int i = 0; i < channelS.Count; i++)
                     //{
@@ -2325,7 +2373,7 @@ namespace HFM
                     }
                     //重新启动本底测量计时
                     stateTimeStart = System.DateTime.Now.AddSeconds(1);
-                }
+                }                
                 return;
             }
             //运行状态为开始测量
@@ -2438,6 +2486,8 @@ namespace HFM
                         stateTimeSet = systemParameter.SmoothingTime;
                         //重新启动测量计时
                         stateTimeStart = System.DateTime.Now;
+                        stateTimeRemain_Last = stateTimeSet;
+                        isPlatformStateSwitched = true;//置状态切换标志
                         return;                        
                     }
                     //measureCount++;
@@ -2799,6 +2849,8 @@ namespace HFM
                             stateTimeSet = systemParameter.SmoothingTime;
                             //重新启动测量计时 
                             stateTimeStart = System.DateTime.Now;
+                            stateTimeRemain_Last = stateTimeSet;
+                            isPlatformStateSwitched = true;//置状态切换标志
                             //返回
                             return;
                         }
@@ -2845,6 +2897,7 @@ namespace HFM
                             isTestedEnd = true;//检测已经完成
                             //运行状态设置为“测量结束”
                             platformState = PlatformState.Result;
+                            isPlatformStateSwitched = true;//置状态切换标志
                         }
                         //player.LoadAsync();
                         //player.PlaySync();   
@@ -2913,6 +2966,7 @@ namespace HFM
                     systemParameter.UpdateMeasuredCount();                    
                     //运行状态设置为“测量结束”
                     platformState = PlatformState.Result;
+                    isPlatformStateSwitched = true;//置状态切换标志
                     return;
                 }
                 return;
@@ -3012,6 +3066,8 @@ namespace HFM
                         platformState = PlatformState.BackGrouneMeasure;
                         //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
                         stateTimeSet = systemParameter.SmoothingTime;
+                        stateTimeRemain_Last = stateTimeSet;
+                        isPlatformStateSwitched = true;//置状态切换标志
                         //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS初始化为当前本底值，为本底测量时计算做准备
                         for (int i = 0; i < channelS.Count; i++)
                         {
@@ -3139,6 +3195,8 @@ namespace HFM
                 isFirstBackGround = true;
                 isFirstBackGroundData = true;
                 stateTimeStart = System.DateTime.Now;
+                stateTimeRemain_Last = stateTimeSet;
+                isPlatformStateSwitched = true;//置状态切换标志
                 return;
                 //}
                 //else//检测完成
@@ -4421,7 +4479,9 @@ namespace HFM
                 platformState = PlatformState.ReadyToRun;
                 //当前系统状态时间为自检时间
                 stateTimeSet = systemParameter.SelfCheckTime;
-                stateTimeStart = DateTime.Now.AddSeconds(1);               
+                stateTimeStart = DateTime.Now.AddSeconds(1);
+                stateTimeRemain_Last = stateTimeSet;
+                isPlatformStateSwitched = true;//置状态切换标志
                 if (this.bkWorkerReceiveData.IsBusy == false)
                 {
                     this.bkWorkerReceiveData.RunWorkerAsync();

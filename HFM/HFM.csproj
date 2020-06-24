@@ -525,5 +525,8 @@
     <None Include="Images\unfulfillment.png" />
     <Content Include="Images\welcome.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="log\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
