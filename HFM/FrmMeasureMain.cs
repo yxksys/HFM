@@ -282,13 +282,14 @@ namespace HFM
                 LblValue[i].Text ="0.0cps";
             }
         }
-        
+
         /// <summary>
         /// 根据当前通道状态设置界面中各个通道显示效果
         /// </summary>
         /// <param name="channel">通道</param>
-        /// <param name="status">状态：0未启用；1启用红外未到位；2启用红外到位</param>
-        private void ChannelDisplayControl(Channel channel,int status)
+        /// <param name="status">状态：0未启用；1启用红外未到位；2启用红外到位</param>   
+        /// <param name="ctrlModel">控制方式：0初始化；1：保持</param>用于控制测量值显示标签背景色，是保持原来颜色还是重新初始化成初始状态颜色
+        private void ChannelDisplayControl(Channel channel,int status,int ctrlModel)
         {
             switch (status)
             {
@@ -361,28 +362,37 @@ namespace HFM
                         switch(factoryParameter.MeasureType)
                         {
                             case "α":
-                                LblValue[(channel.ChannelID - 1) * 2].Enabled = true;                                                               
-                                LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
-                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = false;
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                if (ctrlModel == 0)
+                                {
+                                    LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                                    LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                    LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = false;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                }
                                 break;
                             case "β":
-                                LblValue[(channel.ChannelID - 1) * 2].Enabled = false;                              
-                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
-                                LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                if (ctrlModel == 0)
+                                {
+                                    LblValue[(channel.ChannelID - 1) * 2].Enabled = false;
+                                    LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                }
                                 break;
                             case "α/β":
-                                LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
-                                LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
-                                LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;                                
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
-                                LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                if (ctrlModel == 0)
+                                {
+                                    LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                                    LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                }
                                 break;
 
                         }                        
@@ -426,9 +436,44 @@ namespace HFM
                         LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
                     }
                     else
-                    {
-                        LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
-                        LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                    {                        
+                        switch (factoryParameter.MeasureType)
+                        {
+                            case "α":
+                                if (ctrlModel == 0)
+                                {
+                                    LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                                    LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                    LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = false;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                }
+                                break;
+                            case "β":
+                                if (ctrlModel == 0)
+                                {
+                                    LblValue[(channel.ChannelID - 1) * 2].Enabled = false;
+                                    //LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                }
+                                break;
+                            case "α/β":
+                                if (ctrlModel == 0)
+                                {
+                                    LblValue[(channel.ChannelID - 1) * 2].Enabled = true;
+                                    LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].Enabled = true;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                    LblValue[(channel.ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                }
+                                break;
+
+                        }
                     }
                     if (channel.ChannelID != 7)
                     {
@@ -536,7 +581,7 @@ namespace HFM
             }
         }
         private void FrmMeasureMain_Load(object sender, EventArgs e)
-        {            
+        {
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
             appPath = Application.StartupPath;
             messageBufferLength = 62; //最短报文长度                        
@@ -582,10 +627,10 @@ namespace HFM
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
                 Tools.ApplyLanguageResource(this);
                 Tools.controls.Clear();
-            }            
+            }
             //初始化显示界面
             DisplayInit();
-            LblTimeRemain.Text = string.Format("{0}s",systemParameter.SelfCheckTime.ToString());
+            LblTimeRemain.Text = string.Format("{0}s", systemParameter.SelfCheckTime.ToString());
             //实例化衣物探测界面
             frmClothes = new FrmClothes(isEnglish);
             checkTime = systemParameter.SelfCheckTime;//检测时间 
@@ -596,12 +641,12 @@ namespace HFM
                 if (channelS[i].IsEnabled == true && channelS[i].ProbeArea != 0)//通道被启用且探测面积不为0
                 {
                     //界面中相关通道控件Enabled设置为true，背景色设置为正常
-                    ChannelDisplayControl(channelS[i], 1);
+                    ChannelDisplayControl(channelS[i], 1, 0);
                 }
                 else
                 {
                     //界面中相关通道控件Enabled属性设置为false，背景色设置为屏蔽
-                    ChannelDisplayControl(channelS[i], 0);
+                    ChannelDisplayControl(channelS[i], 0, 0);
                 }
             }
             //获得全部启用通道
@@ -681,19 +726,19 @@ namespace HFM
                     {
                         MessageBox.Show("管理机端口打开错误！请检查通讯是否正常。");
                         TxtShowResult.Text = "管理机串口打开失败\r\n";
-                    }                  
-                }               
+                    }
+                }
                 //线程支持异步取消
                 bkWorkerReportStatus.WorkerSupportsCancellation = true;
                 //线程支持报告进度
                 bkWorkerReportStatus.WorkerReportsProgress = true;
                 //启动异步线程,响应DoWork事件
                 bkWorkerReportStatus.RunWorkerAsync();
-            }           
+            }
             //将运行状态标志设置为“运行准备”
             platformState = PlatformState.ReadyToRun;
             //当前系统状态时间为自检时间
-            stateTimeSet = systemParameter.SelfCheckTime;            
+            stateTimeSet = systemParameter.SelfCheckTime;
             stateTimeStart = DateTime.Now;
             stateTimeRemain_Last = stateTimeSet;
             //线程支持异步取消
@@ -979,7 +1024,7 @@ namespace HFM
                     List<MeasureData> list = measureDataS.Where(measureData => measureData.Channel.ChannelID == usedChannel.ChannelID).ToList();
                     if (list.Count > 0)
                     {
-                        ChannelDisplayControl(usedChannel, list[0].InfraredStatus == 0 ? 1 : 2);
+                        ChannelDisplayControl(usedChannel, list[0].InfraredStatus == 0 ? 1 : 2,1);//保持通道状态控制
                         //根据当前红外状态控制左右手及衣物红外状态显示
                         switch (usedChannel.ChannelID)
                         {
@@ -1059,14 +1104,14 @@ namespace HFM
                         {
                             if (usedChannel.ChannelID == 2 || usedChannel.ChannelID == 4)//屏蔽左右手背
                             {
-                                ChannelDisplayControl(usedChannel, 1);
+                                ChannelDisplayControl(usedChannel, 1,0);//第一次测试，状态需要全部初始化控制
                             }
                         }
                         if (isHandTested == 1)//手部第二次测试
                         {
                             if (usedChannel.ChannelID == 1 || usedChannel.ChannelID == 3)//屏蔽左右手心
                             {
-                                ChannelDisplayControl(usedChannel, 1);
+                                ChannelDisplayControl(usedChannel, 1,1);//第二次测试，控制显示同时保持原来测量状态显示
                             }
                         }
                     }                    
@@ -1793,12 +1838,42 @@ namespace HFM
                     //测量值显示标签背景恢复为默认状态（如果检查结果为人员污染，则会将测量值显示标签背景色变为污染报警，所以需要恢复）  
                     if (channelS[i].ChannelID == 7)
                     {
-                        LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                        LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
                     }
                     else
                     {
-                        LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
-                        LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = Color.White;
+                        //LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = Color.White;
+                        //LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = Color.White;
+                        switch (factoryParameter.MeasureType)
+                        {
+                            case "α":
+
+                                LblValue[(channelS[i].ChannelID - 1) * 2].Enabled = true;
+                                LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                LblValue[(channelS[i].ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].Enabled = false;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                break;
+                            case "β":
+
+                                LblValue[(channelS[i].ChannelID - 1) * 2].Enabled = false;
+                                //LblValue[(channel.ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKNOTINPLACE;
+                                LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.COLOR_BKDISABLED;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].Enabled = true;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                break;
+                            case "α/β":
+
+                                LblValue[(channelS[i].ChannelID - 1) * 2].Enabled = true;
+                                LblValue[(channelS[i].ChannelID - 1) * 2].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                LblValue[(channelS[i].ChannelID - 1) * 2].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].Enabled = true;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].ForeColor = PlatForm.ColorStatus.CORLOR_BKINPLACE;
+                                LblValue[(channelS[i].ChannelID - 1) * 2 + 1].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL;
+                                break;
+                        }
                     }
                     //因为measureDataS中是从报文协议中解析的全部7个通道的监测数据，但是calculatedMeasureDataS只是存储当前在用的通道信息
                     //所以，需要从measureDataS中找到对应通道的监测数据通过平滑计算后赋值给calculatedMeasureDataS
@@ -2116,7 +2191,7 @@ namespace HFM
                 {                    
                     if (stateTimeRemain <= 0)
                     {
-                        //重新启动本底测量计时
+                        //重新启动等待测量计时
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
                     if (measureDataS[1].InfraredStatus == 0 && measureDataS[3].InfraredStatus == 0 && isHandSecondEnabled == false)
@@ -2303,7 +2378,7 @@ namespace HFM
                     return;
                 }
                 //本底测量时间到，进行本底判断
-                if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds <= 0)
+                if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds < 0)
                 {
                     //下次如果还进行本底计算，则需重新计时，所以置标志为True
                     isFirstBackGround = true;
@@ -4323,12 +4398,12 @@ namespace HFM
                     if (channelsAll[i].IsEnabled == true && channelsAll[i].ProbeArea != 0)//通道被启用且探测面积不为0
                     {
                         //界面中相关通道控件Enabled设置为true，背景色设置为正常
-                        ChannelDisplayControl(channelsAll[i], 1);
+                        ChannelDisplayControl(channelsAll[i], 1,1);//需要保持原来测量状态显示
                     }
                     else
                     {
                         //界面中相关通道控件Enabled属性设置为false，背景色设置为屏蔽
-                        ChannelDisplayControl(channelsAll[i], 0);
+                        ChannelDisplayControl(channelsAll[i], 0,1);//需要保持原来测量状态显示
                     }
                 }
                 DisplayInit();
@@ -4438,12 +4513,12 @@ namespace HFM
                     if (channelS[i].IsEnabled == true && channelS[i].ProbeArea != 0)//通道被启用且探测面积不为0
                     {
                         //界面中相关通道控件Enabled设置为true，背景色设置为正常
-                        ChannelDisplayControl(channelS[i], 1);
+                        ChannelDisplayControl(channelS[i], 1,0);//所有通道状态全部初始化
                     }
                     else
                     {
                         //界面中相关通道控件Enabled属性设置为false，背景色设置为屏蔽
-                        ChannelDisplayControl(channelS[i], 0);
+                        ChannelDisplayControl(channelS[i], 0,0);//所有通道状态全部初始化
                     }
                 }
                 //获得全部启用通道
