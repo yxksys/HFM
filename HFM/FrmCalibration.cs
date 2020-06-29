@@ -394,6 +394,8 @@ namespace HFM
                             {
                                 bkWorker.ReportProgress(1, null);
                                 bkWorkerReceiveData.CancelAsync();
+                                BtnCalibrate.Enabled = true;
+                                BtnSet.Enabled = true;
                             }
                             else
                             {
@@ -584,6 +586,7 @@ namespace HFM
         /// </summary>
         private int throwDataCount = 0;
         #endregion
+
         #region ProgressChanged
         private void BkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {

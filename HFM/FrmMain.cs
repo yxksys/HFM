@@ -205,36 +205,36 @@ namespace HFM
         #region 开启端口
         //实例化串口
 
-        public void OpenComPort()
-        {
-            //从配置文件获得当前串口配置
-            _commPort.GetCommPortSet("commportSet");
-            if (_commPort.Opened == true)
-            {
-                _commPort.Close();
-            }           
-            //打开串口
-            try
-            {
-                _commPort.Open();
-                if (_commPort.Opened)
-                {
-                    Tools.FormBottomPortStatus = true;                    
-                }                     
-            }
-            catch
-            {
-                if (FrmMain.isEnglish == true)
-                {
-                    MessageBox.Show("Port open error! Please check whether the communication is normal.");
-                }
-                else
-                {
-                    MessageBox.Show("端口打开错误！请检查通讯是否正常。");
-                }
-                Tools.FormBottomPortStatus = false;                
-            }                                                   
-        }
+        //public void OpenComPort()
+        //{
+        //    //从配置文件获得当前串口配置
+        //    _commPort.GetCommPortSet("commportSet");
+        //    if (_commPort.Opened == true)
+        //    {
+        //        _commPort.Close();
+        //    }           
+        //    //打开串口
+        //    try
+        //    {
+        //        _commPort.Open();
+        //        if (_commPort.Opened)
+        //        {
+        //            Tools.FormBottomPortStatus = true;                    
+        //        }                     
+        //    }
+        //    catch
+        //    {
+        //        if (FrmMain.isEnglish == true)
+        //        {
+        //            MessageBox.Show("Port open error! Please check whether the communication is normal.");
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("端口打开错误！请检查通讯是否正常。");
+        //        }
+        //        Tools.FormBottomPortStatus = false;                
+        //    }                                                   
+        //}
         #endregion 开启端口
 
         #region 构造函数
@@ -303,7 +303,7 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmMain_Shown(object sender, EventArgs e)
         {                       
-            OpenComPort();
+            //OpenComPort();
         }
 
         #endregion

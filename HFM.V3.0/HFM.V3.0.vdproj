@@ -75,12 +75,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1EFE172EB3C7445DBBD6C04C83468471"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_211539D54FA64EE9AC6435AD925E259E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -136,6 +130,12 @@
         "Entry"
         {
         "MsmKey" = "8:_35F2CB37492242608046DE27D2964119"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_36C68CC242124064A5CB826E7D262A56"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -376,7 +376,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AD0F496F9C48B0934603B40B9B06A7B4"
-        "OwnerKey" = "8:_1EFE172EB3C7445DBBD6C04C83468471"
+        "OwnerKey" = "8:_DC568904868C4B2E80FF090A9EDE2518"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -453,6 +453,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DC568904868C4B2E80FF090A9EDE2518"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DF458CD47CEF4D6CAB89A7AB02237130"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -508,19 +514,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AD0F496F9C48B0934603B40B9B06A7B4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_34A78B96ECDE4A338BC43FDDB70976E3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1EFE172EB3C7445DBBD6C04C83468471"
+        "OwnerKey" = "8:_AD0F496F9C48B0934603B40B9B06A7B4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DC568904868C4B2E80FF090A9EDE2518"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -580,6 +586,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -974,7 +988,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=3.0.5.1, Culture=en, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=3.0.5.3, Culture=en, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_34A78B96ECDE4A338BC43FDDB70976E3"
@@ -1007,6 +1021,26 @@
             "TargetName" = "8:Chinese_frisker_In_place_measure_again.wav"
             "Tag" = "8:"
             "Folder" = "8:_9E44E306CC32469685A7FBF6335015E8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_36C68CC242124064A5CB826E7D262A56"
+            {
+            "SourcePath" = "8:..\\HFM\\bin\\Debug\\log\\errorLog.txt"
+            "TargetName" = "8:errorLog.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_1E6B776A2A1646369B01F691B833D699"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1808,11 +1842,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_AD0F496F9C48B0934603B40B9B06A7B4"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -2268,6 +2297,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_1E6B776A2A1646369B01F691B833D699"
+                    {
+                    "Name" = "8:log"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_898BCAC9B8C64541A36E3D1E59B37180"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_4D93499218674E079505E1D70521654D"
                     {
                     "Name" = "8:ErrorLog"
@@ -2484,7 +2524,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_561C5C4E0B7D47009FEDFCAF138CCD53"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9F89CCE3A626478FB692F1F11697F45B"
             {
             "Name" = "8:HFM"
             "Arguments" = "8:"
@@ -2492,7 +2532,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_1EFE172EB3C7445DBBD6C04C83468471"
+            "Target" = "8:_DC568904868C4B2E80FF090A9EDE2518"
             "Folder" = "8:_DC7224D8A3F743D2A25E4CCA0ABCC00E"
             "WorkingFolder" = "8:_964B1E6D42D24A919A3B6BE2769B4823"
             "Icon" = "8:_6D4C2E38ED7D405C944ADFAD1FC30B5D"
@@ -2897,7 +2937,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1EFE172EB3C7445DBBD6C04C83468471"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DC568904868C4B2E80FF090A9EDE2518"
             {
             "SourcePath" = "8:..\\HFM\\obj\\Debug\\HFM.exe"
             "TargetName" = "8:"

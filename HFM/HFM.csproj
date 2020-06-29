@@ -526,6 +526,7 @@
     <Content Include="Images\welcome.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\log\" />
     <Folder Include="log\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
