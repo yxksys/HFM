@@ -129,6 +129,7 @@ namespace HFM.Components
         /// 14：请输入数字！
         /// 15:高压输入范围-1000V,高压输入有误！
         /// 16:未输入有效数据，请重新输入
+        /// 17：返回数据错误!请尝试重新操作！
         /// </param>
         public void PrompMessage(int num)
         {
@@ -296,7 +297,17 @@ namespace HFM.Components
                     {
                         MessageBox.Show(@"未输入有效数据，请重新输入！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
-                    break;                    
+                    break;
+                case 17:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Return data error! Please try again!", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"返回数据错误!请尝试重新操作！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    break;
                 default:
                     if (isEnglish == true)
                     {
