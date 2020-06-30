@@ -266,31 +266,105 @@ namespace HFM
                 TxtHV.Enabled = true;
                 Txtα.Enabled = true;
                 Txtβ.Enabled = true;
+
+                //
+                int errorNumber = 0; //下发自检报文出现错误计数器
+                int errorNumber2 = 0; //下发自检报文返回数据出现错误计数器
+                int downcount = 0;
+                byte[] receiveBuffMessage = null;//接受的报文
+                byte[] buffMessage = new byte[62];//报文长度
+
+                BtnCalibrate.Enabled = false;
+                BtnSet.Enabled = false;
+                while (downcount < 6)
+                {
+                    downcount++;
+                    if (downcount==6)
+                    {
+                        BtnCalibrate.Enabled = true;
+                        BtnSet.Enabled = true;
+                    }
+                    //向下位机下发“p”指令码
+                    buffMessage[0] = Convert.ToByte('P');
+                    if (Message.SendMessage(buffMessage, _commPort))    //正式
+                    {
+                        Thread.Sleep(10);
+                        receiveBuffMessage = Message.ReceiveMessage(_commPort);
+                        //解析P数据报文
+                        
+                        if (receiveBuffMessage.Length > 0 && receiveBuffMessage[0].ToString() != "80")//由于下位机一直上传C指令，下发P指令后有可能读回的数据还是C指令，所以将其扔掉直到读回的是P指令为止                            
+                        {
+                            errorNumber2++;
+                            if (errorNumber2>5)
+                            {
+                                MessageBox.Show(@"返回数据错误!", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                return;
+                            }
+                            continue;
+                        }
+                        else if (receiveBuffMessage.Length==0)
+                        {
+                            errorNumber++;
+                            if (errorNumber > 5)
+                            {
+                                BtnCalibrate.Enabled = true;
+                                BtnSet.Enabled = true;
+                                _tools.PrompMessage(3);
+                                return;
+                            }
+                            continue;
+                        }
+                        if (receiveBuffMessage[0] == Convert.ToByte('P'))
+                        {
+                            _channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBuffMessage);//解析报文
+                            foreach (var itemParameter in _channelParameters)
+                            {
+                                if (CmbChannelSelection.Text == itemParameter.Channel.ChannelName_English || CmbChannelSelection.Text == itemParameter.Channel.ChannelName)
+                                {
+                                    /*
+                                     * 高压阈值赋值
+                                     */
+                                    TxtHV.Text = itemParameter.PresetHV.ToString();
+                                    Txtα.Text = itemParameter.AlphaThreshold.ToString();
+                                    Txtβ.Text = itemParameter.BetaThreshold.ToString();
+                                    //当前通道道盒参数
+                                    _setChannelParameter = itemParameter;
+
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        errorNumber++;
+                        if (errorNumber > 5)
+                        {
+                            BtnCalibrate.Enabled = true;
+                            BtnSet.Enabled = true;
+                            _tools.PrompMessage(3);
+                            return;
+                        }
+                        else
+                        {
+                            Thread.Sleep(100);
+                        }
+                    }
+                    //延时
+                    Thread.Sleep(200);
+                    
+                }
+                
             }
-            //当前通讯更改为pread
-            _messageType = MessageType.PRead;
-            //开启端口
-            //OpenPort();
+            
 
             var lisChanneList = _channelList.Where(n => n.ChannelName.ToString() == CmbChannelSelection.Text|| n.ChannelName_English.ToString() == CmbChannelSelection.Text).ToList();
             foreach (var b in lisChanneList)
             {
                 _channel = b;
             }
-            //开启异步线程
-            if (bkWorkerReceiveData.IsBusy != true)
-            {
-                bkWorkerReceiveData.RunWorkerAsync();
-            }
-            else
-            {
-                bkWorkerReceiveData.CancelAsync();
-                Thread.Sleep(100);
-                bkWorkerReceiveData.RunWorkerAsync();
-            }
-            //点击刻度和设置后使按钮不可用
-            BtnCalibrate.Enabled = false;
-            BtnSet.Enabled = false;
+            
+            
+            
         }
         #endregion
 
