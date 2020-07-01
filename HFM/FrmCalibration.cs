@@ -267,6 +267,12 @@ namespace HFM
                 Txtα.Enabled = true;
                 Txtβ.Enabled = true;
             }
+            //下发 P指令 
+            //读串口数据
+            //判断是否P指令
+            //如果不是或者数据非法，返回循环继续下发P指令，如果下发次数超过规定上限，提示错误
+            //如果是，解析并显示 数据
+            //相关按钮enabled设置为true
             //当前通讯更改为pread
             _messageType = MessageType.PRead;
             //开启端口
@@ -1015,6 +1021,9 @@ namespace HFM
                 return;
             } 
             #endregion
+            //生成P指令报文并下发            
+            //提示已经下发
+
             //当前发送报文类型换成p写入
             _messageType = MessageType.PSet;
             //当前的高压和阈值信息写入对象

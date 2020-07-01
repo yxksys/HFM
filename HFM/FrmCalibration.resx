@@ -871,7 +871,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabpageCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>769, 867</value>
+    <value>786, 867</value>
   </data>
   <data name="TabpageCalibration.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -904,7 +904,7 @@
     <value>0, 0</value>
   </data>
   <data name="TabCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>777, 900</value>
+    <value>794, 900</value>
   </data>
   <data name="TabCalibration.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -934,7 +934,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>794, 661</value>
+    <value>811, 661</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>测试刻度</value>

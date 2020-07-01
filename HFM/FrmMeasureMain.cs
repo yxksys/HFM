@@ -3978,7 +3978,8 @@ namespace HFM
                 timeForSyn.MiliSecond = (short)message[6];
                 try
                 {
-                    SetSystemTime(ref timeForSyn);                                  
+                    SetSystemTime(ref timeForSyn);
+                    stateTimeStart = DateTime.Now;//同步时间后重新开始检测运行状态倒计时
                     //向管理机恢复时间同步报文
                     byte[] timeSynMessage = new byte[8];
                     timeSynMessage[0] = 0x01;
@@ -3992,7 +3993,7 @@ namespace HFM
                     crc16 = Tools.CRC16(timeSynMessage, timeSynMessage.Length - 2);
                     timeSynMessage[6] = crc16[0];
                     timeSynMessage[7] = crc16[1];
-                    Components.Message.SendMessage(timeSynMessage, commPort_Supervisory);                    
+                    Components.Message.SendMessage(timeSynMessage, commPort_Supervisory);                       
                     if (isEnglish)
                     {
                         TxtShowResult.Text += "Time synchronization completed!\r\n";
@@ -4112,7 +4113,7 @@ namespace HFM
                             isCommError = false;
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
                             return;
                     }                    

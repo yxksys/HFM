@@ -289,6 +289,7 @@
     <Content Include="Audio\Chinese_Two.wav" />
     <Content Include="Audio\English_No Contamination_please_leave.wav" />
     <Content Include="Audio\English_NoContamination_please_frisker.wav" />
+    <Content Include="log\errorLog.txt" />
     <None Include="Audio\English_NoContamination_please_leave.wav" />
     <Content Include="Audio\English_please_flip_palm_for_measuring.wav" />
     <Content Include="Audio\English_Ten.wav" />
@@ -524,8 +525,6 @@
     <None Include="Images\unfulfillment.png" />
     <Content Include="Images\welcome.bmp" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="log\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
