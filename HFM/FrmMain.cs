@@ -205,36 +205,36 @@ namespace HFM
         #region 开启端口
         //实例化串口
 
-        public void OpenComPort()
-        {
-            //从配置文件获得当前串口配置
-            _commPort.GetCommPortSet("commportSet");
-            if (_commPort.Opened == true)
-            {
-                _commPort.Close();
-            }           
-            //打开串口
-            try
-            {
-                _commPort.Open();
-                if (_commPort.Opened)
-                {
-                    Tools.FormBottomPortStatus = true;                    
-                }                     
-            }
-            catch
-            {
-                if (FrmMain.isEnglish == true)
-                {
-                    MessageBox.Show("Port open error! Please check whether the communication is normal.");
-                }
-                else
-                {
-                    MessageBox.Show("端口打开错误！请检查通讯是否正常。");
-                }
-                Tools.FormBottomPortStatus = false;                
-            }                                                   
-        }
+        //public void OpenComPort()
+        //{
+        //    //从配置文件获得当前串口配置
+        //    _commPort.GetCommPortSet("commportSet");
+        //    if (_commPort.Opened == true)
+        //    {
+        //        _commPort.Close();
+        //    }           
+        //    //打开串口
+        //    try
+        //    {
+        //        _commPort.Open();
+        //        if (_commPort.Opened)
+        //        {
+        //            Tools.FormBottomPortStatus = true;                    
+        //        }                     
+        //    }
+        //    catch
+        //    {
+        //        if (FrmMain.isEnglish == true)
+        //        {
+        //            MessageBox.Show("Port open error! Please check whether the communication is normal.");
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("端口打开错误！请检查通讯是否正常。");
+        //        }
+        //        Tools.FormBottomPortStatus = false;                
+        //    }                                                   
+        //}
         #endregion 开启端口
 
         #region 构造函数
@@ -268,7 +268,7 @@ namespace HFM
         {
             try
             {
-                Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                //Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 Tsslbl_Status_Text();
             }
             catch (Exception exception)
@@ -287,11 +287,13 @@ namespace HFM
             {
                 Text = Tools.EnSoftName(_factoryParameter.SoftName);            //头部软件名称显示
                 Tsslbl_Name.Text = Tools.EnSoftName(_factoryParameter.SoftName);//底部软件名称显示
+                Tsslbl_Version.Text = "V" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
             else
             {
                 Text = _factoryParameter.SoftName;            //头部软件名称显示
                 Tsslbl_Name.Text = _factoryParameter.SoftName;//底部软件名称显示
+                Tsslbl_Version.Text = "V" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
         /// <summary>
@@ -301,7 +303,7 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmMain_Shown(object sender, EventArgs e)
         {                       
-            OpenComPort();
+            //OpenComPort();
         }
 
         #endregion

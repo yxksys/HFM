@@ -47,7 +47,7 @@
             this.Tsslbl_Name = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tsslbl_Status = new System.Windows.Forms.ToolStripStatusLabel();
             this.Tsslbl_Tcp = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Tsslbl_NowTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Tsslbl_Version = new System.Windows.Forms.ToolStripStatusLabel();
             this.MnsFunction.SuspendLayout();
             this.StsFoot.SuspendLayout();
             this.SuspendLayout();
@@ -156,7 +156,7 @@
             this.Tsslbl_Name,
             this.Tsslbl_Status,
             this.Tsslbl_Tcp,
-            this.Tsslbl_NowTime});
+            this.Tsslbl_Version});
             resources.ApplyResources(this.StsFoot, "StsFoot");
             this.StsFoot.Name = "StsFoot";
             // 
@@ -175,10 +175,11 @@
             resources.ApplyResources(this.Tsslbl_Tcp, "Tsslbl_Tcp");
             this.Tsslbl_Tcp.Name = "Tsslbl_Tcp";
             // 
-            // Tsslbl_NowTime
+            // Tsslbl_Version
             // 
-            resources.ApplyResources(this.Tsslbl_NowTime, "Tsslbl_NowTime");
-            this.Tsslbl_NowTime.Name = "Tsslbl_NowTime";
+            this.Tsslbl_Version.Name = "Tsslbl_Version";
+            resources.ApplyResources(this.Tsslbl_Version, "Tsslbl_Version");
+            this.Tsslbl_Version.Spring = true;
             // 
             // FrmMain
             // 
@@ -221,6 +222,6 @@
         private System.Windows.Forms.ToolStripStatusLabel Tsslbl_Name;
         private System.Windows.Forms.ToolStripStatusLabel Tsslbl_Status;
         private System.Windows.Forms.ToolStripStatusLabel Tsslbl_Tcp;
-        private System.Windows.Forms.ToolStripStatusLabel Tsslbl_NowTime;
+        private System.Windows.Forms.ToolStripStatusLabel Tsslbl_Version;
     }
 }

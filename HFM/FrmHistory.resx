@@ -630,6 +630,24 @@
   <data name="&gt;&gt;IsEnglish.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ErrTime.Name" xml:space="preserve">
+    <value>ErrTime</value>
+  </data>
+  <data name="&gt;&gt;ErrTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Record.Name" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="&gt;&gt;Record.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
+    <value>IsEnglishsError</value>
+  </data>
+  <data name="&gt;&gt;IsEnglishsError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;CalibrationTime.Name" xml:space="preserve">
     <value>CalibrationTime</value>
   </data>
@@ -671,24 +689,6 @@
   </data>
   <data name="&gt;&gt;AlphaBetaPercent.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ErrTime.Name" xml:space="preserve">
-    <value>ErrTime</value>
-  </data>
-  <data name="&gt;&gt;ErrTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Record.Name" xml:space="preserve">
-    <value>Record</value>
-  </data>
-  <data name="&gt;&gt;Record.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
-    <value>IsEnglishsError</value>
-  </data>
-  <data name="&gt;&gt;IsEnglishsError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmHistory</value>

@@ -122,25 +122,25 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="StartRunningToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="StartRunningToolStripMenuItem.Text" xml:space="preserve">
     <value>开始运行</value>
   </data>
   <data name="SuperUserToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="SuperUserToolStripMenuItem.Text" xml:space="preserve">
     <value>超级用户</value>
   </data>
   <data name="ChangePasswordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="ChangePasswordToolStripMenuItem.Text" xml:space="preserve">
     <value>修改密码</value>
   </data>
   <data name="RetreatSystemToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 26</value>
+    <value>144, 26</value>
   </data>
   <data name="RetreatSystemToolStripMenuItem.Text" xml:space="preserve">
     <value>退出系统</value>
@@ -269,19 +269,10 @@
   <data name="Tsslbl_Tcp.Text" xml:space="preserve">
     <value>网络连接状态</value>
   </data>
-  <data name="Tsslbl_NowTime.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="Tsslbl_Version.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 21</value>
   </data>
-  <data name="Tsslbl_NowTime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 12pt</value>
-  </data>
-  <data name="Tsslbl_NowTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 21</value>
-  </data>
-  <data name="Tsslbl_NowTime.Text" xml:space="preserve">
-    <value>2020年3月27日 18点42分</value>
-  </data>
-  <data name="Tsslbl_NowTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="Tsslbl_Version.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
   <data name="StsFoot.Location" type="System.Drawing.Point, System.Drawing">
@@ -420,10 +411,10 @@
   <data name="&gt;&gt;Tsslbl_Tcp.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Tsslbl_NowTime.Name" xml:space="preserve">
-    <value>Tsslbl_NowTime</value>
+  <data name="&gt;&gt;Tsslbl_Version.Name" xml:space="preserve">
+    <value>Tsslbl_Version</value>
   </data>
-  <data name="&gt;&gt;Tsslbl_NowTime.Type" xml:space="preserve">
+  <data name="&gt;&gt;Tsslbl_Version.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
