@@ -107,6 +107,7 @@ namespace HFM
                 //去掉密码字符串的最后一位
                 Code = Code.Substring(0, Code.Length - 1);
             }
+            SendValueEventHandler.Invoke(Code);
         }
         #endregion
 
@@ -171,6 +172,7 @@ namespace HFM
         {
             //找到请求的发送者
             Button btn = (Button)sender;
+            
             //添加数字键盘上输入的数字
             Code += btn.Text;
             //临时按钮获取该发送者的位置坐标和内容
@@ -180,11 +182,13 @@ namespace HFM
                 //使得临时按钮可视
                 TempButton.Visible = true;
                 TempButton.BringToFront();
+
                 //延时
                 Thread.Sleep(200);
                 //使得临时按钮不可视
                 TempButton.Visible = false;
             }
+            
             //执行委托
             SendValueEventHandler.Invoke(Code);
         }
@@ -234,6 +238,24 @@ namespace HFM
         }
 
 
+        #endregion
+        
+        #region 按钮点击后颜色变化，按下黑色，点击后恢复
+        private void Button_MouseDown(object sender, MouseEventArgs e)
+        {
+            //找到请求的发送者
+            Button btn = (Button)sender;
+
+            btn.BackColor = Color.Black;
+            //btn.BackColor = Control.DefaultBackColor;
+        }
+
+        private void Button_MouseUp(object sender, MouseEventArgs e)
+        {
+            //找到请求的发送者
+            Button btn = (Button)sender;
+            btn.BackColor = Control.DefaultBackColor;
+        } 
         #endregion
     }
 }
