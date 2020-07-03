@@ -26,6 +26,7 @@ namespace HFM
         /// 临时按钮 在键盘输入时用来变黑显示
         /// </summary>
         private Button _tempButton;
+        private bool isBtnSizeReset = false;
         /// <summary>
         /// 委托变量 
         /// </summary>
@@ -53,11 +54,11 @@ namespace HFM
             Code = _value;
             TempButton = new Button();
             //使得临时按钮的大小与数字键盘上按钮的大小相同，但颜色为黑色，不可视
-            if (TempButton != null)
+            if (BtnDown != null)
             {
-                TempButton.BackColor = Color.Black;
-                TempButton.Size = new System.Drawing.Size(292, 349);
-                TempButton.Visible = false;
+                //TempButton.BackColor = Color.Black;
+                //TempButton.Size = new System.Drawing.Size(292, 349);
+                BtnDown.Visible = false;
             }
 
             //给按钮数组赋值
@@ -86,6 +87,10 @@ namespace HFM
                 BtnBackspace.Text = "Backspace";
                 BtnEnter.Text = "Enter";
             }
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Interval = 20;
+            timer.Elapsed += Timer_Tick;
+            timer.Enabled = true;
         }
         #endregion
 
@@ -107,12 +112,28 @@ namespace HFM
                 //去掉密码字符串的最后一位
                 Code = Code.Substring(0, Code.Length - 1);
             }
+            isBtnSizeReset = true;
+            BtnDown.Size = BtnBackspace.Size;
+            BtnDown.Font = BtnBackspace.Font;
+            BtnDown.Text = BtnBackspace.Text;
+            BtnDown.Location = BtnBackspace.Location;
+            BtnDown.BringToFront();
+            BtnDown.Visible = true;
+            //执行委托
+            SendValueEventHandler.Invoke(Code);
         }
         #endregion
 
         #region 键盘按下字母、数字或者小数点
         private void KeyboardInput(object sender, KeyPressEventArgs e)
         {
+            if (isBtnSizeReset == true)
+            {
+                isBtnSizeReset = false;
+                //恢复为数字按键默认大小
+                BtnDown.Size = BtnOne.Size;
+                BtnDown.Font = BtnOne.Font;
+            }
             //获取发送者所代表的字符
             char tempChar = e.KeyChar;
             //如果按键在可输入范围内
@@ -127,29 +148,26 @@ namespace HFM
                     LblLetter.Text = tempChar.ToString();
                     //字母可视
                     LblLetter.Visible = true;
-                    Thread.Sleep(100);
-                    LblLetter.Visible = false;
-
+                    //Thread.Sleep(100);
+                    //LblLetter.Visible = false;
                 }
                 //若输入数字或者小数点
                 if ((tempChar >= 48 && tempChar <= 57))
                 {
-                    //获得发送者按钮的位置
-                    TempButton.Location  = buttonNum[tempChar - 48].Location;
-                    TempButton.BringToFront();
+                    //获得发送者按钮的位置 
+                    BtnDown.Text = buttonNum[tempChar - 48].Text;
+                    BtnDown.Location  = buttonNum[tempChar - 48].Location;
+                    BtnDown.BringToFront();
                     //临时按钮可视化
-                    TempButton.Visible = true;
-                    Thread.Sleep(200);
-                    TempButton.Visible = false;
+                    BtnDown.Visible = true;                                       
                 }
                 //若输入小数点
                 if (tempChar == 46)
                 {
-                    TempButton = buttonNum[0];
-                    TempButton.BringToFront();
-                    TempButton.Visible = true;
-                    Thread.Sleep(200);
-                    TempButton.Visible = false;
+                    BtnDown.Text = buttonNum[0].Text;
+                    BtnDown.Location = buttonNum[0].Location;
+                    BtnDown.BringToFront();
+                    BtnDown.Visible = true;                    
                 }
             }
             //如果按下了返回键
@@ -159,31 +177,38 @@ namespace HFM
                 {
                     //去掉密码字符串的最后一位
                     Code = Code.Substring(0, Code.Length - 1);
-                }
+                }                
             }
             //执行委托
             SendValueEventHandler.Invoke(Code);
         }
-        #endregion
-
+        #endregion       
         #region 鼠标按下数字按钮
         private void Button_Click(object sender, EventArgs e)
         {
+            if (isBtnSizeReset == true)
+            {
+                isBtnSizeReset = false;
+                //恢复为数字按键默认大小
+                BtnDown.Size = BtnOne.Size;
+                BtnDown.Font = BtnOne.Font;
+            }
             //找到请求的发送者
             Button btn = (Button)sender;
             //添加数字键盘上输入的数字
             Code += btn.Text;
             //临时按钮获取该发送者的位置坐标和内容
-            if (TempButton != null)
+            if (BtnDown != null)
             {
-                TempButton.Location = btn.Location;
+                BtnDown.Text = btn.Text;
+                BtnDown.Location = btn.Location;
                 //使得临时按钮可视
-                TempButton.Visible = true;
-                TempButton.BringToFront();
+                BtnDown.Visible = true;
+                BtnDown.BringToFront();
                 //延时
-                Thread.Sleep(200);
+                //Thread.Sleep(200);
                 //使得临时按钮不可视
-                TempButton.Visible = false;
+                //TempButton.Visible = false;
             }
             //执行委托
             SendValueEventHandler.Invoke(Code);
@@ -232,8 +257,19 @@ namespace HFM
                 }
             }
         }
-
-
         #endregion
+        private void Timer_Tick(object sender,EventArgs e)
+        {            
+            if (LblLetter.Visible == true)
+            {
+                Thread.Sleep(100);
+                LblLetter.Visible = false;
+            }
+            if (BtnDown.Visible == true)
+            {
+                Thread.Sleep(100);
+                BtnDown.Visible = false;
+            }
+        }
     }
 }

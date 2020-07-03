@@ -2201,7 +2201,7 @@ namespace HFM
                     }
                     if (isHandSecondEnabled == false)
                     {
-                        if (playControl % 5 == 0)
+                        if (playControl % 6 == 0)
                         {
                             //提示翻转手掌进行检测
                             if (isEnglish == false)

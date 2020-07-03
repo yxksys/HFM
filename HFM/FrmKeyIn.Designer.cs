@@ -43,6 +43,7 @@
             this.BtnEnter = new System.Windows.Forms.Button();
             this.BtnBackspace = new System.Windows.Forms.Button();
             this.LblLetter = new System.Windows.Forms.Label();
+            this.BtnDown = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnOne
@@ -161,10 +162,21 @@
             this.LblLetter.ForeColor = System.Drawing.Color.Transparent;
             this.LblLetter.Name = "LblLetter";
             // 
+            // BtnDown
+            // 
+            this.BtnDown.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.BtnDown.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.BtnDown.FlatAppearance.BorderSize = 5;
+            this.BtnDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            resources.ApplyResources(this.BtnDown, "BtnDown");
+            this.BtnDown.Name = "BtnDown";
+            this.BtnDown.UseVisualStyleBackColor = false;
+            // 
             // FrmKeyIn
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.BtnDown);
             this.Controls.Add(this.LblLetter);
             this.Controls.Add(this.BtnBackspace);
             this.Controls.Add(this.BtnEnter);
@@ -207,5 +219,6 @@
         private System.Windows.Forms.Button BtnEnter;
         private System.Windows.Forms.Button BtnBackspace;
         private System.Windows.Forms.Label LblLetter;
+        private System.Windows.Forms.Button BtnDown;
     }
 }

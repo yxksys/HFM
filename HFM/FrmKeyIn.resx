@@ -148,7 +148,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnOne.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="BtnTwo.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnTwo.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="BtnThree.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnThree.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="BtnFour.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -238,7 +238,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnFour.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="BtnFive.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -268,7 +268,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnFive.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="BtnSix.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -298,7 +298,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnSix.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="BtnSeven.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -328,7 +328,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnSeven.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="BtnEight.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -358,7 +358,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnEight.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="BtnNine.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -388,7 +388,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnNine.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="BtnZero.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -418,7 +418,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnZero.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="BtnDot.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 42pt, style=Bold</value>
@@ -448,7 +448,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnDot.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="BtnEnter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15.75pt</value>
@@ -478,7 +478,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnEnter.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="BtnBackspace.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 18pt</value>
@@ -508,19 +508,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BtnBackspace.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="LblLetter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="LblLetter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 200.25pt, style=Bold</value>
+    <value>宋体, 100.25pt, style=Bold</value>
   </data>
   <data name="LblLetter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 19</value>
+    <value>69, 83</value>
   </data>
   <data name="LblLetter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 267</value>
+    <value>125, 134</value>
   </data>
   <data name="LblLetter.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -541,6 +541,39 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LblLetter.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BtnDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 42pt, style=Bold</value>
+  </data>
+  <data name="BtnDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BtnDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 92</value>
+  </data>
+  <data name="BtnDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="BtnDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 80</value>
+  </data>
+  <data name="BtnDown.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="BtnDown.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;BtnDown.Name" xml:space="preserve">
+    <value>BtnDown</value>
+  </data>
+  <data name="&gt;&gt;BtnDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BtnDown.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
