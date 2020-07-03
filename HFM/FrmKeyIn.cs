@@ -170,11 +170,18 @@ namespace HFM
                     BtnDown.Visible = true;                    
                 }
             }
-            //如果按下了返回键
+            //如果按下了退格键
             if(tempChar ==8)
             {
                 if (Code != "")
                 {
+                    isBtnSizeReset = true;
+                    BtnDown.Size = BtnBackspace.Size;
+                    BtnDown.Font = BtnBackspace.Font;
+                    BtnDown.Text = BtnBackspace.Text;
+                    BtnDown.Location = BtnBackspace.Location;
+                    BtnDown.BringToFront();
+                    BtnDown.Visible = true;
                     //去掉密码字符串的最后一位
                     Code = Code.Substring(0, Code.Length - 1);
                 }                
