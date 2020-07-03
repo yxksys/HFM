@@ -45,6 +45,7 @@
             resources.ApplyResources(this.TxtPassword, "TxtPassword");
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TxtPassword_MouseClick);
+            this.TxtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPassword_KeyDown);
             // 
             // BtnConfirm
             // 

@@ -176,5 +176,20 @@ namespace HFM
         {
             FrmKeyIn.DelegatesKeyInTextBox(TxtPassword);
         }
+
+        #region 密码框中按回车时触发确定按钮
+        /// <summary>
+        /// 密码框中按回车时触发确定按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)//如果输入的是回车键  
+            {
+                this.BtnConfirm_Click(sender, e);//触发button事件  
+            }
+        } 
+        #endregion
     }
 }

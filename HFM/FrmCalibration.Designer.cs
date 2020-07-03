@@ -120,6 +120,8 @@
             // DgvInformation
             // 
             this.DgvInformation.AllowUserToDeleteRows = false;
+            this.DgvInformation.AllowUserToResizeColumns = false;
+            this.DgvInformation.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.DgvInformation.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvInformation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
