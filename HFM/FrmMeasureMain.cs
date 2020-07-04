@@ -582,6 +582,21 @@ namespace HFM
         }
         private void FrmMeasureMain_Load(object sender, EventArgs e)
         {
+            //MeasureData measureData1 = new MeasureData();
+            //measureData1.GetLatestData();
+            //if(string.IsNullOrEmpty(measureData1.DetailedInfo)==false)
+            //{
+            //    MessageBox.Show("1111");
+            //    measureData1.UpdataReported(true, measureData1.MeasureID);
+            //}
+            ////从数据库中查询最近一次记录的故障数据
+            //ErrorData errorData1 = new ErrorData();
+            //errorData1.GetLatestData();
+            //if(string.IsNullOrEmpty(errorData1.Record)==false)
+            //{
+            //    MessageBox.Show("222");
+            //    errorData1.UpdateReported(true, errorData1.ErrID);
+            //}
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
             appPath = Application.StartupPath;
             messageBufferLength = 62; //最短报文长度                        
@@ -4032,7 +4047,7 @@ namespace HFM
                     ErrorData errorData = new ErrorData();
                     errorData.GetLatestData();
                     //测量数据和故障数据都为空，说明仪器正常
-                    if(measureData==null && errorData==null)
+                    if(string.IsNullOrEmpty(measureData.DetailedInfo)&&string.IsNullOrEmpty(errorData.Record))
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
                     }                    
@@ -4042,12 +4057,12 @@ namespace HFM
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
                     }
                     //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
-                    if((measureData==null||measureData.IsReported==true) && errorData.IsReported==false)
+                    if((string.IsNullOrEmpty(measureData.DetailedInfo)||measureData.IsReported==true) && errorData.IsReported==false)
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02);//0x02:仪器故障
                     }
                     //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
-                    if(measureData.IsReported==false && (errorData.IsReported==true||errorData==null))
+                    if(measureData.IsReported==false && (errorData.IsReported==true||string.IsNullOrEmpty(errorData.Record)))
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x04:仪器污染
                     }
@@ -4069,12 +4084,12 @@ namespace HFM
                     if(Components.Message.SendMessage(deviceStatusMessage, commPort_Supervisory))//上报成功
                     {
                         //数据库中更新上报标志
-                        if(measureData!=null)
+                        if(string.IsNullOrEmpty(measureData.DetailedInfo)==false)
                         {
                             //更新上报标志
                             measureData.UpdataReported(true, measureData.MeasureID);
                         }
-                        if(errorData!=null)
+                        if(string.IsNullOrEmpty(errorData.Record)==false)
                         {
                             //更新上报标志
                             errorData.UpdateReported(true, errorData.ErrID);
