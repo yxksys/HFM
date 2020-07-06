@@ -2247,29 +2247,42 @@ namespace HFM
             ConfigurationManager.RefreshSection("appSettings");
             //读取当前串口配置
             this._commPort.GetCommPortSet("commportSet");
-            if(this._commPort.Opened)
+
+            string strSetCom="";//数据采集端口
+            string strSetReCom = "数据上报端口未启用";//数据上报端口设置
+            if (this._commPort.Opened)
             {
                 this._commPort.Close();
             }
             try
             {
-                this._commPort.Open();                
+                this._commPort.Open();
+                strSetCom = "数据采集端口设置已连接;  ";
             }
             catch
             {
-                MessageBox.Show("数据采集端口设置错误，请重新进行设置");
+                //strSetCom = "数据采集端口设置错误，请重新进行设置";
+                MessageBox.Show("数据采集端口设置错误，请重新进行设置;");
                 return;
             }
             //自动上报串口配置测试
             if(ChkIsConnectedAuto.Checked)
             {
                 CommPort commPort = new CommPort();
+                //读取当前串口配置
+                commPort.GetCommPortSet("commportSetOfReport");
+                if (commPort.Opened)
+                {
+                    commPort.Close();
+                }
                 try
                 {
                     commPort.Open();
+                    strSetReCom = "数据上报端口设置已连接";
                 }
                 catch
                 {
+                    
                     MessageBox.Show("数据上报端口设置错误，请重新进行设置");
                     return;
                 }
@@ -2311,7 +2324,7 @@ namespace HFM
             }
             else
             {
-                MessageBox.Show("重新启动程序以应用新配置！", "提醒", MessageBoxButtons.OK);
+                MessageBox.Show(strSetCom+strSetReCom, "提醒", MessageBoxButtons.OK);
                 //{
                     //_commPort.Close();
                     //if (backgroundWorker_Preference.IsBusy == true)

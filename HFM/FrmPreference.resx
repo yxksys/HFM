@@ -4321,7 +4321,7 @@
     <value>12</value>
   </data>
   <data name="LabcommportSetOfReportDataBits.Text" xml:space="preserve">
-    <value>停止位</value>
+    <value>数据位</value>
   </data>
   <data name="&gt;&gt;LabcommportSetOfReportDataBits.Name" xml:space="preserve">
     <value>LabcommportSetOfReportDataBits</value>
@@ -5286,6 +5286,42 @@
   <data name="$this.Text" xml:space="preserve">
     <value>HFM_Preference</value>
   </data>
+  <data name="&gt;&gt;TxtAlphaChannelName.Name" xml:space="preserve">
+    <value>TxtAlphaChannelName</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaChannelName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaHBackground.Name" xml:space="preserve">
+    <value>TxtAlphaHBackground</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaHBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtAplhaLBackground.Name" xml:space="preserve">
+    <value>TxtAplhaLBackground</value>
+  </data>
+  <data name="&gt;&gt;TxtAplhaLBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaAlarm_1.Name" xml:space="preserve">
+    <value>TxtAlphaAlarm_1</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaAlarm_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaAlarm_2.Name" xml:space="preserve">
+    <value>TxtAlphaAlarm_2</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaAlarm_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaEfficiency.Name" xml:space="preserve">
+    <value>TxtAlphaEfficiency</value>
+  </data>
+  <data name="&gt;&gt;TxtAlphaEfficiency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;TxtBetaChannelName.Name" xml:space="preserve">
     <value>TxtBetaChannelName</value>
   </data>
@@ -5381,42 +5417,6 @@
   </data>
   <data name="&gt;&gt;backgroundWorker_Preference.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaChannelName.Name" xml:space="preserve">
-    <value>TxtAlphaChannelName</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaChannelName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaHBackground.Name" xml:space="preserve">
-    <value>TxtAlphaHBackground</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaHBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtAplhaLBackground.Name" xml:space="preserve">
-    <value>TxtAplhaLBackground</value>
-  </data>
-  <data name="&gt;&gt;TxtAplhaLBackground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaAlarm_1.Name" xml:space="preserve">
-    <value>TxtAlphaAlarm_1</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaAlarm_1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaAlarm_2.Name" xml:space="preserve">
-    <value>TxtAlphaAlarm_2</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaAlarm_2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaEfficiency.Name" xml:space="preserve">
-    <value>TxtAlphaEfficiency</value>
-  </data>
-  <data name="&gt;&gt;TxtAlphaEfficiency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmPreference</value>
