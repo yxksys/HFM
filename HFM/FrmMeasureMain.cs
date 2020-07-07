@@ -1134,12 +1134,14 @@ namespace HFM
                     }                    
                 }                
             }
-            infraredStatusOfMessageLast = infraredStatusOfMessageNow;//保存当前红外状态
-
-            if (stateTimeRemain == stateTimeRemain_Last&& platformState != PlatformState.ReadyToRun&& isPlatformStateSwitched==false)//当前剩余时间和上一次剩余时间记录相等，说明还没过1s，不进行任何数据处理直接返回
+            else//红外状态未发生变化
             {
-                return;
-            }            
+                if (stateTimeRemain == stateTimeRemain_Last && platformState != PlatformState.ReadyToRun && isPlatformStateSwitched == false)//当前剩余时间和上一次剩余时间记录相等，说明还没过1s，不进行任何数据处理直接返回
+                {
+                    return;
+                }
+            }
+            infraredStatusOfMessageLast = infraredStatusOfMessageNow;//保存当前红外状态                 
             stateTimeRemain_Last = stateTimeRemain;//剩余时间发生了变化，则保存
             isPlatformStateSwitched = false;//状态已经切换完成，恢复状态保持标志
             for (int i=0;i<channelsAll.Count();i++)
@@ -3066,6 +3068,7 @@ namespace HFM
             //运行状态为“测量结束”
             if (platformState == PlatformState.Result)
             {
+                isHandTested = 0;//恢复手部检测初始状态
                 if (TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) > 16)
                 {
                     int start = TxtShowResult.GetFirstCharIndexFromLine(0);
@@ -3921,7 +3924,7 @@ namespace HFM
                 }
                 catch
                 {
-                    TxtShowResult.Text += "管理机端口通信错误！\r\n";
+                    TxtShowResult.Text += "管理机端口通信错误！\r\n";                    
                     isCommReportError = true;
                 }
                 //延时
@@ -4059,12 +4062,12 @@ namespace HFM
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
                     }
                     //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
-                    if((string.IsNullOrEmpty(measureData.DetailedInfo)||measureData.IsReported==true) && errorData.IsReported==false)
+                    if((string.IsNullOrEmpty(measureData.DetailedInfo)&& measureData.IsReported==true) && errorData.IsReported==false)
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02);//0x02:仪器故障
                     }
                     //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
-                    if(measureData.IsReported==false && (errorData.IsReported==true||string.IsNullOrEmpty(errorData.Record)))
+                    if(measureData.IsReported==false && (errorData.IsReported==true && string.IsNullOrEmpty(errorData.Record)))
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x04:仪器污染
                     }
