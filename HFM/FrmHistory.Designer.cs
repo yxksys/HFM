@@ -36,21 +36,10 @@
             this.BtnDeleteMeasure = new System.Windows.Forms.Button();
             this.BtnDeriveMeasure = new System.Windows.Forms.Button();
             this.DgvMeasure = new System.Windows.Forms.DataGridView();
-            this.MeasureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MeasureStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DetailedInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsEnglish = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabCalibration = new System.Windows.Forms.TabPage();
             this.BtnDeleteCalibration = new System.Windows.Forms.Button();
             this.BtnDeriveCalibration = new System.Windows.Forms.Button();
             this.DgvCalibration = new System.Windows.Forms.DataGridView();
-            this.TabError = new System.Windows.Forms.TabPage();
-            this.BtnDeleteError = new System.Windows.Forms.Button();
-            this.BtnDeriveError = new System.Windows.Forms.Button();
-            this.DgvError = new System.Windows.Forms.DataGridView();
-            this.ErrTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Record = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsEnglishsError = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CalibrationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChannelID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HighVoltage = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +47,19 @@
             this.Efficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AlphaBetaPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabError = new System.Windows.Forms.TabPage();
+            this.BtnDeleteError = new System.Windows.Forms.Button();
+            this.BtnDeriveError = new System.Windows.Forms.Button();
+            this.DgvError = new System.Windows.Forms.DataGridView();
+            this.ErrTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Record = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reporting = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsEnglishsError = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.MeasureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MeasureStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DetailedInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.上报状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsEnglish = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabHistory.SuspendLayout();
             this.TabMeasure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMeasure)).BeginInit();
@@ -110,6 +112,7 @@
             this.MeasureDate,
             this.MeasureStatus,
             this.DetailedInfo,
+            this.上报状态,
             this.IsEnglish});
             resources.ApplyResources(this.DgvMeasure, "DgvMeasure");
             this.DgvMeasure.Name = "DgvMeasure";
@@ -117,31 +120,6 @@
             this.DgvMeasure.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.DgvMeasure.RowHeadersVisible = false;
             this.DgvMeasure.RowTemplate.Height = 23;
-            // 
-            // MeasureDate
-            // 
-            resources.ApplyResources(this.MeasureDate, "MeasureDate");
-            this.MeasureDate.Name = "MeasureDate";
-            this.MeasureDate.ReadOnly = true;
-            // 
-            // MeasureStatus
-            // 
-            resources.ApplyResources(this.MeasureStatus, "MeasureStatus");
-            this.MeasureStatus.Name = "MeasureStatus";
-            this.MeasureStatus.ReadOnly = true;
-            // 
-            // DetailedInfo
-            // 
-            this.DetailedInfo.FillWeight = 400F;
-            resources.ApplyResources(this.DetailedInfo, "DetailedInfo");
-            this.DetailedInfo.Name = "DetailedInfo";
-            this.DetailedInfo.ReadOnly = true;
-            // 
-            // IsEnglish
-            // 
-            resources.ApplyResources(this.IsEnglish, "IsEnglish");
-            this.IsEnglish.Name = "IsEnglish";
-            this.IsEnglish.ReadOnly = true;
             // 
             // TabCalibration
             // 
@@ -191,65 +169,6 @@
             this.DgvCalibration.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvCalibration.RowTemplate.Height = 23;
             // 
-            // TabError
-            // 
-            this.TabError.Controls.Add(this.BtnDeleteError);
-            this.TabError.Controls.Add(this.BtnDeriveError);
-            this.TabError.Controls.Add(this.DgvError);
-            resources.ApplyResources(this.TabError, "TabError");
-            this.TabError.Name = "TabError";
-            this.TabError.UseVisualStyleBackColor = true;
-            // 
-            // BtnDeleteError
-            // 
-            this.BtnDeleteError.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.BtnDeleteError, "BtnDeleteError");
-            this.BtnDeleteError.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnDeleteError.Name = "BtnDeleteError";
-            this.BtnDeleteError.UseVisualStyleBackColor = false;
-            this.BtnDeleteError.Click += new System.EventHandler(this.BtnDeleteError_Click);
-            // 
-            // BtnDeriveError
-            // 
-            this.BtnDeriveError.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.BtnDeriveError, "BtnDeriveError");
-            this.BtnDeriveError.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.BtnDeriveError.Name = "BtnDeriveError";
-            this.BtnDeriveError.UseVisualStyleBackColor = false;
-            this.BtnDeriveError.Click += new System.EventHandler(this.BtnDeriveError_Click);
-            // 
-            // DgvError
-            // 
-            this.DgvError.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ErrTime,
-            this.Record,
-            this.IsEnglishsError});
-            resources.ApplyResources(this.DgvError, "DgvError");
-            this.DgvError.Name = "DgvError";
-            this.DgvError.ReadOnly = true;
-            this.DgvError.RowHeadersVisible = false;
-            this.DgvError.RowTemplate.Height = 23;
-            // 
-            // ErrTime
-            // 
-            resources.ApplyResources(this.ErrTime, "ErrTime");
-            this.ErrTime.Name = "ErrTime";
-            this.ErrTime.ReadOnly = true;
-            // 
-            // Record
-            // 
-            resources.ApplyResources(this.Record, "Record");
-            this.Record.Name = "Record";
-            this.Record.ReadOnly = true;
-            // 
-            // IsEnglishsError
-            // 
-            resources.ApplyResources(this.IsEnglishsError, "IsEnglishsError");
-            this.IsEnglishsError.Name = "IsEnglishsError";
-            this.IsEnglishsError.ReadOnly = true;
-            // 
             // CalibrationTime
             // 
             resources.ApplyResources(this.CalibrationTime, "CalibrationTime");
@@ -294,6 +213,103 @@
             this.AlphaBetaPercent.Name = "AlphaBetaPercent";
             this.AlphaBetaPercent.ReadOnly = true;
             // 
+            // TabError
+            // 
+            this.TabError.Controls.Add(this.BtnDeleteError);
+            this.TabError.Controls.Add(this.BtnDeriveError);
+            this.TabError.Controls.Add(this.DgvError);
+            resources.ApplyResources(this.TabError, "TabError");
+            this.TabError.Name = "TabError";
+            this.TabError.UseVisualStyleBackColor = true;
+            // 
+            // BtnDeleteError
+            // 
+            this.BtnDeleteError.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.BtnDeleteError, "BtnDeleteError");
+            this.BtnDeleteError.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnDeleteError.Name = "BtnDeleteError";
+            this.BtnDeleteError.UseVisualStyleBackColor = false;
+            this.BtnDeleteError.Click += new System.EventHandler(this.BtnDeleteError_Click);
+            // 
+            // BtnDeriveError
+            // 
+            this.BtnDeriveError.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.BtnDeriveError, "BtnDeriveError");
+            this.BtnDeriveError.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnDeriveError.Name = "BtnDeriveError";
+            this.BtnDeriveError.UseVisualStyleBackColor = false;
+            this.BtnDeriveError.Click += new System.EventHandler(this.BtnDeriveError_Click);
+            // 
+            // DgvError
+            // 
+            this.DgvError.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DgvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ErrTime,
+            this.Record,
+            this.Reporting,
+            this.IsEnglishsError});
+            resources.ApplyResources(this.DgvError, "DgvError");
+            this.DgvError.Name = "DgvError";
+            this.DgvError.ReadOnly = true;
+            this.DgvError.RowHeadersVisible = false;
+            this.DgvError.RowTemplate.Height = 23;
+            // 
+            // ErrTime
+            // 
+            resources.ApplyResources(this.ErrTime, "ErrTime");
+            this.ErrTime.Name = "ErrTime";
+            this.ErrTime.ReadOnly = true;
+            // 
+            // Record
+            // 
+            resources.ApplyResources(this.Record, "Record");
+            this.Record.Name = "Record";
+            this.Record.ReadOnly = true;
+            // 
+            // Reporting
+            // 
+            resources.ApplyResources(this.Reporting, "Reporting");
+            this.Reporting.Name = "Reporting";
+            this.Reporting.ReadOnly = true;
+            // 
+            // IsEnglishsError
+            // 
+            resources.ApplyResources(this.IsEnglishsError, "IsEnglishsError");
+            this.IsEnglishsError.Name = "IsEnglishsError";
+            this.IsEnglishsError.ReadOnly = true;
+            // 
+            // MeasureDate
+            // 
+            resources.ApplyResources(this.MeasureDate, "MeasureDate");
+            this.MeasureDate.Name = "MeasureDate";
+            this.MeasureDate.ReadOnly = true;
+            // 
+            // MeasureStatus
+            // 
+            resources.ApplyResources(this.MeasureStatus, "MeasureStatus");
+            this.MeasureStatus.Name = "MeasureStatus";
+            this.MeasureStatus.ReadOnly = true;
+            // 
+            // DetailedInfo
+            // 
+            this.DetailedInfo.FillWeight = 400F;
+            resources.ApplyResources(this.DetailedInfo, "DetailedInfo");
+            this.DetailedInfo.Name = "DetailedInfo";
+            this.DetailedInfo.ReadOnly = true;
+            // 
+            // 上报状态
+            // 
+            resources.ApplyResources(this.上报状态, "上报状态");
+            this.上报状态.Name = "上报状态";
+            this.上报状态.ReadOnly = true;
+            // 
+            // IsEnglish
+            // 
+            resources.ApplyResources(this.IsEnglish, "IsEnglish");
+            this.IsEnglish.Name = "IsEnglish";
+            this.IsEnglish.ReadOnly = true;
+            // 
             // FrmHistory
             // 
             resources.ApplyResources(this, "$this");
@@ -327,13 +343,6 @@
         private System.Windows.Forms.Button BtnDeriveError;
         private System.Windows.Forms.Button BtnDeleteMeasure;
         private System.Windows.Forms.Button BtnDeriveMeasure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ErrTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Record;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglishsError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MeasureDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MeasureStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DetailedInfo;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglish;
         private System.Windows.Forms.DataGridViewTextBoxColumn CalibrationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChannelID;
         private System.Windows.Forms.DataGridViewTextBoxColumn HighVoltage;
@@ -341,5 +350,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Efficiency;
         private System.Windows.Forms.DataGridViewTextBoxColumn MDA;
         private System.Windows.Forms.DataGridViewTextBoxColumn AlphaBetaPercent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ErrTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Record;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reporting;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglishsError;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MeasureDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MeasureStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DetailedInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 上报状态;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglish;
     }
 }

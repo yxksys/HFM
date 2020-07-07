@@ -122,7 +122,7 @@
     <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeleteMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 449</value>
+    <value>103, 447</value>
   </data>
   <data name="BtnDeleteMeasure.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -150,7 +150,7 @@
     <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeriveMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 449</value>
+    <value>3, 447</value>
   </data>
   <data name="BtnDeriveMeasure.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -195,7 +195,13 @@
     <value>详细信息</value>
   </data>
   <data name="DetailedInfo.Width" type="System.Int32, mscorlib">
-    <value>525</value>
+    <value>425</value>
+  </data>
+  <metadata name="上报状态.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="上报状态.HeaderText" xml:space="preserve">
+    <value>上报状态</value>
   </data>
   <metadata name="IsEnglish.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -259,13 +265,13 @@
     <value>0</value>
   </data>
   <data name="BtnDeleteCalibration.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+    <value>System</value>
   </data>
   <data name="BtnDeleteCalibration.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeleteCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 448</value>
+    <value>103, 447</value>
   </data>
   <data name="BtnDeleteCalibration.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -289,13 +295,13 @@
     <value>0</value>
   </data>
   <data name="BtnDeriveCalibration.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+    <value>System</value>
   </data>
   <data name="BtnDeriveCalibration.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeriveCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 448</value>
+    <value>3, 447</value>
   </data>
   <data name="BtnDeriveCalibration.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -427,7 +433,7 @@
     <value>1</value>
   </data>
   <data name="BtnDeleteError.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+    <value>System</value>
   </data>
   <data name="BtnDeleteError.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -457,7 +463,7 @@
     <value>0</value>
   </data>
   <data name="BtnDeriveError.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+    <value>System</value>
   </data>
   <data name="BtnDeriveError.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -502,7 +508,13 @@
     <value>故障记录</value>
   </data>
   <data name="Record.Width" type="System.Int32, mscorlib">
-    <value>620</value>
+    <value>520</value>
+  </data>
+  <metadata name="Reporting.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Reporting.HeaderText" xml:space="preserve">
+    <value>上报状态</value>
   </data>
   <metadata name="IsEnglishsError.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -606,48 +618,6 @@
   <data name="$this.Text" xml:space="preserve">
     <value>历史记录</value>
   </data>
-  <data name="&gt;&gt;MeasureDate.Name" xml:space="preserve">
-    <value>MeasureDate</value>
-  </data>
-  <data name="&gt;&gt;MeasureDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MeasureStatus.Name" xml:space="preserve">
-    <value>MeasureStatus</value>
-  </data>
-  <data name="&gt;&gt;MeasureStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DetailedInfo.Name" xml:space="preserve">
-    <value>DetailedInfo</value>
-  </data>
-  <data name="&gt;&gt;DetailedInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IsEnglish.Name" xml:space="preserve">
-    <value>IsEnglish</value>
-  </data>
-  <data name="&gt;&gt;IsEnglish.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ErrTime.Name" xml:space="preserve">
-    <value>ErrTime</value>
-  </data>
-  <data name="&gt;&gt;ErrTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Record.Name" xml:space="preserve">
-    <value>Record</value>
-  </data>
-  <data name="&gt;&gt;Record.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
-    <value>IsEnglishsError</value>
-  </data>
-  <data name="&gt;&gt;IsEnglishsError.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;CalibrationTime.Name" xml:space="preserve">
     <value>CalibrationTime</value>
   </data>
@@ -689,6 +659,60 @@
   </data>
   <data name="&gt;&gt;AlphaBetaPercent.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ErrTime.Name" xml:space="preserve">
+    <value>ErrTime</value>
+  </data>
+  <data name="&gt;&gt;ErrTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Record.Name" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="&gt;&gt;Record.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Reporting.Name" xml:space="preserve">
+    <value>Reporting</value>
+  </data>
+  <data name="&gt;&gt;Reporting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
+    <value>IsEnglishsError</value>
+  </data>
+  <data name="&gt;&gt;IsEnglishsError.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureDate.Name" xml:space="preserve">
+    <value>MeasureDate</value>
+  </data>
+  <data name="&gt;&gt;MeasureDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureStatus.Name" xml:space="preserve">
+    <value>MeasureStatus</value>
+  </data>
+  <data name="&gt;&gt;MeasureStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DetailedInfo.Name" xml:space="preserve">
+    <value>DetailedInfo</value>
+  </data>
+  <data name="&gt;&gt;DetailedInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;上报状态.Name" xml:space="preserve">
+    <value>上报状态</value>
+  </data>
+  <data name="&gt;&gt;上报状态.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IsEnglish.Name" xml:space="preserve">
+    <value>IsEnglish</value>
+  </data>
+  <data name="&gt;&gt;IsEnglish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmHistory</value>
