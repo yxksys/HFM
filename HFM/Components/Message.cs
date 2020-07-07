@@ -225,7 +225,7 @@ namespace HFM.Components
             messageData[7] = Convert.ToByte(((submitTime.Hour/10)<<4)+(submitTime.Hour%10));
             messageData[8] = Convert.ToByte(((submitTime.Minute/10)<<4)+(submitTime.Minute%10));
             messageData[9] = Convert.ToByte(((submitTime.Second/10)<<4)+(submitTime.Second%10));
-            messageData[10] = Convert.ToByte(((submitTime.Millisecond/10)<<4)+(submitTime.Millisecond%10));
+            messageData[10] = 0;//时间精确到秒即可// Convert.ToByte(((submitTime.Millisecond/10)<<4)+(submitTime.Millisecond%10));
             //监测状态，2字节
             messageData[11] = 0x00;
             switch (deviceStatus)//控制板中16、32、64分别表示正常、故障、污染。上报管理机时1、2、4分别表示正常、故障、污染

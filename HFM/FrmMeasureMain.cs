@@ -606,6 +606,8 @@ namespace HFM
             factoryParameter.GetParameter();
             //获得系统参数设置信息
             systemParameter.GetParameter();
+            //int x = Convert.ToInt32(factoryParameter.DeviceAddress);
+            //byte y = Convert.ToByte(x);
             Nuclide nuclide = new Nuclide();
             clotheseNuclideUsed = nuclide.GetClothesNuclideUser(); //获得用户衣物探测核素选择
             alphaNuclideUsed = nuclide.GetAlphaNuclideUser();//获得用户Alpha探测核素选择
@@ -2250,7 +2252,7 @@ namespace HFM
                     }
                     else
                     {
-                        if (playControl % 5 == 0)
+                        if (playControl % 6 == 0)
                         {
                             //衣物探头未启用，提示离开
                             if (measureDataS[6].Channel.IsEnabled == false)
@@ -4084,12 +4086,12 @@ namespace HFM
                     if(Components.Message.SendMessage(deviceStatusMessage, commPort_Supervisory))//上报成功
                     {
                         //数据库中更新上报标志
-                        if(string.IsNullOrEmpty(measureData.DetailedInfo)==false)
+                        if(string.IsNullOrEmpty(measureData.DetailedInfo)==false && measureData.IsReported==false)
                         {
                             //更新上报标志
                             measureData.UpdataReported(true, measureData.MeasureID);
                         }
-                        if(string.IsNullOrEmpty(errorData.Record)==false)
+                        if(string.IsNullOrEmpty(errorData.Record)==false && errorData.IsReported==false)
                         {
                             //更新上报标志
                             errorData.UpdateReported(true, errorData.ErrID);

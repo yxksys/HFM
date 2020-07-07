@@ -2324,7 +2324,7 @@ namespace HFM
             }
             else
             {
-                MessageBox.Show(strSetCom+strSetReCom, "提醒", MessageBoxButtons.OK);
+                MessageBox.Show(strSetCom, "提醒", MessageBoxButtons.OK);
                 //{
                     //_commPort.Close();
                     //if (backgroundWorker_Preference.IsBusy == true)
