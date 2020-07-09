@@ -3928,14 +3928,14 @@ namespace HFM
                     isCommReportError = true;
                 }
                 //延时
-                Thread.Sleep(1000);
-                //触发向主线程返回下位机上传数据事件
+                Thread.Sleep(100);
+                //触发向主线程返回下位机上传数据事件，如果是时间同步报文，需要读两次串口才能将17个字节数据读回来
                 if (receiveBuffMessage!=null && receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
                 {
                     if(receiveBufferMessage[0]==0x10)
                     {
                         byte[] receiveDataTemp = new byte[8];
-                        receiveDataTemp= Components.Message.ReceiveMessage(commPort_Supervisory);
+                        receiveDataTemp= Components.Message.ReceiveMessage(commPort_Supervisory);//读时间同步第17个字节
                         receiveDataTemp.CopyTo(receiveBuffMessage, 16);                        
                     }
                     isCommReportError = false;
@@ -4062,12 +4062,12 @@ namespace HFM
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
                     }
                     //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
-                    if((string.IsNullOrEmpty(measureData.DetailedInfo)&& measureData.IsReported==true) && errorData.IsReported==false)
+                    if((string.IsNullOrEmpty(measureData.DetailedInfo)==false && measureData.IsReported==true) && errorData.IsReported==false)
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02);//0x02:仪器故障
                     }
                     //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
-                    if(measureData.IsReported==false && (errorData.IsReported==true && string.IsNullOrEmpty(errorData.Record)))
+                    if(measureData.IsReported==false && (errorData.IsReported==true && string.IsNullOrEmpty(errorData.Record)==false))
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x04:仪器污染
                     }
