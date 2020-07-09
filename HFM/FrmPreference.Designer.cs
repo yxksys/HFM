@@ -32,6 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,12 +45,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
             this.GrpPresence = new System.Windows.Forms.GroupBox();
@@ -95,6 +95,12 @@
             this.α参数 = new System.Windows.Forms.TabPage();
             this.LblAlpha = new System.Windows.Forms.Label();
             this.DgvAlphaSet = new System.Windows.Forms.DataGridView();
+            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnAlphaNo = new System.Windows.Forms.Button();
             this.BtnAlphaOk = new System.Windows.Forms.Button();
             this.GrpAlphaNuclideChoose = new System.Windows.Forms.GroupBox();
@@ -221,12 +227,6 @@
             this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
             this.LblIPAddress = new System.Windows.Forms.Label();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
-            this.TxtAlphaChannelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaHBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAplhaLBackground = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaAlarm_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaAlarm_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtAlphaEfficiency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -620,7 +620,7 @@
             this.DgvAlphaSet.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -642,6 +642,55 @@
             this.DgvAlphaSet.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.DgvAlphaSet.RowTemplate.Height = 27;
             this.DgvAlphaSet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAlphaSet_CellClick);
+            // 
+            // TxtAlphaChannelName
+            // 
+            this.TxtAlphaChannelName.DataPropertyName = "ProbeChannel.ChannelName";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TxtAlphaChannelName.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.TxtAlphaChannelName, "TxtAlphaChannelName");
+            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
+            this.TxtAlphaChannelName.ReadOnly = true;
+            // 
+            // TxtAlphaHBackground
+            // 
+            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TxtAlphaHBackground.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.TxtAlphaHBackground, "TxtAlphaHBackground");
+            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
+            // 
+            // TxtAplhaLBackground
+            // 
+            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TxtAplhaLBackground.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.TxtAplhaLBackground, "TxtAplhaLBackground");
+            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
+            // 
+            // TxtAlphaAlarm_1
+            // 
+            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TxtAlphaAlarm_1.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.TxtAlphaAlarm_1, "TxtAlphaAlarm_1");
+            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
+            // 
+            // TxtAlphaAlarm_2
+            // 
+            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TxtAlphaAlarm_2.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(this.TxtAlphaAlarm_2, "TxtAlphaAlarm_2");
+            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
+            // 
+            // TxtAlphaEfficiency
+            // 
+            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.TxtAlphaEfficiency.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.TxtAlphaEfficiency, "TxtAlphaEfficiency");
+            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
             // 
             // BtnAlphaNo
             // 
@@ -1618,55 +1667,6 @@
             // 
             this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
             this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
-            // 
-            // TxtAlphaChannelName
-            // 
-            this.TxtAlphaChannelName.DataPropertyName = "ProbeChannel.ChannelName";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.TxtAlphaChannelName.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.TxtAlphaChannelName, "TxtAlphaChannelName");
-            this.TxtAlphaChannelName.Name = "TxtAlphaChannelName";
-            this.TxtAlphaChannelName.ReadOnly = true;
-            // 
-            // TxtAlphaHBackground
-            // 
-            this.TxtAlphaHBackground.DataPropertyName = "HBackground";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.TxtAlphaHBackground.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.TxtAlphaHBackground, "TxtAlphaHBackground");
-            this.TxtAlphaHBackground.Name = "TxtAlphaHBackground";
-            // 
-            // TxtAplhaLBackground
-            // 
-            this.TxtAplhaLBackground.DataPropertyName = "LBackground";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.TxtAplhaLBackground.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.TxtAplhaLBackground, "TxtAplhaLBackground");
-            this.TxtAplhaLBackground.Name = "TxtAplhaLBackground";
-            // 
-            // TxtAlphaAlarm_1
-            // 
-            this.TxtAlphaAlarm_1.DataPropertyName = "Alarm_1";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.TxtAlphaAlarm_1.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.TxtAlphaAlarm_1, "TxtAlphaAlarm_1");
-            this.TxtAlphaAlarm_1.Name = "TxtAlphaAlarm_1";
-            // 
-            // TxtAlphaAlarm_2
-            // 
-            this.TxtAlphaAlarm_2.DataPropertyName = "Alarm_2";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.TxtAlphaAlarm_2.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.TxtAlphaAlarm_2, "TxtAlphaAlarm_2");
-            this.TxtAlphaAlarm_2.Name = "TxtAlphaAlarm_2";
-            // 
-            // TxtAlphaEfficiency
-            // 
-            this.TxtAlphaEfficiency.DataPropertyName = "Efficiency";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.TxtAlphaEfficiency.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.TxtAlphaEfficiency, "TxtAlphaEfficiency");
-            this.TxtAlphaEfficiency.Name = "TxtAlphaEfficiency";
             // 
             // FrmPreference
             // 

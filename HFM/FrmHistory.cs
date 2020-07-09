@@ -19,14 +19,14 @@ namespace HFM
         /// <summary>
         /// 检测数组
         /// </summary>
-        private string[] _measurArray = new string[4];
+        private string[] _measurArray = new string[5];
 
         /// <summary>
         /// 刻度数组
         /// </summary>
         private string[] _calibrationArray = new string[7];
 
-        private string[] _errorDataArray = new string[3];
+        private string[] _errorDataArray = new string[4];
 
         #endregion
 
@@ -100,7 +100,8 @@ namespace HFM
                     _measurArray[0] = measureData.MeasureDate.ToString();
                     _measurArray[1] = measureData.MeasureStatus;
                     _measurArray[2] = measureData.DetailedInfo;
-                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    _measurArray[3] = measureData.IsReported == true ? "Reported" : "Not Reported";
+                    _measurArray[4] = measureData.IsEnglish.ToString();
                     DgvMeasure.Rows.Add(_measurArray);
                 }
             }
@@ -112,7 +113,8 @@ namespace HFM
                     _measurArray[0] = measureData.MeasureDate.ToString();
                     _measurArray[1] = measureData.MeasureStatus;
                     _measurArray[2] = measureData.DetailedInfo;
-                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    _measurArray[3] = measureData.IsReported == true ? "已上报" : "未上报";
+                    _measurArray[4] = measureData.IsEnglish.ToString();
                     DgvMeasure.Rows.Add(_measurArray);
                 }
             }
@@ -171,8 +173,9 @@ namespace HFM
                 foreach (var errorData in _errorDatasEnglish)
                 {
                     _errorDataArray[0] = errorData.ErrTime.ToString();
-                    _errorDataArray[1] = errorData.Record;
-                    _errorDataArray[2] = errorData.IsEnglish.ToString();
+                    _errorDataArray[1] = errorData.Record;                    
+                    _errorDataArray[2] = (errorData.IsReported.ToString() == "true" ? "Reported" : "Not Reported");
+                    _errorDataArray[3] = errorData.IsEnglish.ToString();
                     DgvError.Rows.Add(_errorDataArray);
                 }
 
@@ -183,7 +186,8 @@ namespace HFM
                 {
                     _errorDataArray[0] = errorData.ErrTime.ToString();
                     _errorDataArray[1] = errorData.Record;
-                    _errorDataArray[2] = errorData.IsEnglish.ToString();
+                    _errorDataArray[2] = (errorData.IsReported.ToString()=="true"? "已上报" : "未上报");
+                    _errorDataArray[3] = errorData.IsEnglish.ToString();
                     DgvError.Rows.Add(_errorDataArray);
                 }
             }
