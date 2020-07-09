@@ -1017,21 +1017,37 @@ namespace HFM
                         }
                         //串道比计算
                         Calibration calibration_AlphaBetaPercent = new Calibration();
-                        if (_alphacnt>0 || _betacnt>0)
+                        //if (_alphacnt>0 || _betacnt>0)
+                        //{
+                        //    if (_efficiencyList.First(x => x.NuclideType == "α").NuclideName == CmbNuclideSelect.Text)
+                        //    {
+                        //        //alpha 串道计数
+                        //        calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
+                        //    }
+                        //    else
+                        //    {
+                        //        //beta 串道计数
+                        //        calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
+                        //    }
+                            
+                        //}
+                        if (_alphacnt > 0 && _betacnt > 0)
                         {
-                            if (_efficiencyList.First(x => x.NuclideType == "α").NuclideName == CmbNuclideSelect.Text)
+                            if (_changedEfficiency.NuclideType == "α")
                             {
                                 //alpha 串道计数
                                 calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
                             }
-                            else
+                            else if (_changedEfficiency.NuclideType == "β")
                             {
                                 //beta 串道计数
                                 calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
                             }
-                            
                         }
-                        
+                        else
+                        {
+                            calibration_AlphaBetaPercent.AlphaBetaPercent = 0;
+                        }
 
                         if (calibration_AlphaBetaPercent.AlphaBetaPercent<=0)
                         {
