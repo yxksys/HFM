@@ -969,7 +969,7 @@ namespace HFM
                     errNumber++;
                     if(errNumber == 5)
                     {
-                        TxtShowResult.Text += "监测测端口通信错误！\r\n";
+                        TxtShowResult.Text += "监测端口通信错误！\r\n";
                         isCommError = true;                        
                     }
                 }
