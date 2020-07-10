@@ -281,6 +281,7 @@ namespace HFM
                 LblValue[i].BackColor = PlatForm.ColorStatus.CORLOR_FRNORMAL ;
                 LblValue[i].Text ="0.0cps";
             }
+            //bkWorkerReportStatus.
         }
 
         /// <summary>
@@ -991,7 +992,7 @@ namespace HFM
             if (receiveBufferMessage==null||receiveBufferMessage.Length < messageBufferLength)
             {
                 //数据接收出现错误次数超限
-                if (errNumber >= 2)
+                if (errNumber >= 3)
                 {
                     //界面提示“通讯错误”
                     if (isEnglish)
@@ -1026,13 +1027,20 @@ namespace HFM
             //{
             //    TxtShowResult.Text += measureDataS[3].Beta.ToString()+"   ";
             //}
-
-            //报文解析无误,将当前报文红外状态清零
-            infraredStatusOfMessageNow &= 0;
-            //加载将当前报文1-4通道红外状态
-            infraredStatusOfMessageNow |= (byte)(receiveBufferMessage[61] & 7);//红外状态屏蔽高位后赋值            
-            //加载当前报文5-7通道红外状态
-            infraredStatusOfMessageNow |= (byte)((receiveBufferMessage[123] & 7) << 3);
+            try
+            {
+                //报文解析无误,将当前报文红外状态清零
+                infraredStatusOfMessageNow &= 0;
+                //加载将当前报文1-4通道红外状态
+                infraredStatusOfMessageNow |= (byte)(receiveBufferMessage[61] & 7);//红外状态屏蔽高位后赋值            
+                                                                                   //加载当前报文5-7通道红外状态
+                infraredStatusOfMessageNow |= (byte)((receiveBufferMessage[123] & 7) << 3);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            
             if ((infraredStatusOfMessageNow ^ infraredStatusOfMessageLast) != 0)//红外状态发生变化
             {
                 //重新刷新控制各个通道显示状态
@@ -3932,14 +3940,21 @@ namespace HFM
                 //触发向主线程返回下位机上传数据事件，如果是时间同步报文，需要读两次串口才能将17个字节数据读回来
                 if (receiveBuffMessage!=null && receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
                 {
-                    if(receiveBufferMessage[0]==0x10)
+                    //if(receiveBufferMessage[0]==0x10)yxk修改2020年7月10日
+                    if (receiveBuffMessage[0] == 0x10)
                     {
                         byte[] receiveDataTemp = new byte[8];
                         receiveDataTemp= Components.Message.ReceiveMessage(commPort_Supervisory);//读时间同步第17个字节
                         receiveDataTemp.CopyTo(receiveBuffMessage, 16);                        
                     }
                     isCommReportError = false;
-                    worker.ReportProgress(1, receiveBuffMessage);
+                    //第一次启动后，进入设置，设置完成端口后，回到主线程报错误，没有开启进度显示，所以加判断
+                    if (bkWorkerReportStatus.WorkerReportsProgress == false)
+                    {
+                        bkWorkerReportStatus.WorkerReportsProgress = true;
+                    }
+                    worker.ReportProgress(1, receiveBuffMessage);       
+                    
                 }
             }
         }
@@ -4052,7 +4067,7 @@ namespace HFM
                     ErrorData errorData = new ErrorData();
                     errorData.GetLatestData();
                     //测量数据和故障数据都为空，说明仪器正常
-                    if(string.IsNullOrEmpty(measureData.DetailedInfo)&&string.IsNullOrEmpty(errorData.Record))
+                    if((measureData.MeasureID == 0|| errorData.ErrID==0) || string.IsNullOrEmpty(measureData.DetailedInfo)&&string.IsNullOrEmpty(errorData.Record))
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
                     }                    
@@ -4062,17 +4077,17 @@ namespace HFM
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
                     }
                     //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
-                    if((string.IsNullOrEmpty(measureData.DetailedInfo)==false && measureData.IsReported==true) && errorData.IsReported==false)
+                    if((errorData.ErrID != 0) &&(string.IsNullOrEmpty(measureData.DetailedInfo)==false && measureData.IsReported==true) && errorData.IsReported==false)
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02);//0x02:仪器故障
                     }
                     //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
-                    if(measureData.IsReported==false && (errorData.IsReported==true && string.IsNullOrEmpty(errorData.Record)==false))
+                    if((measureData.MeasureID != 0) && measureData.IsReported==false && (errorData.IsReported==true && string.IsNullOrEmpty(errorData.Record)==false))
                     {
                         deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x04:仪器污染
                     }
                     //监测数据和故障数据都未上报，则将最近的状态进行上报，更新两条记录为已上报
-                    if (measureData.IsReported == false && errorData.IsReported == false)
+                    if ((measureData.MeasureID != 0 || errorData.ErrID != 0)&& measureData.IsReported == false && errorData.IsReported == false)
                     {
                         if (measureData.MeasureDate > errorData.ErrTime)//最近一次记录为MeasureData，说明是状态为污染（因为只有污染状态才会记录，正常不记录）
                         {
@@ -4093,11 +4108,13 @@ namespace HFM
                         {
                             //更新上报标志
                             measureData.UpdataReported(true, measureData.MeasureID);
+                            measureData.UpdataReported(true, measureData.MeasureID - 1);
                         }
                         if(string.IsNullOrEmpty(errorData.Record)==false && errorData.IsReported==false)
                         {
                             //更新上报标志
                             errorData.UpdateReported(true, errorData.ErrID);
+                            errorData.UpdateReported(true, errorData.ErrID - 1);
                         }
                     }                    
                     else

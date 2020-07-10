@@ -308,6 +308,16 @@ namespace HFM.Components
                         MessageBox.Show(@"返回数据错误!请尝试重新操作！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     break;
+                case 18:
+                    if (isEnglish == true)
+                    {
+                        MessageBox.Show(@"Please enter a value less than 100;", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"请输入小于100的数值；", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    break;
                 default:
                     if (isEnglish == true)
                     {

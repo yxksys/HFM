@@ -173,8 +173,8 @@ namespace HFM
                 foreach (var errorData in _errorDatasEnglish)
                 {
                     _errorDataArray[0] = errorData.ErrTime.ToString();
-                    _errorDataArray[1] = errorData.Record;                    
-                    _errorDataArray[2] = (errorData.IsReported.ToString() == "true" ? "Reported" : "Not Reported");
+                    _errorDataArray[1] = errorData.Record;
+                    _errorDataArray[2] = (errorData.IsReported == true ?  "Reported" : "Not Reported"); 
                     _errorDataArray[3] = errorData.IsEnglish.ToString();
                     DgvError.Rows.Add(_errorDataArray);
                 }
@@ -186,7 +186,7 @@ namespace HFM
                 {
                     _errorDataArray[0] = errorData.ErrTime.ToString();
                     _errorDataArray[1] = errorData.Record;
-                    _errorDataArray[2] = (errorData.IsReported.ToString()=="true"? "已上报" : "未上报");
+                    _errorDataArray[2] = (errorData.IsReported == true ? "已上报" : "未上报");
                     _errorDataArray[3] = errorData.IsEnglish.ToString();
                     DgvError.Rows.Add(_errorDataArray);
                 }

@@ -1370,7 +1370,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=3.0.6.4, Culture=en, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=3.0.6.10, Culture=en, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_34A78B96ECDE4A338BC43FDDB70976E3"
@@ -3631,7 +3631,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HFM"
         "ProductCode" = "8:{3237E582-61BA-41E9-B55D-CCD2286E0A45}"
-        "PackageCode" = "8:{29BB9356-ABD2-4340-8FE2-F53AF948AC97}"
+        "PackageCode" = "8:{CE05DFD7-67F2-4B5F-9303-EC6EE6E69327}"
         "UpgradeCode" = "8:{6AB0BF61-E4CA-4F56-B870-3B6BA4880317}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -141,7 +141,8 @@ namespace HFM.Components
                         ErrID = Convert.ToInt32(reader["ErrID"].ToString()),
                         ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString()),
                         Record = Convert.ToString(reader["Record"].ToString()),
-                        IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString())
+                        IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString()),
+                        IsReported = Convert.ToBoolean(reader["IsReported"].ToString())
                     };
                     //将reader读出并构造的查询结果添加到List中
                     IErrorDateS.Add(errorData);

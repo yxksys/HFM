@@ -2242,14 +2242,21 @@ namespace HFM
             {
                 _tools.PrompMessage(16);
                 return;
-            }           
-            
+            }
+            //不重启程序，加载配置文件
             ConfigurationManager.RefreshSection("appSettings");
             //读取当前串口配置
             this._commPort.GetCommPortSet("commportSet");
 
-            string strSetCom="";//数据采集端口
+            string strSetCom = "";//数据采集端口
             string strSetReCom = "数据上报端口未启用";//数据上报端口设置
+            if (CmbIsEnabled.Text == "是")
+            {
+                //读取当前上报端口配置
+                _commPort.GetCommPortSet("commportSetOfReport");
+                strSetReCom = "数据上报端口设置已配置";
+            }
+            
             if (this._commPort.Opened)
             {
                 this._commPort.Close();
@@ -2262,31 +2269,54 @@ namespace HFM
             catch
             {
                 //strSetCom = "数据采集端口设置错误，请重新进行设置";
-                MessageBox.Show("数据采集端口设置错误，请重新进行设置;");
+                MessageBox.Show("端口设置错误，请重新进行设置;");
                 return;
             }
-            //自动上报串口配置测试
-            if(ChkIsConnectedAuto.Checked)
-            {
-                CommPort commPort = new CommPort();
-                //读取当前串口配置
-                commPort.GetCommPortSet("commportSetOfReport");
-                if (commPort.Opened)
-                {
-                    commPort.Close();
-                }
-                try
-                {
-                    commPort.Open();
-                    strSetReCom = "数据上报端口设置已连接";
-                }
-                catch
-                {
+            ////自动上报串口配置测试
+            //if(ChkIsConnectedAuto.Checked)
+            //{
+            //    CommPort commPort = new CommPort();
+            //    //读取当前串口配置
+            //    commPort.GetCommPortSet("commportSetOfReport");
+            //    if (commPort.Opened)
+            //    {
+            //        commPort.Close();
+            //    }
+            //    try
+            //    {
+            //        commPort.Open();
+            //        strSetReCom = "数据上报端口设置已连接";
+            //    }
+            //    catch
+            //    {
                     
-                    MessageBox.Show("数据上报端口设置错误，请重新进行设置");
-                    return;
-                }
-            }
+            //        MessageBox.Show("数据上报端口设置错误，请重新进行设置");
+            //        return;
+            //    }
+            //}
+            //if (CmbIsEnabled.Text=="是")
+            //{
+            //    //CommPort commPort = new CommPort();
+            //    //不重启程序，加载配置文件
+            //    ConfigurationManager.RefreshSection("appSettings");
+            //    //读取当前串口配置
+            //    _commPort.GetCommPortSet("commportSetOfReport");
+            //    if (_commPort.Opened)
+            //    {
+            //        _commPort.Close();
+            //    }
+            //    try
+            //    {
+            //        _commPort.Open();
+            //        strSetReCom = "数据上报端口设置已连接";
+            //    }
+            //    catch
+            //    {
+
+            //        MessageBox.Show("数据上报端口设置错误，请重新进行设置");
+            //        return;
+            //    }
+            //}
             try
             {
                 //网络保存
@@ -2324,7 +2354,7 @@ namespace HFM
             }
             else
             {
-                MessageBox.Show(strSetCom, "提醒", MessageBoxButtons.OK);
+                MessageBox.Show(strSetCom+strSetReCom, "提醒", MessageBoxButtons.OK);
                 //{
                     //_commPort.Close();
                     //if (backgroundWorker_Preference.IsBusy == true)
@@ -2361,8 +2391,8 @@ namespace HFM
             TxtcommportSetStopBits.Text = "1";
             TxtcommportSetParity.Text = "无";
             
-            TxtcommportSetOfReportPortNum.Text = "COM3";
-            TxtcommportSetOfReportBaudRate.Text = "115200";
+            TxtcommportSetOfReportPortNum.Text = "COM1";
+            TxtcommportSetOfReportBaudRate.Text = "9600";
             TxtcommportSetOfReportDataBits.Text = "8";
             TxtcommportSetOfReportStopBits.Text = "1";
             TxtcommportSetOfReportParity.Text = "无";
