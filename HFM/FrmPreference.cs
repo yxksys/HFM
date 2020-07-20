@@ -31,12 +31,7 @@ using System.Diagnostics;
 namespace HFM
 {
     public partial class FrmPreference : Form
-    {
-        public FrmPreference()
-        {
-            InitializeComponent();
-        }
-
+    {        
         #region 实例字段
         //运行参数设置
         private IList<Channel> channelsyz = new Channel().GetChannel();
@@ -66,11 +61,7 @@ namespace HFM
         /// </summary>
         private MessageType _messageType;
         
-        public FrmPreference(CommPort commPort)
-        {
-           this._commPort = commPort;
-           InitializeComponent();
-        }        
+           
         /// <summary>
         /// 读取数据
         /// </summary>
@@ -88,6 +79,18 @@ namespace HFM
         private MessageType messageType;
 
 
+        #endregion
+
+        #region 构造函数
+        public FrmPreference()
+        {
+            InitializeComponent();
+        }
+        public FrmPreference(CommPort commPort)
+        {
+            this._commPort = commPort;
+            InitializeComponent();
+        }
         #endregion
 
         #region 端口字符串创建
@@ -257,7 +260,7 @@ namespace HFM
                         GetClothesData();
                         break;
                     case 4:
-                        GetMainProferenceData();
+                        //GetMainProferenceData();
                         ReadPreference();
                         break;
                     case 5:
