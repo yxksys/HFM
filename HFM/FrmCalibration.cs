@@ -1188,7 +1188,7 @@ namespace HFM
                     }
                     i++;
                 }
-                _channelParameters.Clear();
+                //_channelParameters.Clear();
                 _second_setChanelP.RemoveAt(3);
                 _second_setChanelP.Add(_setChannelParameter);
                 //生成报文
@@ -1282,6 +1282,10 @@ namespace HFM
             {
                 TxtMeasuringTime.Text ="1";
             }
+            else if (Convert.ToInt32( TxtMeasuringTime.Text)>99)
+            {
+                _tools.PrompMessage(18);
+            }
             //次数为0强制赋值为1,避免程序异常或进入死循环
             if (TxtCount.Text == "" || TxtCount.Text == Convert.ToString(0))
             {
@@ -1309,7 +1313,11 @@ namespace HFM
             {
 
             }
-            if (_isEnglish==true?MessageBox.Show(@"Please enter the emissivity!", "Message") ==DialogResult.OK: MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示") == DialogResult.OK)
+            //点击刻度和设置后使按钮不可用
+            BtnCalibrate.Enabled = false;
+            BtnSet.Enabled = false;
+            GrpCalibration.Enabled = false;
+            if (_isEnglish==true?MessageBox.Show(@"Please enter the emissivity!", "Message", MessageBoxButtons.OKCancel) ==DialogResult.OK: MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 //刻度时清理上一次的读数
                 _alphacps = 0;
@@ -1325,10 +1333,14 @@ namespace HFM
                     bkWorkerReceiveData.RunWorkerAsync();
                 }
             }
-            //点击刻度和设置后使按钮不可用
-            BtnCalibrate.Enabled = false;
-            BtnSet.Enabled = false;
-            GrpCalibration.Enabled = false;
+            else
+            {
+                //点击刻度和设置后使按钮可用
+                BtnCalibrate.Enabled = true;
+                BtnSet.Enabled = true;
+                GrpCalibration.Enabled = true;
+            }
+            
         }
 
 

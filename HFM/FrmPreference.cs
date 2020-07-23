@@ -31,12 +31,7 @@ using System.Diagnostics;
 namespace HFM
 {
     public partial class FrmPreference : Form
-    {
-        public FrmPreference()
-        {
-            InitializeComponent();
-        }
-
+    {        
         #region 实例字段
         //运行参数设置
         private IList<Channel> channelsyz = new Channel().GetChannel();
@@ -66,11 +61,7 @@ namespace HFM
         /// </summary>
         private MessageType _messageType;
         
-        public FrmPreference(CommPort commPort)
-        {
-           this._commPort = commPort;
-           InitializeComponent();
-        }        
+           
         /// <summary>
         /// 读取数据
         /// </summary>
@@ -88,6 +79,18 @@ namespace HFM
         private MessageType messageType;
 
 
+        #endregion
+
+        #region 构造函数
+        public FrmPreference()
+        {
+            InitializeComponent();
+        }
+        public FrmPreference(CommPort commPort)
+        {
+            this._commPort = commPort;
+            InitializeComponent();
+        }
         #endregion
 
         #region 端口字符串创建
@@ -177,101 +180,7 @@ namespace HFM
         } 
         #endregion
 
-        #region 页面切换
-        /// <summary>
-        /// 页面切换
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (User.LandingUser.Role != 1)
-            {
-                switch (factoryParameter.GetParameter().MeasureType)
-                {
-                    case "α":
-                        switch (TabPresence.SelectedIndex)
-                        {
-                            case 0:
-                                GetProferenceData();
-                                break;
-                            case 1:
-                                GetAlphaData();
-                                break;
-                            case 2:
-                                GetClothesData();
-                                break;
-                        }
-                        break;
-                    case "β":
-                        switch (TabPresence.SelectedIndex)
-                        {
-                            case 0:
-                                GetProferenceData();
-                                break;
-                            case 1:
-                                GetBetaData();
-                                break;
-                            case 2:
-                                GetClothesData();
-                                break;
-                        }
-                        break;
-                    case "α/β":
-                        switch (TabPresence.SelectedIndex)
-                        {
-                            case 0:
-                                GetProferenceData();
-                                break;
-                            case 1:
-                                GetAlphaData();
-                                break;
-                            case 2:
-                                GetBetaData();
-                                break;
-                            case 3:
-                                GetClothesData();
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-            else
-            {
-                //根据页面索引更新当前页面值
-                switch (TabPresence.SelectedIndex)
-                {
-                    case 0:
-                        GetProferenceData();
-                        break;
-                    case 1:
-                        GetAlphaData();
-                        break;
-                    case 2:
-                        GetBetaData();
-                        break;
-                    case 3:
-                        GetClothesData();
-                        break;
-                    case 4:
-                        GetMainProferenceData();
-                        ReadPreference();
-                        break;
-                    case 5:
-                        GetPortConfiguration();
-                        break;
-                    default:
-                        MessageBox.Show("选择有误，请重新选择");
-                        break;
-                }
-
-            }
-
-        } 
-        #endregion
+        
 
         #region 获得数据库数据并显示出来
         /// <summary>
@@ -2095,6 +2004,114 @@ namespace HFM
                 return;
             }
         }
+        //private void ReadPreference()
+        //{
+        //    //使标签页不可用
+        //    //TabPresence.Enabled = false;
+        //    bool boxOnOff = false;
+        //    int errNumber = 0;
+        //    byte[] receiveBuffMessage = null;//接受的报文
+        //    byte[] buffMessage = new byte[62];//报文长度
+        //    //向下位机下发“p”指令码
+        //    buffMessage[0] = Convert.ToByte('P');
+
+
+
+        //    if (Message.SendMessage(buffMessage, _commPort))    //正式
+        //    {
+        //        //延时
+        //        Thread.Sleep(10);
+        //        receiveBuffMessage = Message.ReceiveMessage(_commPort);
+        //    }
+        //    else
+        //    {
+
+        //        if (_isEnglish == true)
+        //        {
+        //            MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+        //            return;
+        //        }
+
+        //    }
+
+
+        //    if (receiveBuffMessage.Length < 124)
+        //    {
+        //        errNumber++;
+        //        //数据接收出现错误次数超限
+        //        if (errNumber >= 2)
+        //        {
+        //            if (_isEnglish == true)
+        //            {
+        //                MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+        //                return;
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+        //                return;
+        //            }
+        //        }
+        //        return;
+        //    }
+
+
+        //    IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
+        //    if (receiveBuffMessage[0] == Convert.ToByte('P'))
+        //    {
+        //        DgvMainPreferenceSet.Rows.Clear();
+        //        //解析报文
+        //        _channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBuffMessage);
+        //        if (_channelParameters.Count == 8)
+        //        {
+        //            _channelParameters.RemoveAt(7);
+        //        }
+        //        foreach (var itemParameter in _channelParameters)
+        //        {
+        //            //单探测器启用则手背不显示
+        //            //通道不启用则不显示
+        //            if ((factoryParameter.IsDoubleProbe == false && (itemParameter.Channel.ChannelID == 2 || itemParameter.Channel.ChannelID == 4)) || itemParameter.Channel.IsEnabled == false)
+        //            {
+        //                continue;
+        //            }
+        //            //显示内容
+        //            int index = this.DgvMainPreferenceSet.Rows.Add();
+        //            DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
+        //            DgvMainPreferenceSet.Rows[index].Cells[1].Value = itemParameter.AlphaThreshold;
+        //            DgvMainPreferenceSet.Rows[index].Cells[2].Value = itemParameter.BetaThreshold;
+        //            DgvMainPreferenceSet.Rows[index].Cells[3].Value = itemParameter.PresetHV;
+        //            DgvMainPreferenceSet.Rows[index].Cells[4].Value = itemParameter.ADCFactor;
+        //            DgvMainPreferenceSet.Rows[index].Cells[5].Value = itemParameter.DACFactor;
+        //            DgvMainPreferenceSet.Rows[index].Cells[6].Value = itemParameter.HVFactor;
+        //            DgvMainPreferenceSet.Rows[index].Cells[7].Value = itemParameter.WorkTime;
+        //            DgvMainPreferenceSet.Rows[index].Cells[8].Value = itemParameter.HVRatio;
+        //        }
+        //    }
+        //    //_bkworkTime++;
+        //    //if (_bkworkTime > 3)
+        //    //{
+        //    //    _bkworkTime = 0;
+        //    Thread.Sleep(300);
+        //    if (_isEnglish)
+        //    {
+        //        MessageBox.Show("Read over.");
+
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("读取完成.");
+
+        //    }
+
+        //    //}
+        //}
+
+
         /// <summary>
         /// 写参数
         /// </summary>
@@ -2242,14 +2259,21 @@ namespace HFM
             {
                 _tools.PrompMessage(16);
                 return;
-            }           
-            
+            }
+            //不重启程序，加载配置文件
             ConfigurationManager.RefreshSection("appSettings");
             //读取当前串口配置
             this._commPort.GetCommPortSet("commportSet");
 
-            string strSetCom="";//数据采集端口
+            string strSetCom = "";//数据采集端口
             string strSetReCom = "数据上报端口未启用";//数据上报端口设置
+            if (CmbIsEnabled.Text == "是")
+            {
+                //读取当前上报端口配置
+                _commPort.GetCommPortSet("commportSetOfReport");
+                strSetReCom = "数据上报端口设置已配置";
+            }
+            
             if (this._commPort.Opened)
             {
                 this._commPort.Close();
@@ -2262,31 +2286,54 @@ namespace HFM
             catch
             {
                 //strSetCom = "数据采集端口设置错误，请重新进行设置";
-                MessageBox.Show("数据采集端口设置错误，请重新进行设置;");
+                MessageBox.Show("端口设置错误，请重新进行设置;");
                 return;
             }
-            //自动上报串口配置测试
-            if(ChkIsConnectedAuto.Checked)
-            {
-                CommPort commPort = new CommPort();
-                //读取当前串口配置
-                commPort.GetCommPortSet("commportSetOfReport");
-                if (commPort.Opened)
-                {
-                    commPort.Close();
-                }
-                try
-                {
-                    commPort.Open();
-                    strSetReCom = "数据上报端口设置已连接";
-                }
-                catch
-                {
+            ////自动上报串口配置测试
+            //if(ChkIsConnectedAuto.Checked)
+            //{
+            //    CommPort commPort = new CommPort();
+            //    //读取当前串口配置
+            //    commPort.GetCommPortSet("commportSetOfReport");
+            //    if (commPort.Opened)
+            //    {
+            //        commPort.Close();
+            //    }
+            //    try
+            //    {
+            //        commPort.Open();
+            //        strSetReCom = "数据上报端口设置已连接";
+            //    }
+            //    catch
+            //    {
                     
-                    MessageBox.Show("数据上报端口设置错误，请重新进行设置");
-                    return;
-                }
-            }
+            //        MessageBox.Show("数据上报端口设置错误，请重新进行设置");
+            //        return;
+            //    }
+            //}
+            //if (CmbIsEnabled.Text=="是")
+            //{
+            //    //CommPort commPort = new CommPort();
+            //    //不重启程序，加载配置文件
+            //    ConfigurationManager.RefreshSection("appSettings");
+            //    //读取当前串口配置
+            //    _commPort.GetCommPortSet("commportSetOfReport");
+            //    if (_commPort.Opened)
+            //    {
+            //        _commPort.Close();
+            //    }
+            //    try
+            //    {
+            //        _commPort.Open();
+            //        strSetReCom = "数据上报端口设置已连接";
+            //    }
+            //    catch
+            //    {
+
+            //        MessageBox.Show("数据上报端口设置错误，请重新进行设置");
+            //        return;
+            //    }
+            //}
             try
             {
                 //网络保存
@@ -2324,7 +2371,7 @@ namespace HFM
             }
             else
             {
-                MessageBox.Show(strSetCom, "提醒", MessageBoxButtons.OK);
+                MessageBox.Show(strSetCom+strSetReCom, "提醒", MessageBoxButtons.OK);
                 //{
                     //_commPort.Close();
                     //if (backgroundWorker_Preference.IsBusy == true)
@@ -2361,8 +2408,8 @@ namespace HFM
             TxtcommportSetStopBits.Text = "1";
             TxtcommportSetParity.Text = "无";
             
-            TxtcommportSetOfReportPortNum.Text = "COM3";
-            TxtcommportSetOfReportBaudRate.Text = "115200";
+            TxtcommportSetOfReportPortNum.Text = "COM1";
+            TxtcommportSetOfReportBaudRate.Text = "9600";
             TxtcommportSetOfReportDataBits.Text = "8";
             TxtcommportSetOfReportStopBits.Text = "1";
             TxtcommportSetOfReportParity.Text = "无";
@@ -2737,6 +2784,102 @@ namespace HFM
                 CmbSoftName.Items.Add("FM100脚部污染监测仪");
                 CmbSoftName.Items.Add("RM-AP报警盘");
             }
+        }
+        #endregion
+
+        #region 页面切换
+        /// <summary>
+        /// 页面切换
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (User.LandingUser.Role != 1)
+            {
+                switch (factoryParameter.GetParameter().MeasureType)
+                {
+                    case "α":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetAlphaData();
+                                break;
+                            case 2:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    case "β":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetBetaData();
+                                break;
+                            case 2:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    case "α/β":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetAlphaData();
+                                break;
+                            case 2:
+                                GetBetaData();
+                                break;
+                            case 3:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            else
+            {
+                //根据页面索引更新当前页面值
+                switch (TabPresence.SelectedIndex)
+                {
+                    case 0:
+                        GetProferenceData();
+                        break;
+                    case 1:
+                        GetAlphaData();
+                        break;
+                    case 2:
+                        GetBetaData();
+                        break;
+                    case 3:
+                        GetClothesData();
+                        break;
+                    case 4:
+                        //GetMainProferenceData();
+                        ReadPreference();
+                        break;
+                    case 5:
+                        GetPortConfiguration();
+                        break;
+                    default:
+                        MessageBox.Show("选择有误，请重新选择");
+                        break;
+                }
+
+            }
+
         }
         #endregion
 
