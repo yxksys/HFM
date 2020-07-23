@@ -4093,11 +4093,13 @@ namespace HFM
                         {
                             //更新上报标志
                             measureData.UpdataReported(true, measureData.MeasureID);
+                            measureData.UpdataReported(true, measureData.MeasureID - 1);
                         }
                         if(string.IsNullOrEmpty(errorData.Record)==false && errorData.IsReported==false)
                         {
                             //更新上报标志
                             errorData.UpdateReported(true, errorData.ErrID);
+                            errorData.UpdateReported(true, errorData.ErrID - 1);
                         }
                     }                    
                     else
