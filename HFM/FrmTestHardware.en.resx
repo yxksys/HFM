@@ -117,11 +117,80 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LblBetacnt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblBetacnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="LblBetacps.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblBetacps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 21</value>
+  </data>
+  <data name="LblAlphacnt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblAlphacnt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="LblAlphacps.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblAlphacps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 21</value>
+  </data>
+  <data name="LblV.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 21</value>
+  </data>
+  <data name="LblRF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblRF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 21</value>
+  </data>
+  <data name="LblLF.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblLF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 21</value>
+  </data>
+  <data name="LblRHB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblRHB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 21</value>
+  </data>
+  <data name="LblRHP.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblRHP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 21</value>
+  </data>
+  <data name="LblLHB.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblLHB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 21</value>
+  </data>
+  <data name="LblLHP.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblLHP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 21</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="LblStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LblStatus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
   <data name="LblStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>-7, 206</value>
   </data>
@@ -130,6 +199,9 @@
   </data>
   <data name="LblβTotalcnt.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="LblβTotalcnt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="LblβTotalcnt.Location" type="System.Drawing.Point, System.Drawing">
     <value>-7, 178</value>
@@ -140,6 +212,9 @@
   <data name="Lblβcountrate.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="Lblβcountrate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
   <data name="Lblβcountrate.Location" type="System.Drawing.Point, System.Drawing">
     <value>-7, 150</value>
   </data>
@@ -148,6 +223,9 @@
   </data>
   <data name="LblαTotalcnt.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="LblαTotalcnt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="LblαTotalcnt.Location" type="System.Drawing.Point, System.Drawing">
     <value>-7, 122</value>
@@ -158,11 +236,17 @@
   <data name="Lblαcountrate.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="Lblαcountrate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
   <data name="Lblαcountrate.Location" type="System.Drawing.Point, System.Drawing">
     <value>-7, 94</value>
   </data>
   <data name="Lblαcountrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 25</value>
+  </data>
+  <data name="LblHighVoltage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="LblHighVoltage.Location" type="System.Drawing.Point, System.Drawing">
     <value>-7, 66</value>
@@ -171,16 +255,34 @@
     <value>110, 25</value>
   </data>
   <data name="GrpWork.Size" type="System.Drawing.Size, System.Drawing">
-    <value>735, 309</value>
+    <value>736, 271</value>
+  </data>
+  <data name="GrpFrisker.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="LblFriskercps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 21</value>
   </data>
   <data name="TxtFriskercount.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 32</value>
   </data>
+  <data name="TxtFriskercount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 29</value>
+  </data>
   <data name="LblFriskercount.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 36</value>
   </data>
+  <data name="LblFriskercount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 21</value>
+  </data>
+  <data name="GrpSensorstate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
   <data name="TxtFriskerState.Location" type="System.Drawing.Point, System.Drawing">
     <value>274, 33</value>
+  </data>
+  <data name="TxtFriskerState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 29</value>
   </data>
   <data name="LblFriskerState.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -194,6 +296,9 @@
   <data name="TxtRHandState.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 34</value>
   </data>
+  <data name="TxtRHandState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 29</value>
+  </data>
   <data name="LblRHandState.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -206,6 +311,9 @@
   <data name="TxtLHandState.Location" type="System.Drawing.Point, System.Drawing">
     <value>66, 35</value>
   </data>
+  <data name="TxtLHandState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 29</value>
+  </data>
   <data name="LblLHandState.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -215,14 +323,29 @@
   <data name="LblLHandState.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 25</value>
   </data>
+  <data name="GrpDetectorSelfTest.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
+  <data name="GrpSelfTestParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 12pt</value>
+  </data>
   <data name="Lblμs.Location" type="System.Drawing.Point, System.Drawing">
     <value>528, 31</value>
+  </data>
+  <data name="Lblμs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 21</value>
   </data>
   <data name="BtnSelfCheck.Location" type="System.Drawing.Point, System.Drawing">
     <value>625, 26</value>
   </data>
   <data name="TxtPWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>496, 29</value>
+  </data>
+  <data name="TxtPWidth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 29</value>
+  </data>
+  <data name="CmbControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 29</value>
   </data>
   <data name="LblPWidth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -232,6 +355,27 @@
   </data>
   <data name="LblPWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 26</value>
+  </data>
+  <data name="LblControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 21</value>
+  </data>
+  <data name="CmbPulse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 29</value>
+  </data>
+  <data name="LblPulse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 21</value>
+  </data>
+  <data name="TxtCheckCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 29</value>
+  </data>
+  <data name="LblSelfcount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 21</value>
+  </data>
+  <data name="LblTimeWork.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 42pt, style=Bold</value>
+  </data>
+  <data name="LblTimeWork.Size" type="System.Drawing.Size, System.Drawing">
+    <value>368, 75</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>764, 535</value>

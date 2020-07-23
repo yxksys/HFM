@@ -77,7 +77,7 @@ namespace HFM
         /// <summary>
         /// 串口实例
         /// </summary>
-        private CommPort _commPort = new CommPort();
+        private CommPort _commPort = null;
         /// <summary>
         /// 获取所有“通道参数”
         /// </summary>
@@ -114,33 +114,33 @@ namespace HFM
         /// <summary>
         /// 开启串口封装的方法
         /// </summary>
-        private void OpenPort()
-        {
-            //从配置文件获得当前串口配置
-            if (_commPort.Opened )
-            {
-                _commPort.Close();
-            }
-            _commPort.GetCommPortSet("commportSet");
-            //打开串口
-            try
-            {
-                _commPort.Open();
-                if (_commPort.Opened)
-                {
-                    Tools.FormBottomPortStatus = true;
-                }
-                else
-                {
-                    Tools.FormBottomPortStatus = false;
-                }
-            }
-            catch
-            {
-                _tools.PrompMessage(1);
+        //private void OpenPort()
+        //{
+        //    //从配置文件获得当前串口配置
+        //    if (_commPort.Opened )
+        //    {
+        //        _commPort.Close();
+        //    }
+        //    _commPort.GetCommPortSet("commportSet");
+        //    //打开串口
+        //    try
+        //    {
+        //        _commPort.Open();
+        //        if (_commPort.Opened)
+        //        {
+        //            Tools.FormBottomPortStatus = true;
+        //        }
+        //        else
+        //        {
+        //            Tools.FormBottomPortStatus = false;
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        _tools.PrompMessage(1);
                 
-            }
-        }
+        //    }
+        //}
         /// <summary>
         /// 发送消息类型：
         /// </summary>
@@ -171,7 +171,13 @@ namespace HFM
             bkWorkerReceiveData.WorkerReportsProgress = true;
             
         }
+        public FrmCalibration(CommPort commPort)
+        {
+            this._commPort = commPort;
+            InitializeComponent();
+            bkWorkerReceiveData.WorkerReportsProgress = true;
 
+        }
         private void FrmCalibration_Load(object sender, EventArgs e)
         {
             //线程支持异步取消
@@ -204,14 +210,18 @@ namespace HFM
             #endregion
 
             #region 获得全部启用的通道添加到下拉列表中，更具系统中英文状态选择中英文
-
-
+            FactoryParameter factoryParameter = new FactoryParameter().GetParameter();
             //根据系统语言填充通道下拉列表
             if (_isEnglish)
             {
                 //英文通道名称
                 foreach (var listChannel in _channelList)
                 {
+                    if (factoryParameter.IsDoubleProbe==false && (listChannel.ChannelID==2||listChannel.ChannelID==4))
+                    {
+                        _numForaech++;
+                        continue;
+                    }
                     CmbChannelSelection.Items.Add(listChannel.ChannelName_English);
                     _channelName[_numForaech] = listChannel.ChannelName_English;
                     _numForaech++;
@@ -222,18 +232,22 @@ namespace HFM
                 //中文通道名称
                 foreach (var listChannel in _channelList)
                 {
+                    if (factoryParameter.IsDoubleProbe == false && (listChannel.ChannelID == 2 || listChannel.ChannelID == 4))
+                    {
+                        _numForaech++;
+                        continue;
+                    }
                     CmbChannelSelection.Items.Add(listChannel.ChannelName);
                     _channelNameEnglish[_numForaech] = listChannel.ChannelName;
                     _numForaech++;
                 }
             }
             #endregion
-
-            OpenPort();
+            //OpenPort();
         }
         #endregion
 
-        #region 界面下拉列表
+        #region 界面下拉列表触发事件
         #region 通道下拉列表
         /// <summary>
         /// 通道下拉列表选择后（触发事件）
@@ -241,7 +255,7 @@ namespace HFM
         private void CmbChannelSelection_SelectedValueChanged(object sender, EventArgs e)
         {
             //如果选择衣物探头后，高压和阈值变为不可用状态
-            if (CmbChannelSelection.Text == _channelNameEnglish[6] || CmbChannelSelection.Text == _channelName[6])
+            if (CmbChannelSelection.Text == "衣物探头" || CmbChannelSelection.Text== "Frisker") //_channelNameEnglish[6] || CmbChannelSelection.Text == _channelName[6])
             {
                 TxtHV.Enabled = false;
                 Txtα.Enabled = false;
@@ -252,28 +266,121 @@ namespace HFM
                 TxtHV.Enabled = true;
                 Txtα.Enabled = true;
                 Txtβ.Enabled = true;
+
+                //
+                int errorNumber = 0; //下发自检报文出现错误计数器
+                int errorNumber2 = 0; //下发自检报文返回数据出现错误计数器
+                int downcount = 0;
+                byte[] receiveBuffMessage = null;//接受的报文
+                byte[] buffMessage = new byte[62];//报文长度
+
+                BtnCalibrate.Enabled = false;
+                BtnSet.Enabled = false;
+                while (downcount < 4)
+                {
+                    downcount++;
+                    if (downcount==4)
+                    {
+                        BtnCalibrate.Enabled = true;
+                        BtnSet.Enabled = true;
+                    }
+                    //向下位机下发“p”指令码
+                    buffMessage[0] = Convert.ToByte('P');
+                    if (Message.SendMessage(buffMessage, _commPort))    //正式
+                    {
+                        Thread.Sleep(10);
+                        receiveBuffMessage = Message.ReceiveMessage(_commPort);
+                        //解析P数据报文
+                        
+                        if (receiveBuffMessage.Length > 0 && receiveBuffMessage[0].ToString() != "80")//由于下位机一直上传C指令，下发P指令后有可能读回的数据还是C指令，所以将其扔掉直到读回的是P指令为止                            
+                        {
+                            errorNumber2++;
+                            if (errorNumber2>3)
+                            {
+                                _tools.PrompMessage(17);
+                                return;
+                            }
+                            continue;
+                        }
+                        else if (receiveBuffMessage.Length==0)
+                        {
+                            errorNumber++;
+                            if (errorNumber > 3)
+                            {
+                                BtnCalibrate.Enabled = true;
+                                BtnSet.Enabled = true;
+                                _tools.PrompMessage(3);
+                                return;
+                            }
+                            continue;
+                        }
+                        if (receiveBuffMessage[0] == Convert.ToByte('P'))
+                        {
+                            _channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBuffMessage);//解析报文
+                            try
+                            {
+                                foreach (var itemParameter in _channelParameters)
+                                {
+                                    if (CmbChannelSelection.Text == itemParameter.Channel.ChannelName_English || CmbChannelSelection.Text == itemParameter.Channel.ChannelName)
+                                    {
+                                        /*
+                                         * 高压阈值赋值
+                                         */
+                                        TxtHV.Text = itemParameter.PresetHV.ToString();
+                                        Txtα.Text = itemParameter.AlphaThreshold.ToString();
+                                        Txtβ.Text = itemParameter.BetaThreshold.ToString();
+                                        //当前通道道盒参数
+                                        _setChannelParameter = itemParameter;
+
+                                    }
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                errorNumber++;
+                                if (errorNumber > 3)
+                                {
+                                    BtnCalibrate.Enabled = true;
+                                    BtnSet.Enabled = true;
+                                    _tools.PrompMessage(17);
+                                    return;
+                                }
+                                continue;
+                            }
+                            
+                        }
+                    }
+                    else
+                    {
+                        errorNumber++;
+                        if (errorNumber > 4)
+                        {
+                            BtnCalibrate.Enabled = true;
+                            BtnSet.Enabled = true;
+                            _tools.PrompMessage(3);
+                            return;
+                        }
+                        else
+                        {
+                            Thread.Sleep(100);
+                        }
+                    }
+                    //延时
+                    Thread.Sleep(200);
+                    
+                }
+                
             }
-            //当前通讯更改为pread
-            _messageType = MessageType.PRead;
-            //开启端口
-            OpenPort();
+            
 
             var lisChanneList = _channelList.Where(n => n.ChannelName.ToString() == CmbChannelSelection.Text|| n.ChannelName_English.ToString() == CmbChannelSelection.Text).ToList();
             foreach (var b in lisChanneList)
             {
                 _channel = b;
             }
-            //开启异步线程
-            if (bkWorkerReceiveData.IsBusy != true)
-            {
-                bkWorkerReceiveData.RunWorkerAsync();
-            }
-            else
-            {
-                bkWorkerReceiveData.CancelAsync();
-                Thread.Sleep(100);
-                bkWorkerReceiveData.RunWorkerAsync();
-            }
+            
+            
+            
         }
         #endregion
 
@@ -335,153 +442,191 @@ namespace HFM
                     e.Cancel = true;
                     return null;
                 }
+                #region C读取指令下发并接收数据上传
 
-                switch (_messageType)
+                //向下位机下发“C”指令码
+                buffMessage[0] = Convert.ToByte('C');
+                buffMessage[61] = Convert.ToByte(16);
+                if (Message.SendMessage(buffMessage, _commPort))    //正式
                 {
-                    #region P读取指令下发并接收数据上传
-                    case MessageType.PRead:
+                    //延时
+                    Thread.Sleep(200);
+                    receiveBuffMessage = Message.ReceiveMessage(_commPort);
 
-                        //向下位机下发“p”指令码
-                        buffMessage[0] = Convert.ToByte('P');
-                        //buffMessage[61] = Convert.ToByte(0);
-                        _bkworkTime++;
-                        if (_bkworkTime > 3)
-                        {
-                            bkWorkerReceiveData.CancelAsync();
-                            _bkworkTime = 0;
-                            
-                            break;
-                        }
-                        if (Message.SendMessage(buffMessage, _commPort))    //正式
-                        {
-                            
-                            //延时
-                            Thread.Sleep(100);
-                            receiveBuffMessage = Message.ReceiveMessage(_commPort);  
-                            if(receiveBuffMessage.Length>0&&receiveBuffMessage[0].ToString()!="80")//由于下位机一直上传C指令，下发P指令后有可能读回的数据还是C指令，所以将其扔掉直到读回的是P指令为止                            
-                            {
-                                continue;
-                            }
-                            //延时
-                            Thread.Sleep(200);
-                            //触发向主线程返回下位机上传数据事件
-                            bkWorker.ReportProgress(_bkworkTime, receiveBuffMessage);
-                        }
-                        else
-                        {
-                            errorNumber++;
-                            //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
-                            if (errorNumber > 5)
-                            {
-                                bkWorker.ReportProgress(1, null);
-                                bkWorkerReceiveData.CancelAsync();
-                            }
-                            else
-                            {
-                                Thread.Sleep(delayTime);
-                            }
-                        }
-                        break;
-                    #endregion
-
-                    #region P写入指令下发
-                    case MessageType.PSet:
-                        IList<ChannelParameter> _first_setChannelP = new List<ChannelParameter>();
-                        IList<ChannelParameter> _second_setChanelP = new List<ChannelParameter>();
-                        int i = 0;
-                        //把当前的高压阈值修改的数据对象添加到列表中
-                        foreach (var itme in _channelParameters)
-                        {
-                            if (i < 4)
-                            {
-                                _first_setChannelP.Add(itme);
-                            }
-                            else
-                            {
-                                _second_setChanelP.Add(itme);
-                            }
-                            i++;
-                        }
-                        
-                        _second_setChanelP.RemoveAt(3);
-                        _second_setChanelP.Add(_setChannelParameter);
-                        //生成报文
-                        buffMessage = Message.BuildMessage(_first_setChannelP);
-                        Thread.Sleep(20);
-                        buffMessage = Message.BuildMessage(_second_setChanelP);
-                        Thread.Sleep(10);
-                        //成功则关闭线程
-                        try
-                        {
-                            if (Message.SendMessage(buffMessage, _commPort))
-                            {
-                                //写入成功,返回p指令读取当前高压以确认更改成功
-                                bkWorkerReceiveData.CancelAsync();
-                                if (_isEnglish)
-                                {
-                                    MessageBox.Show("Data has been distributed!", "Message");
-                                }
-                                else
-                                {
-                                    MessageBox.Show("数据已经下发!", "提示");
-                                }
-                                _messageType = MessageType.PRead;
-                            }
-                            //发送失败次数大于5次,提示错误并挂起线程
-                            else
-                            {
-                                errorNumber++;
-                                if (errorNumber > 5)
-                                {
-                                    _tools.PrompMessage(2);
-                                    bkWorkerReceiveData.CancelAsync();
-                                }
-                                Thread.Sleep(200);
-
-                            }
-                        }
-                        catch
-                        {
-                            MessageBox.Show("设置失败,请重新尝试!");
-                        }
-                        break;
-                    #endregion
-
-                    #region C读取指令下发并接收数据上传
-                    case MessageType.CRead:
-                        //向下位机下发“C”指令码
-                        buffMessage[0] = Convert.ToByte('C');
-                        buffMessage[61] = Convert.ToByte(16);
-                        if (Message.SendMessage(buffMessage, _commPort) )    //正式
-                        {
-                            //延时
-                            Thread.Sleep(200);
-                            receiveBuffMessage = Message.ReceiveMessage(_commPort);
-                            
-                            //延时
-                            Thread.Sleep(800);
-                            //触发向主线程返回下位机上传数据事件
-                            bkWorker.ReportProgress(1, receiveBuffMessage);
-                        }
-                        else
-                        {
-                            errorNumber++;
-                            //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
-                            if (errorNumber > 5)
-                            {
-                                bkWorker.ReportProgress(1, null);
-                                bkWorkerReceiveData.CancelAsync();
-                            }
-                            else
-                            {
-                                Thread.Sleep(delayTime);
-                            }
-                        }
-
-                        break; 
-
-                        #endregion
+                    //延时
+                    Thread.Sleep(800);
+                    //触发向主线程返回下位机上传数据事件
+                    bkWorker.ReportProgress(1, receiveBuffMessage);
                 }
+                else
+                {
+                    errorNumber++;
+                    //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                    if (errorNumber > 5)
+                    {
+                        bkWorker.ReportProgress(1, null);
+                        bkWorkerReceiveData.CancelAsync();
+                    }
+                    else
+                    {
+                        Thread.Sleep(delayTime);
+                    }
+                }
+                
+                #endregion
+                #region switch p/c指令选择弃用代码
+
+                //switch (_messageType)
+                //{
+                //    #region P读取指令下发并接收数据上传
+                //    case MessageType.PRead:
+
+                //        //向下位机下发“p”指令码
+                //        buffMessage[0] = Convert.ToByte('P');
+                //        //buffMessage[61] = Convert.ToByte(0);
+                //        _bkworkTime++;
+                //        if (_bkworkTime > 4)
+                //        {
+                //            bkWorkerReceiveData.CancelAsync();
+                //            _bkworkTime = 0;
+                //            //按钮可以使用
+                //            BtnCalibrate.Enabled = true;
+                //            BtnSet.Enabled = true;
+                //            break;
+                //        }
+                //        if (Message.SendMessage(buffMessage, _commPort))    //正式
+                //        {
+
+                //            //延时
+                //            Thread.Sleep(100);
+                //            receiveBuffMessage = Message.ReceiveMessage(_commPort);  
+                //            if(receiveBuffMessage.Length>0&&receiveBuffMessage[0].ToString()!="80")//由于下位机一直上传C指令，下发P指令后有可能读回的数据还是C指令，所以将其扔掉直到读回的是P指令为止                            
+                //            {
+                //                continue;
+                //            }
+                //            //延时
+                //            Thread.Sleep(200);
+                //            //触发向主线程返回下位机上传数据事件
+                //            bkWorker.ReportProgress(_bkworkTime, receiveBuffMessage);
+                //        }
+                //        else
+                //        {
+                //            errorNumber++;
+                //            //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                //            if (errorNumber > 5)
+                //            {
+                //                bkWorker.ReportProgress(1, null);
+                //                bkWorkerReceiveData.CancelAsync();
+                //                BtnCalibrate.Enabled = true;
+                //                BtnSet.Enabled = true;
+                //            }
+                //            else
+                //            {
+                //                Thread.Sleep(delayTime);
+                //            }
+                //        }
+                //        break;
+                //    #endregion
+
+                //    #region P写入指令下发
+                //    case MessageType.PSet:
+                //        IList<ChannelParameter> _first_setChannelP = new List<ChannelParameter>();
+                //        IList<ChannelParameter> _second_setChanelP = new List<ChannelParameter>();
+                //        int i = 0;
+                //        //把当前的高压阈值修改的数据对象添加到列表中
+                //        foreach (var itme in _channelParameters)
+                //        {
+                //            if (i < 4)
+                //            {
+                //                _first_setChannelP.Add(itme);
+                //            }
+                //            else
+                //            {
+                //                _second_setChanelP.Add(itme);
+                //            }
+                //            i++;
+                //        }
+                //        _channelParameters.Clear();
+                //        _second_setChanelP.RemoveAt(3);
+                //        _second_setChanelP.Add(_setChannelParameter);
+                //        //生成报文
+                //        buffMessage = Message.BuildMessage(_first_setChannelP);
+                //        Thread.Sleep(20);
+                //        buffMessage = Message.BuildMessage(_second_setChanelP);
+                //        Thread.Sleep(10);
+                //        //成功则关闭线程
+                //        try
+                //        {
+                //            if (Message.SendMessage(buffMessage, _commPort))
+                //            {
+                //                //写入成功,返回p指令读取当前高压以确认更改成功
+                //                //bkWorkerReceiveData.CancelAsync();
+                //                if (_isEnglish)
+                //                {
+                //                    MessageBox.Show("Data has been distributed!", "Message");
+                //                }
+                //                else
+                //                {
+                //                    MessageBox.Show("数据已经下发!", "提示");
+                //                }
+                //                _messageType = MessageType.PRead;
+                //            }
+                //            //发送失败次数大于5次,提示错误并挂起线程
+                //            else
+                //            {
+                //                errorNumber++;
+                //                if (errorNumber > 5)
+                //                {
+                //                    _tools.PrompMessage(2);
+                //                    bkWorkerReceiveData.CancelAsync();
+                //                }
+                //                Thread.Sleep(200);
+
+                //            }
+                //        }
+                //        catch
+                //        {
+                //            MessageBox.Show("设置失败,请重新尝试!");
+                //        }
+                //        break;
+                //    #endregion
+
+                //    #region C读取指令下发并接收数据上传
+                //    case MessageType.CRead:
+                //        //向下位机下发“C”指令码
+                //        buffMessage[0] = Convert.ToByte('C');
+                //        buffMessage[61] = Convert.ToByte(16);
+                //        if (Message.SendMessage(buffMessage, _commPort) )    //正式
+                //        {
+                //            //延时
+                //            Thread.Sleep(200);
+                //            receiveBuffMessage = Message.ReceiveMessage(_commPort);
+
+                //            //延时
+                //            Thread.Sleep(800);
+                //            //触发向主线程返回下位机上传数据事件
+                //            bkWorker.ReportProgress(1, receiveBuffMessage);
+                //        }
+                //        else
+                //        {
+                //            errorNumber++;
+                //            //判断错误计数器errorNumber是否超过5次，超过则触发向主线程返回下位机上传数据事件：worker.ReportProgress(1, null);
+                //            if (errorNumber > 5)
+                //            {
+                //                bkWorker.ReportProgress(1, null);
+                //                bkWorkerReceiveData.CancelAsync();
+                //            }
+                //            else
+                //            {
+                //                Thread.Sleep(delayTime);
+                //            }
+                //        }
+
+                //        break; 
+
+                //        #endregion
+                //} 
+                #endregion
             }
         }
         #endregion
@@ -565,6 +710,7 @@ namespace HFM
         /// </summary>
         private int throwDataCount = 0;
         #endregion
+
         #region ProgressChanged
         private void BkWorkerReceiveData_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -624,6 +770,7 @@ namespace HFM
             //解析P数据报文
             if (receiveBufferMessage[0] == Convert.ToByte('P'))
             {
+                return;
                 _channelParameters = Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);//解析报文
                 foreach (var itemParameter in _channelParameters)
                 {
@@ -870,21 +1017,37 @@ namespace HFM
                         }
                         //串道比计算
                         Calibration calibration_AlphaBetaPercent = new Calibration();
-                        if (_alphacnt>0 || _betacnt>0)
+                        //if (_alphacnt>0 || _betacnt>0)
+                        //{
+                        //    if (_efficiencyList.First(x => x.NuclideType == "α").NuclideName == CmbNuclideSelect.Text)
+                        //    {
+                        //        //alpha 串道计数
+                        //        calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
+                        //    }
+                        //    else
+                        //    {
+                        //        //beta 串道计数
+                        //        calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
+                        //    }
+                            
+                        //}
+                        if (_alphacnt > 0 && _betacnt > 0)
                         {
-                            if (_efficiencyList.First(x => x.NuclideType == "α").NuclideName == CmbNuclideSelect.Text)
+                            if (_changedEfficiency.NuclideType == "α")
                             {
                                 //alpha 串道计数
                                 calibration_AlphaBetaPercent.AlphaBetaPercent = _betacnt / _alphacnt * 100;
                             }
-                            else
+                            else if (_changedEfficiency.NuclideType == "β")
                             {
                                 //beta 串道计数
                                 calibration_AlphaBetaPercent.AlphaBetaPercent = _alphacnt / _betacnt * 100;
                             }
-                            
                         }
-                        
+                        else
+                        {
+                            calibration_AlphaBetaPercent.AlphaBetaPercent = 0;
+                        }
 
                         if (calibration_AlphaBetaPercent.AlphaBetaPercent<=0)
                         {
@@ -996,35 +1159,95 @@ namespace HFM
                 return;
             } 
             #endregion
-            //当前发送报文类型换成p写入
-            _messageType = MessageType.PSet;
+            
             //当前的高压和阈值信息写入对象
             _setChannelParameter.PresetHV =  Convert.ToSingle(TxtHV.Text);
             _setChannelParameter.AlphaThreshold = Convert.ToSingle(Txtα.Text);
             _setChannelParameter.BetaThreshold = Convert.ToSingle(Txtβ.Text);
-           
+            //点击刻度和设置后使按钮不可用
+            BtnCalibrate.Enabled = false;
+            BtnSet.Enabled = false;
             //判断串口是否打开
             if (_commPort.Opened == true)
             {
-                //判断线程是否运行
-                if (bkWorkerReceiveData.IsBusy == false)
+                int errorNumber = 0; //下发自检报文出现错误计数器
+                byte[] buffMessage = new byte[62];//报文长度
+                IList<ChannelParameter> _first_setChannelP = new List<ChannelParameter>();
+                IList<ChannelParameter> _second_setChanelP = new List<ChannelParameter>();
+                int i = 0;
+                //把当前的高压阈值修改的数据对象添加到列表中
+                foreach (var itme in _channelParameters)
                 {
-                    bkWorkerReceiveData.RunWorkerAsync();
+                    if (i < 4)
+                    {
+                        _first_setChannelP.Add(itme);
+                    }
+                    else
+                    {
+                        _second_setChanelP.Add(itme);
+                    }
+                    i++;
+                }
+                //_channelParameters.Clear();
+                _second_setChanelP.RemoveAt(3);
+                _second_setChanelP.Add(_setChannelParameter);
+                //生成报文
+                buffMessage = Message.BuildMessage(_first_setChannelP);
+                Thread.Sleep(20);
+                buffMessage = Message.BuildMessage(_second_setChanelP);
+                Thread.Sleep(10);
+                //成功则关闭线程
+                try
+                {
+                    if (Message.SendMessage(buffMessage, _commPort))
+                    {
+                        //写入成功,返回p指令读取当前高压以确认更改成功
+                        if (_isEnglish)
+                        {
+                            MessageBox.Show("Data has been distributed!", "Message");
+                        }
+                        else
+                        {
+                            MessageBox.Show("数据已经下发!", "提示");
+                        }
+                        Thread.Sleep(1000);
+                        //点击刻度和设置后使按钮可用
+                        BtnCalibrate.Enabled = true;
+                        BtnSet.Enabled = true;
+                    }
+                    //发送失败次数大于5次,提示错误并挂起线程
+                    else
+                    {
+                        errorNumber++;
+                        if (errorNumber > 5)
+                        {
+                            _tools.PrompMessage(2);
+                            //点击刻度和设置后使按钮可用
+                            BtnCalibrate.Enabled = true;
+                            BtnSet.Enabled = true;
+                            return;
+                        }
+                        Thread.Sleep(200);
+
+                    }
+                }
+                catch
+                {
+                    //点击刻度和设置后使按钮可用
+                    BtnCalibrate.Enabled = true;
+                    BtnSet.Enabled = true;
+                    MessageBox.Show("设置失败,请重新尝试!");
                 }
             }
             else
             {
                 //错误提示
                 _tools.PrompMessage(2);
+                //点击刻度和设置后使按钮可用
+                BtnCalibrate.Enabled = true;
+                BtnSet.Enabled = true;
                 return;
             }
-            ////点击刻度和设置后使按钮不可用
-            //BtnCalibrate.Enabled = false;
-            //BtnSet.Enabled = false;
-            ////按钮可以使用
-            //BtnCalibrate.Enabled = true;
-            //BtnSet.Enabled = true;
-
         }
         #endregion
 
@@ -1059,6 +1282,10 @@ namespace HFM
             {
                 TxtMeasuringTime.Text ="1";
             }
+            else if (Convert.ToInt32( TxtMeasuringTime.Text)>99)
+            {
+                _tools.PrompMessage(18);
+            }
             //次数为0强制赋值为1,避免程序异常或进入死循环
             if (TxtCount.Text == "" || TxtCount.Text == Convert.ToString(0))
             {
@@ -1086,7 +1313,11 @@ namespace HFM
             {
 
             }
-            if (_isEnglish==true?MessageBox.Show(@"Please enter the emissivity!", "Message") ==DialogResult.OK: MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示") == DialogResult.OK)
+            //点击刻度和设置后使按钮不可用
+            BtnCalibrate.Enabled = false;
+            BtnSet.Enabled = false;
+            GrpCalibration.Enabled = false;
+            if (_isEnglish==true?MessageBox.Show(@"Please enter the emissivity!", "Message", MessageBoxButtons.OKCancel) ==DialogResult.OK: MessageBox.Show(@"进行本底测量，确认远离放射源？", @"提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 //刻度时清理上一次的读数
                 _alphacps = 0;
@@ -1102,10 +1333,14 @@ namespace HFM
                     bkWorkerReceiveData.RunWorkerAsync();
                 }
             }
-            //点击刻度和设置后使按钮不可用
-            BtnCalibrate.Enabled = false;
-            BtnSet.Enabled = false;
-            GrpCalibration.Enabled = false;
+            else
+            {
+                //点击刻度和设置后使按钮可用
+                BtnCalibrate.Enabled = true;
+                BtnSet.Enabled = true;
+                GrpCalibration.Enabled = true;
+            }
+            
         }
 
 
@@ -1152,12 +1387,20 @@ namespace HFM
         /// </summary>
         private void FrmCalibration_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _commPort.Close();
+            //_commPort.Close();
             bkWorkerReceiveData.CancelAsync();
             Thread.Sleep(200);
+            this.Controls.Clear();
         }
-        #endregion
 
-      
+        #endregion
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (!IsHandleCreated)
+            {
+                this.Close();
+            }
+        }
     }
 }

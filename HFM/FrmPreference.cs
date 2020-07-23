@@ -26,19 +26,15 @@ using System.Configuration;
 using HFM.Components;
 using System.Threading;
 using Message = HFM.Components.Message;
-
+using System.Diagnostics;
 
 namespace HFM
 {
     public partial class FrmPreference : Form
-    {
-        public FrmPreference()
-        {
-            InitializeComponent();
-        }
-
+    {        
         #region 实例字段
         //运行参数设置
+        private IList<Channel> channelsyz = new Channel().GetChannel();
         private ChannelParameter channelParameter = new ChannelParameter();//道盒信息(α阈值等)
         private HFM.Components.SystemParameter system = new HFM.Components.SystemParameter();//(自检时间、单位等)
         private FactoryParameter factoryParameter = new FactoryParameter();//仪器设备信息(IP地址、软件名称、是否双手探测器等)
@@ -55,7 +51,7 @@ namespace HFM
         /// <summary>
         /// 串口实例
         /// </summary>
-        private CommPort _commPort = new CommPort();
+        private CommPort _commPort = null;
         /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
@@ -64,8 +60,8 @@ namespace HFM
         /// 当前发送报文的类型
         /// </summary>
         private MessageType _messageType;
-
         
+           
         /// <summary>
         /// 读取数据
         /// </summary>
@@ -83,6 +79,18 @@ namespace HFM
         private MessageType messageType;
 
 
+        #endregion
+
+        #region 构造函数
+        public FrmPreference()
+        {
+            InitializeComponent();
+        }
+        public FrmPreference(CommPort commPort)
+        {
+            this._commPort = commPort;
+            InitializeComponent();
+        }
         #endregion
 
         #region 端口字符串创建
@@ -121,7 +129,19 @@ namespace HFM
         /// <param name="e"></param>
         private void FrmPreference_Load(object sender, EventArgs e)
         {
-            OpenPort();
+            for (int i = 0; i < DgvAlphaSet.Columns.Count; i++)
+            {
+                DgvAlphaSet.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < DgvBetaSet.Columns.Count; i++)
+            {
+                DgvBetaSet.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < DgvMainPreferenceSet.Columns.Count; i++)
+            {
+                DgvMainPreferenceSet.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            //OpenPort();
             //线程支持异步取消
             backgroundWorker_Preference.WorkerSupportsCancellation = true;
             //线程支持报告进度
@@ -157,104 +177,10 @@ namespace HFM
                         break;
                 }
             }
-
         } 
         #endregion
 
-        #region 页面切换
-        /// <summary>
-        /// 页面切换
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (User.LandingUser.Role != 1)
-            {
-                switch (factoryParameter.GetParameter().MeasureType)
-                {
-                    case "α":
-                        switch (TabPresence.SelectedIndex)
-                        {
-                            case 0:
-                                GetProferenceData();
-                                break;
-                            case 1:
-                                GetAlphaData();
-                                break;
-                            case 2:
-                                GetClothesData();
-                                break;
-                        }
-                        break;
-                    case "β":
-                        switch (TabPresence.SelectedIndex)
-                        {
-                            case 0:
-                                GetProferenceData();
-                                break;
-                            case 1:
-                                GetBetaData();
-                                break;
-                            case 2:
-                                GetClothesData();
-                                break;
-                        }
-                        break;
-                    case "α/β":
-                        switch (TabPresence.SelectedIndex)
-                        {
-                            case 0:
-                                GetProferenceData();
-                                break;
-                            case 1:
-                                GetAlphaData();
-                                break;
-                            case 2:
-                                GetBetaData();
-                                break;
-                            case 3:
-                                GetClothesData();
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-            else
-            {
-                //根据页面索引更新当前页面值
-                switch (TabPresence.SelectedIndex)
-                {
-                    case 0:
-                        GetProferenceData();
-                        break;
-                    case 1:
-                        GetAlphaData();
-                        break;
-                    case 2:
-                        GetBetaData();
-                        break;
-                    case 3:
-                        GetClothesData();
-                        break;
-                    case 4:
-                        GetMainProferenceData();
-                        break;
-                    case 5:
-                        GetPortConfiguration();
-                        break;
-                    default:
-                        MessageBox.Show("选择有误，请重新选择");
-                        break;
-                }
-
-            }
-
-        } 
-        #endregion
+        
 
         #region 获得数据库数据并显示出来
         /// <summary>
@@ -283,7 +209,14 @@ namespace HFM
             //仪器编号
             TxtInstrumentNum.Text = factoryParameter.InstrumentNum.ToString();
             //软件名称
-            CmbSoftName.Text = factoryParameter.SoftName;
+            if (_isEnglish==true)
+            {
+                CmbSoftName.Text = Tools.EnSoftName(factoryParameter.SoftName);
+            }
+            else
+            {
+                CmbSoftName.Text = factoryParameter.SoftName;
+            }            
             //探测类型
             CmbUnclideType.Text = factoryParameter.MeasureType;
 
@@ -329,16 +262,16 @@ namespace HFM
                 }
             }
             //未启用则数据修改只能对左手进行
-            if (factoryParameter.IsDoubleProbe!=true)
-            {
-                //使外手心同步与内手心
-                ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
-                ((TextBox)a[3]).Text = ((TextBox)a[2]).Text;
-                ((TextBox)a[1]).Enabled = false;
-                ((TextBox)a[3]).Enabled = false;
-                ((Label)label[1]).Enabled = false;
-                ((Label)label[3]).Enabled = false;
-            }
+            //if (factoryParameter.IsDoubleProbe!=true)
+            //{
+            //    //使外手心同步与内手心
+            //    ((TextBox)a[1]).Text = ((TextBox)a[0]).Text;
+            //    ((TextBox)a[3]).Text = ((TextBox)a[2]).Text;
+            //    ((TextBox)a[1]).Enabled = false;
+            //    ((TextBox)a[3]).Enabled = false;
+            //    ((Label)label[1]).Enabled = false;
+            //    ((Label)label[3]).Enabled = false;
+            //}
             #endregion
 
             #region 设备配置
@@ -460,6 +393,11 @@ namespace HFM
             //选出启用的设备
             for (int i = 0; i < probeParameters.Count; i++)
             {
+                //单探测器不启用手背
+                if (factoryParameter.IsDoubleProbe==false && (probeParameters[i].ProbeChannel.ChannelID == 2 || probeParameters[i].ProbeChannel.ChannelID == 4))
+                {
+                    continue;
+                }
                 //设备启用且核素类型为α并除去衣物参数
                 if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "α" && probeParameters[i].ProbeChannel.ChannelID != 7)
                 {
@@ -472,14 +410,14 @@ namespace HFM
                     {
                         DgvAlphaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
                     }
-                    DgvAlphaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
-                    DgvAlphaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
+                    DgvAlphaSet.Rows[index].Cells[1].Value =Math.Round( probeParameters[i].HBackground,3);
+                    DgvAlphaSet.Rows[index].Cells[2].Value = Math.Round(probeParameters[i].LBackground,3);
 
                     //污染警报根据系统测量参数中设定的测量单位显示数值
-                    DgvAlphaSet.Rows[index].Cells[3].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
+                    DgvAlphaSet.Rows[index].Cells[3].Value =Math.Round( Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea),3);
                     //高阶警报根据系统测量参数中设定的测量单位显示数值
-                    DgvAlphaSet.Rows[index].Cells[4].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
-                    DgvAlphaSet.Rows[index].Cells[5].Value = probeParameters[i].Efficiency;
+                    DgvAlphaSet.Rows[index].Cells[4].Value =Math.Round( Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea),3);
+                    DgvAlphaSet.Rows[index].Cells[5].Value =Math.Round( probeParameters[i].Efficiency,3);
                 }
                 //设备未启用(暂时不显示)
                 else
@@ -562,6 +500,11 @@ namespace HFM
             //选出启用的设备
             for (int i = 0; i < probeParameters.Count; i++)
             {
+                //单探测器不启用手背
+                if (factoryParameter.IsDoubleProbe == false && (probeParameters[i].ProbeChannel.ChannelID == 2 || probeParameters[i].ProbeChannel.ChannelID == 4))
+                {
+                    continue;
+                }
                 //设备启用且核素类型为α并除去衣物参数
                 if (probeParameters[i].ProbeChannel.IsEnabled && probeParameters[i].NuclideType == "β" && probeParameters[i].ProbeChannel.ChannelID != 7)
                 {
@@ -574,11 +517,11 @@ namespace HFM
                     {
                         DgvBetaSet.Rows[index].Cells[0].Value = probeParameters[i].ProbeChannel.ChannelName;
                     }
-                    DgvBetaSet.Rows[index].Cells[1].Value = probeParameters[i].HBackground;
-                    DgvBetaSet.Rows[index].Cells[2].Value = probeParameters[i].LBackground;
-                    DgvBetaSet.Rows[index].Cells[3].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
-                    DgvBetaSet.Rows[index].Cells[4].Value = Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea);
-                    DgvBetaSet.Rows[index].Cells[5].Value = probeParameters[i].Efficiency;
+                    DgvBetaSet.Rows[index].Cells[1].Value =Math.Round( probeParameters[i].HBackground,3);
+                    DgvBetaSet.Rows[index].Cells[2].Value = Math.Round(probeParameters[i].LBackground, 3);
+                    DgvBetaSet.Rows[index].Cells[3].Value = Math.Round(Tools.UnitConvertCPSTo(probeParameters[i].Alarm_1, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea), 3);
+                    DgvBetaSet.Rows[index].Cells[4].Value = Math.Round(Tools.UnitConvertCPSTo(probeParameters[i].Alarm_2, system.MeasurementUnit, efficiency[i].Efficiency, probeParameters[i].ProbeChannel.ProbeArea), 3);
+                    DgvBetaSet.Rows[index].Cells[5].Value = Math.Round(probeParameters[i].Efficiency, 3);
                 }
                 //设备未启用(暂时不显示)
                 else
@@ -693,6 +636,15 @@ namespace HFM
             //选出所有设备
             for (int i = 0; i < channelParameters.Count; i++)
             {
+                //单探测器不启用手背
+                if (factoryParameter.IsDoubleProbe==false&&(channelParameters[i].Channel.ChannelID==2|| channelParameters[i].Channel.ChannelID == 4))
+                {
+                    continue;
+                }
+                if (channelParameters[i].Channel.IsEnabled==false)
+                {
+                    continue;
+                }
                 int index = this.DgvMainPreferenceSet.Rows.Add();
                 if (_isEnglish)
                 {
@@ -819,6 +771,7 @@ namespace HFM
                             {
                                 MessageBox.Show("读取完成.");
                             }
+                            TabPresence.Enabled = true;
                             break;
                         }
                         if (Message.SendMessage(buffMessage, _commPort))    //正式
@@ -855,30 +808,63 @@ namespace HFM
                         IList<ChannelParameter> _first_setChannelP = new List<ChannelParameter>();
                         //道盒5-7通道解析原数据
                         IList<ChannelParameter> _second_setChanelP = new List<ChannelParameter>();
+                        //IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
                         int i = 0;
-                        //把当前的高压阈值修改的数据对象添加到列表中
-                        foreach (var itme in _channelParameters)
+                        if (_channelParameters.Count<5)
                         {
-                            if (i < 4)
+                            foreach (var itme in _channelParameters)
                             {
                                 _first_setChannelP.Add(itme);
+                                i++;
                             }
-                            else
+                            while (_first_setChannelP.Count<=4)
                             {
-                                _second_setChanelP.Add(itme);
+                                _first_setChannelP.Add(_channelParameters[0]);
                             }
-                            i++;
+                        }
+                        else
+                        {
+                            //把当前的高压阈值修改的数据对象添加到列表中
+                            foreach (var itme in _channelParameters)
+                            {
+                                if (i < 4)
+                                {
+                                    _first_setChannelP.Add(itme);
+                                }
+                                else
+                                {
+                                    _second_setChanelP.Add(itme);
+                                }
+                                i++;
+                            }
+                            while (_second_setChanelP.Count <= 4)
+                            {
+                                _second_setChanelP.Add(_channelParameters[0]);
+                            }
                         }
                         //道盒5-7通道列表加一个空对象,(3个对象解析会报错,必须四个为一组解析)
-                        _second_setChanelP.Add(_first_setChannelP[0]);
-
+                        //_second_setChanelP.Add(_first_setChannelP[0]);
+                        byte[] buffMessagePset1 = null;
+                        byte[] buffMessagePset2 = null;
                         // _second_setChanelP.RemoveAt(3);
                         // _second_setChanelP.Add(_setChannelParameter);
-                        //生成报文
-                        //道盒1-4通道解析完成的数据
-                        byte[] buffMessagePset1 = Message.BuildMessage(_first_setChannelP);
-                        //道盒5-7通道解析完成的数据,
-                        byte[] buffMessagePset2 = Message.BuildMessage(_second_setChanelP);
+                        if (_channelParameters.Count<5)
+                        {
+                            //生成报文
+                            //道盒1-4通道解析完成的数据
+                            buffMessagePset1 = Message.BuildMessage(_first_setChannelP);
+                        }
+                        else
+                        {
+                            //生成报文
+                            //道盒1-4通道解析完成的数据
+                            buffMessagePset1 = Message.BuildMessage(_first_setChannelP);
+                            //道盒5-7通道解析完成的数据,
+                            buffMessagePset2 = Message.BuildMessage(_second_setChanelP);
+                        }
+                        _channelParameters.Clear();
+                        _first_setChannelP.Clear();
+                        _second_setChanelP.Clear();
                         //成功则关闭线程
                         try
                         {
@@ -977,6 +963,7 @@ namespace HFM
             //接收报文无误，进行报文解析，并将解析后的道盒数据存储到channelParameters中 
             try
             {
+                 IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
                 if (receiveBufferMessage[0] == Convert.ToByte('P'))
                 {
                     DgvMainPreferenceSet.Rows.Clear();
@@ -988,6 +975,12 @@ namespace HFM
                     }
                     foreach (var itemParameter in _channelParameters)
                     {
+                        //单探测器启用则手背不显示
+                        //通道不启用则不显示
+                        if ((factoryParameter.IsDoubleProbe==false && (itemParameter.Channel.ChannelID==2|| itemParameter.Channel.ChannelID == 4))||itemParameter.Channel.IsEnabled==false)
+                        {
+                            continue;
+                        }
                         //显示内容
                         int index = this.DgvMainPreferenceSet.Rows.Add();
                         DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
@@ -1014,33 +1007,33 @@ namespace HFM
         /// <summary>
         /// 开启串口封装的方法
         /// </summary>
-        private void OpenPort()
-        {
+        //private void OpenPort()
+        //{
             //从配置文件获得当前串口配置
-            if (_commPort.Opened)
-            {
-                _commPort.Close();
-            }
-            _commPort.GetCommPortSet("commportSet");
-            //打开串口
-            try
-            {
-                _commPort.Open();
-                if (_commPort.Opened)
-                {
-                    Tools.FormBottomPortStatus = true;
-                }
-                else
-                {
-                    Tools.FormBottomPortStatus = false;
-                }
-            }
-            catch
-            {
-                _tools.PrompMessage(1);
+            //if (_commPort.Opened)
+            //{
+            //    _commPort.Close();
+            //}
+            //_commPort.GetCommPortSet("commportSet");
+            ////打开串口
+            //try
+            //{
+            //    _commPort.Open();
+            //    if (_commPort.Opened)
+            //    {
+            //        Tools.FormBottomPortStatus = true;
+            //    }
+            //    else
+            //    {
+            //        Tools.FormBottomPortStatus = false;
+            //    }
+            //}
+            //catch
+            //{
+            //    _tools.PrompMessage(1);
 
-            }
-        }
+            //}
+        //}
 
         #endregion
 
@@ -1054,16 +1047,53 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnPreferenceOk_Click(object sender, EventArgs e)
         {
+            if(RdoSingleHand.Checked==true)
+            {
+                if(TxtLeftInProbeArea.Text!=TxtLeftOutProbeArea.Text||TxtRightInProbeArea.Text!=TxtRightOutProbeArea.Text)
+                {
+                    MessageBox.Show("手心手背探测面积必须一致，请重新输入！");
+                    return;
+                }
+            }
             #region 系统参数
             //首先获得默认参数,通过对原始数据赋值来实现更新
             HFM.Components.SystemParameter system = new HFM.Components.SystemParameter().GetParameter();
             //system = system.GetParameter();
-            system.SelfCheckTime = int.Parse(TxtSelfCheckTime.Text);
-            system.SmoothingTime = Convert.ToInt32(TxtSmoothingTime.Text);
-            system.MeasuringTime = int.Parse(TxtMeasuringTime.Text);
-            system.MeasurementUnit = CmbMeasurementUnit.Text;
-            system.AlarmTime = int.Parse(TxtAlarmTime.Text);
-            system.BkgUpdate = int.Parse(TxtBKGUpdate.Text);
+            try
+            {
+                system.SelfCheckTime = int.Parse(TxtSelfCheckTime.Text);
+                system.SmoothingTime = Convert.ToInt32(TxtSmoothingTime.Text);
+                system.MeasuringTime = int.Parse(TxtMeasuringTime.Text);
+                system.MeasurementUnit = CmbMeasurementUnit.Text;
+                system.AlarmTime = int.Parse(TxtAlarmTime.Text);
+                system.BkgUpdate = int.Parse(TxtBKGUpdate.Text);
+            }
+            catch (Exception)
+            {
+                _tools.PrompMessage(16);
+                return;
+            }
+            
+            if (system.SelfCheckTime<20 )
+            {
+                MessageBox.Show(@"自检时间必须大于 20s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
+            if (system.SmoothingTime<10 )
+            {
+                MessageBox.Show(@"平滑时间必须大于 10s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
+            if (system.MeasuringTime<4)
+            {
+                MessageBox.Show(@"测量时间必须大于 3s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
+            if (system.AlarmTime<2)
+            {
+                MessageBox.Show(@"报警时间必须大于 1s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
             #endregion
 
             #region 探测面积
@@ -1086,20 +1116,42 @@ namespace HFM
                     {
                         if (channels[j].ChannelID == i+1)
                         {
-                            channels[j].ProbeArea = Convert.ToSingle(a[i].Text);
+                            try
+                            {
+                                channels[j].ProbeArea = Convert.ToSingle(a[i].Text);
+                            }
+                            catch (Exception)
+                            {
+                                _tools.PrompMessage(16);
+                                return;
+                            }
                         }
                     }
-                    
                 }
             }
             #endregion
 
             #region 工厂参数
             FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
-            factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
-            factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
-            factoryParameterBtn.SoftName = CmbSoftName.Text;
-            
+            try
+            {
+                factoryParameterBtn.SmoothingFactor = int.Parse(TxtSmoothingFactor.Text);
+                factoryParameterBtn.InstrumentNum = TxtInstrumentNum.Text;
+            }
+            catch (Exception)
+            {
+                _tools.PrompMessage(16);
+                return;
+            }
+           //Tools tools = new Tools();
+            if (_isEnglish==true)
+            {
+                factoryParameterBtn.SoftName = Tools.CnSoftName(CmbSoftName.Text);
+            }
+            else
+            {
+                factoryParameterBtn.SoftName = CmbSoftName.Text;
+            }
             factoryParameterBtn.MeasureType = CmbUnclideType.Text;
             
             #endregion
@@ -1251,43 +1303,154 @@ namespace HFM
             }
 
             #endregion
-
+            float alarm_1;
+            float alarm_2;
             #region α参数
             int setDataCount = 0;//更新成功的信息条数
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//更新α参数
             IList<EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
             ProbeParameter p = new ProbeParameter();
             EfficiencyParameter efficiency = new EfficiencyParameter();
+            EfficiencyParameter efficiencytwo = new EfficiencyParameter();//单探测器启用后手心的数据同步到手背中
             for (int i = 0; i < DgvAlphaSet.RowCount; i++)
             {
-                float alarm_1 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);//污染警报
-                float alarm_2 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[4].Value);//高阶警报
-
-
+                try
+                {
+                    alarm_1 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[3].Value);//污染警报
+                    alarm_2 = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[4].Value);//高阶警报
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
+                
+                
                 //efficiency.Channel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
-                efficiency.Channel = Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
-                efficiency.NuclideType = "α";
-                efficiency.NuclideName = nuclidename;
-                efficiency.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                
+                
                 //efficiencyParameters.Add(efficiency);
 
                 //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
-                p.ProbeChannel= Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
-                p.NuclideType = "α";
-                p.ProbeType = "闪烁体";
-                p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
-                p.LBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[2].Value);
-                //按测量单位转换成cps
-                p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
-                    p.ProbeChannel.ProbeArea);
-                //按测量单位转换成cps
-                p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
-                    p.ProbeChannel.ProbeArea);
+                try
+                {
+                    efficiency.Channel = Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                    efficiency.NuclideType = "α";
+                    efficiency.NuclideName = nuclidename;
+                    efficiency.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                    p.ProbeChannel = Channels.First(x => x.ChannelName == DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                    p.NuclideType = "α";
+                    p.ProbeType = "闪烁体";
+                    p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
+                    p.LBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[2].Value);
+                    //按测量单位转换成cps
+                    p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
+                        p.ProbeChannel.ProbeArea);
+                    //按测量单位转换成cps
+                    p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
+                        p.ProbeChannel.ProbeArea);
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
+                
+                if (p.Alarm_2<p.Alarm_1)
+                {
+                    if (_isEnglish==true)
+                    {
+                        MessageBox.Show(@"High price alarm must be greater than pollution alarm！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"高价报警必须大于污染报警！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    return;
+                }
                 p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
                 //probeParameters.Add(p);
                 if (efficiency.SetParameter(efficiency)==true && p.SetParameter(p)==true)
                 {
                     setDataCount++;
+                }
+                //单探测器启用
+                if (factoryParameter.IsDoubleProbe == false)
+                {
+                    if (efficiency.Channel.ChannelID == 1)
+                    {
+                        
+                        //efficiencyParameters.Add(efficiency);
+
+                        //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                        try
+                        {
+                            efficiencytwo.Channel = Channels.First(x => x.ChannelID == 2);
+                            efficiencytwo.NuclideType = "α";
+                            efficiencytwo.NuclideName = nuclidename;
+                            efficiencytwo.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                            p.ProbeChannel = Channels.First(x => x.ChannelID == 2);
+                            p.NuclideType = "α";
+                            p.ProbeType = "闪烁体";
+                            p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
+                            p.LBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[2].Value);
+                            //按测量单位转换成cps
+                            p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
+                                p.ProbeChannel.ProbeArea);
+                            //按测量单位转换成cps
+                            p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
+                                p.ProbeChannel.ProbeArea);
+                            p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                        }
+                        catch (Exception)
+                        {
+                            _tools.PrompMessage(16);
+                            return;
+                        }
+                        
+                        //probeParameters.Add(p);
+                        if (efficiency.SetParameter(efficiencytwo) == true && p.SetParameter(p) == true)
+                        {
+                            setDataCount++;
+                        }
+                    }
+                    if (efficiency.Channel.ChannelID == 3)
+                    {
+                        
+                        //efficiencyParameters.Add(efficiency);
+
+                        //p.ProbeChannel = new Channel().GetChannel(DgvAlphaSet.Rows[i].Cells[0].Value.ToString());
+                        try
+                        {
+                            efficiencytwo.Channel = Channels.First(x => x.ChannelID == 4);
+                            efficiencytwo.NuclideType = "α";
+                            efficiencytwo.NuclideName = nuclidename;
+                            efficiencytwo.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                            p.ProbeChannel = Channels.First(x => x.ChannelID == 4);
+                            p.NuclideType = "α";
+                            p.ProbeType = "闪烁体";
+                            p.HBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[1].Value);
+                            p.LBackground = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[2].Value);
+                            //按测量单位转换成cps
+                            p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,
+                                p.ProbeChannel.ProbeArea);
+                            //按测量单位转换成cps
+                            p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,
+                                p.ProbeChannel.ProbeArea);
+                            p.Efficiency = Convert.ToSingle(DgvAlphaSet.Rows[i].Cells[5].Value);
+                        }
+                        catch (Exception)
+                        {
+                            _tools.PrompMessage(16);
+                            return;
+                        }
+                        
+                        //probeParameters.Add(p);
+                        if (efficiency.SetParameter(efficiencytwo) == true && p.SetParameter(p) == true)
+                        {
+                            setDataCount++;
+                        }
+                    }
                 }
             }
             #endregion
@@ -1374,38 +1537,152 @@ namespace HFM
             #endregion
 
             #region β参数
+            float alarm_1;
+            float alarm_2;
             int setDataCount = 0;//更新成功的信息条数
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//更新β参数
             IList<HFM.Components.EfficiencyParameter> efficiencyParameters = new List<HFM.Components.EfficiencyParameter>();//更新效率
             ProbeParameter p = new ProbeParameter();
             HFM.Components.EfficiencyParameter efficiency = new HFM.Components.EfficiencyParameter();
+            HFM.Components.EfficiencyParameter efficiencytwo = new HFM.Components.EfficiencyParameter();
             for (int i = 0; i < DgvBetaSet.RowCount; i++)
             {
-                float alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);//污染警报
-                float alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);//高阶警报
+                try
+                {
+                    alarm_1 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[3].Value);//污染警报
+                    alarm_2 = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[4].Value);//高阶警报
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
+                
                 var listChannels= Channels.First(x => x.ChannelName == DgvBetaSet.Rows[i].Cells[0].Value.ToString()|| x.ChannelName_English== DgvBetaSet.Rows[i].Cells[0].Value.ToString());
                 //efficiency.Channel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
-                efficiency.Channel = listChannels;
-                efficiency.NuclideType = "β";
-                efficiency.NuclideName = nuclidename;
-                efficiency.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                
+                
                 //efficiencyParameters.Add(efficiency);
 
                 //p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
-                p.ProbeChannel = listChannels;
-                p.NuclideType = "β";
-                p.ProbeType = "闪烁体";
-                p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
-                p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
-                //按测量单位转换成cps
-                p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency,p.ProbeChannel.ProbeArea);
-                //按测量单位转换成cps
-                p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency,p.ProbeChannel.ProbeArea);
+                try
+                {
+                    efficiency.Channel = listChannels;
+                    efficiency.NuclideType = "β";
+                    efficiency.NuclideName = nuclidename;
+                    efficiency.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                    p.ProbeChannel = listChannels;
+                    p.NuclideType = "β";
+                    p.ProbeType = "闪烁体";
+                    p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
+                    p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
+
+                    //按测量单位转换成cps
+                    p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                    //按测量单位转换成cps
+                    p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
+                
+                if (p.Alarm_2 < p.Alarm_1)
+                {
+                    if (_isEnglish == true)
+                    {
+                        MessageBox.Show(@"High price alarm must be greater than pollution alarm！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"高价报警必须大于污染报警！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    return;
+                }
+
                 p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+
                 //probeParameters.Add(p);
                 if (efficiency.SetParameter(efficiency)&&p.SetParameter(p))
                 {
                     setDataCount++;
+                }
+                //单探测器启用
+                if (factoryParameter.IsDoubleProbe == false)
+                {
+                    if (listChannels.ChannelID == 1)
+                    {
+                        
+                        //efficiencyParameters.Add(efficiency);
+
+                        //p.ProbeChannel = new Channel().GetChannel(DgvBetaSet.Rows[i].Cells[0].Value.ToString());
+                        try
+                        {
+                            listChannels = Channels.First(x => x.ChannelID == 2);
+                            efficiencytwo.Channel = listChannels;
+                            efficiencytwo.NuclideType = "β";
+                            efficiencytwo.NuclideName = nuclidename;
+                            efficiencytwo.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                            p.ProbeChannel = listChannels;
+                            p.NuclideType = "β";
+                            p.ProbeType = "闪烁体";
+                            p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
+                            p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
+
+                            //按测量单位转换成cps
+                            p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                            //按测量单位转换成cps
+                            p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                            p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                        }
+                        catch (Exception)
+                        {
+                            _tools.PrompMessage(16);
+                            return;
+                        }
+                        //probeParameters.Add(p);
+                        if (efficiency.SetParameter(efficiencytwo) && p.SetParameter(p))
+                        {
+                            setDataCount++;
+                        }
+                    }
+                    if (listChannels.ChannelID == 3)
+                    {
+                        
+                        //efficiencyParameters.Add(efficiency);
+                        try
+                        {
+                            listChannels = Channels.First(x => x.ChannelID == 4);
+                            efficiencytwo.Channel = listChannels;
+                            efficiencytwo.NuclideType = "β";
+                            efficiencytwo.NuclideName = nuclidename;
+                            efficiencytwo.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                            p.ProbeChannel = listChannels;
+                            p.NuclideType = "β";
+                            p.ProbeType = "闪烁体";
+                            p.HBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[1].Value);
+                            p.LBackground = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[2].Value);
+
+                            //按测量单位转换成cps
+                            p.Alarm_1 = Tools.UnitConvertToCPS(alarm_1, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                            //按测量单位转换成cps
+                            p.Alarm_2 = Tools.UnitConvertToCPS(alarm_2, system.MeasurementUnit, efficiency.Efficiency, p.ProbeChannel.ProbeArea);
+                            p.Efficiency = Convert.ToSingle(DgvBetaSet.Rows[i].Cells[5].Value);
+                        }
+                        catch (Exception)
+                        {
+                            _tools.PrompMessage(16);
+                            return;
+                        }
+                        
+
+                        //probeParameters.Add(p);
+                        if (efficiency.SetParameter(efficiencytwo) && p.SetParameter(p))
+                        {
+                            setDataCount++;
+                        }
+                    }
                 }
             }
             #endregion
@@ -1509,6 +1786,7 @@ namespace HFM
             #endregion
 
             #region 衣物探头
+            
             //衣物离线自检时间数据在SystemParameter中，故需要单独存储
             Components.SystemParameter systemParameter = new Components.SystemParameter();
             systemParameter.GetParameter();//或当当前数据
@@ -1528,14 +1806,34 @@ namespace HFM
             {
                 effciency.NuclideType = "C";
             }
-
-            probeParameter.ProbeChannel = effciency.Channel;
-            probeParameter.NuclideType = effciency.NuclideType;
-            probeParameter.ProbeType = "GM管";
-            probeParameter.HBackground = Convert.ToSingle(TxtClothesHBackground.Text);
-            probeParameter.LBackground = Convert.ToSingle(TxtClothesLBackground.Text);
-            probeParameter.Alarm_1 = Convert.ToSingle(TxtClothesAlarm_1.Text);
-            probeParameter.Alarm_2 = Convert.ToSingle(TxtClothesAlarm_2.Text);
+            try
+            {
+                probeParameter.ProbeChannel = effciency.Channel;
+                probeParameter.NuclideType = effciency.NuclideType;
+                probeParameter.ProbeType = "GM管";
+                probeParameter.HBackground = Convert.ToSingle(TxtClothesHBackground.Text);
+                probeParameter.LBackground = Convert.ToSingle(TxtClothesLBackground.Text);
+                probeParameter.Alarm_1 = Convert.ToSingle(TxtClothesAlarm_1.Text);
+                probeParameter.Alarm_2 = Convert.ToSingle(TxtClothesAlarm_2.Text);
+            }
+            catch (Exception)
+            {
+                _tools.PrompMessage(16);
+                return;
+            }
+            
+            if (probeParameter.Alarm_2 < probeParameter.Alarm_1)
+            {
+                if (_isEnglish == true)
+                {
+                    MessageBox.Show(@"High price alarm must be greater than pollution alarm！", @"Message", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                }
+                else
+                {
+                    MessageBox.Show(@"高价报警必须大于污染报警！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                }
+                return;
+            }
             #endregion
 
             #region 更新数据库
@@ -1587,18 +1885,32 @@ namespace HFM
             //循环每一行
             for (int i = 0; i < DgvMainPreferenceSet.RowCount; i++) 
             {
-                ChannelParameter channelParameter = new ChannelParameter();
-                channelParameter.Channel = new Channel();
-                channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
-                channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
-                channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
-                channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
-                channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
-                channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
-                channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
-                channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
-                channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
-                channelParameters.Add(channelParameter);
+                //if (Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value)!=channelsyz[i].ChannelName)
+                //{
+                //    _tools.PrompMessage(16);
+                //    return;
+                //}
+                try
+                {
+                    ChannelParameter channelParameter = new ChannelParameter();
+                    channelParameter.Channel = new Channel();
+                    channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
+                    channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
+                    channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
+                    channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
+                    channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
+                    channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
+                    channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
+                    channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
+                    channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
+                    channelParameters.Add(channelParameter);
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
+                
             }
             //获得channelID
             for (int i = 0; i < channelParameters.Count; i++)
@@ -1660,14 +1972,20 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnMainPreferenceRead_Click(object sender, EventArgs e)
         {
-            
-            //当前发送报文类型换成p写入
+            ReadPreference();
+        }
+        /// <summary>
+        /// 读取道合参数的方法
+        /// </summary>
+        private void ReadPreference()
+        {
+            //当前发送报文类型换成p读取
             _messageType = MessageType.PRead;
-            
+            TabPresence.Enabled = false;
             //判断串口是否打开
             if (_commPort.Opened == true)
             {
-                if (backgroundWorker_Preference.IsBusy==true)
+                if (backgroundWorker_Preference.IsBusy == true)
                 {
                     backgroundWorker_Preference.CancelAsync();
                     Thread.Sleep(100);
@@ -1682,9 +2000,118 @@ namespace HFM
             {
                 //错误提示
                 _tools.PrompMessage(2);
+                TabPresence.Enabled = true;
                 return;
             }
         }
+        //private void ReadPreference()
+        //{
+        //    //使标签页不可用
+        //    //TabPresence.Enabled = false;
+        //    bool boxOnOff = false;
+        //    int errNumber = 0;
+        //    byte[] receiveBuffMessage = null;//接受的报文
+        //    byte[] buffMessage = new byte[62];//报文长度
+        //    //向下位机下发“p”指令码
+        //    buffMessage[0] = Convert.ToByte('P');
+
+
+
+        //    if (Message.SendMessage(buffMessage, _commPort))    //正式
+        //    {
+        //        //延时
+        //        Thread.Sleep(10);
+        //        receiveBuffMessage = Message.ReceiveMessage(_commPort);
+        //    }
+        //    else
+        //    {
+
+        //        if (_isEnglish == true)
+        //        {
+        //            MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+        //            return;
+        //        }
+
+        //    }
+
+
+        //    if (receiveBuffMessage.Length < 124)
+        //    {
+        //        errNumber++;
+        //        //数据接收出现错误次数超限
+        //        if (errNumber >= 2)
+        //        {
+        //            if (_isEnglish == true)
+        //            {
+        //                MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+        //                return;
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+        //                return;
+        //            }
+        //        }
+        //        return;
+        //    }
+
+
+        //    IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
+        //    if (receiveBuffMessage[0] == Convert.ToByte('P'))
+        //    {
+        //        DgvMainPreferenceSet.Rows.Clear();
+        //        //解析报文
+        //        _channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBuffMessage);
+        //        if (_channelParameters.Count == 8)
+        //        {
+        //            _channelParameters.RemoveAt(7);
+        //        }
+        //        foreach (var itemParameter in _channelParameters)
+        //        {
+        //            //单探测器启用则手背不显示
+        //            //通道不启用则不显示
+        //            if ((factoryParameter.IsDoubleProbe == false && (itemParameter.Channel.ChannelID == 2 || itemParameter.Channel.ChannelID == 4)) || itemParameter.Channel.IsEnabled == false)
+        //            {
+        //                continue;
+        //            }
+        //            //显示内容
+        //            int index = this.DgvMainPreferenceSet.Rows.Add();
+        //            DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
+        //            DgvMainPreferenceSet.Rows[index].Cells[1].Value = itemParameter.AlphaThreshold;
+        //            DgvMainPreferenceSet.Rows[index].Cells[2].Value = itemParameter.BetaThreshold;
+        //            DgvMainPreferenceSet.Rows[index].Cells[3].Value = itemParameter.PresetHV;
+        //            DgvMainPreferenceSet.Rows[index].Cells[4].Value = itemParameter.ADCFactor;
+        //            DgvMainPreferenceSet.Rows[index].Cells[5].Value = itemParameter.DACFactor;
+        //            DgvMainPreferenceSet.Rows[index].Cells[6].Value = itemParameter.HVFactor;
+        //            DgvMainPreferenceSet.Rows[index].Cells[7].Value = itemParameter.WorkTime;
+        //            DgvMainPreferenceSet.Rows[index].Cells[8].Value = itemParameter.HVRatio;
+        //        }
+        //    }
+        //    //_bkworkTime++;
+        //    //if (_bkworkTime > 3)
+        //    //{
+        //    //    _bkworkTime = 0;
+        //    Thread.Sleep(300);
+        //    if (_isEnglish)
+        //    {
+        //        MessageBox.Show("Read over.");
+
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("读取完成.");
+
+        //    }
+
+        //    //}
+        //}
+
+
         /// <summary>
         /// 写参数
         /// </summary>
@@ -1698,15 +2125,23 @@ namespace HFM
             {
                 ChannelParameter channelParameter = new ChannelParameter();
                 channelParameter.Channel = new Channel();
-                channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
-                channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
-                channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
-                channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
-                channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
-                channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
-                channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
-                channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
-                channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
+                try
+                {
+                    channelParameter.Channel.ChannelName = Convert.ToString(DgvMainPreferenceSet.Rows[i].Cells[0].Value);
+                    channelParameter.AlphaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[1].Value);
+                    channelParameter.BetaThreshold = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[2].Value);
+                    channelParameter.PresetHV = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[3].Value);
+                    channelParameter.ADCFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[4].Value);
+                    channelParameter.DACFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[5].Value);
+                    channelParameter.HVFactor = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[6].Value);
+                    channelParameter.WorkTime = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[7].Value);
+                    channelParameter.HVRatio = Convert.ToSingle(DgvMainPreferenceSet.Rows[i].Cells[8].Value);
+                }
+                catch (Exception)
+                {
+                    _tools.PrompMessage(16);
+                    return;
+                }
                 _channelParameters.Add(channelParameter);
             }
             //获得channelID
@@ -1774,37 +2209,159 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnPorSave_Click(object sender, EventArgs e)
         {
-            string _commportSetString = StringComport(0, TxtcommportSetPortNum.Text, TxtcommportSetBaudRate.Text,
-                TxtcommportSetDataBits.Text, TxtcommportSetStopBits.Text, TxtcommportSetParity.Text,"是");
-            string _commportSetOfReportSetString = StringComport(1, TxtcommportSetOfReportPortNum.Text, TxtcommportSetOfReportBaudRate.Text,
-                TxtcommportSetOfReportDataBits.Text, TxtcommportSetOfReportStopBits.Text, TxtcommportSetOfReportParity.Text,CmbIsEnabled.Text);
-            Configuration config =
-                ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings["commportSet"].Value = _commportSetString;
-            config.AppSettings.Settings["commportSetOfReport"].Value = _commportSetOfReportSetString;
-            //保存
-            config.Save();
+            foreach (Control control in GrpcommportSet.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (control.Text==null ||control.Text=="")
+                    {
+                        _tools.PrompMessage(16);
+                        return;
+                    }
+                }
+            }
+            foreach (Control control in GrpcommportSetOfReport.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (control.Text == null || control.Text == "")
+                    {
+                        _tools.PrompMessage(16);
+                        return;
+                    }
+                }
+            }
+            foreach (Control control in GrpInternet.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (control.Text == null || control.Text == "")
+                    {
+                        _tools.PrompMessage(16);
+                        return;
+                    }
+                }
+            }
+            try
+            {
+                string _commportSetString = StringComport(0, TxtcommportSetPortNum.Text, TxtcommportSetBaudRate.Text,
+                TxtcommportSetDataBits.Text, TxtcommportSetStopBits.Text, TxtcommportSetParity.Text, "是");
+                string _commportSetOfReportSetString = StringComport(1, TxtcommportSetOfReportPortNum.Text, TxtcommportSetOfReportBaudRate.Text,
+                    TxtcommportSetOfReportDataBits.Text, TxtcommportSetOfReportStopBits.Text, TxtcommportSetOfReportParity.Text, CmbIsEnabled.Text);
+                Configuration config =
+                    ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["commportSet"].Value = _commportSetString;
+                config.AppSettings.Settings["commportSetOfReport"].Value = _commportSetOfReportSetString;
+                //保存
+                config.Save();
+            }
+            catch (Exception)
+            {
+                _tools.PrompMessage(16);
+                return;
+            }
+            //不重启程序，加载配置文件
+            ConfigurationManager.RefreshSection("appSettings");
+            //读取当前串口配置
+            this._commPort.GetCommPortSet("commportSet");
 
+            string strSetCom = "";//数据采集端口
+            string strSetReCom = "数据上报端口未启用";//数据上报端口设置
+            if (CmbIsEnabled.Text == "是")
+            {
+                //读取当前上报端口配置
+                _commPort.GetCommPortSet("commportSetOfReport");
+                strSetReCom = "数据上报端口设置已配置";
+            }
+            
+            if (this._commPort.Opened)
+            {
+                this._commPort.Close();
+            }
+            try
+            {
+                this._commPort.Open();
+                strSetCom = "数据采集端口设置已连接;  ";
+            }
+            catch
+            {
+                //strSetCom = "数据采集端口设置错误，请重新进行设置";
+                MessageBox.Show("端口设置错误，请重新进行设置;");
+                return;
+            }
+            ////自动上报串口配置测试
+            //if(ChkIsConnectedAuto.Checked)
+            //{
+            //    CommPort commPort = new CommPort();
+            //    //读取当前串口配置
+            //    commPort.GetCommPortSet("commportSetOfReport");
+            //    if (commPort.Opened)
+            //    {
+            //        commPort.Close();
+            //    }
+            //    try
+            //    {
+            //        commPort.Open();
+            //        strSetReCom = "数据上报端口设置已连接";
+            //    }
+            //    catch
+            //    {
+                    
+            //        MessageBox.Show("数据上报端口设置错误，请重新进行设置");
+            //        return;
+            //    }
+            //}
+            //if (CmbIsEnabled.Text=="是")
+            //{
+            //    //CommPort commPort = new CommPort();
+            //    //不重启程序，加载配置文件
+            //    ConfigurationManager.RefreshSection("appSettings");
+            //    //读取当前串口配置
+            //    _commPort.GetCommPortSet("commportSetOfReport");
+            //    if (_commPort.Opened)
+            //    {
+            //        _commPort.Close();
+            //    }
+            //    try
+            //    {
+            //        _commPort.Open();
+            //        strSetReCom = "数据上报端口设置已连接";
+            //    }
+            //    catch
+            //    {
 
-            //网络保存
-            FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
-            //IP地址
-            factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
-                                            + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
-            //设备地址
-            factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
-            //通信端口
-            factoryParameterBtn.PortNumber = TxtPortNumber.Text;
-            //是否自动连接
-            factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
-            //上报时间间隔
-            factoryParameterBtn.ReportingTime = TxtReportingTime.Text;
-            factoryParameterBtn.SetParameter(factoryParameterBtn);
+            //        MessageBox.Show("数据上报端口设置错误，请重新进行设置");
+            //        return;
+            //    }
+            //}
+            try
+            {
+                //网络保存
+                FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
+                                                                                             //IP地址
+                factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
+                                                + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
+                //设备地址
+                factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
+                //通信端口
+                factoryParameterBtn.PortNumber = TxtPortNumber.Text;
+                //是否自动连接
+                factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+                //上报时间间隔
+                factoryParameterBtn.ReportingTime = TxtReportingTime.Text;
+                factoryParameterBtn.SetParameter(factoryParameterBtn);
+            }
+            catch (Exception)
+            {
+                _tools.PrompMessage(16);
+                return;
+            }
+            
             if (_isEnglish)
             {
                 if (MessageBox.Show("Restart the program to apply the new configuration!", "Reminder", MessageBoxButtons.OK) == DialogResult.OK)
                 {
-                    _commPort.Close();
+                    //_commPort.Close();
                     if (backgroundWorker_Preference.IsBusy == true)
                     {
                         backgroundWorker_Preference.Dispose();
@@ -1814,15 +2371,27 @@ namespace HFM
             }
             else
             {
-                if (MessageBox.Show("重新启动程序以应用新配置！", "提醒", MessageBoxButtons.OK) == DialogResult.OK)
-                {
-                    _commPort.Close();
-                    if (backgroundWorker_Preference.IsBusy == true)
-                    {
-                        backgroundWorker_Preference.Dispose();
-                    }
-                    Application.Restart();
-                }
+                MessageBox.Show(strSetCom+strSetReCom, "提醒", MessageBoxButtons.OK);
+                //{
+                    //_commPort.Close();
+                    //if (backgroundWorker_Preference.IsBusy == true)
+                    //{
+                    //    backgroundWorker_Preference.CancelAsync();                        
+                    //    Thread.Sleep(100);
+                    //}
+                    //backgroundWorker_Preference.Dispose();
+                    //Thread.Sleep(100);
+                    //Application.Restart();
+                    //Process[] proc=Process.GetProcessesByName("HFM");
+                    //Process procNew = new Process();
+                    //procNew.StartInfo.FileName = Application.ExecutablePath;
+                    //procNew.Start();
+                    //foreach(Process p in proc)
+                    //{
+                    //    p.Kill();
+                    //}
+                    //Application.Restart();
+                //}
             }
 
         }
@@ -1839,8 +2408,8 @@ namespace HFM
             TxtcommportSetStopBits.Text = "1";
             TxtcommportSetParity.Text = "无";
             
-            TxtcommportSetOfReportPortNum.Text = "COM3";
-            TxtcommportSetOfReportBaudRate.Text = "115200";
+            TxtcommportSetOfReportPortNum.Text = "COM1";
+            TxtcommportSetOfReportBaudRate.Text = "9600";
             TxtcommportSetOfReportDataBits.Text = "8";
             TxtcommportSetOfReportStopBits.Text = "1";
             TxtcommportSetOfReportParity.Text = "无";
@@ -2193,13 +2762,124 @@ namespace HFM
         /// <param name="e"></param>
         private void CmbSoftName_DropDown(object sender, EventArgs e)
         {
-            CmbSoftName.Items.Clear();
-            CmbSoftName.Items.Add("HFM100手脚表面污染监测仪");
-            CmbSoftName.Items.Add("HFM100TS手脚表面污染监测仪");
-            CmbSoftName.Items.Add("HM100手部表面污染监测仪");
-            CmbSoftName.Items.Add("HM100TS手部表面污染监测仪");
-            CmbSoftName.Items.Add("CRM100壁挂式污染监测仪");
-            CmbSoftName.Items.Add("FM100脚部表面污染监测仪");
+            if (_isEnglish==true)
+            {
+                CmbSoftName.Items.Clear();
+                CmbSoftName.Items.Add("HFM100 Hand-Foot Monitor");
+                CmbSoftName.Items.Add("HFM100TS Two-Step Hand-Foot Monitor");
+                CmbSoftName.Items.Add("HM100 Hand Monitor");
+                CmbSoftName.Items.Add("HFM100 Two-Step Hand Monitor");
+                CmbSoftName.Items.Add("CRM100 Radiation Monitor");
+                CmbSoftName.Items.Add("FM100 Foot Monitor");
+                CmbSoftName.Items.Add("RM-AP Alarm Panel");
+            }
+            else
+            {
+                CmbSoftName.Items.Clear();
+                CmbSoftName.Items.Add("HFM100手脚表面污染监测仪");
+                CmbSoftName.Items.Add("HFM100TS手脚表面污染监测仪");
+                CmbSoftName.Items.Add("HM100手部污染监测仪");
+                CmbSoftName.Items.Add("HM100TS手部污染监测仪");
+                CmbSoftName.Items.Add("CRM100壁挂式污染监测仪");
+                CmbSoftName.Items.Add("FM100脚部污染监测仪");
+                CmbSoftName.Items.Add("RM-AP报警盘");
+            }
+        }
+        #endregion
+
+        #region 页面切换
+        /// <summary>
+        /// 页面切换
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabPresence_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (User.LandingUser.Role != 1)
+            {
+                switch (factoryParameter.GetParameter().MeasureType)
+                {
+                    case "α":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetAlphaData();
+                                break;
+                            case 2:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    case "β":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetBetaData();
+                                break;
+                            case 2:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    case "α/β":
+                        switch (TabPresence.SelectedIndex)
+                        {
+                            case 0:
+                                GetProferenceData();
+                                break;
+                            case 1:
+                                GetAlphaData();
+                                break;
+                            case 2:
+                                GetBetaData();
+                                break;
+                            case 3:
+                                GetClothesData();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            else
+            {
+                //根据页面索引更新当前页面值
+                switch (TabPresence.SelectedIndex)
+                {
+                    case 0:
+                        GetProferenceData();
+                        break;
+                    case 1:
+                        GetAlphaData();
+                        break;
+                    case 2:
+                        GetBetaData();
+                        break;
+                    case 3:
+                        GetClothesData();
+                        break;
+                    case 4:
+                        //GetMainProferenceData();
+                        ReadPreference();
+                        break;
+                    case 5:
+                        GetPortConfiguration();
+                        break;
+                    default:
+                        MessageBox.Show("选择有误，请重新选择");
+                        break;
+                }
+
+            }
+
         }
         #endregion
 
@@ -2216,13 +2896,22 @@ namespace HFM
                 backgroundWorker_Preference.Dispose();
                 Thread.Sleep(200);
             }
-            _commPort.Close();
-            Thread.Sleep(200);
+            //_commPort.Close();
+            this.Controls.Clear();
+           
         }
+
 
 
         #endregion
 
-        
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (!IsHandleCreated)
+            {
+                this.Close();
+            }
+        }
     }
 }

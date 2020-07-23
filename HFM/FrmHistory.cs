@@ -19,14 +19,14 @@ namespace HFM
         /// <summary>
         /// 检测数组
         /// </summary>
-        private string[] _measurArray = new string[4];
+        private string[] _measurArray = new string[5];
 
         /// <summary>
         /// 刻度数组
         /// </summary>
         private string[] _calibrationArray = new string[7];
 
-        private string[] _errorDataArray = new string[3];
+        private string[] _errorDataArray = new string[4];
 
         #endregion
 
@@ -85,10 +85,13 @@ namespace HFM
             /// 检测数据(英文)数据库查询所得
             /// </summary>
             IList<MeasureData> _measureDataEnglish = new MeasureData().GetData(true);
+            _measureDataEnglish = _measureDataEnglish.OrderByDescending(o => o.MeasureDate).ToList();
             /// <summary>
             /// 检测数据(中文)数据库查询所得
             /// </summary>
             IList<MeasureData> _measureDataChinese = new MeasureData().GetData(false);
+            _measureDataChinese = _measureDataChinese.OrderByDescending(o => o.MeasureDate).ToList();
+            
             if (_systemParameter.IsEnglish)
             {
                 //遍历列表对象,取出数据按字段,添加到Dgv中
@@ -97,7 +100,8 @@ namespace HFM
                     _measurArray[0] = measureData.MeasureDate.ToString();
                     _measurArray[1] = measureData.MeasureStatus;
                     _measurArray[2] = measureData.DetailedInfo;
-                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    _measurArray[3] = measureData.IsReported == true ? "Reported" : "Not Reported";
+                    _measurArray[4] = measureData.IsEnglish.ToString();
                     DgvMeasure.Rows.Add(_measurArray);
                 }
             }
@@ -109,7 +113,8 @@ namespace HFM
                     _measurArray[0] = measureData.MeasureDate.ToString();
                     _measurArray[1] = measureData.MeasureStatus;
                     _measurArray[2] = measureData.DetailedInfo;
-                    _measurArray[3] = measureData.IsEnglish.ToString();
+                    _measurArray[3] = measureData.IsReported == true ? "已上报" : "未上报";
+                    _measurArray[4] = measureData.IsEnglish.ToString();
                     DgvMeasure.Rows.Add(_measurArray);
                 }
             }
@@ -125,6 +130,7 @@ namespace HFM
             /// 刻度记录-数据库查询所得
             /// </summary>
             IList<Calibration> _calibrations = new Calibration().GetData();
+            _calibrations = _calibrations.OrderByDescending(o => o.CalibrationTime).ToList();
             //遍历列表对象,取出数据按字段,添加到Dgv中
             foreach (var calibration in _calibrations)
             {
@@ -156,17 +162,20 @@ namespace HFM
             /// 故障记录(英文)数据库查询所得
             /// </summary>
             IList<ErrorData> _errorDatasEnglish = new ErrorData().GetData(true);
+            _errorDatasEnglish = _errorDatasEnglish.OrderByDescending(o => o.ErrTime).ToList() ;
             /// <summary>
             /// 故障记录(中文)数据库查询所得
             /// </summary>
             IList<ErrorData> _errorDatasChinese = new ErrorData().GetData(false);
+            _errorDatasChinese = _errorDatasChinese.OrderByDescending(o => o.ErrTime).ToList();
             if (_systemParameter.IsEnglish)
             {
                 foreach (var errorData in _errorDatasEnglish)
                 {
                     _errorDataArray[0] = errorData.ErrTime.ToString();
                     _errorDataArray[1] = errorData.Record;
-                    _errorDataArray[2] = errorData.IsEnglish.ToString();
+                    _errorDataArray[2] = (errorData.IsReported == true ?  "Reported" : "Not Reported"); 
+                    _errorDataArray[3] = errorData.IsEnglish.ToString();
                     DgvError.Rows.Add(_errorDataArray);
                 }
 
@@ -177,7 +186,8 @@ namespace HFM
                 {
                     _errorDataArray[0] = errorData.ErrTime.ToString();
                     _errorDataArray[1] = errorData.Record;
-                    _errorDataArray[2] = errorData.IsEnglish.ToString();
+                    _errorDataArray[2] = (errorData.IsReported == true ? "已上报" : "未上报");
+                    _errorDataArray[3] = errorData.IsEnglish.ToString();
                     DgvError.Rows.Add(_errorDataArray);
                 }
             }
@@ -322,7 +332,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnDeleteError_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确定要删除所有故障日记记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("确定要删除所有故障日志记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 int count = new ErrorData().DeleteData();
                 MessageBox.Show($"您成功删除{count}条记录");
@@ -337,7 +347,7 @@ namespace HFM
         /// <param name="e"></param>
         private void BtnDeleteCalibration_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确定要删除所有故障日记记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("确定要删除所有故障日志记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 int count = new Calibration().DeleteData();
                 MessageBox.Show($"您成功删除{count}条记录");
@@ -357,7 +367,7 @@ namespace HFM
 
         private void BtnDeleteMeasure_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确定要删除所有测量日记记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("确定要删除所有测量日志记录么?", "提示", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 int count = new MeasureData().DeleteData();
                 MessageBox.Show($"您成功删除{count}条记录");

@@ -40,8 +40,8 @@ namespace HFM.Components
         /// <summary>
         /// 查询最新一条监测记录
         /// </summary>
-        private const string SQL_SELECT_MEASUREDATA_BY_NEWRECORD = "SELECT MAX(MeasureID),MeasureDate,MeasureStatus,DetailedInfo,IsEnglish ," +
-                                                          "IsReported FROM HFM_MeasureData";
+        private const string SQL_SELECT_MEASUREDATA_BY_NEWRECORD = "SELECT TOP 1 MeasureID,MeasureDate,MeasureStatus,DetailedInfo,IsEnglish ," +
+                                                          "IsReported FROM HFM_MeasureData ORDER BY MeasureID DESC";
         /// <summary>
         /// 查询ID小于measureDataID的所有监测数据记录的IsReported值
         /// </summary>
@@ -50,6 +50,10 @@ namespace HFM.Components
         /// 删除表数据
         /// </summary>
         private const string SQL_DELETE_MEASUREDATA = "DELETE FROM HFM_MeasureData";
+        /// <summary>
+        /// 更新上报状态标志
+        /// </summary>
+        private const string SQL_UPDATE_REPORTED_BY_MEASUREID = "UPDATE HFM_MeasureData SET IsReported=@IsReported WHERE MeasureID=@measureDataID";
         #endregion
 
         #region 字段属性
@@ -187,9 +191,9 @@ namespace HFM.Components
             IList<MeasureData> IMeasureDateS = new List<MeasureData>();
             //构造查询参数
             OleDbParameter[] parms = new OleDbParameter[]
-                {
-                    new OleDbParameter("@IsEnglish",OleDbType.Boolean,2)
-                };
+            {
+                new OleDbParameter("@IsEnglish",OleDbType.Boolean,2)
+            };
             parms[0].Value = isEnglish;
             //根据语言从数据库中查询全部的监测数据记录并赋值给IMeasureDataS
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_ISENGLISH, parms))
@@ -252,6 +256,12 @@ namespace HFM.Components
         {
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_NEWRECORD))
             {
+                if (reader.HasRows != true)
+                {
+                    reader.Close();
+                    DbHelperAccess.Close();
+                    return null;
+                }
                 while (reader.Read())//读查询结果
                 {
                     this.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
@@ -263,30 +273,30 @@ namespace HFM.Components
                 }
                 reader.Close();
                 DbHelperAccess.Close();
-            }
+            }            
             return this;
         }
         #endregion
-
+        
         #region 更新上报状态。
         public bool UpdataReported(bool isReported, int measureDataID)
         {
             //构造查询参数
             OleDbParameter[] parms = new OleDbParameter[]
             {
+                new OleDbParameter("@isReported",OleDbType.Boolean,2),
                 new OleDbParameter("@measureDataID",OleDbType.Integer,4)
             };
-            parms[0].Value = measureDataID;
-            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_MEASUREDATA_BY_ISREPORTED, parms))
+            parms[0].Value = isReported;
+            parms[1].Value = measureDataID;
+            if (DbHelperAccess.ExecuteSql(SQL_UPDATE_REPORTED_BY_MEASUREID, parms) > 0)
             {
-                while (reader.Read())
-                {
-                    this.IsReported = isReported;                
-                }
-                reader.Close();
-                DbHelperAccess.Close();
+                return true;
             }
-            return true;
+            else
+            {
+                return false;
+            }
         }
         #endregion
 

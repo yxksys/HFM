@@ -117,36 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="TabMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 528</value>
-  </data>
-  <data name="TabMeasure.Text" xml:space="preserve">
-    <value>Measurement Log</value>
-  </data>
-  <data name="TabCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 528</value>
-  </data>
-  <data name="TabCalibration.Text" xml:space="preserve">
-    <value>Calibration Log</value>
-  </data>
-  <data name="TabError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 528</value>
-  </data>
-  <data name="TabError.Text" xml:space="preserve">
-    <value>Fault Log</value>
-  </data>
-  <data name="TabHistory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 561</value>
-  </data>
   <data name="BtnDeleteMeasure.Text" xml:space="preserve">
     <value>Delete Record</value>
   </data>
   <data name="BtnDeriveMeasure.Text" xml:space="preserve">
     <value>Export Data</value>
   </data>
+  <data name="MeasureDate.HeaderText" xml:space="preserve">
+    <value>Measuring time</value>
+  </data>
+  <data name="MeasureStatus.HeaderText" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="DetailedInfo.HeaderText" xml:space="preserve">
+    <value>Detail Information</value>
+  </data>
+  <data name="IsEnglish.HeaderText" xml:space="preserve">
+    <value>IsEnglish</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="DgvMeasure.Size" type="System.Drawing.Size, System.Drawing">
     <value>770, 522</value>
+  </data>
+  <data name="TabMeasure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 528</value>
+  </data>
+  <data name="TabMeasure.Text" xml:space="preserve">
+    <value>Measurement Log</value>
   </data>
   <data name="BtnDeleteCalibration.Text" xml:space="preserve">
     <value>Delete Record</value>
@@ -157,27 +154,27 @@
   <data name="CalibrationTime.HeaderText" xml:space="preserve">
     <value>Calibration time</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CalibrationTime.Width" type="System.Int32, mscorlib">
-    <value>145</value>
-  </data>
   <data name="ChannelID.HeaderText" xml:space="preserve">
     <value>Channel</value>
   </data>
   <data name="HighVoltage.HeaderText" xml:space="preserve">
     <value>HV(V)</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="HighVoltage.Width" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
   <data name="Threshold.HeaderText" xml:space="preserve">
     <value>Threshold(mV)</value>
-  </data>
-  <data name="Threshold.Width" type="System.Int32, mscorlib">
-    <value>120</value>
   </data>
   <data name="Efficiency.HeaderText" xml:space="preserve">
     <value>Eff(%)</value>
   </data>
   <data name="MDA.HeaderText" xml:space="preserve">
-    <value>MDA</value>
+    <value>MDA(Bq/cm²）</value>
+  </data>
+  <data name="MDA.Width" type="System.Int32, mscorlib">
+    <value>115</value>
   </data>
   <data name="AlphaBetaPercent.HeaderText" xml:space="preserve">
     <value>α(β)/β(α)\r(%)</value>
@@ -185,47 +182,38 @@
   <data name="DgvCalibration.Size" type="System.Drawing.Size, System.Drawing">
     <value>770, 522</value>
   </data>
+  <data name="TabCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 528</value>
+  </data>
+  <data name="TabCalibration.Text" xml:space="preserve">
+    <value>Calibration Log</value>
+  </data>
   <data name="BtnDeleteError.Text" xml:space="preserve">
     <value>Delete Record</value>
   </data>
   <data name="BtnDeriveError.Text" xml:space="preserve">
     <value>Export Data</value>
   </data>
-  <data name="DgvError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 522</value>
-  </data>
   <data name="ErrTime.HeaderText" xml:space="preserve">
     <value>ErrTime</value>
-  </data>
-  <data name="ErrTime.Width" type="System.Int32, mscorlib">
-    <value>150</value>
   </data>
   <data name="Record.HeaderText" xml:space="preserve">
     <value>Record</value>
   </data>
-  <data name="Record.Width" type="System.Int32, mscorlib">
-    <value>620</value>
-  </data>
   <data name="IsEnglishsError.HeaderText" xml:space="preserve">
     <value>IsEnglish</value>
   </data>
-  <data name="MeasureDate.HeaderText" xml:space="preserve">
-    <value>Measuring time</value>
+  <data name="DgvError.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 522</value>
   </data>
-  <data name="MeasureDate.Width" type="System.Int32, mscorlib">
-    <value>145</value>
+  <data name="TabError.Size" type="System.Drawing.Size, System.Drawing">
+    <value>776, 528</value>
   </data>
-  <data name="MeasureStatus.HeaderText" xml:space="preserve">
-    <value>Status</value>
+  <data name="TabError.Text" xml:space="preserve">
+    <value>Fault Log</value>
   </data>
-  <data name="MeasureStatus.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="DetailedInfo.HeaderText" xml:space="preserve">
-    <value>Detail Information</value>
-  </data>
-  <data name="IsEnglish.HeaderText" xml:space="preserve">
-    <value>IsEnglish</value>
+  <data name="TabHistory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>784, 561</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>784, 561</value>

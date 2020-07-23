@@ -43,12 +43,16 @@ namespace HFM.Components
         /// <summary>
         /// 查询最新一条监测记录
         /// </summary>
-        private const string SQL_SELECT_ERRORDATA_BY_NEWRECORD = "SELECT MAX(ErrID),ErrTime,Record,IsEnglish,IsReported FROM HFM_ErrData";
+        private const string SQL_SELECT_ERRORDATA_BY_NEWRECORD = "SELECT TOP 1 ErrID,ErrTime,Record,IsEnglish,IsReported FROM HFM_ErrData ORDER BY ErrID DESC";
         /// <summary>
         /// 查询ID小于errorDataID的所有监测数据记录的IsReported值
         /// </summary>
         /// 
         private const string SQL_SELECT_ERRORDATA_BY_ISREPORTED = "SELECT IsReported FROM HFM_ErrData WHERE ErrID=@errorDataID";
+        /// <summary>
+        /// 更新上报状态标志
+        /// </summary>
+        private const string SQL_UPDATE_REPORTED_BY_ERRORID = "UPDATE HFM_ErrData SET IsReported=@IsReported WHERE ErrID=@errorDataID";
         #endregion
 
         #region 字段属性
@@ -137,7 +141,8 @@ namespace HFM.Components
                         ErrID = Convert.ToInt32(reader["ErrID"].ToString()),
                         ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString()),
                         Record = Convert.ToString(reader["Record"].ToString()),
-                        IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString())
+                        IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString()),
+                        IsReported = Convert.ToBoolean(reader["IsReported"].ToString())
                     };
                     //将reader读出并构造的查询结果添加到List中
                     IErrorDateS.Add(errorData);
@@ -195,15 +200,21 @@ namespace HFM.Components
         {
             using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_NEWRECORD))
             {
+                if(reader.HasRows!=true)
+                {
+                    reader.Close();
+                    DbHelperAccess.Close();
+                    return null;
+                }
                 while (reader.Read())//读取查询结果
                 {
                     //构造ErrorData对象
-                    ErrorData errorData = new ErrorData();
-                    errorData.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
-                    errorData.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
-                    errorData.Record = Convert.ToString(reader["Record"].ToString());
-                    errorData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
-                    errorData.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
+                    //ErrorData errorData = new ErrorData();
+                    this.ErrID = Convert.ToInt32(reader["ErrID"].ToString());
+                    this.ErrTime = Convert.ToDateTime(reader["ErrTime"].ToString());
+                    this.Record = Convert.ToString(reader["Record"].ToString());
+                    this.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    this.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
@@ -218,20 +229,19 @@ namespace HFM.Components
             //构造查询参数
             OleDbParameter[] parms = new OleDbParameter[]
             {
+                new OleDbParameter("@IsReported",OleDbType.Boolean,2),
                 new OleDbParameter("@errorDataID",OleDbType.Integer,4)
             };
-            parms[0].Value = errorDataID;
-            using (OleDbDataReader reader = DbHelperAccess.ExecuteReader(SQL_SELECT_ERRORDATA_BY_ISREPORTED, parms))
+            parms[0].Value = isReported;
+            parms[1].Value = errorDataID;
+            if(DbHelperAccess.ExecuteSql(SQL_UPDATE_REPORTED_BY_ERRORID, parms)>0)
             {
-                while (reader.Read())
-                {
-                    //将ID小于errorDataID的所有监测数据记录的IsReported字段全部更新为isReported的值
-                    this.IsReported = isReported;
-                }
-                reader.Close();
-                DbHelperAccess.Close();
+                return true;
             }
-            return true;
+            else
+            {
+                return false;
+            }            
         }
         #endregion
     }

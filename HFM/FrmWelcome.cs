@@ -5,7 +5,7 @@ namespace HFM
 {
     public partial class FrmWelcome : Form
     {
-        
+        public FrmMeasureMain frmMeasureMain;
         public FrmWelcome()
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace HFM
         {
             Time_Welcome_cloes.Enabled = false;
             Thread.Sleep(500);            
-            FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
+            frmMeasureMain = new FrmMeasureMain();
             frmMeasureMain.Show();
             this.Dispose();
             

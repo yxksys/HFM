@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -21,9 +22,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>3.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -245,6 +245,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -289,6 +290,8 @@
     <Content Include="Audio\Chinese_Two.wav" />
     <Content Include="Audio\English_No Contamination_please_leave.wav" />
     <Content Include="Audio\English_NoContamination_please_frisker.wav" />
+    <Content Include="log\errorLog.txt" />
+    <None Include="Audio\English_NoContamination_please_leave.wav" />
     <Content Include="Audio\English_please_flip_palm_for_measuring.wav" />
     <Content Include="Audio\English_Ten.wav" />
     <Content Include="Audio\English_One.wav" />
@@ -381,26 +384,6 @@
     <None Include="bin\Debug\Images\RHP_NotInPlace.png" />
     <None Include="bin\Debug\Images\unfulfillment.jpg" />
     <Content Include="bin\Debug\Images\welcome.bmp" />
-    <Content Include="bin\Debug\Audio\1.wav" />
-    <Content Include="bin\Debug\Audio\10.wav" />
-    <Content Include="bin\Debug\Audio\2.wav" />
-    <Content Include="bin\Debug\Audio\20.wav" />
-    <Content Include="bin\Debug\Audio\21.wav" />
-    <Content Include="bin\Debug\Audio\22.wav" />
-    <Content Include="bin\Debug\Audio\23.wav" />
-    <Content Include="bin\Debug\Audio\24.wav" />
-    <Content Include="bin\Debug\Audio\25.wav" />
-    <Content Include="bin\Debug\Audio\26.wav" />
-    <Content Include="bin\Debug\Audio\27.wav" />
-    <Content Include="bin\Debug\Audio\28.wav" />
-    <Content Include="bin\Debug\Audio\29.wav" />
-    <Content Include="bin\Debug\Audio\3.wav" />
-    <Content Include="bin\Debug\Audio\4.wav" />
-    <Content Include="bin\Debug\Audio\5.wav" />
-    <Content Include="bin\Debug\Audio\6.wav" />
-    <Content Include="bin\Debug\Audio\7.wav" />
-    <Content Include="bin\Debug\Audio\8.wav" />
-    <Content Include="bin\Debug\Audio\9.wav" />
     <Content Include="bin\Debug\Audio\Chinese_Background_abnomal.wav" />
     <Content Include="bin\Debug\Audio\Chinese_Background_measure.wav" />
     <Content Include="bin\Debug\Audio\Chinese_Clothing_contaminated.wav" />
@@ -461,36 +444,7 @@
     <Content Include="bin\Debug\Audio\English_Three.wav" />
     <Content Include="bin\Debug\Audio\English_Two.wav" />
     <Content Include="bin\Debug\Audio\English_Updating_background.wav" />
-    <Content Include="bin\Debug\Audio\E仪器正常.wav" />
-    <Content Include="bin\Debug\Audio\E仪器自检.wav" />
-    <Content Include="bin\Debug\Audio\E右手移动.wav" />
-    <Content Include="bin\Debug\Audio\E右手红外到位.wav" />
-    <Content Include="bin\Debug\Audio\E左手移动.wav" />
-    <Content Include="bin\Debug\Audio\E左手红外到位.wav" />
-    <Content Include="bin\Debug\Audio\E开始测量.wav" />
-    <Content Include="bin\Debug\Audio\E故障.wav" />
-    <Content Include="bin\Debug\Audio\E本底异常.wav" />
-    <Content Include="bin\Debug\Audio\E本底测量.wav" />
-    <Content Include="bin\Debug\Audio\E没有污染.wav" />
-    <Content Include="bin\Debug\Audio\E自检故障.wav" />
-    <Content Include="bin\Debug\Audio\E衣物探头到位.wav" />
-    <Content Include="bin\Debug\Audio\E衣物探头污染.wav" />
-    <Content Include="bin\Debug\Audio\仪器正常.wav" />
-    <Content Include="bin\Debug\Audio\仪器自检.wav" />
-    <Content Include="bin\Debug\Audio\右手移动.wav" />
-    <Content Include="bin\Debug\Audio\右手红外到位.wav" />
-    <Content Include="bin\Debug\Audio\左手移动.wav" />
-    <Content Include="bin\Debug\Audio\左手红外到位.wav" />
-    <Content Include="bin\Debug\Audio\开始测量.wav" />
-    <Content Include="bin\Debug\Audio\故障.wav" />
     <Content Include="bin\Debug\Audio\新建文本文档.txt" />
-    <Content Include="bin\Debug\Audio\本底异常.wav" />
-    <Content Include="bin\Debug\Audio\没有污染.wav" />
-    <Content Include="bin\Debug\Audio\自检故障.wav" />
-    <Content Include="bin\Debug\Audio\衣物探头到位.wav" />
-    <Content Include="bin\Debug\Audio\衣物探头污染.wav" />
-    <Content Include="bin\Debug\Audio\衣物没有污染.wav" />
-    <Content Include="bin\Debug\Audio\被测人员污染.wav" />
     <Content Include="bin\Debug\CalibrationLog\20200312T210937.txt" />
     <Content Include="bin\Debug\CalibrationLog\20200312T211832.txt" />
     <Content Include="bin\Debug\en\HFM.resources.dll" />
@@ -513,10 +467,18 @@
     <None Include="Images\clothes-highlight.jpg" />
     <None Include="Images\Button_Down.jpg" />
     <None Include="Images\Button_Link.jpg" />
+    <None Include="Images\Background_Progress.png" />
+    <None Include="Images\Button_Down.png" />
+    <None Include="Images\Button_Link.png" />
     <Content Include="Images\clothes-middle.jpg" />
     <None Include="Images\clothes.jpg" />
+    <None Include="Images\clothes.png" />
+    <None Include="Images\clothes_highlight.png" />
+    <None Include="Images\clothes_middle.png" />
     <Content Include="Images\Contaminated_progress.jpg" />
+    <None Include="Images\Contaminated_progress.png" />
     <Content Include="Images\Fault_progress.jpg" />
+    <None Include="Images\Fault_progress.png" />
     <Content Include="Images\foot-littl.jpg" />
     <None Include="Images\Foot_InPlace.jpg" />
     <None Include="Images\Foot_NotInPlace.jpg" />
@@ -535,8 +497,16 @@
     <None Include="Images\Frisker_InPlace.png" />
     <None Include="Images\Frisker_NotInPlace.png" />
     <None Include="Images\Hand_Status.jpg" />
+    <None Include="Images\Foot_InPlace.png" />
+    <None Include="Images\foot_littl.png" />
+    <None Include="Images\Foot_NotInPlace.png" />
     <Content Include="Images\FriskerBK_InPlace.jpg" />
+    <None Include="Images\FriskerBK_InPlace.png" />
     <Content Include="Images\FriskerBK_NotInPlace.jpg" />
+    <None Include="Images\FriskerBK_NotInPlace.png" />
+    <None Include="Images\Hand_InPlace.png" />
+    <None Include="Images\Hand_NotInPlace.png" />
+    <None Include="Images\Hand_Status.png" />
     <Content Include="Images\logo.ico" />
     <Content Include="Images\logo.png" />
     <None Include="Images\progress.jpg" />
@@ -551,7 +521,11 @@
     <None Include="Images\RHP_InPlace.png" />
     <None Include="Images\RHP_NotInPlace.png" />
     <Content Include="Images\NoContamination_progress.jpg" />
+    <None Include="Images\NoContamination_progress.png" />
+    <None Include="Images\progress.png" />
+    <None Include="Images\unfulfillment.png" />
     <Content Include="Images\welcome.bmp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

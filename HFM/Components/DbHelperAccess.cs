@@ -285,8 +285,6 @@ namespace HFM.Components
                 }
             }
         }
-
-
         /// <summary>
         /// 执行多条SQL语句，实现数据库事务。
         /// </summary>

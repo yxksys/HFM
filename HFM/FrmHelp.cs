@@ -27,30 +27,27 @@ namespace HFM
             {
                 _commPort.Close();
             }
-
-            
-
-            
-
+            //Tools tools = new Tools();//实例化工具类：仪器名称中英文转换使用使用
             if (systemParameter.IsEnglish==false)
             {
                 //仪器名称
                 LblName.Text = "仪器名称:" + factoryParameter.SoftName;
                 //软件版本
-                LblVersions.Text = "软件版本:" + "V1.0";
+                LblVersions.Text = "软件版本:" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();//"V3.0";
                 //联系方式
-                LblNumber.Text = "联系方式:" + "0351-2202150  2203549";
+                LblNumber.Text = "联系方式:" + "0351-2202181  2203549";
                 //版权所有
                 LblCopyright.Text = "版权所有（C） 山西中辐核仪器有限责任公司";
             }
             else//英文
             {
                 //仪器名称
-                LblName.Text = "Model:" + factoryParameter.SoftName;
+                LblName.Text = "Model:" + Tools.EnSoftName(factoryParameter.SoftName);
+                //LblName.Text = "Model:" + factoryParameter.SoftName;
                 //软件版本
-                LblVersions.Text = "Version:" + "V1.0";
+                LblVersions.Text = "Version:" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();//"3.0.4";
                 //联系方式
-                LblNumber.Text = "Tel:" + "0351-2202150  2203549";
+                LblNumber.Text = "Tel:" + "0351-2202181  2203549";
                 //版权所有
                 LblCopyright.Text = "Copyright (c) Shanxi Zhongfu Nuclear Instruments Co., Ltd";
             }

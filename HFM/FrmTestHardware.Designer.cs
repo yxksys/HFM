@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTestHardware));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GrpWork = new System.Windows.Forms.GroupBox();
             this.DgvWork = new System.Windows.Forms.DataGridView();
             this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,7 +121,6 @@
             // 
             // DgvWork
             // 
-            resources.ApplyResources(this.DgvWork, "DgvWork");
             this.DgvWork.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DgvWork.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvWork.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -133,49 +132,50 @@
             this.RHB,
             this.LF,
             this.RF});
+            resources.ApplyResources(this.DgvWork, "DgvWork");
             this.DgvWork.Name = "DgvWork";
             this.DgvWork.RowHeadersVisible = false;
-            this.DgvWork.RowTemplate.Height = 35;
+            this.DgvWork.RowTemplate.Height = 28;
             // 
             // LHP
             // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 15F);
-            this.LHP.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 10F);
+            this.LHP.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.LHP, "LHP");
             this.LHP.Name = "LHP";
             // 
             // LHB
             // 
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 15F);
-            this.LHB.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10F);
+            this.LHB.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.LHB, "LHB");
             this.LHB.Name = "LHB";
             // 
             // RHP
             // 
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 15F);
-            this.RHP.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 10F);
+            this.RHP.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.RHP, "RHP");
             this.RHP.Name = "RHP";
             // 
             // RHB
             // 
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 15F);
-            this.RHB.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10F);
+            this.RHB.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.RHB, "RHB");
             this.RHB.Name = "RHB";
             // 
             // LF
             // 
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 15F);
-            this.LF.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10F);
+            this.LF.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.LF, "LF");
             this.LF.Name = "LF";
             // 
             // RF
             // 
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 15F);
-            this.RF.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 10F);
+            this.RF.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(this.RF, "RF");
             this.RF.Name = "RF";
             // 
@@ -266,10 +266,10 @@
             // 
             // GrpFrisker
             // 
-            resources.ApplyResources(this.GrpFrisker, "GrpFrisker");
             this.GrpFrisker.Controls.Add(this.LblFriskercps);
             this.GrpFrisker.Controls.Add(this.TxtFriskercount);
             this.GrpFrisker.Controls.Add(this.LblFriskercount);
+            resources.ApplyResources(this.GrpFrisker, "GrpFrisker");
             this.GrpFrisker.Name = "GrpFrisker";
             this.GrpFrisker.TabStop = false;
             // 
@@ -280,8 +280,8 @@
             // 
             // TxtFriskercount
             // 
-            resources.ApplyResources(this.TxtFriskercount, "TxtFriskercount");
             this.TxtFriskercount.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.TxtFriskercount, "TxtFriskercount");
             this.TxtFriskercount.Name = "TxtFriskercount";
             this.TxtFriskercount.ReadOnly = true;
             // 
@@ -292,20 +292,20 @@
             // 
             // GrpSensorstate
             // 
-            resources.ApplyResources(this.GrpSensorstate, "GrpSensorstate");
             this.GrpSensorstate.Controls.Add(this.TxtFriskerState);
             this.GrpSensorstate.Controls.Add(this.LblFriskerState);
             this.GrpSensorstate.Controls.Add(this.TxtRHandState);
             this.GrpSensorstate.Controls.Add(this.LblRHandState);
             this.GrpSensorstate.Controls.Add(this.TxtLHandState);
             this.GrpSensorstate.Controls.Add(this.LblLHandState);
+            resources.ApplyResources(this.GrpSensorstate, "GrpSensorstate");
             this.GrpSensorstate.Name = "GrpSensorstate";
             this.GrpSensorstate.TabStop = false;
             // 
             // TxtFriskerState
             // 
-            resources.ApplyResources(this.TxtFriskerState, "TxtFriskerState");
             this.TxtFriskerState.BackColor = System.Drawing.Color.Orange;
+            resources.ApplyResources(this.TxtFriskerState, "TxtFriskerState");
             this.TxtFriskerState.Name = "TxtFriskerState";
             this.TxtFriskerState.ReadOnly = true;
             // 
@@ -316,8 +316,8 @@
             // 
             // TxtRHandState
             // 
-            resources.ApplyResources(this.TxtRHandState, "TxtRHandState");
             this.TxtRHandState.BackColor = System.Drawing.Color.Orange;
+            resources.ApplyResources(this.TxtRHandState, "TxtRHandState");
             this.TxtRHandState.Name = "TxtRHandState";
             this.TxtRHandState.ReadOnly = true;
             // 
@@ -328,8 +328,8 @@
             // 
             // TxtLHandState
             // 
-            resources.ApplyResources(this.TxtLHandState, "TxtLHandState");
             this.TxtLHandState.BackColor = System.Drawing.Color.Orange;
+            resources.ApplyResources(this.TxtLHandState, "TxtLHandState");
             this.TxtLHandState.Name = "TxtLHandState";
             this.TxtLHandState.ReadOnly = true;
             // 
@@ -340,9 +340,9 @@
             // 
             // GrpDetectorSelfTest
             // 
-            resources.ApplyResources(this.GrpDetectorSelfTest, "GrpDetectorSelfTest");
             this.GrpDetectorSelfTest.Controls.Add(this.BtnBetaCheck);
             this.GrpDetectorSelfTest.Controls.Add(this.BtnAlphaCheck);
+            resources.ApplyResources(this.GrpDetectorSelfTest, "GrpDetectorSelfTest");
             this.GrpDetectorSelfTest.Name = "GrpDetectorSelfTest";
             this.GrpDetectorSelfTest.TabStop = false;
             // 
@@ -362,7 +362,6 @@
             // 
             // GrpSelfTestParameter
             // 
-            resources.ApplyResources(this.GrpSelfTestParameter, "GrpSelfTestParameter");
             this.GrpSelfTestParameter.Controls.Add(this.Lblμs);
             this.GrpSelfTestParameter.Controls.Add(this.BtnSelfCheck);
             this.GrpSelfTestParameter.Controls.Add(this.TxtPWidth);
@@ -373,6 +372,7 @@
             this.GrpSelfTestParameter.Controls.Add(this.LblPulse);
             this.GrpSelfTestParameter.Controls.Add(this.TxtCheckCount);
             this.GrpSelfTestParameter.Controls.Add(this.LblSelfcount);
+            resources.ApplyResources(this.GrpSelfTestParameter, "GrpSelfTestParameter");
             this.GrpSelfTestParameter.Name = "GrpSelfTestParameter";
             this.GrpSelfTestParameter.TabStop = false;
             // 
@@ -396,12 +396,12 @@
             // 
             // CmbControl
             // 
-            resources.ApplyResources(this.CmbControl, "CmbControl");
             this.CmbControl.DropDownWidth = 44;
             this.CmbControl.FormattingEnabled = true;
             this.CmbControl.Items.AddRange(new object[] {
             resources.GetString("CmbControl.Items"),
             resources.GetString("CmbControl.Items1")});
+            resources.ApplyResources(this.CmbControl, "CmbControl");
             this.CmbControl.Name = "CmbControl";
             // 
             // LblPWidth
@@ -416,12 +416,12 @@
             // 
             // CmbPulse
             // 
-            resources.ApplyResources(this.CmbPulse, "CmbPulse");
             this.CmbPulse.DropDownWidth = 44;
             this.CmbPulse.FormattingEnabled = true;
             this.CmbPulse.Items.AddRange(new object[] {
             resources.GetString("CmbPulse.Items"),
             resources.GetString("CmbPulse.Items1")});
+            resources.ApplyResources(this.CmbPulse, "CmbPulse");
             this.CmbPulse.Name = "CmbPulse";
             // 
             // LblPulse

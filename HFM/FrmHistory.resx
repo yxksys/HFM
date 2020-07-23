@@ -119,10 +119,10 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="BtnDeleteMeasure.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeleteMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 449</value>
+    <value>103, 447</value>
   </data>
   <data name="BtnDeleteMeasure.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -147,10 +147,10 @@
     <value>0</value>
   </data>
   <data name="BtnDeriveMeasure.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeriveMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 449</value>
+    <value>3, 447</value>
   </data>
   <data name="BtnDeriveMeasure.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -195,7 +195,13 @@
     <value>详细信息</value>
   </data>
   <data name="DetailedInfo.Width" type="System.Int32, mscorlib">
-    <value>520</value>
+    <value>425</value>
+  </data>
+  <metadata name="上报状态.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="上报状态.HeaderText" xml:space="preserve">
+    <value>上报状态</value>
   </data>
   <metadata name="IsEnglish.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -214,7 +220,7 @@
     <value>3, 3</value>
   </data>
   <data name="DgvMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 491</value>
+    <value>770, 490</value>
   </data>
   <data name="DgvMeasure.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -232,13 +238,13 @@
     <value>2</value>
   </data>
   <data name="TabMeasure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 30</value>
   </data>
   <data name="TabMeasure.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabMeasure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
+    <value>776, 496</value>
   </data>
   <data name="TabMeasure.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -259,13 +265,13 @@
     <value>0</value>
   </data>
   <data name="BtnDeleteCalibration.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+    <value>System</value>
   </data>
   <data name="BtnDeleteCalibration.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeleteCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 448</value>
+    <value>103, 447</value>
   </data>
   <data name="BtnDeleteCalibration.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -289,13 +295,13 @@
     <value>0</value>
   </data>
   <data name="BtnDeriveCalibration.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+    <value>System</value>
   </data>
   <data name="BtnDeriveCalibration.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeriveCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 448</value>
+    <value>3, 447</value>
   </data>
   <data name="BtnDeriveCalibration.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -340,13 +346,16 @@
     <value>高压值(V)</value>
   </data>
   <data name="HighVoltage.Width" type="System.Int32, mscorlib">
-    <value>120</value>
+    <value>110</value>
   </data>
   <metadata name="Threshold.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="Threshold.HeaderText" xml:space="preserve">
     <value>阈值(mV)</value>
+  </data>
+  <data name="Threshold.Width" type="System.Int32, mscorlib">
+    <value>120</value>
   </data>
   <metadata name="Efficiency.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -358,7 +367,10 @@
     <value>True</value>
   </metadata>
   <data name="MDA.HeaderText" xml:space="preserve">
-    <value>探测下限</value>
+    <value>探测下限(Bq/cm²)</value>
+  </data>
+  <data name="MDA.Width" type="System.Int32, mscorlib">
+    <value>110</value>
   </data>
   <metadata name="AlphaBetaPercent.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -376,7 +388,7 @@
     <value>3, 3</value>
   </data>
   <data name="DgvCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 491</value>
+    <value>770, 490</value>
   </data>
   <data name="DgvCalibration.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -394,13 +406,13 @@
     <value>2</value>
   </data>
   <data name="TabCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 30</value>
   </data>
   <data name="TabCalibration.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
+    <value>776, 496</value>
   </data>
   <data name="TabCalibration.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -421,10 +433,10 @@
     <value>1</value>
   </data>
   <data name="BtnDeleteError.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+    <value>System</value>
   </data>
   <data name="BtnDeleteError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeleteError.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 447</value>
@@ -451,10 +463,10 @@
     <value>0</value>
   </data>
   <data name="BtnDeriveError.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Popup</value>
+    <value>System</value>
   </data>
   <data name="BtnDeriveError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
+    <value>微软雅黑, 9pt</value>
   </data>
   <data name="BtnDeriveError.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 447</value>
@@ -496,7 +508,13 @@
     <value>故障记录</value>
   </data>
   <data name="Record.Width" type="System.Int32, mscorlib">
-    <value>620</value>
+    <value>520</value>
+  </data>
+  <metadata name="Reporting.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Reporting.HeaderText" xml:space="preserve">
+    <value>上报状态</value>
   </data>
   <metadata name="IsEnglishsError.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -517,7 +535,7 @@
     <value>3, 3</value>
   </data>
   <data name="DgvError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 491</value>
+    <value>770, 490</value>
   </data>
   <data name="DgvError.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -535,13 +553,13 @@
     <value>2</value>
   </data>
   <data name="TabError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 29</value>
+    <value>4, 30</value>
   </data>
   <data name="TabError.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 497</value>
+    <value>776, 496</value>
   </data>
   <data name="TabError.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -565,7 +583,7 @@
     <value>Fill</value>
   </data>
   <data name="TabHistory.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt</value>
+    <value>微软雅黑, 12pt</value>
   </data>
   <data name="TabHistory.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -654,6 +672,12 @@
   <data name="&gt;&gt;Record.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;Reporting.Name" xml:space="preserve">
+    <value>Reporting</value>
+  </data>
+  <data name="&gt;&gt;Reporting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;IsEnglishsError.Name" xml:space="preserve">
     <value>IsEnglishsError</value>
   </data>
@@ -676,6 +700,12 @@
     <value>DetailedInfo</value>
   </data>
   <data name="&gt;&gt;DetailedInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;上报状态.Name" xml:space="preserve">
+    <value>上报状态</value>
+  </data>
+  <data name="&gt;&gt;上报状态.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;IsEnglish.Name" xml:space="preserve">

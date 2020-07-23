@@ -30,7 +30,7 @@ namespace HFM
     {
         #region 字段
 
-        private bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;
+        public static bool isEnglish = new HFM.Components.SystemParameter().GetParameter().IsEnglish;        
         #endregion
 
         #region 实例
@@ -45,7 +45,7 @@ namespace HFM
         /// <summary>
         /// 端口类实例
         /// </summary>
-        private CommPort _commPort = new CommPort();
+        public CommPort _commPort = new CommPort();
         /// <summary>
         /// 工具类实例
         /// </summary>
@@ -55,7 +55,7 @@ namespace HFM
         /// </summary>
         System.Timers.Timer TmrStatus = new System.Timers.Timer(10000);
 
-        public static FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
+       // public static FrmMeasureMain frmMeasureMain = new FrmMeasureMain();
 
         #endregion
 
@@ -202,23 +202,58 @@ namespace HFM
             }
         }
         #endregion
+        #region 开启端口
+        //实例化串口
 
+        //public void OpenComPort()
+        //{
+        //    //从配置文件获得当前串口配置
+        //    _commPort.GetCommPortSet("commportSet");
+        //    if (_commPort.Opened == true)
+        //    {
+        //        _commPort.Close();
+        //    }           
+        //    //打开串口
+        //    try
+        //    {
+        //        _commPort.Open();
+        //        if (_commPort.Opened)
+        //        {
+        //            Tools.FormBottomPortStatus = true;                    
+        //        }                     
+        //    }
+        //    catch
+        //    {
+        //        if (FrmMain.isEnglish == true)
+        //        {
+        //            MessageBox.Show("Port open error! Please check whether the communication is normal.");
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("端口打开错误！请检查通讯是否正常。");
+        //        }
+        //        Tools.FormBottomPortStatus = false;                
+        //    }                                                   
+        //}
+        #endregion 开启端口
 
         #region 构造函数
         public FrmMain()
         {
+
+        }
+        public FrmMain(CommPort commPort)
+        {
+            this._commPort = commPort;
             InitializeComponent();
-            Text = _factoryParameter.SoftName;            //头部软件名称显示
-            Tsslbl_Name.Text = _factoryParameter.SoftName;//底部软件名称显示
-
+            
             //设置timer可用
-            TmrStatus.Enabled = true;
+            //TmrStatus.Enabled = true;
             //设置timer
-            TmrStatus.Interval = 1000;
+            //TmrStatus.Interval = 1000;
             //设置是否重复计时，如果该属性设为False,则只执行timer_Elapsed方法一次。
-            TmrStatus.AutoReset = true;
-
-            TmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(TmrStatus_Elapsed);
+            //TmrStatus.AutoReset = true;
+            //TmrStatus.Elapsed += new System.Timers.ElapsedEventHandler(TmrStatus_Elapsed);
 
         }
         #endregion
@@ -233,7 +268,7 @@ namespace HFM
         {
             try
             {
-                Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                //Tsslbl_NowTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 Tsslbl_Status_Text();
             }
             catch (Exception exception)
@@ -247,7 +282,19 @@ namespace HFM
         #region 启动加载
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            
+            //Tools tools = new Tools();
+            if (isEnglish == true)
+            {
+                Text = Tools.EnSoftName(_factoryParameter.SoftName);            //头部软件名称显示
+                Tsslbl_Name.Text = Tools.EnSoftName(_factoryParameter.SoftName);//底部软件名称显示
+                Tsslbl_Version.Text = "V" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+            else
+            {
+                Text = _factoryParameter.SoftName;            //头部软件名称显示
+                Tsslbl_Name.Text = _factoryParameter.SoftName;//底部软件名称显示
+                Tsslbl_Version.Text = "V" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
         }
         /// <summary>
         /// 启动加载首次处理事件
@@ -255,21 +302,30 @@ namespace HFM
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmMain_Shown(object sender, EventArgs e)
-        {
-            for (int i = 0; i < Application.OpenForms.Count; i++)
-            {
-
-                if (this.Name != Application.OpenForms[i].Name)
-                {
-                    Application.OpenForms[i].Close();
-                }
-
-            }
+        {                       
+            //OpenComPort();
         }
 
         #endregion
 
         #region 系统
+        /// <summary>
+        /// 点击系统菜单时候关闭子窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SystemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)     //循环MDI中的所有子窗体
+            {
+                //销毁其他不是要打开的窗口实例
+                if (this.Name != form.Name)
+                {
+                    form.Close();
+                }
+            }
+        }
+
         /// <summary>
         /// 开始运行
         /// </summary>
@@ -277,18 +333,19 @@ namespace HFM
         /// <param name="e"></param>
         private void StartRunningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //关闭其他子窗体
+            
             for (int i = 0; i < Application.OpenForms.Count; i++)
             {
 
-                if (this.Name != Application.OpenForms[i].Name)
+                if (Application.OpenForms[i].Name=="FrmMeasureMain")
                 {
-                    Application.OpenForms[i].Close();
+                    Application.OpenForms[i].Show();
                 }
-
             }
-            Tsslbl_NowTime.Dispose();
-            FrmDispose(new FrmMeasureMain());
+            //this._commPort.Close();
+            //Thread.Sleep(200);
+            //Tsslbl_NowTime.Dispose();
+            //FrmDispose(new FrmMeasureMain());
             this.Dispose();
         }
 
@@ -300,14 +357,22 @@ namespace HFM
         private void SuperUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //关闭其他子窗体
-            for (int i = 0; i < Application.OpenForms.Count; i++)
+            //for (int i = 0; i < Application.OpenForms.Count; i++)
+            //{
+
+            //    if (this.Name != Application.OpenForms[i].Name)
+            //    {
+            //        Application.OpenForms[i].Close();
+            //    }
+
+            //}
+            foreach (Form form in this.MdiChildren)     //循环MDI中的所有子窗体
             {
-
-                if (this.Name != Application.OpenForms[i].Name)
+                //销毁其他不是要打开的窗口实例
+                if (this.Name != form.Name)
                 {
-                    Application.OpenForms[i].Close();
-                }
-
+                    form.Close();
+                }                
             }
             /* 判断当前是否是超级用户
              * 是:弹出提示框,让用户选择退出当前用户状态
@@ -342,15 +407,15 @@ namespace HFM
         private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //关闭其他子窗体
-            for (int i = 0; i < Application.OpenForms.Count; i++)
-            {
+            //for (int i = 0; i < Application.OpenForms.Count; i++)
+            //{
 
-                if (this.Name != Application.OpenForms[i].Name)
-                {
-                    Application.OpenForms[i].Close();
-                }
+            //    if (this.Name != Application.OpenForms[i].Name)
+            //    {
+            //        Application.OpenForms[i].Close();
+            //    }
 
-            }
+            //}
             FrmDisposeNormal(new FrmModifyPasssword());
         }
         /// <summary>
@@ -373,7 +438,7 @@ namespace HFM
         /// <param name="e"></param>
         private void ParameterSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDisposeMax(new FrmPreference());
+            FrmDisposeMax(new FrmPreference(_commPort));
         }
 
         #endregion
@@ -386,7 +451,7 @@ namespace HFM
         /// <param name="e"></param>
         private void CalibrationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDisposeMax(new FrmCalibration());
+            FrmDisposeMax(new FrmCalibration(_commPort));
         }
         /// <summary>
         /// 硬件检测
@@ -395,7 +460,7 @@ namespace HFM
         /// <param name="e"></param>
         private void TestHardwareToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDisposeMax(new FrmTestHardware());
+            FrmDisposeMax(new FrmTestHardware(_commPort));
         }
 
         #endregion
@@ -419,12 +484,16 @@ namespace HFM
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AboutHFMToolStripMenuItem_Click(object sender, EventArgs e)
+        //private void AboutHFMToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    //开启关于窗体
+        //    FrmDisposeMax(new FrmHelp());
+        //}
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //开启关于窗体
             FrmDisposeMax(new FrmHelp());
         }
-
 
         #endregion
 
@@ -432,6 +501,7 @@ namespace HFM
         {
             Application.ExitThread();
         }
+
         
     }
 }

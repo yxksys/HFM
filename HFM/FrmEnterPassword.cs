@@ -52,23 +52,23 @@ namespace HFM
                     #region 打开窗体操作
                     try
                     {
-                        FrmMain frmMain = new FrmMain();
+                        //FrmMain frmMain = new FrmMain();
                         for (int i = 0; i < Application.OpenForms.Count; i++)
                         {
-                            if (frmMain.Name == Application.OpenForms[i].Name)          //若该窗体已被打开
+                            if (this.Name == Application.OpenForms[i].Name)          //若该窗体已被打开
                             {
-                                frmMain.Activate();  //激活该窗体
+                                this.Activate();  //激活该窗体
                                 isOpened = true;     //设置子窗体的打开标记为true
                             }
-                            if (frmMain.Name != Application.OpenForms[i].Name)
-                            {
-                                Application.OpenForms[i].Close();
-                            }
+                            //if (this.Name != Application.OpenForms[i].Name)
+                            //{
+                            //    Application.OpenForms[i].Close();
+                            //}
 
                         }
                         if (isOpened == false) //若该窗体未打开,则显示该子窗体
                         {
-                            frmMain.Show();
+                            this.Show();
                         }
                         this.Close();
                     }
@@ -176,5 +176,20 @@ namespace HFM
         {
             FrmKeyIn.DelegatesKeyInTextBox(TxtPassword);
         }
+
+        #region 密码框中按回车时触发确定按钮
+        /// <summary>
+        /// 密码框中按回车时触发确定按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)//如果输入的是回车键  
+            {
+                this.BtnConfirm_Click(sender, e);//触发button事件  
+            }
+        } 
+        #endregion
     }
 }

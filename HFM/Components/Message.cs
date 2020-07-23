@@ -218,14 +218,14 @@ namespace HFM.Components
             messageData[0] = Convert.ToByte(deviceAddress);
             messageData[1] = 0x03;
             messageData[2] = 0x0A;
-            messageData[3] = Convert.ToByte(submitTime.Year / 100);
-            messageData[4] = Convert.ToByte(submitTime.Year % 100);
-            messageData[5] = Convert.ToByte(submitTime.Month);
-            messageData[6] = Convert.ToByte(submitTime.Day);
-            messageData[7] = Convert.ToByte(submitTime.Hour);
-            messageData[8] = Convert.ToByte(submitTime.Minute);
-            messageData[9] = Convert.ToByte(submitTime.Second);
-            messageData[10] = Convert.ToByte(submitTime.Millisecond);
+            messageData[3] = Convert.ToByte(((submitTime.Year / 1000)<<4)+ (submitTime.Year%1000/100));
+            messageData[4] = Convert.ToByte(((submitTime.Year % 100/10)<<4)+ (submitTime.Year % 10));
+            messageData[5] = Convert.ToByte(((submitTime.Month/10)<<4)+ (submitTime.Month%10));
+            messageData[6] = Convert.ToByte(((submitTime.Day/10)<<4)+(submitTime.Day%10));
+            messageData[7] = Convert.ToByte(((submitTime.Hour/10)<<4)+(submitTime.Hour%10));
+            messageData[8] = Convert.ToByte(((submitTime.Minute/10)<<4)+(submitTime.Minute%10));
+            messageData[9] = Convert.ToByte(((submitTime.Second/10)<<4)+(submitTime.Second%10));
+            messageData[10] = 0;//时间精确到秒即可// Convert.ToByte(((submitTime.Millisecond/10)<<4)+(submitTime.Millisecond%10));
             //监测状态，2字节
             messageData[11] = 0x00;
             switch (deviceStatus)//控制板中16、32、64分别表示正常、故障、污染。上报管理机时1、2、4分别表示正常、故障、污染
@@ -243,9 +243,9 @@ namespace HFM.Components
             messageData[12] = Convert.ToByte(deviceStatus);
             //求CRC校验值
             byte[] crc16 = new byte[2];
-            crc16=Tools.CRC16(messageData, messageData.Length - 1);
-            messageData[13] = crc16[0];
-            messageData[14] = crc16[1];
+            crc16=Tools.CRC16(messageData, messageData.Length - 3);
+            messageData[14] = crc16[0];
+            messageData[13] = crc16[1];
             return messageData;
         }
         #endregion
@@ -457,11 +457,11 @@ namespace HFM.Components
                     if (message.Length >= 17)//报文长度满足要求
                     {
                         messageData = new int[7];
-                        messageData[0] = message[7] * 100 + message[8];//年
+                        messageData[0] = (message[7]>>4)*1000+(message[7]&0x0f)*100 + (message[8]>>4)*10+(message[8]&0x0f);//年
                         for(int i=1;i<messageData.Length;i++)
                         {
                             //messageData[1]到messageData[6]分别存储：月、日、时、分、妙、毫秒
-                            messageData[i] = message[i + 8];
+                            messageData[i] = (message[i + 8]>>4)*10+(message[i+8]&0x0f);
                         }                        
                     }
                     break;

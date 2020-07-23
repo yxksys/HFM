@@ -53,10 +53,12 @@
             this.DgvError = new System.Windows.Forms.DataGridView();
             this.ErrTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Record = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reporting = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsEnglishsError = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MeasureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MeasureStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailedInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.上报状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsEnglish = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabHistory.SuspendLayout();
             this.TabMeasure.SuspendLayout();
@@ -110,6 +112,7 @@
             this.MeasureDate,
             this.MeasureStatus,
             this.DetailedInfo,
+            this.上报状态,
             this.IsEnglish});
             resources.ApplyResources(this.DgvMeasure, "DgvMeasure");
             this.DgvMeasure.Name = "DgvMeasure";
@@ -162,14 +165,12 @@
             this.DgvCalibration.Name = "DgvCalibration";
             this.DgvCalibration.ReadOnly = true;
             this.DgvCalibration.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.DgvCalibration.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvCalibration.RowTemplate.Height = 23;
             // 
             // CalibrationTime
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CalibrationTime.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.CalibrationTime, "CalibrationTime");
             this.CalibrationTime.Name = "CalibrationTime";
             this.CalibrationTime.ReadOnly = true;
@@ -200,6 +201,8 @@
             // 
             // MDA
             // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F);
+            this.MDA.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.MDA, "MDA");
             this.MDA.Name = "MDA";
             this.MDA.ReadOnly = true;
@@ -244,6 +247,7 @@
             this.DgvError.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ErrTime,
             this.Record,
+            this.Reporting,
             this.IsEnglishsError});
             resources.ApplyResources(this.DgvError, "DgvError");
             this.DgvError.Name = "DgvError";
@@ -262,6 +266,12 @@
             resources.ApplyResources(this.Record, "Record");
             this.Record.Name = "Record";
             this.Record.ReadOnly = true;
+            // 
+            // Reporting
+            // 
+            resources.ApplyResources(this.Reporting, "Reporting");
+            this.Reporting.Name = "Reporting";
+            this.Reporting.ReadOnly = true;
             // 
             // IsEnglishsError
             // 
@@ -287,6 +297,12 @@
             resources.ApplyResources(this.DetailedInfo, "DetailedInfo");
             this.DetailedInfo.Name = "DetailedInfo";
             this.DetailedInfo.ReadOnly = true;
+            // 
+            // 上报状态
+            // 
+            resources.ApplyResources(this.上报状态, "上报状态");
+            this.上报状态.Name = "上报状态";
+            this.上报状态.ReadOnly = true;
             // 
             // IsEnglish
             // 
@@ -336,10 +352,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AlphaBetaPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn ErrTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Record;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reporting;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglishsError;
         private System.Windows.Forms.DataGridViewTextBoxColumn MeasureDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn MeasureStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn DetailedInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 上报状态;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsEnglish;
     }
 }

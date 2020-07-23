@@ -28,6 +28,10 @@ namespace HFM.Components
 			// TODO: 在此处添加构造函数逻辑
 			//
 		}
+        ~CommPort()
+        {
+            
+        }
 		public int PortNum;  
 		public int BaudRate; 
 		public byte ByteSize; 
@@ -53,7 +57,7 @@ namespace HFM.Components
 		private const int INVALID_HANDLE_value = -1; 
        
 		[StructLayout(LayoutKind.Sequential)] 
-		private struct DCB  
+		public struct DCB  
 		{ 
 			//taken from c struct in platform sdk  
 			public int DCBlength;           // sizeof(DCB)  
@@ -178,13 +182,18 @@ namespace HFM.Components
 			{
         
 				DCB dcbCommPort = new DCB(); 
-				COMMTIMEOUTS ctoCommPort = new COMMTIMEOUTS();    
-        
-        
-				// OPEN THE COMM PORT. 
+				COMMTIMEOUTS ctoCommPort = new COMMTIMEOUTS();
 
-       
-				hComm = CreateFile("COM" + PortNum ,GENERIC_READ | GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE, 0,OPEN_EXISTING,0,0); 
+
+                // OPEN THE COMM PORT. 
+                if (PortNum < 10)
+                {
+                    hComm = CreateFile("COM" + PortNum, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
+                }
+                else
+                {
+                    hComm = CreateFile("\\\\.\\COM" + PortNum, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
+                }
        
 				// IF THE PORT CANNOT BE OPENED, BAIL OUT. 
 				if(hComm == INVALID_HANDLE_value)  
@@ -438,5 +447,18 @@ namespace HFM.Components
         }
         #endregion
 
+        #region 获得当前串口状态
+        //public bool GetCommState()
+        //{
+        //    if (hComm != INVALID_HANDLE_value)
+        //    {
+        //        return GetCommState(hComm);
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }           
+        //}
+        #endregion
     }
 }
