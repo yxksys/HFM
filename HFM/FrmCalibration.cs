@@ -1188,7 +1188,7 @@ namespace HFM
                     }
                     i++;
                 }
-                _channelParameters.Clear();
+                //_channelParameters.Clear();
                 _second_setChanelP.RemoveAt(3);
                 _second_setChanelP.Add(_setChannelParameter);
                 //生成报文
