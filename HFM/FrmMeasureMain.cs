@@ -67,6 +67,7 @@ namespace HFM
         /// </summary>
         int clothesStatus = 0;//衣物探头状态。0：衣物探头还未被拿起，1：衣物探头已经被拿起
         int[] lastInfraredStatus = new int[3];//记录上一个数据包红外状态，分别为“左手、右手、衣物”，本底测量中，如果本次红外到位而上次不到位则进行语音播报，如果上次红外到位本次也红外到位，则不需要重复播报提示
+        int timesOutCount = 0;//两步式探测（单探测器）超时时间计算次数
         bool isSelfCheckSended = false;//自检指令是否已经下发标志，因为在一个自检周期内，自检指令只需下发一次
         bool isBetaCommandToSend = false;//Beta自检指令是否应该下发，在α/β自检时，先下发α自检指令，自检时间到一半时再下发β自检指令
         bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
@@ -1027,13 +1028,18 @@ namespace HFM
             //{
             //    TxtShowResult.Text += measureDataS[3].Beta.ToString()+"   ";
             //}
+            //将监测数据Alpha和Beta计数保存到文件，用来检查是否正确。本底验证。。。
+            foreach(MeasureData m in measureDataS)
+            {
+                File.AppendAllText(appPath + "\\log\\background.txt", "通道编号："+m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
+            }
             try
             {
                 //报文解析无误,将当前报文红外状态清零
                 infraredStatusOfMessageNow &= 0;
                 //加载将当前报文1-4通道红外状态
                 infraredStatusOfMessageNow |= (byte)(receiveBufferMessage[61] & 7);//红外状态屏蔽高位后赋值            
-                                                                                   //加载当前报文5-7通道红外状态
+                //加载当前报文5-7通道红外状态
                 infraredStatusOfMessageNow |= (byte)((receiveBufferMessage[123] & 7) << 3);
             }
             catch (Exception)
@@ -1043,6 +1049,8 @@ namespace HFM
             
             if ((infraredStatusOfMessageNow ^ infraredStatusOfMessageLast) != 0)//红外状态发生变化
             {
+                //报文存储到文件
+                //File.WriteAllText(appPath + "\\log\\msg.txt",);
                 //重新刷新控制各个通道显示状态
                 foreach (Channel usedChannel in channelS)//channelS中存储当前全部启用且探测面积不为0的通道
                 {
@@ -1408,7 +1416,7 @@ namespace HFM
                     }
                     catch(Exception ex)
                     {
-                        File.WriteAllText(appPath+"\\log\\errorLog.txt",ex.ToString());
+                        File.AppendAllText(appPath+"\\log\\errorLog.txt",ex.ToString());
                     }
                     if (platformState == PlatformState.BackGrouneMeasure || platformState == PlatformState.ReadyToMeasure || platformState == PlatformState.Measuring)
                     {
@@ -2221,6 +2229,23 @@ namespace HFM
                         //重新启动等待测量计时
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
+                    if (playControl % 6 == 0)
+                    {
+                        timesOutCount++;
+                        if (timesOutCount >= 5)  //提示次数达到超时计数次数5次（1次6s共30s），则重置手心检测状态，恢复到等待测量阶段
+                        {
+                            //重置手部检测标志为0（未开始检测）
+                            isHandTested = 0;
+                            isHandSecondEnabled = false;
+                            //重新启动等待测量计时
+                            //stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                            return;
+                        }                       
+                    }
+                    if (isHandSecondEnabled == true)
+                    {
+                        playControl++;
+                    }
                     if (measureDataS[1].InfraredStatus == 0 && measureDataS[3].InfraredStatus == 0 && isHandSecondEnabled == false)
                     {                        
                         isHandSecondEnabled = true;                        
@@ -2229,7 +2254,7 @@ namespace HFM
                     if (isHandSecondEnabled == false)
                     {
                         if (playControl % 6 == 0)
-                        {
+                        {                                                        
                             //提示翻转手掌进行检测
                             if (isEnglish == false)
                             {
@@ -2269,7 +2294,7 @@ namespace HFM
                             {
                                 if (isEnglish)
                                 {
-                                    //提示翻转手掌
+                                    //提示没有污染离开
                                     player.Stream = Resources.English_NoContamination_please_leave;// appPath + "\\Audio\\English_NoContamination_please_leave.wav";
                                 }
                                 else
@@ -2402,6 +2427,7 @@ namespace HFM
                     stateTimeStart = System.DateTime.Now;
                     stateTimeRemain_Last = stateTimeSet;
                     isPlatformStateSwitched = true;//置状态切换标志
+                    timesOutCount = 0;//重置测量超时计数
                     return;
                 }
                 //本底测量时间到，进行本底判断
