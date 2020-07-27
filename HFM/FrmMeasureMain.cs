@@ -2154,6 +2154,9 @@ namespace HFM
                     }
                     else//本底测量未通过
                     {
+                        //记录本底异常时间到日志文件 
+                        File.AppendAllText(appPath + "\\log\\background.txt", DateTime.Now.ToString()+"\r\n");
+
                         //仪器本底状态背景色设置为故障
                         PnlBackground.BackgroundImage = Resources.Fault_progress;// Image.FromFile(appPath + "\\Images\\Fault_progress.png");
                         //将设备监测状态设置为“故障”
@@ -2468,6 +2471,9 @@ namespace HFM
                     }
                     else//本底检测未通过
                     {
+                        //记录本底异常时间到日志文件 
+                        File.AppendAllText(appPath + "\\log\\background.txt", DateTime.Now.ToString()+"\r\n");
+
                         //仪器本底测量状态背景色设置为故障
                         PnlBackground.BackgroundImage = Resources.Fault_progress;
                         //将设备监测状态设置为“故障”
