@@ -1027,12 +1027,7 @@ namespace HFM
             //if (platformState == PlatformState.ReadyToMeasure)
             //{
             //    TxtShowResult.Text += measureDataS[3].Beta.ToString()+"   ";
-            //}
-            //将监测数据Alpha和Beta计数保存到文件，用来检查是否正确。本底验证。。。
-            foreach(MeasureData m in measureDataS)
-            {
-                File.AppendAllText(appPath + "\\log\\background.txt", "通道编号："+m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
-            }
+            //}            
             try
             {
                 //报文解析无误,将当前报文红外状态清零
@@ -1164,6 +1159,13 @@ namespace HFM
             {
                 measureDataS[i].Channel = channelsAll[i];
             }
+
+            //将监测数据Alpha和Beta计数保存到文件，用来检查是否正确。本底验证。。。
+            foreach (MeasureData m in measureDataS)
+            {
+                File.AppendAllText(appPath + "\\log\\background.txt", "通道编号：" + m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
+            }
+
             //衣物探头被启用
             if (measureDataS[6].Channel.IsEnabled == true)
             {                
@@ -1754,7 +1756,7 @@ namespace HFM
                     isBetaCommandToSend = true;
                 }
                 //自检时间到
-                if (stateTimeRemain < 0)
+                if (stateTimeRemain <= 0)
                 {
                     //File.WriteAllText("record.txt",stream);
                     errRecordS = BaseCheck();                    
@@ -1778,9 +1780,7 @@ namespace HFM
                         //获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
                         stateTimeSet = systemParameter.SmoothingTime;
                         stateTimeRemain_Last = stateTimeSet;
-                        isPlatformStateSwitched = true;//置状态切换标志
-                        //启动本底测量计时 
-                        stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                        isPlatformStateSwitched = true;//置状态切换标志                        
                         //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS初始化为当前本底值，为本底测量时计算做准备
                         for (int i = 0; i < channelS.Count; i++)
                         {
@@ -1804,6 +1804,8 @@ namespace HFM
                         }
                         player.LoadAsync();
                         player.PlaySync();
+                        //启动本底测量计时 
+                        stateTimeStart = System.DateTime.Now;
                     }
                     else
                     {
@@ -1927,12 +1929,10 @@ namespace HFM
                             //计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
                             //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）               
                             calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
-                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);
-                           
-                            //记录当前本底平滑值
-                            File.AppendAllText(appPath + "\\log\\background.txt", "平滑后通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
-                           
+                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);                                                                                  
                         }
+                        //记录当前本底平滑值
+                        File.AppendAllText(appPath + "\\log\\background.txt", "平滑后通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                     }
                     //当前通道红外到位
@@ -1967,7 +1967,7 @@ namespace HFM
                                 player.Load();
                                 player.Play();
                                 //重新启动本底测量计时
-                                stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                                stateTimeStart = System.DateTime.Now;
                                 //Thread.Sleep(3000);
                             }
                             //记录当前红外状态
@@ -2096,8 +2096,10 @@ namespace HFM
                     return;
                 }
                 //本底测量时间到
-                if (stateTimeRemain < 0)
+                if (stateTimeRemain <= 0)
                 {
+                    //记录本底判断标志 
+                    File.AppendAllText(appPath + "\\log\\background.txt","本底判断。。。。" + "\r\n");
                     isFirstBackGroundData = true;
                     //isPlayed = false;
                     //各个手部和脚部通道显示当前测量本底值（cps）
@@ -2368,11 +2370,13 @@ namespace HFM
                             //继续计算每个通道上传的Alpha和Beta本底值(是指全部启用的通道)：
                             //第k次计算本底值=第k-1次计算本底值*平滑因子/（平滑因子+1）+第k次测量值/（平滑因子+1）                                       
                             calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
-                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);
-                            //记录当前本底平滑值
-                            File.AppendAllText(appPath + "\\log\\background.txt", "平滑后通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                            calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);                            
                         }
-                            calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
+
+                        //记录当前本底平滑值
+                        File.AppendAllText(appPath + "\\log\\background.txt", "平滑后通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+
+                        calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                         //获得当前系统参数设置中的测量单位                                                
                         //从探测效率参数列表中查找当前用户选择的的衣物探测核素的探测效率参数
                         //IList<EfficiencyParameter> efficiencyParameterNow = efficiencyParameterS.Where(efficiencyParameter => efficiencyParameter.NuclideType == "α" && efficiencyParameter.Channel.ChannelID == calculatedMeasureDataS[i].Channel.ChannelID && efficiencyParameter.NuclideName == alphaNuclideUsed).ToList();
@@ -2442,6 +2446,9 @@ namespace HFM
                 //本底测量时间到，进行本底判断
                 if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds < 0)
                 {
+                    //记录本底判断标志 
+                    File.AppendAllText(appPath + "\\log\\background.txt","本底判断。。。" + "\r\n");
+
                     //下次如果还进行本底计算，则需重新计时，所以置标志为True
                     isFirstBackGround = true;
                     isFirstBackGroundData = true;
