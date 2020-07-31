@@ -1477,7 +1477,7 @@
     <value>1</value>
   </data>
   <data name="LblSmoothingTime.Text" xml:space="preserve">
-    <value>平滑时间(s)</value>
+    <value>本底时间(s)</value>
   </data>
   <data name="&gt;&gt;LblSmoothingTime.Name" xml:space="preserve">
     <value>LblSmoothingTime</value>

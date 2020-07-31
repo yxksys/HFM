@@ -1081,12 +1081,12 @@ namespace HFM
             }
             if (system.SmoothingTime<10 )
             {
-                MessageBox.Show(@"平滑时间必须大于 10s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show(@"本底时间必须大于 10s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
-            if (system.MeasuringTime<4)
+            if (system.MeasuringTime<5)
             {
-                MessageBox.Show(@"测量时间必须大于 3s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show(@"测量时间必须大于 5s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
             if (system.AlarmTime<2)
