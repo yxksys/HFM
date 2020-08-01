@@ -1057,8 +1057,8 @@ namespace HFM
                         //向刻度数据表添加信息
                         Calibration calibration = new Calibration
                         {
-                            Efficiency = _eff > 0 ?Convert.ToSingle( _eff.ToString("0.000")) : 0,//效率
-                            MDA = _resultMda > 0 ?Convert.ToSingle( _resultMda.ToString("0.000")):0,
+                            Efficiency = _eff > 0 ?Convert.ToSingle( _eff.ToString("0.00")) : 0,//效率
+                            MDA = _resultMda > 0 ?Convert.ToSingle( _resultMda.ToString("0.00")):0,
                             AlphaBetaPercent =Convert.ToSingle( calibration_AlphaBetaPercent.AlphaBetaPercent.ToString("0.00")),//串道比
                             CalibrationTime = DateTime.Now,
                             Channel = _changedEfficiency.Channel,
@@ -1098,13 +1098,13 @@ namespace HFM
                                         }
                                         sw.WriteLine("");
                                     }
-                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent}%；");
+                                    sw.WriteLine($@"{CmbNuclideSelect.Text}的效率：{_eff:F2}%，可探测下限:{_resultMda:F2}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent:f2}%；");
                                     sw.Close();
                                 }
                             }
                         }
                         //测量结果
-                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F1}%，可探测下限:{_resultMda:F3}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent:f2}%；";
+                        TxtResult.Text = $@"{CmbNuclideSelect.Text}的效率：{_eff:F2}%，可探测下限:{_resultMda:F2}Bq/cm^2;串道比:{calibration_AlphaBetaPercent.AlphaBetaPercent:f2}%；";
                         //使刻度按钮可以使用
                         BtnCalibrate.Enabled = true;
                         BtnSet.Enabled = true;
