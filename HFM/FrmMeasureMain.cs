@@ -68,6 +68,7 @@ namespace HFM
         int clothesStatus = 0;//衣物探头状态。0：衣物探头还未被拿起，1：衣物探头已经被拿起
         int[] lastInfraredStatus = new int[3];//记录上一个数据包红外状态，分别为“左手、右手、衣物”，本底测量中，如果本次红外到位而上次不到位则进行语音播报，如果上次红外到位本次也红外到位，则不需要重复播报提示
         int timesOutCount = 0;//两步式探测（单探测器）超时时间计算次数
+        int backgroundCount = 0;//本底测量计数，记录本底测量阶段回传数据报文个数以便于求平均值
         bool isSelfCheckSended = false;//自检指令是否已经下发标志，因为在一个自检周期内，自检指令只需下发一次
         bool isBetaCommandToSend = false;//Beta自检指令是否应该下发，在α/β自检时，先下发α自检指令，自检时间到一半时再下发β自检指令
         bool isFirstBackGround = true;//进入等待测量状态后的本底测量计时标志
@@ -1163,7 +1164,7 @@ namespace HFM
             //将监测数据Alpha和Beta计数保存到文件，用来检查是否正确。本底验证。。。
             foreach (MeasureData m in measureDataS)
             {
-                File.AppendAllText(appPath + "\\log\\background.txt", "通道编号：" + m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
+                File.AppendAllText(appPath + "\\log\\background.txt", "控制板回传数据，通道编号：" + m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
             }
 
             //衣物探头被启用
@@ -1262,7 +1263,8 @@ namespace HFM
                                 //报警次数+1
                                 alarmCountOfClothes++;
                                 //如果连续三次出现污染报警（污染报警计数器超过3）
-                                if (alarmCountOfClothes > 2 && isClothesContaminated == false)
+                                //2020-07-31修改为出现1次即报警
+                                if (alarmCountOfClothes > 0 && isClothesContaminated == false)
                                 {
                                     //将设备监测状态设置为“污染”
                                     if (smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2)
@@ -1283,14 +1285,15 @@ namespace HFM
                                     if (isEnglish)
                                     {
                                         TxtShowResult.Text +=string.Format("Clothing Contaminated,Preset:{0}Actual:{1}\r\n", smoothedDataOfClothes > clothesProbeParmeter[0].Alarm_2 ? clothesProbeParmeter[0].Alarm_2 : clothesProbeParmeter[0].Alarm_1, smoothedDataOfClothes.ToString("F1"));
-                                        player.Stream = Resources.English_Decontaminate_please;// appPath + "\\Audio\\English_Decontaminate_please.wav";
+                                        //player.Stream = Resources.English_Decontaminate_please;// appPath + "\\Audio\\English_Decontaminate_please.wav";                                        
                                     }
                                     else
                                     {
                                         TxtShowResult.Text +=string.Format("衣物污染，设置值：{0}测量值：{0}\r\n", smoothedDataOfClothes> clothesProbeParmeter[0].Alarm_2? clothesProbeParmeter[0].Alarm_2: clothesProbeParmeter[0].Alarm_1, smoothedDataOfClothes.ToString("F1"));
                                         //语音提示被测人员污染
-                                        player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
+                                        //player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
                                     }
+                                    player.Stream = Resources.dida3;//报警音提示
                                     player.LoadAsync();
                                     player.PlaySync();
                                     //Thread.Sleep(2000);
@@ -1864,6 +1867,7 @@ namespace HFM
                     LblTimeRemain.BackColor = Color.Transparent;
                 }
                 bool isReDisplay = false; //是否需要重新显示"本底测量"提示信息,默认false
+                backgroundCount++;//本底测量值计数
                 //textBox1.Text += platformState.ToString();
                 ////获得当前系统参数设置中的平滑时间并赋值给stateTimeSet
                 //stateTimeSet = systemParameter.SmoothingTime;                        
@@ -1918,6 +1922,8 @@ namespace HFM
                     List<MeasureData> list = measureDataS.Where(measureData => measureData.Channel.ChannelID == channelS[i].ChannelID).ToList();
                     if (list.Count > 0)
                     {
+                        //本底测量平滑算法修改为平均值算法。此处为平滑算法
+                        /***********************************************
                         if (isFirstBackGroundData)
                         {
                             calculatedMeasureDataS[i].Alpha = list[0].Alpha;
@@ -1931,8 +1937,14 @@ namespace HFM
                             calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
                             calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);                                                                                  
                         }
+                        *****************************************************/
+                        /***************************************************
+                         * 此处为修改后的平均值算法，测量值累加并计数
+                         * **************************************************/
+                        calculatedMeasureDataS[i].Alpha += list[0].Alpha;
+                        calculatedMeasureDataS[i].Beta += list[0].Beta;                        
                         //记录当前本底平滑值
-                        File.AppendAllText(appPath + "\\log\\background.txt", "平滑后通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                        File.AppendAllText(appPath + "\\log\\background.txt", "本底测量累加值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                     }
                     //当前通道红外到位
@@ -1965,10 +1977,10 @@ namespace HFM
                                     //LblLeft.Text = "左手到位";
                                 }
                                 player.Load();
-                                player.Play();
+                                player.Play();                                
                                 //重新启动本底测量计时
                                 stateTimeStart = System.DateTime.Now;
-                                //Thread.Sleep(3000);
+                                //Thread.Sleep(3000);                                
                             }
                             //记录当前红外状态
                             lastInfraredStatus[0] = 1;
@@ -2001,7 +2013,7 @@ namespace HFM
                                 player.Load();
                                 player.Play();
                                 //重新启动本底测量计时
-                                stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                                stateTimeStart = System.DateTime.Now;
                                 //Thread.Sleep(3000);
                             }
                             //记录当前红外状态
@@ -2031,8 +2043,8 @@ namespace HFM
                                 }
                                 player.Load();
                                 player.Play();
-                                //重新启动测量计时
-                                stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                                //重新启动本底测量计时
+                                stateTimeStart = System.DateTime.Now;
                                 //Thread.Sleep(3000);
                             }
                             //记录当前红外状态
@@ -2040,12 +2052,19 @@ namespace HFM
                         }                        
                         //重新启动本底测量（本底测量时间重新开始计时）
                         stateTimeStart = System.DateTime.Now;
+                        /*************************************************
+                         * 本底测量修改为平均值后添加
+                         ************************************************/
                         //将本底测量中存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为本底测量时计算做准备
                         for (int j = 0; j < channelS.Count; j++)
                         {
                             calculatedMeasureDataS[j].Alpha = 0;
                             calculatedMeasureDataS[j].Beta =0;                            
                         }
+                        backgroundCount = 0;//重置本底测量数据报文个数计数器
+                        /*************************************************
+                         * 本底测量修改为平均值后添加
+                         ************************************************/
                         isFirstBackGroundData = true;
                         return;
                     }
@@ -2091,15 +2110,39 @@ namespace HFM
                         LblBackground.Text = "本底测量";
                     }
                     //重新启动本底测量（本底测量时间重新开始计时）
-                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    stateTimeStart = System.DateTime.Now;
                     isReDisplay =false;
+                    /****************************************************
+                    * 本底测量修改为求平均值后添加
+                    ***************************************************/
+                    //重新启动本底测量，求平均值需要将累加测量初始值清零
+                    for (int j = 0; j < channelS.Count; j++)
+                    {
+                        //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次计算做准备
+                        calculatedMeasureDataS[j].Alpha = 0;
+                        calculatedMeasureDataS[j].Beta = 0;
+                    }                    
+                    backgroundCount = 0;//重置本底测量数据报文个数计数器
+                    /****************************************************
+                     * 本底测量修改为求平均值后添加
+                     ***************************************************/
                     return;
                 }
                 //本底测量时间到
                 if (stateTimeRemain <= 0)
-                {
-                    //记录本底判断标志 
-                    File.AppendAllText(appPath + "\\log\\background.txt","本底判断。。。。" + "\r\n");
+                {                    
+                    //本底测量值求平均值
+                    if(backgroundCount>0)
+                    {
+                        for (int i = 0; i < channelS.Count; i++)
+                        {
+                            calculatedMeasureDataS[i].Alpha /= backgroundCount;
+                            calculatedMeasureDataS[i].Beta /= backgroundCount;
+                            //记录当前本底值
+                            File.AppendAllText(appPath + "\\log\\background.txt", "本底测量，当前本底值(平均值)："+calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                        }
+                        backgroundCount = 0;//重置本底测量数据报文个数计数器
+                    }                                        
                     isFirstBackGroundData = true;
                     //isPlayed = false;
                     //各个手部和脚部通道显示当前测量本底值（cps）
@@ -2135,12 +2178,18 @@ namespace HFM
                             MeasureData baseDataTemp = new MeasureData();
                             Tools.Clone(calculatedMeasureDataS[i], baseDataTemp);
                             baseData.Add(baseDataTemp);
-                            //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为测量时计算做准备
+                            /******************************************************
+                             * 等待测量阶段，本底初始值修改为本底测量结果后注释掉
+                             
+                            //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为等待测量时本底计算做准备
                             calculatedMeasureDataS[i].Alpha = 0;
                             calculatedMeasureDataS[i].Beta = 0;
+                            
+                             * 等待测量阶段，本底初始值修改为本底测量结果后注释掉
+                             ******************************************************/
                         }
                         //如果是单探测器，将左手心、右手心的本底值拷贝到左手背、右手背
-                        if(factoryParameter.IsDoubleProbe == false)
+                        if (factoryParameter.IsDoubleProbe == false)
                         {
                             Tools.Clone(baseData[0], baseData[1]);
                             Tools.Clone(baseData[2], baseData[3]);
@@ -2157,7 +2206,7 @@ namespace HFM
                     else//本底测量未通过
                     {
                         //记录本底异常时间到日志文件 
-                        File.AppendAllText(appPath + "\\log\\background.txt", DateTime.Now.ToString()+"\r\n");
+                        File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间："+DateTime.Now.ToString()+"\r\n");
 
                         //仪器本底状态背景色设置为故障
                         PnlBackground.BackgroundImage = Resources.Fault_progress;// Image.FromFile(appPath + "\\Images\\Fault_progress.png");
@@ -2183,6 +2232,20 @@ namespace HFM
                         isBetaCommandToSend = false;//
                         platformState = PlatformState.ReadyToRun;
                         isPlatformStateSwitched = true;//置状态切换标志
+                        /****************************************************
+                        * 本底测量修改为求平均值后添加
+                        ***************************************************/
+                        //重新启动本底测量，求平均值需要将累加测量初始值清零
+                        for (int j = 0; j < channelS.Count; j++)
+                        {
+                            //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次计算做准备
+                            calculatedMeasureDataS[j].Alpha = 0;
+                            calculatedMeasureDataS[j].Beta = 0;
+                        }
+                        backgroundCount = 0;//重置本底测量数据报文个数计数器
+                        /****************************************************
+                        * 本底测量修改为求平均值后添加
+                        ***************************************************/
                     }
                     return;
                 }
@@ -2241,7 +2304,7 @@ namespace HFM
                     if (playControl % 6 == 0)
                     {
                         timesOutCount++;
-                        if (timesOutCount >= 5)  //提示次数达到超时计数次数5次（1次6s共30s），则重置手心检测状态，恢复到等待测量阶段
+                        if (timesOutCount >=5)  //提示次数达到超时计数次数5次（1次6s共30s），则重置手心检测状态，恢复到等待测量阶段
                         {
                             //重置手部检测标志为0（未开始检测）
                             isHandTested = 0;
@@ -2285,7 +2348,7 @@ namespace HFM
                 {
                     if (stateTimeRemain <= 0)
                     {
-                        //重新启动本底计时
+                        //重新启动等待测量计时
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
                     if (measureDataS[2].InfraredStatus == 0 && measureDataS[4].InfraredStatus == 0)//说明手部检测完成后，红外不到位，手部已经离开监测仪
@@ -2360,6 +2423,9 @@ namespace HFM
                         {
                             isHandInfraredStatus = false;
                         }
+                        /*****************************************************************
+                         * 本底平滑初始值为接收到第一个报文的测量值，修改为本底结果后注释
+                         
                         if (isFirstBackGroundData)
                         {
                             calculatedMeasureDataS[i].Alpha = list[0].Alpha;
@@ -2372,9 +2438,15 @@ namespace HFM
                             calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
                             calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);                            
                         }
+                        * *****************************************************************/
+                        /*******************************************************************
+                         * 本底平滑初始值修改为：本底测量后平滑结果，所以不需要对初始值进行设置
+                         ******************************************************************/
+                        calculatedMeasureDataS[i].Alpha = calculatedMeasureDataS[i].Alpha * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Alpha / (factoryParameter.SmoothingFactor + 1);
+                        calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);
 
                         //记录当前本底平滑值
-                        File.AppendAllText(appPath + "\\log\\background.txt", "平滑后通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                        File.AppendAllText(appPath + "\\log\\background.txt", "等待测量-本底平滑值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
 
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                         //获得当前系统参数设置中的测量单位                                                
@@ -2444,10 +2516,10 @@ namespace HFM
                     return;
                 }
                 //本底测量时间到，进行本底判断
-                if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds < 0)
+                if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds <= 0)
                 {
                     //记录本底判断标志 
-                    File.AppendAllText(appPath + "\\log\\background.txt","本底判断。。。" + "\r\n");
+                    File.AppendAllText(appPath + "\\log\\background.txt","等待测量，本底判断。。。" + "\r\n");
 
                     //下次如果还进行本底计算，则需重新计时，所以置标志为True
                     isFirstBackGround = true;
@@ -2479,7 +2551,7 @@ namespace HFM
                     else//本底检测未通过
                     {
                         //记录本底异常时间到日志文件 
-                        File.AppendAllText(appPath + "\\log\\background.txt", DateTime.Now.ToString()+"\r\n");
+                        File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间："+DateTime.Now.ToString()+"\r\n");
 
                         //仪器本底测量状态背景色设置为故障
                         PnlBackground.BackgroundImage = Resources.Fault_progress;
@@ -2503,9 +2575,27 @@ namespace HFM
                         //将故障信息errRecord写入数据库
                         AddErrorData(errRecordS);
                         //启动故障报警计时
-                        alarmTimeStart = System.DateTime.Now.AddSeconds(1);
+                        alarmTimeStart = System.DateTime.Now.AddSeconds(1);                        
                         platformState = PlatformState.BackGrouneMeasure;
                         isPlatformStateSwitched = true;//置状态切换标志
+                        /**************************************************************
+                         * 本底测量修改为求平均值需添加内容，到return
+                         * ************************************************************/
+                        //重新启动本底测量，求平均值需要将累加测量初始值清零
+                        for (int i = 0; i < channelS.Count; i++)
+                        {
+                            //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为下次计算做准备
+                            calculatedMeasureDataS[i].Alpha = 0;
+                            calculatedMeasureDataS[i].Beta = 0;
+                        }
+                        //本底测量数据报文计数器清零
+                        backgroundCount = 0;
+                        //重新启动本底测量计时
+                        stateTimeStart = System.DateTime.Now;
+                        return;
+                        /**************************************************************
+                         * 本底测量修改为求平均值需添加内容
+                         * ************************************************************/
                     }
                     //for (int i = 0; i < channelS.Count; i++)
                     //{
@@ -2519,7 +2609,7 @@ namespace HFM
                         Tools.Clone(baseData[i],calculatedMeasureDataS[i]);                        
                     }
                     //重新启动本底测量计时
-                    stateTimeStart = System.DateTime.Now.AddSeconds(1);
+                    stateTimeStart = System.DateTime.Now;
                 }                
                 return;
             }
