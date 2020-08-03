@@ -200,7 +200,8 @@ namespace HFM
             TxtMeasuringTime.Text = system.MeasuringTime.ToString();
             CmbMeasurementUnit.Text = system.MeasurementUnit.ToString();
             TxtAlarmTime.Text = system.AlarmTime.ToString();
-            TxtBKGUpdate.Text = system.BkgUpdate.ToString();            
+            TxtBKGUpdate.Text = system.BkgUpdate.ToString();
+            TxtTimeOut.Text = system.TimeOut.ToString();
             #endregion
 
             #region 工厂参数
@@ -1067,6 +1068,7 @@ namespace HFM
                 system.MeasurementUnit = CmbMeasurementUnit.Text;
                 system.AlarmTime = int.Parse(TxtAlarmTime.Text);
                 system.BkgUpdate = int.Parse(TxtBKGUpdate.Text);
+                system.TimeOut = int.Parse(TxtTimeOut.Text);
             }
             catch (Exception)
             {
@@ -1081,17 +1083,22 @@ namespace HFM
             }
             if (system.SmoothingTime<10 )
             {
-                MessageBox.Show(@"平滑时间必须大于 10s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show(@"本底时间必须大于 10s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
-            if (system.MeasuringTime<4)
+            if (system.MeasuringTime<5)
             {
-                MessageBox.Show(@"测量时间必须大于 3s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show(@"测量时间必须大于 5s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
             if (system.AlarmTime<2)
             {
                 MessageBox.Show(@"报警时间必须大于 1s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
+            if (system.TimeOut < 5)
+            {
+                MessageBox.Show(@"检测时间超时必须大于 5s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
             #endregion
@@ -2580,6 +2587,15 @@ namespace HFM
         private void TxtSmoothingFactor_Enter(object sender, EventArgs e)
         {
             FrmKeyIn.DelegatesKeyInTextBox(TxtSmoothingFactor);
+        }
+        /// <summary>
+        /// 超时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtTimeOut_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtTimeOut);
         }
         #endregion
 

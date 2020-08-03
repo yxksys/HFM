@@ -80,6 +80,8 @@
             this.LblRightInProbeArea = new System.Windows.Forms.Label();
             this.LblLeftInProbeArea = new System.Windows.Forms.Label();
             this.GrpPreferenceData = new System.Windows.Forms.GroupBox();
+            this.TxtTimeOut = new System.Windows.Forms.TextBox();
+            this.LblTimeOut = new System.Windows.Forms.Label();
             this.TxtBKGUpdate = new System.Windows.Forms.TextBox();
             this.TxtAlarmTime = new System.Windows.Forms.TextBox();
             this.TxtMeasuringTime = new System.Windows.Forms.TextBox();
@@ -499,6 +501,8 @@
             // 
             // GrpPreferenceData
             // 
+            this.GrpPreferenceData.Controls.Add(this.TxtTimeOut);
+            this.GrpPreferenceData.Controls.Add(this.LblTimeOut);
             this.GrpPreferenceData.Controls.Add(this.TxtBKGUpdate);
             this.GrpPreferenceData.Controls.Add(this.TxtAlarmTime);
             this.GrpPreferenceData.Controls.Add(this.TxtMeasuringTime);
@@ -514,6 +518,17 @@
             resources.ApplyResources(this.GrpPreferenceData, "GrpPreferenceData");
             this.GrpPreferenceData.Name = "GrpPreferenceData";
             this.GrpPreferenceData.TabStop = false;
+            // 
+            // TxtTimeOut
+            // 
+            resources.ApplyResources(this.TxtTimeOut, "TxtTimeOut");
+            this.TxtTimeOut.Name = "TxtTimeOut";
+            this.TxtTimeOut.Enter += new System.EventHandler(this.TxtTimeOut_Enter);
+            // 
+            // LblTimeOut
+            // 
+            resources.ApplyResources(this.LblTimeOut, "LblTimeOut");
+            this.LblTimeOut.Name = "LblTimeOut";
             // 
             // TxtBKGUpdate
             // 
@@ -1901,5 +1916,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaAlarm_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
+        private System.Windows.Forms.TextBox TxtTimeOut;
+        private System.Windows.Forms.Label LblTimeOut;
     }
 }

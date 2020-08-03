@@ -1119,11 +1119,77 @@
   <data name="&gt;&gt;GrpPreferenceArea.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="TxtTimeOut.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt</value>
+  </data>
+  <data name="TxtTimeOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 243</value>
+  </data>
+  <data name="TxtTimeOut.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="TxtTimeOut.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TxtTimeOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 26</value>
+  </data>
+  <data name="TxtTimeOut.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="TxtTimeOut.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;TxtTimeOut.Name" xml:space="preserve">
+    <value>TxtTimeOut</value>
+  </data>
+  <data name="&gt;&gt;TxtTimeOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TxtTimeOut.Parent" xml:space="preserve">
+    <value>GrpPreferenceData</value>
+  </data>
+  <data name="&gt;&gt;TxtTimeOut.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LblTimeOut.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 11pt</value>
+  </data>
+  <data name="LblTimeOut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LblTimeOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 242</value>
+  </data>
+  <data name="LblTimeOut.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
+  </data>
+  <data name="LblTimeOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 26</value>
+  </data>
+  <data name="LblTimeOut.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="LblTimeOut.Text" xml:space="preserve">
+    <value>检测超时(s)</value>
+  </data>
+  <data name="&gt;&gt;LblTimeOut.Name" xml:space="preserve">
+    <value>LblTimeOut</value>
+  </data>
+  <data name="&gt;&gt;LblTimeOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LblTimeOut.Parent" xml:space="preserve">
+    <value>GrpPreferenceData</value>
+  </data>
+  <data name="&gt;&gt;LblTimeOut.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="TxtBKGUpdate.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
   <data name="TxtBKGUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 239</value>
+    <value>161, 209</value>
   </data>
   <data name="TxtBKGUpdate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1150,13 +1216,13 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;TxtBKGUpdate.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="TxtAlarmTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
   <data name="TxtAlarmTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 199</value>
+    <value>161, 175</value>
   </data>
   <data name="TxtAlarmTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1183,13 +1249,13 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;TxtAlarmTime.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="TxtMeasuringTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
   <data name="TxtMeasuringTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 121</value>
+    <value>161, 109</value>
   </data>
   <data name="TxtMeasuringTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1216,13 +1282,13 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;TxtMeasuringTime.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="TxtSmoothingTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
   </data>
   <data name="TxtSmoothingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 81</value>
+    <value>161, 75</value>
   </data>
   <data name="TxtSmoothingTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1249,7 +1315,7 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;TxtSmoothingTime.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="TxtSelfCheckTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -1282,7 +1348,7 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;TxtSelfCheckTime.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="CmbMeasurementUnit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1318,7 +1384,7 @@
     <value>nCi</value>
   </data>
   <data name="CmbMeasurementUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 161</value>
+    <value>161, 143</value>
   </data>
   <data name="CmbMeasurementUnit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -1339,13 +1405,13 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;CmbMeasurementUnit.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="LblBKGUpdate.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="LblBKGUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 239</value>
+    <value>20, 209</value>
   </data>
   <data name="LblBKGUpdate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -1369,13 +1435,13 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;LblBKGUpdate.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="LblAlarmTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="LblAlarmTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 200</value>
+    <value>20, 176</value>
   </data>
   <data name="LblAlarmTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -1399,13 +1465,13 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;LblAlarmTime.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="LblMeasurementUnit.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="LblMeasurementUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 161</value>
+    <value>20, 143</value>
   </data>
   <data name="LblMeasurementUnit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -1429,13 +1495,13 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;LblMeasurementUnit.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="LblMeasuringTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="LblMeasuringTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 122</value>
+    <value>20, 110</value>
   </data>
   <data name="LblMeasuringTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -1459,13 +1525,13 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;LblMeasuringTime.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="LblSmoothingTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="LblSmoothingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 83</value>
+    <value>20, 77</value>
   </data>
   <data name="LblSmoothingTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -1477,7 +1543,7 @@
     <value>1</value>
   </data>
   <data name="LblSmoothingTime.Text" xml:space="preserve">
-    <value>平滑时间(s)</value>
+    <value>本底时间(s)</value>
   </data>
   <data name="&gt;&gt;LblSmoothingTime.Name" xml:space="preserve">
     <value>LblSmoothingTime</value>
@@ -1489,7 +1555,7 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;LblSmoothingTime.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="LblSelfCheckTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 11pt</value>
@@ -1519,7 +1585,7 @@
     <value>GrpPreferenceData</value>
   </data>
   <data name="&gt;&gt;LblSelfCheckTime.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="GrpPreferenceData.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 20pt, style=Bold</value>

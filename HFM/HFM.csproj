@@ -292,6 +292,7 @@
     <Content Include="Audio\dida3.wav" />
     <Content Include="Audio\English_No Contamination_please_leave.wav" />
     <Content Include="Audio\English_NoContamination_please_frisker.wav" />
+    <Content Include="log\background.txt" />
     <Content Include="log\errorLog.txt" />
     <None Include="Audio\English_NoContamination_please_leave.wav" />
     <Content Include="Audio\English_please_flip_palm_for_measuring.wav" />
