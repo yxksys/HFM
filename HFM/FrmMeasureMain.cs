@@ -2304,7 +2304,7 @@ namespace HFM
                     if (playControl % 6 == 0)
                     {
                         timesOutCount++;
-                        if (timesOutCount >=5)  //提示次数达到超时计数次数5次（1次6s共30s），则重置手心检测状态，恢复到等待测量阶段
+                        if (timesOutCount >=systemParameter.TimeOut/6)  //提示次数达到超时计数次数（1次6s共计次数为系统设置超时时间除以6），则重置手心检测状态，恢复到等待测量阶段
                         {
                             //重置手部检测标志为0（未开始检测）
                             isHandTested = 0;
