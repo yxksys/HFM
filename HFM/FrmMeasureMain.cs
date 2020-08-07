@@ -1291,7 +1291,7 @@ namespace HFM
                                     }
                                     else
                                     {
-                                        TxtShowResult.Text +=string.Format("衣物污染，设置值：{0}测量值：{0}\r\n", smoothedDataOfClothes> clothesProbeParmeter[0].Alarm_2? clothesProbeParmeter[0].Alarm_2: clothesProbeParmeter[0].Alarm_1, smoothedDataOfClothes.ToString("F2"));
+                                        TxtShowResult.Text +=string.Format("衣物污染，设置值：{0}测量值：{1}\r\n", smoothedDataOfClothes> clothesProbeParmeter[0].Alarm_2? clothesProbeParmeter[0].Alarm_2: clothesProbeParmeter[0].Alarm_1, smoothedDataOfClothes.ToString("F2"));
                                         //语音提示被测人员污染
                                         //player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";
                                     }
@@ -2186,8 +2186,8 @@ namespace HFM
                             //系统语音提示仪器正常等待测量
                             player.Stream = Resources.Chinese_Ready;// appPath + "\\Audio\\Chinese_Ready.wav";
                         }
-                        player.LoadAsync();
-                        player.PlaySync();
+                        player.Load();
+                        player.Play();
                         //设备监测状态为正常
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingNormally);
                         //系统参数中，将上次本底测量后已测量人数清零                        
@@ -2242,8 +2242,8 @@ namespace HFM
                         {
                             player.Stream = Resources.Chinese_Background_abnomal;// appPath + "\\Audio\\Chinese_Background_abnomal.wav";
                         }
-                        player.LoadAsync();
-                        player.PlaySync();
+                        player.Load();
+                        player.Play();
                         //将故障信息errRecord写入数据库
                         AddErrorData(errRecordS);                        
                         //启动故障报警计时
