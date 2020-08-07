@@ -1096,9 +1096,9 @@ namespace HFM
                 MessageBox.Show(@"报警时间必须大于 1s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
-            if (system.TimeOut < 5)
+            if (system.TimeOut < 20)
             {
-                MessageBox.Show(@"检测时间超时必须大于 5s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show(@"检测时间超时必须大于 20s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
             #endregion
