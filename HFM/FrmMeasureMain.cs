@@ -1162,10 +1162,10 @@ namespace HFM
             }
 
             //将监测数据Alpha和Beta计数保存到文件，用来检查是否正确。本底验证。。。
-            //foreach (MeasureData m in measureDataS)
-            //{
-            //    File.AppendAllText(appPath + "\\log\\background.txt", "控制板回传数据，通道编号：" + m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
-            //}
+            foreach (MeasureData m in measureDataS)
+            {
+                File.AppendAllText(appPath + "\\log\\background.txt", "控制板回传数据，通道编号：" + m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
+            }
 
             //衣物探头被启用
             if (measureDataS[6].Channel.IsEnabled == true)
@@ -1868,7 +1868,7 @@ namespace HFM
             //运行状态为本底测量
             if (platformState == PlatformState.BackGrouneMeasure)
             {
-                //File.AppendAllText(appPath + "\\log\\background.txt", "开始本底测量。。。\r\n");
+                File.AppendAllText(appPath + "\\log\\background.txt", "开始本底测量。。。\r\n");
                 if (isLoadProgressPic[1] == false)
                 {
                     SetProgressPicFlag(1);//本底测量进度图片已经被加载标志设置为true，其它为false
@@ -1962,9 +1962,9 @@ namespace HFM
                          * 此处为修改后的平均值算法，测量值累加并计数
                          * **************************************************/
                         calculatedMeasureDataS[i].Alpha += list[0].Alpha;
-                        calculatedMeasureDataS[i].Beta += list[0].Beta;                        
+                        calculatedMeasureDataS[i].Beta += list[0].Beta;
                         //记录当前本底平滑值
-                        //File.AppendAllText(appPath + "\\log\\background.txt", "本底测量累加值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                        File.AppendAllText(appPath + "\\log\\background.txt", "本底测量累加值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                     }
                     //当前通道红外到位
@@ -2159,7 +2159,7 @@ namespace HFM
                             calculatedMeasureDataS[i].Alpha /= backgroundCount;
                             calculatedMeasureDataS[i].Beta /= backgroundCount;
                             //记录当前本底值
-                            //File.AppendAllText(appPath + "\\log\\background.txt", "本底测量，当前本底值(平均值)："+calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                            File.AppendAllText(appPath + "\\log\\background.txt", "本底测量，当前本底值(平均值)：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
                         }
                         backgroundCount = 0;//重置本底测量数据报文个数计数器
                         DisplayMeasureData(calculatedMeasureDataS, "cps");
@@ -2227,7 +2227,7 @@ namespace HFM
                     else//本底测量未通过
                     {
                         //记录本底异常时间到日志文件 
-                        //File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间："+DateTime.Now.ToString()+"\r\n");
+                        File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间：" + DateTime.Now.ToString() + "\r\n");
 
                         //仪器本底状态背景色设置为故障
                         PnlBackground.BackgroundImage = Resources.Fault_progress;// Image.FromFile(appPath + "\\Images\\Fault_progress.png");
@@ -2467,7 +2467,7 @@ namespace HFM
                         calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);
 
                         //记录当前本底平滑值
-                        //File.AppendAllText(appPath + "\\log\\background.txt", "等待测量-本底平滑值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                        File.AppendAllText(appPath + "\\log\\background.txt", "等待测量-本底平滑值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
 
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                         //获得当前系统参数设置中的测量单位                                                
@@ -2540,7 +2540,7 @@ namespace HFM
                 if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds <= 0)
                 {
                     //记录本底判断标志 
-                    //File.AppendAllText(appPath + "\\log\\background.txt","等待测量，本底判断。。。" + "\r\n");
+                    File.AppendAllText(appPath + "\\log\\background.txt", "等待测量，本底判断。。。" + "\r\n");
 
                     //下次如果还进行本底计算，则需重新计时，所以置标志为True
                     isFirstBackGround = true;
@@ -2579,7 +2579,7 @@ namespace HFM
                     else//本底检测未通过
                     {
                         //记录本底异常时间到日志文件 
-                        //File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间："+DateTime.Now.ToString()+"\r\n");
+                        File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间：" + DateTime.Now.ToString() + "\r\n");
 
                         //仪器本底测量状态背景色设置为故障
                         PnlBackground.BackgroundImage = Resources.Fault_progress;
@@ -3982,6 +3982,15 @@ namespace HFM
                     }
                     if (factoryParameter.MeasureType != "α")
                     {
+                        /*****************************************************************************
+                         * 由于衣物探头本底值并不是使用平滑因子算法进行计算，是使用泊松分布算法进行计算
+                         * 所以如果当前通道是衣物探头，则将衣物探头当前本底值赋值给通道进行本底判断
+                        // *****************************************************************************/
+                        //if (channelS[i].ChannelID == 7)
+                        //{
+                        //    calculatedMeasureDataS[i].Beta = baseDataOfClothes;
+                        //    File.AppendAllText(appPath + "\\log\\background.txt", "本底判断，衣物通道：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                        //}                       
                         //查询当前通道的β本底上限、本底下限
                         //probeParameter.GetParameter(channelS[i].ChannelID, "β");
                         //查询当前通道的β本底上限、本底下限（从探测参数列表中找到当前通道的"β"探测参数）                       
