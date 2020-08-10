@@ -1215,6 +1215,7 @@ namespace HFM
                             //frmClothes.PrgClothAlarm_1.Width = (int)(frmClothes.PrgClothAlarm_2.Width * clothesProbeParmeter[0].Alarm_1 / clothesProbeParmeter[0].Alarm_2);
                             //显示衣物探头监测窗口                    
                             frmClothes.Show();
+                            File.AppendAllText(appPath + "\\log\\msg.txt", "衣物监测窗口打开，当前衣物红外状态：" + measureDataS[6].InfraredStatus.ToString());
                             return;
                         }
                         //衣物探头已经被拿起（红外状态为到位，衣物探头状态clothesStatus为1（已被拿起），说明衣物探头已经被拿起一段时间（至少1s））
@@ -3857,6 +3858,10 @@ namespace HFM
                 smoothingData.baseData_i = 0;
                 smoothingData.baseData_Full = 0;
                 smoothedData =(float)3.3e-4;
+            }
+            if(smoothedData>100000)
+            {
+                File.AppendAllText(appPath + "\\log\\errorLog.txt", "sum="+ smoothingData.sum+"; team_i ="+smoothingData.team_i+";");
             }
             return smoothedData;
         }

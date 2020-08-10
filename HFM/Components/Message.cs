@@ -445,17 +445,25 @@ namespace HFM.Components
             if(message[message.Length-2]!=crc16[1] || message[message.Length-1]!=crc16[0])
             {
                 return null;
-            }
+            }           
             //校验成功
             switch(message[1])
             {                
                 case 0x03://向管理机上报监测状态报文
+                    if (message[2] != 0x00 || message[3] != 0x00 || message[4] != 0x00 || message[5] != 0x05)
+                    {
+                        return null;
+                    }
                     messageData = new int[1];
                     messageData[0] = message[0];
                     break;                   
                 case 0x10://进行时间同步报文
                     if (message.Length >= 17)//报文长度满足要求
                     {
+                        if (message[2] != 0x11 || message[3] != 0x00 || message[4] != 0x00 || message[5] != 0x04)
+                        {
+                            return null;
+                        }
                         messageData = new int[7];
                         messageData[0] = (message[7]>>4)*1000+(message[7]&0x0f)*100 + (message[8]>>4)*10+(message[8]&0x0f);//年
                         for(int i=1;i<messageData.Length;i++)
