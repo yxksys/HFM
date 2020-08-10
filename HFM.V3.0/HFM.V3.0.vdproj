@@ -57,12 +57,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0C103AAE88F749CD8CDC565D3088A28D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0E1516A3C1C84B5BA9732F0E5869F422"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -783,6 +777,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FC87D1013FDD4471B65262F254F92287"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FC8823874793403C8481E6A9F1FDA873"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1038,26 +1038,6 @@
             "TargetName" = "8:Fault_progress.png"
             "Tag" = "8:"
             "Folder" = "8:_63B873B00CF74619830B528B7CB41BD5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0C103AAE88F749CD8CDC565D3088A28D"
-            {
-            "SourcePath" = "8:..\\HFM\\log\\background.txt"
-            "TargetName" = "8:background.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_1E6B776A2A1646369B01F691B833D699"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1396,7 +1376,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=3.0.6.12, Culture=en, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=3.0.6.21, Culture=en, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_34A78B96ECDE4A338BC43FDDB70976E3"
@@ -3460,6 +3440,26 @@
             "TargetName" = "8:Chinese_Nine.wav"
             "Tag" = "8:"
             "Folder" = "8:_9E44E306CC32469685A7FBF6335015E8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC87D1013FDD4471B65262F254F92287"
+            {
+            "SourcePath" = "8:..\\HFM\\bin\\Debug\\log\\background.txt"
+            "TargetName" = "8:background.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_1E6B776A2A1646369B01F691B833D699"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
