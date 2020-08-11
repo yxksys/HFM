@@ -4194,9 +4194,25 @@ namespace HFM
                 {
                     SetSystemTime(ref timeForSyn);
                     stateTimeStart = DateTime.Now;//同步时间后重新开始检测运行状态倒计时
-                    //向管理机恢复时间同步报文
+                    //向管理机回复时间同步报文
                     byte[] timeSynMessage = new byte[8];
-                    timeSynMessage[0] = 0x01;
+                    try
+                    {
+                        byte deviceAddress= Convert.ToByte(factoryParameter.DeviceAddress); //0x01;
+                        timeSynMessage[0] = deviceAddress;
+                    }
+                    catch 
+                    {
+                        if (isEnglish)
+                        {
+                            TxtShowResult.Text += "Time synchronization completed,reply failed!\r\n";
+                        }
+                        else
+                        {
+                            TxtShowResult.Text += "时间同步完成,向管理机应答失败!\r\n";
+                        }
+                    }
+                    
                     timeSynMessage[1] = 0x10;
                     timeSynMessage[2] = 0x11;
                     timeSynMessage[3] = 0x00;
