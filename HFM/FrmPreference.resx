@@ -4855,7 +4855,7 @@
     <value>3</value>
   </data>
   <data name="BtnPorSave.Text" xml:space="preserve">
-    <value>保存配置</value>
+    <value>保存端口</value>
   </data>
   <data name="&gt;&gt;BtnPorSave.Name" xml:space="preserve">
     <value>BtnPorSave</value>
@@ -4869,11 +4869,38 @@
   <data name="&gt;&gt;BtnPorSave.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="BtnSetInter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BtnSetInter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>590, 41</value>
+  </data>
+  <data name="BtnSetInter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 56</value>
+  </data>
+  <data name="BtnSetInter.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="BtnSetInter.Text" xml:space="preserve">
+    <value>保存网络</value>
+  </data>
+  <data name="&gt;&gt;BtnSetInter.Name" xml:space="preserve">
+    <value>BtnSetInter</value>
+  </data>
+  <data name="&gt;&gt;BtnSetInter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnSetInter.Parent" xml:space="preserve">
+    <value>GrpInternet</value>
+  </data>
+  <data name="&gt;&gt;BtnSetInter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="TxtReportingTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
   </data>
   <data name="TxtReportingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>620, 91</value>
+    <value>296, 89</value>
   </data>
   <data name="TxtReportingTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 29</value>
@@ -4891,7 +4918,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;TxtReportingTime.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="LabReportingTime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4900,7 +4927,7 @@
     <value>微软雅黑, 12pt</value>
   </data>
   <data name="LabReportingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>496, 95</value>
+    <value>187, 93</value>
   </data>
   <data name="LabReportingTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 21</value>
@@ -4921,13 +4948,13 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;LabReportingTime.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="TxtDeviceAddress.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
   </data>
   <data name="TxtDeviceAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 90</value>
+    <value>99, 91</value>
   </data>
   <data name="TxtDeviceAddress.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -4936,7 +4963,7 @@
     <value>True</value>
   </data>
   <data name="TxtDeviceAddress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 27</value>
+    <value>53, 27</value>
   </data>
   <data name="TxtDeviceAddress.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -4954,7 +4981,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;TxtDeviceAddress.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="LblDeviceAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4966,7 +4993,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblDeviceAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 95</value>
+    <value>22, 94</value>
   </data>
   <data name="LblDeviceAddress.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 21</value>
@@ -4987,7 +5014,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;LblDeviceAddress.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="ChkIsConnectedAuto.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
@@ -4996,7 +5023,7 @@
     <value>NoControl</value>
   </data>
   <data name="ChkIsConnectedAuto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>579, 37</value>
+    <value>390, 93</value>
   </data>
   <data name="ChkIsConnectedAuto.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 25</value>
@@ -5017,13 +5044,13 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;ChkIsConnectedAuto.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="TxtPortNumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
   </data>
   <data name="TxtPortNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 38</value>
+    <value>450, 39</value>
   </data>
   <data name="TxtPortNumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -5050,7 +5077,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;TxtPortNumber.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="LblPortNumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
@@ -5059,7 +5086,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblPortNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 40</value>
+    <value>386, 41</value>
   </data>
   <data name="LblPortNumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -5083,7 +5110,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;LblPortNumber.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="TxtIPAddressFour.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
@@ -5116,7 +5143,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;TxtIPAddressFour.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="TxtIPAddressThree.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
@@ -5149,7 +5176,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;TxtIPAddressThree.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="TxtIPAddressTwo.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
@@ -5182,7 +5209,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;TxtIPAddressTwo.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="TxtIPAddressOne.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
@@ -5215,7 +5242,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;TxtIPAddressOne.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="LblIPAddress.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 12pt</value>
@@ -5224,7 +5251,7 @@
     <value>NoControl</value>
   </data>
   <data name="LblIPAddress.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 43</value>
+    <value>26, 41</value>
   </data>
   <data name="LblIPAddress.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 0, 2, 0</value>
@@ -5248,7 +5275,7 @@
     <value>GrpInternet</value>
   </data>
   <data name="&gt;&gt;LblIPAddress.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="GrpInternet.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 15pt, style=Bold</value>

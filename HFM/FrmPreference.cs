@@ -2274,6 +2274,7 @@ namespace HFM
 
             string strSetCom = "";//数据采集端口
             string strSetReCom = "数据上报端口未启用";//数据上报端口设置
+            string strSetInter = "";//网络配置信息
             if (CmbIsEnabled.Text == "是")
             {
                 //读取当前上报端口配置
@@ -2341,28 +2342,7 @@ namespace HFM
             //        return;
             //    }
             //}
-            try
-            {
-                //网络保存
-                FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
-                                                                                             //IP地址
-                factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
-                                                + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
-                //设备地址
-                factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
-                //通信端口
-                factoryParameterBtn.PortNumber = TxtPortNumber.Text;
-                //是否自动连接
-                factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
-                //上报时间间隔
-                factoryParameterBtn.ReportingTime = TxtReportingTime.Text;
-                factoryParameterBtn.SetParameter(factoryParameterBtn);
-            }
-            catch (Exception)
-            {
-                _tools.PrompMessage(16);
-                return;
-            }
+            
             
             if (_isEnglish)
             {
@@ -2437,6 +2417,47 @@ namespace HFM
 
         #endregion
 
+        #region 网络配置
+        /// <summary>
+        /// 网络保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSetInter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //网络保存
+                FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
+                                                                                             //IP地址
+                factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
+                                                + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
+                //设备地址
+                factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
+                //通信端口
+                factoryParameterBtn.PortNumber = TxtPortNumber.Text;
+                //是否自动连接
+                factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+                //上报时间间隔
+                factoryParameterBtn.ReportingTime = TxtReportingTime.Text;
+                if (factoryParameterBtn.SetParameter(factoryParameterBtn) == true)
+                {
+                    MessageBox.Show("网络配置信息完成！", "提醒", MessageBoxButtons.OK);
+                    //strSetInter = "网络配置信息完成！";
+                }
+                else
+                {
+                    MessageBox.Show("网络配置信息没有成功！请重新尝试！", "提醒", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                _tools.PrompMessage(16);
+                return;
+            }
+        }
+        #endregion
         #endregion
 
         #region 数字键盘
@@ -2596,6 +2617,15 @@ namespace HFM
         private void TxtTimeOut_Enter(object sender, EventArgs e)
         {
             FrmKeyIn.DelegatesKeyInTextBox(TxtTimeOut);
+        }
+        /// <summary>
+        /// 设备地址文本框小键盘
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtDeviceAddress_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtDeviceAddress);
         }
         #endregion
 
@@ -2929,5 +2959,8 @@ namespace HFM
                 this.Close();
             }
         }
+
+        
+       
     }
 }

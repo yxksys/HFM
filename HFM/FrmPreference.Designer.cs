@@ -229,6 +229,7 @@
             this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
             this.LblIPAddress = new System.Windows.Forms.Label();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
+            this.BtnSetInter = new System.Windows.Forms.Button();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -1601,6 +1602,7 @@
             // 
             // GrpInternet
             // 
+            this.GrpInternet.Controls.Add(this.BtnSetInter);
             this.GrpInternet.Controls.Add(this.TxtReportingTime);
             this.GrpInternet.Controls.Add(this.LabReportingTime);
             this.GrpInternet.Controls.Add(this.TxtDeviceAddress);
@@ -1631,6 +1633,7 @@
             // 
             resources.ApplyResources(this.TxtDeviceAddress, "TxtDeviceAddress");
             this.TxtDeviceAddress.Name = "TxtDeviceAddress";
+            this.TxtDeviceAddress.Enter += new System.EventHandler(this.TxtDeviceAddress_Enter);
             // 
             // LblDeviceAddress
             // 
@@ -1682,6 +1685,13 @@
             // 
             this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
             this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
+            // 
+            // BtnSetInter
+            // 
+            resources.ApplyResources(this.BtnSetInter, "BtnSetInter");
+            this.BtnSetInter.Name = "BtnSetInter";
+            this.BtnSetInter.UseVisualStyleBackColor = true;
+            this.BtnSetInter.Click += new System.EventHandler(this.BtnSetInter_Click);
             // 
             // FrmPreference
             // 
@@ -1918,5 +1928,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TxtAlphaEfficiency;
         private System.Windows.Forms.TextBox TxtTimeOut;
         private System.Windows.Forms.Label LblTimeOut;
+        private System.Windows.Forms.Button BtnSetInter;
     }
 }
