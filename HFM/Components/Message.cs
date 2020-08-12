@@ -243,7 +243,7 @@ namespace HFM.Components
             messageData[12] = Convert.ToByte(deviceStatus);
             //求CRC校验值
             byte[] crc16 = new byte[2];
-            crc16=Tools.CRC16(messageData, messageData.Length - 3);
+            crc16=Tools.CRC16(messageData, messageData.Length - 2);
             messageData[14] = crc16[0];
             messageData[13] = crc16[1];
             return messageData;
