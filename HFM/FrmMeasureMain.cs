@@ -4524,7 +4524,7 @@ namespace HFM
                 //    Thread.Sleep(100);
                 //}
                 #region 打开窗体操作                               
-                FrmMain frmMain = new FrmMain(commPort);
+                FrmMain frmMain = new FrmMain(commPort, commPort_Supervisory);
                 frmMain.Show();
                 this.Hide();
                 //try
