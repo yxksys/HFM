@@ -214,7 +214,7 @@ namespace HFM.Components
         /// <returns></returns>
         public static byte[] BuildMessage(int deviceAddress,DateTime submitTime,int deviceStatus)
         {
-            byte[] messageData = new byte[16];
+            byte[] messageData = new byte[15];
             messageData[0] = Convert.ToByte(deviceAddress);
             messageData[1] = 0x03;
             messageData[2] = 0x0A;
