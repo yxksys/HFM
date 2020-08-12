@@ -46,6 +46,8 @@ namespace HFM
         /// 端口类实例
         /// </summary>
         public CommPort _commPort = new CommPort();
+
+        public CommPort _commPort_Supervisory = new CommPort();
         /// <summary>
         /// 工具类实例
         /// </summary>
@@ -242,11 +244,11 @@ namespace HFM
         {
 
         }
-        public FrmMain(CommPort commPort)
+        public FrmMain(CommPort commPort, CommPort commPort_Supervisory)
         {
             this._commPort = commPort;
             InitializeComponent();
-            
+            this._commPort_Supervisory = commPort_Supervisory;
             //设置timer可用
             //TmrStatus.Enabled = true;
             //设置timer
@@ -438,7 +440,7 @@ namespace HFM
         /// <param name="e"></param>
         private void ParameterSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDisposeMax(new FrmPreference(_commPort));
+            FrmDisposeMax(new FrmPreference(_commPort, _commPort_Supervisory));
         }
 
         #endregion

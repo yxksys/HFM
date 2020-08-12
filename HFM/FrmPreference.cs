@@ -53,6 +53,10 @@ namespace HFM
         /// </summary>
         private CommPort _commPort = null;
         /// <summary>
+        /// 和管理机通信端口
+        /// </summary>
+        private CommPort _commPort_Supervisory = null;//和管理机通信端口
+        /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
         private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
@@ -86,10 +90,11 @@ namespace HFM
         {
             InitializeComponent();
         }
-        public FrmPreference(CommPort commPort)
+        public FrmPreference(CommPort commPort, CommPort commPort_Supervisory)
         {
             this._commPort = commPort;
             InitializeComponent();
+            this._commPort_Supervisory = commPort_Supervisory;
         }
         #endregion
 
@@ -906,37 +911,134 @@ namespace HFM
                 }
             }
         }
+        /// <summary>
+        /// 异步线程读取串口数据后的ReportProgress事件响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backgroundWorker_Preference_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            int messageBufferLength = 62; //最短报文长度
+            int errNumber = 0; //报文接收出现错误计数器
+            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
+            //IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                        
+            if (e.UserState is byte[])
+            {
+                receiveBufferMessage = (byte[])e.UserState;
+            }
 
-        
+            try
+            {
+                if (receiveBufferMessage.Length < messageBufferLength)
+                {
+                    errNumber++;
+                    //数据接收出现错误次数超限
+                    if (errNumber >= 2)
+                    {
+                        if (_isEnglish == true)
+                        {
+                            MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+                            return;
+                        }
+                    }
+                    return;
+                }
+            }
+            catch (Exception EX_NAME)
+            {
+                Tools.ErrorLog(EX_NAME.ToString());
+                if (_isEnglish == true)
+                {
+                    MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
+                    return;
+                }
+                // Console.WriteLine(EX_NAME);
+                throw;
+            }
+            //接收报文无误，进行报文解析，并将解析后的道盒数据存储到channelParameters中 
+            try
+            {
+                IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
+                if (receiveBufferMessage[0] == Convert.ToByte('P'))
+                {
+                    DgvMainPreferenceSet.Rows.Clear();
+                    //解析报文
+                    _channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
+                    if (_channelParameters.Count == 8)
+                    {
+                        _channelParameters.RemoveAt(7);
+                    }
+                    foreach (var itemParameter in _channelParameters)
+                    {
+                        //单探测器启用则手背不显示
+                        //通道不启用则不显示
+                        if ((factoryParameter.IsDoubleProbe == false && (itemParameter.Channel.ChannelID == 2 || itemParameter.Channel.ChannelID == 4)) || itemParameter.Channel.IsEnabled == false)
+                        {
+                            continue;
+                        }
+                        //显示内容
+                        int index = this.DgvMainPreferenceSet.Rows.Add();
+                        DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
+                        DgvMainPreferenceSet.Rows[index].Cells[1].Value = itemParameter.AlphaThreshold;
+                        DgvMainPreferenceSet.Rows[index].Cells[2].Value = itemParameter.BetaThreshold;
+                        DgvMainPreferenceSet.Rows[index].Cells[3].Value = itemParameter.PresetHV;
+                        DgvMainPreferenceSet.Rows[index].Cells[4].Value = itemParameter.ADCFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[5].Value = itemParameter.DACFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[6].Value = itemParameter.HVFactor;
+                        DgvMainPreferenceSet.Rows[index].Cells[7].Value = itemParameter.WorkTime;
+                        DgvMainPreferenceSet.Rows[index].Cells[8].Value = itemParameter.HVRatio;
+                    }
+                    //DgvMainPreferenceSet.AutoGenerateColumns = false;
+                    //DgvMainPreferenceSet.DataSource = _channelParameters;
+                }
+
+            }
+            catch (Exception EX_NAME)
+            {
+                Tools.ErrorLog(EX_NAME.ToString());
+                throw;
+            }
+        }
+
         /// <summary>
         /// 开启串口封装的方法
         /// </summary>
         //private void OpenPort()
         //{
-            //从配置文件获得当前串口配置
-            //if (_commPort.Opened)
-            //{
-            //    _commPort.Close();
-            //}
-            //_commPort.GetCommPortSet("commportSet");
-            ////打开串口
-            //try
-            //{
-            //    _commPort.Open();
-            //    if (_commPort.Opened)
-            //    {
-            //        Tools.FormBottomPortStatus = true;
-            //    }
-            //    else
-            //    {
-            //        Tools.FormBottomPortStatus = false;
-            //    }
-            //}
-            //catch
-            //{
-            //    _tools.PrompMessage(1);
+        //从配置文件获得当前串口配置
+        //if (_commPort.Opened)
+        //{
+        //    _commPort.Close();
+        //}
+        //_commPort.GetCommPortSet("commportSet");
+        ////打开串口
+        //try
+        //{
+        //    _commPort.Open();
+        //    if (_commPort.Opened)
+        //    {
+        //        Tools.FormBottomPortStatus = true;
+        //    }
+        //    else
+        //    {
+        //        Tools.FormBottomPortStatus = false;
+        //    }
+        //}
+        //catch
+        //{
+        //    _tools.PrompMessage(1);
 
-            //}
+        //}
         //}
 
         #endregion
@@ -2174,17 +2276,33 @@ namespace HFM
             ConfigurationManager.RefreshSection("appSettings");
             //读取当前串口配置
             this._commPort.GetCommPortSet("commportSet");
-
+            //_commPort.GetCommPortSet("commportSetOfReport");
             string strSetCom = "";//数据采集端口
             string strSetReCom = "数据上报端口未启用";//数据上报端口设置
-            string strSetInter = "";//网络配置信息
+
             if (CmbIsEnabled.Text == "是")
-            {
+            {                
+                ConfigurationManager.RefreshSection("appSettings");
                 //读取当前上报端口配置
-                _commPort.GetCommPortSet("commportSetOfReport");
-                strSetReCom = "数据上报端口设置已配置";
+                _commPort_Supervisory.GetCommPortSet("commportSetOfReport");
+                
+                if (this._commPort_Supervisory.Opened)
+                {
+                    this._commPort_Supervisory.Close();
+                }
+                try
+                {
+                    this._commPort_Supervisory.Open();
+                    strSetReCom = "数据上报端口设置已配置";
+                }
+                catch (global::System.Exception ex)
+                {
+                    //strSetCom = "数据采集端口设置错误，请重新进行设置";
+                    MessageBox.Show("端口设置错误，请重新进行设置;");
+                    return;
+                }
             }
-            
+
             if (this._commPort.Opened)
             {
                 this._commPort.Close();
@@ -2194,7 +2312,7 @@ namespace HFM
                 this._commPort.Open();
                 strSetCom = "数据采集端口设置已连接;  ";
             }
-            catch
+            catch (global::System.Exception ex)
             {
                 //strSetCom = "数据采集端口设置错误，请重新进行设置";
                 MessageBox.Show("端口设置错误，请重新进行设置;");
@@ -2262,25 +2380,26 @@ namespace HFM
             else
             {
                 MessageBox.Show(strSetCom+strSetReCom, "提醒", MessageBoxButtons.OK);
+                
                 //{
-                    //_commPort.Close();
-                    //if (backgroundWorker_Preference.IsBusy == true)
-                    //{
-                    //    backgroundWorker_Preference.CancelAsync();                        
-                    //    Thread.Sleep(100);
-                    //}
-                    //backgroundWorker_Preference.Dispose();
-                    //Thread.Sleep(100);
-                    //Application.Restart();
-                    //Process[] proc=Process.GetProcessesByName("HFM");
-                    //Process procNew = new Process();
-                    //procNew.StartInfo.FileName = Application.ExecutablePath;
-                    //procNew.Start();
-                    //foreach(Process p in proc)
-                    //{
-                    //    p.Kill();
-                    //}
-                    //Application.Restart();
+                //_commPort.Close();
+                //if (backgroundWorker_Preference.IsBusy == true)
+                //{
+                //    backgroundWorker_Preference.CancelAsync();                        
+                //    Thread.Sleep(100);
+                //}
+                //backgroundWorker_Preference.Dispose();
+                //Thread.Sleep(100);
+                //Application.Restart();
+                //Process[] proc=Process.GetProcessesByName("HFM");
+                //Process procNew = new Process();
+                //procNew.StartInfo.FileName = Application.ExecutablePath;
+                //procNew.Start();
+                //foreach(Process p in proc)
+                //{
+                //    p.Kill();
+                //}
+                //Application.Restart();
                 //}
             }
 
@@ -2864,103 +2983,6 @@ namespace HFM
         }
 
 
-        /// <summary>
-        /// 异步线程读取串口数据后的ReportProgress事件响应
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void backgroundWorker_Preference_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            int messageBufferLength = 62; //最短报文长度
-            int errNumber = 0; //报文接收出现错误计数器
-            byte[] receiveBufferMessage = null; //存储接收报文信息缓冲区
-            //IList<MeasureData> measureDataS = new List<MeasureData>(); //解析后报文结构数据存储List对象                        
-            if (e.UserState is byte[])
-            {
-                receiveBufferMessage = (byte[])e.UserState;
-            }
-
-            try
-            {
-                if (receiveBufferMessage.Length < messageBufferLength)
-                {
-                    errNumber++;
-                    //数据接收出现错误次数超限
-                    if (errNumber >= 2)
-                    {
-                        if (_isEnglish == true)
-                        {
-                            MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
-                            return;
-                        }
-                        else
-                        {
-                            MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
-                            return;
-                        }
-                    }
-                    return;
-                }
-            }
-            catch (Exception EX_NAME)
-            {
-                Tools.ErrorLog(EX_NAME.ToString());
-                if (_isEnglish == true)
-                {
-                    MessageBox.Show(@"Communication error! Please check whether the communication is normal.");
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show(@"通讯错误！请检查通讯是否正常。");
-                    return;
-                }
-                // Console.WriteLine(EX_NAME);
-                throw;
-            }
-            //接收报文无误，进行报文解析，并将解析后的道盒数据存储到channelParameters中 
-            try
-            {
-                IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
-                if (receiveBufferMessage[0] == Convert.ToByte('P'))
-                {
-                    DgvMainPreferenceSet.Rows.Clear();
-                    //解析报文
-                    _channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
-                    if (_channelParameters.Count == 8)
-                    {
-                        _channelParameters.RemoveAt(7);
-                    }
-                    foreach (var itemParameter in _channelParameters)
-                    {
-                        //单探测器启用则手背不显示
-                        //通道不启用则不显示
-                        if ((factoryParameter.IsDoubleProbe == false && (itemParameter.Channel.ChannelID == 2 || itemParameter.Channel.ChannelID == 4)) || itemParameter.Channel.IsEnabled == false)
-                        {
-                            continue;
-                        }
-                        //显示内容
-                        int index = this.DgvMainPreferenceSet.Rows.Add();
-                        DgvMainPreferenceSet.Rows[index].Cells[0].Value = itemParameter.Channel.ChannelName;
-                        DgvMainPreferenceSet.Rows[index].Cells[1].Value = itemParameter.AlphaThreshold;
-                        DgvMainPreferenceSet.Rows[index].Cells[2].Value = itemParameter.BetaThreshold;
-                        DgvMainPreferenceSet.Rows[index].Cells[3].Value = itemParameter.PresetHV;
-                        DgvMainPreferenceSet.Rows[index].Cells[4].Value = itemParameter.ADCFactor;
-                        DgvMainPreferenceSet.Rows[index].Cells[5].Value = itemParameter.DACFactor;
-                        DgvMainPreferenceSet.Rows[index].Cells[6].Value = itemParameter.HVFactor;
-                        DgvMainPreferenceSet.Rows[index].Cells[7].Value = itemParameter.WorkTime;
-                        DgvMainPreferenceSet.Rows[index].Cells[8].Value = itemParameter.HVRatio;
-                    }
-                    //DgvMainPreferenceSet.AutoGenerateColumns = false;
-                    //DgvMainPreferenceSet.DataSource = _channelParameters;
-                }
-
-            }
-            catch (Exception EX_NAME)
-            {
-                Tools.ErrorLog(EX_NAME.ToString());
-                throw;
-            }
-        }
+       
     }
 }
