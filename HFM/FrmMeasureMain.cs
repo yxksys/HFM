@@ -22,6 +22,7 @@ namespace HFM
         //int measureCount = 0;
         bool iswrite = true;
         bool isPlatformStateSwitched=false;//状态是否发生变化
+        bool isDeviceStatusUpdated = true;//设备状态是否更新标志，设备状态如果更新则在状态上报时应该查询数据库
         Panel[] PnlStatus;
         Label[] LblTitle;
         Label[] LblValue;
@@ -558,7 +559,7 @@ namespace HFM
             //英文描述
             errorData.Record = errRecordS[1];
             errorData.IsEnglish = true;
-            errorData.AddData(errorData);
+            errorData.AddData(errorData);           
         }        
 
         /// <summary>
@@ -1395,6 +1396,7 @@ namespace HFM
                             measureData.DetailedInfo = string.Format("Frisker{0}cps", smoothedDataOfClothes.ToString("F2"));
                             measureData.IsEnglish = true;
                             measureData.AddData(measureData);
+                            isDeviceStatusUpdated = true;
                         }
                         //设置衣物探头状态为0，已经被放下
                         clothesStatus = 0;
@@ -1838,6 +1840,7 @@ namespace HFM
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
                         //将故障信息errRecord写入数据库    
                         AddErrorData(errRecordS);
+                        isDeviceStatusUpdated = true;
                         //语音提示故障
                         if (isEnglish)
                         {
@@ -2246,7 +2249,8 @@ namespace HFM
                         player.Load();
                         player.Play();
                         //将故障信息errRecord写入数据库
-                        AddErrorData(errRecordS);                        
+                        AddErrorData(errRecordS);
+                        isDeviceStatusUpdated = true;
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                         stateTimeStart = new DateTime(1900, 01, 01);//重新初始化开始计时对象
@@ -2588,6 +2592,7 @@ namespace HFM
                         deviceStatus = Convert.ToByte(DeviceStatus.OperatingFaulted);
                         //将故障信息errRecord写入数据库
                         AddErrorData(errRecordS);
+                        isDeviceStatusUpdated = true;
                         //界面显示“本底测量出现故障”同时进行语音提示   
                         TxtShowResult.Text += "本底测量故障\r\n";                        
                         //语音提示故障
@@ -2603,6 +2608,7 @@ namespace HFM
                         player.PlaySync();
                         //将故障信息errRecord写入数据库
                         AddErrorData(errRecordS);
+                        isDeviceStatusUpdated = true;
                         //启动故障报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);                        
                         platformState = PlatformState.BackGrouneMeasure;
@@ -3214,6 +3220,7 @@ namespace HFM
                         measureData.DetailedInfo =pollutionRecord_E;
                         measureData.IsEnglish = true;
                         measureData.AddData(measureData);
+                        isDeviceStatusUpdated = true;
                         //启动报警计时
                         alarmTimeStart = System.DateTime.Now.AddSeconds(1);
                         //按照系统参数单位要求显示最终测量结果,级显示单位转换后的conversionDataS列表值
@@ -4104,12 +4111,12 @@ namespace HFM
                     return null;
                 }
                 //读取串口回传数据并赋值给receiveBuffMessage
-                byte[] receiveBuffMessage = new byte[20];
+                byte[] receiveBuffMessage = new byte[124];
                 try
                 {
                     receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory);
                     //string str=BitConverter.ToString(receiveBuffMessage);
-                    File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" +BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                    //File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" +BitConverter.ToString(receiveBuffMessage) + "\r\n");
                 }
                 catch
                 {
@@ -4117,17 +4124,22 @@ namespace HFM
                     isCommReportError = true;
                 }               
                 //触发向主线程返回下位机上传数据事件，如果是时间同步报文，需要读两次串口才能将17个字节数据读回来
-                if (receiveBuffMessage!=null && receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
+                if(receiveBuffMessage == null)
+                {
+                    continue;
+                }
+                if (receiveBuffMessage.Count()>0)// && receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
                 {
                     //if(receiveBufferMessage[0]==0x10)yxk修改2020年7月10日
-                    if (receiveBuffMessage[0] == 0x10)
-                    {
-                        //延时
-                        //Thread.Sleep(100);
-                        byte[] receiveDataTemp = new byte[8];
-                        receiveDataTemp= Components.Message.ReceiveMessage(commPort_Supervisory);//读时间同步第17个字节
-                        receiveDataTemp.CopyTo(receiveBuffMessage, 16);                        
-                    }
+                    //if (receiveBuffMessage[0] == 0x10)
+                    //{                        
+                    //    while (receiveBuffMessage.Length < 17)//时间同步报文长度为17，可能需要分多次读取
+                    //    {
+                    //        byte[] receiveDataTemp = new byte[124];
+                    //        receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory);//继续从串口读时间同步报文
+                    //        receiveDataTemp.CopyTo(receiveBuffMessage, receiveBuffMessage.Length);
+                    //    }
+                    //}                    
                     isCommReportError = false;
                     //第一次启动后，进入设置，设置完成端口后，回到主线程报错误，没有开启进度显示，所以加判断
                     if (bkWorkerReportStatus.WorkerReportsProgress == false)
@@ -4136,9 +4148,8 @@ namespace HFM
                     }
                     worker.ReportProgress(1, receiveBuffMessage);
                     
-                }
-                receiveBuffMessage = null;
-                Thread.Sleep(100);
+                }                
+                Thread.Sleep(10);
             }
         }
 
@@ -4152,12 +4163,17 @@ namespace HFM
             {
                 receiveBufferMessage = (byte[])e.UserState;
             }
+            else
+            {
+                return;
+            }
             //接收报文数据为空，说明没有收到管理机下发的命令
             if (receiveBufferMessage.Length < messageBufferLength)
             {
                 //数据接收出现错误次数超限
                 if (errNumber >= 2)
                 {
+                    errNumber = 0;
                     //界面提示“通讯错误”
                     if (isEnglish)
                     {
@@ -4182,6 +4198,7 @@ namespace HFM
                 return;
             }
             isCommReportError = false;
+            errNumber = 0;
             //解析成功
             if (message.Count()>=7)//长度大于7，为时间同步命令
             {
@@ -4190,13 +4207,15 @@ namespace HFM
                 timeForSyn.Year =(short) message[0];
                 timeForSyn.Month = (short)message[1];
                 timeForSyn.Day = (short)message[2];
-                timeForSyn.Hour = (short)(message[3] - 8) <= 0 ? (short)(message[3] - 8 + 24) : (short)(message[3] - 8);//设置系统时间时，时间需和实际时间差8小时
+                //timeForSyn.Hour = (short)(message[3] - 8) <= 0 ? (short)(message[3] - 8 + 24) : (short)(message[3] - 8);//设置系统时间时，时间需和实际时间差8小时
+                timeForSyn.Hour = (short)message[3];
                 timeForSyn.Minute = (short)message[4];
                 timeForSyn.Second = (short)message[5];
                 timeForSyn.MiliSecond = (short)message[6];
                 try
                 {
-                    SetSystemTime(ref timeForSyn);
+                    //SetSystemTime(ref timeForSyn);
+                    SetLocalTime(ref timeForSyn);
                     stateTimeStart = DateTime.Now;//同步时间后重新开始检测运行状态倒计时
                     //向管理机回复时间同步报文
                     //byte[] timeSynMessage = new byte[8];
@@ -4259,72 +4278,91 @@ namespace HFM
                 else //下发地址和当前设备地址一致，则上传当前测试状态
                 {
                     byte[] deviceStatusMessage=null;
-                    //从数据库中查询最近一次记录的测量数据
-                    MeasureData measureData = new MeasureData();
-                    measureData.GetLatestData();
-                    //从数据库中查询最近一次记录的故障数据
-                    ErrorData errorData = new ErrorData();
-                    errorData.GetLatestData();
-                    //测量数据和故障数据都为空，说明仪器正常
-                    if((measureData.MeasureID == 0|| errorData.ErrID==0) || string.IsNullOrEmpty(measureData.DetailedInfo)&&string.IsNullOrEmpty(errorData.Record))
+                    if (isDeviceStatusUpdated == true)//数据库监测数据和故障数据已经更新，应该进行状态查询上报
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01, message[1], message[2]);//0x01:仪器正常
-                    }                    
-                    //监测数据和故障数据都已经上报，说明最近仪器正常，上报时间为当前时间
-                    if(measureData.IsReported==true && errorData.IsReported==true)
-                    {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01, message[1], message[2]);//0x01:仪器正常
-                    }
-                    //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
-                    if((errorData.ErrID != 0) &&(string.IsNullOrEmpty(measureData.DetailedInfo)==false && measureData.IsReported==true) && errorData.IsReported==false)
-                    {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02, message[1], message[2]);//0x02:仪器故障
-                    }
-                    //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
-                    if((measureData.MeasureID != 0) && measureData.IsReported==false && (errorData.IsReported==true && string.IsNullOrEmpty(errorData.Record)==false))
-                    {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04, message[1], message[2]);//0x04:仪器污染
-                    }
-                    //监测数据和故障数据都未上报，则将最近的状态进行上报，更新两条记录为已上报
-                    if ((measureData.MeasureID != 0 || errorData.ErrID != 0)&& measureData.IsReported == false && errorData.IsReported == false)
-                    {
-                        if (measureData.MeasureDate > errorData.ErrTime)//最近一次记录为MeasureData，说明是状态为污染（因为只有污染状态才会记录，正常不记录）
+                        //从数据库中查询最近一次记录的测量数据
+                        MeasureData measureData = new MeasureData();
+                        measureData.GetLatestData();
+                        //从数据库中查询最近一次记录的故障数据
+                        ErrorData errorData = new ErrorData();
+                        errorData.GetLatestData();
+                        //测量数据和故障数据都为空，说明仪器正常
+                        if ((measureData.MeasureID == 0 || errorData.ErrID == 0) || string.IsNullOrEmpty(measureData.DetailedInfo) && string.IsNullOrEmpty(errorData.Record))
                         {
-                            //生成上报管理机的监测仪测试状态(污染)报文                    
-                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x04, message[1], message[2]);//仪器状态为污染
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01, message[1], message[2]);//0x01:仪器正常
+                        }
+                        //监测数据和故障数据都已经上报，说明最近仪器正常，上报时间为当前时间
+                        if (measureData.IsReported == true && errorData.IsReported == true)
+                        {
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01, message[1], message[2]);//0x01:仪器正常
+                        }
+                        //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
+                        if ((errorData.ErrID != 0) && (string.IsNullOrEmpty(measureData.DetailedInfo) == false && measureData.IsReported == true) && errorData.IsReported == false)
+                        {
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02, message[1], message[2]);//0x02:仪器故障
+                        }
+                        //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
+                        if ((measureData.MeasureID != 0) && measureData.IsReported == false && (errorData.IsReported == true && string.IsNullOrEmpty(errorData.Record) == false))
+                        {
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x04, message[1], message[2]);//0x04:仪器污染
+                        }
+                        //监测数据和故障数据都未上报，则将最近的状态进行上报，更新两条记录为已上报
+                        if ((measureData.MeasureID != 0 || errorData.ErrID != 0) && measureData.IsReported == false && errorData.IsReported == false)
+                        {
+                            if (measureData.MeasureDate > errorData.ErrTime)//最近一次记录为MeasureData，说明是状态为污染（因为只有污染状态才会记录，正常不记录）
+                            {
+                                //生成上报管理机的监测仪测试状态(污染)报文                    
+                                deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x04, message[1], message[2]);//仪器状态为污染
+                            }
+                            else
+                            {
+                                //生成上报管理机的监测仪测试状态（故障）报文                    
+                                deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02, message[1], message[2]);//仪器状态为故障
+                            }
+                        }
+                        //向管理机上报仪器检测状态
+                        if (Components.Message.SendMessage(deviceStatusMessage, commPort_Supervisory))//上报成功
+                        {
+                            isDeviceStatusUpdated = false;
+                            //数据库中更新上报标志
+                            if (string.IsNullOrEmpty(measureData.DetailedInfo) == false && measureData.IsReported == false)
+                            {
+                                //更新上报标志
+                                measureData.UpdataReported(true, measureData.MeasureID);
+                                measureData.UpdataReported(true, measureData.MeasureID - 1);
+                            }
+                            if (string.IsNullOrEmpty(errorData.Record) == false && errorData.IsReported == false)
+                            {
+                                //更新上报标志
+                                errorData.UpdateReported(true, errorData.ErrID);
+                                errorData.UpdateReported(true, errorData.ErrID - 1);
+                            }
                         }
                         else
                         {
-                            //生成上报管理机的监测仪测试状态（故障）报文                    
-                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),errorData.ErrTime, 0x02, message[1], message[2]);//仪器状态为故障
+                            if (isEnglish)
+                            {
+                                TxtShowResult.Text += "Report status failed!\r\n";
+                            }
+                            else
+                            {
+                                TxtShowResult.Text += "上报状态失败\r\n";
+                            }
                         }
                     }
-                    //向管理机上报仪器检测状态
-                    if(Components.Message.SendMessage(deviceStatusMessage, commPort_Supervisory))//上报成功
+                    else//设备状态未更新，则上报设备状态为正常
                     {
-                        //数据库中更新上报标志
-                        if(string.IsNullOrEmpty(measureData.DetailedInfo)==false && measureData.IsReported==false)
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01, message[1], message[2]);//0x01:仪器正常                                                                                                                                                                          //向管理机上报仪器检测状态
+                        if (Components.Message.SendMessage(deviceStatusMessage, commPort_Supervisory)==false)//上报失败
                         {
-                            //更新上报标志
-                            measureData.UpdataReported(true, measureData.MeasureID);
-                            measureData.UpdataReported(true, measureData.MeasureID - 1);
-                        }
-                        if(string.IsNullOrEmpty(errorData.Record)==false && errorData.IsReported==false)
-                        {
-                            //更新上报标志
-                            errorData.UpdateReported(true, errorData.ErrID);
-                            errorData.UpdateReported(true, errorData.ErrID - 1);
-                        }
-                    }                    
-                    else
-                    {
-                        if (isEnglish)
-                        {
-                            TxtShowResult.Text += "Report status failed!\r\n";
-                        }
-                        else
-                        {
-                            TxtShowResult.Text += "上报状态失败\r\n";
+                            if (isEnglish)
+                            {
+                                TxtShowResult.Text += "Report status failed!\r\n";
+                            }
+                            else
+                            {
+                                TxtShowResult.Text += "上报状态失败\r\n";
+                            }
                         }
                     }
                 }
@@ -4493,6 +4531,8 @@ namespace HFM
         [DllImport("kernel32", CharSet = CharSet.Ansi)]
         private static extern bool SetSystemTime(ref SYSTEMTIME t);
 
+        [DllImport("kernel32", CharSet = CharSet.Ansi)]
+        private static extern bool SetLocalTime(ref SYSTEMTIME t);
         private void BtnOption_Click(object sender, EventArgs e)
         {            
             FrmEnterPassword frmEnterPassword = new FrmEnterPassword();           

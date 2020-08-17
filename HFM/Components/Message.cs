@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace HFM.Components
 {
@@ -452,19 +454,59 @@ namespace HFM.Components
         public static int[] ExplainMessage(byte[] message)
         {
             int[] messageData=null;
+            byte[] effectiveMessage=null;
             //进行CRC校验
             byte[] crc16 = new byte[2];
             //报文长度不能小于8字节
             if (message.Length<8)
             {
                 return null;
-            }                       
-            switch(message[1])
+            }
+            if(message.Length>=8)//报文长度大于上报状态命令报文长度8，则需要遍历报文每个数据找出正确的状态上报报文
+            {
+                for(int i=0;i<=message.Length-8;i++)
+                {
+                    //遍历整个报文
+                    if ((message[i+1] == 0x03 && message[i + 2] == 0x00 && message[i + 3] == 0x00 && message[i + 4] == 0x00 && message[i + 5] == 0x05) || (message[i+1] == 0x03 && message[i + 2] == 0x00 && message[i + 3] == 0x04 && message[i + 4] == 0x00 && message[i + 5] == 0x01))
+                    {
+                        //找到正确的状态上报报文，将报文信息保存到新的报文数组effectiveMessage中
+                        effectiveMessage = new byte[8];
+                        Array.Copy(message, i, effectiveMessage, 0, 8);
+                        break;
+                    }                  
+                }
+                //if(effectiveMessage==null)//遍历后effectiveMessage为null，说明没有找到状态上报报文,进行时间同步报文遍历查找
+                //{
+                if (message.Length >= 17)//报文长度大于时间同步报文长度17，则需要遍历报文每个数据找出正确的报文
+                {
+                    for (int i = 0; i <= message.Length - 17; i++)
+                    {
+                        //遍历整个报文
+                        if (message[i] == 0x00 && message[i + 1] == 0x10 && message[i + 2] == 0x11 && message[i + 3] == 0x00)
+                        {
+                            //找到正确的时间同步报文，将报文信息保存到新的报文数组effectiveMessage中
+                            effectiveMessage = new byte[17];
+                            Array.Copy(message, i, effectiveMessage, 0, 17);
+                            break;
+                        }
+                    }
+                }
+                //}
+            }
+            //if (effectiveMessage != null)
+            //{
+            //    File.AppendAllText(Application.StartupPath + "\\log\\msg.txt", "处理后的报文信息：" + BitConverter.ToString(effectiveMessage) + "\r\n");
+            //}
+            if (effectiveMessage==null)//没有 找到正确的报文，返回null
+            {
+                return null;
+            }
+            switch(effectiveMessage[1])
             {                
                 case 0x03://向管理机上报监测状态报文,
-                    crc16 = Tools.CRC16(message,6);//报文长度为8字节，最后两个字节为校验位
+                    crc16 = Tools.CRC16(effectiveMessage, 6);//报文长度为8字节，最后两个字节为校验位
                     //校验失败返回
-                    if (message[6] != crc16[1] || message[7] != crc16[0])
+                    if (effectiveMessage[6] != crc16[1] || effectiveMessage[7] != crc16[0])
                     {
                         return null;
                     }
@@ -474,30 +516,30 @@ namespace HFM.Components
                     //    return null;
                     //}
                     messageData = new int[3];
-                    messageData[0] = message[0];
-                    messageData[1] = message[3];//保存起始地址
-                    messageData[2] = message[5];//保存寄存器数量          
+                    messageData[0] = effectiveMessage[0];
+                    messageData[1] = effectiveMessage[3];//保存起始地址
+                    messageData[2] = effectiveMessage[5];//保存寄存器数量          
                     break;                   
                 case 0x10://进行时间同步报文
-                    if (message.Length >= 17)//报文长度满足要求
+                    if (effectiveMessage.Length >= 17)//报文长度满足要求
                     {
-                        crc16 = Tools.CRC16(message, 15);//报文长度为17字节，最后两个字节为校验位
+                        crc16 = Tools.CRC16(effectiveMessage, 15);//报文长度为17字节，最后两个字节为校验位
                         //校验失败返回
-                        if (message[15] != crc16[1] || message[16] != crc16[0])
+                        if (effectiveMessage[15] != crc16[1] || effectiveMessage[16] != crc16[0])
                         {
                             return null;
                         }
                         //校验成功
-                        if (message[2] != 0x11 || message[3] != 0x00 || message[4] != 0x00 || message[5] != 0x04)
+                        if (effectiveMessage[2] != 0x11 || effectiveMessage[3] != 0x00 || effectiveMessage[4] != 0x00 || effectiveMessage[5] != 0x04)
                         {
                             return null;
                         }
                         messageData = new int[7];
-                        messageData[0] = (message[7]>>4)*1000+(message[7]&0x0f)*100 + (message[8]>>4)*10+(message[8]&0x0f);//年
+                        messageData[0] = (effectiveMessage[7]>>4)*1000+(effectiveMessage[7]&0x0f)*100 + (effectiveMessage[8]>>4)*10+(effectiveMessage[8]&0x0f);//年
                         for(int i=1;i<7;i++)
                         {
                             //messageData[1]到messageData[6]分别存储：月、日、时、分、妙、毫秒
-                            messageData[i] = (message[i + 8]>>4)*10+(message[i+8]&0x0f);
+                            messageData[i] = (effectiveMessage[i + 8]>>4)*10+(effectiveMessage[i+8]&0x0f);
                         }                        
                     }
                     break;
