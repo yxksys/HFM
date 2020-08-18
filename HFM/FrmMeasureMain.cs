@@ -4135,6 +4135,7 @@ namespace HFM
                     worker.ReportProgress(1, receiveBuffMessage);       
                     
                 }
+                Thread.Sleep(200);
             }
         }
 
