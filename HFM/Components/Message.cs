@@ -212,22 +212,11 @@ namespace HFM.Components
         /// <param name="submitTime">上报时间</param>
         /// <param name="deviceStatus">设备状态</param>
         /// <returns></returns>
-        public static byte[] BuildMessage(int deviceAddress,DateTime submitTime,int deviceStatus)
+        public static byte[] BuildMessage(int deviceAddress,DateTime submitTime,int deviceStatus,int startAddressOfReg,int regNumber)
         {
-            byte[] messageData = new byte[15];
-            messageData[0] = Convert.ToByte(deviceAddress);
-            messageData[1] = 0x03;
-            messageData[2] = 0x0A;
-            messageData[3] = Convert.ToByte(((submitTime.Year / 1000)<<4)+ (submitTime.Year%1000/100));
-            messageData[4] = Convert.ToByte(((submitTime.Year % 100/10)<<4)+ (submitTime.Year % 10));
-            messageData[5] = Convert.ToByte(((submitTime.Month/10)<<4)+ (submitTime.Month%10));
-            messageData[6] = Convert.ToByte(((submitTime.Day/10)<<4)+(submitTime.Day%10));
-            messageData[7] = Convert.ToByte(((submitTime.Hour/10)<<4)+(submitTime.Hour%10));
-            messageData[8] = Convert.ToByte(((submitTime.Minute/10)<<4)+(submitTime.Minute%10));
-            messageData[9] = Convert.ToByte(((submitTime.Second/10)<<4)+(submitTime.Second%10));
-            messageData[10] = 0;//时间精确到秒即可// Convert.ToByte(((submitTime.Millisecond/10)<<4)+(submitTime.Millisecond%10));
-            //监测状态，2字节
-            messageData[11] = 0x00;
+            byte[] messageData;
+            byte[] crc16;
+            //监测状态，2字节            
             switch (deviceStatus)//控制板中16、32、64分别表示正常、故障、污染。上报管理机时1、2、4分别表示正常、故障、污染
             {
                 case 16:
@@ -240,12 +229,42 @@ namespace HFM.Components
                     deviceStatus = 0x04;
                     break;
             }
-            messageData[12] = Convert.ToByte(deviceStatus);
-            //求CRC校验值
-            byte[] crc16 = new byte[2];
-            crc16=Tools.CRC16(messageData, messageData.Length - 2);
-            messageData[14] = crc16[0];
-            messageData[13] = crc16[1];
+            if (startAddressOfReg == 4 && regNumber == 1)
+            {
+                messageData = new byte[7];
+                messageData[0] = Convert.ToByte(deviceAddress);
+                messageData[1] = 0x03;
+                messageData[2] = 0x02;//一个寄存器数据长度是2字节
+                messageData[3] = 0x00;
+                messageData[4] = Convert.ToByte(deviceStatus);
+                //求CRC校验值
+                crc16 = new byte[2];
+                crc16 = Tools.CRC16(messageData, messageData.Length - 2);
+                messageData[6] = crc16[0];
+                messageData[5] = crc16[1];
+            }
+            else
+            {
+                messageData = new byte[15];
+                messageData[0] = Convert.ToByte(deviceAddress);
+                messageData[1] = 0x03;
+                messageData[2] = 0x0A;
+                messageData[3] = Convert.ToByte(((submitTime.Year / 1000) << 4) + (submitTime.Year % 1000 / 100));
+                messageData[4] = Convert.ToByte(((submitTime.Year % 100 / 10) << 4) + (submitTime.Year % 10));
+                messageData[5] = Convert.ToByte(((submitTime.Month / 10) << 4) + (submitTime.Month % 10));
+                messageData[6] = Convert.ToByte(((submitTime.Day / 10) << 4) + (submitTime.Day % 10));
+                messageData[7] = Convert.ToByte(((submitTime.Hour / 10) << 4) + (submitTime.Hour % 10));
+                messageData[8] = Convert.ToByte(((submitTime.Minute / 10) << 4) + (submitTime.Minute % 10));
+                messageData[9] = Convert.ToByte(((submitTime.Second / 10) << 4) + (submitTime.Second % 10));
+                messageData[10] = 0;//时间精确到秒即可// Convert.ToByte(((submitTime.Millisecond/10)<<4)+(submitTime.Millisecond%10)); 
+                messageData[11] = 0x00;
+                messageData[12] = Convert.ToByte(deviceStatus);
+                //求CRC校验值
+                crc16 = new byte[2];
+                crc16 = Tools.CRC16(messageData, messageData.Length - 2);
+                messageData[14] = crc16[0];
+                messageData[13] = crc16[1];
+            }
             return messageData;
         }
         #endregion
@@ -429,44 +448,53 @@ namespace HFM.Components
         /// 解析从管理机下发的报文（上报监测状态/时间同步）
         /// </summary>
         /// <param name="message">管理机下发的报文信息</param>
-        /// <returns>解析后的报文数据：上报监测状态返回监测仪地址数组（长度为1），时间同步返回标准时间数组（长度为7：年月日时分秒毫秒）</returns>
+        /// <returns>解析后的报文数据：上报监测状态返回（长度为3）：监测仪地址数组-寄存器起始地址-操作寄存器数量，时间同步返回标准时间数组（长度为7：年月日时分秒毫秒）</returns>
         public static int[] ExplainMessage(byte[] message)
         {
-            int[] messageData=null;            
+            int[] messageData=null;
+            //进行CRC校验
+            byte[] crc16 = new byte[2];
             //报文长度不能小于8字节
             if (message.Length<8)
             {
                 return null;
-            }
-            //进行CRC校验
-            byte[] crc16 = new byte[2];
-            crc16 = Tools.CRC16(message, message.Length - 2);
-            //校验失败返回
-            if(message[message.Length-2]!=crc16[1] || message[message.Length-1]!=crc16[0])
-            {
-                return null;
-            }           
-            //校验成功
+            }                       
             switch(message[1])
             {                
-                case 0x03://向管理机上报监测状态报文
-                    if (message[2] != 0x00 || message[3] != 0x00 || message[4] != 0x00 || message[5] != 0x05)
+                case 0x03://向管理机上报监测状态报文,
+                    crc16 = Tools.CRC16(message,6);//报文长度为8字节，最后两个字节为校验位
+                    //校验失败返回
+                    if (message[6] != crc16[1] || message[7] != crc16[0])
                     {
                         return null;
                     }
-                    messageData = new int[1];
+                    ////校验成功
+                    //if (message[2] != 0x00 || message[3] != 0x00 || message[4] != 0x00 || message[5] != 0x05)
+                    //{
+                    //    return null;
+                    //}
+                    messageData = new int[3];
                     messageData[0] = message[0];
+                    messageData[1] = message[3];//保存起始地址
+                    messageData[2] = message[5];//保存寄存器数量          
                     break;                   
                 case 0x10://进行时间同步报文
                     if (message.Length >= 17)//报文长度满足要求
                     {
+                        crc16 = Tools.CRC16(message, 15);//报文长度为17字节，最后两个字节为校验位
+                        //校验失败返回
+                        if (message[15] != crc16[1] || message[16] != crc16[0])
+                        {
+                            return null;
+                        }
+                        //校验成功
                         if (message[2] != 0x11 || message[3] != 0x00 || message[4] != 0x00 || message[5] != 0x04)
                         {
                             return null;
                         }
                         messageData = new int[7];
                         messageData[0] = (message[7]>>4)*1000+(message[7]&0x0f)*100 + (message[8]>>4)*10+(message[8]&0x0f);//年
-                        for(int i=1;i<messageData.Length;i++)
+                        for(int i=1;i<7;i++)
                         {
                             //messageData[1]到messageData[6]分别存储：月、日、时、分、妙、毫秒
                             messageData[i] = (message[i + 8]>>4)*10+(message[i+8]&0x0f);

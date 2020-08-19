@@ -1162,10 +1162,10 @@ namespace HFM
             }
 
             //将监测数据Alpha和Beta计数保存到文件，用来检查是否正确。本底验证。。。
-            foreach (MeasureData m in measureDataS)
-            {
-                File.AppendAllText(appPath + "\\log\\background.txt", "控制板回传数据，通道编号：" + m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
-            }
+            //foreach (MeasureData m in measureDataS)
+            //{
+            //    File.AppendAllText(appPath + "\\log\\background.txt", "控制板回传数据，通道编号：" + m.Channel.ChannelID.ToString() + ";Alpha:" + m.Alpha.ToString() + ";Beta:" + m.Beta.ToString() + "\r\n");
+            //}
 
             //衣物探头被启用
             if (measureDataS[6].Channel.IsEnabled == true)
@@ -1215,7 +1215,7 @@ namespace HFM
                             //frmClothes.PrgClothAlarm_1.Width = (int)(frmClothes.PrgClothAlarm_2.Width * clothesProbeParmeter[0].Alarm_1 / clothesProbeParmeter[0].Alarm_2);
                             //显示衣物探头监测窗口                    
                             frmClothes.Show();
-                            File.AppendAllText(appPath + "\\log\\msg.txt", "衣物监测窗口打开，当前衣物红外状态：" + measureDataS[6].InfraredStatus.ToString());
+                            //File.AppendAllText(appPath + "\\log\\msg.txt", "衣物监测窗口打开，当前衣物红外状态：" + measureDataS[6].InfraredStatus.ToString());
                             return;
                         }
                         //衣物探头已经被拿起（红外状态为到位，衣物探头状态clothesStatus为1（已被拿起），说明衣物探头已经被拿起一段时间（至少1s））
@@ -1869,7 +1869,7 @@ namespace HFM
             //运行状态为本底测量
             if (platformState == PlatformState.BackGrouneMeasure)
             {
-                File.AppendAllText(appPath + "\\log\\background.txt", "开始本底测量。。。\r\n");
+                //File.AppendAllText(appPath + "\\log\\background.txt", "开始本底测量。。。\r\n");
                 if (isLoadProgressPic[1] == false)
                 {
                     SetProgressPicFlag(1);//本底测量进度图片已经被加载标志设置为true，其它为false
@@ -1965,7 +1965,7 @@ namespace HFM
                         calculatedMeasureDataS[i].Alpha += list[0].Alpha;
                         calculatedMeasureDataS[i].Beta += list[0].Beta;
                         //记录当前本底平滑值
-                        File.AppendAllText(appPath + "\\log\\background.txt", "本底测量累加值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                        //File.AppendAllText(appPath + "\\log\\background.txt", "本底测量累加值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                     }
                     //当前通道红外到位
@@ -2160,7 +2160,7 @@ namespace HFM
                             calculatedMeasureDataS[i].Alpha /= backgroundCount;
                             calculatedMeasureDataS[i].Beta /= backgroundCount;
                             //记录当前本底值
-                            File.AppendAllText(appPath + "\\log\\background.txt", "本底测量，当前本底值(平均值)：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                            //File.AppendAllText(appPath + "\\log\\background.txt", "本底测量，当前本底值(平均值)：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
                         }
                         backgroundCount = 0;//重置本底测量数据报文个数计数器
                         DisplayMeasureData(calculatedMeasureDataS, "cps");
@@ -2228,7 +2228,7 @@ namespace HFM
                     else//本底测量未通过
                     {
                         //记录本底异常时间到日志文件 
-                        File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间：" + DateTime.Now.ToString() + "\r\n");
+                        //File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间：" + DateTime.Now.ToString() + "\r\n");
 
                         //仪器本底状态背景色设置为故障
                         PnlBackground.BackgroundImage = Resources.Fault_progress;// Image.FromFile(appPath + "\\Images\\Fault_progress.png");
@@ -2468,7 +2468,7 @@ namespace HFM
                         calculatedMeasureDataS[i].Beta = calculatedMeasureDataS[i].Beta * factoryParameter.SmoothingFactor / (factoryParameter.SmoothingFactor + 1) + list[0].Beta / (factoryParameter.SmoothingFactor + 1);
 
                         //记录当前本底平滑值
-                        File.AppendAllText(appPath + "\\log\\background.txt", "等待测量-本底平滑值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
+                        //File.AppendAllText(appPath + "\\log\\background.txt", "等待测量-本底平滑值，通道编号：" + calculatedMeasureDataS[i].Channel.ChannelID.ToString() + ";Alpha:" + calculatedMeasureDataS[i].Alpha.ToString() + ";Beta:" + calculatedMeasureDataS[i].Beta.ToString() + "\r\n");
 
                         calculatedMeasureDataS[i].InfraredStatus = list[0].InfraredStatus;
                         //获得当前系统参数设置中的测量单位                                                
@@ -2541,7 +2541,7 @@ namespace HFM
                 if (stateTimeSet - (System.DateTime.Now - stateTimeStart).Seconds <= 0)
                 {
                     //记录本底判断标志 
-                    File.AppendAllText(appPath + "\\log\\background.txt", "等待测量，本底判断。。。" + "\r\n");
+                    //File.AppendAllText(appPath + "\\log\\background.txt", "等待测量，本底判断。。。" + "\r\n");
 
                     //下次如果还进行本底计算，则需重新计时，所以置标志为True
                     isFirstBackGround = true;
@@ -2580,7 +2580,7 @@ namespace HFM
                     else//本底检测未通过
                     {
                         //记录本底异常时间到日志文件 
-                        File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间：" + DateTime.Now.ToString() + "\r\n");
+                        //File.AppendAllText(appPath + "\\log\\background.txt", "本底异常，时间：" + DateTime.Now.ToString() + "\r\n");
 
                         //仪器本底测量状态背景色设置为故障
                         PnlBackground.BackgroundImage = Resources.Fault_progress;
@@ -4108,20 +4108,22 @@ namespace HFM
                 try
                 {
                     receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory);
+                    //string str=BitConverter.ToString(receiveBuffMessage);
+                    File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" +BitConverter.ToString(receiveBuffMessage) + "\r\n");
                 }
                 catch
                 {
                     TxtShowResult.Text += "管理机端口通信错误！\r\n";                    
                     isCommReportError = true;
-                }
-                //延时
-                Thread.Sleep(100);
+                }               
                 //触发向主线程返回下位机上传数据事件，如果是时间同步报文，需要读两次串口才能将17个字节数据读回来
                 if (receiveBuffMessage!=null && receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
                 {
                     //if(receiveBufferMessage[0]==0x10)yxk修改2020年7月10日
                     if (receiveBuffMessage[0] == 0x10)
                     {
+                        //延时
+                        //Thread.Sleep(100);
                         byte[] receiveDataTemp = new byte[8];
                         receiveDataTemp= Components.Message.ReceiveMessage(commPort_Supervisory);//读时间同步第17个字节
                         receiveDataTemp.CopyTo(receiveBuffMessage, 16);                        
@@ -4132,10 +4134,11 @@ namespace HFM
                     {
                         bkWorkerReportStatus.WorkerReportsProgress = true;
                     }
-                    worker.ReportProgress(1, receiveBuffMessage);       
+                    worker.ReportProgress(1, receiveBuffMessage);
                     
                 }
-                Thread.Sleep(200);
+                receiveBuffMessage = null;
+                Thread.Sleep(100);
             }
         }
 
@@ -4265,22 +4268,22 @@ namespace HFM
                     //测量数据和故障数据都为空，说明仪器正常
                     if((measureData.MeasureID == 0|| errorData.ErrID==0) || string.IsNullOrEmpty(measureData.DetailedInfo)&&string.IsNullOrEmpty(errorData.Record))
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01, message[1], message[2]);//0x01:仪器正常
                     }                    
                     //监测数据和故障数据都已经上报，说明最近仪器正常，上报时间为当前时间
                     if(measureData.IsReported==true && errorData.IsReported==true)
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01);//0x01:仪器正常
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), DateTime.Now, 0x01, message[1], message[2]);//0x01:仪器正常
                     }
                     //监测数据上报，故障数据未上报，说明最近仪器故障，上报完成后更新故障数据状态为已上报
                     if((errorData.ErrID != 0) &&(string.IsNullOrEmpty(measureData.DetailedInfo)==false && measureData.IsReported==true) && errorData.IsReported==false)
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02);//0x02:仪器故障
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), errorData.ErrTime, 0x02, message[1], message[2]);//0x02:仪器故障
                     }
                     //监测数据未上报，故障数据上报，说明最近状态为污染，上报完成后更新监测数据状态为已上报
                     if((measureData.MeasureID != 0) && measureData.IsReported==false && (errorData.IsReported==true && string.IsNullOrEmpty(errorData.Record)==false))
                     {
-                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04);//0x04:仪器污染
+                        deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),measureData.MeasureDate, 0x04, message[1], message[2]);//0x04:仪器污染
                     }
                     //监测数据和故障数据都未上报，则将最近的状态进行上报，更新两条记录为已上报
                     if ((measureData.MeasureID != 0 || errorData.ErrID != 0)&& measureData.IsReported == false && errorData.IsReported == false)
@@ -4288,12 +4291,12 @@ namespace HFM
                         if (measureData.MeasureDate > errorData.ErrTime)//最近一次记录为MeasureData，说明是状态为污染（因为只有污染状态才会记录，正常不记录）
                         {
                             //生成上报管理机的监测仪测试状态(污染)报文                    
-                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x04);//仪器状态为污染
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress), measureData.MeasureDate, 0x04, message[1], message[2]);//仪器状态为污染
                         }
                         else
                         {
                             //生成上报管理机的监测仪测试状态（故障）报文                    
-                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),errorData.ErrTime, 0x02);//仪器状态为故障
+                            deviceStatusMessage = Components.Message.BuildMessage(Convert.ToInt32(factoryParameter.DeviceAddress),errorData.ErrTime, 0x02, message[1], message[2]);//仪器状态为故障
                         }
                     }
                     //向管理机上报仪器检测状态
