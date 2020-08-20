@@ -208,15 +208,14 @@ namespace HFM.Components
 				ctoCommPort.ReadTotalTimeoutMultiplier = 0; 
 				ctoCommPort.WriteTotalTimeoutMultiplier = 0; 
 				ctoCommPort.WriteTotalTimeoutConstant = 0;   
-				SetCommTimeouts(hComm,ref ctoCommPort); 
-       
-				// SET BAUD RATE, PARITY, WORD SIZE, AND STOP BITS. 
-				// THERE ARE OTHER WAYS OF DOING SETTING THESE BUT THIS IS THE EASIEST. 
-				// IF YOU WANT TO LATER ADD CODE FOR OTHER BAUD RATES, REMEMBER 
-				// THAT THE ARGUMENT FOR BuildCommDCB MUST BE A POINTER TO A STRING. 
-				// ALSO NOTE THAT BuildCommDCB() DEFAULTS TO NO HANDSHAKING. 
-       
-				dcbCommPort.DCBlength = Marshal.SizeOf(dcbCommPort); 
+				SetCommTimeouts(hComm,ref ctoCommPort);                
+                // SET BAUD RATE, PARITY, WORD SIZE, AND STOP BITS. 
+                // THERE ARE OTHER WAYS OF DOING SETTING THESE BUT THIS IS THE EASIEST. 
+                // IF YOU WANT TO LATER ADD CODE FOR OTHER BAUD RATES, REMEMBER 
+                // THAT THE ARGUMENT FOR BuildCommDCB MUST BE A POINTER TO A STRING. 
+                // ALSO NOTE THAT BuildCommDCB() DEFAULTS TO NO HANDSHAKING. 
+
+                dcbCommPort.DCBlength = Marshal.SizeOf(dcbCommPort); 
 				GetCommState(hComm, ref dcbCommPort); 
 				dcbCommPort.BaudRate=BaudRate; 
 				dcbCommPort.Parity=Parity; 

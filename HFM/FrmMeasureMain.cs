@@ -4116,7 +4116,10 @@ namespace HFM
                 {
                     receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory);
                     //string str=BitConverter.ToString(receiveBuffMessage);
-                    //File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" +BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                    if (receiveBuffMessage.Count()>0)
+                    {
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                    }
                 }
                 catch
                 {
@@ -4124,7 +4127,7 @@ namespace HFM
                     isCommReportError = true;
                 }               
                 //触发向主线程返回下位机上传数据事件，如果是时间同步报文，需要读两次串口才能将17个字节数据读回来
-                if(receiveBuffMessage == null)
+                if(receiveBuffMessage.Count()==0)
                 {
                     continue;
                 }
@@ -4149,7 +4152,7 @@ namespace HFM
                     worker.ReportProgress(1, receiveBuffMessage);
                     
                 }                
-                Thread.Sleep(10);
+                Thread.Sleep(100);
             }
         }
 
@@ -4171,7 +4174,7 @@ namespace HFM
             if (receiveBufferMessage.Length < messageBufferLength)
             {
                 //数据接收出现错误次数超限
-                if (errNumber >= 2)
+                if (errNumber >= 20)
                 {
                     errNumber = 0;
                     //界面提示“通讯错误”
@@ -4190,15 +4193,15 @@ namespace HFM
                     errNumber++;
                 }
                 return;
-            }           
+            }
+            errNumber = 0;
             //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
             message = Components.Message.ExplainMessage(receiveBufferMessage);            
-            if (message == null||message.Length<=0)//解析失败
+            if (message == null||message.Count()<=0)//解析失败
             {
                 return;
             }
-            isCommReportError = false;
-            errNumber = 0;
+            isCommReportError = false;            
             //解析成功
             if (message.Count()>=7)//长度大于7，为时间同步命令
             {

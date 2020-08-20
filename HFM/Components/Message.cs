@@ -618,7 +618,7 @@ namespace HFM.Components
                     //读串口数据到RecBuf
                     try
                     {
-                        //接收下位机上传的采集数据报文，将其从byte型转换为string类型(十六进制)并返回
+                        //接收下位机上传的采集数据报文，将其从byte型转换为string类型(十六进制)并返回                        
                         RecBuf = commport.Read(NumBytes);                        
                         return RecBuf;
                     }
