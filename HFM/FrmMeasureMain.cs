@@ -586,6 +586,12 @@ namespace HFM
         }
         private void FrmMeasureMain_Load(object sender, EventArgs e)
         {
+            //Serializable serializable = new Serializable();
+            //serializable.DeviceNumber = "123";
+            ////NuclideUsed nuclideUsed = new NuclideUsed();
+            ////nuclideUsed.AlphaNuclide = "456";
+            //serializable.NuclideUsed = new NuclideUsed("abc");
+            //string postXml = SerializeHelper.Serialize(typeof(Serializable), serializable);
             //MeasureData measureData1 = new MeasureData();
             //measureData1.GetLatestData();
             //if(string.IsNullOrEmpty(measureData1.DetailedInfo)==false)
@@ -936,6 +942,10 @@ namespace HFM
                     try
                     {
                         receiveBuffMessage = Components.Message.ReceiveMessage(commPort);
+                        //if (receiveBuffMessage.Count() > 0)
+                        //{
+                        //    File.AppendAllText(appPath + "\\log\\background.txt", "串口回传信息：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                        //}
                     }
                     catch
                     {
@@ -4101,9 +4111,144 @@ namespace HFM
         }
         private byte[] ReadDataFromSerialPortReport(BackgroundWorker worker, DoWorkEventArgs e)
         {
-            //巡检管理机下发的报文
+            ////读取串口回传数据并赋值给receiveBuffMessage
+            //byte[] receiveBuffMessage =null;
+            ////遍历接收缓冲区后找到的有效报文
+            //byte[] effectiveMessage = new byte[1024];
+            //bool isFindStatusMessage = false;//是否找到正确的状态上报报文
+            //bool isFindTimeSynMessage = false;//是否找到正确的时间同步报文
+            //int index = 0;//遍历报文索引
+            ////巡检管理机下发的报文           
             while (true)
             {
+                /******************************************************************* 
+                //请求进程中断读取数据
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return null;
+                }
+                
+                try
+                {
+                    //读取串口数据
+                    byte[] receiveDataTemp;
+                    receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory,1024);
+                    if (receiveDataTemp.Count() > 0)
+                    {
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" + BitConverter.ToString(receiveDataTemp) + "\r\n");
+                    }
+                    if (receiveBuffMessage==null)
+                    {
+                        receiveBuffMessage = receiveDataTemp;
+                    }
+                    else
+                    {
+                        //将串口数据放到接收数据缓冲区末尾
+                        receiveBuffMessage = Tools.CopyTo(receiveBuffMessage, receiveDataTemp);
+                    }
+                    //string str=BitConverter.ToString(receiveBuffMessage);
+                    //if (receiveBuffMessage.Count()>0)
+                    //{
+                    //    File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                    //}
+                }
+                catch
+                {
+                    TxtShowResult.Text += "管理机端口通信错误！\r\n";                    
+                    isCommReportError = true;
+                }               
+                //触发向主线程返回下位机上传数据事件，如果是时间同步报文，需要读两次串口才能将17个字节数据读回来
+                if(receiveBuffMessage==null || receiveBuffMessage.Count()==0)
+                {
+                    continue;
+                }
+                while(receiveBuffMessage.Count()<8)//串口回传数据小于最小报文长度（上报状态8字节，时间同步17字节）
+                {
+                    //继续读串口数据，直到最小报文长度8字节
+                    byte[] receiveDataTemp;
+                    receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory);//继续从串口读时间同步报文                                 
+                    if (receiveDataTemp.Count() > 0)//串口有回传数据
+                    {
+                        receiveBuffMessage = Tools.CopyTo(receiveBuffMessage, receiveDataTemp);
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-组包：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                    }
+                }
+                //遍历报文判断报文是否包含上报状态报文或时间同步报文标志信息
+                for (index = 0; index <= receiveBuffMessage.Length - 8; index++)
+                {
+                    //遍历整个报文，判断是否为上报状态报文
+                    if ((receiveBuffMessage[index + 1] == 0x03 && receiveBuffMessage[index + 2] == 0x00 && receiveBuffMessage[index + 3] == 0x00 && receiveBuffMessage[index + 4] == 0x00 && receiveBuffMessage[index + 5] == 0x05) || (receiveBuffMessage[index + 1] == 0x03 && receiveBuffMessage[index + 2] == 0x00 && receiveBuffMessage[index + 3] == 0x04 && receiveBuffMessage[index + 4] == 0x00 && receiveBuffMessage[index + 5] == 0x01))
+                    {
+                        //找到正确的状态上报报文，将报文信息保存到新的报文数组effectiveMessage中
+                        //byte[] effectiveMessage = new byte[8];
+                        Array.Copy(receiveBuffMessage, index, effectiveMessage, 0, 8);
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-遍历03指令：" + BitConverter.ToString(effectiveMessage) + "\r\n");
+                        isFindStatusMessage = true;
+                        break;
+                    }
+                    //遍历整个报文，判断是否为时间同步报文
+                    if (receiveBuffMessage[index] == 0x00 && receiveBuffMessage[index + 1] == 0x10 && receiveBuffMessage[index + 2] == 0x11 && receiveBuffMessage[index + 3] == 0x00)
+                    {
+                        //找到正确的时间同步报文，将包含时间同步报文头信息的剩余串口回传数据保存到新的报文数组effectiveMessage中
+                        //byte[] effectiveMessage = new byte[1024];
+                        Array.Copy(receiveBuffMessage, index, effectiveMessage, 0, receiveBuffMessage.Length- index);
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-遍历时间同步指令报文标志：" + BitConverter.ToString(effectiveMessage) + "\r\n");
+                        while ((receiveBuffMessage.Count()-index) < 17)//时间同步报文长度为17，需要分多次读取直到读取到17个字节的串口数据
+                        {
+                            byte[] receiveDataTemp;
+                            receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory);//继续从串口读时间同步报文     
+                            if (receiveDataTemp.Count() > 0)//串口有回传数据
+                            {
+                                receiveBuffMessage = Tools.CopyTo(receiveBuffMessage, receiveDataTemp);//将串口回传数据拼接到有效报文后面
+                                File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-时间同步组包：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                            }
+                            Thread.Sleep(10);                            
+                        }
+                        Array.Copy(receiveBuffMessage, index, effectiveMessage, 0, 17);
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-时间同步报文结果：" + BitConverter.ToString(effectiveMessage) + "\r\n");
+                        isFindTimeSynMessage = true;
+                        break;
+                    }
+                }
+                if(isFindStatusMessage==false && isFindTimeSynMessage==false)//还未找到正确报文
+                {
+                    //将串口回传信息中除去已经判断的数据，将剩余报文信息保存到接收缓冲区receiveBuffMessage中
+                    List<byte> list = new List<byte>(receiveBuffMessage);
+                    list.RemoveRange(0,index+1);
+                    receiveBuffMessage = list.ToArray();
+                    //Array.Copy(receiveBuffMessage, index, receiveBuffMessage, 0,receiveBuffMessage.Length-index);
+                }
+                else
+                {
+                    //已经找到正确报文
+                    isCommReportError = false;
+                    if(isFindStatusMessage==true)
+                    {
+                        //上报状态报文,从接收缓冲区中将报文信息剔除
+                        List<byte> list = new List<byte>(receiveBuffMessage);
+                        list.RemoveRange(0, 8);
+                        receiveBuffMessage=list.ToArray();                        
+                    }
+                    if(isFindTimeSynMessage==true)
+                    {
+                        //时间同步报文，从接收缓冲区中将报文信息剔除
+                        List<byte> list = new List<byte>(receiveBuffMessage);
+                        list.RemoveRange(0, 17);
+                        receiveBuffMessage = list.ToArray();                        
+                    }
+                    isFindStatusMessage = false;//为下一个报文读取解析做准备
+                    isFindTimeSynMessage = false;                    
+                    //第一次启动后，进入设置，设置完成端口后，回到主线程报错误，没有开启进度显示，所以加判断
+                    if (bkWorkerReportStatus.WorkerReportsProgress == false)
+                    {
+                        bkWorkerReportStatus.WorkerReportsProgress = true;
+                    }
+                    worker.ReportProgress(1, effectiveMessage);
+                    //Array.Clear(effectiveMessage, 0, 1024);
+                }
+                Thread.Sleep(10);  
+                ************************************************************/
                 //请求进程中断读取数据
                 if (worker.CancellationPending)
                 {
@@ -4115,34 +4260,34 @@ namespace HFM
                 try
                 {
                     receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory);
-                    //string str=BitConverter.ToString(receiveBuffMessage);
-                    if (receiveBuffMessage.Count()>0)
+                    if (receiveBuffMessage.Count() > 0)
                     {
-                        File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" +BitConverter.ToString(receiveBuffMessage) + "\r\n");
                     }
                 }
                 catch
                 {
-                    TxtShowResult.Text += "管理机端口通信错误！\r\n";                    
+                    TxtShowResult.Text += "管理机端口通信错误！\r\n";
                     isCommReportError = true;
-                }               
+                }
                 //触发向主线程返回下位机上传数据事件，如果是时间同步报文，需要读两次串口才能将17个字节数据读回来
-                if(receiveBuffMessage.Count()==0)
+                if (receiveBuffMessage == null)
                 {
                     continue;
                 }
-                if (receiveBuffMessage.Count()>0)// && receiveBuffMessage.Count() >= 8)//报文长度大于最小报文长度
+                if (receiveBuffMessage.Count() >= 4)
                 {
-                    //if(receiveBufferMessage[0]==0x10)yxk修改2020年7月10日
-                    //if (receiveBuffMessage[0] == 0x10)
-                    //{                        
-                    //    while (receiveBuffMessage.Length < 17)//时间同步报文长度为17，可能需要分多次读取
-                    //    {
-                    //        byte[] receiveDataTemp = new byte[124];
-                    //        receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory);//继续从串口读时间同步报文
-                    //        receiveDataTemp.CopyTo(receiveBuffMessage, receiveBuffMessage.Length);
-                    //    }
-                    //}                    
+                    if (receiveBuffMessage[0] == 0x00 && receiveBuffMessage[1] == 0x10 && receiveBuffMessage[2] == 0x11 && receiveBuffMessage[3] == 0x00)//时间同步报文
+                    {                                                    
+                        while (receiveBuffMessage.Count()<17)//时间同步报文长度为17，可能需要分多次读取
+                        {
+                            byte[] receiveDataTemp = new byte[1024];
+                            receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory);//继续从串口读时间同步报文                                 
+                            receiveBuffMessage = Tools.CopyTo(receiveBuffMessage, receiveDataTemp);
+                            Thread.Sleep(10);
+                            File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                        }                                        
+                    }
                     isCommReportError = false;
                     //第一次启动后，进入设置，设置完成端口后，回到主线程报错误，没有开启进度显示，所以加判断
                     if (bkWorkerReportStatus.WorkerReportsProgress == false)
@@ -4150,9 +4295,8 @@ namespace HFM
                         bkWorkerReportStatus.WorkerReportsProgress = true;
                     }
                     worker.ReportProgress(1, receiveBuffMessage);
-                    
                 }                
-                Thread.Sleep(100);
+                Thread.Sleep(10);                                 
             }
         }
 

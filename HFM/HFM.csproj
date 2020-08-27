@@ -78,6 +78,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\MeasureIO.cs" />
+    <Compile Include="Components\Serializable.cs" />
     <Compile Include="Components\SerializeHelper.cs" />
     <Compile Include="FrmCalibration.cs">
       <SubType>Form</SubType>

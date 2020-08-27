@@ -630,6 +630,49 @@ namespace HFM.Components
                 }
             }
         }
+
+        /// <summary>
+        ///  通过串口接收下位机上传的采集数据报文（串口已经打开）		
+        /// </summary>
+        /// <param name="commport"> 已打开的接收报文信息的串口</param>
+        /// <param name="numBytes">读取字节数</param>
+        /// <returns>PosID  接收成功：返回收到的采集信息
+        ///                 接收失败：返回null  </returns>
+        public static byte[] ReceiveMessage(CommPort commport,int numBytes)
+        {
+            //串口已打开            
+            //int NumBytes;
+            HexCon hexcon = new HexCon();
+            //NumBytes = 124;
+            byte[] RecBuf = new byte[numBytes];
+            //获得当前系统时间
+            System.DateTime Start_Time = new System.DateTime();
+            Start_Time = System.DateTime.Now;
+            while (true)
+            {
+                System.DateTime Now_Time = new System.DateTime();
+                Now_Time = System.DateTime.Now;
+                //传输时间大于20秒则传输失败
+                TimeSpan Space_Time = Now_Time.Subtract(Start_Time);
+                if (Space_Time.Seconds > 20)
+                    return null;
+                else
+                {
+                    //读串口数据到RecBuf
+                    try
+                    {
+                        //接收下位机上传的采集数据报文，将其从byte型转换为string类型(十六进制)并返回                        
+                        RecBuf = commport.Read(numBytes);
+                        return RecBuf;
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+
+                }
+            }
+        }
         #endregion
     }
 }

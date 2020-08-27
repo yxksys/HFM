@@ -610,6 +610,15 @@ namespace HFM.Components
             }
         }
         #endregion
-                        
+        #region 两个数组进行拼接并返回拼接结果对象引用
+        public static byte[] CopyTo(byte[] source,byte[] detection)
+        {
+            byte[] dealtData = new byte[source.Length + detection.Length];
+            source.CopyTo(dealtData, 0);
+            detection.CopyTo(dealtData, source.Length);
+            return dealtData;
+        }
+        #endregion
+
     }
 }
