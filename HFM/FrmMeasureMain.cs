@@ -3327,7 +3327,7 @@ namespace HFM
                         player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";                            
                     }
                     player.LoadAsync();
-                    player.PlaySync();
+                    player.Play();
                     //Thread.Sleep(200);
                 }
                 //检测次数大于强制本底次数、衣物离线时间大于设置时间、有污染（手脚、衣物）则强制本底
