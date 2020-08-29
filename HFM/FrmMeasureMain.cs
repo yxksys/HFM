@@ -79,6 +79,7 @@ namespace HFM
         bool isClothesContaminated=false;//衣物探测是否有污染
         bool isAudioPlayed = false;//语音播报是否结束标志
         bool isAudioDida1 = true;//测量滴答播放控制，每2秒播放一次
+        bool isAudioContaminatedPlayed = false;//人员污染请去污语音是否播放完毕
         bool isTestedEnd = false;//监测是否结束标志
         bool isFrmDisplayed = false;
         bool isCommError = false;//监测端口通信错误标志
@@ -1657,7 +1658,7 @@ namespace HFM
                     //IOThread.Suspend();
                     player.Stream = Resources.Chinese_Self_checking;// appPath + "\\Audio\\Chinese_Self_checking.wav";
                 }
-                player.LoadAsync();
+                //player.LoadAsync();
                 player.Play();
                 //当前运行状态设置为“仪器自检”
                 platformState = PlatformState.SelfTest;
@@ -1837,8 +1838,8 @@ namespace HFM
                             //系统提示本底测量                                                
                             player.Stream = Resources.Chinese_Background_measure;// appPath + "\\Audio\\Chinese_Background_measure.wav";
                         }
-                        player.LoadAsync();
-                        player.PlaySync();
+                        //player.LoadAsync();
+                        player.Play();
                         //启动本底测量计时 
                         stateTimeStart = System.DateTime.Now;
                     }
@@ -1860,8 +1861,8 @@ namespace HFM
                         {
                             player.Stream = Resources.Chinese_Self_checking_fault;// appPath + "\\Audio\\Chinese_Self-checking_fault.wav";
                         }
-                        player.LoadAsync();
-                        player.PlaySync();
+                        //player.LoadAsync();
+                        player.Play();
                         //测量数据存储全部清零
                         for (int i = 0; i < channelS.Count; i++)
                         {
@@ -2337,10 +2338,10 @@ namespace HFM
                         //重新启动等待测量计时
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
-                    if (playControl % 6 == 0)
+                    if (playControl % 4 == 0)
                     {
                         timesOutCount++;
-                        if (timesOutCount >=systemParameter.TimeOut/6)  //提示次数达到超时计数次数（1次6s共计次数为系统设置超时时间除以6），则重置手心检测状态，恢复到等待测量阶段
+                        if (timesOutCount >=systemParameter.TimeOut/4)  //提示次数达到超时计数次数（1次6s共计次数为系统设置超时时间除以6），则重置手心检测状态，恢复到等待测量阶段
                         {
                             //重置手部检测标志为0（未开始检测）
                             isHandTested = 0;
@@ -2361,7 +2362,7 @@ namespace HFM
                     }
                     if (isHandSecondEnabled == false)
                     {
-                        if (playControl % 6 == 0)
+                        if (playControl % 4 == 0)
                         {                                                        
                             //提示翻转手掌进行检测
                             if (isEnglish == false)
@@ -2387,7 +2388,7 @@ namespace HFM
                         //重新启动等待测量计时
                         stateTimeStart = System.DateTime.Now.AddSeconds(1);
                     }
-                    if (measureDataS[2].InfraredStatus == 0 && measureDataS[4].InfraredStatus == 0)//说明手部检测完成后，红外不到位，手部已经离开监测仪
+                    if (measureDataS[1].InfraredStatus == 0 && measureDataS[3].InfraredStatus == 0)//说明手部检测完成后，红外不到位，手部已经离开监测仪
                     {
                         //重置手部检测标志为0（未开始检测）
                         isHandTested = 0;
@@ -2395,7 +2396,7 @@ namespace HFM
                     }
                     else
                     {
-                        if (playControl % 6 == 0)
+                        if (playControl % 4 == 0)
                         {
                             //衣物探头未启用，提示离开
                             if (measureDataS[6].Channel.IsEnabled == false)
@@ -2614,8 +2615,8 @@ namespace HFM
                         {
                             player.Stream =Resources.Chinese_Background_abnomal;
                         }
-                        player.LoadAsync();
-                        player.PlaySync();
+                        //player.LoadAsync();
+                        player.Play();
                         //将故障信息errRecord写入数据库
                         AddErrorData(errRecordS);
                         isDeviceStatusUpdated = true;
@@ -2735,7 +2736,7 @@ namespace HFM
                                 player.Stream = Resources.Chinese_Left_hand_moved_please_measure_again;// appPath + "\\Audio\\Chinese_Left_hand_moved_please_measure_again.wav";
                             }
                             player.Load();                            
-                            player.PlaySync();
+                            player.Play();
                             //Thread.Sleep(2000);
                         }
                         if (list[0].Channel.ChannelID == 3 || list[0].Channel.ChannelID ==4)
@@ -2752,8 +2753,8 @@ namespace HFM
                                 //系统语音提示右手移动重新测量
                                 player.Stream = Resources.Chinese_right_hand_moved_please_measure_again;// appPath + "\\Audio\\Chinese_right_hand_moved_please_measure_again.wav";
                             }
-                            player.LoadAsync();
-                            player.PlaySync();                            
+                            //player.LoadAsync();
+                            player.Play();                            
                         }
                         //将存储各个通道测量计算结果的列表calculatedMeasureDataS清零，为等待测量过程中进行本底测量做准备
                         for (int j = 0; j < channelS.Count; j++)
@@ -2793,7 +2794,7 @@ namespace HFM
                 if (stateTimeRemain == 0)
                 {
                     player.Stream = Resources.dida2;// appPath + "\\Audio\\dida2.wav";
-                    player.LoadAsync();
+                    //player.LoadAsync();
                     player.Play();
                 }
                 //测量时间到
@@ -3110,8 +3111,8 @@ namespace HFM
                             {
                                 player.Stream = Resources.English_please_flip_palm_for_measuring;// appPath + "\\Audio\\English_Please_Flip_Palm_for_Measuring.wav";
                             }
-                            player.LoadAsync();
-                            player.PlaySync();
+                            //player.LoadAsync();
+                            player.Play();
                             if (isEnglish)
                             {
                                 //测试结果区域显示等待测量
@@ -3257,7 +3258,7 @@ namespace HFM
             //运行状态为“测量结束”
             if (platformState == PlatformState.Result)
             {
-                isHandTested = 0;//恢复手部检测初始状态
+                //isHandTested = 0;//恢复手部检测初始状态
                 if (TxtShowResult.GetLineFromCharIndex(TxtShowResult.TextLength) > 16)
                 {
                     int start = TxtShowResult.GetFirstCharIndexFromLine(0);
@@ -3266,7 +3267,7 @@ namespace HFM
                     TxtShowResult.SelectedText = "";                   
                 }                
                 ClearProgressPicFlag();//检测完成，将窗体顶部状态图片加载标志全部设置为false                
-                //扔掉5次预读取的数据
+                //扔掉1次预读取的数据
                 if (throwDataCount < 1)
                 {
                     for (int i = 0; i < measureDataS.Count; i++)
@@ -3306,8 +3307,8 @@ namespace HFM
                             player.Stream = Resources.English_NoContamination_please_leave;// appPath + "\\Audio\\English_NoContamination_please_leave.wav";
                         }                                                                                       
                     }
-                    player.LoadAsync();
-                    player.PlaySync();
+                    //player.LoadAsync();
+                    player.Play();
                 }
                 if (deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_1) || deviceStatus == Convert.ToByte(DeviceStatus.OperatingContaminated_2))
                 {
@@ -3326,8 +3327,14 @@ namespace HFM
                         //语音提示被测人员污染
                         player.Stream = Resources.Chinese_Decontaminate_please;// appPath + "\\Audio\\Chinese_Decontaminate_please.wav";                            
                     }
-                    player.LoadAsync();
-                    player.Play();
+                    isAudioContaminatedPlayed = false;
+                    //player.LoadAsync();
+                    //TxtShowResult.Text += (DateTime.Now - alarmTimeStart).Seconds.ToString()+";"; 
+                    if (playControl % 3==0)
+                    {
+                        player.Play();                        
+                    }
+                    isAudioContaminatedPlayed = true;
                     //Thread.Sleep(200);
                 }
                 //检测次数大于强制本底次数、衣物离线时间大于设置时间、有污染（手脚、衣物）则强制本底
@@ -3336,12 +3343,22 @@ namespace HFM
                     //如果有污染且报警时间长度小于设定报警时间长度，则返回等待
                     if ((pollutionRecord != null || isClothesContaminated == true) && ((DateTime.Now - alarmTimeStart).Seconds< alarmTimeSet)) 
                     {
-                        Thread.Sleep(200);
+                        //清除预读取数据
+                        for (int i = 0; i < measureDataS.Count; i++)
+                        {
+                            measureDataS[i].Alpha = 0;
+                            measureDataS[i].Beta = 0;
+                            measureDataS[i].InfraredStatus = 0;
+                        }                        
+                        commPort.ClearPortData();
+                        playControl++;
+                        //Thread.Sleep(200);
                         return;
-                    }
+                    }                    
                     //转本底测量
                     else
-                    {                        
+                    {
+                        playControl = 0;
                         pollutionRecord = null;//清空本次污染记录信息，为下一次测量做准备                                              
                         isClothesContaminated = false;                       
                         clothesTimeCount = 0;//重置衣物检测离线次数
@@ -3374,9 +3391,9 @@ namespace HFM
                             TxtShowResult.Text += "本底测量\r\n";
                             //系统提示本底测量
                             player.Stream = Resources.Chinese_Background_measure;// appPath + "\\Audio\\Chinese_Background_measure.wav";
-                        }
-                        player.LoadAsync();
-                        player.PlaySync();
+                        }                        
+                        //player.LoadAsync();
+                        player.Play();
                         ////测量值显示标签背景恢复为默认状态（如果检查结果为人员污染，则会将测量值显示标签背景色变为污染报警，所以需要恢复）
                         //for (int i = 0; i < channelS.Count; i++)
                         //{
@@ -4112,15 +4129,17 @@ namespace HFM
         private byte[] ReadDataFromSerialPortReport(BackgroundWorker worker, DoWorkEventArgs e)
         {
             //读取串口回传数据并赋值给receiveBuffMessage
-            byte[] receiveBuffMessage = null;
-            //遍历接收缓冲区后找到的有效报文
-            byte[] effectiveMessage = new byte[1024];
+            byte[] receiveBuffMessage = null;            
             bool isFindStatusMessage = false;//是否找到正确的状态上报报文
             bool isFindTimeSynMessage = false;//是否找到正确的时间同步报文
             int index = 0;//遍历报文索引
-            //巡检管理机下发的报文           
+            //巡检管理机下发的报文
+
+
             while (true)
             {
+                //遍历接收缓冲区后找到的有效报文
+                byte[] effectiveMessage = new byte[1024];
                 //请求进程中断读取数据
                 if (worker.CancellationPending)
                 {
@@ -4135,7 +4154,7 @@ namespace HFM
                     receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory, 1024);
                     if (receiveDataTemp.Count() > 0)
                     {
-                        File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" + BitConverter.ToString(receiveDataTemp) + "\r\n");
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "当前串口回传信息-1：" + BitConverter.ToString(receiveDataTemp) + "\r\n");
                     }
                     if (receiveBuffMessage == null)
                     {
@@ -4145,12 +4164,11 @@ namespace HFM
                     {
                         //将串口数据放到接收数据缓冲区末尾
                         receiveBuffMessage = Tools.CopyTo(receiveBuffMessage, receiveDataTemp);
+                    }                    
+                    if (receiveBuffMessage.Count() > 0)
+                    {
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "当前接收缓冲区信息-组包-1：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
                     }
-                    //string str=BitConverter.ToString(receiveBuffMessage);
-                    //if (receiveBuffMessage.Count()>0)
-                    //{
-                    //    File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
-                    //}
                 }
                 catch
                 {
@@ -4169,8 +4187,9 @@ namespace HFM
                     receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory);//继续从串口读时间同步报文                                 
                     if (receiveDataTemp.Count() > 0)//串口有回传数据
                     {
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "当前串口回传信息-2：" + BitConverter.ToString(receiveDataTemp) + "\r\n");
                         receiveBuffMessage = Tools.CopyTo(receiveBuffMessage, receiveDataTemp);
-                        File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-组包：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "当前接收缓冲区信息-组包-2：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
                     }
                 }
                 //遍历报文判断报文是否包含上报状态报文或时间同步报文标志信息
@@ -4180,9 +4199,14 @@ namespace HFM
                     if ((receiveBuffMessage[index + 1] == 0x03 && receiveBuffMessage[index + 2] == 0x00 && receiveBuffMessage[index + 3] == 0x00 && receiveBuffMessage[index + 4] == 0x00 && receiveBuffMessage[index + 5] == 0x05) || (receiveBuffMessage[index + 1] == 0x03 && receiveBuffMessage[index + 2] == 0x00 && receiveBuffMessage[index + 3] == 0x04 && receiveBuffMessage[index + 4] == 0x00 && receiveBuffMessage[index + 5] == 0x01))
                     {
                         //找到正确的状态上报报文，将报文信息保存到新的报文数组effectiveMessage中
-                        //byte[] effectiveMessage = new byte[8];
+                        //byte[] effectiveMessage = new byte[8];                                               
                         Array.Copy(receiveBuffMessage, index, effectiveMessage, 0, 8);
-                        File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-遍历03指令：" + BitConverter.ToString(effectiveMessage) + "\r\n");
+                        //由于effectiveMessage数组长度为1024，所以需要将多余的元素删除掉
+                        List<byte> list = new List<byte>();
+                        list = effectiveMessage.ToList();
+                        list.RemoveRange(8, effectiveMessage.Length - 8);
+                        effectiveMessage = list.ToArray();
+                        File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-遍历03指令结果：" + BitConverter.ToString(effectiveMessage) + "\r\n");
                         isFindStatusMessage = true;
                         break;
                     }
@@ -4190,21 +4214,34 @@ namespace HFM
                     if (receiveBuffMessage[index] == 0x00 && receiveBuffMessage[index + 1] == 0x10 && receiveBuffMessage[index + 2] == 0x11 && receiveBuffMessage[index + 3] == 0x00)
                     {
                         //找到正确的时间同步报文，将包含时间同步报文头信息的剩余串口回传数据保存到新的报文数组effectiveMessage中
-                        //byte[] effectiveMessage = new byte[1024];
-                        Array.Copy(receiveBuffMessage, index, effectiveMessage, 0, receiveBuffMessage.Length - index);
-                        File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-遍历时间同步指令报文标志：" + BitConverter.ToString(effectiveMessage) + "\r\n");
-                        while ((receiveBuffMessage.Count() - index) < 17)//时间同步报文长度为17，需要分多次读取直到读取到17个字节的串口数据
+                        //byte[] effectiveMessage = new byte[1024];                                            
+                        //Array.Copy(receiveBuffMessage, index, effectiveMessage, 0, receiveBuffMessage.Length - index);
+                        ////由于effectiveMessage数组长度为1024，所以需要将多余的元素删除掉
+                        //List<byte> list = new List<byte>();
+                        //list = effectiveMessage.ToList();
+                        //list.RemoveRange(receiveBuffMessage.Length - index-1, effectiveMessage.Length -(receiveBuffMessage.Length - index));
+                        //effectiveMessage = list.ToArray();
+                        //File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-遍历时间同步指令：" + BitConverter.ToString(effectiveMessage) + "\r\n");
+                        //时间同步报文长度为17字节，如果接收缓冲区中有效报文长度小于17字节，则需要分多次读取直到读取到17个字节的串口数据
+                        while ((receiveBuffMessage.Count() - index) < 17)
                         {
                             byte[] receiveDataTemp;
                             receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory);//继续从串口读时间同步报文     
                             if (receiveDataTemp.Count() > 0)//串口有回传数据
                             {
+                                File.AppendAllText(appPath + "\\log\\msg.txt", "当前串口回传信息-3：" + BitConverter.ToString(receiveDataTemp) + "\r\n");
                                 receiveBuffMessage = Tools.CopyTo(receiveBuffMessage, receiveDataTemp);//将串口回传数据拼接到有效报文后面
                                 File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-时间同步组包：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
                             }
                             Thread.Sleep(10);
                         }
+                        //将遍历找到的时间同步报文信息从接收缓冲区receiveBuffMessage拷贝到有效报文数组effectiveMessage
                         Array.Copy(receiveBuffMessage, index, effectiveMessage, 0, 17);
+                        //由于effectiveMessage数组长度为1024，所以需要将多余的元素删除掉
+                        List<byte> list = new List<byte>();
+                        list = effectiveMessage.ToList();
+                        list.RemoveRange(17, effectiveMessage.Length - 17);
+                        effectiveMessage = list.ToArray();
                         File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息-时间同步报文结果：" + BitConverter.ToString(effectiveMessage) + "\r\n");
                         isFindTimeSynMessage = true;
                         break;
@@ -4215,8 +4252,7 @@ namespace HFM
                     //将串口回传信息中除去已经判断的数据，将剩余报文信息保存到接收缓冲区receiveBuffMessage中
                     List<byte> list = new List<byte>(receiveBuffMessage);
                     list.RemoveRange(0, index + 1);
-                    receiveBuffMessage = list.ToArray();
-                    //Array.Copy(receiveBuffMessage, index, receiveBuffMessage, 0,receiveBuffMessage.Length-index);
+                    receiveBuffMessage = list.ToArray();                    
                 }
                 else
                 {
@@ -4224,16 +4260,16 @@ namespace HFM
                     isCommReportError = false;
                     if (isFindStatusMessage == true)
                     {
-                        //上报状态报文,从接收缓冲区中将报文信息剔除
+                        //上报状态报文,从接收缓冲区中将上报状态报文信息剔除
                         List<byte> list = new List<byte>(receiveBuffMessage);
-                        list.RemoveRange(0, 8);
+                        list.RemoveRange(0, index+8);
                         receiveBuffMessage = list.ToArray();
                     }
                     if (isFindTimeSynMessage == true)
                     {
-                        //时间同步报文，从接收缓冲区中将报文信息剔除
+                        //时间同步报文，从接收缓冲区中将时间同步报文信息剔除
                         List<byte> list = new List<byte>(receiveBuffMessage);
-                        list.RemoveRange(0, 17);
+                        list.RemoveRange(0, index+17);
                         receiveBuffMessage = list.ToArray();
                     }
                     isFindStatusMessage = false;//为下一个报文读取解析做准备
@@ -4248,8 +4284,8 @@ namespace HFM
                 }
                 Thread.Sleep(10);
             }
-                //对时间同步报文读取进行优化---支持组包
-                /***********************************************************
+            
+            /************************************************************    
             while(true)
             {
                 //请求进程中断读取数据
@@ -4259,14 +4295,14 @@ namespace HFM
                     return null;
                 }
                 //读取串口回传数据并赋值给receiveBuffMessage
-                byte[] receiveBuffMessage = new byte[124];
+                byte[] receiveBuffMessage=new byte[1024];
                 try
                 {
-                    receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory);
-                    if (receiveBuffMessage.Count() > 0)
-                    {
-                        File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" +BitConverter.ToString(receiveBuffMessage) + "\r\n");
-                    }
+                    receiveBuffMessage = Components.Message.ReceiveMessage(commPort_Supervisory,1024);
+                    //if (receiveBuffMessage.Count() > 0)
+                    //{
+                    //    File.AppendAllText(appPath + "\\log\\msg.txt", "串口回传信息：" +BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                    //}
                 }
                 catch
                 {
@@ -4274,7 +4310,7 @@ namespace HFM
                     isCommReportError = true;
                 }
                 //触发向主线程返回下位机上传数据事件，如果是时间同步报文，需要读两次串口才能将17个字节数据读回来
-                if (receiveBuffMessage == null)
+                if (receiveBuffMessage == null || receiveBuffMessage.Count() == 0)
                 {
                     continue;
                 }
@@ -4288,7 +4324,7 @@ namespace HFM
                             receiveDataTemp = Components.Message.ReceiveMessage(commPort_Supervisory);//继续从串口读时间同步报文                                 
                             receiveBuffMessage = Tools.CopyTo(receiveBuffMessage, receiveDataTemp);
                             Thread.Sleep(10);
-                            File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
+                            //File.AppendAllText(appPath + "\\log\\msg.txt", "处理后信息：" + BitConverter.ToString(receiveBuffMessage) + "\r\n");
                         }                                        
                     }
                     isCommReportError = false;
@@ -4301,7 +4337,7 @@ namespace HFM
                 }                
                 Thread.Sleep(10);  
             }
-            *****************************************************************/            
+            ***************************************************************************/       
         }
 
         private void bkWorkerReportStatus_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -4421,6 +4457,10 @@ namespace HFM
             }
             else//是上报测试状态命令
             {
+                //if(isAudioContaminatedPlayed==false)
+                //{
+                //    return;
+                //}
                 //下发地址和当前设备地址不一致则返回
                 if (factoryParameter.DeviceAddress != message[0].ToString())
                 {
