@@ -47,7 +47,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabPresence = new System.Windows.Forms.TabControl();
             this.系统参数 = new System.Windows.Forms.TabPage();
+            this.BtnPreferenceNo = new System.Windows.Forms.Button();
+            this.BtnPreferenceOk = new System.Windows.Forms.Button();
             this.GrpPresence = new System.Windows.Forms.GroupBox();
+            this.ChkFriskerIndepedent = new System.Windows.Forms.CheckBox();
+            this.ChkFootInfrared = new System.Windows.Forms.CheckBox();
             this.ChkHand = new System.Windows.Forms.CheckBox();
             this.RdoDoubleHand = new System.Windows.Forms.RadioButton();
             this.RdoSingleHand = new System.Windows.Forms.RadioButton();
@@ -62,8 +66,6 @@
             this.LblInstrumentNum = new System.Windows.Forms.Label();
             this.TxtSmoothingFactor = new System.Windows.Forms.TextBox();
             this.LblSmoothingFactor = new System.Windows.Forms.Label();
-            this.BtnPreferenceNo = new System.Windows.Forms.Button();
-            this.BtnPreferenceOk = new System.Windows.Forms.Button();
             this.GrpPreferenceArea = new System.Windows.Forms.GroupBox();
             this.TxtRightFootProbeArea = new System.Windows.Forms.TextBox();
             this.TxtRightOutProbeArea = new System.Windows.Forms.TextBox();
@@ -216,6 +218,7 @@
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnPorSave = new System.Windows.Forms.Button();
             this.GrpInternet = new System.Windows.Forms.GroupBox();
+            this.BtnSetInter = new System.Windows.Forms.Button();
             this.TxtReportingTime = new System.Windows.Forms.TextBox();
             this.LabReportingTime = new System.Windows.Forms.Label();
             this.TxtDeviceAddress = new System.Windows.Forms.TextBox();
@@ -229,7 +232,6 @@
             this.TxtIPAddressOne = new System.Windows.Forms.TextBox();
             this.LblIPAddress = new System.Windows.Forms.Label();
             this.backgroundWorker_Preference = new System.ComponentModel.BackgroundWorker();
-            this.BtnSetInter = new System.Windows.Forms.Button();
             this.TabPresence.SuspendLayout();
             this.系统参数.SuspendLayout();
             this.GrpPresence.SuspendLayout();
@@ -269,18 +271,34 @@
             // 
             // 系统参数
             // 
-            this.系统参数.Controls.Add(this.GrpPresence);
-            this.系统参数.Controls.Add(this.GrpFacilityData);
             this.系统参数.Controls.Add(this.BtnPreferenceNo);
             this.系统参数.Controls.Add(this.BtnPreferenceOk);
+            this.系统参数.Controls.Add(this.GrpPresence);
+            this.系统参数.Controls.Add(this.GrpFacilityData);
             this.系统参数.Controls.Add(this.GrpPreferenceArea);
             this.系统参数.Controls.Add(this.GrpPreferenceData);
             resources.ApplyResources(this.系统参数, "系统参数");
             this.系统参数.Name = "系统参数";
             this.系统参数.UseVisualStyleBackColor = true;
             // 
+            // BtnPreferenceNo
+            // 
+            resources.ApplyResources(this.BtnPreferenceNo, "BtnPreferenceNo");
+            this.BtnPreferenceNo.Name = "BtnPreferenceNo";
+            this.BtnPreferenceNo.UseVisualStyleBackColor = true;
+            this.BtnPreferenceNo.Click += new System.EventHandler(this.BtnPreferenceNo_Click);
+            // 
+            // BtnPreferenceOk
+            // 
+            resources.ApplyResources(this.BtnPreferenceOk, "BtnPreferenceOk");
+            this.BtnPreferenceOk.Name = "BtnPreferenceOk";
+            this.BtnPreferenceOk.UseVisualStyleBackColor = true;
+            this.BtnPreferenceOk.Click += new System.EventHandler(this.BtnPreferenceOk_Click);
+            // 
             // GrpPresence
             // 
+            this.GrpPresence.Controls.Add(this.ChkFriskerIndepedent);
+            this.GrpPresence.Controls.Add(this.ChkFootInfrared);
             this.GrpPresence.Controls.Add(this.ChkHand);
             this.GrpPresence.Controls.Add(this.RdoDoubleHand);
             this.GrpPresence.Controls.Add(this.RdoSingleHand);
@@ -289,6 +307,18 @@
             resources.ApplyResources(this.GrpPresence, "GrpPresence");
             this.GrpPresence.Name = "GrpPresence";
             this.GrpPresence.TabStop = false;
+            // 
+            // ChkFriskerIndepedent
+            // 
+            resources.ApplyResources(this.ChkFriskerIndepedent, "ChkFriskerIndepedent");
+            this.ChkFriskerIndepedent.Name = "ChkFriskerIndepedent";
+            this.ChkFriskerIndepedent.UseVisualStyleBackColor = true;
+            // 
+            // ChkFootInfrared
+            // 
+            resources.ApplyResources(this.ChkFootInfrared, "ChkFootInfrared");
+            this.ChkFootInfrared.Name = "ChkFootInfrared";
+            this.ChkFootInfrared.UseVisualStyleBackColor = true;
             // 
             // ChkHand
             // 
@@ -388,20 +418,6 @@
             // 
             resources.ApplyResources(this.LblSmoothingFactor, "LblSmoothingFactor");
             this.LblSmoothingFactor.Name = "LblSmoothingFactor";
-            // 
-            // BtnPreferenceNo
-            // 
-            resources.ApplyResources(this.BtnPreferenceNo, "BtnPreferenceNo");
-            this.BtnPreferenceNo.Name = "BtnPreferenceNo";
-            this.BtnPreferenceNo.UseVisualStyleBackColor = true;
-            this.BtnPreferenceNo.Click += new System.EventHandler(this.BtnPreferenceNo_Click);
-            // 
-            // BtnPreferenceOk
-            // 
-            resources.ApplyResources(this.BtnPreferenceOk, "BtnPreferenceOk");
-            this.BtnPreferenceOk.Name = "BtnPreferenceOk";
-            this.BtnPreferenceOk.UseVisualStyleBackColor = true;
-            this.BtnPreferenceOk.Click += new System.EventHandler(this.BtnPreferenceOk_Click);
             // 
             // GrpPreferenceArea
             // 
@@ -1619,6 +1635,13 @@
             this.GrpInternet.Name = "GrpInternet";
             this.GrpInternet.TabStop = false;
             // 
+            // BtnSetInter
+            // 
+            resources.ApplyResources(this.BtnSetInter, "BtnSetInter");
+            this.BtnSetInter.Name = "BtnSetInter";
+            this.BtnSetInter.UseVisualStyleBackColor = true;
+            this.BtnSetInter.Click += new System.EventHandler(this.BtnSetInter_Click);
+            // 
             // TxtReportingTime
             // 
             resources.ApplyResources(this.TxtReportingTime, "TxtReportingTime");
@@ -1685,13 +1708,6 @@
             // 
             this.backgroundWorker_Preference.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_Preference_DoWork);
             this.backgroundWorker_Preference.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_Preference_ProgressChanged);
-            // 
-            // BtnSetInter
-            // 
-            resources.ApplyResources(this.BtnSetInter, "BtnSetInter");
-            this.BtnSetInter.Name = "BtnSetInter";
-            this.BtnSetInter.UseVisualStyleBackColor = true;
-            this.BtnSetInter.Click += new System.EventHandler(this.BtnSetInter_Click);
             // 
             // FrmPreference
             // 
@@ -1929,5 +1945,7 @@
         private System.Windows.Forms.TextBox TxtTimeOut;
         private System.Windows.Forms.Label LblTimeOut;
         private System.Windows.Forms.Button BtnSetInter;
+        private System.Windows.Forms.CheckBox ChkFriskerIndepedent;
+        private System.Windows.Forms.CheckBox ChkFootInfrared;
     }
 }

@@ -99,7 +99,7 @@ namespace HFM
                 {
                     _measurArray[0] = measureData.MeasureDate.ToString();
                     _measurArray[1] = measureData.MeasureStatus;
-                    _measurArray[2] = measureData.DetailedInfo;
+                    _measurArray[2] = measureData.DetailedInfo[measureData.IsEnglish?Language.English:Language.Chinese];
                     _measurArray[3] = measureData.IsReported == true ? "Reported" : "Not Reported";
                     _measurArray[4] = measureData.IsEnglish.ToString();
                     DgvMeasure.Rows.Add(_measurArray);
@@ -112,7 +112,7 @@ namespace HFM
                 {
                     _measurArray[0] = measureData.MeasureDate.ToString();
                     _measurArray[1] = measureData.MeasureStatus;
-                    _measurArray[2] = measureData.DetailedInfo;
+                    _measurArray[2] = measureData.DetailedInfo[measureData.IsEnglish?Language.English:Language.Chinese];
                     _measurArray[3] = measureData.IsReported == true ? "已上报" : "未上报";
                     _measurArray[4] = measureData.IsEnglish.ToString();
                     DgvMeasure.Rows.Add(_measurArray);

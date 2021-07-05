@@ -74,12 +74,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\LoadingCircle.cs">
+    <Compile Include="Components\Comm\MessageV2.cs" />
+    <Compile Include="Components\EnumStatus.cs" />
+    <Compile Include="Components\Interface\IStateFrisker.cs" />
+    <Compile Include="Components\StateMachine\Context.cs" />
+    <Compile Include="Components\Interface\IContext.cs" />
+    <Compile Include="Components\Interface\IState.cs" />
+    <Compile Include="Components\StateMachine\StateFriskerMeasuringShared.cs" />
+    <Compile Include="Components\StateMachine\StateReadyToRun.cs" />
+    <Compile Include="Components\Tools\LoadingCircle.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\MeasureIO.cs" />
-    <Compile Include="Components\Serializable.cs" />
-    <Compile Include="Components\SerializeHelper.cs" />
+    <Compile Include="Components\UI\FriskerEventArgs.cs" />
+    <Compile Include="Components\UI\MessageChinese.cs" />
+    <Compile Include="Components\UI\MessageEnglish.cs" />
+    <Compile Include="Components\UI\MessageShow.cs" />
+    <Compile Include="Components\StateParameter\SelfCheckArgs.cs" />
+    <Compile Include="Components\StateParameter\StateArgs.cs" />
+    <Compile Include="Components\UI\ObserverDictionary.cs" />
+    <Compile Include="Components\Comm\Serializable.cs" />
+    <Compile Include="Components\Tools\SerializeHelper.cs" />
+    <Compile Include="Components\StateMachine\State.cs" />
+    <Compile Include="Components\StateMachine\StateBackgroundMeasure.cs" />
+    <Compile Include="Components\StateMachine\StateFriskerMeasuringIndependent.cs" />
+    <Compile Include="Components\StateMachine\StateHandFootMeasuring.cs" />
+    <Compile Include="Components\StateMachine\StateReadyToMeasure.cs" />
+    <Compile Include="Components\StateMachine\StateResult.cs" />
+    <Compile Include="Components\StateMachine\StateSelfCheck.cs" />
+    <Compile Include="Components\UI\UIEventArgs.cs" />
     <Compile Include="FrmCalibration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,24 +114,24 @@
     <Compile Include="FrmClothes.Designer.cs">
       <DependentUpon>FrmClothes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Calibration.cs" />
-    <Compile Include="Components\Channel.cs" />
-    <Compile Include="Components\ChannelParameter.cs" />
-    <Compile Include="Components\CommPort.cs" />
-    <Compile Include="Components\DbHelperAccess.cs" />
-    <Compile Include="Components\DbHelperSQL.cs" />
-    <Compile Include="Components\EfficiencyParameter.cs" />
-    <Compile Include="Components\ErrorData.cs" />
-    <Compile Include="Components\FactoryParameter.cs" />
-    <Compile Include="Components\HexCon.cs" />
-    <Compile Include="Components\MeasureData.cs" />
-    <Compile Include="Components\Message.cs" />
-    <Compile Include="Components\Nuclide.cs" />
-    <Compile Include="Components\PlatForm.cs" />
-    <Compile Include="Components\ProbeParameter.cs" />
-    <Compile Include="Components\SystemParameter.cs" />
-    <Compile Include="Components\Tools.cs" />
-    <Compile Include="Components\User.cs" />
+    <Compile Include="Components\Model\Calibration.cs" />
+    <Compile Include="Components\Model\Channel.cs" />
+    <Compile Include="Components\Model\ChannelParameter.cs" />
+    <Compile Include="Components\Model\CommPort.cs" />
+    <Compile Include="Components\Tools\DbHelperAccess.cs" />
+    <Compile Include="Components\Tools\DbHelperSQL.cs" />
+    <Compile Include="Components\Model\EfficiencyParameter.cs" />
+    <Compile Include="Components\Model\ErrorData.cs" />
+    <Compile Include="Components\Model\FactoryParameter.cs" />
+    <Compile Include="Components\Tools\HexCon.cs" />
+    <Compile Include="Components\Model\MeasureData.cs" />
+    <Compile Include="Components\Comm\Message.cs" />
+    <Compile Include="Components\Model\Nuclide.cs" />
+    <Compile Include="Components\Model\PlatForm.cs" />
+    <Compile Include="Components\Model\ProbeParameter.cs" />
+    <Compile Include="Components\Model\SystemParameter.cs" />
+    <Compile Include="Components\Tools\Tools.cs" />
+    <Compile Include="Components\Model\User.cs" />
     <Compile Include="FrmEnterPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +264,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="bin\Debug\Audio\ReadMe（名称对应内容）.text" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -282,17 +305,22 @@
   <ItemGroup>
     <Content Include="app.ico" />
     <Content Include="Audio\Chinese_Background_measure.wav" />
+    <None Include="Audio\Chinese_Decontaminate_please_man.wav" />
     <Content Include="Audio\Chinese_frisker_In_place_measure_again.wav" />
     <Content Include="Audio\Chinese_HB_Measured_.wav" />
+    <None Include="Audio\Chinese_Left_Foot_Moved_Please_Measure_Again.wav" />
     <Content Include="Audio\Chinese_NoContamination_please_frisker.wav" />
     <Content Include="Audio\Chinese_NoContamination_please_leave.wav" />
     <Content Include="Audio\Chinese_One.wav" />
     <Content Include="Audio\Chinese_Please_Flip_Palm_for_Measuring.wav" />
+    <None Include="Audio\Chinese_Right_Foot_Moved_Please_Measure_Again.wav" />
     <Content Include="Audio\Chinese_Ten.wav" />
     <Content Include="Audio\Chinese_Two.wav" />
     <Content Include="Audio\dida3.wav" />
+    <None Include="Audio\English_Left_Foot_Moved_Please_Measure_Again.wav" />
     <Content Include="Audio\English_No Contamination_please_leave.wav" />
     <Content Include="Audio\English_NoContamination_please_frisker.wav" />
+    <None Include="Audio\English_Right_Foot_Moved_Please_Measure_Again.wav" />
     <Content Include="log\background.txt" />
     <Content Include="log\errorLog.txt" />
     <None Include="Audio\English_NoContamination_please_leave.wav" />

@@ -96,11 +96,11 @@
             // 
             // loadingCircle
             // 
-            resources.ApplyResources(this.loadingCircle, "loadingCircle");
             this.loadingCircle.Active = false;
             this.loadingCircle.BackColor = System.Drawing.Color.Transparent;
             this.loadingCircle.Color = System.Drawing.Color.Orange;
             this.loadingCircle.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircle, "loadingCircle");
             this.loadingCircle.Name = "loadingCircle";
             this.loadingCircle.NumberSpoke = 12;
             this.loadingCircle.OuterCircleRadius = 11;
@@ -140,12 +140,12 @@
         private System.Windows.Forms.Label LblTitle;
         private System.Windows.Forms.Label LblBKground_Clothes;
         private System.Windows.Forms.Label LblMeasure;
-        public System.Windows.Forms.TextBox TxtBackgroundValue;
-        public System.Windows.Forms.TextBox TxtMeasureValue;
         public Controls.LoadingCircle loadingCircle;
         public System.Windows.Forms.ProgressBar PrgClothAlarm_1;
         public System.Windows.Forms.ProgressBar PrgClothAlarm_2;
         private System.Windows.Forms.Label LblAlarm_1;
         private System.Windows.Forms.Label LblAlarm_2;
+        private System.Windows.Forms.TextBox TxtBackgroundValue;
+        private System.Windows.Forms.TextBox TxtMeasureValue;
     }
 }

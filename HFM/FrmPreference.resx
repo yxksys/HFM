@@ -117,11 +117,141 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BtnPreferenceNo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15pt, style=Bold</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BtnPreferenceNo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BtnPreferenceNo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>628, 267</value>
+  </data>
+  <data name="BtnPreferenceNo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="BtnPreferenceNo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 50</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BtnPreferenceNo.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="BtnPreferenceNo.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="&gt;&gt;BtnPreferenceNo.Name" xml:space="preserve">
+    <value>BtnPreferenceNo</value>
+  </data>
+  <data name="&gt;&gt;BtnPreferenceNo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnPreferenceNo.Parent" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="&gt;&gt;BtnPreferenceNo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BtnPreferenceOk.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 15pt, style=Bold</value>
+  </data>
+  <data name="BtnPreferenceOk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>518, 267</value>
+  </data>
+  <data name="BtnPreferenceOk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="BtnPreferenceOk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 50</value>
+  </data>
+  <data name="BtnPreferenceOk.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="BtnPreferenceOk.Text" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="&gt;&gt;BtnPreferenceOk.Name" xml:space="preserve">
+    <value>BtnPreferenceOk</value>
+  </data>
+  <data name="&gt;&gt;BtnPreferenceOk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnPreferenceOk.Parent" xml:space="preserve">
+    <value>系统参数</value>
+  </data>
+  <data name="&gt;&gt;BtnPreferenceOk.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ChkFriskerIndepedent.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ChkFriskerIndepedent.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 11pt</value>
+  </data>
+  <data name="ChkFriskerIndepedent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ChkFriskerIndepedent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>596, 38</value>
+  </data>
+  <data name="ChkFriskerIndepedent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 24</value>
+  </data>
+  <data name="ChkFriskerIndepedent.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="ChkFriskerIndepedent.Text" xml:space="preserve">
+    <value>独立衣物探头</value>
+  </data>
+  <data name="&gt;&gt;ChkFriskerIndepedent.Name" xml:space="preserve">
+    <value>ChkFriskerIndepedent</value>
+  </data>
+  <data name="&gt;&gt;ChkFriskerIndepedent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ChkFriskerIndepedent.Parent" xml:space="preserve">
+    <value>GrpPresence</value>
+  </data>
+  <data name="&gt;&gt;ChkFriskerIndepedent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ChkFootInfrared.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ChkFootInfrared.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 11pt</value>
+  </data>
+  <data name="ChkFootInfrared.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ChkFootInfrared.Location" type="System.Drawing.Point, System.Drawing">
+    <value>495, 38</value>
+  </data>
+  <data name="ChkFootInfrared.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 24</value>
+  </data>
+  <data name="ChkFootInfrared.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ChkFootInfrared.Text" xml:space="preserve">
+    <value>脚部红外</value>
+  </data>
+  <data name="&gt;&gt;ChkFootInfrared.Name" xml:space="preserve">
+    <value>ChkFootInfrared</value>
+  </data>
+  <data name="&gt;&gt;ChkFootInfrared.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ChkFootInfrared.Parent" xml:space="preserve">
+    <value>GrpPresence</value>
+  </data>
+  <data name="&gt;&gt;ChkFootInfrared.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="ChkHand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ChkHand.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 11pt</value>
   </data>
@@ -147,7 +277,7 @@
     <value>GrpPresence</value>
   </data>
   <data name="&gt;&gt;ChkHand.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="RdoDoubleHand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -156,7 +286,7 @@
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="RdoDoubleHand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>221, 38</value>
+    <value>193, 38</value>
   </data>
   <data name="RdoDoubleHand.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 24</value>
@@ -177,7 +307,7 @@
     <value>GrpPresence</value>
   </data>
   <data name="&gt;&gt;RdoDoubleHand.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="RdoSingleHand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -186,7 +316,7 @@
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="RdoSingleHand.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 38</value>
+    <value>93, 38</value>
   </data>
   <data name="RdoSingleHand.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 24</value>
@@ -207,7 +337,7 @@
     <value>GrpPresence</value>
   </data>
   <data name="&gt;&gt;RdoSingleHand.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="ChkClothes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -216,7 +346,7 @@
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="ChkClothes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>420, 39</value>
+    <value>394, 39</value>
   </data>
   <data name="ChkClothes.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 24</value>
@@ -237,7 +367,7 @@
     <value>GrpPresence</value>
   </data>
   <data name="&gt;&gt;ChkClothes.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="ChkFoot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -246,16 +376,16 @@
     <value>微软雅黑, 11pt</value>
   </data>
   <data name="ChkFoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 39</value>
+    <value>293, 39</value>
   </data>
   <data name="ChkFoot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 24</value>
+    <value>88, 24</value>
   </data>
   <data name="ChkFoot.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="ChkFoot.Text" xml:space="preserve">
-    <value>脚部</value>
+    <value>启用脚部</value>
   </data>
   <data name="&gt;&gt;ChkFoot.Name" xml:space="preserve">
     <value>ChkFoot</value>
@@ -267,7 +397,7 @@
     <value>GrpPresence</value>
   </data>
   <data name="&gt;&gt;ChkFoot.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="GrpPresence.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 20pt, style=Bold</value>
@@ -276,7 +406,7 @@
     <value>11, 305</value>
   </data>
   <data name="GrpPresence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 71</value>
+    <value>713, 71</value>
   </data>
   <data name="GrpPresence.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -294,7 +424,7 @@
     <value>系统参数</value>
   </data>
   <data name="&gt;&gt;GrpPresence.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="CmbSoftName.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 12pt</value>
@@ -341,7 +471,6 @@
   <data name="CmbUnclideType.Location" type="System.Drawing.Point, System.Drawing">
     <value>652, 40</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="CmbUnclideType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -580,69 +709,6 @@
     <value>系统参数</value>
   </data>
   <data name="&gt;&gt;GrpFacilityData.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="BtnPreferenceNo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 15pt, style=Bold</value>
-  </data>
-  <data name="BtnPreferenceNo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="BtnPreferenceNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>632, 326</value>
-  </data>
-  <data name="BtnPreferenceNo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="BtnPreferenceNo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 50</value>
-  </data>
-  <data name="BtnPreferenceNo.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="BtnPreferenceNo.Text" xml:space="preserve">
-    <value>取消</value>
-  </data>
-  <data name="&gt;&gt;BtnPreferenceNo.Name" xml:space="preserve">
-    <value>BtnPreferenceNo</value>
-  </data>
-  <data name="&gt;&gt;BtnPreferenceNo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnPreferenceNo.Parent" xml:space="preserve">
-    <value>系统参数</value>
-  </data>
-  <data name="&gt;&gt;BtnPreferenceNo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="BtnPreferenceOk.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 15pt, style=Bold</value>
-  </data>
-  <data name="BtnPreferenceOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>532, 326</value>
-  </data>
-  <data name="BtnPreferenceOk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="BtnPreferenceOk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 50</value>
-  </data>
-  <data name="BtnPreferenceOk.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="BtnPreferenceOk.Text" xml:space="preserve">
-    <value>确认</value>
-  </data>
-  <data name="&gt;&gt;BtnPreferenceOk.Name" xml:space="preserve">
-    <value>BtnPreferenceOk</value>
-  </data>
-  <data name="&gt;&gt;BtnPreferenceOk.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnPreferenceOk.Parent" xml:space="preserve">
-    <value>系统参数</value>
-  </data>
-  <data name="&gt;&gt;BtnPreferenceOk.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="TxtRightFootProbeArea.Font" type="System.Drawing.Font, System.Drawing">
@@ -1099,7 +1165,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="GrpPreferenceArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 285</value>
+    <value>361, 248</value>
   </data>
   <data name="GrpPreferenceArea.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

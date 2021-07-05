@@ -328,7 +328,24 @@ namespace HFM
             {
                 ChkClothes.Checked = false;
             }
-
+            //判断是否是独立脚步红外
+            if (factoryParameter.IsFootInfrared==true)
+            {
+                ChkFootInfrared.Checked = true;
+            }
+            else
+            {
+                ChkFootInfrared.Checked = false;
+            }
+            //判断是否是共享衣物探头
+            if (factoryParameter.IsFriskerIndependent==true)
+            {
+                ChkFriskerIndepedent.Checked = true;
+            }
+            else
+            {
+                ChkFriskerIndepedent.Checked = false;
+            }
             #endregion
 
         }
@@ -544,7 +561,23 @@ namespace HFM
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得C参数
             probeParameters = probeParameter.GetParameter("c");
-
+            //衣物共享启动后配置界面内容不可用
+            if (factoryParameter.IsFriskerIndependent==false)
+            {
+                //TabPresence.Enabled = false;
+                GrpClothesData.Enabled = false;
+                GrpClothesNuclideChoose.Enabled = false;
+                BtnClothesOk.Enabled = false;
+                BtnClothesNo.Enabled = false;
+            }
+            else
+            {
+                GrpClothesData.Enabled = true;
+                GrpClothesNuclideChoose.Enabled = true;
+                BtnClothesOk.Enabled = true;
+                BtnClothesNo.Enabled = true;
+            }
+            
             #region 核素选择
 
             string nowNuclideName = nuclide.GetClothesNuclideUser();//获得当前衣物核素名称
@@ -1226,7 +1259,51 @@ namespace HFM
             }
 
             #endregion
+
+            #region 脚步独立红外
+            //脚步红外选项选中时为true,否false
+            if (ChkFootInfrared.Checked)
+            {
+                factoryParameterBtn.IsFootInfrared = true;
+            }
+            else
+            {
+                factoryParameterBtn.IsFootInfrared = false;
+            }
+            #endregion
+
+            #region 衣物探头数据共享
             
+            //获取所有核素参数
+            IList<EfficiencyParameter> efpFriskerindependent = new EfficiencyParameter().GetParameter();
+            if (ChkFriskerIndepedent.Checked==false)
+            {
+                
+                //数据库衣物独立
+                factoryParameterBtn.IsFriskerIndependent = false;
+                //读取第3通道的核素和效率
+                var efp3 = from ef in efpFriskerindependent
+                          where ef.Channel.ChannelID == 3
+                          select ef;
+                //读取第7通道的核素和效率
+                var efp7 = from ef in efpFriskerindependent
+                           where ef.Channel.ChannelID == 7 && ef.NuclideType != "C"
+                           select ef;
+                
+                foreach (var item in efp7)
+                {
+                    //设置衣物共享数据从3到7
+                    item.Efficiency = efp3.First(x => x.NuclideName == item.NuclideName && x.NuclideType == item.NuclideType).Efficiency;
+                    efficiencyParameter.SetParameter(item);
+                }
+            }
+            else
+            {
+                //数据库衣物共享不启用
+                factoryParameterBtn.IsFriskerIndependent = true;
+                
+            }
+            #endregion
             #endregion
 
             #region 存储数据库
