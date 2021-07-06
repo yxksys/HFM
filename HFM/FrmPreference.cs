@@ -53,6 +53,10 @@ namespace HFM
         /// </summary>
         private CommPort _commPort = null;
         /// <summary>
+        /// 和管理机通信端口
+        /// </summary>
+        private CommPort _commPort_Supervisory = null;//和管理机通信端口
+        /// <summary>
         /// 系统数据库中读取是否开启英文
         /// </summary>
         private bool _isEnglish = (new HFM.Components.SystemParameter().GetParameter().IsEnglish);
@@ -86,10 +90,11 @@ namespace HFM
         {
             InitializeComponent();
         }
-        public FrmPreference(CommPort commPort)
+        public FrmPreference(CommPort commPort, CommPort commPort_Supervisory)
         {
             this._commPort = commPort;
             InitializeComponent();
+            this._commPort_Supervisory = commPort_Supervisory;
         }
         #endregion
 
@@ -200,7 +205,8 @@ namespace HFM
             TxtMeasuringTime.Text = system.MeasuringTime.ToString();
             CmbMeasurementUnit.Text = system.MeasurementUnit.ToString();
             TxtAlarmTime.Text = system.AlarmTime.ToString();
-            TxtBKGUpdate.Text = system.BkgUpdate.ToString();            
+            TxtBKGUpdate.Text = system.BkgUpdate.ToString();
+            TxtTimeOut.Text = system.TimeOut.ToString();
             #endregion
 
             #region 工厂参数
@@ -322,7 +328,24 @@ namespace HFM
             {
                 ChkClothes.Checked = false;
             }
-
+            //判断是否是独立脚步红外
+            if (factoryParameter.IsFootInfrared==true)
+            {
+                ChkFootInfrared.Checked = true;
+            }
+            else
+            {
+                ChkFootInfrared.Checked = false;
+            }
+            //判断是否是共享衣物探头
+            if (factoryParameter.IsFriskerIndependent==true)
+            {
+                ChkFriskerIndepedent.Checked = true;
+            }
+            else
+            {
+                ChkFriskerIndepedent.Checked = false;
+            }
             #endregion
 
         }
@@ -538,7 +561,23 @@ namespace HFM
         {
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得C参数
             probeParameters = probeParameter.GetParameter("c");
-
+            //衣物共享启动后配置界面内容不可用
+            if (factoryParameter.IsFriskerIndependent==false)
+            {
+                //TabPresence.Enabled = false;
+                GrpClothesData.Enabled = false;
+                GrpClothesNuclideChoose.Enabled = false;
+                BtnClothesOk.Enabled = false;
+                BtnClothesNo.Enabled = false;
+            }
+            else
+            {
+                GrpClothesData.Enabled = true;
+                GrpClothesNuclideChoose.Enabled = true;
+                BtnClothesOk.Enabled = true;
+                BtnClothesNo.Enabled = true;
+            }
+            
             #region 核素选择
 
             string nowNuclideName = nuclide.GetClothesNuclideUser();//获得当前衣物核素名称
@@ -905,7 +944,6 @@ namespace HFM
                 }
             }
         }
-
         /// <summary>
         /// 异步线程读取串口数据后的ReportProgress事件响应
         /// </summary>
@@ -963,13 +1001,13 @@ namespace HFM
             //接收报文无误，进行报文解析，并将解析后的道盒数据存储到channelParameters中 
             try
             {
-                 IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
+                IList<ChannelParameter> _channelParameters = new List<ChannelParameter>();
                 if (receiveBufferMessage[0] == Convert.ToByte('P'))
                 {
                     DgvMainPreferenceSet.Rows.Clear();
                     //解析报文
                     _channelParameters = HFM.Components.Message.ExplainMessage<ChannelParameter>(receiveBufferMessage);
-                    if (_channelParameters.Count==8)
+                    if (_channelParameters.Count == 8)
                     {
                         _channelParameters.RemoveAt(7);
                     }
@@ -977,7 +1015,7 @@ namespace HFM
                     {
                         //单探测器启用则手背不显示
                         //通道不启用则不显示
-                        if ((factoryParameter.IsDoubleProbe==false && (itemParameter.Channel.ChannelID==2|| itemParameter.Channel.ChannelID == 4))||itemParameter.Channel.IsEnabled==false)
+                        if ((factoryParameter.IsDoubleProbe == false && (itemParameter.Channel.ChannelID == 2 || itemParameter.Channel.ChannelID == 4)) || itemParameter.Channel.IsEnabled == false)
                         {
                             continue;
                         }
@@ -1004,35 +1042,36 @@ namespace HFM
                 throw;
             }
         }
+
         /// <summary>
         /// 开启串口封装的方法
         /// </summary>
         //private void OpenPort()
         //{
-            //从配置文件获得当前串口配置
-            //if (_commPort.Opened)
-            //{
-            //    _commPort.Close();
-            //}
-            //_commPort.GetCommPortSet("commportSet");
-            ////打开串口
-            //try
-            //{
-            //    _commPort.Open();
-            //    if (_commPort.Opened)
-            //    {
-            //        Tools.FormBottomPortStatus = true;
-            //    }
-            //    else
-            //    {
-            //        Tools.FormBottomPortStatus = false;
-            //    }
-            //}
-            //catch
-            //{
-            //    _tools.PrompMessage(1);
+        //从配置文件获得当前串口配置
+        //if (_commPort.Opened)
+        //{
+        //    _commPort.Close();
+        //}
+        //_commPort.GetCommPortSet("commportSet");
+        ////打开串口
+        //try
+        //{
+        //    _commPort.Open();
+        //    if (_commPort.Opened)
+        //    {
+        //        Tools.FormBottomPortStatus = true;
+        //    }
+        //    else
+        //    {
+        //        Tools.FormBottomPortStatus = false;
+        //    }
+        //}
+        //catch
+        //{
+        //    _tools.PrompMessage(1);
 
-            //}
+        //}
         //}
 
         #endregion
@@ -1067,6 +1106,7 @@ namespace HFM
                 system.MeasurementUnit = CmbMeasurementUnit.Text;
                 system.AlarmTime = int.Parse(TxtAlarmTime.Text);
                 system.BkgUpdate = int.Parse(TxtBKGUpdate.Text);
+                system.TimeOut = int.Parse(TxtTimeOut.Text);
             }
             catch (Exception)
             {
@@ -1081,17 +1121,22 @@ namespace HFM
             }
             if (system.SmoothingTime<10 )
             {
-                MessageBox.Show(@"平滑时间必须大于 10s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show(@"本底时间必须大于 10s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
-            if (system.MeasuringTime<4)
+            if (system.MeasuringTime<5)
             {
-                MessageBox.Show(@"测量时间必须大于 3s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show(@"测量时间必须大于 5s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
             if (system.AlarmTime<2)
             {
                 MessageBox.Show(@"报警时间必须大于 1s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                return;
+            }
+            if (system.TimeOut < 20)
+            {
+                MessageBox.Show(@"检测时间超时必须大于 20s ！", @"提示", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 return;
             }
             #endregion
@@ -1214,7 +1259,51 @@ namespace HFM
             }
 
             #endregion
+
+            #region 脚步独立红外
+            //脚步红外选项选中时为true,否false
+            if (ChkFootInfrared.Checked)
+            {
+                factoryParameterBtn.IsFootInfrared = true;
+            }
+            else
+            {
+                factoryParameterBtn.IsFootInfrared = false;
+            }
+            #endregion
+
+            #region 衣物探头数据共享
             
+            //获取所有核素参数
+            IList<EfficiencyParameter> efpFriskerindependent = new EfficiencyParameter().GetParameter();
+            if (ChkFriskerIndepedent.Checked==false)
+            {
+                
+                //数据库衣物独立
+                factoryParameterBtn.IsFriskerIndependent = false;
+                //读取第3通道的核素和效率
+                var efp3 = from ef in efpFriskerindependent
+                          where ef.Channel.ChannelID == 3
+                          select ef;
+                //读取第7通道的核素和效率
+                var efp7 = from ef in efpFriskerindependent
+                           where ef.Channel.ChannelID == 7 && ef.NuclideType != "C"
+                           select ef;
+                
+                foreach (var item in efp7)
+                {
+                    //设置衣物共享数据从3到7
+                    item.Efficiency = efp3.First(x => x.NuclideName == item.NuclideName && x.NuclideType == item.NuclideType).Efficiency;
+                    efficiencyParameter.SetParameter(item);
+                }
+            }
+            else
+            {
+                //数据库衣物共享不启用
+                factoryParameterBtn.IsFriskerIndependent = true;
+                
+            }
+            #endregion
             #endregion
 
             #region 存储数据库
@@ -2264,16 +2353,33 @@ namespace HFM
             ConfigurationManager.RefreshSection("appSettings");
             //读取当前串口配置
             this._commPort.GetCommPortSet("commportSet");
-
+            //_commPort.GetCommPortSet("commportSetOfReport");
             string strSetCom = "";//数据采集端口
             string strSetReCom = "数据上报端口未启用";//数据上报端口设置
+
             if (CmbIsEnabled.Text == "是")
-            {
+            {                
+                ConfigurationManager.RefreshSection("appSettings");
                 //读取当前上报端口配置
-                _commPort.GetCommPortSet("commportSetOfReport");
-                strSetReCom = "数据上报端口设置已配置";
+                _commPort_Supervisory.GetCommPortSet("commportSetOfReport");
+                
+                if (this._commPort_Supervisory.Opened)
+                {
+                    this._commPort_Supervisory.Close();
+                }
+                try
+                {
+                    this._commPort_Supervisory.Open();
+                    strSetReCom = "数据上报端口设置已配置";
+                }
+                catch (global::System.Exception ex)
+                {
+                    //strSetCom = "数据采集端口设置错误，请重新进行设置";
+                    MessageBox.Show("端口设置错误，请重新进行设置;");
+                    return;
+                }
             }
-            
+
             if (this._commPort.Opened)
             {
                 this._commPort.Close();
@@ -2283,7 +2389,7 @@ namespace HFM
                 this._commPort.Open();
                 strSetCom = "数据采集端口设置已连接;  ";
             }
-            catch
+            catch (global::System.Exception ex)
             {
                 //strSetCom = "数据采集端口设置错误，请重新进行设置";
                 MessageBox.Show("端口设置错误，请重新进行设置;");
@@ -2334,28 +2440,7 @@ namespace HFM
             //        return;
             //    }
             //}
-            try
-            {
-                //网络保存
-                FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
-                                                                                             //IP地址
-                factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
-                                                + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
-                //设备地址
-                factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
-                //通信端口
-                factoryParameterBtn.PortNumber = TxtPortNumber.Text;
-                //是否自动连接
-                factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
-                //上报时间间隔
-                factoryParameterBtn.ReportingTime = TxtReportingTime.Text;
-                factoryParameterBtn.SetParameter(factoryParameterBtn);
-            }
-            catch (Exception)
-            {
-                _tools.PrompMessage(16);
-                return;
-            }
+            
             
             if (_isEnglish)
             {
@@ -2372,25 +2457,26 @@ namespace HFM
             else
             {
                 MessageBox.Show(strSetCom+strSetReCom, "提醒", MessageBoxButtons.OK);
+                
                 //{
-                    //_commPort.Close();
-                    //if (backgroundWorker_Preference.IsBusy == true)
-                    //{
-                    //    backgroundWorker_Preference.CancelAsync();                        
-                    //    Thread.Sleep(100);
-                    //}
-                    //backgroundWorker_Preference.Dispose();
-                    //Thread.Sleep(100);
-                    //Application.Restart();
-                    //Process[] proc=Process.GetProcessesByName("HFM");
-                    //Process procNew = new Process();
-                    //procNew.StartInfo.FileName = Application.ExecutablePath;
-                    //procNew.Start();
-                    //foreach(Process p in proc)
-                    //{
-                    //    p.Kill();
-                    //}
-                    //Application.Restart();
+                //_commPort.Close();
+                //if (backgroundWorker_Preference.IsBusy == true)
+                //{
+                //    backgroundWorker_Preference.CancelAsync();                        
+                //    Thread.Sleep(100);
+                //}
+                //backgroundWorker_Preference.Dispose();
+                //Thread.Sleep(100);
+                //Application.Restart();
+                //Process[] proc=Process.GetProcessesByName("HFM");
+                //Process procNew = new Process();
+                //procNew.StartInfo.FileName = Application.ExecutablePath;
+                //procNew.Start();
+                //foreach(Process p in proc)
+                //{
+                //    p.Kill();
+                //}
+                //Application.Restart();
                 //}
             }
 
@@ -2430,6 +2516,47 @@ namespace HFM
 
         #endregion
 
+        #region 网络配置
+        /// <summary>
+        /// 网络保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSetInter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //网络保存
+                FactoryParameter factoryParameterBtn = new FactoryParameter().GetParameter();//获得仪器设备信息参数
+                                                                                             //IP地址
+                factoryParameterBtn.IpAddress = TxtIPAddressOne.Text + '.' + TxtIPAddressTwo.Text + '.'
+                                                + TxtIPAddressThree.Text + '.' + TxtIPAddressFour.Text;
+                //设备地址
+                factoryParameterBtn.DeviceAddress = TxtDeviceAddress.Text;
+                //通信端口
+                factoryParameterBtn.PortNumber = TxtPortNumber.Text;
+                //是否自动连接
+                factoryParameterBtn.IsConnectedAuto = ChkIsConnectedAuto.Checked;
+                //上报时间间隔
+                factoryParameterBtn.ReportingTime = TxtReportingTime.Text;
+                if (factoryParameterBtn.SetParameter(factoryParameterBtn) == true)
+                {
+                    MessageBox.Show("网络配置信息完成！", "提醒", MessageBoxButtons.OK);
+                    //strSetInter = "网络配置信息完成！";
+                }
+                else
+                {
+                    MessageBox.Show("网络配置信息没有成功！请重新尝试！", "提醒", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                _tools.PrompMessage(16);
+                return;
+            }
+        }
+        #endregion
         #endregion
 
         #region 数字键盘
@@ -2580,6 +2707,24 @@ namespace HFM
         private void TxtSmoothingFactor_Enter(object sender, EventArgs e)
         {
             FrmKeyIn.DelegatesKeyInTextBox(TxtSmoothingFactor);
+        }
+        /// <summary>
+        /// 超时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtTimeOut_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtTimeOut);
+        }
+        /// <summary>
+        /// 设备地址文本框小键盘
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtDeviceAddress_Enter(object sender, EventArgs e)
+        {
+            FrmKeyIn.DelegatesKeyInTextBox(TxtDeviceAddress);
         }
         #endregion
 
@@ -2913,5 +3058,8 @@ namespace HFM
                 this.Close();
             }
         }
+
+
+       
     }
 }

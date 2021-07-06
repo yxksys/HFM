@@ -120,6 +120,15 @@ namespace HFM.Properties {
         /// <summary>
         ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Decontaminate_please_man {
+            get {
+                return ResourceManager.GetStream("Chinese_Decontaminate_please_man", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Chinese_frisker_In_place {
             get {
                 return ResourceManager.GetStream("Chinese_frisker_In_place", resourceCulture);
@@ -132,6 +141,15 @@ namespace HFM.Properties {
         internal static System.IO.UnmanagedMemoryStream Chinese_frisker_In_place_measure_again {
             get {
                 return ResourceManager.GetStream("Chinese_frisker_In_place_measure_again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Left_Foot_Moved_Please_Measure_Again {
+            get {
+                return ResourceManager.GetStream("Chinese_Left_Foot_Moved_Please_Measure_Again", resourceCulture);
             }
         }
         
@@ -186,6 +204,15 @@ namespace HFM.Properties {
         internal static System.IO.UnmanagedMemoryStream Chinese_Ready {
             get {
                 return ResourceManager.GetStream("Chinese_Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Chinese_Right_Foot_Moved_Please_Measure_Again {
+            get {
+                return ResourceManager.GetStream("Chinese_Right_Foot_Moved_Please_Measure_Again", resourceCulture);
             }
         }
         
@@ -304,6 +331,15 @@ namespace HFM.Properties {
         /// <summary>
         ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream dida3 {
+            get {
+                return ResourceManager.GetStream("dida3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream English_Background_abnomal {
             get {
                 return ResourceManager.GetStream("English_Background_abnomal", resourceCulture);
@@ -325,6 +361,15 @@ namespace HFM.Properties {
         internal static System.IO.UnmanagedMemoryStream English_frisker_In_place {
             get {
                 return ResourceManager.GetStream("English_frisker_In_place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Left_Foot_Moved_Please_Measure_Again {
+            get {
+                return ResourceManager.GetStream("English_Left_Foot_Moved_Please_Measure_Again", resourceCulture);
             }
         }
         
@@ -379,6 +424,15 @@ namespace HFM.Properties {
         internal static System.IO.UnmanagedMemoryStream English_Ready {
             get {
                 return ResourceManager.GetStream("English_Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream English_Right_Foot_Moved_Please_Measure_Again {
+            get {
+                return ResourceManager.GetStream("English_Right_Foot_Moved_Please_Measure_Again", resourceCulture);
             }
         }
         

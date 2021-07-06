@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace HFM.Components
 {
@@ -212,22 +214,11 @@ namespace HFM.Components
         /// <param name="submitTime">上报时间</param>
         /// <param name="deviceStatus">设备状态</param>
         /// <returns></returns>
-        public static byte[] BuildMessage(int deviceAddress,DateTime submitTime,int deviceStatus)
+        public static byte[] BuildMessage(int deviceAddress,DateTime submitTime,int deviceStatus,int startAddressOfReg,int regNumber)
         {
-            byte[] messageData = new byte[16];
-            messageData[0] = Convert.ToByte(deviceAddress);
-            messageData[1] = 0x03;
-            messageData[2] = 0x0A;
-            messageData[3] = Convert.ToByte(((submitTime.Year / 1000)<<4)+ (submitTime.Year%1000/100));
-            messageData[4] = Convert.ToByte(((submitTime.Year % 100/10)<<4)+ (submitTime.Year % 10));
-            messageData[5] = Convert.ToByte(((submitTime.Month/10)<<4)+ (submitTime.Month%10));
-            messageData[6] = Convert.ToByte(((submitTime.Day/10)<<4)+(submitTime.Day%10));
-            messageData[7] = Convert.ToByte(((submitTime.Hour/10)<<4)+(submitTime.Hour%10));
-            messageData[8] = Convert.ToByte(((submitTime.Minute/10)<<4)+(submitTime.Minute%10));
-            messageData[9] = Convert.ToByte(((submitTime.Second/10)<<4)+(submitTime.Second%10));
-            messageData[10] = 0;//时间精确到秒即可// Convert.ToByte(((submitTime.Millisecond/10)<<4)+(submitTime.Millisecond%10));
-            //监测状态，2字节
-            messageData[11] = 0x00;
+            byte[] messageData;
+            byte[] crc16;
+            //监测状态，2字节            
             switch (deviceStatus)//控制板中16、32、64分别表示正常、故障、污染。上报管理机时1、2、4分别表示正常、故障、污染
             {
                 case 16:
@@ -240,12 +231,42 @@ namespace HFM.Components
                     deviceStatus = 0x04;
                     break;
             }
-            messageData[12] = Convert.ToByte(deviceStatus);
-            //求CRC校验值
-            byte[] crc16 = new byte[2];
-            crc16=Tools.CRC16(messageData, messageData.Length - 3);
-            messageData[14] = crc16[0];
-            messageData[13] = crc16[1];
+            if (startAddressOfReg == 4 && regNumber == 1)
+            {
+                messageData = new byte[7];
+                messageData[0] = Convert.ToByte(deviceAddress);
+                messageData[1] = 0x03;
+                messageData[2] = 0x02;//一个寄存器数据长度是2字节
+                messageData[3] = 0x00;
+                messageData[4] = Convert.ToByte(deviceStatus);
+                //求CRC校验值
+                crc16 = new byte[2];
+                crc16 = Tools.CRC16(messageData, messageData.Length - 2);
+                messageData[6] = crc16[0];
+                messageData[5] = crc16[1];
+            }
+            else
+            {
+                messageData = new byte[15];
+                messageData[0] = Convert.ToByte(deviceAddress);
+                messageData[1] = 0x03;
+                messageData[2] = 0x0A;
+                messageData[3] = Convert.ToByte(((submitTime.Year / 1000) << 4) + (submitTime.Year % 1000 / 100));
+                messageData[4] = Convert.ToByte(((submitTime.Year % 100 / 10) << 4) + (submitTime.Year % 10));
+                messageData[5] = Convert.ToByte(((submitTime.Month / 10) << 4) + (submitTime.Month % 10));
+                messageData[6] = Convert.ToByte(((submitTime.Day / 10) << 4) + (submitTime.Day % 10));
+                messageData[7] = Convert.ToByte(((submitTime.Hour / 10) << 4) + (submitTime.Hour % 10));
+                messageData[8] = Convert.ToByte(((submitTime.Minute / 10) << 4) + (submitTime.Minute % 10));
+                messageData[9] = Convert.ToByte(((submitTime.Second / 10) << 4) + (submitTime.Second % 10));
+                messageData[10] = 0;//时间精确到秒即可// Convert.ToByte(((submitTime.Millisecond/10)<<4)+(submitTime.Millisecond%10)); 
+                messageData[11] = 0x00;
+                messageData[12] = Convert.ToByte(deviceStatus);
+                //求CRC校验值
+                crc16 = new byte[2];
+                crc16 = Tools.CRC16(messageData, messageData.Length - 2);
+                messageData[14] = crc16[0];
+                messageData[13] = crc16[1];
+            }
             return messageData;
         }
         #endregion
@@ -373,40 +394,45 @@ namespace HFM.Components
                         }
                         //报文最后一个字节为红外状态                       
                         int infraredStatus = Convert.ToInt32(message[channelHeadIndex]);
-                        //infraredStatus报文格式：衣物探头状态数据位（1bit）、右手状态数据位（1bit）、左手状态数据位（1bit）
+                        //infraredStatus报文格式：Bit7:保留-Bit6:躯干状态数据-Bit5:右脚状态-Bit4:左脚状态-Bit3:保留-Bit2:衣物探头状态-Bit1:右手状态-Bit0:左手状态
                         //数据的值 0：手部到位/衣物探头未拿起 1：手部不到位/衣物探头拿起
                         if (packageIndex == 0) //第一个数据包1-4通道为手部探头
                         {
                             //左手到位
                             if ((infraredStatus & 1)==0)
                             {
-                                measureDataS[0].InfraredStatus = 1;
-                                measureDataS[1].InfraredStatus = 1;
-                               
+                                measureDataS[0].InfraredStatus = 1; //左手心                               
+                                measureDataS[1].InfraredStatus = 1; //左手背                               
                             }
                             ////右手到位
                             if ((infraredStatus & 2)==0)
                             {
-                                measureDataS[2].InfraredStatus = 1;
-                                measureDataS[3].InfraredStatus = 1;
+                                measureDataS[2].InfraredStatus = 1;//右手心
+                                measureDataS[3].InfraredStatus = 1;//右手背
                                 
                             }
                         }
                         else//第二个数据包为5-7为脚步探头和衣物探头
                         {
-                            //脚步红外状态和手部保持一致 
-                            if ((infraredStatus & 1) == 0)
+                            //左脚红外状态 
+                            if ((infraredStatus & 16) == 0)
                             {
-                                measureDataS[4].InfraredStatus = 1;
+                                measureDataS[4].InfraredStatus = 1;//左脚
                             }
-                            if ((infraredStatus & 2) == 0)
+                            //右脚红外状态
+                            if ((infraredStatus & 32) == 0)
                             {
-                                measureDataS[5].InfraredStatus = 1;
+                                measureDataS[5].InfraredStatus = 1;//右脚
                             }
                             //衣物探头拿起
                             if ((infraredStatus & 4)==4)
                             {
-                                measureDataS[6].InfraredStatus = 1;
+                                measureDataS[6].InfraredStatus = 1;//衣物
+                            }
+                            //躯干红外状态
+                            if ((infraredStatus & 64) == 0)
+                            {
+                                measureDataS[7].InfraredStatus = 1;//躯干
                             }
                         }
                         break;
@@ -429,39 +455,96 @@ namespace HFM.Components
         /// 解析从管理机下发的报文（上报监测状态/时间同步）
         /// </summary>
         /// <param name="message">管理机下发的报文信息</param>
-        /// <returns>解析后的报文数据：上报监测状态返回监测仪地址数组（长度为1），时间同步返回标准时间数组（长度为7：年月日时分秒毫秒）</returns>
+        /// <returns>解析后的报文数据：上报监测状态返回（长度为3）：监测仪地址数组-寄存器起始地址-操作寄存器数量，时间同步返回标准时间数组（长度为7：年月日时分秒毫秒）</returns>
         public static int[] ExplainMessage(byte[] message)
         {
-            int[] messageData=null;            
+            int[] messageData=null;
+            byte[] effectiveMessage=null;
+            //进行CRC校验
+            byte[] crc16 = new byte[2];
             //报文长度不能小于8字节
             if (message.Length<8)
             {
                 return null;
             }
-            //进行CRC校验
-            byte[] crc16 = new byte[2];
-            crc16 = Tools.CRC16(message, message.Length - 2);
-            //校验失败返回
-            if(message[message.Length-2]!=crc16[1] || message[message.Length-1]!=crc16[0])
+            if(message.Length>=8)//报文长度大于上报状态命令报文长度8，则需要遍历报文每个数据找出正确的状态上报报文
+            {
+                for(int i=0;i<=message.Length-8;i++)
+                {
+                    //遍历整个报文
+                    if ((message[i+1] == 0x03 && message[i + 2] == 0x00 && message[i + 3] == 0x00 && message[i + 4] == 0x00 && message[i + 5] == 0x05) || (message[i+1] == 0x03 && message[i + 2] == 0x00 && message[i + 3] == 0x04 && message[i + 4] == 0x00 && message[i + 5] == 0x01))
+                    {
+                        //找到正确的状态上报报文，将报文信息保存到新的报文数组effectiveMessage中
+                        effectiveMessage = new byte[8];
+                        Array.Copy(message, i, effectiveMessage, 0, 8);
+                        break;
+                    }                  
+                }
+                //if(effectiveMessage==null)//遍历后effectiveMessage为null，说明没有找到状态上报报文,进行时间同步报文遍历查找
+                //{
+                if (message.Length >= 17)//报文长度大于时间同步报文长度17，则需要遍历报文每个数据找出正确的报文
+                {
+                    for (int i = 0; i <= message.Length - 17; i++)
+                    {
+                        //遍历整个报文
+                        if (message[i] == 0x00 && message[i + 1] == 0x10 && message[i + 2] == 0x11 && message[i + 3] == 0x00)
+                        {
+                            //找到正确的时间同步报文，将报文信息保存到新的报文数组effectiveMessage中
+                            effectiveMessage = new byte[17];
+                            Array.Copy(message, i, effectiveMessage, 0, 17);
+                            break;
+                        }
+                    }
+                }
+                //}
+            }
+            //if (effectiveMessage != null)
+            //{
+            //    File.AppendAllText(Application.StartupPath + "\\log\\msg.txt", "处理后的报文信息：" + BitConverter.ToString(effectiveMessage) + "\r\n");
+            //}
+            if (effectiveMessage==null)//没有 找到正确的报文，返回null
             {
                 return null;
             }
-            //校验成功
-            switch(message[1])
+            switch(effectiveMessage[1])
             {                
-                case 0x03://向管理机上报监测状态报文
-                    messageData = new int[1];
-                    messageData[0] = message[0];
+                case 0x03://向管理机上报监测状态报文,
+                    crc16 = Tools.CRC16(effectiveMessage, 6);//报文长度为8字节，最后两个字节为校验位
+                    //校验失败返回
+                    if (effectiveMessage[6] != crc16[1] || effectiveMessage[7] != crc16[0])
+                    {
+                        return null;
+                    }
+                    ////校验成功
+                    //if (message[2] != 0x00 || message[3] != 0x00 || message[4] != 0x00 || message[5] != 0x05)
+                    //{
+                    //    return null;
+                    //}
+                    messageData = new int[3];
+                    messageData[0] = effectiveMessage[0];
+                    messageData[1] = effectiveMessage[3];//保存起始地址
+                    messageData[2] = effectiveMessage[5];//保存寄存器数量          
                     break;                   
                 case 0x10://进行时间同步报文
-                    if (message.Length >= 17)//报文长度满足要求
+                    if (effectiveMessage.Length >= 17)//报文长度满足要求
                     {
+                        crc16 = Tools.CRC16(effectiveMessage, 15);//报文长度为17字节，最后两个字节为校验位
+                        //校验失败返回
+                        if (effectiveMessage[15] != crc16[1] || effectiveMessage[16] != crc16[0])
+                        {
+                            return null;
+                        }
+                        //校验成功
+                        if (effectiveMessage[2] != 0x11 || effectiveMessage[3] != 0x00 || effectiveMessage[4] != 0x00 || effectiveMessage[5] != 0x04)
+                        {
+                            return null;
+                        }
                         messageData = new int[7];
-                        messageData[0] = (message[7]>>4)*1000+(message[7]&0x0f)*100 + (message[8]>>4)*10+(message[8]&0x0f);//年
-                        for(int i=1;i<messageData.Length;i++)
+                        messageData[0] = (effectiveMessage[7]>>4)*1000+(effectiveMessage[7]&0x0f)*100 + (effectiveMessage[8]>>4)*10+(effectiveMessage[8]&0x0f);//年
+                        for(int i=1;i<7;i++)
                         {
                             //messageData[1]到messageData[6]分别存储：月、日、时、分、妙、毫秒
-                            messageData[i] = (message[i + 8]>>4)*10+(message[i+8]&0x0f);
+                            messageData[i] = (effectiveMessage[i + 8]>>4)*10+(effectiveMessage[i+8]&0x0f);
                         }                        
                     }
                     break;
@@ -540,13 +623,56 @@ namespace HFM.Components
                     //读串口数据到RecBuf
                     try
                     {
-                        //接收下位机上传的采集数据报文，将其从byte型转换为string类型(十六进制)并返回
+                        //接收下位机上传的采集数据报文，将其从byte型转换为string类型(十六进制)并返回                        
                         RecBuf = commport.Read(NumBytes);                        
                         return RecBuf;
                     }
                     catch
                     {
                         return null;                        
+                    }
+
+                }
+            }
+        }
+
+        /// <summary>
+        ///  通过串口接收下位机上传的采集数据报文（串口已经打开）		
+        /// </summary>
+        /// <param name="commport"> 已打开的接收报文信息的串口</param>
+        /// <param name="numBytes">读取字节数</param>
+        /// <returns>PosID  接收成功：返回收到的采集信息
+        ///                 接收失败：返回null  </returns>
+        public static byte[] ReceiveMessage(CommPort commport,int numBytes)
+        {
+            //串口已打开            
+            //int NumBytes;
+            HexCon hexcon = new HexCon();
+            //NumBytes = 124;
+            byte[] RecBuf = new byte[numBytes];
+            //获得当前系统时间
+            System.DateTime Start_Time = new System.DateTime();
+            Start_Time = System.DateTime.Now;
+            while (true)
+            {
+                System.DateTime Now_Time = new System.DateTime();
+                Now_Time = System.DateTime.Now;
+                //传输时间大于20秒则传输失败
+                TimeSpan Space_Time = Now_Time.Subtract(Start_Time);
+                if (Space_Time.Seconds > 20)
+                    return null;
+                else
+                {
+                    //读串口数据到RecBuf
+                    try
+                    {
+                        //接收下位机上传的采集数据报文，将其从byte型转换为string类型(十六进制)并返回                        
+                        RecBuf = commport.Read(numBytes);
+                        return RecBuf;
+                    }
+                    catch
+                    {
+                        return null;
                     }
 
                 }

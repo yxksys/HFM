@@ -20,19 +20,19 @@ using System.Windows.Forms;
 
 namespace HFM.Components
 {
-    class SystemParameter
+    public class SystemParameter
     {
         #region 数据库查询语句
         /// <summary>
         /// 查询字段:测量单位、自检时间、平滑时间、报警时间、强制本底次数、衣物离线自检时间、当前是否英文版本
         /// </summary>
         private const string SQL_SELECT_MAINPREFERENCE = "SELECT MeasurementUnit, SelfCheckTime, SmoothingTime," +
-                                                        " MeasuringTime, AlarmTime, BKGUpdate, ClothOfflineTime, IsEnglish, MeasuredCount " +
+                                                        " MeasuringTime, AlarmTime, BKGUpdate, ClothOfflineTime, IsEnglish, MeasuredCount ,TimeOut" +
                                                         " FROM HFM_MainPreference";
         private const string SQL_UPDATE_MAINPREFERENCE = "UPDATE HFM_MainPreference " +
                                                         "SET  MeasurementUnit=@MeasurementUnit, SelfCheckTime=@SelfCheckTime," +
                                                         " SmoothingTime=@SmoothingTime, MeasuringTime=@MeasuringTime, AlarmTime=@AlarmTime," +
-                                                        " BKGUpdate=@BKGUpdate, ClothOfflineTime=@ClothOfflineTime, IsEnglish=@IsEnglish";
+                                                        " BKGUpdate=@BKGUpdate, ClothOfflineTime=@ClothOfflineTime, IsEnglish=@IsEnglish, TimeOut=@TimeOut";
         /// <summary>
         /// 更新字段:已经完成检查次数
         /// </summary>
@@ -49,6 +49,7 @@ namespace HFM.Components
         private int _clothOfflineTime;//衣物离线自检时间
         private bool _isEnglish;//当前是否英文版本
         private int _measuredCount;//已经完成检查次数
+        private int _timeOut;//两步式超时设置
 
         /// <summary>
         /// 测量单位
@@ -86,6 +87,10 @@ namespace HFM.Components
         /// 已经完成检测人数
         /// </summary>       
         public int MeasuredCount { get => _measuredCount; set => _measuredCount = value; }
+        /// <summary>
+        /// 两步式超时设置
+        /// </summary>
+        public int TimeOut { get => _timeOut; set => _timeOut = value; }
 
         #endregion
 
@@ -137,6 +142,7 @@ namespace HFM.Components
                     this.ClothOfflineTime = Convert.ToInt32(reader["ClothOfflineTime"].ToString() == "" ? "0" : reader["ClothOfflineTime"].ToString());
                     this.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
                     this.MeasuredCount = Convert.ToInt32(reader["MeasuredCount"].ToString() == "" ? "0" : reader["MeasuredCount"].ToString());
+                    this.TimeOut = Convert.ToInt32(reader["TimeOut"].ToString() == "" ? "0" : reader["TimeOut"].ToString());
                 }
                 reader.Close();
                 DbHelperAccess.Close();
@@ -160,7 +166,8 @@ namespace HFM.Components
                 new OleDbParameter("AlarmTime",OleDbType.Integer,4),
                 new OleDbParameter("BkgUpdate",OleDbType.VarChar,255),
                 new OleDbParameter("ClothOfflineTime",OleDbType.VarChar,255),
-                new OleDbParameter("IsEnglish",OleDbType.Boolean)
+                new OleDbParameter("IsEnglish",OleDbType.Boolean),
+                new OleDbParameter("TimeOut",OleDbType.VarChar,255)
             };
             parms[0].Value = systemParameter.MeasurementUnit.ToString();
             parms[1].Value = systemParameter.SelfCheckTime.ToString();
@@ -170,6 +177,7 @@ namespace HFM.Components
             parms[5].Value = systemParameter.BkgUpdate.ToString();
             parms[6].Value = systemParameter.ClothOfflineTime.ToString();
             parms[7].Value = systemParameter.IsEnglish;
+            parms[8].Value = systemParameter.TimeOut.ToString();
             //执行更新语句
             if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE, parms) != 0)
             {

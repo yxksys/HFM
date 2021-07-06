@@ -19,9 +19,9 @@ namespace HFM
             int x = System.Diagnostics.Process.GetProcessesByName("HFM").Length;
             if (System.Diagnostics.Process.GetProcessesByName("HFM").Length<=1)
             {
-                FrmWelcome frmWelcome = new FrmWelcome();
-                frmWelcome.Show();
-                Application.Run();
+                //FrmWelcome frmWelcome = new FrmWelcome();
+                //frmWelcome.Show();
+                Application.Run(new FrmMeasureMain());
             }
             else
             {

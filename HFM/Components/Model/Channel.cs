@@ -19,7 +19,7 @@ using System.Data.OleDb;
 
 namespace HFM.Components
 { 
-    class Channel
+    public class Channel
     {
         #region 数据库查询语言
         //获得全部通道列表

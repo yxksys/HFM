@@ -19,7 +19,7 @@ using System.Data.OleDb;
 
 namespace HFM.Components
 {
-    class MeasureData
+    public class MeasureData
     {
         #region 数据库查询语句
         /// <summary>
@@ -60,7 +60,7 @@ namespace HFM.Components
         private int _measureID;//ID
         private DateTime _measureDate;//测量时间
         private string _measureStatus="";//测量状态
-        private string _detailedInfo="";//详细描述
+        private Dictionary<Language,string> _detailedInfo=new Dictionary<Language, string> { {Language.Chinese,"" },{Language.English,"" } };//详细描述
         private Channel _channel;//测量通道
         private float _alpha;//Alpha计数值
         private float _beta;//Beta计数值
@@ -85,7 +85,7 @@ namespace HFM.Components
         /// <summary>
         /// 详细描述
         /// </summary>
-        public string DetailedInfo { get => _detailedInfo; set => _detailedInfo = value; }
+        public Dictionary<Language, string> DetailedInfo { get => _detailedInfo; set => _detailedInfo = value; }
         /// <summary>
         /// Alpha计数值
         /// </summary>
@@ -166,9 +166,9 @@ namespace HFM.Components
                     MeasureData measuredata = new MeasureData();
                     measuredata.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
                     measuredata.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
-                    measuredata.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
-                    measuredata.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
-                    measuredata.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    measuredata.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());                    
+                    measuredata.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());                    
+                    measuredata.DetailedInfo[measuredata.IsEnglish?Language.English:Language.Chinese] = Convert.ToString(reader["DetailedInfo"].ToString());
                     measuredata.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                     //从reader读出并将构造的查询结果添加到List中
                     IMeasureDateS.Add(measuredata);
@@ -205,7 +205,14 @@ namespace HFM.Components
                     measureData.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
                     measureData.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
                     measureData.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
-                    measureData.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
+                    if(isEnglish)
+                    {
+                        measureData.DetailedInfo[Language.English] = Convert.ToString(reader["DetailedInfo"].ToString());
+                    }
+                    else {
+                        measureData.DetailedInfo[Language.Chinese] = Convert.ToString(reader["DetailedInfo"].ToString());
+                    }
+                    
                     measureData.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
                     measureData.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                     //从reader读出并将构造的对象添加到List中
@@ -237,7 +244,7 @@ namespace HFM.Components
                 };
             parms[0].Value = measureData.MeasureDate;
             parms[1].Value = measureData.MeasureStatus.ToString();
-            parms[2].Value = measureData.DetailedInfo.ToString();
+            parms[2].Value = measureData.DetailedInfo[measureData.IsEnglish? Language.English:Language.Chinese];
             parms[3].Value = measureData.IsEnglish;
             parms[4].Value = measureData.IsReported;
             if (DbHelperAccess.ExecuteSql(SQL_INSERT_MEASUREDATA, parms) != 0)
@@ -266,9 +273,9 @@ namespace HFM.Components
                 {
                     this.MeasureID = Convert.ToInt32(reader["MeasureID"].ToString());
                     this.MeasureDate = Convert.ToDateTime(reader["MeasureDate"].ToString());
-                    this.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());
-                    this.DetailedInfo = Convert.ToString(reader["DetailedInfo"].ToString());
+                    this.MeasureStatus = Convert.ToString(reader["MeasureStatus"].ToString());                    
                     this.IsEnglish = Convert.ToBoolean(reader["IsEnglish"].ToString());
+                    this.DetailedInfo[this.IsEnglish?Language.English:Language.Chinese] = Convert.ToString(reader["DetailedInfo"].ToString());
                     this.IsReported = Convert.ToBoolean(reader["IsReported"].ToString());
                 }
                 reader.Close();

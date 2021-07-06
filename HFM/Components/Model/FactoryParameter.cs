@@ -19,14 +19,14 @@ using System.Data.OleDb;
 
 namespace HFM.Components
 {
-    class FactoryParameter
+    public class FactoryParameter
     {
         #region 数据库查询语句
         /// <summary>
         /// 查询字段：仪器编号、软件名称、IP地址、通信端口、是否自动连接、探测类型、平滑因子、手部是否双探测器
         /// </summary>
         private const string SQL_SELECT_MAINPREFERENCE = "SELECT   InstrumentNum, SoftName, IPAddress, PortNumber," +
-                                                        " IsConnectedAuto, MeasureType, SmoothingFactor, IsDoubleProbe, DeviceAddress,ReportingTime " +
+                                                        " IsConnectedAuto, MeasureType, SmoothingFactor, IsDoubleProbe, DeviceAddress,ReportingTime,IsFootInfrared,IsFriskerIndependent " +
                                                         " FROM HFM_MainPreference";
         /// <summary>
         /// 更新字段：仪器编号、软件名称、IP地址、通信端口、是否自动连接、探测类型、平滑因子、手部是否双探测器
@@ -35,7 +35,7 @@ namespace HFM.Components
                                                         "SET  InstrumentNum=@InstrumentNum, SoftName=@SoftName," +
                                                         " IPAddress=@IPAddress, PortNumber=@PortNumber, IsConnectedAuto=@IsConnectedAuto," +
                                                         " MeasureType=@MeasureType, SmoothingFactor=@SmoothingFactor, IsDoubleProbe=@IsDoubleProbe," +
-                                                        "DeviceAddress=@DeviceAddress,ReportingTime=@ReportingTime";
+                                                        "DeviceAddress=@DeviceAddress,ReportingTime=@ReportingTime,IsFootInfrared=@IsFootInfrared,IsFriskerIndependent=@IsFriskerIndependent";
         #endregion
 
         #region 属性
@@ -49,7 +49,8 @@ namespace HFM.Components
         private bool _isDoubleProbe;//手部是否双探测器
         private string _deviceAddress;//设备地址
         private string _reportingTime;//上报时间间隔
-
+        private bool _isFootInfrared=false;//脚步红外是否独立
+        private bool _isFriskerIndependent = true;//衣物探头是否独立
 
         /// <summary>
         /// 仪器编号
@@ -95,6 +96,14 @@ namespace HFM.Components
         /// 上报时间间隔
         /// </summary>
         public string ReportingTime { get=>_reportingTime; set=>_reportingTime=value; }
+        /// <summary>
+        /// 脚步红外是否独立
+        /// </summary>
+        public bool IsFootInfrared { get => _isFootInfrared; set => _isFootInfrared = value; }
+        /// <summary>
+        /// 衣物探头是否独立
+        /// </summary>
+        public bool IsFriskerIndependent { get => _isFriskerIndependent; set => _isFriskerIndependent = value; }
         #endregion
         #region 构造函数
         public FactoryParameter()
@@ -147,6 +156,8 @@ namespace HFM.Components
                     this.IsDoubleProbe = Convert.ToBoolean(reader["IsDoubleProbe"].ToString());
                     this.DeviceAddress = Convert.ToString(reader["DeviceAddress"].ToString());
                     this.ReportingTime = Convert.ToString(reader["ReportingTime"].ToString());
+                    this.IsFootInfrared = Convert.ToBoolean(reader["IsFootInfrared"]);
+                    this.IsFriskerIndependent = Convert.ToBoolean(reader["IsFriskerIndependent"]);
                 }
                 reader.Close();
                 DbHelperAccess.Close();
@@ -172,7 +183,9 @@ namespace HFM.Components
                 new OleDbParameter("SmoothingFactor",OleDbType.VarChar,255),
                 new OleDbParameter("IsDoubleProbe",OleDbType.Boolean),
                 new OleDbParameter("DeviceAddress",OleDbType.VarChar,255),
-                new OleDbParameter("ReportingTime",OleDbType.VarChar,255)
+                new OleDbParameter("ReportingTime",OleDbType.VarChar,255),//,
+                new OleDbParameter("IsFootInfrared",OleDbType.Boolean),
+                new OleDbParameter("IsFriskerIndependent",OleDbType.Boolean)
             };
             parms[0].Value = factoryParameter.InstrumentNum.ToString();
             parms[1].Value = factoryParameter.SoftName.ToString();
@@ -184,6 +197,8 @@ namespace HFM.Components
             parms[7].Value = factoryParameter.IsDoubleProbe;
             parms[8].Value = factoryParameter.DeviceAddress.ToString();
             parms[9].Value = factoryParameter.ReportingTime.ToString();
+            parms[10].Value = factoryParameter.IsFootInfrared;
+            parms[11].Value = factoryParameter.IsFriskerIndependent;
             //执行更新语句
             if (DbHelperAccess.ExecuteSql(SQL_UPDATE_MAINPREFERENCE,parms) != 0)
             {

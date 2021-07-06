@@ -19,7 +19,7 @@ using System.Data.OleDb;
 
 namespace HFM.Components
 {
-    class ProbeParameter
+    public class ProbeParameter
     {
         #region 常量
         private const string SQL_SELECT_PROBEPARAMETER = "SELECT PreferenceID,ProbeType,NuclideType,a.ChannelID,HBackground,LBackground," +

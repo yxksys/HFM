@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTestHardware));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GrpWork = new System.Windows.Forms.GroupBox();
             this.DgvWork = new System.Windows.Forms.DataGridView();
             this.LHP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +87,12 @@
             this.LblSelfcount = new System.Windows.Forms.Label();
             this.LblTimeWork = new System.Windows.Forms.Label();
             this.bkWorkerReceiveData = new System.ComponentModel.BackgroundWorker();
+            this.TxtBodyState = new System.Windows.Forms.TextBox();
+            this.LblBodyState = new System.Windows.Forms.Label();
+            this.TxtRFootState = new System.Windows.Forms.TextBox();
+            this.LblRFootState = new System.Windows.Forms.Label();
+            this.TxtLFootState = new System.Windows.Forms.TextBox();
+            this.LblLFootState = new System.Windows.Forms.Label();
             this.GrpWork.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvWork)).BeginInit();
             this.GrpFrisker.SuspendLayout();
@@ -139,43 +145,43 @@
             // 
             // LHP
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 10F);
-            this.LHP.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 10F);
+            this.LHP.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(this.LHP, "LHP");
             this.LHP.Name = "LHP";
             // 
             // LHB
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 10F);
-            this.LHB.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 10F);
+            this.LHB.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(this.LHB, "LHB");
             this.LHB.Name = "LHB";
             // 
             // RHP
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 10F);
-            this.RHP.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 10F);
+            this.RHP.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(this.RHP, "RHP");
             this.RHP.Name = "RHP";
             // 
             // RHB
             // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 10F);
-            this.RHB.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("宋体", 10F);
+            this.RHB.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(this.RHB, "RHB");
             this.RHB.Name = "RHB";
             // 
             // LF
             // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10F);
-            this.LF.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("宋体", 10F);
+            this.LF.DefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(this.LF, "LF");
             this.LF.Name = "LF";
             // 
             // RF
             // 
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 10F);
-            this.RF.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 10F);
+            this.RF.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(this.RF, "RF");
             this.RF.Name = "RF";
             // 
@@ -292,6 +298,12 @@
             // 
             // GrpSensorstate
             // 
+            this.GrpSensorstate.Controls.Add(this.TxtBodyState);
+            this.GrpSensorstate.Controls.Add(this.LblBodyState);
+            this.GrpSensorstate.Controls.Add(this.TxtRFootState);
+            this.GrpSensorstate.Controls.Add(this.LblRFootState);
+            this.GrpSensorstate.Controls.Add(this.TxtLFootState);
+            this.GrpSensorstate.Controls.Add(this.LblLFootState);
             this.GrpSensorstate.Controls.Add(this.TxtFriskerState);
             this.GrpSensorstate.Controls.Add(this.LblFriskerState);
             this.GrpSensorstate.Controls.Add(this.TxtRHandState);
@@ -451,6 +463,42 @@
             this.bkWorkerReceiveData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BkWorkerReceiveData_DoWork);
             this.bkWorkerReceiveData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BkWorkerReceiveData_ProgressChanged);
             // 
+            // TxtBodyState
+            // 
+            this.TxtBodyState.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            resources.ApplyResources(this.TxtBodyState, "TxtBodyState");
+            this.TxtBodyState.Name = "TxtBodyState";
+            this.TxtBodyState.ReadOnly = true;
+            // 
+            // LblBodyState
+            // 
+            resources.ApplyResources(this.LblBodyState, "LblBodyState");
+            this.LblBodyState.Name = "LblBodyState";
+            // 
+            // TxtRFootState
+            // 
+            this.TxtRFootState.BackColor = System.Drawing.Color.Orange;
+            resources.ApplyResources(this.TxtRFootState, "TxtRFootState");
+            this.TxtRFootState.Name = "TxtRFootState";
+            this.TxtRFootState.ReadOnly = true;
+            // 
+            // LblRFootState
+            // 
+            resources.ApplyResources(this.LblRFootState, "LblRFootState");
+            this.LblRFootState.Name = "LblRFootState";
+            // 
+            // TxtLFootState
+            // 
+            this.TxtLFootState.BackColor = System.Drawing.Color.Orange;
+            resources.ApplyResources(this.TxtLFootState, "TxtLFootState");
+            this.TxtLFootState.Name = "TxtLFootState";
+            this.TxtLFootState.ReadOnly = true;
+            // 
+            // LblLFootState
+            // 
+            resources.ApplyResources(this.LblLFootState, "LblLFootState");
+            this.LblLFootState.Name = "LblLFootState";
+            // 
             // FrmTestHardware
             // 
             resources.ApplyResources(this, "$this");
@@ -535,5 +583,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RHB;
         private System.Windows.Forms.DataGridViewTextBoxColumn LF;
         private System.Windows.Forms.DataGridViewTextBoxColumn RF;
+        private System.Windows.Forms.TextBox TxtBodyState;
+        private System.Windows.Forms.Label LblBodyState;
+        private System.Windows.Forms.TextBox TxtRFootState;
+        private System.Windows.Forms.Label LblRFootState;
+        private System.Windows.Forms.TextBox TxtLFootState;
+        private System.Windows.Forms.Label LblLFootState;
     }
 }

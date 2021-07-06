@@ -777,6 +777,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FC87D1013FDD4471B65262F254F92287"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FC8823874793403C8481E6A9F1FDA873"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1370,7 +1376,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=3.0.6.10, Culture=en, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:HFM.resources, Version=3.0.6.24, Culture=en, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_34A78B96ECDE4A338BC43FDDB70976E3"
@@ -3448,6 +3454,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC87D1013FDD4471B65262F254F92287"
+            {
+            "SourcePath" = "8:..\\HFM\\bin\\Debug\\log\\background.txt"
+            "TargetName" = "8:background.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_1E6B776A2A1646369B01F691B833D699"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC8823874793403C8481E6A9F1FDA873"
             {
             "SourcePath" = "8:..\\HFM\\bin\\Debug\\Images\\Foot_NotInPlace.png"
@@ -3631,7 +3657,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HFM"
         "ProductCode" = "8:{3237E582-61BA-41E9-B55D-CCD2286E0A45}"
-        "PackageCode" = "8:{CE05DFD7-67F2-4B5F-9303-EC6EE6E69327}"
+        "PackageCode" = "8:{2DC8F729-DC27-49D3-98D0-78DFF9A2120F}"
         "UpgradeCode" = "8:{6AB0BF61-E4CA-4F56-B870-3B6BA4880317}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

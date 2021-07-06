@@ -726,7 +726,7 @@ namespace HFM
             int time = _measuringTime - e.ProgressPercentage;
             TimeVisible(time);
             
-            //判断右手红外状态界面显示颜色
+            //判断左手红外状态界面显示颜色
             if (_infraredStatus[0] == 1 && _infraredStatus[1] == 1)
             {
                 TxtLHandState.BackColor = Color.Lime;
@@ -744,8 +744,26 @@ namespace HFM
             {
                 TxtRHandState.BackColor = Color.Orange;
             }
+            //判断左脚红外状态界面显示颜色
+            if (_infraredStatus[4] == 1)
+            {
+                TxtLFootState.BackColor = Color.Lime;
+            }
+            else
+            {
+                TxtLFootState.BackColor = Color.Orange;
+            }
+            //判断右脚红外状态界面显示颜色
+            if (_infraredStatus[5] == 1)
+            {
+                TxtRFootState.BackColor = Color.Lime;
+            }
+            else
+            {
+                TxtRFootState.BackColor = Color.Orange;
+            }
             //
-            //判断右手红外状态界面显示颜色
+            //判断衣物红外状态界面显示颜色
             if (_infraredStatus[6] == 1)
             {
                 TxtFriskerState.BackColor = Color.Lime;
@@ -754,7 +772,15 @@ namespace HFM
             {
                 TxtFriskerState.BackColor = Color.Orange;
             }
-
+            ////判断躯干红外状态界面显示颜色
+            //if (_infraredStatus[7] == 1)
+            //{
+            //    TxtBodyState.BackColor = Color.Lime;
+            //}
+            //else
+            //{
+            //    TxtBodyState.BackColor = Color.Orange;
+            //}
             #endregion 从监测存储到的measureDataS数据中解析到界面数值
         }
 
