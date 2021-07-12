@@ -955,6 +955,7 @@ namespace HFM
                 File.AppendAllText(appPath + "\\log\\msg.txt", "检测端口回传原始报文：" + BitConverter.ToString(receiveBufferMessage) + "\r\n");
                 File.AppendAllText(appPath + "\\log\\msg.txt", "解析后脚步红外状态---左脚：" + measureDataS[4].InfraredStatus.ToString() + "\r\n");
                 File.AppendAllText(appPath + "\\log\\msg.txt", "解析后脚步红外状态---右脚：" + measureDataS[5].InfraredStatus.ToString() + "\r\n");
+                File.AppendAllText(appPath + "\\log\\msg.txt", "解析后脚步红外状态---衣物：" + measureDataS[6].InfraredStatus.ToString() + "\r\n");
             }
             if(measureDataS==null||measureDataS.Count<7)//解析失败
             {
@@ -1266,6 +1267,8 @@ namespace HFM
                 uIEventArgs.CurrentState = stateBackgroundMeasure;
                 backgroundCount++;//本底测量值计数+1
                 //对采集的监测数据进行处理
+                File.AppendAllText(appPath + "\\log\\msg.txt", "检测端口回传原始报文：" + BitConverter.ToString(receiveBufferMessage) + "\r\n");                
+                File.AppendAllText(appPath + "\\log\\msg.txt", "解析后脚步红外状态---衣物：" + measureDataS[6].InfraredStatus.ToString() + "\r\n");
                 int runStatus=stateCurrent.Run(usedChannelS,measureDataS, uIEventArgs);
                 //1s时间未到或红外异常直接返回
                 if (runStatus==-1)

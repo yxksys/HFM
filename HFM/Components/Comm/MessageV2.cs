@@ -48,11 +48,11 @@ namespace HFM.Components
             //设置躯干红外状态
             if ((infraredStatus & 64) == 0)
             {
-                measureDataS[6].InfraredStatus = 0;
+                measureDataS[7].InfraredStatus = 0;
             }
             else
             {
-                measureDataS[6].InfraredStatus = 1;
+                measureDataS[7].InfraredStatus = 1;
             }
             return measureDataS;
         }

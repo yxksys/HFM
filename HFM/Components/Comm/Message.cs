@@ -414,13 +414,14 @@ namespace HFM.Components
                         }
                         else//第二个数据包为5-7为脚步探头和衣物探头
                         {
-                            //左脚红外状态 
-                            if ((infraredStatus & 16) == 0)
+                            //脚步红外状态和手部保持一致 
+                            //左脚和左手一致
+                            if ((infraredStatus & 1) == 0)
                             {
                                 measureDataS[4].InfraredStatus = 1;//左脚
                             }
-                            //右脚红外状态
-                            if ((infraredStatus & 32) == 0)
+                            //右脚和右手一致
+                            if ((infraredStatus & 2) == 0)
                             {
                                 measureDataS[5].InfraredStatus = 1;//右脚
                             }
@@ -430,10 +431,10 @@ namespace HFM.Components
                                 measureDataS[6].InfraredStatus = 1;//衣物
                             }
                             //躯干红外状态
-                            if ((infraredStatus & 64) == 0)
-                            {
-                                measureDataS[7].InfraredStatus = 1;//躯干
-                            }
+                            //if ((infraredStatus & 64) == 0)
+                            //{
+                            //   measureDataS[6].InfraredStatus = 1;//躯干
+                            //}
                         }
                         break;
                 }
