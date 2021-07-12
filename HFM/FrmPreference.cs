@@ -46,7 +46,7 @@ namespace HFM
         private Tools _tools = new Tools();//工具类
         /// <summary>
         /// 异步线程初始化化时间,ReportProgress百分比数值
-        /// </summary>
+        /// </summary>cc
         private int _bkworkTime;
         /// <summary>
         /// 串口实例
@@ -562,20 +562,54 @@ namespace HFM
             IList<ProbeParameter> probeParameters = new List<ProbeParameter>();//获得C参数
             probeParameters = probeParameter.GetParameter("c");
             //衣物共享启动后配置界面内容不可用
-            if (factoryParameter.IsFriskerIndependent==false)
+            if (factoryParameter.IsFriskerIndependent==true)
             {
-                //TabPresence.Enabled = false;
-                GrpClothesData.Enabled = false;
-                GrpClothesNuclideChoose.Enabled = false;
-                BtnClothesOk.Enabled = false;
-                BtnClothesNo.Enabled = false;
-            }
-            else
-            {
+
                 GrpClothesData.Enabled = true;
                 GrpClothesNuclideChoose.Enabled = true;
                 BtnClothesOk.Enabled = true;
                 BtnClothesNo.Enabled = true;
+                //TabPresence.Enabled = false;
+                //GrpClothesData.Enabled = true;
+                //GrpClothesNuclideChoose.Enabled = false;
+                //BtnClothesOk.Enabled = true;
+                //BtnClothesNo.Enabled = false;
+                //本地上限文本框
+                //TxtClothesHBackground.Enabled = false;
+                //本底下限文本
+                //TxtClothesLBackground.Enabled = false;
+                //污染警报
+                //TxtClothesAlarm_1.Enabled = true;
+                //高阶警报
+                //TxtClothesAlarm_2.Enabled = true;
+                //探测效率
+                //TxtClothesEfficiency.Enabled = false;
+                //理想时间
+                //TxtClothOfflineTime.Enabled = false;
+            }
+            else if (factoryParameter.IsFriskerIndependent == false)
+            {
+                if (ChkClothes.Checked==false)
+                {
+                    GrpClothesData.Enabled = false;
+                    GrpClothesNuclideChoose.Enabled = false;
+                    BtnClothesOk.Enabled = false;
+                    BtnClothesNo.Enabled = false;
+                }
+                else
+                {
+                    GrpClothesData.Enabled = true;
+                    GrpClothesNuclideChoose.Enabled = false;
+                    BtnClothesOk.Enabled = true;
+                    BtnClothesNo.Enabled = true;
+
+                    TxtClothesHBackground.Enabled = false;
+                    TxtClothesLBackground.Enabled = false;
+                    TxtClothesAlarm_1.Enabled = true;
+                    TxtClothesAlarm_2.Enabled = true;
+                    TxtClothesEfficiency.Enabled = false;
+                    TxtClothOfflineTime.Enabled = false;
+                }                                                 
             }
             
             #region 核素选择
