@@ -12,6 +12,7 @@ namespace HFM.Components
         public delegate void ShowMsgHander(object sender, UIEventArgs eventAtgs);
         //状态下进行语音或文字提示事件
         public event ShowMsgHander ShowMsgEvent;
+        string appPath = System.Windows.Forms.Application.StartupPath;
         //事件参数类
         //UIEventArgs uIEventArgs = new UIEventArgs();
         /// <summary>
@@ -63,6 +64,7 @@ namespace HFM.Components
                     //该通道红外到位
                     if (this.CalculatedMeasureDataS[i].InfraredStatus == 1)
                     {
+                        System.IO.File.AppendAllText(appPath + "\\log\\msg.txt", "本底测量当前红外状态----" + CalculatedMeasureDataS[i].Channel.ChannelName+":"+ CalculatedMeasureDataS[i].InfraredStatus.ToString() + "\r\n");
                         this.DeviceStatus = DeviceStatus.OperatingFaulted;
                         //uIEventArgs.CurrentState = this;
                         if (this.IsShowMsg == false)//未进行有效信息显示和语音播报

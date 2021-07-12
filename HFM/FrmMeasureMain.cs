@@ -698,6 +698,7 @@ namespace HFM
             bkWorkerReceiveData.WorkerReportsProgress = true;
             //启动异步线程,响应DoWork事件
             bkWorkerReceiveData.RunWorkerAsync();
+            File.AppendAllText(appPath + "\\log\\msg.txt", "页面加载正常----\r\n");
         }
         /// <summary>
         /// 异步线程DoWork事件响应
@@ -936,6 +937,7 @@ namespace HFM
                 {
                     errNumber++;
                 }
+                File.AppendAllText(appPath + "\\log\\msg.txt", "报文接收异常正常----"+errNumber+"\r\n");
                 return;
             }
             isCommError = false;           
@@ -943,7 +945,8 @@ namespace HFM
             //接收报文无误，进行报文解析，并将解析后的监测数据存储到measureDataS中 
             if (receiveBufferMessage[0] =='C' || receiveBufferMessage[0] == 'c') //判断报文头是C指令
             {
-                measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);                
+                measureDataS = Components.Message.ExplainMessage<MeasureData>(receiveBufferMessage);
+                File.AppendAllText(appPath + "\\log\\msg.txt", "报文解析正常----"+factoryParameter.IsFootInfrared+"\r\n");
             } 
             //如果脚步和躯干红外独立则更新红外状态
             if(factoryParameter.IsFootInfrared==true)
@@ -955,6 +958,7 @@ namespace HFM
             }
             if(measureDataS==null||measureDataS.Count<7)//解析失败
             {
+                File.AppendAllText(appPath + "\\log\\msg.txt", "报文解析异常----" + measureDataS==null?"解析数据为空":"解析数据长度："+measureDataS.Count + "\r\n");
                 return;
             }              
             try
